@@ -146,3 +146,33 @@ class EndToEndTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AuditApplyTests(unittest.TestCase):
+    def row(self, **kw):
+        base = {"kind": "pandals", "id": "x", "name": "Tridhara Sammilani", "distance_m": 300, "similarity": 1.0,
+                "osm_class": "amenity:place_of_worship", "osm_name": "Tridhara Sammilani"}
+        return {**base, **kw}
+
+    def test_accepts_confident_match(self):
+        from pipeline.audit_apply import accept
+        self.assertTrue(accept(self.row())[0])
+
+    def test_rejects_roads_neighbourhoods_and_far_branches(self):
+        from pipeline.audit_apply import accept
+        self.assertFalse(accept(self.row(osm_class="highway:residential"))[0])
+        self.assertFalse(accept(self.row(osm_class="place:suburb"))[0])
+        self.assertFalse(accept(self.row(distance_m=3840))[0])
+        self.assertFalse(accept(self.row(kind="food", osm_class="tourism:hotel"))[0])
+
+    def test_name_subset_rule(self):
+        from pipeline.audit_apply import accept
+        ok, _ = accept(self.row(kind="parking", name="Lake Mall (Rashbehari)", osm_name="Lake Mall", similarity=0.42, osm_class="shop:mall"))
+        self.assertTrue(ok)
+        self.assertFalse(accept(self.row(osm_name="Milan Pally", similarity=0.3))[0])
+
+    def test_osm_pins_get_tighter_radius(self):
+        data = plan(enrich(ingest()))
+        tri = next(p for p in data["pandals"] if p["id"] == "tridhara")
+        self.assertEqual(tri["geo_source"], "osm")
+        self.assertEqual(tri["checkin_radius_m"], config.CHECKIN_RADIUS_OSM_M)

@@ -1,54 +1,54 @@
-id,name,name_bn,zone,lat,lng,tags,popularity,crowd_base,best_slot,visit_min,est_year,highlight,verified
-bagbazar,Bagbazar Sarbojanin,বাগবাজার সার্বজনীন,north,22.6043,88.3646,traditional|heritage|fair,5,4,morning,25,1918,"One of the oldest sarbojanin pujas. Traditional daker saaj idol, plus a riverside fair.",false
-kumartuli_park,Kumartuli Park Sarbojanin,কুমোরটুলি পার্ক সার্বজনীন,north,22.6006,88.3608,theme|art,5,5,early_morning,25,,"Next door to the idol-makers' quarter. Expect bold, artistic themes every year.",false
-kumartuli_sarbojanin,Kumartuli Sarbojanin,কুমোরটুলি সার্বজনীন,north,22.5994,88.3617,traditional|artisan,4,3,morning,15,,Worshipped where the idols are born. Walk the artisan lanes on the way.,false
-ahiritola,Ahiritola Sarbojanin,আহিরীটোলা সার্বজনীন,north,22.5978,88.3592,theme,4,4,afternoon,20,,A riverside neighbourhood puja known for large-scale theme work.,false
-ahiritola_jubak,Ahiritola Jubak Brinda,আহিরীটোলা যুবকবৃন্দ,north,22.5964,88.3600,theme,3,3,afternoon,15,,"A short hop from Ahiritola Sarbojanin, with inventive craft themes.",false
-sovabazar_rajbari,Sovabazar Rajbari,শোভাবাজার রাজবাড়ি,north,22.5955,88.3637,heritage|bonedi,5,4,afternoon,30,1757,A bonedi bari puja started by Raja Nabakrishna Deb. The thakurdalan is stunning.,false
-kashi_bose_lane,Kashi Bose Lane,কাশী বোস লেন,north,22.5917,88.3686,theme|art,4,4,evening,20,,A lane-side puja that keeps winning art awards.,false
-nalin_sarkar,Nalin Sarkar Street,নলিন সরকার স্ট্রিট,north,22.5944,88.3704,theme,4,4,evening,20,,A famous Hatibagan theme puja tucked into a narrow lane.,false
-hatibagan,Hatibagan Sarbojanin,হাতিবাগান সার্বজনীন,north,22.5947,88.3742,theme|traditional,4,4,evening,20,,Right at the Hatibagan crossing. Easy to combine with street shopping.,false
-hatibagan_nabinpally,Hatibagan Nabin Pally,হাতিবাগান নবীনপল্লী,north,22.5926,88.3752,theme,3,3,evening,15,,A smaller theme puja a few minutes from the Hatibagan crossing.,false
-jagat_mukherjee,Jagat Mukherjee Park,জগৎ মুখার্জি পার্ক,north,22.5985,88.3733,theme,4,4,evening,20,,Park-based theme puja near Shyambazar.,false
-tala_prattoy,Tala Prattoy,টালা প্রত্যয়,north,22.6077,88.3815,theme|blockbuster,5,5,early_morning,30,,North Kolkata's blockbuster theme puja. The queue moves fast at dawn.,false
-md_ali_park,Mohammad Ali Park,মহম্মদ আলি পার্ক,central,22.5807,88.3612,theme|blockbuster,5,5,early_morning,30,1969,A Central Avenue giant known for lavish replicas and theme pandals.,false
-chaltabagan,Chaltabagan Lohapatty,চালতাবাগান লোহাপট্টি,central,22.5852,88.3676,theme|art,4,4,evening,20,,Theme puja off Bidhan Sarani that regularly picks up awards.,false
-simla_byayam,Simla Byayam Samity,সিমলা ব্যায়াম সমিতি,central,22.5878,88.3664,traditional|heritage,3,3,morning,15,1926,Historic puja in Swami Vivekananda's neighbourhood.,false
-college_square,College Square Sarbojanin,কলেজ স্কোয়ার সার্বজনীন,central,22.5752,88.3632,lights|traditional|lake,5,5,night,25,1948,The lighting reflected on the College Square pond is iconic at night.,false
-santosh_mitra,Santosh Mitra Square (Lebutala),সন্তোষ মিত্র স্কোয়ার (লেবুতলা),central,22.5668,88.3622,theme|blockbuster|replica,5,5,early_morning,30,1936,"Known for giant replica pandals (it once built a gold idol and a chariot), so the queues get long.",false
-sealdah_rac,Sealdah Railway Athletic Club,শিয়ালদহ রেলওয়ে অ্যাথলেটিক ক্লাব,central,22.5645,88.3720,theme,4,4,evening,20,,Right next to Sealdah station. Easy to add to the Santosh Mitra visit.,false
-ekdalia,Ekdalia Evergreen,একডালিয়া এভারগ্রিন,south_gariahat,22.5178,88.3684,traditional|grand,5,5,early_morning,25,1943,A huge traditional idol in a temple-replica pandal. A South Kolkata staple.,false
-singhi_park,Singhi Park,সিংহী পার্ক,south_gariahat,22.5167,88.3649,traditional|lights,5,5,morning,20,,Grand traditional puja just off Gariahat Road.,false
-ballygunge_cultural,Ballygunge Cultural Association,বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন,south_gariahat,22.5146,88.3629,theme|art,4,4,afternoon,20,,Thoughtful art-led themes in a calm-ish setting.,false
-hindustan_park,Hindustan Park Sarbojanin,হিন্দুস্থান পার্ক সার্বজনীন,south_gariahat,22.5155,88.3606,art|theme,4,3,afternoon,15,,"An art-college aesthetic, with fewer crowds than its neighbours.",false
-jodhpur_park,Jodhpur Park,যোধপুর পার্ক,south_gariahat,22.5085,88.3670,theme|grand,4,4,evening,20,,Big theme pandal in a residential para.,false
-babubagan,Babubagan Sarbojanin,বাবুবাগান সার্বজনীন,south_gariahat,22.5087,88.3734,traditional,3,3,afternoon,15,,Neighbourhood puja between Dhakuria and Selimpur.,false
-bosepukur_sitala,Bosepukur Sitala Mandir,বোসপুকুর শীতলা মন্দির,south_gariahat,22.5133,88.3893,theme|art,4,4,evening,20,,Famous for intricate material-based pandals.,false
-bosepukur_talbagan,Bosepukur Talbagan,বোসপুকুর তালবাগান,south_gariahat,22.5146,88.3912,theme|art,4,4,evening,20,,Bosepukur's other award-winning theme puja.,false
-maddox_square,Maddox Square,ম্যাডক্স স্কোয়ার,south_lakemarket,22.5263,88.3566,traditional|adda,5,4,night,30,,Kolkata's favourite adda ground. A traditional idol and the city's best people-watching.,false
-samaj_sebi,Samaj Sebi Sangha,সমাজসেবী সংঘ,south_lakemarket,22.5168,88.3548,traditional|art,4,4,afternoon,20,1945,An elegant puja on Lake View Road with a long cultural legacy.,false
-shib_mandir,Shib Mandir Sarbojanin,শিবমন্দির সার্বজনীন,south_lakemarket,22.5196,88.3546,theme,3,3,afternoon,15,,A compact theme puja near Lake Market.,false
-deshapriya_park,Deshapriya Park,দেশপ্রিয় পার্ক,south_lakemarket,22.5172,88.3527,traditional|grand,4,4,evening,20,1938,"Once famous for the biggest Durga idol in the world, it now runs grand themes.",false
-tridhara,Tridhara Sammilani,ত্রিধারা সম্মিলনী,south_lakemarket,22.5185,88.3489,theme|lights|blockbuster,5,5,early_morning,25,,A South Kolkata showstopper with dazzling theme and light work.,false
-66_pally,66 Pally,৬৬ পল্লী,south_lakemarket,22.5150,88.3512,theme|art,4,4,evening,20,,A Kalighat-side theme puja that often has a social message.,false
-mudiali,Mudiali Club,মুদিয়ালি ক্লাব,south_lakemarket,22.5098,88.3458,theme|eco,4,3,afternoon,15,,Thoughtful themes with an eco slant near Tollygunge.,false
-badamtala,Badamtala Ashar Sangha,বাদামতলা আষাঢ় সংঘ,south_lakemarket,22.5073,88.3443,theme|art,5,4,evening,25,,"A theme favourite, usually built from unusual materials.",false
-chetla_agrani,Chetla Agrani Club,চেতলা অগ্রণী ক্লাব,south_lakemarket,22.5195,88.3375,theme|blockbuster,5,5,early_morning,25,,Celebrity-studded inaugurations and blockbuster themes across Tolly Nullah.,false
-suruchi_sangha,Suruchi Sangha,সুরুচি সংঘ,southwest,22.4965,88.3405,theme|blockbuster|state-art,5,5,early_morning,30,,"New Alipore's showpiece, famous for themes that bring in the art of a different Indian state each year.",false
-behala_notun_dal,Behala Notun Dal,বেহালা নতুন দল,southwest,22.4985,88.3165,theme|art,4,4,evening,20,,Art-led theme pujas with strong craft work.,false
-behala_friends,Behala Friends,বেহালা ফ্রেন্ডস,southwest,22.5035,88.3185,theme,4,4,evening,20,,A consistent theme puja near Behala Chowrasta.,false
-sahajatri,Behala Sahajatri,বেহালা সহযাত্রী,southwest,22.4935,88.3150,theme,3,3,afternoon,15,,A smaller Behala theme puja with fewer queues.,false
-barisha_club,Barisha Club,বড়িশা ক্লাব,southwest,22.4855,88.3125,theme|art,4,4,evening,20,,"Behala's southern anchor, known for detailed themes.",false
-fd_block,FD Block Salt Lake,"এফডি ব্লক, সল্টলেক",salt_lake,22.5878,88.4100,traditional|grand|lights,5,5,evening,25,,"Salt Lake's biggest crowd puller, with a grand idol and a full-blown mela.",false
-bj_block,BJ Block Salt Lake,"বিজে ব্লক, সল্টলেক",salt_lake,22.5810,88.4160,theme,4,4,evening,20,,A spacious theme pandal with an easy walk from Central Park.,false
-ae_block,AE Block Salt Lake,"এই ব্লক, সল্টলেক",salt_lake,22.5920,88.4135,traditional,3,3,afternoon,15,,A relaxed block puja that's good for families.,false
-sreebhumi,Sreebhumi Sporting Club,শ্রীভূমি স্পোর্টিং ক্লাব,lake_town_dumdum,22.6010,88.4015,theme|blockbuster|replica,5,5,late_night,30,,Insta-famous replica pandals and huge gold jewellery on the idol. Lake Town gridlocks for hours.,false
-lake_town_adhibasi,Lake Town Adhibasi Brinda,লেক টাউন অধিবাসীবৃন্দ,lake_town_dumdum,22.6045,88.4045,theme,3,3,evening,15,,"A short walk from Sreebhumi, and much calmer.",false
-dumdum_bharat_chakra,Dum Dum Park Bharat Chakra,দমদম পার্ক ভারতচক্র,lake_town_dumdum,22.6185,88.4140,theme|art,4,4,evening,20,,"Part of the Dum Dum Park theme row, known for art installations.",false
-dumdum_tarun_sangha,Dum Dum Park Tarun Sangha,দমদম পার্ক তরুণ সংঘ,lake_town_dumdum,22.6168,88.4118,theme|art,4,4,evening,20,,Theme heavyweight on the Dum Dum Park strip.,false
-dumdum_sarbojanin,Dum Dum Park Sarbojanin,দমদম পার্ক সার্বজনীন,lake_town_dumdum,22.6155,88.4152,traditional,3,3,afternoon,15,,The traditional stop on the Dum Dum Park strip.,false
-bhowanipore_75pally,Bhowanipore 75 Pally,ভবানীপুর ৭৫ পল্লী,south_lakemarket,22.5292,88.3452,theme|art,4,4,evening,20,,A Bhowanipore theme puja a short walk from the Jatin Das Park metro.,false
-telengabagan,Telengabagan Sarbojanin,তেলেঙ্গাবাগান সার্বজনীন,north,22.6038,88.3878,theme|art,4,4,evening,20,,Award-winning theme work off the Belgachia–Ultadanga stretch.,false
-lalabagan_nabankur,Lalabagan Nabankur,লালাবাগান নবাঙ্কুর,north,22.6048,88.3768,theme,3,3,afternoon,15,,A compact theme puja that fits well between Tala Prattoy and Shyambazar.,false
-rajdanga_naba_uday,Rajdanga Naba Uday Sangha,রাজডাঙ্গা নব উদয় সংঘ,south_gariahat,22.5110,88.3936,theme|art,4,4,evening,20,,"Kasba's third theme heavyweight, right next to the two Bosepukur pujas.",false
-ajeya_sanghati,Behala Ajeya Sanghati,অজেয় সংহতি,southwest,22.4888,88.3098,theme,4,4,evening,20,,A popular Behala theme puja near Barisha.,false
+id,name,name_bn,zone,lat,lng,geo_source,tags,popularity,crowd_base,best_slot,visit_min,est_year,highlight,verified
+bagbazar,Bagbazar Sarbojanin,বাগবাজার সার্বজনীন,north,22.604699,88.366135,osm,traditional|heritage|fair,5,4,morning,25,1918,"One of the oldest sarbojanin pujas. Traditional daker saaj idol, plus a riverside fair.",false
+kumartuli_park,Kumartuli Park Sarbojanin,কুমোরটুলি পার্ক সার্বজনীন,north,22.6006,88.3608,curated,theme|art,5,5,early_morning,25,,"Next door to the idol-makers' quarter. Expect bold, artistic themes every year.",false
+kumartuli_sarbojanin,Kumartuli Sarbojanin,কুমোরটুলি সার্বজনীন,north,22.5994,88.3617,curated,traditional|artisan,4,3,morning,15,,Worshipped where the idols are born. Walk the artisan lanes on the way.,false
+ahiritola,Ahiritola Sarbojanin,আহিরীটোলা সার্বজনীন,north,22.594838,88.357193,osm,theme,4,4,afternoon,20,,A riverside neighbourhood puja known for large-scale theme work.,false
+ahiritola_jubak,Ahiritola Jubak Brinda,আহিরীটোলা যুবকবৃন্দ,north,22.5964,88.3600,curated,theme,3,3,afternoon,15,,"A short hop from Ahiritola Sarbojanin, with inventive craft themes.",false
+sovabazar_rajbari,Sovabazar Rajbari,শোভাবাজার রাজবাড়ি,north,22.596826,88.367193,osm,heritage|bonedi,5,4,afternoon,30,1757,A bonedi bari puja started by Raja Nabakrishna Deb. The thakurdalan is stunning.,false
+kashi_bose_lane,Kashi Bose Lane,কাশী বোস লেন,north,22.591006,88.368965,osm,theme|art,4,4,evening,20,,A lane-side puja that keeps winning art awards.,false
+nalin_sarkar,Nalin Sarkar Street,নলিন সরকার স্ট্রিট,north,22.595346,88.373396,osm,theme,4,4,evening,20,,A famous Hatibagan theme puja tucked into a narrow lane.,false
+hatibagan,Hatibagan Sarbojanin,হাতিবাগান সার্বজনীন,north,22.5947,88.3742,curated,theme|traditional,4,4,evening,20,,Right at the Hatibagan crossing. Easy to combine with street shopping.,false
+hatibagan_nabinpally,Hatibagan Nabin Pally,হাতিবাগান নবীনপল্লী,north,22.5926,88.3752,curated,theme,3,3,evening,15,,A smaller theme puja a few minutes from the Hatibagan crossing.,false
+jagat_mukherjee,Jagat Mukherjee Park,জগৎ মুখার্জি পার্ক,north,22.601311,88.366647,osm,theme,4,4,evening,20,,Park-based theme puja near Shyambazar.,false
+tala_prattoy,Tala Prattoy,টালা প্রত্যয়,north,22.608923,88.382266,osm,theme|blockbuster,5,5,early_morning,30,,North Kolkata's blockbuster theme puja. The queue moves fast at dawn.,false
+md_ali_park,Mohammad Ali Park,মহম্মদ আলি পার্ক,central,22.577240,88.360737,osm,theme|blockbuster,5,5,early_morning,30,1969,A Central Avenue giant known for lavish replicas and theme pandals.,false
+chaltabagan,Chaltabagan Lohapatty,চালতাবাগান লোহাপট্টি,central,22.5852,88.3676,curated,theme|art,4,4,evening,20,,Theme puja off Bidhan Sarani that regularly picks up awards.,false
+simla_byayam,Simla Byayam Samity,সিমলা ব্যায়াম সমিতি,central,22.5878,88.3664,curated,traditional|heritage,3,3,morning,15,1926,Historic puja in Swami Vivekananda's neighbourhood.,false
+college_square,College Square Sarbojanin,কলেজ স্কোয়ার সার্বজনীন,central,22.574525,88.364464,osm,lights|traditional|lake,5,5,night,25,1948,The lighting reflected on the College Square pond is iconic at night.,false
+santosh_mitra,Santosh Mitra Square (Lebutala),সন্তোষ মিত্র স্কোয়ার (লেবুতলা),central,22.565863,88.365539,osm,theme|blockbuster|replica,5,5,early_morning,30,1936,"Known for giant replica pandals (it once built a gold idol and a chariot), so the queues get long.",false
+sealdah_rac,Sealdah Railway Athletic Club,শিয়ালদহ রেলওয়ে অ্যাথলেটিক ক্লাব,central,22.5645,88.3720,curated,theme,4,4,evening,20,,Right next to Sealdah station. Easy to add to the Santosh Mitra visit.,false
+ekdalia,Ekdalia Evergreen,একডালিয়া এভারগ্রিন,south_gariahat,22.521253,88.365960,osm,traditional|grand,5,5,early_morning,25,1943,A huge traditional idol in a temple-replica pandal. A South Kolkata staple.,false
+singhi_park,Singhi Park,সিংহী পার্ক,south_gariahat,22.521224,88.363011,osm,traditional|lights,5,5,morning,20,,Grand traditional puja just off Gariahat Road.,false
+ballygunge_cultural,Ballygunge Cultural Association,বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন,south_lakemarket,22.515884,88.355817,osm,theme|art,4,4,afternoon,20,,Thoughtful art-led themes in a calm-ish setting.,false
+hindustan_park,Hindustan Park Sarbojanin,হিন্দুস্থান পার্ক সার্বজনীন,south_gariahat,22.5155,88.3606,curated,art|theme,4,3,afternoon,15,,"An art-college aesthetic, with fewer crowds than its neighbours.",false
+jodhpur_park,Jodhpur Park,যোধপুর পার্ক,south_gariahat,22.5085,88.3670,curated,theme|grand,4,4,evening,20,,Big theme pandal in a residential para.,false
+babubagan,Babubagan Sarbojanin,বাবুবাগান সার্বজনীন,south_gariahat,22.5087,88.3734,curated,traditional,3,3,afternoon,15,,Neighbourhood puja between Dhakuria and Selimpur.,false
+bosepukur_sitala,Bosepukur Sitala Mandir,বোসপুকুর শীতলা মন্দির,south_gariahat,22.519163,88.384741,osm,theme|art,4,4,evening,20,,Famous for intricate material-based pandals.,false
+bosepukur_talbagan,Bosepukur Talbagan,বোসপুকুর তালবাগান,south_gariahat,22.5146,88.3912,curated,theme|art,4,4,evening,20,,Bosepukur's other award-winning theme puja.,false
+maddox_square,Maddox Square,ম্যাডক্স স্কোয়ার,south_lakemarket,22.526296,88.354656,osm,traditional|adda,5,4,night,30,,Kolkata's favourite adda ground. A traditional idol and the city's best people-watching.,false
+samaj_sebi,Samaj Sebi Sangha,সমাজসেবী সংঘ,south_lakemarket,22.514736,88.355999,osm,traditional|art,4,4,afternoon,20,1945,An elegant puja on Lake View Road with a long cultural legacy.,false
+shib_mandir,Shib Mandir Sarbojanin,শিবমন্দির সার্বজনীন,south_lakemarket,22.5196,88.3546,curated,theme,3,3,afternoon,15,,A compact theme puja near Lake Market.,false
+deshapriya_park,Deshapriya Park,দেশপ্রিয় পার্ক,south_lakemarket,22.518435,88.353515,osm,traditional|grand,4,4,evening,20,1938,"Once famous for the biggest Durga idol in the world, it now runs grand themes.",false
+tridhara,Tridhara Sammilani,ত্রিধারা সম্মিলনী,south_lakemarket,22.519576,88.355349,osm,theme|lights|blockbuster,5,5,early_morning,25,,A South Kolkata showstopper with dazzling theme and light work.,false
+66_pally,66 Pally,৬৬ পল্লী,south_lakemarket,22.5150,88.3512,curated,theme|art,4,4,evening,20,,A Kalighat-side theme puja that often has a social message.,false
+mudiali,Mudiali Club,মুদিয়ালি ক্লাব,south_lakemarket,22.510075,88.346626,osm,theme|eco,4,3,afternoon,15,,Thoughtful themes with an eco slant near Tollygunge.,false
+badamtala,Badamtala Ashar Sangha,বাদামতলা আষাঢ় সংঘ,south_lakemarket,22.517927,88.344165,osm,theme|art,5,4,evening,25,,"A theme favourite, usually built from unusual materials.",false
+chetla_agrani,Chetla Agrani Club,চেতলা অগ্রণী ক্লাব,south_lakemarket,22.516451,88.337126,osm,theme|blockbuster,5,5,early_morning,25,,Celebrity-studded inaugurations and blockbuster themes across Tolly Nullah.,false
+suruchi_sangha,Suruchi Sangha,সুরুচি সংঘ,southwest,22.509097,88.334183,osm,theme|blockbuster|state-art,5,5,early_morning,30,,"New Alipore's showpiece, famous for themes that bring in the art of a different Indian state each year.",false
+behala_notun_dal,Behala Notun Dal,বেহালা নতুন দল,southwest,22.4985,88.3165,curated,theme|art,4,4,evening,20,,Art-led theme pujas with strong craft work.,false
+behala_friends,Behala Friends,বেহালা ফ্রেন্ডস,southwest,22.5035,88.3185,curated,theme,4,4,evening,20,,A consistent theme puja near Behala Chowrasta.,false
+sahajatri,Behala Sahajatri,বেহালা সহযাত্রী,southwest,22.4935,88.3150,curated,theme,3,3,afternoon,15,,A smaller Behala theme puja with fewer queues.,false
+barisha_club,Barisha Club,বড়িশা ক্লাব,southwest,22.480715,88.312953,osm,theme|art,4,4,evening,20,,"Behala's southern anchor, known for detailed themes.",false
+fd_block,FD Block Salt Lake,"এফডি ব্লক, সল্টলেক",salt_lake,22.5878,88.4100,curated,traditional|grand|lights,5,5,evening,25,,"Salt Lake's biggest crowd puller, with a grand idol and a full-blown mela.",false
+bj_block,BJ Block Salt Lake,"বিজে ব্লক, সল্টলেক",salt_lake,22.5810,88.4160,curated,theme,4,4,evening,20,,A spacious theme pandal with an easy walk from Central Park.,false
+ae_block,AE Block Salt Lake,"এই ব্লক, সল্টলেক",salt_lake,22.5920,88.4135,curated,traditional,3,3,afternoon,15,,A relaxed block puja that's good for families.,false
+sreebhumi,Sreebhumi Sporting Club,শ্রীভূমি স্পোর্টিং ক্লাব,lake_town_dumdum,22.600318,88.402590,osm,theme|blockbuster|replica,5,5,late_night,30,,Insta-famous replica pandals and huge gold jewellery on the idol. Lake Town gridlocks for hours.,false
+lake_town_adhibasi,Lake Town Adhibasi Brinda,লেক টাউন অধিবাসীবৃন্দ,lake_town_dumdum,22.6045,88.4045,curated,theme,3,3,evening,15,,"A short walk from Sreebhumi, and much calmer.",false
+dumdum_bharat_chakra,Dum Dum Park Bharat Chakra,দমদম পার্ক ভারতচক্র,lake_town_dumdum,22.6185,88.4140,curated,theme|art,4,4,evening,20,,"Part of the Dum Dum Park theme row, known for art installations.",false
+dumdum_tarun_sangha,Dum Dum Park Tarun Sangha,দমদম পার্ক তরুণ সংঘ,lake_town_dumdum,22.6168,88.4118,curated,theme|art,4,4,evening,20,,Theme heavyweight on the Dum Dum Park strip.,false
+dumdum_sarbojanin,Dum Dum Park Sarbojanin,দমদম পার্ক সার্বজনীন,lake_town_dumdum,22.6155,88.4152,curated,traditional,3,3,afternoon,15,,The traditional stop on the Dum Dum Park strip.,false
+bhowanipore_75pally,Bhowanipore 75 Pally,ভবানীপুর ৭৫ পল্লী,south_lakemarket,22.532596,88.345442,osm,theme|art,4,4,evening,20,,A Bhowanipore theme puja a short walk from the Jatin Das Park metro.,false
+telengabagan,Telengabagan Sarbojanin,তেলেঙ্গাবাগান সার্বজনীন,north,22.6038,88.3878,curated,theme|art,4,4,evening,20,,Award-winning theme work off the Belgachia–Ultadanga stretch.,false
+lalabagan_nabankur,Lalabagan Nabankur,লালাবাগান নবাঙ্কুর,north,22.6048,88.3768,curated,theme,3,3,afternoon,15,,A compact theme puja that fits well between Tala Prattoy and Shyambazar.,false
+rajdanga_naba_uday,Rajdanga Naba Uday Sangha,রাজডাঙ্গা নব উদয় সংঘ,south_gariahat,22.5110,88.3936,curated,theme|art,4,4,evening,20,,"Kasba's third theme heavyweight, right next to the two Bosepukur pujas.",false
+ajeya_sanghati,Behala Ajeya Sanghati,অজেয় সংহতি,southwest,22.4888,88.3098,curated,theme,4,4,evening,20,,A popular Behala theme puja near Barisha.,false

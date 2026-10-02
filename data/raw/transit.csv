@@ -1,25 +1,25 @@
-id,name,line,lat,lng
-noapara,Noapara,blue,22.6400,88.3940
-dumdum,Dum Dum,blue,22.6215,88.3915
-belgachia,Belgachia,blue,22.6064,88.3830
-shyambazar,Shyambazar,blue,22.6006,88.3722
-sovabazar,Sovabazar Sutanuti,blue,22.5960,88.3655
-girish_park,Girish Park,blue,22.5865,88.3627
-mg_road,Mahatma Gandhi Road,blue,22.5796,88.3594
-central,Central,blue,22.5713,88.3565
-esplanade,Esplanade,blue,22.5640,88.3510
-rabindra_sadan,Rabindra Sadan,blue,22.5410,88.3470
-netaji_bhavan,Netaji Bhavan,blue,22.5340,88.3460
-jatin_das_park,Jatin Das Park,blue,22.5245,88.3463
-kalighat,Kalighat,blue,22.5175,88.3462
-rabindra_sarobar,Rabindra Sarobar,blue,22.5110,88.3490
-tollygunge,Mahanayak Uttam Kumar,blue,22.5000,88.3460
-sealdah,Sealdah,green,22.5675,88.3700
-city_centre,City Centre,green,22.5880,88.4060
-central_park,Central Park,green,22.5850,88.4175
-bengal_chemical,Bengal Chemical,green,22.5810,88.4015
-taratala,Taratala,purple,22.5010,88.3250
-behala_bazar,Behala Bazar,purple,22.4920,88.3170
-behala_chowrasta,Behala Chowrasta,purple,22.4820,88.3120
-hemanta_mukhopadhyay,Hemanta Mukhopadhyay (Ruby),orange,22.5135,88.4010
-ballygunge_rail,Ballygunge Junction (Suburban),suburban,22.5280,88.3665
+id,name,line,lat,lng,geo_source
+noapara,Noapara,blue,22.639842,88.394134,osm
+dumdum,Dum Dum,blue,22.621114,88.392897,osm
+belgachia,Belgachia,blue,22.605924,88.386391,osm
+shyambazar,Shyambazar,blue,22.601335,88.372497,osm
+sovabazar,Sovabazar Sutanuti,blue,22.595881,88.365200,osm
+girish_park,Girish Park,blue,22.587145,88.362942,osm
+mg_road,Mahatma Gandhi Road,blue,22.580921,88.361327,osm
+central,Central,blue,22.572486,88.358743,osm
+esplanade,Esplanade,blue,22.563614,88.351210,osm
+rabindra_sadan,Rabindra Sadan,blue,22.541490,88.347349,osm
+netaji_bhavan,Netaji Bhavan,blue,22.533182,88.345927,osm
+jatin_das_park,Jatin Das Park,blue,22.524154,88.346473,osm
+kalighat,Kalighat,blue,22.516875,88.345845,osm
+rabindra_sarobar,Rabindra Sarobar,blue,22.507222,88.345494,osm
+tollygunge,Mahanayak Uttam Kumar,blue,22.494769,88.345088,osm
+sealdah,Sealdah,green,22.567966,88.371105,osm
+city_centre,City Centre,green,22.587099,88.407891,osm
+central_park,Central Park,green,22.590474,88.415625,osm
+bengal_chemical,Bengal Chemical,green,22.580067,88.401296,osm
+taratala,Taratala,purple,22.507686,88.320384,osm
+behala_bazar,Behala Bazar,purple,22.498759,88.317387,osm
+behala_chowrasta,Behala Chowrasta,purple,22.487355,88.313379,osm
+hemanta_mukhopadhyay,Hemanta Mukhopadhyay (Ruby),orange,22.514851,88.401428,osm
+ballygunge_rail,Ballygunge Junction (Suburban),suburban,22.519341,88.371978,osm
