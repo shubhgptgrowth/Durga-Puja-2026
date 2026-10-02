@@ -3,9 +3,9 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v4';
+const VERSION = 'pp-2026-v5';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
-  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
+  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
   'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 800, MEDIA_CACHE = 'pp-media', MEDIA_MAX = 400;
@@ -43,6 +43,7 @@ self.addEventListener('fetch', (e) => {
   if (isMedia(url)) return cacheFirst(e, MEDIA_CACHE, MEDIA_MAX);
   if (url.origin !== location.origin) return isTile(url) ? cacheFirst(e, TILE_CACHE, TILE_MAX) : undefined;
 
+  if (url.pathname.includes('/kit/')) return;   // the team's content kit: always from the network
   if (url.pathname.endsWith('/data/guide.json')) {
     e.respondWith(caches.open(VERSION).then(async (c) => {
       try {

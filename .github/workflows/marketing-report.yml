@@ -1,0 +1,35 @@
+name: marketing-report
+
+# Daily reach report (docs/MARKETING.md): devices that opened the app, by day and by the link that
+# brought them, plus check-ins. Shows up in this run's summary. Uses the SUPABASE_ACCESS_TOKEN secret.
+on:
+  schedule:
+    - cron: "30 15 * * *"          # 21:00 IST daily
+    - cron: "30 3 16-21 10 *"      # 09:00 IST on Panchami–Dashami as well
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Reach goal (devices)"
+        default: "100000"
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build report
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          REACH_TARGET: ${{ inputs.target || vars.REACH_TARGET || '100000' }}
+        run: python -m marketing.report --json report.json | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reach-report
+          path: report.json

@@ -12,7 +12,7 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), offline: false };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), offline: false };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
@@ -27,7 +27,15 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
   });
   const near = (p, lat, lng, acc) => { const d = distance([lat, lng], [p.lat, p.lng]); return [d, d <= p.checkin_radius_m + Math.min(Math.max(acc ?? 50, 0), 100)]; };
 
+  const clean = (x) => (x == null || !String(x).trim() ? 'direct' : /^[a-z0-9_]{1,40}$/.test(String(x).trim().toLowerCase()) ? String(x).trim().toLowerCase() : 'other');
   const rpc = {
+    track_open(uid, a) {
+      if (!a.p_device) return { status: 'no_device' };
+      const k = a.p_device + '|' + istDay(), row = db.opens.get(k);
+      if (row) { row.opens++; return { status: 'repeat', day: istDay() }; }
+      db.opens.set(k, { src: clean(a.p_src), first_src: clean(a.p_first_src ?? a.p_src), opens: 1 });
+      return { status: 'counted', day: istDay() };
+    },
     record_visit(uid, a) {
       const p = places.get(a.p_place); if (!p) return { status: 'unknown_place' };
       const at = a.p_at ? new Date(a.p_at) : new Date();
@@ -76,7 +84,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (req.method === 'OPTIONS') { res.writeHead(204, cors); return res.end(); }
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
-    if (p === '/__state') return json(res, 200, { visits: db.visits.length, photos: db.photos.length, files: db.files.size });
+    if (p === '/__state') return json(res, 200, { visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
     if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/')) return json(res, 401, { message: 'no apikey' });
 
@@ -97,8 +105,9 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       return json(res, 200, rows.map(({ user, reports, hidden, ...r }) => ({ ...r, mine: user === uid, liked: db.likes.has(r.id + uid) })));
     }
     if (p.startsWith('/rest/v1/rpc/') && req.method === 'POST') {
-      const uid = uidOf(req); if (!uid) return json(res, 401, { message: 'JWT required' });
-      const fn = rpc[p.slice('/rest/v1/rpc/'.length)]; if (!fn) return json(res, 404, { message: 'no such function' });
+      const name = p.slice('/rest/v1/rpc/'.length), uid = uidOf(req);
+      if (!uid && name !== 'track_open') return json(res, 401, { message: 'JWT required' });  // track_open is granted to anon
+      const fn = rpc[name]; if (!fn) return json(res, 404, { message: 'no such function' });
       return json(res, 200, fn(uid, JSON.parse(await body(req) || '{}')));
     }
     if (p.startsWith('/storage/v1/object/public/moments/')) {

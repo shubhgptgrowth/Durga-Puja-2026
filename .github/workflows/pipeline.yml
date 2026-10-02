@@ -62,6 +62,17 @@ jobs:
         with:
           name: mobile-screenshots
           path: screenshots/
+      - name: Content kit builds and renders (cards, QR posters, flyer)
+        run: |
+          python -m marketing.kit --out kit-preview
+          node marketing/render.mjs kit-preview
+          test -s kit-preview/posters.pdf && test -s kit-preview/flyer.png
+          ls kit-preview/2026-10-11/*.jpg
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: content-kit-preview
+          path: kit-preview/
 
   community:
     name: Community backend (SQL rules + real Supabase e2e)

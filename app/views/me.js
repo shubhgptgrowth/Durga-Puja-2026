@@ -4,6 +4,7 @@ import { $, registerView, toast } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
+import { shareCard, myCard, appLink } from '../growth.js';
 
 function nextStop() {
   if (!planValid(S.plan)) return '';
@@ -39,6 +40,8 @@ function render() {
       <p class="fine center" id="walkStatus">${status}</p>
     </div>
 
+    <div class="pad" style="margin-top:6px"><button class="btn block story-btn" id="myCardBtn">📸 ${t('g.myCard')}</button><p class="fine center">${t('g.myCardSub')}</p></div>
+
     <section class="section"><div class="section-head"><h2>${t('me.visited', { n: visited.length })}</h2></div>
       ${visited.length ? `<div class="chips wrap pad">${visited.map((p) => `<button class="chip" data-place="${p.id}">${S.checkins[p.id].how === 'manual' ? '' : icon('check', 'sm')} ${esc(nm(p))}</button>`).join('')}</div>` : `<p class="fine pad">${t('me.noVisits')}</p>`}
       ${foods.length ? `<div class="section-head" style="margin-top:14px"><h2>${t('me.ate', { n: foods.length })}</h2></div><div class="chips wrap pad">${foods.map((f) => `<button class="chip" data-place="${f.id}">${icon('food', 'sm')} ${esc(f.name)}</button>`).join('')}</div>` : ''}
@@ -65,6 +68,7 @@ function render() {
 
   el.onclick = (e) => {
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
+    if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#resetBtn') && confirm(t('fit.confirmReset'))) { store.clear(); location.reload(); }
   };

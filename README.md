@@ -13,7 +13,7 @@ It covers:
 
 It works in English and বাংলা.
 
-**Live (free GitHub Pages):** https://shubhgptgrowth.github.io/Durga-Puja-2026/
+**Live (free GitHub Pages):** https://shubhgptgrowth.github.io/Durga-Puja-2026/ · daily marketing kit: [/kit/](https://shubhgptgrowth.github.io/Durga-Puja-2026/kit/)
 
 ```
 data/raw/*.csv ─► python -m pipeline ─► app/data/guide.json ─► app/ (static PWA)
@@ -26,9 +26,11 @@ data/raw/*.csv ─► python -m pipeline ─► app/data/guide.json ─► app/ 
 | [`docs/SCOPE.md`](docs/SCOPE.md) | Scope: personas, features, data model, fitness maths, roadmap |
 | [`docs/COMMUNITY.md`](docs/COMMUNITY.md) | Community backend: how counts are verified, setup in 10 minutes, free-tier budget |
 | [`docs/MAPS.md`](docs/MAPS.md) | Which map provider to connect, and why |
+| [`docs/MARKETING.md`](docs/MARKETING.md) | Instagram + WhatsApp playbook: goal, capacity checklist, daily routine, calendar, partner scripts, reach report |
 | `data/raw/` | **Source of truth.** Regions, areas (`zones.csv`), pandals, food, parking and transit as CSV. `geo_source=osm` marks pins confirmed against OpenStreetMap |
 | `pipeline/` | Stdlib-only Python: ingest → validate → enrich → plan → emit. Also `audit` and `audit_apply` for OSM coordinate checks, and `discover` / `discovered` for pulling more pandals, transit and photos from open data |
 | `data/seeds/`, `data/discovered/` | Well-known pujas to look up, curated auto routes, and the raw open-data pulls (OSM, Wikimedia Commons) |
+| `marketing/` | Daily content kit (`kit.py` plan + captions, `render.mjs` images, QR posters), the reach report and optional Instagram auto-posting |
 | `supabase/` | Migration (tables, RLS, RPCs, storage policies), generated seed, and the local stack config |
 | `app/` | Static PWA in vanilla JS ES modules, with Leaflet vendored. `views/` holds one module per tab |
 | `tests/` | Python pipeline tests, JS unit tests, SQL rule tests, and a Playwright mobile e2e test with a fake Supabase |
@@ -99,7 +101,8 @@ Limits:
 * **data:** tests, validation, a rebuild, and checks that the bundle and seed are fresh.
 * **app:** JS unit tests, including parity with the pipeline and translation coverage, plus mobile e2e.
 * **community:** SQL rule tests, then e2e against a **real** local Supabase (`supabase start`).
-* **deploy:** publishes `app/` to Pages on every push to the default branch, then verifies the live site.
+* **deploy:** publishes `app/` to Pages on every push to the default branch and every morning (05:45 IST, plus 16:00 on puja days), with the content kit at `/kit/`, then verifies the live site.
+* **marketing-report:** the daily reach report (devices by day and by link, check-ins). **marketing-publish:** optional Instagram auto-posting, off by default.
 
 ## Data disclaimer
 

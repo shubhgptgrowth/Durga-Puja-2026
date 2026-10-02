@@ -5,6 +5,9 @@ name: deploy
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * *"          # 05:45 IST every day: fresh content kit at /kit/
+    - cron: "30 10 16-21 10 *"    # 16:00 IST, Panchami–Dashami: live "trending now" cards
 
 permissions:
   contents: read
@@ -28,6 +31,22 @@ jobs:
         run: |
           python -m unittest discover -s tests
           python -m pipeline --check
+      # The marketing content kit (docs/MARKETING.md) is published at /kit/. It never blocks the app deploy.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Content kit (/kit/) and link preview image
+        continue-on-error: true
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          url=$(sed -n "s/.*url: '\([^']*\)'.*/\1/p" app/config.js | head -1)
+          key=$(sed -n "s/.*anonKey: '\([^']*\)'.*/\1/p" app/config.js | head -1)
+          if [ -n "$url" ]; then curl -fsS -H "apikey: $key" "$url/rest/v1/place_stats?select=place_id,visits,today" -o /tmp/stats.json || rm -f /tmp/stats.json; fi
+          python -m marketing.kit --out app/kit --stats /tmp/stats.json
+          node marketing/render.mjs app/kit
+          node marketing/render.mjs --og app/icons
       # Pages must be switched on once by a repo admin (Settings → Pages → Source: GitHub Actions).
       # The workflow token can't create the Pages site itself.
       - uses: actions/configure-pages@v5
@@ -69,6 +88,8 @@ jobs:
           done
           curl -fsS "$SITE" | grep -q '<title>Pujo Parikrama 2026</title>'
           echo "Live: $SITE (data v$expected)"
+          kit=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}kit/index.html?cb=$RANDOM")
+          if [ "$kit" = 200 ]; then echo "::notice::Content kit: ${SITE}kit/"; else echo "::warning::Content kit not published ($kit)"; fi
       - name: Live site reaches the community backend (read-only)
         env:
           SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/

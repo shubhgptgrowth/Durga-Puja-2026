@@ -4,3 +4,5 @@ __pycache__/
 screenshots/
 .DS_Store
 screenshots-real/
+kit-preview/
+app/kit/

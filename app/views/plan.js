@@ -143,7 +143,7 @@ const planTitle = (plan) => {
   if (plan.kind === 'trail') { const it = G.data.itineraries.find((i) => i.id === plan.id); return (S.prefs.lang === 'bn' && it?.name_bn) || it?.name || ''; }
   return (plan.zones || []).map((z) => zs(zoneOf(z))).join(' + ');
 };
-const shareUrl = (plan) => location.origin + location.pathname + (plan.kind === 'trail' ? '#trail=' + plan.id : '#plan=' + encodePlan(plan.params));
+const shareUrl = (plan) => location.origin + location.pathname + '?src=plan_share' + (plan.kind === 'trail' ? '#trail=' + plan.id : '#plan=' + encodePlan(plan.params));
 async function share(plan) {
   const url = shareUrl(plan), text = t('share.text', { title: planTitle(plan) });
   try {

@@ -97,7 +97,7 @@ jobs:
           url, key = sys.argv[1], sys.argv[2]
           p = "app/config.js"; s = open(p).read()
           s = re.sub(r"url: '[^']*',(\s*// e\.g\.[^\n]*)?", f"url: '{url}',", s, count=1)
-          s = re.sub(r"anonKey: '[^']*',(\s*// Project[^\n]*)?", f"anonKey: '{key}',  // public by design; RLS + RPCs enforce the rules", s, count=1)
+          s = re.sub(r"anonKey: '[^']*',[^\n]*", f"anonKey: '{key}',  // public by design; RLS + RPCs enforce the rules", s, count=1)
           open(p, "w").write(s)
           PY
           if git diff --quiet -- app/config.js; then echo "config.js already up to date"; exit 0; fi

@@ -1,0 +1,48 @@
+name: marketing-publish
+
+# Optional Instagram auto-posting of the day's kit cards (docs/MARKETING.md → "Instagram auto-posting").
+# Off by default: scheduled runs only post when the repository variable IG_AUTOPUBLISH is "true" and the
+# IG_USER_ID / IG_ACCESS_TOKEN secrets exist. Otherwise they print what they would post.
+on:
+  schedule:
+    - cron: "45 2 3-22 10 *"       # 08:15 IST, 3–22 Oct (after the 05:45 kit deploy)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Kit day (YYYY-MM-DD). Empty = today (IST)"
+        default: ""
+      only:
+        description: "post, story, or empty for both"
+        default: ""
+      dry_run:
+        description: "Only print what would be posted"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marketing-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Post to Instagram
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          args=()
+          [ -n "${{ inputs.date }}" ] && args+=(--date "${{ inputs.date }}")
+          [ -n "${{ inputs.only }}" ] && args+=(--only "${{ inputs.only }}")
+          if [ "${{ github.event_name }}" = schedule ] && [ "${{ vars.IG_AUTOPUBLISH }}" != true ]; then args+=(--dry-run); fi
+          if [ "${{ github.event_name }}" = workflow_dispatch ] && [ "${{ inputs.dry_run }}" = true ]; then args+=(--dry-run); fi
+          python -m marketing.publish_ig "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

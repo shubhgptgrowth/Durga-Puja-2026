@@ -8,6 +8,7 @@ import { openSheet, closeSheet, toast, go, getFix, rerender, $ } from './ui.js';
 import { visit, visitPrivately, visitMessage, visitedToday } from './actions.js';
 import { prepareMedia } from './media.js';
 import { CONFIG } from './config.js';
+import { shareRowHtml, wireShareRow } from './growth.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
@@ -129,6 +130,7 @@ export function pandalSheet(id) {
       ${visitButton(id)}
       <a class="btn" target="_blank" rel="noopener" href="${dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
     </div>
+    ${shareRowHtml(id)}
     <div id="verifyBox" class="verify"></div>
     <p class="lead">${esc(p.highlight)}</p>
 
@@ -147,7 +149,7 @@ export function pandalSheet(id) {
     <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>`,
   (el) => {
     wireVisit(el, id, () => pandalSheet(id));
-    wireGallery(el, p.photos || [], () => pandalSheet(id));
+    wireGallery(el, p.photos || [], () => pandalSheet(id)); wireShareRow(el, id);
     el.querySelectorAll('[data-food]').forEach((li) => (li.onclick = () => foodSheet(li.dataset.food)));
     el.querySelectorAll('[data-park]').forEach((li) => (li.onclick = () => parkSheet(li.dataset.park)));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
@@ -169,6 +171,7 @@ export function foodSheet(id) {
       ${visitButton(id)}
       <a class="btn" target="_blank" rel="noopener" href="${dirUrl(ll(f))}">${icon('pin')} ${t('p.directions')}</a>
     </div>
+    ${shareRowHtml(id)}
     <div id="verifyBox" class="verify"></div>
     <p class="lead">${esc(f.note)}</p>
     <h3 class="sh">${t('food.mustTry')}</h3>
@@ -180,7 +183,7 @@ export function foodSheet(id) {
     <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
   (el) => {
     wireVisit(el, id, () => foodSheet(id));
-    wireGallery(el, f.photos || [], () => foodSheet(id));
+    wireGallery(el, f.photos || [], () => foodSheet(id)); wireShareRow(el, id);
     const dp = G.data.dish_photos || {};
     el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));
     el.querySelectorAll('[data-p]').forEach((li) => (li.onclick = () => pandalSheet(li.dataset.p)));

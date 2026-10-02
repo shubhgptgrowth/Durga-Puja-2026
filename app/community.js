@@ -68,6 +68,15 @@ export class Community {
     return res.json();
   }
 
+  /* ------------------------------------------------------------ reach (no sign-in) */
+  async trackOpen(device, src, firstSrc) {
+    if (!this.enabled) return null;
+    const res = await fetch(`${this.url}/rest/v1/rpc/track_open`, { method: 'POST', headers: this._headers(false),
+      body: JSON.stringify({ p_device: device, p_src: src, p_first_src: firstSrc }) });
+    if (!res.ok) throw new Error(`track_open ${res.status}`);
+    return res.json();
+  }
+
   /* ------------------------------------------------------------ place stats */
   async refreshStats() {
     if (!this.enabled) return this.stats;

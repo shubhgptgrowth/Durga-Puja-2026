@@ -365,3 +365,8 @@ main { padding-top: calc(var(--top-h) + var(--safe-t)); padding-bottom: calc(var
 .gal.dish.none { display: grid; place-items: center; background: var(--surface-2); }
 .gal.dish.none .dn { position: static; background: none; color: var(--ink-2); text-align: center; padding: 8px; }
 .credit { margin: 4px 0 0; }
+
+/* growth: share row and story button */
+.share-row { margin-top: 8px; }
+.btn.wa { background: #25D366; border-color: #25D366; color: #fff; }
+.btn.story-btn { background: linear-gradient(90deg, #9F1239, #B45309); border: 0; color: #fff; font-weight: 700; }

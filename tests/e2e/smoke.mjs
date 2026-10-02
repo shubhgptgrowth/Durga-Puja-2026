@@ -226,6 +226,28 @@ try {
   must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
   await shot('11-me');
 
+  // Growth: a story-size card, a tracked deep link (?src=…#p=…), the WhatsApp share link, and the open count
+  const dl = page.waitForEvent('download', { timeout: 8000 });
+  await page.click('#myCardBtn');
+  must(/my-pujo-2026\.png$/.test((await dl).suggestedFilename()), 'story card not produced');
+  // A new phone scanning a QR poster: lands on the pandal, and the open is counted with its source.
+  const ctx2 = await browser.newContext({ ...devices['iPhone 13'] });
+  await ctx2.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+  const p2 = await ctx2.newPage();
+  p2.on('pageerror', (e) => errors.push('pageerror (qr): ' + e.message));
+  await p2.goto(base + '?src=qr_test#p=sreebhumi');
+  await p2.waitForSelector('.sheet.open #waShare');
+  must(!/src=/.test(p2.url()), 'tracking code not tidied from the URL: ' + p2.url());
+  const wa = decodeURIComponent(await p2.getAttribute('#waShare', 'href'));
+  must(wa.startsWith('https://wa.me/?text=') && wa.includes('?src=wa_place#p=sreebhumi'), 'WhatsApp link wrong: ' + wa);
+  await p2.waitForTimeout(250); await p2.screenshot({ path: `${out}/11b-share-row.png` });
+  if (fake) {
+    await p2.waitForTimeout(1800);
+    const st = await (await fetch(`${fake.url}/__state`)).json();
+    must(st.opens.some((o) => o.src === 'qr_test' && o.first_src === 'qr_test'), 'open not counted with its source: ' + JSON.stringify(st.opens));
+  }
+  await ctx2.close();
+
   // Bengali, dark mode, offline reload
   await page.click('#langBtn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');

@@ -15,4 +15,4 @@ psql=(psql -h "$tmp" -p "$port" -U postgres -v ON_ERROR_STOP=1 -q -X)
 "${psql[@]}" -d pp -f "$here/supabase_stubs.sql" >/dev/null
 for f in "$root"/supabase/migrations/*.sql; do "${psql[@]}" -d pp -f "$f" >/dev/null; done
 "${psql[@]}" -d pp -f "$root/supabase/seed.sql" >/dev/null
-"${psql[@]}" -d pp -f "$here/community_test.sql" -t
+for f in "$here"/*_test.sql; do "${psql[@]}" -d pp -f "$f" -t; done

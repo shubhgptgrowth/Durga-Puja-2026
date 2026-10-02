@@ -9,6 +9,8 @@ import { openSharedPlan, showTrail } from './views/plan.js';
 import { setupMoments } from './views/moments.js';
 import './views/me.js';
 import { CONFIG } from './config.js';
+import { captureSource, trackOpen } from './growth.js';
+import { openPlace } from './sheets.js';
 
 async function boot() {
   let g;
@@ -24,6 +26,7 @@ async function boot() {
   const lf = store.get('lastFix', null);
   if (lf && Date.now() - lf.t < 30 * 60e3) S.me = [lf[0], lf[1]];
 
+  captureSource();
   setupHeader(); setupSheet(); setupA11y(); setupMoments();
   $$('.tab').forEach((b) => (b.onclick = () => go(b.dataset.view)));
   applyStatic();
@@ -31,9 +34,11 @@ async function boot() {
   const hash = location.hash.slice(1);
   if (hash.startsWith('plan=')) openSharedPlan(decodePlan(hash.slice(5)));
   else if (hash.startsWith('trail=') && g.itineraries.some((i) => i.id === hash.slice(6))) { go('plan'); showTrail(hash.slice(6)); toast(t('share.loaded')); }
+  else if (hash.startsWith('p=') && (idx.pandal[hash.slice(2)] || idx.food[hash.slice(2)] || idx.parking[hash.slice(2)])) { go('home'); openPlace(hash.slice(2)); }
   else go(VIEWS.includes(hash) ? hash : hash === 'fit' ? 'me' : hash === 'food' || hash === 'park' ? 'explore' : 'home');
 
   setupCommunity();
+  trackOpen();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
   addEventListener('offline', () => toast(t('net.off')));
   addEventListener('online', () => { toast(t('net.on')); community.sync(); });
