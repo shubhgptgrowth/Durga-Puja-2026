@@ -2,6 +2,7 @@
 import { S, G, t, community, zs, esc, icon } from '../state.js';
 import { $, registerView } from '../ui.js';
 import { thumbHtml, momentSheet, momentCache, uploadSheet } from '../sheets.js';
+import { areaChipsHtml, handleAreaClick, inArea } from '../filters.js';
 
 const PAGE = 30;
 let pending = 0;
@@ -12,7 +13,7 @@ async function load(reset = false) {
   if (reset) { m.items = []; m.done = false; }
   m.loading = true; paint();
   try {
-    const placeIds = m.zone === 'all' ? null : [...G.data.pandals, ...G.data.food].filter((p) => p.zone === m.zone).map((p) => p.id);
+    const placeIds = m.region === 'all' ? null : [...G.data.pandals, ...G.data.food].filter((p) => inArea(m, p.zone)).map((p) => p.id);
     const before = m.items.length ? m.items[m.items.length - 1].created_at : null;
     const items = await community.feed({ placeIds, onSiteOnly: m.onSite, before, limit: PAGE });
     m.items.push(...items); momentCache.push(...items);
@@ -29,16 +30,13 @@ function paint() {
     return;
   }
   el.innerHTML = `<div class="view-title"><h2>${t('m.title')}</h2><p>${t('m.subtitle')}</p></div>
-    <div class="chips" style="margin-top:12px">
-      <button class="chip" data-mz="all" aria-pressed="${m.zone === 'all'}">${t('zones.all')}</button>
-      ${G.data.zones.map((z) => `<button class="chip" data-mz="${z.id}" aria-pressed="${m.zone === z.id}"><span class="dot" style="background:${z.color}"></span>${esc(zs(z))}</button>`).join('')}
-    </div>
+    <div style="margin-top:12px">${areaChipsHtml(m)}</div>
     <div class="toolbar"><label class="toggle small" style="font-weight:500"><input type="checkbox" id="onSiteOnly" ${m.onSite ? 'checked' : ''}> <span>${icon('pin', 'sm')} ${t('m.onSiteOnly')}</span></label>
       ${pending ? `<span class="pill">${t('m.pendingN', { n: pending })}</span>` : ''}</div>
     ${m.items.length ? `<div class="grid-photos">${m.items.map(thumbHtml).join('')}</div>` : m.loading ? '' : `<div class="empty">${icon('camera')}<p>${m.error ? t('m.offline') : t('m.empty')}</p><button class="btn primary" id="firstMoment">${icon('camera')} ${t('m.add')}</button></div>`}
     <div class="center" style="margin:16px">${m.loading ? `<span class="fine">${t('m.loading')}</span>` : !m.done && m.items.length ? `<button class="btn sm" id="moreMoments">${t('m.more')}</button>` : ''}</div>`;
   el.onclick = (e) => {
-    const z = e.target.closest('[data-mz]')?.dataset.mz; if (z) { m.zone = z; return load(true); }
+    if (handleAreaClick(e, m)) return load(true);
     const id = e.target.closest('[data-moment]')?.dataset.moment; if (id) return momentSheet(m.items.find((x) => x.id === id));
     if (e.target.closest('#moreMoments')) return load();
     if (e.target.closest('#firstMoment')) return uploadSheet();

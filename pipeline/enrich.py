@@ -1,5 +1,6 @@
 """Stage 3: derive zone geometry, nearest metro/parking/food, and crowd windows."""
 from . import config
+from .discovered import attach_photos, attach_transit, transit_bundle, transit_index
 from .geo import centroid, haversine_m, walk_m
 
 
@@ -32,7 +33,8 @@ def checkin_radius(r):
 
 
 def enrich(data):
-    zones = {z["id"]: dict(z) for z in data["zones"]}
+    used = {p["zone"] for p in data["pandals"]}
+    zones = {z["id"]: dict(z) for z in data["zones"] if z["id"] in used}
     transit, parking, food = data["transit"], data["parking"], data["food"]
     pandals = []
 
@@ -77,8 +79,19 @@ def enrich(data):
     # Reverse links: the pandals each eatery serves.
     for f in food:
         f["checkin_radius_m"] = checkin_radius(f)
+        (metro_d, metro), = _nearest((f["lat"], f["lng"]), transit)
+        f["nearest_metro"] = {"id": metro["id"], "name": metro["name"], "line": metro["line"],
+                              "distance_m": metro_d, "walk_min": _walk_min(metro_d)}
         f["near_pandals"] = [p["id"] for p in pandals
                              if walk_m((p["lat"], p["lng"]), (f["lat"], f["lng"])) / config.DETOUR_FACTOR
                              <= config.NEARBY_FOOD_M]
 
-    return {**data, "zones": list(zones.values()), "pandals": pandals}
+    # Open data (pipeline.discover): bus stops, routes and autos near each place, plus Commons photos.
+    extra = {}
+    T = transit_index()
+    if T:
+        attach_transit(pandals + food, T, _walk_min)
+        extra["transit_bundle"] = transit_bundle(T)
+    extra["dish_photos"] = attach_photos(pandals, food)
+
+    return {**data, **extra, "zones": list(zones.values()), "pandals": pandals}

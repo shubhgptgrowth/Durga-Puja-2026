@@ -121,7 +121,8 @@ test('every English UI string has a Bengali translation and the same placeholder
 });
 
 test('bundle has Bengali names for every pandal, zone and day', () => {
-  for (const p of G.pandals) assert.ok(p.name_bn, p.id);
+  // Neighbourhood pujas discovered from OSM fall back to their English name when OSM has no name:bn.
+  for (const p of G.pandals) if (p.geo_source !== 'osm-discovered') assert.ok(p.name_bn, p.id);
   for (const z of G.zones) assert.ok(z.name_bn && z.short_bn, z.id);
   for (const d of G.meta.days) assert.ok(d.name_bn, d.id);
 });

@@ -3,7 +3,9 @@
 A mobile-first guide to **Durga Puja 2026 pandal hopping in Kolkata** (Shashthi 17 Oct → Dashami 21 Oct).
 
 It covers:
-* walkable zones, and routes ordered by an on-device planner
+* 96 pandals in 5 regions (North, Central, South, East, Howrah), each split into walkable areas, with routes ordered by an on-device planner
+* photos of past idols and pandals, and of each eatery's signature dishes
+* how to get there by metro, bus, share auto or cab
 * food and parking
 * live, crowd-sourced check-ins
 * location-tagged photo and video moments
@@ -24,8 +26,9 @@ data/raw/*.csv ─► python -m pipeline ─► app/data/guide.json ─► app/ 
 | [`docs/SCOPE.md`](docs/SCOPE.md) | Scope: personas, features, data model, fitness maths, roadmap |
 | [`docs/COMMUNITY.md`](docs/COMMUNITY.md) | Community backend: how counts are verified, setup in 10 minutes, free-tier budget |
 | [`docs/MAPS.md`](docs/MAPS.md) | Which map provider to connect, and why |
-| `data/raw/` | **Source of truth.** Zones, pandals, food, parking and transit as CSV. `geo_source=osm` marks pins confirmed against OpenStreetMap |
-| `pipeline/` | Stdlib-only Python: ingest → validate → enrich → plan → emit, plus `audit` and `audit_apply` for OSM coordinate checks |
+| `data/raw/` | **Source of truth.** Regions, areas (`zones.csv`), pandals, food, parking and transit as CSV. `geo_source=osm` marks pins confirmed against OpenStreetMap |
+| `pipeline/` | Stdlib-only Python: ingest → validate → enrich → plan → emit. Also `audit` and `audit_apply` for OSM coordinate checks, and `discover` / `discovered` for pulling more pandals, transit and photos from open data |
+| `data/seeds/`, `data/discovered/` | Well-known pujas to look up, curated auto routes, and the raw open-data pulls (OSM, Wikimedia Commons) |
 | `supabase/` | Migration (tables, RLS, RPCs, storage policies), generated seed, and the local stack config |
 | `app/` | Static PWA in vanilla JS ES modules, with Leaflet vendored. `views/` holds one module per tab |
 | `tests/` | Python pipeline tests, JS unit tests, SQL rule tests, and a Playwright mobile e2e test with a fake Supabase |
@@ -36,10 +39,10 @@ Five tabs:
 
 | Tab | What it does |
 |---|---|
-| **Home** | The overview. A hero card shows the chosen puja day and when it's quietest. Below it: search (English or Bengali), quick actions, **Trending now** (live check-ins), **Closest to you**, **Good to visit now** (famous pandals with the shortest queues at this hour), zone cards, latest moments, and trails |
-| **Explore** | A map with Pandals, Food and Parking segments, and zone chips. The pandal list can be sorted by fame, shortest queue, distance or most check-ins now. Food has filters (veg, budget, sweets, street, open now). Parking shows car advice per zone and an "I parked here" spot saver |
-| **Plan** | Curated trails, or a time-budgeted custom route. Routes export to Google Maps in legs of up to 3 waypoints, and can be shared as a link |
-| **Moments** | A community photo and video feed with zone and "taken at the place" filters. It has likes and reports, and an upload button |
+| **Home** | The overview. A hero card shows the chosen puja day and when it's quietest. Below it: search (English or Bengali), quick actions, **Trending now** (live check-ins), **Closest to you**, **Good to visit now** (famous pandals with the shortest queues at this hour), region chips with area cards, latest moments, and trails |
+| **Explore** | A map with Pandals, Food and Parking segments, and a two-level filter: pick a region, then an area inside it. The pandal list can be sorted by fame, shortest queue, distance or most check-ins now. Food has filters (veg, budget, sweets, street, open now). Parking shows car advice per zone and an "I parked here" spot saver |
+| **Plan** | Curated trails, or a time-budgeted custom route. Choose areas grouped by region, and a start point from a searchable picker (my location, any station, pandal or car park). Each leg says whether to take the metro, a bus, a share auto or a cab. Routes export to Google Maps in legs of up to 3 waypoints, and can be shared as a link |
+| **Moments** | A community photo and video feed with region/area and "taken at the place" filters. It has likes and reports, and an upload button |
 | **Me** | The step tracker (motion sensor, or GPS distance as a fallback), auto check-in, pandals visited, food logged, 13 badges, history and settings |
 
 **Pandal and eatery sheets** show:
@@ -47,7 +50,8 @@ Five tabs:
 * a check-in or **I ate here** button, verified by GPS (too far away, and it offers a private "just for me" mark instead)
 * directions
 * a crowd-by-hour chart
-* metro and parking
+* a photo gallery (pandals: past years' idols and pandals; eateries: popular dishes), credited to Wikimedia Commons
+* getting there: nearest metro, bus stops and routes, common share-auto routes, auto stands, parking, and a Google transit directions link
 * nearby food
 * that place's moments
 
@@ -73,6 +77,22 @@ Community features stay off until `app/config.js` has a Supabase URL and anon ke
   * 25 pandals, for example Suruchi by 1.5 km, Badamtala by 1.2 km and Tridhara by 670 m
   * 5 eateries and 4 malls
 * The rest are marked `curated` and still need a ground check. OSM-confirmed pins get a tighter 250 m check-in radius (350 m otherwise).
+
+## More pandals, transit and photos
+
+The **discover** workflow (`.github/workflows/discover.yml`, run by hand) runs `python -m pipeline.discover pandals|transit|photos`:
+* **pandals:** every Durga Puja tagged in OpenStreetMap around Kolkata, plus a Nominatim lookup for each well-known puja in `data/seeds/pandal_seeds.csv`
+* **transit:** OSM bus and share-taxi routes, their stops, and taxi/auto stands
+* **photos:** Wikimedia Commons images per pandal and per signature dish
+
+The results are committed to `data/discovered/`. Then run `python -m pipeline.discovered pandals` to merge confident new pandals into `data/raw/pandals.csv` (as `osm-discovered`). Duplicates, non-pujas and weak matches are skipped. Transit and photos are attached at build time. `data/raw/photo_blocklist.csv` removes wrong photo matches.
+
+Limits:
+* OSM bus coverage in Kolkata is thin. Bus stops and routes appear only where they are mapped.
+* Share-auto routes are mostly the curated list in `data/seeds/auto_routes.csv`.
+* Every sheet has a Google transit directions link to fill the gaps.
+* Dish photos are representative of the dish, not taken at that shop.
+* After adding places, re-run the **supabase-setup** workflow so the backend knows them.
 
 ## CI
 

@@ -32,5 +32,5 @@ def read_csv(path):
 def ingest(raw_dir=config.RAW_DIR):
     return {
         name: read_csv(raw_dir / f"{name}.csv")
-        for name in ("zones", "pandals", "food", "parking", "transit")
+        for name in ("regions", "zones", "pandals", "food", "parking", "transit")
     }

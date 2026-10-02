@@ -3,7 +3,8 @@ from . import config
 from .geo import haversine_m
 
 REQUIRED = {
-    "zones": ["id", "name", "color"],
+    "regions": ["id", "name", "name_bn", "color"],
+    "zones": ["id", "region", "name", "color"],
     "pandals": ["id", "name", "zone", "lat", "lng", "popularity", "crowd_base", "best_slot", "visit_min"],
     "food": ["id", "name", "zone", "lat", "lng", "type", "dishes", "veg", "price"],
     "parking": ["id", "name", "zone", "lat", "lng", "kind"],
@@ -38,14 +39,17 @@ def validate(data):
             if "lat" in row and row.get("lat") is not None:
                 if not (bb["lat_min"] <= row["lat"] <= bb["lat_max"] and bb["lng_min"] <= row["lng"] <= bb["lng_max"]):
                     errors.append(f"{where}: coordinates {row['lat']},{row['lng']} are outside Kolkata")
-            if kind not in ("zones", "transit") and row.get("zone") not in zone_ids:
+            if kind not in ("regions", "zones", "transit") and row.get("zone") not in zone_ids:
                 errors.append(f"{where}: unknown zone '{row.get('zone')}'")
-            if kind in ("zones", "pandals") and not row.get("name_bn"):
+            if kind in ("zones", "pandals", "regions") and not row.get("name_bn") and row.get("geo_source") != "osm-discovered":
                 warnings.append(f"{where}: missing Bengali name (name_bn)")
             if "verified" in row and not row["verified"]:
                 warnings.append(f"{where}: coordinates not ground-verified")
 
+    region_ids = {r["id"] for r in data["regions"]}
     for z in data["zones"]:
+        if z.get("region") not in region_ids:
+            errors.append(f"zones ({z['id']}): unknown region '{z.get('region')}'")
         if z.get("car_advisory") not in CAR_ADVISORY:
             errors.append(f"zones ({z['id']}): car_advisory must be one of {sorted(CAR_ADVISORY)}")
 
@@ -76,7 +80,7 @@ def validate(data):
             zone_counts[p["zone"]] += 1
     for z, c in zone_counts.items():
         if c == 0:
-            errors.append(f"zones ({z}): has no pandals")
+            warnings.append(f"zones ({z}): has no pandals yet, so it is left out of the bundle")
 
     for it in config.CURATED_ITINERARIES:
         for z in it["zones"]:

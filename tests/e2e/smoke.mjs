@@ -59,7 +59,8 @@ const makePng = () => page.evaluate(async () => {
 try {
   await page.goto(base);
   await page.waitForSelector('.hero');
-  must(await count('.zone-card') === G.zones.length, 'zone cards missing on home');
+  must(await count('.zone-card') >= 1, 'area cards missing on home');
+  must(await count('[data-hr]') === G.regions.length, 'region chips missing on home');
   await shot('01-home');
 
   // Search (English and Bengali)
@@ -67,7 +68,11 @@ try {
   await page.waitForSelector('#homeResults li[data-result="tridhara"]');
   await page.fill('#homeSearch', 'ত্রিধারা');
   await page.waitForSelector('#homeResults li[data-result="tridhara"]');
+  await page.fill('#homeSearch', 'chorbag');
+  await page.waitForSelector('#homeResults li[data-result="chorbagan"]');
   await shot('02-search');
+  await page.fill('#homeSearch', 'tridh');
+  await page.waitForSelector('#homeResults li[data-result="tridhara"]');
 
   // Verified check-in at Tridhara: counts publicly
   const before = (await statFor('tridhara')).visits;
@@ -83,7 +88,9 @@ try {
 
   // Too far: Bagbazar from Lake Market is refused publicly, but can be kept privately
   await page.click('.tab[data-view="explore"]');
-  await page.click('#exploreZones [data-z="north"]');
+  await page.click('#exploreZones [data-fr="north"]');
+  await page.click('#exploreZones [data-fa="north"]');
+  must(await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'area filter count');
   await page.click('#explorePanel .item[data-place="bagbazar"]');
   await page.click('#visitBtn');
   await page.waitForSelector('#privBtn');
@@ -98,7 +105,7 @@ try {
   const foodId = G.food.find((f) => f.zone === 'south_lakemarket').id;
   await ctx.setGeolocation(at(foodId));
   await page.click('#explorePanel [data-seg="food"]');
-  await page.click('#exploreZones [data-z="all"]');
+  await page.click('#exploreZones [data-fr="all"]');
   await page.click(`#explorePanel .item[data-place="${foodId}"]`);
   await page.click('#visitBtn');
   await waitToast(/#1|Logged/, 'ate here');
@@ -153,15 +160,38 @@ try {
   await shot('09-moment-view');
   await closeSheet();
 
-  // Curated trail, then a custom route with a time budget, then the share link
+  // Photos: a pandal gallery with credits, and dish photos at an eatery
+  await page.click('.tab[data-view="home"]');
+  await page.fill('#homeSearch', 'sreebhumi');
+  await page.click('#homeResults li[data-result="sreebhumi"]');
+  await page.waitForSelector('.sheet.open .gallery .gal');
+  await page.click('.sheet.open .gallery .gal >> nth=0');
+  await page.waitForSelector('#phBack');
+  must(/Wikimedia Commons/.test(await page.locator('.sheet').innerText()), 'photo credit missing');
+  await shot('10a-photo');
+  await page.click('#phBack');
+  await page.waitForSelector('.sheet.open #visitBtn');
+  await closeSheet();
+  await page.fill('#homeSearch', 'coffee house');
+  await page.click('#homeResults li[data-result="coffee_house"]');
+  await page.waitForSelector('.sheet.open .gallery.dishes .gal.dish');
+  await shot('10b-food-photos');
+  await closeSheet();
+
+  // Curated trail with ride legs, then a custom route with a time budget, then the share link
   await page.click('.tab[data-view="plan"]');
-  await page.click('#view-plan [data-trail] >> nth=2');
-  await page.waitForSelector('.timeline li[data-place]');
+  await page.click('#view-plan [data-trail="all_nighter"]');
+  await page.waitForSelector('.timeline li.ride');
+  must(/Line|Bus|auto|Cab/i.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'ride leg has no transport advice');
   await shot('10-trail');
   await page.click('#view-plan [data-seg="custom"]');
   await page.click('#view-plan [data-pz="south_lakemarket"]');
   await page.selectOption('#planBudget', '180');
-  await page.selectOption('#planStart', 't:kalighat');
+  await page.click('#planStartBtn');
+  await page.fill('#pickSearch', 'kalig');
+  await page.click('[data-pick="t:kalighat"]');
+  await page.waitForTimeout(300);
+  must(/Kalighat/.test(await page.locator('#planStartBtn').innerText()), 'start picker did not set Kalighat');
   await page.click('#planForm button[type="submit"]');
   await page.waitForTimeout(400);
   const stops = await count('.timeline li[data-place]');

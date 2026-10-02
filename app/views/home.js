@@ -7,6 +7,9 @@ import { $, go, registerView } from '../ui.js';
 import { openPlace, crowdPill, thumbHtml, momentSheet, momentCache } from '../sheets.js';
 import { showTrail } from './plan.js';
 import { setExplore } from './explore.js';
+import { selectArea, rname } from '../filters.js';
+
+let homeRegion = null;
 
 let searchIndex = null;
 function buildIndex() {
@@ -82,7 +85,8 @@ function render() {
       <div class="hscroll">${goodNow.map(([p, c]) => miniPandal(p, crowdPill(c))).join('')}</div></section>
 
     <section class="section"><div class="section-head"><h2>${t('h.zones')}</h2></div>
-      <div class="zone-list">${G.data.zones.map((z) => `<div class="zone-card" data-zone="${z.id}" style="--zc:${z.color}" ${btn(`aria-label="${esc(zn(z))}"`)}>
+      <div class="chips">${G.data.regions.map((r) => `<button class="chip" data-hr="${r.id}" aria-pressed="${r.id === (homeRegion ||= G.data.regions[0].id)}"><span class="dot" style="background:${r.color}"></span>${esc(rname(r))} · ${r.zone_ids.reduce((n, id) => n + (idx.zone[id]?.pandal_ids.length || 0), 0)}</button>`).join('')}</div>
+      <div class="zone-list">${G.data.zones.filter((z) => z.region === homeRegion).map((z) => `<div class="zone-card" data-zone="${z.id}" style="--zc:${z.color}" ${btn(`aria-label="${esc(zn(z))}"`)}>
         <span class="bar"></span>
         <div><h3>${esc(zn(z))}</h3><p>${esc(z.vibe)}</p>
           <div class="meta"><span>${t('z.pandals', { n: z.pandal_ids.length })}</span><span>${t('z.loop', { km: km(z.route.walk_m) })}</span><span>${t('z.steps', { n: fmtCount(stepsFor(z.route.walk_m)) })}</span><span class="pill car-${z.car_advisory}">${t('car.' + z.car_advisory)}</span></div></div>
@@ -119,7 +123,8 @@ function wire(el) {
     if (q === 'park') { setExplore({ seg: 'parking' }); return go('explore'); }
     if (q === 'moments') return go('moments');
     const place = e.target.closest('[data-place]')?.dataset.place; if (place) return openPlace(place);
-    const zone = e.target.closest('[data-zone]')?.dataset.zone; if (zone) { setExplore({ seg: 'pandals', zone }); return go('explore'); }
+    const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { homeRegion = hr; const y = window.scrollY; render(); return window.scrollTo(0, y); }
+    const zone = e.target.closest('[data-zone]')?.dataset.zone; if (zone) { setExplore({ seg: 'pandals', ...selectArea(zone) }); return go('explore'); }
     const trail = e.target.closest('[data-trail]')?.dataset.trail; if (trail) { go('plan'); return showTrail(trail); }
     const m = e.target.closest('[data-moment]')?.dataset.moment; if (m) return momentSheet(momentCache.find((x) => x.id === m));
     const r = e.target.closest('[data-result]'); if (r) return pickResult(r.dataset.kind, r.dataset.result);
@@ -138,7 +143,7 @@ function wire(el) {
   };
 }
 function pickResult(kind, id) {
-  if (kind === 'zone') { setExplore({ seg: 'pandals', zone: id }); return go('explore'); }
+  if (kind === 'zone') { setExplore({ seg: 'pandals', ...selectArea(id) }); return go('explore'); }
   openPlace(id);
 }
 

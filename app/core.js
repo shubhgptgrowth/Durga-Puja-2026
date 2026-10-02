@@ -169,3 +169,59 @@ export function nearest(point, places, { maxM = Infinity, limit = 5 } = {}) {
   return places.map((p) => [p, hav(point, [p.lat, p.lng])]).filter(([, d]) => d <= maxM)
     .sort((a, b) => a[1] - b[1]).slice(0, limit).map(([p, d]) => ({ place: p, distance: d }));
 }
+
+/* ---------------- ride legs: metro, bus, auto or cab ---------------- */
+function stopsNear(pt, stops, maxM) {
+  const out = [], dLat = maxM / 111000, dLng = maxM / 103000;
+  for (let i = 0; i < stops.length; i++) {
+    const s = stops[i];
+    if (Math.abs(s[0] - pt[0]) > dLat || Math.abs(s[1] - pt[1]) > dLng) continue;
+    const d = hav(pt, [s[0], s[1]]);
+    if (d <= maxM) out.push([i, d]);
+  }
+  return out.sort((a, b) => a[1] - b[1]);
+}
+function segDist(p, a, b) {
+  const k = Math.cos((p[0] * Math.PI) / 180) * 111320;
+  const P = [p[1] * k, p[0] * 110540], A = [a[1] * k, a[0] * 110540], B = [b[1] * k, b[0] * 110540];
+  const dx = B[0] - A[0], dy = B[1] - A[1];
+  const t = Math.max(0, Math.min(1, ((P[0] - A[0]) * dx + (P[1] - A[1]) * dy) / (dx * dx + dy * dy || 1)));
+  return Math.hypot(P[0] - A[0] - t * dx, P[1] - A[1] - t * dy);
+}
+
+/**
+ * Best way to ride from `from` to `to` ([lat, lng]). `stations` are metro/rail stations
+ * {id, name, line, lat, lng}; `transit` is app/data/transit.json (optional).
+ * Returns {mode:'metro', line, board, alight} | {mode:'bus'|'auto', routes, board, alight} | {mode:'auto', route, via} | {mode:'cab'}.
+ */
+export function rideOption(from, to, stations, transit = null) {
+  const nearestStation = (pt) => stations.filter((s) => s.line !== 'suburban').map((s) => [s, hav(pt, [s.lat, s.lng])]).sort((a, b) => a[1] - b[1])[0];
+  const a = nearestStation(from), b = nearestStation(to);
+  if (a && b && a[0].id !== b[0].id && a[1] <= 1000 && b[1] <= 1000 && a[0].line === b[0].line) {
+    return { mode: 'metro', line: a[0].line, board: a[0].name, alight: b[0].name };
+  }
+  if (transit) {
+    const fs = stopsNear(from, transit.stops, 500), ts = stopsNear(to, transit.stops, 500);
+    if (fs.length && ts.length) {
+      const fset = new Map(fs.map(([i, d]) => [i, d])), tset = new Map(ts.map(([i, d]) => [i, d]));
+      for (const mode of ['bus', 'auto']) {
+        const hits = [];
+        for (const r of transit.routes) {
+          if (r.m !== mode) continue;
+          let bi = -1, best = null;
+          r.s.forEach((sid, k) => { if (fset.has(sid) && bi < 0) bi = k; if (bi >= 0 && k > bi && tset.has(sid) && !best) best = [r.s[bi], sid]; });
+          if (best) hits.push({ label: r.l, board: best[0], alight: best[1], walk: fset.get(best[0]) + tset.get(best[1]) });
+        }
+        if (hits.length) {
+          hits.sort((x, y) => x.walk - y.walk);
+          const labels = [...new Set(hits.map((h) => h.label))].slice(0, 4);
+          return { mode, routes: labels, board: transit.stops[hits[0].board][2] || '', alight: transit.stops[hits[0].alight][2] || '' };
+        }
+      }
+    }
+    const auto = (transit.autos || []).map((x) => [x, segDist(from, x.a, x.b) + segDist(to, x.a, x.b)])
+      .filter(([x]) => segDist(from, x.a, x.b) <= 700 && segDist(to, x.a, x.b) <= 700).sort((p, q) => p[1] - q[1])[0];
+    if (auto) return { mode: 'auto', route: auto[0].l, via: auto[0].via };
+  }
+  return { mode: 'cab' };
+}

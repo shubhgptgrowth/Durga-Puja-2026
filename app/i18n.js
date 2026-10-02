@@ -4,6 +4,19 @@
 
 export const STR = {
   en: {
+
+    // regions, areas, start picker
+    'f.regions': 'Regions', 'f.areas': 'Areas', 'f.allIn': 'All of {region}', 'f.pandalsIn': 'Pandals · {region}',
+    'f.startSearch': 'Search a station, pandal or car park', 'f.zonesHint': 'tap a region to pick all its areas',
+    // photos
+    'ph.credit': 'Photos from past years on Wikimedia Commons. Tap one for credits.', 'ph.by': 'Photo: {author} · {license}',
+    'ph.source': 'View on Wikimedia Commons', 'ph.back': 'Back', 'ph.representative': 'representative photo',
+    'ph.dishNote': 'Dish photos are representative (Wikimedia Commons), not necessarily from this eatery.',
+    // transit
+    'tr.buses': 'Buses', 'tr.common': 'common route', 'tr.osm': 'OpenStreetMap', 'tr.transitDir': 'Bus & metro directions',
+    'tr.autoNote': 'Shared autos run fixed routes. Confirm the route with the driver, and expect fares to change during the pujas.',
+    'tl.metro': '🚇 {line} Line: {from} → {to}', 'tl.bus': '🚌 Bus {routes}: board at {from}, get off at {to}',
+    'tl.autoOsm': '🛺 Shared auto {routes} from {from}', 'tl.auto': '🛺 Shared auto {route}', 'tl.cab': '🚕 Cab or toto to {name}',
     'tab.home': 'Home', 'tab.explore': 'Explore', 'tab.plan': 'Plan', 'tab.moments': 'Moments', 'tab.me': 'Me',
     'lang.toggle': 'বাংলা', 'lang.aria': 'Switch to Bengali', 'sheet.close': 'Close', 'loc.me': 'Show my location',
     'count.today': 'Today is {day}. Shubho Pujo! 🙏', 'count.after': 'Asche bochor abar hobe! See you in 2027',
@@ -21,7 +34,7 @@ export const STR = {
     'h.qPlan': 'Plan route', 'h.qNear': 'Near me', 'h.qFood': 'Eat', 'h.qPark': 'Park',
     'h.trending': 'Trending now', 'h.trendingSub': 'Where people are checking in right now',
     'h.near': 'Closest to you', 'h.goodNow': 'Good to visit now', 'h.goodNowSub': 'Famous pandals with the shortest queues at {time}, {day}',
-    'h.seeAll': 'See all', 'h.zones': 'Explore by zone', 'h.moments': 'Latest moments', 'h.trails': 'Curated trails',
+    'h.seeAll': 'See all', 'h.zones': 'Explore by area', 'h.moments': 'Latest moments', 'h.trails': 'Curated trails',
     'h.parking': 'Parking', 'h.transit': 'Metro & rail',
     'kindLabel.pandal': 'Pandal', 'kindLabel.food': 'Food', 'kindLabel.parking': 'Parking',
 
@@ -71,7 +84,7 @@ export const STR = {
     // plan
     'plan.title': 'Plan your pujo', 'plan.subtitle': 'Pick a ready-made trail, or build a route that fits your time.',
     'seg.curated': 'Curated trails', 'seg.custom': 'Build my route',
-    'f.zones': 'Zones', 'f.start': 'Start from', 'f.time': 'Start time', 'f.stars': 'Only pandals rated', 'f.budget': 'Time budget',
+    'f.zones': 'Areas', 'f.start': 'Start from', 'f.time': 'Start time', 'f.stars': 'Only pandals rated', 'f.budget': 'Time budget',
     'f.brisk': 'Brisk pace (more pandals, more calories)', 'f.build': 'Build route', 'f.me': '📍 My current location',
     'f.line': '{line} line', 'f.parkingGroup': 'Parking',
     'stars.1': 'All', 'stars.3': '3★ and up', 'stars.4': '4★ and up', 'stars.5': '5★ only',
@@ -81,7 +94,7 @@ export const STR = {
     'plan.sub': '{day} · {from}–{to} from {start}', 'plan.dropped': '{n} pandal(s) dropped to fit your time',
     'kpi.pandals': 'pandals', 'kpi.km': 'km walk', 'kpi.steps': 'steps', 'kpi.kcal': 'kcal',
     'plan.startWalk': 'Start walk', 'plan.maps': 'Maps', 'plan.leg': 'leg {n}', 'plan.share': 'Share',
-    'tl.start': 'Start at {name}', 'tl.ride': 'Metro or cab to {name}', 'tl.rideMin': '~{n} min ride',
+    'tl.start': 'Start at {name}', 'tl.ride': 'Ride to {name}', 'tl.rideMin': '~{n} min ride',
     'tl.walk': '{m} m walk', 'tl.inside': '~{n} min inside', 'tl.eat': '🍴 Nearby: {dish} at {place}',
     'share.copied': 'Link copied. Paste it in your group chat!', 'share.text': 'My pujo route: {title}',
     'share.loaded': 'Opened a shared route', 'share.copyPrompt': 'Copy this link',
@@ -131,6 +144,16 @@ export const STR = {
     'b.ns': 'North and South on the same day', 'b.goal': 'Hit your daily step goal', 'b.lens': 'Share 3 moments',
   },
   bn: {
+
+    'f.regions': 'অঞ্চল', 'f.areas': 'এলাকা', 'f.allIn': 'পুরো {region}', 'f.pandalsIn': 'প্যান্ডেল · {region}',
+    'f.startSearch': 'স্টেশন, প্যান্ডেল বা পার্কিং খুঁজুন', 'f.zonesHint': 'অঞ্চল ছুঁলে তার সব এলাকা বাছা হবে',
+    'ph.credit': 'আগের বছরের ছবি, উইকিমিডিয়া কমন্স থেকে। কৃতিত্ব দেখতে ছবিতে ছুঁন।', 'ph.by': 'ছবি: {author} · {license}',
+    'ph.source': 'উইকিমিডিয়া কমন্সে দেখুন', 'ph.back': 'ফিরে যান', 'ph.representative': 'প্রতিনিধিত্বমূলক ছবি',
+    'ph.dishNote': 'খাবারের ছবিগুলো প্রতিনিধিত্বমূলক (উইকিমিডিয়া কমন্স), এই দোকানের নাও হতে পারে।',
+    'tr.buses': 'বাস', 'tr.common': 'চেনা রুট', 'tr.osm': 'ওপেনস্ট্রিটম্যাপ', 'tr.transitDir': 'বাস ও মেট্রোর রাস্তা',
+    'tr.autoNote': 'শেয়ার অটো নির্দিষ্ট রুটে চলে। চালকের সঙ্গে রুট মিলিয়ে নিন। পুজোর সময় ভাড়া বদলাতে পারে।',
+    'tl.metro': '🚇 {line} লাইন: {from} → {to}', 'tl.bus': '🚌 বাস {routes}: {from} থেকে উঠুন, {to}-তে নামুন',
+    'tl.autoOsm': '🛺 শেয়ার অটো {routes}, {from} থেকে', 'tl.auto': '🛺 শেয়ার অটো {route}', 'tl.cab': '🚕 ক্যাব বা টোটোয় {name}',
     'tab.home': 'হোম', 'tab.explore': 'ঘুরে দেখুন', 'tab.plan': 'পরিকল্পনা', 'tab.moments': 'মুহূর্ত', 'tab.me': 'আমি',
     'lang.toggle': 'EN', 'lang.aria': 'Switch to English', 'sheet.close': 'বন্ধ করুন', 'loc.me': 'আমার লোকেশন দেখান',
     'count.today': 'আজ {day}। শুভ পুজো! 🙏', 'count.after': 'আসছে বছর আবার হবে!',
@@ -192,7 +215,7 @@ export const STR = {
 
     'plan.title': 'পুজোর পরিকল্পনা', 'plan.subtitle': 'তৈরি পরিক্রমা বেছে নিন, অথবা আপনার সময় মতো রুট বানান।',
     'seg.curated': 'বাছাই করা পরিক্রমা', 'seg.custom': 'নিজের রুট',
-    'f.zones': 'অঞ্চল', 'f.start': 'কোথা থেকে শুরু', 'f.time': 'শুরুর সময়', 'f.stars': 'কোন রেটিংয়ের প্যান্ডেল', 'f.budget': 'হাতে কত সময়',
+    'f.zones': 'এলাকা', 'f.start': 'কোথা থেকে শুরু', 'f.time': 'শুরুর সময়', 'f.stars': 'কোন রেটিংয়ের প্যান্ডেল', 'f.budget': 'হাতে কত সময়',
     'f.brisk': 'জোরে হাঁটা (বেশি প্যান্ডেল, বেশি ক্যালোরি)', 'f.build': 'রুট বানান', 'f.me': '📍 আমার এখনকার লোকেশন',
     'f.line': '{line} লাইন', 'f.parkingGroup': 'পার্কিং',
     'stars.1': 'সব', 'stars.3': '৩★ বা বেশি', 'stars.4': '৪★ বা বেশি', 'stars.5': 'শুধু ৫★',
@@ -202,7 +225,7 @@ export const STR = {
     'plan.sub': '{day} · {from}–{to}, শুরু {start}', 'plan.dropped': 'সময়ে কুলোতে {n}টি প্যান্ডেল বাদ গেছে',
     'kpi.pandals': 'প্যান্ডেল', 'kpi.km': 'কিমি হাঁটা', 'kpi.steps': 'পা', 'kpi.kcal': 'ক্যালোরি',
     'plan.startWalk': 'হাঁটা শুরু', 'plan.maps': 'ম্যাপস', 'plan.leg': 'ধাপ {n}', 'plan.share': 'শেয়ার',
-    'tl.start': '{name} থেকে শুরু', 'tl.ride': 'মেট্রো বা ক্যাবে {name}', 'tl.rideMin': '~{n} মিনিটের যাত্রা',
+    'tl.start': '{name} থেকে শুরু', 'tl.ride': '{name} যাওয়ার পথ', 'tl.rideMin': '~{n} মিনিটের যাত্রা',
     'tl.walk': '{m} মি হাঁটা', 'tl.inside': 'ভেতরে ~{n} মিনিট', 'tl.eat': '🍴 কাছেই: {place}-এর {dish}',
     'share.copied': 'লিংক কপি হয়েছে। গ্রুপে পাঠিয়ে দিন!', 'share.text': 'আমার পুজো রুট: {title}',
     'share.loaded': 'শেয়ার করা রুট খোলা হয়েছে', 'share.copyPrompt': 'এই লিংকটা কপি করুন',

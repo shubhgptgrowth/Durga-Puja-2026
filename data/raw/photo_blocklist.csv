@@ -1,0 +1,11 @@
+kind,value,reason
+dish,Beef roll,not a Kolkata roll
+dish,Chinese,unrelated photo
+dish,Infusion,unrelated photo
+dish,Tadka,unrelated photo
+dish,Egg devil,unclear photo
+dish,Chaap,soya chaap; restaurant serves mutton chaap
+dish,Chicken stew,generic curry photo
+place,city_centre_food,photos are of a meetup and not the food court
+title_contains,Pallyshree,Ultadanga Pallyshree is a different puja from Ultadanga Sangrami
+title_contains,Kalighater Kali,a temple photo and not a puja

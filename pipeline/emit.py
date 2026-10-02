@@ -10,6 +10,8 @@ def _geojson(data):
     feats = []
     for kind in ("pandals", "food", "parking", "transit"):
         for r in data[kind]:
+            if r.get("lat") is None:
+                continue
             props = {k: v for k, v in r.items() if k not in ("lat", "lng")}
             props["kind"] = kind
             feats.append({"type": "Feature", "properties": props,
@@ -18,9 +20,12 @@ def _geojson(data):
 
 
 def build_bundle(data):
+    regions = [{**r, "zone_ids": [z["id"] for z in data["zones"] if z["region"] == r["id"]]} for r in data["regions"]]
     body = {
+        "regions": [r for r in regions if r["zone_ids"]],
         "zones": data["zones"], "pandals": data["pandals"], "food": data["food"],
         "parking": data["parking"], "transit": data["transit"], "itineraries": data["itineraries"],
+        "dish_photos": data.get("dish_photos", {}),
     }
     digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()[:12]
     meta = {
@@ -92,6 +97,9 @@ def emit(data, warnings, out_dir=config.OUT_DIR):
     (out_dir / "guide.json").write_text(json.dumps(bundle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (out_dir / "guide.geojson").write_text(json.dumps(_geojson(data), ensure_ascii=False), encoding="utf-8")
     (out_dir / "BUILD_REPORT.md").write_text(report(bundle, warnings), encoding="utf-8")
+    if data.get("transit_bundle"):
+        tb = {"version": bundle["meta"]["version"], **data["transit_bundle"]}
+        (out_dir / "transit.json").write_text(json.dumps(tb, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     config.SEED_SQL.parent.mkdir(parents=True, exist_ok=True)
     config.SEED_SQL.write_text(seed_sql(data), encoding="utf-8")
     return bundle

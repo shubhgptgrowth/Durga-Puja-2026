@@ -11,7 +11,7 @@ export const store = {
 };
 
 export const G = { data: null };               // guide bundle (data/guide.json)
-export const idx = { pandal: {}, food: {}, parking: {}, transit: {}, zone: {}, day: {} };
+export const idx = { pandal: {}, food: {}, parking: {}, transit: {}, zone: {}, region: {}, day: {} };
 const DEFAULT_PREFS = { height: 165, weight: 65, goal: 10000, lowData: false, motion: true, lang: 'en', consent: false };
 export const S = {
   view: 'home', day: null, hour: new Date().getHours(), me: null,
@@ -20,8 +20,8 @@ export const S = {
   history: store.get('history', {}),     // YYYY-MM-DD -> {m, ms, steps, pandals: [], foods: []}
   car: store.get('car', null),
   plan: store.get('activePlan', null),
-  explore: { seg: 'pandals', zone: 'all', sort: 'popular', food: new Set() },
-  moments: { zone: 'all', onSite: false, items: [], done: false, loading: false },
+  explore: { seg: 'pandals', region: 'all', area: 'all', sort: 'popular', food: new Set() },
+  moments: { region: 'all', area: 'all', onSite: false, items: [], done: false, loading: false },
   walk: null,
 };
 export const community = new Community(CONFIG.community);
@@ -32,7 +32,7 @@ export const savePrefs = () => store.set('prefs', S.prefs);
 
 export function loadGuide(g) {
   G.data = g;
-  const src = { pandal: 'pandals', zone: 'zones', food: 'food', parking: 'parking', transit: 'transit' };
+  const src = { pandal: 'pandals', zone: 'zones', region: 'regions', food: 'food', parking: 'parking', transit: 'transit' };
   for (const [k, key] of Object.entries(src)) for (const r of g[key]) idx[k][r.id] = r;
   for (const d of g.meta.days) idx.day[d.id] = d;
 }

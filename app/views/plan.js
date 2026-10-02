@@ -1,13 +1,26 @@
 /* Plan: curated trails and the time-budgeted custom route builder. */
-import { hav, orderRoute, routeUrls, hhmm, encodePlan } from '../core.js';
+import { hav, orderRoute, routeUrls, hhmm, encodePlan, rideOption } from '../core.js';
 import {
   S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon,
 } from '../state.js';
 import { $, go, registerView, makeMap, toast, getFix } from '../ui.js';
 import { openPlace } from '../sheets.js';
 import { startWalk, walking } from '../actions.js';
+import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
+import { rname } from '../filters.js';
 
-let planSel = new Set(), seg = 'curated', planMap = null;
+let planSel = new Set(), seg = 'curated', planMap = null, transitData = null, transitLoading = null;
+// Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
+function loadTransit() {
+  transitLoading ||= fetch('data/transit.json').then((r) => (r.ok ? r.json() : null)).then((d) => { transitData = d; if (d && S.view === 'plan' && planValid(S.plan)) render(); }).catch(() => null);
+  return transitLoading;
+}
+function rideText(opt, toName) {
+  if (opt.mode === 'metro') return t('tl.metro', { line: opt.line[0].toUpperCase() + opt.line.slice(1), from: esc(opt.board), to: esc(opt.alight) });
+  if (opt.mode === 'bus') return t('tl.bus', { routes: esc(opt.routes.join(', ')), from: esc(opt.board || '—'), to: esc(opt.alight || '—') });
+  if (opt.mode === 'auto') return opt.routes ? t('tl.autoOsm', { routes: esc(opt.routes.join(', ')), from: esc(opt.board || '—') }) : t('tl.auto', { route: esc(opt.route) });
+  return t('tl.cab', { name: esc(toName) });
+}
 const form = { start: 't:kalighat', time: '17:00', stars: '4', budget: '240', brisk: false };
 
 /* ---------------- routing ---------------- */
@@ -57,9 +70,8 @@ function planMulti(start, zones, minStars, startMin, brisk, exclude) {
 
 function startPoint(val) {
   if (val === 'me') return S.me ? Promise.resolve({ id: 'me', lat: S.me[0], lng: S.me[1] }) : getFix().then((f) => ({ id: 'me', lat: f.lat, lng: f.lng }));
-  const [k, id] = val.split(':');
-  const r = k === 't' ? idx.transit[id] : idx.parking[id];
-  return Promise.resolve({ id: r.id, name: r.name, lat: r.lat, lng: r.lng });
+  const r = startRecord(val);
+  return r ? Promise.resolve(r) : Promise.reject(new Error('unknown start'));
 }
 const ptName = (pt) => (pt.id === 'me' ? t('plan.me') : pt.name);
 
@@ -115,7 +127,7 @@ export function openSharedPlan(p) {
   seg = 'custom';
   if (!p) return go('plan');
   planSel = new Set(p.z.filter((z) => idx.zone[z]));
-  const ok = p.s === 'me' || (p.s.startsWith('t:') && idx.transit[p.s.slice(2)]) || (p.s.startsWith('p:') && idx.parking[p.s.slice(2)]);
+  const ok = p.s === 'me' || !!startRecord(p.s);
   if (ok) form.start = p.s;
   if (/^\d\d:\d\d$/.test(p.t)) form.time = p.t;
   if (p.r) form.stars = String(p.r);
@@ -142,14 +154,15 @@ async function share(plan) {
 
 /* ---------------- render ---------------- */
 function formHtml() {
-  const lines = ['blue', 'green', 'purple', 'orange', 'suburban'], cap = (l) => l[0].toUpperCase() + l.slice(1);
-  const opt = (v, label) => `<option value="${v}" ${form.start === v ? 'selected' : ''}>${label}</option>`;
+  const regionRows = G.data.regions.map((r) => {
+    const all = r.zone_ids.every((id) => planSel.has(id)), some = r.zone_ids.some((id) => planSel.has(id));
+    return `<div class="region-row"><button type="button" class="chip region" data-pr="${r.id}" aria-pressed="${all}" ${some && !all ? 'data-partial="1"' : ''}><span class="dot" style="background:${r.color}"></span>${esc(rname(r))}</button>
+      ${r.zone_ids.length > 1 ? r.zone_ids.map((id) => idx.zone[id]).map((z) => `<button type="button" class="chip sm" data-pz="${z.id}" aria-pressed="${planSel.has(z.id)}">${esc(zs(z))}</button>`).join('') : ''}</div>`;
+  }).join('');
   return `<form id="planForm" class="form">
-    <fieldset><legend>${t('f.zones')}</legend><div class="chips wrap" id="planZones">${G.data.zones.map((z) => `<button type="button" class="chip" data-pz="${z.id}" aria-pressed="${planSel.has(z.id)}"><span class="dot" style="background:${z.color}"></span>${esc(zs(z))}</button>`).join('')}</div></fieldset>
+    <fieldset><legend>${t('f.zones')} <span class="fine">· ${t('f.zonesHint')}</span></legend><div id="planZones">${regionRows}</div></fieldset>
+    <label>${t('f.start')}<button type="button" class="btn block picker-btn" id="planStartBtn">${esc(startLabel(form.start))} ${icon('chev', 'sm')}</button></label>
     <div class="grid2">
-      <label>${t('f.start')}<select id="planStart">${opt('me', t('f.me'))}
-        ${lines.map((l) => `<optgroup label="${t('f.line', { line: cap(l) })}">${G.data.transit.filter((s) => s.line === l).map((s) => opt('t:' + s.id, esc(s.name))).join('')}</optgroup>`).join('')}
-        <optgroup label="${t('f.parkingGroup')}">${G.data.parking.map((p) => opt('p:' + p.id, '🅿 ' + esc(p.name))).join('')}</optgroup></select></label>
       <label>${t('f.time')}<input type="time" id="planTime" value="${form.time}"></label>
       <label>${t('f.stars')}<select id="planStars">${['1', '3', '4', '5'].map((v) => `<option value="${v}" ${form.stars === v ? 'selected' : ''}>${t('stars.' + v)}</option>`).join('')}</select></label>
       <label>${t('f.budget')}<select id="planBudget">${['120', '180', '240', '360', '600'].map((v) => `<option value="${v}" ${form.budget === v ? 'selected' : ''}>${t('budget.' + v)}</option>`).join('')}</select></label>
@@ -174,14 +187,22 @@ function resultHtml(plan) {
   const legs = routeUrls(pts);
   let n = 0, lastFood = -9; const used = new Set();
   const tl = [`<li class="start"><div class="t">${plan.start}</div><div class="nm">${t('tl.start', { name: esc(ptName(plan.startPt)) })}</div></li>`];
+  let prev = ll(plan.startPt);
   for (const s of plan.segments) {
-    if (s.type === 'ride') { tl.push(`<li class="ride"><div class="t">${s.depart}</div><div class="nm">${t('tl.ride', { name: esc(idx.transit[s.to]?.name || '') })}</div><div class="sub">${t('tl.rideMin', { n: s.ride_min })}</div></li>`); continue; }
+    if (s.type === 'ride') {
+      const dest = idx.transit[s.to], opt = dest ? rideOption(prev, ll(dest), G.data.transit, transitData) : { mode: 'cab' };
+      tl.push(`<li class="ride"><div class="t">${s.depart}</div><div class="nm">${t('tl.ride', { name: esc(dest?.name || '') })}</div>
+        <div class="sub">${rideText(opt, dest?.name || '')} · ${t('tl.rideMin', { n: s.ride_min })}</div></li>`);
+      if (dest) prev = ll(dest);
+      continue;
+    }
     for (const st of s.stops) {
       n++;
       const p = idx.pandal[st.pandal], hour = +st.arrive.slice(0, 2), meal = (hour >= 12 && hour <= 14) || (hour >= 19 && hour <= 21);
       let eat = '';
       const f = p.food.filter((ff) => ff.distance_m <= 800).map((ff) => idx.food[ff.id]).find((ff) => !used.has(ff.id));
       if (f && (n - lastFood >= 3 || (meal && n - lastFood >= 2))) { used.add(f.id); lastFood = n; eat = `<div class="eat">${t('tl.eat', { dish: esc(f.dishes[0]), place: esc(f.name) })}</div>`; }
+      prev = ll(p);
       tl.push(`<li data-n="${n}" data-place="${st.pandal}" ${btn()}><div class="t">${st.arrive}</div><div class="nm">${esc(nm(p))}${S.checkins[st.pandal] ? ' ✓' : ''}</div>
         <div class="sub">${st.walk_m ? `${t('tl.walk', { m: st.walk_m })} · ` : ''}${crowdWord(st.crowd)} · ${t('tl.inside', { n: st.dwell_min })}</div>${eat}</li>`);
     }
@@ -199,6 +220,7 @@ function resultHtml(plan) {
 
 function render(scrollToResult = false) {
   const el = $('#view-plan'), plan = planValid(S.plan) ? S.plan : null;
+  if (plan && !transitData) loadTransit();
   el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>
     <div class="seg" role="tablist" style="margin-top:12px">
       <button role="tab" data-seg="curated" aria-selected="${seg === 'curated'}">${t('seg.curated')}</button>
@@ -210,21 +232,26 @@ function render(scrollToResult = false) {
   if (scrollToResult && plan) window.scrollTo({ top: $('#planResult').getBoundingClientRect().top + window.scrollY - $('.topbar').offsetHeight - 8, behavior: 'smooth' });
 }
 function drawPlanMap(plan) {
-  if (planMap) { planMap.remove(); planMap = null; }
-  planMap = makeMap($('#planMap'));
+  // The plan map is rebuilt on every render, so it must not animate (a pending zoom frame would hit a removed map).
+  if (planMap) { planMap.off(); planMap.remove(); planMap = null; }
+  planMap = makeMap($('#planMap'), { animate: false });
   if (!planMap) return;
   const stops = stopsOf(plan), pts = [ll(plan.startPt), ...stops.map((s) => ll(idx.pandal[s.pandal]))];
   L.polyline(pts, { color: '#9F1239', weight: 4, opacity: .85, dashArray: '2 8', lineCap: 'round' }).addTo(planMap);
   L.marker(pts[0], { icon: L.divIcon({ className: '', html: '<div class="seq" style="background:#1C1917">▶</div>', iconSize: [26, 26] }), keyboard: false }).addTo(planMap);
   stops.forEach((st, i) => L.marker(ll(idx.pandal[st.pandal]), { icon: L.divIcon({ className: '', html: `<div class="seq">${i + 1}</div>`, iconSize: [26, 26] }), title: nm(idx.pandal[st.pandal]) })
     .on('click', () => openPlace(st.pandal)).addTo(planMap));
-  planMap.fitBounds(L.latLngBounds(pts), { padding: [24, 24] });
+  planMap.fitBounds(L.latLngBounds(pts), { padding: [24, 24], animate: false });
 }
+const keepScroll = (fn) => { const y = window.scrollY; fn(); window.scrollTo(0, y); };
 function wire(el, plan) {
   el.onclick = (e) => {
     const sg = e.target.closest('[data-seg]')?.dataset.seg; if (sg) { seg = sg; return render(); }
     const pz = e.target.closest('[data-pz]')?.dataset.pz;
-    if (pz) { planSel.has(pz) ? planSel.delete(pz) : planSel.add(pz); e.target.closest('[data-pz]').setAttribute('aria-pressed', planSel.has(pz)); return; }
+    if (pz) { planSel.has(pz) ? planSel.delete(pz) : planSel.add(pz); return keepScroll(render); }
+    const pr = e.target.closest('[data-pr]')?.dataset.pr;
+    if (pr) { const ids = idx.region[pr].zone_ids, all = ids.every((id) => planSel.has(id)); ids.forEach((id) => (all ? planSel.delete(id) : planSel.add(id))); return keepScroll(render); }
+    if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start, (v) => { form.start = v; keepScroll(render); });
     const tr = e.target.closest('[data-trail]')?.dataset.trail; if (tr) return showTrail(tr);
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#planWalk')) { go('me'); if (!walking()) startWalk(); return; }
@@ -232,7 +259,7 @@ function wire(el, plan) {
   };
   const f = $('#planForm', el);
   if (f) {
-    f.onchange = () => { form.start = $('#planStart').value; form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
+    f.onchange = () => { form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
     f.onsubmit = (e) => { e.preventDefault(); f.onchange(); buildCustom(); };
   }
 }

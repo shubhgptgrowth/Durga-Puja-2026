@@ -13,8 +13,8 @@ aminia,Aminia (New Market),central,22.5600,88.3521,curated,restaurant,Mutton bir
 nizams,Nizam's,central,22.562144,88.353538,osm,street,Kathi roll|Beef roll|Chicken roll,nonveg,1,12:00-23:30,The kathi roll is said to have been born here.,false
 vivekananda_park_phuchka,Vivekananda Park Phuchka,south_lakemarket,22.5195,88.3590,curated,street,Phuchka|Churmur|Dahi phuchka,veg,1,15:00-23:00,Often called Kolkata's most famous phuchka. Ask for the tok-jhal-mishti.,false
 lake_market_stalls,Lake Market Telebhaja Stalls,south_lakemarket,22.5190,88.3530,curated,street,Beguni|Alur chop|Egg roll,both,1,16:00-01:00,Late-night fuel between Tridhara and 66 Pally.,false
-balwant_singh,Balwant Singh's Eating House,south_lakemarket,22.537783,88.344129,osm,cabin,Doodh cha|Tadka|Paratha,veg,1,06:00-23:00,Bhowanipore's milky tea and dhaba-style tadka.,false
-kewpies,Kewpie's Kitchen,south_lakemarket,22.5380,88.3505,curated,restaurant,Bengali thali|Daab chingri|Bhetki paturi,both,3,12:30-22:30,A home-style Bengali thali close to Maddox Square.,false
+balwant_singh,Balwant Singh's Eating House,bhowanipore,22.537783,88.344129,osm,cabin,Doodh cha|Tadka|Paratha,veg,1,06:00-23:00,Bhowanipore's milky tea and dhaba-style tadka.,false
+kewpies,Kewpie's Kitchen,bhowanipore,22.5380,88.3505,curated,restaurant,Bengali thali|Daab chingri|Bhetki paturi,both,3,12:30-22:30,A home-style Bengali thali close to Maddox Square.,false
 gariahat_stalls,Gariahat Mor Street Food,south_gariahat,22.5185,88.3665,curated,street,Egg chicken roll|Chowmein|Momo,both,1,15:00-01:00,"Cheap and quick, right on the Ekdalia–Singhi Park loop.",false
 bhojohori_manna,Bhojohori Manna (Ekdalia),south_gariahat,22.5168,88.3702,curated,restaurant,Bhetki paturi|Kosha mangsho|Chingri malaikari,both,2,12:00-22:30,A Bengali chain started here. Book ahead during puja.,false
 ballygunge_place,6 Ballygunge Place,south_gariahat,22.527799,88.368637,osm,restaurant,Daab chingri|Bengali thali,both,3,12:00-23:00,An upscale Bengali spread in a heritage house.,false
@@ -25,5 +25,6 @@ city_centre_food,City Centre 1 Food Court,salt_lake,22.5885,88.4083,curated,rest
 central_park_stalls,Central Park Mela Stalls,salt_lake,22.5850,88.4170,curated,street,Fish fry|Kebab|Ice cream,both,1,16:00-23:00,Mela food near BJ Block.,false
 lake_town_stalls,Lake Town Footbridge Stalls,lake_town_dumdum,22.6030,88.4030,curated,street,Phuchka|Chowmein|Rolls,both,1,15:00-02:00,Pop-up stalls along the Sreebhumi queue.,false
 dumdum_park_stalls,Dum Dum Park Puja Stalls,lake_town_dumdum,22.6175,88.4135,curated,street,Fish fry|Mughlai paratha,both,1,16:00-01:00,Food row between the Dum Dum Park pandals.,false
-bosepukur_stalls,Bosepukur Puja Food Row,south_gariahat,22.5140,88.3902,curated,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,Pop-up stalls between the two Bosepukur pandals.,false
+bosepukur_stalls,Bosepukur Puja Food Row,kasba,22.5140,88.3902,curated,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,Pop-up stalls between the two Bosepukur pandals.,false
 sakherbazar_stalls,Sakherbazar Puja Food Stalls,southwest,22.481515,88.313553,curated,street,Fish fry|Egg roll|Phuchka,both,1,16:00-01:00,The food row on the Diamond Harbour Road side of Barisha Club.,false
+naktala_stalls,Naktala Puja Food Stalls,tolly_naktala,22.475191,88.367075,curated,street,Phuchka|Fish fry|Chicken roll,both,1,16:00-01:00,The food row that grows around Naktala Udayan Sangha during the pujas.,false

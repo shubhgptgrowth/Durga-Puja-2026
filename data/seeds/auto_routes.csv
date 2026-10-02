@@ -1,13 +1,13 @@
-id,from,to,note
-gariahat_jadavpur,Gariahat More,Jadavpur 8B Bus Stand,Via Gariahat Road South and Dhakuria
-rashbehari_gariahat,Rashbehari More,Gariahat More,Along Rashbehari Avenue
-tollygunge_jadavpur,Tollygunge Phari,Jadavpur 8B Bus Stand,Via Prince Anwar Shah Road
-behala_tollygunge,Behala Chowrasta,Tollygunge Phari,Via Diamond Harbour Road and Taratala
-jadavpur_garia,Jadavpur 8B Bus Stand,Garia More,Along Raja SC Mullick Road
-ultadanga_karunamoyee,Ultadanga,Karunamoyee,Into Salt Lake
-shyambazar_ultadanga,Shyambazar Five Point Crossing,Ultadanga,Along Bidhan Sarani and Khanna
-dumdum_nagerbazar,Dum Dum Station,Nagerbazar,Via Dum Dum Road
-lake_town_ultadanga,Lake Town,Ultadanga,Along VIP Road
-park_circus_ballygunge,Park Circus Seven Point Crossing,Ballygunge Phari,Via Gorachand Road and Syed Amir Ali Avenue
-kalighat_rashbehari,Kalighat Metro Station,Rashbehari More,Along SP Mukherjee Road
-golpark_kasba,Gariahat More,Kasba,Via Gariahat Road and Kasba Road
+id,from,to,note,from_lat,from_lng,to_lat,to_lng
+gariahat_jadavpur,Gariahat More,Jadavpur 8B Bus Stand,Via Gariahat Road South and Dhakuria,22.5187,88.3657,22.4968,88.3713
+rashbehari_gariahat,Rashbehari More,Gariahat More,Along Rashbehari Avenue,22.5176,88.3466,22.5187,88.3657
+tollygunge_jadavpur,Tollygunge Phari,Jadavpur 8B Bus Stand,Via Prince Anwar Shah Road,22.4990,88.3470,22.4968,88.3713
+behala_tollygunge,Behala Chowrasta,Tollygunge Phari,Via Diamond Harbour Road and Taratala,22.4820,88.3120,22.4990,88.3470
+jadavpur_garia,Jadavpur 8B Bus Stand,Garia More,Along Raja SC Mullick Road,22.4968,88.3713,22.4632,88.3794
+ultadanga_karunamoyee,Ultadanga,Karunamoyee,Into Salt Lake,22.5885,88.3888,22.5845,88.4235
+shyambazar_ultadanga,Shyambazar Five Point Crossing,Ultadanga,Along Bidhan Sarani and Khanna,22.6006,88.3722,22.5885,88.3888
+dumdum_nagerbazar,Dum Dum Station,Nagerbazar,Via Dum Dum Road,22.6215,88.3915,22.6236,88.4126
+lake_town_ultadanga,Lake Town,Ultadanga,Along VIP Road,22.6045,88.4030,22.5885,88.3888
+park_circus_ballygunge,Park Circus Seven Point Crossing,Ballygunge Phari,Via Gorachand Road and Syed Amir Ali Avenue,22.5409,88.3672,22.5292,88.3655
+kalighat_rashbehari,Kalighat Metro Station,Rashbehari More,Along SP Mukherjee Road,22.5175,88.3462,22.5176,88.3466
+golpark_kasba,Gariahat More,Kasba,Via Gariahat Road and Kasba Road,22.5187,88.3657,22.5140,88.3890

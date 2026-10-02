@@ -85,7 +85,7 @@ CURATED_ITINERARIES = [
         "name_bn": "দক্ষিণের হেভিওয়েট",
         "blurb_bn": "চেতলা, ত্রিধারা, ৬৬ পল্লী, ম্যাডক্স, তারপর একডালিয়া আর সিংহী পার্ক। পথে ফুচকা।",
         "name": "South Heavyweights",
-        "zones": ["south_lakemarket", "south_gariahat"],
+        "zones": ["south_lakemarket", "bhowanipore", "south_gariahat"],
         "min_popularity": 4,
         "start": "kalighat",
         "suggested_day": "navami",

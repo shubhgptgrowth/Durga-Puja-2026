@@ -23,9 +23,9 @@ ballygunge_cultural,Ballygunge Cultural Association,বালিগঞ্জ ক
 hindustan_park,Hindustan Park Sarbojanin,হিন্দুস্থান পার্ক সার্বজনীন,south_gariahat,22.5155,88.3606,curated,art|theme,4,3,afternoon,15,,"An art-college aesthetic, with fewer crowds than its neighbours.",false
 jodhpur_park,Jodhpur Park,যোধপুর পার্ক,south_gariahat,22.5085,88.3670,curated,theme|grand,4,4,evening,20,,Big theme pandal in a residential para.,false
 babubagan,Babubagan Sarbojanin,বাবুবাগান সার্বজনীন,south_gariahat,22.5087,88.3734,curated,traditional,3,3,afternoon,15,,Neighbourhood puja between Dhakuria and Selimpur.,false
-bosepukur_sitala,Bosepukur Sitala Mandir,বোসপুকুর শীতলা মন্দির,south_gariahat,22.519163,88.384741,osm,theme|art,4,4,evening,20,,Famous for intricate material-based pandals.,false
-bosepukur_talbagan,Bosepukur Talbagan,বোসপুকুর তালবাগান,south_gariahat,22.5146,88.3912,curated,theme|art,4,4,evening,20,,Bosepukur's other award-winning theme puja.,false
-maddox_square,Maddox Square,ম্যাডক্স স্কোয়ার,south_lakemarket,22.526296,88.354656,osm,traditional|adda,5,4,night,30,,Kolkata's favourite adda ground. A traditional idol and the city's best people-watching.,false
+bosepukur_sitala,Bosepukur Sitala Mandir,বোসপুকুর শীতলা মন্দির,kasba,22.519163,88.384741,osm,theme|art,4,4,evening,20,,Famous for intricate material-based pandals.,false
+bosepukur_talbagan,Bosepukur Talbagan,বোসপুকুর তালবাগান,kasba,22.5146,88.3912,curated,theme|art,4,4,evening,20,,Bosepukur's other award-winning theme puja.,false
+maddox_square,Maddox Square,ম্যাডক্স স্কোয়ার,bhowanipore,22.526296,88.354656,osm,traditional|adda,5,4,night,30,,Kolkata's favourite adda ground. A traditional idol and the city's best people-watching.,false
 samaj_sebi,Samaj Sebi Sangha,সমাজসেবী সংঘ,south_lakemarket,22.514736,88.355999,osm,traditional|art,4,4,afternoon,20,1945,An elegant puja on Lake View Road with a long cultural legacy.,false
 shib_mandir,Shib Mandir Sarbojanin,শিবমন্দির সার্বজনীন,south_lakemarket,22.5196,88.3546,curated,theme,3,3,afternoon,15,,A compact theme puja near Lake Market.,false
 deshapriya_park,Deshapriya Park,দেশপ্রিয় পার্ক,south_lakemarket,22.518435,88.353515,osm,traditional|grand,4,4,evening,20,1938,"Once famous for the biggest Durga idol in the world, it now runs grand themes.",false
@@ -47,8 +47,51 @@ lake_town_adhibasi,Lake Town Adhibasi Brinda,লেক টাউন অধিব
 dumdum_bharat_chakra,Dum Dum Park Bharat Chakra,দমদম পার্ক ভারতচক্র,lake_town_dumdum,22.6185,88.4140,curated,theme|art,4,4,evening,20,,"Part of the Dum Dum Park theme row, known for art installations.",false
 dumdum_tarun_sangha,Dum Dum Park Tarun Sangha,দমদম পার্ক তরুণ সংঘ,lake_town_dumdum,22.6168,88.4118,curated,theme|art,4,4,evening,20,,Theme heavyweight on the Dum Dum Park strip.,false
 dumdum_sarbojanin,Dum Dum Park Sarbojanin,দমদম পার্ক সার্বজনীন,lake_town_dumdum,22.6155,88.4152,curated,traditional,3,3,afternoon,15,,The traditional stop on the Dum Dum Park strip.,false
-bhowanipore_75pally,Bhowanipore 75 Pally,ভবানীপুর ৭৫ পল্লী,south_lakemarket,22.532596,88.345442,osm,theme|art,4,4,evening,20,,A Bhowanipore theme puja a short walk from the Jatin Das Park metro.,false
+bhowanipore_75pally,Bhowanipore 75 Pally,ভবানীপুর ৭৫ পল্লী,bhowanipore,22.532596,88.345442,osm,theme|art,4,4,evening,20,,A Bhowanipore theme puja a short walk from the Jatin Das Park metro.,false
 telengabagan,Telengabagan Sarbojanin,তেলেঙ্গাবাগান সার্বজনীন,north,22.6038,88.3878,curated,theme|art,4,4,evening,20,,Award-winning theme work off the Belgachia–Ultadanga stretch.,false
 lalabagan_nabankur,Lalabagan Nabankur,লালাবাগান নবাঙ্কুর,north,22.6048,88.3768,curated,theme,3,3,afternoon,15,,A compact theme puja that fits well between Tala Prattoy and Shyambazar.,false
-rajdanga_naba_uday,Rajdanga Naba Uday Sangha,রাজডাঙ্গা নব উদয় সংঘ,south_gariahat,22.5110,88.3936,curated,theme|art,4,4,evening,20,,"Kasba's third theme heavyweight, right next to the two Bosepukur pujas.",false
+rajdanga_naba_uday,Rajdanga Naba Uday Sangha,রাজডাঙ্গা নব উদয় সংঘ,kasba,22.5110,88.3936,curated,theme|art,4,4,evening,20,,"Kasba's third theme heavyweight, right next to the two Bosepukur pujas.",false
 ajeya_sanghati,Behala Ajeya Sanghati,অজেয় সংহতি,southwest,22.4888,88.3098,curated,theme,4,4,evening,20,,A popular Behala theme puja near Barisha.,false
+chorbagan,Chorbagan Sarbojanin,চোরবাগান সার্বজনীন,central,22.583511,88.363163,osm,theme,4,3,evening,20,,A well-known theme puja in College St. Location from OpenStreetMap.,false
+beleghata_33_pally,Beleghata 33 Pally,বেলেঘাটা ৩৩ পল্লী,beleghata,22.568570,88.391247,osm-approx,neighbourhood,3,2,evening,15,,A well-known puja in Beleghata. Location from OpenStreetMap.,false
+chakraberia,Chakraberia Sarbojanin,চক্রবেড়িয়া সার্বজনীন,bhowanipore,22.533573,88.352198,osm,neighbourhood,3,2,evening,15,,A well-known puja in Bhowanipore. Location from OpenStreetMap.,false
+bakulbagan,Bakulbagan Sarbojanin,বকুলবাগান সার্বজনীন,bhowanipore,22.526819,88.347954,osm,theme,4,3,evening,20,,A well-known theme puja in Bhowanipore. Location from OpenStreetMap.,false
+kalighat_milan_sangha,Kalighat Milan Sangha,কালীঘাট মিলন সংঘ,bhowanipore,22.524509,88.341076,osm,neighbourhood,3,2,evening,15,,A well-known puja in Bhowanipore. Location from OpenStreetMap.,false
+hindustan_club,Hindustan Club,হিন্দুস্থান ক্লাব,south_gariahat,22.519509,88.360593,osm,theme,4,3,evening,20,,A well-known theme puja in Gariahat. Location from OpenStreetMap.,false
+santoshpur_lake_pally,Santoshpur Lake Pally,সন্তোষপুর লেক পল্লী,jadavpur_santoshpur,22.491427,88.383691,osm-approx,theme,4,3,evening,20,,A well-known theme puja in Santoshpur. Location from OpenStreetMap.,false
+naktala_udayan,Naktala Udayan Sangha,নাকতলা উদয়ন সংঘ,tolly_naktala,22.474491,88.366575,osm,theme,5,5,early_morning,20,,A well-known theme puja in Naktala. Location from OpenStreetMap.,false
+behala_club,Behala Club,বেহালা ক্লাব,southwest,22.505368,88.314285,osm,neighbourhood,3,2,evening,15,,A well-known puja in Behala. Location from OpenStreetMap.,false
+salt_lake_ck,CK Block Salt Lake,সিকে ব্লক সল্টলেক,salt_lake,22.585925,88.426757,osm-approx,neighbourhood,3,2,evening,15,,A well-known puja in Salt Lake. Location from OpenStreetMap.,false
+salt_lake_ee,EE Block Salt Lake,ইই ব্লক সল্টলেক,salt_lake,22.580125,88.423660,osm-approx,neighbourhood,3,2,evening,15,,A well-known puja in Salt Lake. Location from OpenStreetMap.,false
+salt_lake_ia,IA Block Salt Lake,আইএ ব্লক সল্টলেক,salt_lake,22.572882,88.410768,osm-approx,neighbourhood,3,2,evening,15,,A well-known puja in Salt Lake. Location from OpenStreetMap.,false
+gariahat_sarbojanin_durgotsab,Gariahat Sarbojanin Durgotsab,,south_gariahat,22.517351,88.366752,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Gariahat, listed on OpenStreetMap.",false
+gouribari_sarbojanin,Gouribari Sarbojanin,,north,22.594579,88.379144,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bagbazar–Hatibagan, listed on OpenStreetMap.",false
+taltala_sarbojanin,Taltala Sarbojanin,,central,22.554545,88.362175,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in College St, listed on OpenStreetMap.",false
+adi_sammilati_sarbojanin,Adi Sammilati Sarbojanin,,bhowanipore,22.546751,88.369107,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+hazra_park_durgotsab,Hazra Park Durgotsab,,bhowanipore,22.524838,88.346141,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+bhowanipore_durgotsab,Bhowanipore Durgotsab,,bhowanipore,22.526289,88.351521,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+adi_ballygunge_sarbojanin,Adi Ballygunge Sarbojanin,,south_gariahat,22.531728,88.372075,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Gariahat, listed on OpenStreetMap.",false
+64_pally_durga_pujo,64 Pally Durga Pujo,,south_lakemarket,22.520603,88.347451,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Lake Market, listed on OpenStreetMap.",false
+rupchand_mukherjee_sarbojanin,Rupchand Mukherjee Sarbojanin,,bhowanipore,22.527449,88.345151,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+sanghati_puja_samiti,Sanghati Puja Samiti,,south_gariahat,22.502811,88.359434,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Gariahat, listed on OpenStreetMap.",false
+golmath_durga_puja_samiti,Golmath Durga Puja Samiti,,bhowanipore,22.526931,88.349544,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+alipore_sarbojanin,Alipore Sarbojanin,,south_lakemarket,22.519627,88.333657,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Lake Market, listed on OpenStreetMap.",false
+r_k_chatterjee_sarbojanin,R K Chatterjee Sarbojanin,,south_gariahat,22.517684,88.378263,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Gariahat, listed on OpenStreetMap.",false
+purbachal_sarbojanin,Purbachal Sarbojanin,,kasba,22.506087,88.398530,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Kasba, listed on OpenStreetMap.",false
+madhya_garfa_sarbojanin,Madhya Garfa Sarbojanin,,jadavpur_santoshpur,22.502581,88.385356,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Santoshpur, listed on OpenStreetMap.",false
+dhakuria_sarbojanin,Dhakuria Sarbojanin,,south_gariahat,22.510028,88.371987,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Gariahat, listed on OpenStreetMap.",false
+shahidnagar_sarbojanin,Shahidnagar Sarbojanin,,jadavpur_santoshpur,22.504606,88.373340,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Santoshpur, listed on OpenStreetMap.",false
+mukundapur_sarbojanin,Mukundapur Sarbojanin,,jadavpur_santoshpur,22.491794,88.404764,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Santoshpur, listed on OpenStreetMap.",false
+poddar_nagar_sarbojanin,Poddar Nagar Sarbojanin,,jadavpur_santoshpur,22.498238,88.369253,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Santoshpur, listed on OpenStreetMap.",false
+pallishree_sarbojanin,Pallishree Sarbojanin,,tolly_naktala,22.485342,88.365390,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Naktala, listed on OpenStreetMap.",false
+rabindra_pally_sarbojanin,Rabindra Pally Sarbojanin,,jadavpur_santoshpur,22.482534,88.382409,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Santoshpur, listed on OpenStreetMap.",false
+patyuli_sarbojanin,Patyuli Sarbojanin,,tolly_naktala,22.472309,88.381175,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Naktala, listed on OpenStreetMap.",false
+sahapur_sarbojanin,Sahapur Sarbojanin,,south_lakemarket,22.511630,88.328018,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Lake Market, listed on OpenStreetMap.",false
+naskarpur_sarbojanin,Naskarpur Sarbojanin,,southwest,22.507105,88.312287,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Behala, listed on OpenStreetMap.",false
+bakultala_sarbojanin,Bakultala Sarbojanin,,southwest,22.484073,88.299267,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Behala, listed on OpenStreetMap.",false
+notunpara_sarbojanin,Notunpara Sarbojanin,,southwest,22.484426,88.306742,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Behala, listed on OpenStreetMap.",false
+bhola_maheshwartala_sarbojanin,Bhola Maheshwartala Sarbojanin,,southwest,22.480845,88.308844,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Behala, listed on OpenStreetMap.",false
+kidderpore_sarbojanin,Kidderpore Sarbojanin,,bhowanipore,22.538423,88.324918,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Bhowanipore, listed on OpenStreetMap.",false
+durga_pujo_ground,Durga Pujo Ground,,salt_lake,22.584193,88.404134,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Salt Lake, listed on OpenStreetMap.",false
+kashipur_durga_utshab_committee,Kashipur durga utshab committee,,howrah,22.605757,88.310231,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Howrah, listed on OpenStreetMap.",false
+bansdroni_sarbojaneen_durgotsav_park,Bansdroni Sarbojaneen Durgotsav Park,,tolly_naktala,22.474364,88.358132,osm-discovered,neighbourhood,2,2,evening,15,,"A neighbourhood puja in Naktala, listed on OpenStreetMap.",false

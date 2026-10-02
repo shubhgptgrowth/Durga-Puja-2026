@@ -3,9 +3,9 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v3';
+const VERSION = 'pp-2026-v4';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
-  'community.js', 'media.js', 'actions.js', 'sheets.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
+  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
   'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 800, MEDIA_CACHE = 'pp-media', MEDIA_MAX = 400;

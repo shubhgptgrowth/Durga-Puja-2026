@@ -6,6 +6,7 @@ import {
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { openPlace, crowdPill, statsHtml, dirUrl } from '../sheets.js';
 import { visitedToday } from '../actions.js';
+import { areaChipsHtml, handleAreaClick, inArea, areasOf, bboxOf } from '../filters.js';
 
 let map = null, layers = {}, meMarker = null;
 const LINE = { blue: '#2563EB', green: '#16A34A', purple: '#9333EA', orange: '#EA580C', suburban: '#57534E' };
@@ -39,14 +40,13 @@ function syncLayers() {
 let lastFit = '';
 function fitZone() {
   if (!map) return;
-  const key = S.explore.zone;
+  const key = S.explore.region + '/' + S.explore.area;
   if (key === lastFit) return; lastFit = key;
-  if (key === 'all') map.setView([22.555, 88.37], 12);
-  else map.fitBounds(zoneOf(key).bbox, { padding: [30, 30], maxZoom: 16 });
+  const bb = bboxOf(S.explore);
+  if (!bb) map.setView([22.56, 88.37], 12);
+  else map.fitBounds(bb, { padding: [30, 30], maxZoom: 16 });
 }
 
-const zoneChips = (sel) => [`<button class="chip" data-z="all" aria-pressed="${sel === 'all'}">${t('zones.all')}</button>`,
-  ...G.data.zones.map((z) => `<button class="chip" data-z="${z.id}" aria-pressed="${sel === z.id}"><span class="dot" style="background:${z.color}"></span>${esc(zs(z))}</button>`)].join('');
 
 function pandalItem(p) {
   const z = zoneOf(p.zone), c = crowdNow(p);
@@ -74,12 +74,12 @@ function render() {
   const segs = [['pandals', 'star', t('seg.pandals')], ['food', 'food', t('seg.food')], ['parking', 'car', t('seg.parking')]];
   let body = '';
   if (e.seg === 'pandals') {
-    const list = G.data.pandals.filter((p) => e.zone === 'all' || p.zone === e.zone);
+    const list = G.data.pandals.filter((p) => inArea(e, p.zone));
     if (e.sort === 'popular') list.sort((a, b) => b.popularity - a.popularity || crowdNow(a) - crowdNow(b));
     if (e.sort === 'quiet') list.sort((a, b) => crowdNow(a) - crowdNow(b) || b.popularity - a.popularity);
     if (e.sort === 'near' && S.me) list.sort((a, b) => hav(S.me, ll(a)) - hav(S.me, ll(b)));
     if (e.sort === 'live') list.sort((a, b) => (community.statFor(b.id)?.last_hour || 0) - (community.statFor(a.id)?.last_hour || 0) || b.popularity - a.popularity);
-    const z = e.zone !== 'all' ? zoneOf(e.zone) : null;
+    const z = e.area !== 'all' ? zoneOf(e.area) : null;
     body = `${z ? `<div class="notice ${z.car_advisory}"><b>${esc(zn(z))}</b><span>${esc(z.vibe)}</span><span>${t('car.' + z.car_advisory)} · ${esc(z.walk_tip)}</span></div>` : ''}
       <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}, ${esc(dn(idx.day[S.day]))}</strong></div>
       <div class="toolbar"><span>${t('list.count', { n: list.length })}</span>
@@ -89,7 +89,7 @@ function render() {
       <ul class="list">${list.map(pandalItem).join('')}</ul>`;
   } else if (e.seg === 'food') {
     const F = e.food;
-    const list = G.data.food.filter((f) => (e.zone === 'all' || f.zone === e.zone)
+    const list = G.data.food.filter((f) => inArea(e, f.zone)
       && (!F.has('veg') || f.veg === 'veg') && (!F.has('cheap') || f.price === 1)
       && (!F.has('sweets') || f.type === 'sweets' || f.type === 'drinks') && (!F.has('street') || f.type === 'street')
       && (!F.has('open') || isOpen(f.hours)));
@@ -98,9 +98,10 @@ function render() {
       <ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
   } else {
     const car = S.car;
-    const zl = e.zone === 'all' ? G.data.zones : [zoneOf(e.zone)];
-    const plist = G.data.parking.filter((p) => e.zone === 'all' || p.zone === e.zone);
-    const near = e.zone === 'all' ? G.data.transit : G.data.transit.filter((s) => zoneOf(e.zone).pandal_ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
+    const zl = areasOf(e).map(zoneOf);
+    const plist = G.data.parking.filter((p) => inArea(e, p.zone) || (idx.zone[p.zone] == null && e.region === 'all'));
+    const ids = zl.flatMap((z) => z.pandal_ids);
+    const near = e.region === 'all' ? G.data.transit : G.data.transit.filter((s) => ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
     body = `<div class="pad" style="margin-bottom:10px">${car
       ? `<div class="card"><b>${t('car.yours')}</b><p class="fine" style="margin:2px 0 8px">${t('car.saved', { when: new Date(car.ts).toLocaleString(S.prefs.lang === 'bn' ? 'bn-IN' : 'en-IN', { weekday: 'short', hour: 'numeric', minute: '2-digit' }) })}${S.me ? ` · ${dist(hav(S.me, [car.lat, car.lng]))}` : ''}</p>
          <div class="btn-row"><a class="btn sm primary" target="_blank" rel="noopener" href="${dirUrl([car.lat, car.lng])}">${t('car.walkBack')}</a><button class="btn sm" id="carClear">${t('car.clear')}</button></div></div>`
@@ -115,14 +116,14 @@ function render() {
       <p class="fine pad" style="margin-top:12px">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
   }
   panel.innerHTML = `<div class="seg" role="tablist">${segs.map(([k, ic, label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}">${icon(ic, 'sm')} ${label}</button>`).join('')}</div>
-    <div class="chips" id="exploreZones">${zoneChips(e.zone)}</div>${body}`;
+    <div id="exploreZones">${areaChipsHtml(e)}</div>${body}`;
   wire(panel);
 }
 
 function wire(panel) {
   panel.onclick = (ev) => {
     const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; return render(); }
-    const z = ev.target.closest('[data-z]')?.dataset.z; if (z) { S.explore.zone = z; return render(); }
+    if (handleAreaClick(ev, S.explore)) return render();
     const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); return render(); }
     const place = ev.target.closest('[data-place]')?.dataset.place; if (place) return openPlace(place);
     if (ev.target.closest('#carClear')) { S.car = null; store.set('car', null); return render(); }

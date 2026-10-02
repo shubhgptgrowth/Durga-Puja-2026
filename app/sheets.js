@@ -75,6 +75,41 @@ function wireVisit(el, id, reopen) {
   };
 }
 
+/* ---------------- photos (Wikimedia Commons, curated) ---------------- */
+const transitUrl = (dest) => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=transit`;
+function galleryHtml(photos) {
+  if (!photos?.length) return '';
+  return `<div class="gallery" role="list">${photos.map((ph, i) => `<button class="gal" role="listitem" data-photo="${i}" aria-label="${esc(ph.title)}">
+    <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${esc(ph.src)}" alt="${esc(ph.title)}">
+    ${ph.year ? `<span class="yr">${ph.year}</span>` : ''}</button>`).join('')}</div>
+    <p class="fine credit">${t('ph.credit')}</p>`;
+}
+export function photoSheet(ph, back) {
+  openSheet(`<div class="moment-view"><img referrerpolicy="no-referrer" src="${esc(ph.src)}" alt="${esc(ph.title)}"></div>
+    <p class="lead" style="margin-top:10px">${esc(ph.title)}${ph.year ? ` · ${ph.year}` : ''}</p>
+    <p class="fine">${t('ph.by', { author: esc(ph.author), license: esc(ph.license) })} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${t('ph.source')}</a></p>
+    <div class="btn-row" style="margin-top:12px"><button class="btn" id="phBack">${icon('chev', 'sm')} ${t('ph.back')}</button></div>`,
+  (el) => { $('#phBack', el).onclick = back; });
+}
+function wireGallery(el, photos, back) {
+  el.querySelectorAll('[data-photo]').forEach((b) => (b.onclick = () => photoSheet(photos[+b.dataset.photo], back)));
+}
+
+/* ---------------- getting there: metro, bus, auto, parking ---------------- */
+function gettingThereHtml(p, parks = []) {
+  const bus = (p.bus || []).map((b) => `<li><span>${icon('route', 'sm')} <b>${esc(b.stop)}</b><br><small>${t('tr.buses')}: ${esc(b.routes.join(', '))}</small></span><small>${t('p.walkMin', { n: b.walk_min })}</small></li>`).join('');
+  const auto = (p.auto || []).map((a) => `<li><span>🛺 <b>${esc(a.route)}</b>${a.via ? `<br><small>${esc(a.via)}</small>` : ''}</span><small>${a.src === 'curated' ? t('tr.common') : t('tr.osm')}</small></li>`).join('');
+  const stands = (p.auto_stands || []).map((s) => `<li><span>🛺 ${esc(s.name)}</span><small>${s.distance_m} m</small></li>`).join('');
+  return `<h3 class="sh">${t('p.getThere')}</h3>
+    <ul class="mini-list">
+      <li><span>${icon('metro', 'sm')} <span class="line-${p.nearest_metro.line}">●</span> ${esc(p.nearest_metro.name)}</span><small>${t('p.walkMin', { n: p.nearest_metro.walk_min })}</small></li>
+      ${bus}${auto}${stands}
+      ${parks.map((x) => `<li data-park="${x.id}" ${btn()}><span>${icon('car', 'sm')} ${esc(x.name)}</span><small>${km(x.distance_m)} km</small></li>`).join('')}
+    </ul>
+    ${auto ? `<p class="fine" style="margin-top:6px">${t('tr.autoNote')}</p>` : ''}
+    <div class="btn-row" style="margin-top:10px"><a class="btn sm" target="_blank" rel="noopener" href="${transitUrl(ll(p))}">${icon('route', 'sm')} ${t('tr.transitDir')}</a></div>`;
+}
+
 /* ---------------- pandal ---------------- */
 export function pandalSheet(id) {
   const p = idx.pandal[id], z = zoneOf(p.zone), df = dayFactor();
@@ -88,6 +123,7 @@ export function pandalSheet(id) {
     <h2 class="title">${esc(nm(p))}</h2>
     <div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>
     <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span></div>
+    ${galleryHtml(p.photos)}
     ${statsHtml(id)}
     <div class="btn-row" style="margin-top:12px">
       ${visitButton(id)}
@@ -101,11 +137,7 @@ export function pandalSheet(id) {
     <div class="hours-axis" aria-hidden="true"><span>12a</span><span>6a</span><span>12p</span><span>6p</span><span>11p</span></div>
     <p class="small muted" style="margin:6px 0 0">${t('p.quietest')}: <b>${p.quiet_hours[S.day].map(ampm).join(', ')}</b> · ${t('p.inside', { n: p.visit_min })}</p>
 
-    <h3 class="sh">${t('p.getThere')}</h3>
-    <ul class="mini-list">
-      <li data-act="metro"><span>${icon('metro', 'sm')} <span class="line-${p.nearest_metro.line}">●</span> ${esc(p.nearest_metro.name)}</span><small>${t('p.walkMin', { n: p.nearest_metro.walk_min })}</small></li>
-      ${parks.map((x) => `<li data-park="${x.id}" ${btn()}><span>${icon('car', 'sm')} ${esc(x.name)}</span><small>${km(x.distance_m)} km</small></li>`).join('')}
-    </ul>
+    ${gettingThereHtml(p, parks)}
     ${z.car_advisory !== 'ok' ? `<p class="fine" style="margin-top:6px">${esc(z.walk_tip)}</p>` : ''}
 
     <h3 class="sh">${t('p.eat')}</h3>
@@ -115,6 +147,7 @@ export function pandalSheet(id) {
     <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>`,
   (el) => {
     wireVisit(el, id, () => pandalSheet(id));
+    wireGallery(el, p.photos || [], () => pandalSheet(id));
     el.querySelectorAll('[data-food]').forEach((li) => (li.onclick = () => foodSheet(li.dataset.food)));
     el.querySelectorAll('[data-park]').forEach((li) => (li.onclick = () => parkSheet(li.dataset.park)));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
@@ -130,6 +163,7 @@ export function foodSheet(id) {
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
     <h2 class="title">${esc(f.name)}</h2>
     <div class="btn-row" style="margin-top:8px"><span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span><span class="pill">${'₹'.repeat(f.price)}</span><span class="pill">${t('diet.' + f.veg)}</span></div>
+    ${galleryHtml(f.photos)}
     ${statsHtml(id)}
     <div class="btn-row" style="margin-top:12px">
       ${visitButton(id)}
@@ -138,17 +172,30 @@ export function foodSheet(id) {
     <div id="verifyBox" class="verify"></div>
     <p class="lead">${esc(f.note)}</p>
     <h3 class="sh">${t('food.mustTry')}</h3>
-    <div class="btn-row">${f.dishes.map((d) => `<span class="pill">${esc(d)}</span>`).join('')}</div>
+    ${dishesHtml(f)}
     <h3 class="sh">${t('food.walkable')}</h3>
     <ul class="mini-list">${f.near_pandals.map((pid) => `<li data-p="${pid}" ${btn()}><b>${esc(nm(idx.pandal[pid]))}</b><small>${dist(hav(ll(f), ll(idx.pandal[pid])))}</small></li>`).join('') || `<li>${t('food.noneNear')}</li>`}</ul>
+    ${gettingThereHtml(f)}
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
   (el) => {
     wireVisit(el, id, () => foodSheet(id));
+    wireGallery(el, f.photos || [], () => foodSheet(id));
+    const dp = G.data.dish_photos || {};
+    el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));
     el.querySelectorAll('[data-p]').forEach((li) => (li.onclick = () => pandalSheet(li.dataset.p)));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
     placeMoments(el, id);
   });
+}
+
+function dishesHtml(f) {
+  const dp = G.data.dish_photos || {};
+  if (!f.dishes.some((d) => dp[d])) return `<div class="btn-row">${f.dishes.map((d) => `<span class="pill">${esc(d)}</span>`).join('')}</div>`;
+  return `<div class="gallery dishes">${f.dishes.map((d) => dp[d]
+    ? `<button class="gal dish" data-dish="${esc(d)}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(dp[d].src)}" alt="${esc(d)}"><span class="dn">${esc(d)}</span></button>`
+    : `<div class="gal dish none"><span class="dn">${esc(d)}</span></div>`).join('')}</div>
+    <p class="fine credit">${t('ph.dishNote')}</p>`;
 }
 
 /* ---------------- parking ---------------- */

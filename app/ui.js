@@ -67,9 +67,9 @@ export function setupA11y() {
 
 /* ---------------- maps ---------------- */
 const isDark = () => document.documentElement.dataset.theme === 'dark' || (document.documentElement.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
-export function makeMap(el, { center = [22.555, 88.37], zoom = 12 } = {}) {
+export function makeMap(el, { center = [22.555, 88.37], zoom = 12, animate = true } = {}) {
   if (!window.L) { el.innerHTML = `<p class="empty">${t('map.offline')}</p>`; return null; }
-  const m = L.map(el, { zoomControl: false, attributionControl: true }).setView(center, zoom);
+  const m = L.map(el, { zoomControl: false, attributionControl: true, zoomAnimation: animate, fadeAnimation: animate, markerZoomAnimation: animate }).setView(center, zoom);
   if (!S.prefs.lowData) {
     const c = CONFIG.map;
     L.tileLayer(isDark() ? c.dark : c.light, { maxZoom: c.maxZoom, subdomains: c.subdomains, detectRetina: true, attribution: c.attribution }).addTo(m);

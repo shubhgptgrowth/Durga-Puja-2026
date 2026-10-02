@@ -34,13 +34,15 @@ make the same mistakes:
 
 ## 3. Goals for v1 (in scope)
 
-1. **Zones.** The city is split into walkable zones (North, Central, South,
-   Behala, Salt Lake & Lake Town, Dum Dum). Each zone is a set of pandals you
-   can do on foot in a single outing.
+1. **Regions and areas.** The city is split into five regions (North,
+   Central, South, East, Howrah). Each region holds walkable areas, for
+   example Gariahat under South and Lake Town & Dum Dum under North. Each area
+   is a set of pandals you can do on foot in a single outing. Filters work on
+   both levels.
 2. **Pandal directory.** Name, zone, theme tags, how famous it is, the best
    time to visit, how crowded it usually gets, the nearest metro, the nearest
    parking, and the food nearby.
-3. **Route planner.** Pick zones, a start point (a metro station or your GPS),
+3. **Route planner.** Pick areas, a start point (your GPS, or any station, pandal or car park),
    a time budget and a pace. The planner builds an ordered walking route
    (nearest-neighbour plus 2-opt), estimates time, distance, steps and
    calories, and opens it in Google Maps with all the waypoints.
@@ -101,8 +103,9 @@ Why it's built this way:
 
 | Entity | Key fields |
 |---|---|
-| `zone` | id, name, centroid, color, vibe, car_advisory, best_metro |
-| `pandal` | id, name, zone, lat/lng, tags, popularity (1–5), crowd_base (1–5), best_slot, est_visit_min, est_year |
+| `region` | id, name, color, zone_ids |
+| `zone` (area) | id, region, name, centroid, color, vibe, car_advisory, best_metro |
+| `pandal` | id, name, zone, lat/lng, tags, popularity (1–5), crowd_base (1–5), best_slot, est_visit_min, est_year, photos, bus, auto, auto_stands |
 | `food` | id, name, lat/lng, dishes, type (sweets/street/restaurant), veg, price (₹–₹₹₹), hours |
 | `parking` | id, name, lat/lng, kind (mall/multilevel/street/park-ride), capacity, rate_hint |
 | `transit` | id, name, line, lat/lng |
