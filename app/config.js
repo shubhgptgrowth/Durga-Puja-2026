@@ -7,7 +7,7 @@
 export const CONFIG = {
   community: {
     url: 'https://wmvzakyqnwfekyhjkprp.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtdnpha3lxbndmZWt5aGprcHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA5MjY2NjcsImV4cCI6MjEwNjUwMjY2N30.Y-ipJgHiPYhpKvi91q1Im028HsHPQKpi-DJaYhrULRA',  // public by design; RLS + RPCs enforce the rules
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtdnpha3lxbndmZWt5aGprcHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA5MjY2NjcsImV4cCI6MjEwNjUwMjY2N30.Y-ipJgHiPYhpKvi91q1Im028HsHPQKpi-DJaYhrULRA',  // public by design; RLS + RPCs enforce the rules  // public by design; RLS + RPCs enforce the rules
     bucket: 'moments',
     statsRefreshSec: 90,
     maxVideoSec: 30,
