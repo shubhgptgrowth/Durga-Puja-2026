@@ -1,0 +1,35 @@
+name: discover
+
+# Pulls open data (OpenStreetMap, Wikimedia Commons) into data/discovered/*.json and commits it.
+# Nothing reaches the app until `python -m pipeline` merges it under the review rules.
+on:
+  workflow_dispatch:
+    inputs:
+      what:
+        description: "pandals, transit, photos (comma-separated)"
+        default: "pandals,transit,photos"
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Discover
+        run: |
+          for w in $(echo "${{ inputs.what }}" | tr ',' ' '); do
+            echo "::group::$w"; python -m pipeline.discover "$w"; echo "::endgroup::"
+          done
+      - name: Commit results
+        run: |
+          git add data/discovered
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Discovered data: ${{ inputs.what }}"
+          git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}
