@@ -30,7 +30,7 @@ export function toast(msg, ms = 2800) {
 }
 
 /* ---------------- bottom sheet ---------------- */
-let opener = null, onCloseCb = null;
+let opener = null, onCloseCb = null, openTok = 0;
 export function setupSheet() {
   $('#sheetClose').onclick = closeSheet; $('#sheetBackdrop').onclick = closeSheet;
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
@@ -40,22 +40,22 @@ export function setupSheet() {
 }
 export function openSheet(html, onMount, onClose) {
   const s = $('#sheet');
-  if (!s.classList.contains('open')) opener = document.activeElement;
+  if (!sheetIsOpen()) opener = document.activeElement;
   onCloseCb?.(); onCloseCb = onClose || null;
   $('#sheetBody').innerHTML = html; $('#sheetBackdrop').hidden = false;
   s.scrollTop = 0; s.setAttribute('aria-hidden', 'false');
-  requestAnimationFrame(() => s.classList.add('open')); s.focus({ preventScroll: true });
+  const tok = ++openTok; requestAnimationFrame(() => { if (tok === openTok) s.classList.add('open'); }); s.focus({ preventScroll: true });
   onMount?.($('#sheetBody'));
 }
 export function closeSheet() {
   const s = $('#sheet');
-  if (!s.classList.contains('open')) return;
-  s.classList.remove('open'); s.setAttribute('aria-hidden', 'true'); $('#sheetBackdrop').hidden = true;
+  if (!sheetIsOpen()) return;
+  openTok++; s.classList.remove('open'); s.setAttribute('aria-hidden', 'true'); $('#sheetBackdrop').hidden = true;
   onCloseCb?.(); onCloseCb = null;
   $$('video', s).forEach((v) => v.pause());
   opener?.focus?.({ preventScroll: true }); opener = null;
 }
-export const sheetIsOpen = () => $('#sheet').classList.contains('open');
+export const sheetIsOpen = () => $('#sheet').getAttribute('aria-hidden') === 'false';
 
 /* Make role=button elements keyboard-operable. */
 export function setupA11y() {
