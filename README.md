@@ -103,9 +103,15 @@ production traffic, use your own tile key or provider.
 
 ## Deploy
 
-`app/` is a fully static site. Any static host works: GitHub Pages
-(Settings → Pages → deploy from branch, folder `/app`, or copy it to `/docs`),
-Netlify or Cloudflare Pages.
+**Current (free):** GitHub Pages at https://shubhgptgrowth.github.io/Durga-Puja-2026/.
+`.github/workflows/deploy.yml` publishes `app/` on every push to the default
+branch, after the tests and data validation pass. Pushes to other branches are
+skipped. If Pages is ever switched off, turn it back on under Settings → Pages →
+Source: **GitHub Actions**.
+
+`app/` is a fully static site with relative paths, so it can move to Netlify,
+Cloudflare Pages or a custom domain later without any code changes. Before the
+production launch, swap the CARTO tile URL in `app/app.js` for a keyed tile provider.
 
 ## Data disclaimer
 
