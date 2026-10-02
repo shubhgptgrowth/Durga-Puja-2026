@@ -28,9 +28,9 @@ jobs:
         run: |
           python -m unittest discover -s tests
           python -m pipeline --check
+      # Pages must be switched on once by a repo admin (Settings → Pages → Source: GitHub Actions).
+      # The workflow token can't create the Pages site itself.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true   # turns Pages on (source: GitHub Actions) if it isn't already
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app
