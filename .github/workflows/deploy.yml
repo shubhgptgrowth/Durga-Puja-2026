@@ -69,3 +69,18 @@ jobs:
           done
           curl -fsS "$SITE" | grep -q '<title>Pujo Parikrama 2026</title>'
           echo "Live: $SITE (data v$expected)"
+      - name: Live site reaches the community backend (read-only)
+        env:
+          SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          cfg=$(curl -fsS "${SITE}config.js?cb=$RANDOM")
+          url=$(echo "$cfg" | sed -n "s/.*url: '\([^']*\)'.*/\1/p" | head -1)
+          key=$(echo "$cfg" | sed -n "s/.*anonKey: '\([^']*\)'.*/\1/p" | head -1)
+          if [ -z "$url" ]; then echo "Community backend not configured; skipping."; exit 0; fi
+          n=$(curl -fsS -H "apikey: $key" "$url/rest/v1/place_stats?select=place_id" | python -c "import json,sys; print(len(json.load(sys.stdin)))")
+          expected=$(python -c "import json; g=json.load(open('app/data/guide.json')); print(len(g['pandals'])+len(g['food']))")
+          echo "place_stats via live config: $n rows (expected $expected)"
+          [ "$n" = "$expected" ] || { echo "::error::Supabase places out of sync with the app. Re-run supabase-setup."; exit 1; }
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS -H "Origin: https://${{ github.repository_owner }}.github.io" \
+            -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: apikey,authorization,content-type" "$url/rest/v1/rpc/record_visit")
+          echo "CORS preflight from the site origin: $code"; [ "${code:0:1}" = 2 ] || exit 1
