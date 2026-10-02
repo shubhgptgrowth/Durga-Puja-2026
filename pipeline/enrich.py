@@ -1,0 +1,73 @@
+"""Stage 3: derive zone geometry, nearest metro/parking/food, and crowd windows."""
+from . import config
+from .geo import centroid, haversine_m, walk_m
+
+
+def crowd_index(crowd_base, day_factor, hour):
+    """Return a 0–100 heuristic crowd level for a pandal at a given day and hour."""
+    return min(100, round(crowd_base / 5 * day_factor * config.HOUR_FACTORS[hour % 24] * 100))
+
+
+def _nearest(point, rows, limit=1, max_m=None):
+    scored = sorted(
+        ((round(haversine_m(point, (r["lat"], r["lng"]))), r) for r in rows),
+        key=lambda t: t[0],
+    )
+    if max_m is not None:
+        scored = [t for t in scored if t[0] <= max_m]
+    return scored[:limit]
+
+
+def _walk_min(m):
+    return round(m * config.DETOUR_FACTOR / (config.WALK_KMH_CROWD * 1000 / 60))
+
+
+def enrich(data):
+    zones = {z["id"]: dict(z) for z in data["zones"]}
+    transit, parking, food = data["transit"], data["parking"], data["food"]
+    pandals = []
+
+    for p in data["pandals"]:
+        pt = (p["lat"], p["lng"])
+        e = dict(p)
+
+        (metro_d, metro), = _nearest(pt, transit)
+        e["nearest_metro"] = {"id": metro["id"], "name": metro["name"], "line": metro["line"],
+                              "distance_m": metro_d, "walk_min": _walk_min(metro_d)}
+
+        e["parking"] = [{"id": r["id"], "distance_m": d, "walk_min": _walk_min(d)}
+                        for d, r in _nearest(pt, parking, limit=2, max_m=config.NEARBY_PARKING_M)]
+        near_food = _nearest(pt, food, limit=4, max_m=config.NEARBY_FOOD_M) or _nearest(pt, food, limit=2, max_m=2000)
+        e["food"] = [{"id": r["id"], "distance_m": d, "walk_min": _walk_min(d)} for d, r in near_food]
+
+        # For each puja day, pick the two hours with the lowest crowd index.
+        e["quiet_hours"] = {}
+        for day in config.PUJA_DAYS:
+            ranked = sorted(range(24), key=lambda h: (crowd_index(p["crowd_base"], day["factor"], h), h))
+            e["quiet_hours"][day["id"]] = ranked[:2]
+        e["peak_crowd"] = crowd_index(p["crowd_base"], 1.1, 20)
+        e["best_slot_label"] = config.SLOTS[p["best_slot"]]["label"]
+        pandals.append(e)
+
+    for zid, z in zones.items():
+        members = [p for p in pandals if p["zone"] == zid]
+        pts = [(p["lat"], p["lng"]) for p in members]
+        c = centroid(pts)
+        z["centroid"] = [round(c[0], 5), round(c[1], 5)]
+        z["bbox"] = [[min(p[0] for p in pts), min(p[1] for p in pts)],
+                     [max(p[0] for p in pts), max(p[1] for p in pts)]]
+        z["pandal_ids"] = [p["id"] for p in members]
+        z["radius_m"] = round(max(haversine_m(c, p) for p in pts))
+        (d, station), = _nearest(c, transit)
+        z["entry_station"] = station["id"]
+        z["parking_ids"] = [r["id"] for r in parking if r["zone"] == zid]
+        z["food_ids"] = [r["id"] for r in food if r["zone"] == zid]
+        z["five_star"] = sum(1 for p in members if p["popularity"] == 5)
+
+    # Reverse links: the pandals each eatery serves.
+    for f in food:
+        f["near_pandals"] = [p["id"] for p in pandals
+                             if walk_m((p["lat"], p["lng"]), (f["lat"], f["lng"])) / config.DETOUR_FACTOR
+                             <= config.NEARBY_FOOD_M]
+
+    return {**data, "zones": list(zones.values()), "pandals": pandals}

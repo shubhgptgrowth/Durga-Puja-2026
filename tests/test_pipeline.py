@@ -1,0 +1,144 @@
+import copy
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from pipeline import config
+from pipeline.__main__ import run
+from pipeline.enrich import crowd_index, enrich
+from pipeline.fitness import kcal_for, steps_for
+from pipeline.geo import haversine_m, order_route, path_length
+from pipeline.ingest import ingest
+from pipeline.plan import plan
+from pipeline.validate import ValidationError, validate
+
+
+class GeoTests(unittest.TestCase):
+    def test_haversine_known_distance(self):
+        # Esplanade → Kalighat metro is roughly 5.4 km in a straight line.
+        d = haversine_m((22.5640, 88.3510), (22.5175, 88.3462))
+        self.assertAlmostEqual(d, 5195, delta=300)
+
+    def test_order_route_beats_input_order(self):
+        start = (0.0, 0.0)
+        stops = [(0.0, 0.03), (0.0, 0.01), (0.0, 0.04), (0.0, 0.02)]
+        order = order_route(start, stops)
+        self.assertEqual(sorted(order), [0, 1, 2, 3])
+        self.assertEqual(order, [1, 3, 0, 2])
+        self.assertLessEqual(path_length([start] + [stops[i] for i in order]),
+                             path_length([start] + stops))
+
+    def test_order_route_trivial(self):
+        self.assertEqual(order_route((0, 0), []), [])
+        self.assertEqual(order_route((0, 0), [(1, 1)]), [0])
+
+
+class FitnessTests(unittest.TestCase):
+    def test_steps_scale_with_height(self):
+        self.assertGreater(steps_for(1000, 150), steps_for(1000, 185))
+        self.assertAlmostEqual(steps_for(1000), 1000 / (1.65 * 0.415), delta=1)
+
+    def test_kcal(self):
+        self.assertEqual(kcal_for(60, 0, 65), round(3.0 * 65))
+        self.assertGreater(kcal_for(60, 0, 65, brisk=True), kcal_for(60, 0, 65))
+        self.assertGreater(kcal_for(30, 30), kcal_for(30, 0))
+
+
+class CrowdTests(unittest.TestCase):
+    def test_dawn_quieter_than_peak(self):
+        self.assertLess(crowd_index(5, 1.1, 6), crowd_index(5, 1.1, 20))
+
+    def test_bounded(self):
+        for h in range(24):
+            self.assertTrue(0 <= crowd_index(5, 1.1, h) <= 100)
+
+
+class ValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.data = ingest()
+
+    def test_raw_data_is_valid(self):
+        validate(self.data)
+
+    def test_rejects_unknown_zone(self):
+        bad = copy.deepcopy(self.data)
+        bad["pandals"][0]["zone"] = "atlantis"
+        with self.assertRaises(ValidationError) as cm:
+            validate(bad)
+        self.assertTrue(any("unknown zone" in e for e in cm.exception.errors))
+
+    def test_rejects_out_of_city(self):
+        bad = copy.deepcopy(self.data)
+        bad["food"][0]["lat"] = 28.6  # Delhi
+        with self.assertRaises(ValidationError):
+            validate(bad)
+
+    def test_rejects_duplicate_ids(self):
+        bad = copy.deepcopy(self.data)
+        bad["pandals"].append(dict(bad["pandals"][0]))
+        with self.assertRaises(ValidationError) as cm:
+            validate(bad)
+        self.assertTrue(any("duplicate id" in e for e in cm.exception.errors))
+
+    def test_rejects_bad_slot(self):
+        bad = copy.deepcopy(self.data)
+        bad["pandals"][0]["best_slot"] = "brunch"
+        with self.assertRaises(ValidationError):
+            validate(bad)
+
+
+class EnrichPlanTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = plan(enrich(ingest()))
+        cls.by_id = {p["id"]: p for p in cls.data["pandals"]}
+
+    def test_every_pandal_has_metro(self):
+        for p in self.data["pandals"]:
+            self.assertIn("nearest_metro", p)
+            self.assertLess(p["nearest_metro"]["distance_m"], 4000, p["id"])
+
+    def test_food_within_radius(self):
+        for p in self.data["pandals"]:
+            for f in p["food"]:
+                self.assertLessEqual(f["distance_m"], 2000)
+            self.assertTrue(p["food"], f"{p['id']} has no food suggestion")
+
+    def test_known_food_link(self):
+        # Putiram and Paramount sit right on College Square.
+        food_ids = {f["id"] for f in self.by_id["college_square"]["food"]}
+        self.assertTrue({"putiram", "paramount"} <= food_ids)
+
+    def test_zone_route_covers_all_pandals(self):
+        for z in self.data["zones"]:
+            self.assertEqual(sorted(z["route"]["order"]), sorted(z["pandal_ids"]))
+            self.assertGreater(z["route"]["steps"], 0)
+
+    def test_itineraries(self):
+        self.assertEqual(len(self.data["itineraries"]), len(config.CURATED_ITINERARIES))
+        allnighter = next(i for i in self.data["itineraries"] if i["id"] == "all_nighter")
+        ids = [s["pandal"] for seg in allnighter["segments"] if seg["type"] == "walk" for s in seg["stops"]]
+        self.assertTrue(all(self.by_id[i]["popularity"] == 5 for i in ids))
+        self.assertTrue(any(seg["type"] == "ride" for seg in allnighter["segments"]))
+        for it in self.data["itineraries"]:
+            self.assertGreater(it["totals"]["steps"], 1000, it["id"])
+
+
+class EndToEndTests(unittest.TestCase):
+    def test_run_writes_bundle(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            bundle = run(out_dir=Path(tmp))
+            on_disk = json.loads((Path(tmp) / "guide.json").read_text())
+            self.assertEqual(on_disk["meta"]["version"], bundle["meta"]["version"])
+            self.assertEqual(on_disk["meta"]["counts"]["pandals"], len(on_disk["pandals"]))
+            geo = json.loads((Path(tmp) / "guide.geojson").read_text())
+            self.assertEqual(geo["type"], "FeatureCollection")
+
+    def test_version_is_deterministic(self):
+        with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
+            self.assertEqual(run(out_dir=Path(a))["meta"]["version"], run(out_dir=Path(b))["meta"]["version"])
+
+
+if __name__ == "__main__":
+    unittest.main()

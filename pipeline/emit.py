@@ -1,0 +1,73 @@
+"""Stage 5: write the app bundle (guide.json + guide.geojson) and a build report."""
+import hashlib
+import json
+from datetime import datetime, timezone
+
+from . import config
+
+
+def _geojson(data):
+    feats = []
+    for kind in ("pandals", "food", "parking", "transit"):
+        for r in data[kind]:
+            props = {k: v for k, v in r.items() if k not in ("lat", "lng")}
+            props["kind"] = kind
+            feats.append({"type": "Feature", "properties": props,
+                          "geometry": {"type": "Point", "coordinates": [r["lng"], r["lat"]]}})
+    return {"type": "FeatureCollection", "features": feats}
+
+
+def build_bundle(data):
+    body = {
+        "zones": data["zones"], "pandals": data["pandals"], "food": data["food"],
+        "parking": data["parking"], "transit": data["transit"], "itineraries": data["itineraries"],
+    }
+    digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()[:12]
+    meta = {
+        "name": "Pujo Parikrama", "year": config.YEAR, "version": digest,
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "days": config.PUJA_DAYS, "slots": config.SLOTS,
+        "model": {
+            "hour_factors": config.HOUR_FACTORS, "detour": config.DETOUR_FACTOR,
+            "walk_kmh_crowd": config.WALK_KMH_CROWD, "walk_kmh_brisk": config.WALK_KMH_BRISK,
+            "stride_factor": config.STRIDE_FACTOR, "met_stroll": config.MET_STROLL,
+            "met_brisk": config.MET_BRISK, "queue_met": config.QUEUE_MET,
+            "checkin_radius_m": config.CHECKIN_RADIUS_M,
+            "default_height_cm": config.DEFAULT_HEIGHT_CM, "default_weight_kg": config.DEFAULT_WEIGHT_KG,
+        },
+        "counts": {k: len(v) for k, v in body.items()},
+        "disclaimer": "Locations and details are curated and approximate. Themes, timings and traffic rules change every year, so check locally.",
+    }
+    return {"meta": meta, **body}
+
+
+def report(bundle, warnings):
+    lines = [f"# Build report — {bundle['meta']['generated_at']}", "",
+             f"Bundle version `{bundle['meta']['version']}`", "", "| Entity | Count |", "|---|---|"]
+    lines += [f"| {k} | {v} |" for k, v in bundle["meta"]["counts"].items()]
+    lines += ["", "## Zones", "", "| Zone | Pandals | 5★ | Full walk | Steps | kcal |", "|---|---|---|---|---|---|"]
+    for z in bundle["zones"]:
+        r = z["route"]
+        lines.append(f"| {z['name']} | {len(z['pandal_ids'])} | {z['five_star']} | "
+                     f"{r['walk_m'] / 1000:.1f} km | {r['steps']:,} | {r['kcal']} |")
+    lines += ["", "## Curated itineraries", "", "| Itinerary | Pandals | Time | Walk | Steps |", "|---|---|---|---|---|"]
+    for it in bundle["itineraries"]:
+        t = it["totals"]
+        lines.append(f"| {it['name']} | {it['pandal_count']} | {it['start_time']}–{it['end_time']} | "
+                     f"{t['walk_km']} km | {t['steps']:,} |")
+    lines += ["", f"## Warnings ({len(warnings)})", ""]
+    unverified = [w for w in warnings if "not ground-verified" in w]
+    other = [w for w in warnings if w not in unverified]
+    if unverified:
+        lines.append(f"- {len(unverified)} records are not ground-verified yet")
+    lines += [f"- {w}" for w in other]
+    return "\n".join(lines) + "\n"
+
+
+def emit(data, warnings, out_dir=config.OUT_DIR):
+    out_dir.mkdir(parents=True, exist_ok=True)
+    bundle = build_bundle(data)
+    (out_dir / "guide.json").write_text(json.dumps(bundle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (out_dir / "guide.geojson").write_text(json.dumps(_geojson(data), ensure_ascii=False), encoding="utf-8")
+    (out_dir / "BUILD_REPORT.md").write_text(report(bundle, warnings), encoding="utf-8")
+    return bundle

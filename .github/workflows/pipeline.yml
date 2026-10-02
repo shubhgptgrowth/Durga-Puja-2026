@@ -1,0 +1,36 @@
+name: pipeline
+
+on:
+  push:
+    paths: ["data/**", "pipeline/**", "tests/**", "app/**", ".github/workflows/pipeline.yml"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate raw data
+        run: python -m pipeline --check
+      - name: Build bundle
+        run: python -m pipeline
+      - name: Bundle is up to date
+        # The committed app/data/guide.json must match the raw CSVs. Timestamps are ignored.
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          committed = json.loads(subprocess.check_output(["git", "show", "HEAD:app/data/guide.json"]))
+          built = json.load(open("app/data/guide.json"))
+          assert committed["meta"]["version"] == built["meta"]["version"], (
+              "app/data/guide.json is stale. Run `python -m pipeline` and commit the result.")
+          print("bundle version", built["meta"]["version"], "OK")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guide-bundle
+          path: app/data/

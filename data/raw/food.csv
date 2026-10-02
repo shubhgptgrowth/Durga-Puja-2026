@@ -1,0 +1,28 @@
+id,name,zone,lat,lng,type,dishes,veg,price,hours,note,verified
+mitra_cafe,Mitra Cafe (Sovabazar),north,22.5945,88.3660,cabin,Fish kabiraji|Brain chop|Mutton cutlet,nonveg,2,12:00-23:00,"A century-old cabin. The kabiraji is the reason you queue.",false
+girish_nakur,Girish Chandra Dey & Nakur Chandra Nandy,north,22.5928,88.3642,sweets,Nolen gur sandesh|Jolbhora|Monohara,veg,1,08:00-21:00,"Sandesh royalty since 1844. Sells out by evening.",false
+chittaranjan,Chittaranjan Mistanna Bhandar,north,22.6001,88.3716,sweets,Rosogolla|Amritakumbha|Mishti doi,veg,1,07:00-22:00,"The Shyambazar sweet stop.",false
+golbari,Golbari,north,22.6003,88.3728,restaurant,Kosha mangsho|Paratha,nonveg,2,12:00-23:30,"The kosha mangsho at Shyambazar five-point crossing is legendary.",false
+allens_kitchen,Allen's Kitchen,north,22.5938,88.3648,cabin,Prawn cutlet|Chicken stew,nonveg,2,16:00-21:00,"Tiny 1900s cabin. Cutlets are fried in pure ghee.",false
+royal_indian,Royal Indian Hotel,central,22.5793,88.3556,restaurant,Mutton biryani|Chicken chaap|Rezala,nonveg,2,11:00-23:00,"Chitpur's Mughlai institution since 1905.",false
+putiram,Putiram,central,22.5745,88.3628,sweets,Kochuri|Jilipi|Mohanbhog,veg,1,07:00-21:00,"The College Street breakfast: kochuri and jilipi.",false
+paramount,Paramount,central,22.5753,88.3644,drinks,Daab sherbet|Green mango sherbet,veg,1,11:00-21:00,"Sherbet parlour since 1918, on the corner of College Square.",false
+coffee_house,Indian Coffee House,central,22.5762,88.3628,cabin,Infusion|Chicken kabiraji|Mutton cutlet,both,1,09:00-21:00,"Adda under high ceilings on College Street.",false
+bhim_nag,Bhim Chandra Nag,central,22.5680,88.3605,sweets,Ledikeni|Sandesh,veg,1,08:00-21:30,"Home of the ledikeni, a short walk from Santosh Mitra Square.",false
+aminia,Aminia (New Market),central,22.5600,88.3521,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,"A classic biryani pit stop in the New Market area.",false
+nizams,Nizam's,central,22.5605,88.3510,street,Kathi roll|Beef roll|Chicken roll,nonveg,1,12:00-23:30,"The kathi roll is said to have been born here.",false
+vivekananda_park_phuchka,Vivekananda Park Phuchka,south_lakemarket,22.5195,88.3590,street,Phuchka|Churmur|Dahi phuchka,veg,1,15:00-23:00,"Often called Kolkata's most famous phuchka. Ask for the tok-jhal-mishti.",false
+lake_market_stalls,Lake Market Telebhaja Stalls,south_lakemarket,22.5190,88.3530,street,Beguni|Alur chop|Egg roll,both,1,16:00-01:00,"Late-night fuel between Tridhara and 66 Pally.",false
+balwant_singh,Balwant Singh's Eating House,south_lakemarket,22.5320,88.3440,cabin,Doodh cha|Tadka|Paratha,veg,1,06:00-23:00,"Bhowanipore's milky tea and dhaba-style tadka.",false
+kewpies,Kewpie's Kitchen,south_lakemarket,22.5380,88.3505,restaurant,Bengali thali|Daab chingri|Bhetki paturi,both,3,12:30-22:30,"A home-style Bengali thali close to Maddox Square.",false
+gariahat_stalls,Gariahat Mor Street Food,south_gariahat,22.5185,88.3665,street,Egg chicken roll|Chowmein|Momo,both,1,15:00-01:00,"Cheap and quick, right on the Ekdalia–Singhi Park loop.",false
+bhojohori_manna,Bhojohori Manna (Ekdalia),south_gariahat,22.5168,88.3702,restaurant,Bhetki paturi|Kosha mangsho|Chingri malaikari,both,2,12:00-22:30,"A Bengali chain started here. Book ahead during puja.",false
+ballygunge_place,6 Ballygunge Place,south_gariahat,22.5215,88.3685,restaurant,Daab chingri|Bengali thali,both,3,12:00-23:00,"An upscale Bengali spread in a heritage house.",false
+arsalan,Arsalan (Park Circus),south_gariahat,22.5410,88.3685,restaurant,Mutton biryani|Chicken chaap,nonveg,2,12:00-00:00,"A biryani heavyweight on the way north from Gariahat.",false
+suruchi_stalls,New Alipore Puja Stalls,southwest,22.4970,88.3415,street,Fish fry|Egg devil|Phuchka,both,1,16:00-02:00,"The pop-up food row that grows around Suruchi Sangha.",false
+behala_chowrasta,Behala Chowrasta Stalls,southwest,22.4990,88.3180,street,Moghlai paratha|Rolls|Mishti,both,1,15:00-00:00,"Street classics at the Behala crossing.",false
+city_centre_food,City Centre 1 Food Court,salt_lake,22.5885,88.4083,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Air-conditioned toilets and seats, which is gold during pujo.",false
+central_park_stalls,Central Park Mela Stalls,salt_lake,22.5850,88.4170,street,Fish fry|Kebab|Ice cream,both,1,16:00-23:00,"Mela food near BJ Block.",false
+lake_town_stalls,Lake Town Footbridge Stalls,lake_town_dumdum,22.6030,88.4030,street,Phuchka|Chowmein|Rolls,both,1,15:00-02:00,"Pop-up stalls along the Sreebhumi queue.",false
+dumdum_park_stalls,Dum Dum Park Puja Stalls,lake_town_dumdum,22.6175,88.4135,street,Fish fry|Mughlai paratha,both,1,16:00-01:00,"Food row between the Dum Dum Park pandals.",false
+bosepukur_stalls,Bosepukur Puja Food Row,south_gariahat,22.5140,88.3902,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,"Pop-up stalls between the two Bosepukur pandals.",false

@@ -1,0 +1,16 @@
+{
+  "name": "Pujo Parikrama 2026: Kolkata Pandal Guide",
+  "short_name": "Pujo Parikrama",
+  "description": "Zone-wise pandal hopping, food, parking, routes and a step tracker for Durga Puja 2026 in Kolkata.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF8F0",
+  "theme_color": "#9F1239",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

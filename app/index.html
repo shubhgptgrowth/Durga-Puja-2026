@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pujo Parikrama 2026</title>
+  <meta name="description" content="Plan your Durga Puja 2026 pandal hopping in Kolkata by zone, with food, parking, routes and a step tracker.">
+  <meta name="theme-color" content="#9F1239">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-mark" src="icons/icon.svg" alt="" width="36" height="36">
+      <div>
+        <h1>Pujo Parikrama</h1>
+        <p id="countdown" class="sub">Durga Puja 2026 · Kolkata</p>
+      </div>
+    </div>
+    <label class="day-pick">
+      <span class="sr-only">Puja day</span>
+      <select id="daySelect" aria-label="Puja day"></select>
+    </label>
+  </header>
+
+  <main id="main">
+    <!-- EXPLORE -->
+    <section id="view-explore" class="view active" aria-label="Explore">
+      <div id="map" class="map" role="region" aria-label="Map of pandals"></div>
+      <div class="map-tools">
+        <button class="fab" id="locateBtn" aria-label="Show my location">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5" fill="none"/></svg>
+        </button>
+        <button class="fab" id="layersBtn" aria-label="Map layers">
+          <svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="m2 13 10 5 10-5" fill="none"/></svg>
+        </button>
+      </div>
+      <div class="panel">
+        <div class="chips" id="zoneChips" role="tablist" aria-label="Zones"></div>
+        <div class="zone-banner" id="zoneBanner"></div>
+        <div class="time-row">
+          <label for="hourRange">Crowd at <strong id="hourLabel"></strong></label>
+          <input type="range" id="hourRange" min="0" max="23" step="1">
+        </div>
+        <div class="list-head">
+          <span id="listCount"></span>
+          <select id="sortSelect" aria-label="Sort pandals">
+            <option value="popular">Most famous</option>
+            <option value="quiet">Least crowded now</option>
+            <option value="near">Nearest to me</option>
+          </select>
+        </div>
+        <ul class="cards" id="pandalList"></ul>
+      </div>
+    </section>
+
+    <!-- PLAN -->
+    <section id="view-plan" class="view" aria-label="Plan">
+      <div class="seg" role="tablist">
+        <button class="seg-btn active" data-seg="curated" role="tab">Curated trails</button>
+        <button class="seg-btn" data-seg="custom" role="tab">Build my route</button>
+      </div>
+      <div id="seg-curated" class="seg-pane active">
+        <ul class="cards" id="itinList"></ul>
+      </div>
+      <div id="seg-custom" class="seg-pane">
+        <form id="planForm" class="form">
+          <fieldset>
+            <legend>Zones</legend>
+            <div class="chips wrap" id="planZones"></div>
+          </fieldset>
+          <div class="grid2">
+            <label>Start from
+              <select id="planStart"></select>
+            </label>
+            <label>Start time
+              <input type="time" id="planTime" value="17:00">
+            </label>
+            <label>Only pandals rated
+              <select id="planStars">
+                <option value="1">All</option>
+                <option value="3">3★ and up</option>
+                <option value="4" selected>4★ and up</option>
+                <option value="5">5★ only</option>
+              </select>
+            </label>
+            <label>Time budget
+              <select id="planBudget">
+                <option value="120">2 hours</option>
+                <option value="180">3 hours</option>
+                <option value="240" selected>4 hours</option>
+                <option value="360">6 hours</option>
+                <option value="600">All night</option>
+              </select>
+            </label>
+          </div>
+          <label class="toggle"><input type="checkbox" id="planBrisk"> <span>Brisk pace (more pandals, more calories)</span></label>
+          <button type="submit" class="btn primary block">Build route</button>
+        </form>
+      </div>
+      <div id="planResult" class="plan-result" hidden></div>
+    </section>
+
+    <!-- FOOD -->
+    <section id="view-food" class="view" aria-label="Food">
+      <div class="filters">
+        <div class="chips" id="foodZones"></div>
+        <div class="chips" id="foodFilters">
+          <button class="chip" data-f="veg">🟢 Veg only</button>
+          <button class="chip" data-f="cheap">₹ Budget</button>
+          <button class="chip" data-f="sweets">Sweets</button>
+          <button class="chip" data-f="street">Street food</button>
+          <button class="chip" data-f="open">Open now</button>
+        </div>
+      </div>
+      <ul class="cards" id="foodList"></ul>
+    </section>
+
+    <!-- PARK & RIDE -->
+    <section id="view-park" class="view" aria-label="Parking and transit">
+      <div class="car-card" id="carCard"></div>
+      <div class="chips" id="parkZones"></div>
+      <div id="parkAdvisory"></div>
+      <h2 class="h2">Parking</h2>
+      <ul class="cards" id="parkList"></ul>
+      <h2 class="h2">Metro &amp; rail</h2>
+      <ul class="cards compact" id="transitList"></ul>
+      <p class="fine">Traffic rules change every day of the festival. Check <a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">Kolkata Traffic Police</a> before you drive.</p>
+    </section>
+
+    <!-- FIT -->
+    <section id="view-fit" class="view" aria-label="Fitness">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="ring-bg" cx="100" cy="100" r="86"/>
+          <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="86"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-steps" id="fitSteps">0</div>
+          <div class="ring-goal">of <span id="fitGoal">10,000</span> steps</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div><b id="fitKm">0.00</b><span>km</span></div>
+        <div><b id="fitKcal">0</b><span>kcal</span></div>
+        <div><b id="fitTime">0:00</b><span>walking</span></div>
+        <div><b id="fitPandals">0</b><span>pandals</span></div>
+      </div>
+      <div class="fit-actions">
+        <button class="btn primary block" id="walkBtn">Start pujo walk</button>
+        <p class="fine center" id="walkStatus">GPS tracking stays on your phone. Pandals check in automatically when you're within 80 m.</p>
+      </div>
+      <h2 class="h2">Badges</h2>
+      <ul class="badges" id="badgeList"></ul>
+      <h2 class="h2">Your puja days</h2>
+      <ul class="history" id="historyList"></ul>
+      <details class="settings">
+        <summary>Profile &amp; settings</summary>
+        <form id="profileForm" class="form grid2">
+          <label>Height (cm)<input type="number" id="pHeight" min="100" max="230" inputmode="numeric"></label>
+          <label>Weight (kg)<input type="number" id="pWeight" min="25" max="200" inputmode="numeric"></label>
+          <label>Daily step goal<input type="number" id="pGoal" min="1000" max="60000" step="500" inputmode="numeric"></label>
+          <label class="toggle"><input type="checkbox" id="pLowData"> <span>Low-data map</span></label>
+          <button class="btn block" type="submit">Save</button>
+          <button class="btn ghost block" type="button" id="resetBtn">Reset all my data</button>
+        </form>
+      </details>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="Sections">
+    <button class="tab active" data-view="explore"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Explore</span></button>
+    <button class="tab" data-view="plan"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none"/></svg><span>Plan</span></button>
+    <button class="tab" data-view="food"><svg viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-2 2-2 2-4M12 7c0-2 2-2 2-4" fill="none"/></svg><span>Food</span></button>
+    <button class="tab" data-view="park"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3" fill="none"/></svg><span>Park</span></button>
+    <button class="tab" data-view="fit"><svg viewBox="0 0 24 24"><path d="M13 4a2 2 0 1 0 0 .01M9 21l2-6 3 2v5M8 12l3-4 3 3 3 1M11 8l-3 1-1 3" fill="none"/></svg><span>Fit</span></button>
+  </nav>
+
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="sheet-grip" aria-hidden="true"></div>
+    <button class="sheet-close" id="sheetClose" aria-label="Close">×</button>
+    <div id="sheetBody"></div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

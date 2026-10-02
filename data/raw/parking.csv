@@ -1,0 +1,15 @@
+id,name,zone,lat,lng,kind,capacity,rate_hint,note,verified
+noapara_metro,Noapara Metro (Park & Ride),north,22.6400,88.3940,park_ride,medium,₹20–50,"Leave the car here and ride the Blue Line to Shyambazar or Sovabazar.",false
+dumdum_metro,Dum Dum Metro Area (Park & Ride),lake_town_dumdum,22.6215,88.3915,park_ride,small,₹20–50,"Ride the metro south, or take an auto to Dum Dum Park.",false
+hatibagan_paypark,Hatibagan Pay & Park (Bidhan Sarani),north,22.5960,88.3735,street,small,₹20/hr,"Usually closed after 4 pm on the main puja days. Check the KP advisory.",false
+sealdah_station,Sealdah Station Parking,central,22.5672,88.3705,station,large,₹30–60,"The best car base for Santosh Mitra and Sealdah RAC.",false
+new_market_mlcp,New Market Multi-level Parking,central,22.5598,88.3515,multilevel,large,₹30/hr,"Walk or take the metro north from Esplanade.",false
+lake_mall,Lake Mall (Rashbehari),south_lakemarket,22.5185,88.3520,mall,medium,₹40–60/hr,"Right in the Tridhara–Deshapriya–66 Pally cluster. Fills by 6 pm.",false
+forum_mall,Forum Mall (Elgin Road),south_lakemarket,22.5390,88.3518,mall,medium,₹40–60/hr,"A good base for Maddox Square and Bhowanipore.",false
+quest_mall,Quest Mall (Ballygunge Circular Rd),south_gariahat,22.5390,88.3655,mall,large,₹50/hr,"Take a cab or the metro south to the Gariahat cluster.",false
+south_city,South City Mall,south_gariahat,22.5013,88.3617,mall,large,₹50/hr,"The base for Jodhpur Park and Babubagan. A cab to Ekdalia takes about 10 minutes.",false
+behala_bazar_metro,Behala Bazar Metro (Purple Line),southwest,22.4920,88.3170,park_ride,small,₹20–40,"Close to Behala Notun Dal and Sahajatri.",false
+new_alipore_street,New Alipore Police-marked Street Parking,southwest,22.4990,88.3380,street,medium,₹30–50,"Follow the cones. Suruchi Sangha is a 5-minute walk.",false
+city_centre_parking,City Centre 1 Parking,salt_lake,22.5888,88.4078,mall,large,₹40/hr,"Walk to FD Block, or take a short auto to BJ Block.",false
+central_park_parking,Central Park Salt Lake (Puja Lot),salt_lake,22.5860,88.4160,street,medium,₹30–50,"A temporary lot that usually opens on the puja days.",false
+diamond_plaza,Diamond Plaza (Jessore Road),lake_town_dumdum,22.6268,88.4225,mall,large,₹40/hr,"Leave the car here. VIP Road near Sreebhumi stays jammed for hours.",false
