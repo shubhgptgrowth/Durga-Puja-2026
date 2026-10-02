@@ -1,0 +1,34 @@
+name: geo-audit
+
+# Checks every pin against OpenStreetMap (Nominatim) and reports the distances.
+# Run it manually from the Actions tab. It needs internet access, so it isn't part of the build.
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated kinds to audit"
+        default: "transit,parking,food,pandals"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pipeline.audit --only "${{ inputs.only }}"
+      - name: Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import csv
+          rows = list(csv.DictReader(open("data/audit/geo_audit.csv")))
+          print("| kind | id | ours→OSM (m) | match | OSM name | OSM lat,lng |\n|---|---|---|---|---|---|")
+          for r in sorted(rows, key=lambda r: -(float(r["distance_m"] or 0))):
+              print(f"| {r['kind']} | {r['id']} | {r['distance_m'] or '—'} | {r['similarity'] or '—'} | {r['osm_name']} ({r['osm_class']}) | {r['osm_lat']},{r['osm_lng']} |")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: geo-audit
+          path: data/audit/geo_audit.csv
