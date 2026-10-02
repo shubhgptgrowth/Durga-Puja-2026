@@ -1,0 +1,86 @@
+name: supabase-setup
+
+# One-click setup of the community backend on a hosted Supabase project (docs/COMMUNITY.md, steps 2–4):
+#   1. turns on anonymous sign-ins
+#   2. applies supabase/migrations/*.sql, then supabase/seed.sql (both are idempotent, so re-running is safe)
+#   3. verifies the REST API, the seeded places and anonymous sign-in
+#   4. prints the Project URL and anon key for app/config.js (both are public by design)
+# Needs the repository secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref:
+        description: "Project ref (the xxxx in xxxx.supabase.co). Leave empty if the account has only one project."
+        required: false
+        default: ""
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SBT: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      API: https://api.supabase.com/v1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve project
+        id: ref
+        run: |
+          [ -n "$SBT" ] || { echo "::error::Add the SUPABASE_ACCESS_TOKEN repository secret first."; exit 1; }
+          ref="${{ inputs.project_ref }}"
+          if [ -z "$ref" ]; then
+            projects=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects")
+            echo "$projects" | jq -r '.[] | "  \(.ref)  \(.name)  (\(.region))"'
+            [ "$(echo "$projects" | jq length)" = 1 ] || { echo "::error::Several projects found; re-run with project_ref set."; exit 1; }
+            ref=$(echo "$projects" | jq -r '.[0].ref')
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "Using project $ref"
+
+      - name: Enable anonymous sign-ins
+        run: |
+          curl -fsS -X PATCH -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" \
+            -d '{"external_anonymous_users_enabled": true}' "$API/projects/${{ steps.ref.outputs.ref }}/config/auth" \
+            | jq '{external_anonymous_users_enabled}'
+
+      - name: Apply migrations and seed
+        run: |
+          run_sql() {
+            echo "→ $1"
+            jq -Rs '{query: .}' "$1" > /tmp/q.json
+            code=$(curl -sS -o /tmp/out.json -w '%{http_code}' -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" \
+              --data @/tmp/q.json "$API/projects/${{ steps.ref.outputs.ref }}/database/query")
+            if [ "${code:0:1}" != 2 ]; then echo "::error::$1 failed ($code)"; cat /tmp/out.json; exit 1; fi
+          }
+          for f in supabase/migrations/*.sql; do run_sql "$f"; done
+          run_sql supabase/seed.sql
+
+      - name: Fetch keys and verify
+        run: |
+          ref=${{ steps.ref.outputs.ref }}; url="https://$ref.supabase.co"
+          keys=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects/$ref/api-keys?reveal=true")
+          anon=$(echo "$keys" | jq -r '[.[] | select(.name == "anon" or .type == "publishable")][0].api_key')
+          [ -n "$anon" ] && [ "$anon" != null ] || { echo "::error::No anon/publishable key found"; exit 1; }
+          places=$(curl -fsS -H "apikey: $anon" "$url/rest/v1/place_stats?select=place_id" | jq length)
+          expected=$(jq '(.pandals | length) + (.food | length)' app/data/guide.json)
+          echo "place_stats rows: $places (expected $expected)"
+          [ "$places" = "$expected" ] || { echo "::error::seed mismatch"; exit 1; }
+          curl -fsS -X POST -H "apikey: $anon" -H "Content-Type: application/json" -d '{"data":{}}' "$url/auth/v1/signup" \
+            | jq -e '.access_token and .user.is_anonymous' >/dev/null || { echo "::error::anonymous sign-in failed"; exit 1; }
+          echo "anonymous sign-in OK"
+          bucket=$(curl -fsS -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" \
+            -d '{"query":"select public from storage.buckets where id = '"'"'moments'"'"'"}' "$API/projects/$ref/database/query")
+          echo "moments bucket: $bucket"
+          {
+            echo "### Community backend is ready"
+            echo ""
+            echo "Put these in \`app/config.js\` → \`community\` (both are public by design):"
+            echo ""
+            echo '```js'
+            echo "url: '$url',"
+            echo "anonKey: '$anon',"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "CONFIG_URL=$url"
+          echo "CONFIG_ANON_KEY=$anon"
