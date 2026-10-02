@@ -65,9 +65,17 @@ PUJA_RE = "[Dd]urg|[Pp]uj|[Pp]ooj|[Ss]arbojan|[Ss]arbajan|[Ss]arvajan|[Dd]urgots
 
 def discover_pandals():
     q = (f'[out:json][timeout:180];(nwr["name"~"{PUJA_RE}"]({BBOX_Q});nwr["name:bn"~"পুজো|পূজা|দুর্গ|সার্বজনীন"]({BBOX_Q}););out center tags;')
-    els = overpass(q)
-    cands = []
-    for e in els:
+    try:
+        els = overpass(q)
+    except Exception as ex:  # mirrors overloaded: reuse the last snapshot's candidates, still refresh the seeds
+        prev = config.ROOT / "data" / "discovered" / "pandals.json"
+        if not prev.exists():
+            raise
+        print(f"overpass unavailable ({ex}); reusing previous candidates", file=sys.stderr)
+        els = None
+        old = json.load(open(prev, encoding="utf-8"))["candidates"]
+    cands = [] if els is not None else old
+    for e in els or []:
         tags = e.get("tags", {})
         lat, lng = center(e)
         if lat is None:

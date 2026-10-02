@@ -23,9 +23,12 @@ jobs:
           python-version: "3.11"
       - name: Discover
         run: |
+          failed=""
           for w in $(echo "${{ inputs.what }}" | tr ',' ' '); do
-            echo "::group::$w"; python -m pipeline.discover "$w"; echo "::endgroup::"
+            echo "::group::$w"; python -m pipeline.discover "$w" || failed="$failed $w"; echo "::endgroup::"
           done
+          echo "FAILED=$failed" >> "$GITHUB_ENV"
+          if [ -n "$failed" ]; then echo "::warning::discover failed for:$failed (previous data kept)"; fi
       - name: Commit results
         run: |
           git add data/discovered
@@ -33,3 +36,6 @@ jobs:
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Discovered data: ${{ inputs.what }}"
           git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}
+      - name: Report failures
+        if: env.FAILED != ''
+        run: echo "::error::discover failed for:$FAILED" && exit 1
