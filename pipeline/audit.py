@@ -74,20 +74,68 @@ def search(q):
         return json.load(r)
 
 
+OVERPASS = "https://overpass-api.de/api/interpreter"
+
+
+def stations():
+    """All railway stations (metro and suburban) in the bounding box, from Overpass."""
+    bb = config.BBOX
+    q = (f'[out:json][timeout:60];(node["railway"="station"]({bb["lat_min"]},{bb["lng_min"]},{bb["lat_max"]},{bb["lng_max"]});'
+         f'node["public_transport"="station"]["subway"="yes"]({bb["lat_min"]},{bb["lng_min"]},{bb["lat_max"]},{bb["lng_max"]}););out;')
+    req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": q}).encode(), headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        els = json.load(r)["elements"]
+    return [{"name": e["tags"].get("name:en") or e["tags"].get("name", ""), "lat": e["lat"], "lon": e["lon"],
+             "category": "railway", "type": e["tags"].get("station", "station")} for e in els if e.get("tags", {}).get("name")]
+
+
+def variants(kind, rec):
+    first = query_for(kind, rec)
+    out = [first, rec["name"]]
+    if kind == "pandals":
+        out += [f"{rec['name']} Durgotsav", f"{rec['name']} Durga Puja"]
+    if kind == "food":
+        out += [f"{rec['name'].split('(')[0].strip()} restaurant"]
+    seen, uniq = set(), []
+    for q in out:
+        if q not in seen:
+            seen.add(q); uniq.append(q)
+    return uniq
+
+
+def _score(rec, hit):
+    return similarity(rec["name"], hit.get("name") or hit.get("display_name", ""))
+
+
 def audit(kinds, sleep=1.1):
     data = ingest()
     rows = []
+    station_hits = []
+    if "transit" in kinds:
+        try:
+            station_hits = stations()
+            print(f"overpass: {len(station_hits)} stations", flush=True)
+        except Exception as e:
+            print(f"overpass failed: {e}", flush=True)
     for kind in kinds:
         for rec in data[kind]:
-            q = query_for(kind, rec)
-            try:
-                hits = search(q)
-            except Exception as e:  # network hiccup: record it and move on
-                hits, err = [], str(e)
+            hits, err, used = [], "", ""
+            if kind == "transit" and station_hits:
+                hits, used = station_hits, "overpass"
             else:
-                err = ""
-            best = max(hits, key=lambda h: similarity(rec["name"], h.get("name") or h.get("display_name", "")), default=None)
-            row = {"kind": kind, "id": rec["id"], "name": rec["name"], "query": q,
+                for q in variants(kind, rec):
+                    try:
+                        got = search(q)
+                    except Exception as e:  # network hiccup: note it and keep going
+                        err = str(e); got = []
+                    time.sleep(sleep)
+                    hits += got
+                    if got and max(_score(rec, h) for h in got) >= 0.8:
+                        used = q
+                        break
+                    used = used or q
+            best = max(hits, key=lambda h: _score(rec, h), default=None)
+            row = {"kind": kind, "id": rec["id"], "name": rec["name"], "query": used,
                    "our_lat": rec["lat"], "our_lng": rec["lng"], "osm_name": "", "osm_class": "",
                    "osm_lat": "", "osm_lng": "", "distance_m": "", "similarity": "", "error": err}
             if best:
@@ -96,10 +144,9 @@ def audit(kinds, sleep=1.1):
                            osm_class=f"{best.get('category', best.get('class', ''))}:{best.get('type', '')}",
                            osm_lat=round(lat, 6), osm_lng=round(lng, 6),
                            distance_m=round(haversine_m((rec["lat"], rec["lng"]), (lat, lng))),
-                           similarity=round(similarity(rec["name"], best.get("name") or ""), 2))
+                           similarity=round(_score(rec, best), 2))
             rows.append(row)
-            print(f"{kind:8} {rec['id']:28} d={row['distance_m'] or '-':>6} sim={row['similarity'] or '-':>4}  {row['osm_name']}", flush=True)
-            time.sleep(sleep)
+            print("AUDIT\t" + json.dumps(row, ensure_ascii=False), flush=True)
     return rows
 
 
