@@ -84,7 +84,7 @@ export const STR = {
     // plan
     'plan.title': 'Plan your pujo', 'plan.subtitle': 'Pick a ready-made trail, or build a route that fits your time.',
     'seg.curated': 'Curated trails', 'seg.custom': 'Build my route',
-    'f.zones': 'Areas', 'f.start': 'Start from', 'f.time': 'Start time', 'f.stars': 'Only pandals rated', 'f.budget': 'Time budget',
+    'p.approx': 'Approximate pin', 'f.zones': 'Areas', 'f.start': 'Start from', 'f.time': 'Start time', 'f.stars': 'Only pandals rated', 'f.budget': 'Time budget',
     'f.brisk': 'Brisk pace (more pandals, more calories)', 'f.build': 'Build route', 'f.me': '📍 My current location',
     'f.line': '{line} line', 'f.parkingGroup': 'Parking',
     'stars.1': 'All', 'stars.3': '3★ and up', 'stars.4': '4★ and up', 'stars.5': '5★ only',
@@ -215,7 +215,7 @@ export const STR = {
 
     'plan.title': 'পুজোর পরিকল্পনা', 'plan.subtitle': 'তৈরি পরিক্রমা বেছে নিন, অথবা আপনার সময় মতো রুট বানান।',
     'seg.curated': 'বাছাই করা পরিক্রমা', 'seg.custom': 'নিজের রুট',
-    'f.zones': 'এলাকা', 'f.start': 'কোথা থেকে শুরু', 'f.time': 'শুরুর সময়', 'f.stars': 'কোন রেটিংয়ের প্যান্ডেল', 'f.budget': 'হাতে কত সময়',
+    'p.approx': 'আনুমানিক অবস্থান', 'f.zones': 'এলাকা', 'f.start': 'কোথা থেকে শুরু', 'f.time': 'শুরুর সময়', 'f.stars': 'কোন রেটিংয়ের প্যান্ডেল', 'f.budget': 'হাতে কত সময়',
     'f.brisk': 'জোরে হাঁটা (বেশি প্যান্ডেল, বেশি ক্যালোরি)', 'f.build': 'রুট বানান', 'f.me': '📍 আমার এখনকার লোকেশন',
     'f.line': '{line} লাইন', 'f.parkingGroup': 'পার্কিং',
     'stars.1': 'সব', 'stars.3': '৩★ বা বেশি', 'stars.4': '৪★ বা বেশি', 'stars.5': 'শুধু ৫★',

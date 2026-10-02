@@ -46,6 +46,7 @@ CHECKIN_RADIUS_M = 80              # auto check-in during a tracked walk
 CHECKIN_RADIUS_VERIFIED_M = 200
 CHECKIN_RADIUS_OSM_M = 250          # pin matched to an OpenStreetMap feature
 CHECKIN_RADIUS_UNVERIFIED_M = 350
+CHECKIN_RADIUS_APPROX_M = 600       # pin is a neighbourhood or street centre, not the pandal itself
 
 # Fitness model
 DEFAULT_HEIGHT_CM = 165

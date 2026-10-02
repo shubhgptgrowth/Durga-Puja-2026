@@ -29,6 +29,8 @@ def checkin_radius(r):
         return config.CHECKIN_RADIUS_VERIFIED_M
     if r.get("geo_source") == "osm":
         return config.CHECKIN_RADIUS_OSM_M
+    if r.get("geo_source") == "osm-approx":
+        return config.CHECKIN_RADIUS_APPROX_M
     return config.CHECKIN_RADIUS_UNVERIFIED_M
 
 

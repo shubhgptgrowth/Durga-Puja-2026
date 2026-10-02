@@ -97,6 +97,19 @@ def discover_pandals():
         pool += [{**c, "src": "overpass"} for c in cands]
         best = max(pool, key=lambda h: similarity(s["name"], h["name"]), default=None)
         row = {**s, "match": best, "similarity": round(similarity(s["name"], best["name"]), 2) if best else 0}
+        # No strong name match: remember the neighbourhood (or street) it is in, for an approximate pin.
+        if row["similarity"] < 0.85 and s.get("locality"):
+            for lq in s["locality"].split("|"):
+                try:
+                    lh = [h for h in nominatim(lq) if h.get("category") in ("place", "highway", "boundary")]
+                except Exception as ex:
+                    print("nominatim error", ex, file=sys.stderr); lh = []
+                time.sleep(1.1)
+                if lh:
+                    h = lh[0]
+                    row["locality_match"] = {"name": h.get("name") or "", "lat": float(h["lat"]), "lng": float(h["lon"]),
+                                             "class": f"{h.get('category', '')}:{h.get('type', '')}", "query": lq}
+                    break
         matches.append(row)
         print(f"seed {s['id']:28} sim={row['similarity']:.2f} {best['name'] if best else '-'}", file=sys.stderr)
     write("pandals", {"candidates": cands, "seeds": matches})

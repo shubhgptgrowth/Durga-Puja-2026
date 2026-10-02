@@ -65,20 +65,26 @@ def apply_pandals(dry_run=False):
         m = s.get("match")
         approx = bool(m) and m.get("class") in APPROX_CLASSES and s["similarity"] >= 0.75
         confident = bool(m) and (s["similarity"] >= 0.85 or (m.get("src") == "nominatim" and s["similarity"] >= 0.75))
+        loc = None
         if not m or not confident or (BAD_CLASS.match(m.get("class", "") + ":") and not approx):
-            skipped.append((s["id"], f"no confident match ({s['similarity']}, {m and m.get('name')})")); continue
+            loc = s.get("locality_match")
+            if not loc:
+                skipped.append((s["id"], f"no confident match ({s['similarity']}, {m and m.get('name')})")); continue
+            m, approx = loc, True
         pt = (m["lat"], m["lng"])
-        if dup(pt, s["name"]) or s["id"] in ids:
+        if (dup(pt, s["name"]) and not loc) or s["id"] in ids:
             skipped.append((s["id"], "already listed")); continue
         region = {"howrah": "howrah", "east": "east", "north": "north", "central": "central", "south": "south"}.get(s["area_hint"])
-        zone = nearest_area(pt, centers, region, zones) or nearest_area(pt, centers, None, zones, 6000)
+        zone = nearest_area(pt, centers, region, zones) or (None if loc else nearest_area(pt, centers, None, zones, 6000))
         if not zone:
             skipped.append((s["id"], "outside every area")); continue
         pop = int(s["popularity"])
         add({**base, "id": s["id"], "name": s["name"], "name_bn": s["name_bn"], "zone": zone, "lat": f"{pt[0]:.6f}", "lng": f"{pt[1]:.6f}",
              "geo_source": "osm-approx" if approx else "osm", "tags": "theme" if pop >= 4 else "neighbourhood", "popularity": str(pop), "crowd_base": str(max(2, pop - 1 if pop < 5 else 5)),
              "best_slot": "early_morning" if pop >= 5 else "evening", "visit_min": "20" if pop >= 4 else "15", "est_year": "",
-             "highlight": f"A well-known {'theme ' if pop >= 4 else ''}puja in {zones[zone]['short']}. Location from OpenStreetMap.", "verified": "false"}, pt)
+             "highlight": (f"A well-known {'theme ' if pop >= 4 else ''}puja in {zones[zone]['short']}. "
+                           + (f"Pin is approximate (centre of {m['name'] or m['query']}); ask locally for the exact lane." if loc else "Location from OpenStreetMap.")),
+             "verified": "false"}, pt)
 
     for c in disc["candidates"]:
         name = c["name"].strip()
