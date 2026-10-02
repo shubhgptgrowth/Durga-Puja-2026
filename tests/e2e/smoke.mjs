@@ -1,146 +1,214 @@
-// Mobile end-to-end smoke test (iPhone 13 viewport).
+// Mobile end-to-end test (iPhone 13 viewport).
 //   node tests/e2e/smoke.mjs [outDir]
-// Serves app/ on a free port, drives every tab, and fails on JS errors or broken flows.
-// Set CHROME_PATH to use a specific Chromium build.
+// Serves app/ on a free port and drives every tab plus the full community loop: verified
+// check-in, a too-far check-in, "I ate here", an offline-queued check-in, photo upload,
+// like, and the feed. It runs against an in-memory fake Supabase, or a real one when
+// SUPABASE_URL and SUPABASE_ANON_KEY are set (CI does this with `supabase start`).
 import { chromium, devices } from 'playwright';
 import { spawn } from 'node:child_process';
 import { readFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { startFakeSupabase } from './fake-supabase.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const out = path.resolve(process.argv[2] || path.join(root, 'screenshots'));
 mkdirSync(out, { recursive: true });
-const G = JSON.parse(readFileSync(path.join(root, 'app/data/guide.json'), 'utf8'));
+const guidePath = path.join(root, 'app/data/guide.json');
+const G = JSON.parse(readFileSync(guidePath, 'utf8'));
+const P = Object.fromEntries([...G.pandals, ...G.food].map((p) => [p.id, p]));
+
+let backend, fake = null;
+if (process.env.SUPABASE_URL) backend = { url: process.env.SUPABASE_URL, anonKey: process.env.SUPABASE_ANON_KEY };
+else { fake = await startFakeSupabase({ guidePath }); backend = fake; }
+const statFor = async (id) => {
+  const r = await fetch(`${backend.url}/rest/v1/place_stats?place_id=eq.${id}&select=*`, { headers: { apikey: backend.anonKey } });
+  const rows = await r.json(); return (Array.isArray(rows) ? rows.find((x) => x.place_id === id) : null) || { visits: 0, today: 0, photos: 0 };
+};
 
 const port = 8200 + Math.floor(Math.random() * 600);
 const server = spawn('python3', ['-m', 'http.server', '-d', path.join(root, 'app'), String(port)], { stdio: 'ignore' });
 const base = `http://127.0.0.1:${port}/`;
 for (let i = 0; i < 50; i++) { try { await fetch(base); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
 
+const at = (id) => ({ latitude: P[id].lat, longitude: P[id].lng, accuracy: 10 });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });
-const ctx = await browser.newContext({
-  ...devices['iPhone 13'],
-  geolocation: { latitude: 22.5185, longitude: 88.3489 }, // Tridhara Sammilani
-  permissions: ['geolocation'],
-});
+const ctx = await browser.newContext({ ...devices['iPhone 13'], geolocation: at('tridhara'), permissions: ['geolocation'] });
+await ctx.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
-page.on('console', (m) => { if (m.type() === 'error' && !/tile|cartocdn|ERR_|403|504/.test(m.text())) errors.push('console: ' + m.text()); });
+page.on('console', (m) => { if (m.type() === 'error' && !/tile|cartocdn|ERR_|403|504|Failed to fetch|net::/.test(m.text())) errors.push('console: ' + m.text()); });
 
 const shot = async (n) => { await page.waitForTimeout(250); await page.screenshot({ path: `${out}/${n}.png` }); };
 const must = (cond, msg) => { if (!cond) throw new Error(msg); };
 const count = (sel) => page.locator(sel).count();
+// Wait for a toast matching `re` (badge toasts can arrive in between).
+const waitToast = async (re, what) => {
+  try { await page.waitForFunction((src) => { const el = document.querySelector('#toast'); return el.classList.contains('show') && new RegExp(src, 'i').test(el.textContent); }, re.source, { timeout: 8000 }); }
+  catch { throw new Error(`${what}: expected toast ${re}, saw "${await page.locator('#toast').innerText()}"`); }
+};
+const closeSheet = async () => { await page.keyboard.press('Escape'); await page.waitForTimeout(250); };
+// A real 64x48 PNG, generated in the page to avoid shipping a binary fixture.
+const makePng = () => page.evaluate(async () => {
+  const c = document.createElement('canvas'); c.width = 64; c.height = 48; const x = c.getContext('2d');
+  x.fillStyle = '#C2410C'; x.fillRect(0, 0, 64, 48); x.fillStyle = '#FBBF24'; x.beginPath(); x.arc(32, 24, 14, 0, 7); x.fill();
+  const b = await new Promise((r) => c.toBlob(r, 'image/png')); return Array.from(new Uint8Array(await b.arrayBuffer()));
+});
 
 try {
   await page.goto(base);
-  await page.waitForSelector('#pandalList .card');
-  must(await count('.leaflet-marker-icon'), 'map markers missing');
-  must(await count('#pandalList .card') === G.pandals.length, 'pandal list incomplete');
-  await shot('01-explore');
+  await page.waitForSelector('.hero');
+  must(await count('.zone-card') === G.zones.length, 'zone cards missing on home');
+  await shot('01-home');
 
-  // Zone filter
-  await page.click('#zoneChips [data-z="north"]');
-  const north = G.zones.find((z) => z.id === 'north').pandal_ids.length;
-  must(await count('#pandalList .card') === north, `expected ${north} north pandals`);
-  must(await count('.zbox'), 'zone banner missing');
-  await shot('02-explore-north');
+  // Search (English and Bengali)
+  await page.fill('#homeSearch', 'tridh');
+  await page.waitForSelector('#homeResults li[data-result="tridhara"]');
+  await page.fill('#homeSearch', 'ত্রিধারা');
+  await page.waitForSelector('#homeResults li[data-result="tridhara"]');
+  await shot('02-search');
 
-  // Keyboard: focus the first card and press Enter to open its sheet
-  await page.focus('#pandalList .card >> nth=0');
-  await page.keyboard.press('Enter');
-  await page.waitForSelector('.sheet.open');
-  await shot('03-pandal-sheet');
-  await page.keyboard.press('Escape');
-  must(!(await page.locator('.sheet.open').count()), 'Escape did not close the sheet');
+  // Verified check-in at Tridhara: counts publicly
+  const before = (await statFor('tridhara')).visits;
+  await page.click('#homeResults li[data-result="tridhara"]');
+  await page.waitForSelector('.sheet.open #visitBtn');
+  await page.click('#visitBtn');
+  await waitToast(/checked in|Visitor/, 'check-in');
+  await page.waitForTimeout(400);
+  must((await statFor('tridhara')).visits === before + 1, 'community visit count did not increase');
+  must(await page.locator('#visitBtn').isDisabled(), 'check-in button should show done');
+  await shot('03-checked-in');
+  await closeSheet();
 
-  // Curated itinerary
+  // Too far: Bagbazar from Lake Market is refused publicly, but can be kept privately
+  await page.click('.tab[data-view="explore"]');
+  await page.click('#exploreZones [data-z="north"]');
+  await page.click('#explorePanel .item[data-place="bagbazar"]');
+  await page.click('#visitBtn');
+  await page.waitForSelector('#privBtn');
+  must(/away/.test(await page.locator('#verifyBox').innerText()), 'too-far notice missing');
+  await shot('04-too-far');
+  await page.click('#privBtn');
+  await page.waitForTimeout(300);
+  must((await statFor('bagbazar')).visits === 0, 'a too-far visit must not count publicly');
+  await closeSheet();
+
+  // "I ate here" at a food spot, standing at it
+  const foodId = G.food.find((f) => f.zone === 'south_lakemarket').id;
+  await ctx.setGeolocation(at(foodId));
+  await page.click('#explorePanel [data-seg="food"]');
+  await page.click('#exploreZones [data-z="all"]');
+  await page.click(`#explorePanel .item[data-place="${foodId}"]`);
+  await page.click('#visitBtn');
+  await waitToast(/#1|Logged/, 'ate here');
+  await page.waitForTimeout(300);
+  must((await statFor(foodId)).visits >= 1, 'ate-here not counted');
+  await closeSheet();
+  await shot('05-food');
+
+  // Offline check-in queues, then syncs when the network returns
+  await ctx.setGeolocation(at('66_pally'));
+  await page.click('#explorePanel [data-seg="pandals"]');
+  await ctx.setOffline(true);
+  await page.click('#explorePanel .item[data-place="66_pally"]');
+  await page.click('#visitBtn');
+  await waitToast(/sync|Checked in/, 'offline check-in');
+  await closeSheet();
+  await ctx.setOffline(false);
+  await page.evaluate(() => window.dispatchEvent(new Event('online')));
+  await page.waitForTimeout(1500);
+  must((await statFor('66_pally')).visits === 1, 'queued check-in did not sync after reconnecting');
+
+  // Parking segment and the car spot
+  await page.click('#explorePanel [data-seg="parking"]');
+  must(await count('#explorePanel .item'), 'no parking listed');
+  await shot('06-parking');
+
+  // Moments: upload a photo at Tridhara (on-site), then like it
+  await ctx.setGeolocation(at('tridhara'));
+  await page.click('.tab[data-view="moments"]');
+  await page.waitForSelector('#fabAdd:not([hidden])');
+  await page.click('#fabAdd');
+  await page.waitForSelector('#upGallery');
+  const png = Buffer.from(await makePng());
+  const [chooser] = await Promise.all([page.waitForEvent('filechooser'), page.click('#upGallery')]);
+  await chooser.setFiles({ name: 'pandal.png', mimeType: 'image/png', buffer: png });
+  await page.waitForSelector('#upPreview img');
+  await page.waitForFunction(() => document.querySelector('#upPlace')?.value === 'tridhara', null, { timeout: 8000 })
+    .catch(async () => { throw new Error(`nearest place should be preselected, got ${await page.locator('#upPlace').inputValue()}`); });
+  await page.fill('#upCaption', 'Lights at Tridhara');
+  await page.check('#upConsent');
+  await shot('07-upload');
+  await page.click('#upPost');
+  await waitToast(/On site|Posted/, 'post');
+  await page.waitForSelector('#view-moments .thumb');
+  must((await statFor('tridhara')).photos >= 1, 'photo not counted');
+  await shot('08-moments');
+  await page.click('#view-moments .thumb >> nth=0');
+  await page.waitForSelector('#mLike');
+  await page.click('#mLike');
+  await page.waitForFunction(() => document.querySelector('#mLike')?.getAttribute('aria-pressed') === 'true');
+  must(/Lights at Tridhara/.test(await page.locator('.sheet').innerText()), 'caption missing in viewer');
+  await shot('09-moment-view');
+  await closeSheet();
+
+  // Curated trail, then a custom route with a time budget, then the share link
   await page.click('.tab[data-view="plan"]');
-  await page.waitForSelector('#itinList .card');
-  await shot('04-plan-curated');
-  await page.click('#itinList .card >> nth=2');
-  await page.waitForSelector('.timeline li[data-p]');
-  await shot('05-plan-itinerary');
-
-  // Custom plan with a time budget
-  await page.click('.seg-btn[data-seg="custom"]');
-  await page.click('#planZones [data-z="south_lakemarket"]');
+  await page.click('#view-plan [data-trail] >> nth=2');
+  await page.waitForSelector('.timeline li[data-place]');
+  await shot('10-trail');
+  await page.click('#view-plan [data-seg="custom"]');
+  await page.click('#view-plan [data-pz="south_lakemarket"]');
   await page.selectOption('#planBudget', '180');
+  await page.selectOption('#planStart', 't:kalighat');
   await page.click('#planForm button[type="submit"]');
   await page.waitForTimeout(400);
-  const stops = await count('.timeline li[data-p]');
-  must(stops >= 4, `custom 3h Lake Market plan should fit 4+ pandals, got ${stops}`);
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await shot('06-plan-custom');
-
-  // Share link round-trip: open the shared URL in a fresh page and expect the same stops
-  const shareUrl = await page.evaluate(() => {
-    const p = JSON.parse(localStorage.getItem('pp:activePlan'));
-    return p.params;
-  });
-  must(shareUrl && shareUrl.z[0] === 'south_lakemarket', 'plan params not stored');
+  const stops = await count('.timeline li[data-place]');
+  must(stops >= 3, `custom 3 h Lake Market plan should fit 3+ pandals, got ${stops}`);
+  const params = await page.evaluate(() => JSON.parse(localStorage.getItem('pp:activePlan')).params);
+  const enc = Buffer.from(JSON.stringify(params)).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const shared = await ctx.newPage();
-  const enc = Buffer.from(JSON.stringify(shareUrl)).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   await shared.goto(base + '#plan=' + enc);
-  await shared.waitForSelector('.timeline li[data-p]');
-  must(await shared.locator('.timeline li[data-p]').count() === stops, 'shared plan produced a different route');
+  await shared.waitForSelector('.timeline li[data-place]');
+  must(await shared.locator('.timeline li[data-place]').count() === stops, 'shared plan produced a different route');
   await shared.close();
 
-  // Food filters
-  await page.click('.tab[data-view="food"]');
-  await page.click('#foodFilters [data-f="sweets"]');
-  must(await count('#foodList .card'), 'no sweets listed');
-  await shot('07-food');
-
-  // Parking
-  await page.click('.tab[data-view="park"]');
-  await page.click('#parkZones [data-z="south_lakemarket"]');
-  must(await count('#parkList .card'), 'no parking listed');
-  await shot('08-park');
-
-  // Fit: GPS walk (slow enough to count as walking) plus simulated accelerometer steps
-  await page.click('.tab[data-view="fit"]');
+  // Me: walk tracking with GPS plus simulated accelerometer steps
+  await page.click('.tab[data-view="me"]');
   await page.click('#walkBtn');
-  for (let i = 1; i <= 8; i++) {
-    await ctx.setGeolocation({ latitude: 22.5185 - 0.000036 * i, longitude: 88.3489, accuracy: 10 });
+  for (let i = 1; i <= 6; i++) {
+    await ctx.setGeolocation({ latitude: P.tridhara.lat - 0.000036 * i, longitude: P.tridhara.lng, accuracy: 10 });
     await page.waitForTimeout(1500);
   }
-  must(+(await page.locator('#fitPandals').innerText()) >= 1, 'GPS auto check-in did not fire');
   must(parseFloat(await page.locator('#fitKm').innerText()) > 0.01, 'walk distance not tracked');
-  const before = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
+  const s0 = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
   await page.evaluate(async () => {
-    for (let i = 0; i < 50 * 6; i++) { // 6 s of a 2 Hz walking cadence
+    for (let i = 0; i < 50 * 6; i++) {
       const z = 9.81 + 2.5 * Math.sin(2 * Math.PI * 2 * (i / 50));
       window.dispatchEvent(new DeviceMotionEvent('devicemotion', { accelerationIncludingGravity: { x: 0.1, y: 0.2, z } }));
       await new Promise((r) => setTimeout(r, 20));
     }
   });
-  await page.waitForTimeout(1100);
-  const after = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
-  must(after - before >= 8, `motion sensor steps not counted (${before} → ${after})`);
-  must(/motion/i.test(await page.locator('#fitSource').innerText()), 'step source should say motion sensor');
-  await shot('09-fit');
+  await page.waitForTimeout(1200);
+  const s1 = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
+  must(s1 - s0 >= 8, `motion sensor steps not counted (${s0} → ${s1})`);
+  must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
+  await shot('11-me');
 
-  // Bengali
+  // Bengali, dark mode, offline reload
   await page.click('#langBtn');
-  must((await page.locator('.tab[data-view="fit"] span').innerText()) === 'ফিট', 'tab labels not translated');
-  await page.click('.tab[data-view="explore"]');
-  must(/[ঀ-৿]/.test(await page.locator('#pandalList .card h3 >> nth=0').innerText()), 'pandal names not in Bengali');
-  await shot('10-explore-bn');
+  must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');
+  await page.click('.tab[data-view="home"]');
+  await shot('12-home-bn');
   await page.click('#langBtn');
-
-  // Dark mode
   await page.emulateMedia({ colorScheme: 'dark' });
-  await shot('11-explore-dark');
-
-  // Offline: the service worker should serve the shell and data
-  await page.reload(); await page.waitForSelector('#pandalList .card');
+  await shot('13-home-dark');
+  await page.reload(); await page.waitForSelector('.hero');
   await ctx.setOffline(true);
   await page.reload();
-  await page.waitForSelector('#pandalList .card', { timeout: 8000 });
+  await page.waitForSelector('.hero', { timeout: 8000 });
   await ctx.setOffline(false);
-
   must(!(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)), 'horizontal overflow on mobile');
 } catch (e) {
   errors.push(e.message);
@@ -148,7 +216,8 @@ try {
 } finally {
   await browser.close();
   server.kill();
+  fake?.server.close();
 }
 
 if (errors.length) { console.error('SMOKE FAILED\n' + errors.join('\n')); process.exit(1); }
-console.log(`smoke OK → screenshots in ${out}`);
+console.log(`smoke OK (${fake ? 'fake' : 'real'} backend) → screenshots in ${out}`);

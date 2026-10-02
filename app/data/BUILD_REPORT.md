@@ -1,12 +1,12 @@
-# Build report — 2026-10-02T06:47:15+00:00
+# Build report — 2026-10-02T08:41:09+00:00
 
-Bundle version `8d48ef14abdc`
+Bundle version `a62ab2f5ac0c`
 
 | Entity | Count |
 |---|---|
 | zones | 7 |
 | pandals | 53 |
-| food | 27 |
+| food | 28 |
 | parking | 14 |
 | transit | 24 |
 | itineraries | 6 |
@@ -15,25 +15,25 @@ Bundle version `8d48ef14abdc`
 
 | Zone | Pandals | 5★ | Full walk | Steps | kcal |
 |---|---|---|---|---|---|
-| North Kolkata Heritage | 14 | 4 | 9.0 km | 13,124 | 1105 |
-| Central Blockbusters | 6 | 3 | 7.2 km | 10,451 | 730 |
-| Gariahat & Ballygunge | 9 | 2 | 7.5 km | 10,988 | 804 |
-| Lake Market & Kalighat | 10 | 4 | 9.0 km | 13,129 | 978 |
-| Behala & New Alipore | 6 | 1 | 7.3 km | 10,680 | 694 |
-| Salt Lake Blocks | 3 | 1 | 2.9 km | 4,272 | 294 |
-| Lake Town & Dum Dum Park | 5 | 1 | 5.5 km | 8,018 | 533 |
+| North Kolkata Heritage | 14 | 4 | 9.9 km | 14,500 | 1154 |
+| Central Blockbusters | 6 | 3 | 5.1 km | 7,490 | 614 |
+| Gariahat & Ballygunge | 8 | 2 | 8.1 km | 11,899 | 801 |
+| Lake Market & Kalighat | 11 | 4 | 7.3 km | 10,674 | 908 |
+| Behala & New Alipore | 6 | 1 | 8.6 km | 12,580 | 774 |
+| Salt Lake Blocks | 3 | 1 | 2.7 km | 3,928 | 281 |
+| Lake Town & Dum Dum Park | 5 | 1 | 5.6 km | 8,129 | 536 |
 
 ## Curated itineraries
 
 | Itinerary | Pandals | Time | Walk | Steps |
 |---|---|---|---|---|
-| North Kolkata Heritage Trail | 14 | 07:00–14:02 | 8.99 km | 13,124 |
-| Central Blockbusters at Dawn | 5 | 05:30–08:44 | 5.16 km | 7,541 |
-| South Heavyweights | 17 | 14:00–02:15 | 15.83 km | 23,115 |
-| Behala & New Alipore Theme Trail | 6 | 15:00–19:17 | 7.09 km | 10,353 |
-| Salt Lake + Lake Town Hop | 8 | 16:00–21:22 | 8.41 km | 12,289 |
-| The All-Nighter: North → South | 11 | 22:00–08:34 | 14.21 km | 20,752 |
+| North Kolkata Heritage Trail | 14 | 07:00–14:17 | 9.93 km | 14,500 |
+| Central Blockbusters at Dawn | 5 | 05:30–08:42 | 4.93 km | 7,203 |
+| South Heavyweights | 17 | 14:00–02:13 | 15.81 km | 23,090 |
+| Behala & New Alipore Theme Trail | 6 | 15:00–19:44 | 8.51 km | 12,431 |
+| Salt Lake + Lake Town Hop | 8 | 16:00–21:18 | 8.26 km | 12,057 |
+| The All-Nighter: North → South | 11 | 22:00–07:54 | 12.19 km | 17,801 |
 
-## Warnings (94)
+## Warnings (95)
 
-- 94 records are not ground-verified yet
+- 95 records are not ground-verified yet

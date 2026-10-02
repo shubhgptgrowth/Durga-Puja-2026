@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Pujo Parikrama 2026</title>
-  <meta name="description" content="Plan your Durga Puja 2026 pandal hopping in Kolkata by zone, with food, parking, routes and a step tracker.">
+  <meta name="description" content="Plan your Durga Puja 2026 pandal hopping in Kolkata: zones, live check-ins, food, parking, routes, moments and a step tracker.">
   <meta name="theme-color" content="#9F1239">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -15,9 +15,39 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5L9 4Z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5 7-5s5.8 1.4 7 5"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16.5 9.5"/></symbol>
+      <symbol id="i-food" viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-2 2-2 2-4M12 7c0-2 2-2 2-4"/></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3.5 16h17v3h-17z"/><circle cx="7.5" cy="13.5" r=".8"/><circle cx="16.5" cy="13.5" r=".8"/></symbol>
+      <symbol id="i-metro" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/><circle cx="9" cy="14" r=".8"/><circle cx="15" cy="14" r=".8"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-steps" viewBox="0 0 24 24"><path d="M8 3c2 0 3 2 3 5s-1 5-3 5-3-2-3-5 1-5 3-5ZM6 15h4v2a2 2 0 0 1-4 0zM16 7c2 0 3 2 3 5s-1 5-3 5-3-2-3-5 1-5 3-5ZM14 19h4v.5a2 2 0 0 1-4 0z"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4M5 13v7h14v-7"/></symbol>
+      <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="7.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m4 18 5-5 4 4 3-3 4 4"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c.8-3 3.2-4.5 6-4.5s5.2 1.5 6 4.5M15 14.6c2.6-.3 4.8.9 5.6 3.9"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></symbol>
+      <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.8"/><path d="M9 21l2-6 3 2v5M8 12l3-4 3 3 3 1M11 8l-3 1-1 3"/></symbol>
+    </defs>
+  </svg>
+
   <header class="topbar">
     <div class="brand">
-      <img class="brand-mark" src="icons/icon.svg" alt="" width="36" height="36">
+      <img class="brand-mark" src="icons/icon.svg" alt="" width="34" height="34">
       <div>
         <h1>Pujo Parikrama</h1>
         <p id="countdown" class="sub">Durga Puja 2026 · Kolkata</p>
@@ -31,158 +61,27 @@
   </header>
 
   <main id="main">
-    <!-- EXPLORE -->
-    <section id="view-explore" class="view active" aria-label="Explore">
-      <div id="map" class="map" role="region" aria-label="Map of pandals"></div>
-      <div class="map-tools">
-        <button class="fab" id="locateBtn" aria-label="Show my location">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5" fill="none"/></svg>
-        </button>
-        <button class="fab" id="layersBtn" aria-label="Map layers">
-          <svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="m2 13 10 5 10-5" fill="none"/></svg>
-        </button>
+    <section id="view-home" class="view active" aria-labelledby="tab-home"></section>
+    <section id="view-explore" class="view" aria-labelledby="tab-explore">
+      <div class="map-wrap">
+        <div id="map" class="map" role="region" aria-label="Map"></div>
+        <button class="fab-sm" id="locateBtn" aria-label="Show my location"><svg class="ic"><use href="#i-locate"/></svg></button>
       </div>
-      <div class="panel">
-        <div class="chips" id="zoneChips" aria-label="Zones"></div>
-        <div class="zone-banner" id="zoneBanner"></div>
-        <div class="time-row">
-          <label for="hourRange"><span data-i18n="crowd.at">Crowd at</span> <strong id="hourLabel"></strong></label>
-          <input type="range" id="hourRange" min="0" max="23" step="1">
-        </div>
-        <div class="list-head">
-          <span id="listCount"></span>
-          <select id="sortSelect" aria-label="Sort pandals">
-            <option value="popular" data-i18n="sort.popular">Most famous</option>
-            <option value="quiet" data-i18n="sort.quiet">Least crowded now</option>
-            <option value="near" data-i18n="sort.near">Nearest to me</option>
-          </select>
-        </div>
-        <ul class="cards" id="pandalList"></ul>
-      </div>
+      <div class="panel" id="explorePanel"></div>
     </section>
-
-    <!-- PLAN -->
-    <section id="view-plan" class="view" aria-label="Plan">
-      <div class="seg" role="tablist">
-        <button class="seg-btn active" data-seg="curated" role="tab" aria-selected="true" data-i18n="seg.curated">Curated trails</button>
-        <button class="seg-btn" data-seg="custom" role="tab" aria-selected="false" data-i18n="seg.custom">Build my route</button>
-      </div>
-      <div id="seg-curated" class="seg-pane active">
-        <ul class="cards" id="itinList"></ul>
-      </div>
-      <div id="seg-custom" class="seg-pane">
-        <form id="planForm" class="form">
-          <fieldset>
-            <legend data-i18n="f.zones">Zones</legend>
-            <div class="chips wrap" id="planZones"></div>
-          </fieldset>
-          <div class="grid2">
-            <label><span data-i18n="f.start">Start from</span>
-              <select id="planStart"></select>
-            </label>
-            <label><span data-i18n="f.time">Start time</span>
-              <input type="time" id="planTime" value="17:00">
-            </label>
-            <label><span data-i18n="f.stars">Only pandals rated</span>
-              <select id="planStars">
-                <option value="1" data-i18n="stars.1">All</option>
-                <option value="3" data-i18n="stars.3">3★ and up</option>
-                <option value="4" data-i18n="stars.4" selected>4★ and up</option>
-                <option value="5" data-i18n="stars.5">5★ only</option>
-              </select>
-            </label>
-            <label><span data-i18n="f.budget">Time budget</span>
-              <select id="planBudget">
-                <option value="120" data-i18n="budget.120">2 hours</option>
-                <option value="180" data-i18n="budget.180">3 hours</option>
-                <option value="240" data-i18n="budget.240" selected>4 hours</option>
-                <option value="360" data-i18n="budget.360">6 hours</option>
-                <option value="600" data-i18n="budget.600">All night</option>
-              </select>
-            </label>
-          </div>
-          <label class="toggle"><input type="checkbox" id="planBrisk"> <span data-i18n="f.brisk">Brisk pace (more pandals, more calories)</span></label>
-          <button type="submit" class="btn primary block" data-i18n="f.build">Build route</button>
-        </form>
-      </div>
-      <div id="planResult" class="plan-result" hidden></div>
-    </section>
-
-    <!-- FOOD -->
-    <section id="view-food" class="view" aria-label="Food">
-      <div class="filters">
-        <div class="chips" id="foodZones"></div>
-        <div class="chips" id="foodFilters">
-          <button class="chip" data-f="veg" data-i18n="ff.veg">🟢 Veg only</button>
-          <button class="chip" data-f="cheap" data-i18n="ff.cheap">₹ Budget</button>
-          <button class="chip" data-f="sweets" data-i18n="ff.sweets">Sweets</button>
-          <button class="chip" data-f="street" data-i18n="ff.street">Street food</button>
-          <button class="chip" data-f="open" data-i18n="ff.open">Open now</button>
-        </div>
-      </div>
-      <ul class="cards" id="foodList"></ul>
-    </section>
-
-    <!-- PARK & RIDE -->
-    <section id="view-park" class="view" aria-label="Parking and transit">
-      <div class="car-card" id="carCard"></div>
-      <div class="chips" id="parkZones"></div>
-      <div id="parkAdvisory"></div>
-      <h2 class="h2" data-i18n="h.parking">Parking</h2>
-      <ul class="cards" id="parkList"></ul>
-      <h2 class="h2" data-i18n="h.transit">Metro &amp; rail</h2>
-      <ul class="cards compact" id="transitList"></ul>
-      <p class="fine" id="parkFine"></p>
-    </section>
-
-    <!-- FIT -->
-    <section id="view-fit" class="view" aria-label="Fitness">
-      <div class="ring-wrap">
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
-          <circle class="ring-bg" cx="100" cy="100" r="86"/>
-          <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="86"/>
-        </svg>
-        <div class="ring-center" aria-live="polite">
-          <div class="ring-steps" id="fitSteps">0</div>
-          <div class="ring-goal" id="fitGoal"></div>
-        </div>
-      </div>
-      <p class="fine center" id="fitSource"></p>
-      <div class="stats">
-        <div><b id="fitKm">0.00</b><span data-i18n="fit.km">km</span></div>
-        <div><b id="fitKcal">0</b><span data-i18n="fit.kcal">kcal</span></div>
-        <div><b id="fitTime">0:00</b><span data-i18n="fit.walking">walking</span></div>
-        <div><b id="fitPandals">0</b><span data-i18n="fit.pandals">pandals</span></div>
-      </div>
-      <div class="fit-actions">
-        <button class="btn primary block" id="walkBtn">Start pujo walk</button>
-        <p class="fine center" id="walkStatus"></p>
-      </div>
-      <h2 class="h2" data-i18n="fit.badges">Badges</h2>
-      <ul class="badges" id="badgeList"></ul>
-      <h2 class="h2" data-i18n="fit.days">Your puja days</h2>
-      <ul class="history" id="historyList"></ul>
-      <details class="settings">
-        <summary data-i18n="fit.settings">Profile &amp; settings</summary>
-        <form id="profileForm" class="form grid2">
-          <label><span data-i18n="fit.height">Height (cm)</span><input type="number" id="pHeight" min="100" max="230" inputmode="numeric"></label>
-          <label><span data-i18n="fit.weight">Weight (kg)</span><input type="number" id="pWeight" min="25" max="200" inputmode="numeric"></label>
-          <label><span data-i18n="fit.goal">Daily step goal</span><input type="number" id="pGoal" min="1000" max="60000" step="500" inputmode="numeric"></label>
-          <label class="toggle"><input type="checkbox" id="pLowData"> <span data-i18n="fit.lowData">Low-data map</span></label>
-          <label class="toggle" style="grid-column:1/-1"><input type="checkbox" id="pMotion"> <span data-i18n="fit.motion">Use motion sensor for steps</span></label>
-          <button class="btn block" type="submit" data-i18n="fit.save">Save</button>
-          <button class="btn ghost block" type="button" id="resetBtn" data-i18n="fit.reset">Reset all my data</button>
-        </form>
-      </details>
-    </section>
+    <section id="view-plan" class="view" aria-labelledby="tab-plan"></section>
+    <section id="view-moments" class="view" aria-labelledby="tab-moments"></section>
+    <section id="view-me" class="view" aria-labelledby="tab-me"></section>
   </main>
 
+  <button class="fab" id="fabAdd" type="button" hidden aria-label="Add a moment"><svg class="ic"><use href="#i-camera"/></svg></button>
+
   <nav class="tabbar" aria-label="Sections">
-    <button class="tab active" data-view="explore"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="tab.explore">Explore</span></button>
-    <button class="tab" data-view="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none"/></svg><span data-i18n="tab.plan">Plan</span></button>
-    <button class="tab" data-view="food"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-2 2-2 2-4M12 7c0-2 2-2 2-4" fill="none"/></svg><span data-i18n="tab.food">Food</span></button>
-    <button class="tab" data-view="park"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3" fill="none"/></svg><span data-i18n="tab.park">Park</span></button>
-    <button class="tab" data-view="fit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4a2 2 0 1 0 0 .01M9 21l2-6 3 2v5M8 12l3-4 3 3 3 1M11 8l-3 1-1 3" fill="none"/></svg><span data-i18n="tab.fit">Fit</span></button>
+    <button class="tab active" id="tab-home" data-view="home"><svg class="ic"><use href="#i-home"/></svg><span data-i18n="tab.home">Home</span></button>
+    <button class="tab" id="tab-explore" data-view="explore"><svg class="ic"><use href="#i-map"/></svg><span data-i18n="tab.explore">Explore</span></button>
+    <button class="tab" id="tab-plan" data-view="plan"><svg class="ic"><use href="#i-route"/></svg><span data-i18n="tab.plan">Plan</span></button>
+    <button class="tab" id="tab-moments" data-view="moments"><svg class="ic"><use href="#i-camera"/></svg><span data-i18n="tab.moments">Moments</span></button>
+    <button class="tab" id="tab-me" data-view="me"><svg class="ic"><use href="#i-user"/></svg><span data-i18n="tab.me">Me</span></button>
   </nav>
 
   <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
@@ -193,6 +92,8 @@
   </section>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="pickCamera" accept="image/*,video/*" capture="environment" hidden>
+  <input type="file" id="pickGallery" accept="image/*,video/*" hidden>
 
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="app.js" type="module"></script>

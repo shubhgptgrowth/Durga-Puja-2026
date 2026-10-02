@@ -124,3 +124,48 @@ export function decodePlan(s) {
     return p;
   } catch { return null; }
 }
+
+/* Compact counts for badges: 950 → "950", 1234 → "1.2k", 25300 → "25k". */
+export function fmtCount(n) {
+  n = Math.max(0, Math.round(n || 0));
+  if (n < 1000) return String(n);
+  if (n < 10000) return (Math.floor(n / 100) / 10).toFixed(1).replace(/\.0$/, '') + 'k';
+  if (n < 1e6) return Math.floor(n / 1000) + 'k';
+  return (Math.floor(n / 1e5) / 10).toFixed(1).replace(/\.0$/, '') + 'M';
+}
+
+/* "just now" / "5m" / "3h" / "2d" relative age. */
+export function timeAgo(iso, now = Date.now()) {
+  const s = Math.max(0, (now - new Date(iso).getTime()) / 1000);
+  if (s < 60) return { n: 0, unit: 'now' };
+  if (s < 3600) return { n: Math.floor(s / 60), unit: 'm' };
+  if (s < 86400) return { n: Math.floor(s / 3600), unit: 'h' };
+  return { n: Math.floor(s / 86400), unit: 'd' };
+}
+
+/* Simple, forgiving search over {id, kind, names: [..], extra: [..]} entries.
+ * Ranking: exact or prefix match on a name word, then a substring in a name, then a substring in the extras. */
+export function searchEntries(entries, query, limit = 8) {
+  const q = query.trim().toLowerCase();
+  if (q.length < 2) return [];
+  const scored = [];
+  for (const e of entries) {
+    let best = 0;
+    for (const n of e.names) {
+      const s = n.toLowerCase();
+      if (s === q) best = Math.max(best, 100);
+      else if (s.startsWith(q)) best = Math.max(best, 80);
+      else if (s.split(/[\s,()-]+/).some((w) => w.startsWith(q))) best = Math.max(best, 60);
+      else if (s.includes(q)) best = Math.max(best, 40);
+    }
+    if (!best) for (const x of e.extra || []) if (x.toLowerCase().includes(q)) { best = 20; break; }
+    if (best) scored.push([best + (e.boost || 0), e]);
+  }
+  return scored.sort((a, b) => b[0] - a[0]).slice(0, limit).map(([, e]) => e);
+}
+
+/* The nearest places to a point, within `maxM`. */
+export function nearest(point, places, { maxM = Infinity, limit = 5 } = {}) {
+  return places.map((p) => [p, hav(point, [p.lat, p.lng])]).filter(([, d]) => d <= maxM)
+    .sort((a, b) => a[1] - b[1]).slice(0, limit).map(([p, d]) => ({ place: p, distance: d }));
+}

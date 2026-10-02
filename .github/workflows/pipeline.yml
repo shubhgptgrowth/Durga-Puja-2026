@@ -2,7 +2,7 @@ name: pipeline
 
 on:
   push:
-    paths: ["data/**", "pipeline/**", "tests/**", "app/**", "package*.json", ".github/workflows/pipeline.yml"]
+    paths: ["data/**", "pipeline/**", "tests/**", "app/**", "supabase/**", "package*.json", ".github/workflows/pipeline.yml"]
   pull_request:
 
 jobs:
@@ -31,6 +31,8 @@ jobs:
               "app/data/guide.json is stale. Run `python -m pipeline` and commit the result.")
           print("bundle version", built["meta"]["version"], "OK")
           PY
+      - name: Supabase seed is up to date
+        run: git diff --exit-code -- supabase/seed.sql app/data/guide.geojson
       - uses: actions/upload-artifact@v4
         with:
           name: guide-bundle
@@ -60,3 +62,33 @@ jobs:
         with:
           name: mobile-screenshots
           path: screenshots/
+
+  community:
+    name: Community backend (SQL rules + real Supabase e2e)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: SQL rule tests on plain Postgres
+        run: tests/sql/run.sh
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start local Supabase (migrations + seed)
+        run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Mobile e2e against the real Supabase stack
+        run: |
+          eval "$(supabase status -o env)"
+          export SUPABASE_URL="$API_URL" SUPABASE_ANON_KEY="${ANON_KEY:-$PUBLISHABLE_KEY}"
+          npm run test:e2e -- screenshots-real
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-screenshots-real-backend
+          path: screenshots-real/

@@ -61,7 +61,7 @@ make the same mistakes:
 
 ## 4. Out of scope for v1 (backlog)
 
-* Live crowd and queue data. This needs partner feeds or crowdsourcing. The v1 crowd score is a *heuristic* based on day, hour and popularity.
+* Live queue lengths. The crowd curve is still a *heuristic* based on day, hour and popularity. As of v2 it sits next to real, GPS-verified check-in counts (see docs/COMMUNITY.md).
 * Live traffic and road closures. The Kolkata Traffic Police advisory is linked instead.
 * User accounts, cloud sync and social sharing of walks.
 * Turn-by-turn navigation. We hand off to Google Maps or OSM.
@@ -131,9 +131,11 @@ Why it's built this way:
 | 1 Pipelines | `pipeline/`, raw CSVs, tests, CI | ✅ |
 | 2 Mobile visual | `app/` PWA with Explore, Plan, Food, Park and Fit | ✅ |
 | 2b Completion | Motion-sensor steps, share links, Bengali UI, network-first data, keyboard access, JS and e2e tests in CI, 53 pandals | ✅ |
-| 3 Hosting | Static deploy, a custom domain, and the production tile provider | Next |
-| 3b Data hardening | Verify coordinates on the ground, and add more pandals and Bengali highlights | Backlog |
-| 4 Live layer | Crowdsourced queue reports, police advisories | Backlog |
+| 3 Free hosting | GitHub Pages deploy with a live-site check | ✅ |
+| 4 v2: community and UX | 5-tab redesign with a Home overview and search; GPS-verified check-in and "I ate here" counts; live trending; location-tagged photo and video moments with likes and moderation; Supabase backend (RLS, RPCs) tested on Postgres and a real local Supabase | ✅ |
+| 4b Accuracy | OSM audit: 58 of 119 pins corrected and confirmed (all stations, 25 pandals) | ✅ |
+| 5 Launch | Connect Supabase, pick the map provider (docs/MAPS.md), final host and domain, ground-check the remaining curated pins | Next |
+| 6 Live layer+ | Crowdsourced queue-length reports, police advisories | Backlog |
 
 ## 9. Success metrics
 

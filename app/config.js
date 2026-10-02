@@ -1,0 +1,29 @@
+/* Deployment configuration. Everything here is public by design:
+ * - The Supabase anon (or "publishable") key is meant to ship in browsers. Row-level
+ *   security and the RPCs in supabase/migrations decide what it can do.
+ * - Leave community.url empty to run without community features. The app then
+ *   works fully offline-first, but without shared counts or moments.
+ */
+export const CONFIG = {
+  community: {
+    url: '',        // e.g. 'https://abcdxyz.supabase.co'
+    anonKey: '',    // Project Settings → API → anon / publishable key
+    bucket: 'moments',
+    statsRefreshSec: 90,
+    maxVideoSec: 30,
+    maxVideoMB: 20,
+  },
+  map: {
+    // Raster tile templates. Swap these for a keyed provider before a big launch (see docs/MAPS.md).
+    light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    subdomains: 'abcd',
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  },
+};
+
+// Test and preview override: a page can set window.PP_CONFIG before the app loads.
+if (typeof window !== 'undefined' && window.PP_CONFIG) {
+  for (const [k, v] of Object.entries(window.PP_CONFIG)) CONFIG[k] = { ...CONFIG[k], ...v };
+}

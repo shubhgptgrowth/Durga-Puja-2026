@@ -125,3 +125,73 @@ test('bundle has Bengali names for every pandal, zone and day', () => {
   for (const z of G.zones) assert.ok(z.name_bn && z.short_bn, z.id);
   for (const d of G.meta.days) assert.ok(d.name_bn, d.id);
 });
+
+/* ---------------- community-era helpers ---------------- */
+import { fmtCount, timeAgo, searchEntries, nearest } from '../../app/core.js';
+import { readdirSync } from 'node:fs';
+
+test('fmtCount compacts large numbers', () => {
+  assert.deepEqual([0, 999, 1000, 1234, 9999, 25300, 1250000].map(fmtCount), ['0', '999', '1k', '1.2k', '9.9k', '25k', '1.2M']);
+});
+
+test('timeAgo buckets', () => {
+  const now = Date.parse('2026-10-18T12:00:00Z');
+  assert.deepEqual(timeAgo('2026-10-18T11:59:30Z', now), { n: 0, unit: 'now' });
+  assert.deepEqual(timeAgo('2026-10-18T11:15:00Z', now), { n: 45, unit: 'm' });
+  assert.deepEqual(timeAgo('2026-10-18T07:00:00Z', now), { n: 5, unit: 'h' });
+  assert.deepEqual(timeAgo('2026-10-16T12:00:00Z', now), { n: 2, unit: 'd' });
+});
+
+test('search finds pandals by English prefix, Bengali name, and dish', () => {
+  const entries = [
+    ...G.pandals.map((p) => ({ id: p.id, kind: 'pandal', names: [p.name, p.name_bn], extra: p.tags, boost: p.popularity })),
+    ...G.food.map((f) => ({ id: f.id, kind: 'food', names: [f.name], extra: f.dishes })),
+  ];
+  assert.equal(searchEntries(entries, 'tridh')[0].id, 'tridhara');
+  assert.equal(searchEntries(entries, 'ত্রিধারা')[0].id, 'tridhara');
+  assert.ok(searchEntries(entries, 'kabiraji').some((e) => e.id === 'mitra_cafe'));
+  assert.deepEqual(searchEntries(entries, 'x'), []);
+});
+
+test('nearest returns places sorted by distance within a radius', () => {
+  const p = G.pandals.find((x) => x.id === 'tridhara');
+  const n = nearest([p.lat, p.lng], G.pandals, { maxM: 1500, limit: 4 });
+  assert.equal(n[0].place.id, 'tridhara');
+  assert.ok(n.every((x, i) => i === 0 || x.distance >= n[i - 1].distance));
+  assert.ok(n.every((x) => x.distance <= 1500));
+});
+
+test('check-in radius in the app bundle matches the server seed', () => {
+  const seed = readFileSync(new URL('../../supabase/seed.sql', import.meta.url), 'utf8');
+  for (const p of [...G.pandals, ...G.food]) {
+    const m = seed.match(new RegExp(`\\('${p.id}', '[a-z]+', '(?:[^']|'')*', '[a-z_]+', ([\\d.]+), ([\\d.]+), (\\d+)\\)`));
+    assert.ok(m, `${p.id} missing from seed.sql`);
+    assert.equal(+m[3], p.checkin_radius_m, `${p.id} radius`);
+    assert.ok(Math.abs(+m[1] - p.lat) < 1e-6 && Math.abs(+m[2] - p.lng) < 1e-6, `${p.id} coordinates`);
+  }
+});
+
+test('every translation key used in the app exists in both languages', () => {
+  const dir = new URL('../../app/', import.meta.url);
+  const files = [...readdirSync(dir).filter((f) => f.endsWith('.js')).map((f) => new URL(f, dir)),
+    ...readdirSync(new URL('views/', dir)).map((f) => new URL('views/' + f, dir))];
+  const used = new Set();
+  for (const f of files) {
+    const src = readFileSync(f, 'utf8');
+    for (const m of src.matchAll(/\bt\(\s*'([a-zA-Z0-9_.]+)'\s*[,)]/g)) used.add(m[1]);
+    for (const m of src.matchAll(/\bt\([^()]*\?\s*'([a-zA-Z0-9_.]+)'\s*:\s*'([a-zA-Z0-9_.]+)'/g)) { used.add(m[1]); used.add(m[2]); }
+  }
+  for (const m of readFileSync(new URL('index.html', dir), 'utf8').matchAll(/data-i18n="([^"]+)"/g)) used.add(m[1]);
+  // Families built dynamically ('slot.' + id, ...): every member must exist.
+  const families = {
+    'slot.': Object.keys(G.meta.slots), 'crowd.': ['quiet', 'moderate', 'busy', 'packed'], 'car.': ['ok', 'limited', 'avoid'],
+    'adv.': ['ok', 'limited', 'avoid'], 'type.': [...new Set(G.food.map((f) => f.type))], 'diet.': ['veg', 'nonveg', 'both'],
+    'kind.': [...new Set(G.parking.map((p) => p.kind))], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
+    'sort.': ['popular', 'quiet', 'near', 'live'], 'stars.': ['1', '3', '4', '5'], 'budget.': ['120', '180', '240', '360', '600'],
+    'ff.': ['veg', 'cheap', 'sweets', 'street', 'open'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],
+    'b.': ['first', 'five', 'fifteen', 'thirty', 'zone', 'k10', 'ashtami', 'dawn', 'owl', 'foodie', 'ns', 'goal', 'lens'],
+  };
+  for (const [prefix, ids] of Object.entries(families)) for (const id of ids) used.add(prefix + id);
+  const missing = [...used].filter((k) => !STR.en[k] || !STR.bn[k]);
+  assert.deepEqual(missing, [], 'missing translations');
+});

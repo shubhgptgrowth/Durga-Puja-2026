@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 OUT_DIR = ROOT / "app" / "data"
+SEED_SQL = ROOT / "supabase" / "seed.sql"
 
 YEAR = 2026
 PUJA_DAYS = [
@@ -40,7 +41,11 @@ WALK_KMH_CROWD = 3.2       # festival crowd pace
 WALK_KMH_BRISK = 4.8
 NEARBY_FOOD_M = 800
 NEARBY_PARKING_M = 2000
-CHECKIN_RADIUS_M = 80
+CHECKIN_RADIUS_M = 80              # auto check-in during a tracked walk
+# Server-side "you are really there" radius. Pins that haven't been verified get extra slack.
+CHECKIN_RADIUS_VERIFIED_M = 200
+CHECKIN_RADIUS_OSM_M = 250          # pin matched to an OpenStreetMap feature
+CHECKIN_RADIUS_UNVERIFIED_M = 350
 
 # Fitness model
 DEFAULT_HEIGHT_CM = 165

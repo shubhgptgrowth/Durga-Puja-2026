@@ -22,6 +22,15 @@ def _walk_min(m):
     return round(m * config.DETOUR_FACTOR / (config.WALK_KMH_CROWD * 1000 / 60))
 
 
+def checkin_radius(r):
+    """Server-enforced "you are really there" radius. Must match the seed.sql radius_m."""
+    if r.get("verified"):
+        return config.CHECKIN_RADIUS_VERIFIED_M
+    if r.get("geo_source") == "osm":
+        return config.CHECKIN_RADIUS_OSM_M
+    return config.CHECKIN_RADIUS_UNVERIFIED_M
+
+
 def enrich(data):
     zones = {z["id"]: dict(z) for z in data["zones"]}
     transit, parking, food = data["transit"], data["parking"], data["food"]
@@ -46,6 +55,7 @@ def enrich(data):
             ranked = sorted(range(24), key=lambda h: (crowd_index(p["crowd_base"], day["factor"], h), h))
             e["quiet_hours"][day["id"]] = ranked[:2]
         e["peak_crowd"] = crowd_index(p["crowd_base"], 1.1, 20)
+        e["checkin_radius_m"] = checkin_radius(p)
         e["best_slot_label"] = config.SLOTS[p["best_slot"]]["label"]
         pandals.append(e)
 
@@ -66,6 +76,7 @@ def enrich(data):
 
     # Reverse links: the pandals each eatery serves.
     for f in food:
+        f["checkin_radius_m"] = checkin_radius(f)
         f["near_pandals"] = [p["id"] for p in pandals
                              if walk_m((p["lat"], p["lng"]), (f["lat"], f["lng"])) / config.DETOUR_FACTOR
                              <= config.NEARBY_FOOD_M]

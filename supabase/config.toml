@@ -1,0 +1,27 @@
+# Local development / CI stack for the community backend: `supabase start`.
+# Production uses a hosted Supabase project with the same migrations (see docs/COMMUNITY.md).
+project_id = "pujo-parikrama"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:8123"
+enable_anonymous_sign_ins = true
