@@ -973,6 +973,14 @@
    "auto": ""
   },
   {
+   "name": "Howrah CSTC",
+   "kind": "bus_station",
+   "lat": 22.577347,
+   "lng": 88.334244,
+   "taxi": "",
+   "auto": ""
+  },
+  {
    "name": "Esplanade",
    "kind": "bus_station",
    "lat": 22.562495,
@@ -1195,6 +1203,10 @@
    "from": "Gariahat More",
    "to": "Jadavpur 8B Bus Stand",
    "note": "Via Gariahat Road South and Dhakuria",
+   "from_lat": "22.5187",
+   "from_lng": "88.3657",
+   "to_lat": "22.4968",
+   "to_lng": "88.3713",
    "ends": [
     {
      "name": "Gariahat More"
@@ -1209,6 +1221,10 @@
    "from": "Rashbehari More",
    "to": "Gariahat More",
    "note": "Along Rashbehari Avenue",
+   "from_lat": "22.5176",
+   "from_lng": "88.3466",
+   "to_lat": "22.5187",
+   "to_lng": "88.3657",
    "ends": [
     {
      "name": "Rashbehari More"
@@ -1223,6 +1239,10 @@
    "from": "Tollygunge Phari",
    "to": "Jadavpur 8B Bus Stand",
    "note": "Via Prince Anwar Shah Road",
+   "from_lat": "22.4990",
+   "from_lng": "88.3470",
+   "to_lat": "22.4968",
+   "to_lng": "88.3713",
    "ends": [
     {
      "name": "Tollygunge Phari"
@@ -1237,6 +1257,10 @@
    "from": "Behala Chowrasta",
    "to": "Tollygunge Phari",
    "note": "Via Diamond Harbour Road and Taratala",
+   "from_lat": "22.4820",
+   "from_lng": "88.3120",
+   "to_lat": "22.4990",
+   "to_lng": "88.3470",
    "ends": [
     {
      "name": "Behala Chowrasta",
@@ -1254,6 +1278,10 @@
    "from": "Jadavpur 8B Bus Stand",
    "to": "Garia More",
    "note": "Along Raja SC Mullick Road",
+   "from_lat": "22.4968",
+   "from_lng": "88.3713",
+   "to_lat": "22.4632",
+   "to_lng": "88.3794",
    "ends": [
     {
      "name": "Jadavpur 8B Bus Stand"
@@ -1271,6 +1299,10 @@
    "from": "Ultadanga",
    "to": "Karunamoyee",
    "note": "Into Salt Lake",
+   "from_lat": "22.5885",
+   "from_lng": "88.3888",
+   "to_lat": "22.5845",
+   "to_lng": "88.4235",
    "ends": [
     {
      "name": "Ultadanga",
@@ -1291,6 +1323,10 @@
    "from": "Shyambazar Five Point Crossing",
    "to": "Ultadanga",
    "note": "Along Bidhan Sarani and Khanna",
+   "from_lat": "22.6006",
+   "from_lng": "88.3722",
+   "to_lat": "22.5885",
+   "to_lng": "88.3888",
    "ends": [
     {
      "name": "Shyambazar Five Point Crossing"
@@ -1308,6 +1344,10 @@
    "from": "Dum Dum Station",
    "to": "Nagerbazar",
    "note": "Via Dum Dum Road",
+   "from_lat": "22.6215",
+   "from_lng": "88.3915",
+   "to_lat": "22.6236",
+   "to_lng": "88.4126",
    "ends": [
     {
      "name": "Dum Dum Station",
@@ -1328,6 +1368,10 @@
    "from": "Lake Town",
    "to": "Ultadanga",
    "note": "Along VIP Road",
+   "from_lat": "22.6045",
+   "from_lng": "88.4030",
+   "to_lat": "22.5885",
+   "to_lng": "88.3888",
    "ends": [
     {
      "name": "Lake Town",
@@ -1348,6 +1392,10 @@
    "from": "Park Circus Seven Point Crossing",
    "to": "Ballygunge Phari",
    "note": "Via Gorachand Road and Syed Amir Ali Avenue",
+   "from_lat": "22.5409",
+   "from_lng": "88.3672",
+   "to_lat": "22.5292",
+   "to_lng": "88.3655",
    "ends": [
     {
      "name": "Park Circus Seven Point Crossing"
@@ -1365,6 +1413,10 @@
    "from": "Kalighat Metro Station",
    "to": "Rashbehari More",
    "note": "Along SP Mukherjee Road",
+   "from_lat": "22.5175",
+   "from_lng": "88.3462",
+   "to_lat": "22.5176",
+   "to_lng": "88.3466",
    "ends": [
     {
      "name": "Kalighat Metro Station",
@@ -1382,6 +1434,10 @@
    "from": "Gariahat More",
    "to": "Kasba",
    "note": "Via Gariahat Road and Kasba Road",
+   "from_lat": "22.5187",
+   "from_lng": "88.3657",
+   "to_lat": "22.5140",
+   "to_lng": "88.3890",
    "ends": [
     {
      "name": "Gariahat More"

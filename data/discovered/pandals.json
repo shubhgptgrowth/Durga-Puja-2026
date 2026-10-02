@@ -97,6 +97,14 @@
    "class": ":"
   },
   {
+   "osm": "node/10080206710",
+   "name": "Sinthee Sarbajanin",
+   "name_bn": "",
+   "lat": 22.630647,
+   "lng": 88.381182,
+   "class": "amenity:place_of_worship"
+  },
+  {
    "osm": "node/10081941244",
    "name": "Bagbazar Sarbojanin Durgotsav",
    "name_bn": "",
@@ -1025,6 +1033,7 @@
    "area_hint": "central",
    "popularity": "4",
    "query": "Chorbagan Sarbojanin",
+   "locality": "",
    "match": {
     "name": "Chorbagan Sarbojanin",
     "lat": 22.5835113,
@@ -1041,6 +1050,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Sikdar Bagan Sarbojanin",
+   "locality": "Sikdar Bagan Street, Kolkata",
    "match": {
     "osm": "node/10082038827",
     "name": "Chorbagan Sarbojanin",
@@ -1059,6 +1069,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Pathuriaghata Panchar Pally",
+   "locality": "Pathuriaghata Street, Kolkata",
    "match": {
     "osm": "node/9602553317",
     "name": "Maa Durga pharmacy",
@@ -1077,6 +1088,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Darjipara Sarbojanin",
+   "locality": "Darjipara, Kolkata",
    "match": {
     "osm": "node/10083413842",
     "name": "Dhakuria Sarbojanin",
@@ -1095,6 +1107,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Ultadanga Sangrami",
+   "locality": "Ultadanga, Kolkata",
    "match": {
     "name": "SANGRAMI",
     "lat": 22.5904187,
@@ -1102,7 +1115,14 @@
     "class": "amenity:community_centre",
     "src": "nominatim"
    },
-   "similarity": 0.62
+   "similarity": 0.62,
+   "locality_match": {
+    "name": "Ultadanga",
+    "lat": 22.5961275,
+    "lng": 88.3852833,
+    "class": "place:suburb",
+    "query": "Ultadanga, Kolkata"
+   }
   },
   {
    "id": "dumdum_tarun_dal",
@@ -1111,6 +1131,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Dum Dum Park Tarun Dal",
+   "locality": "Dum Dum Park, Kolkata",
    "match": {
     "osm": "way/841413829",
     "name": "Apu Durga Park",
@@ -1120,7 +1141,14 @@
     "class": "leisure:park",
     "src": "overpass"
    },
-   "similarity": 0.5
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "Dum Dum Park",
+    "lat": 22.6114242,
+    "lng": 88.4101901,
+    "class": "highway:bus_stop",
+    "query": "Dum Dum Park, Kolkata"
+   }
   },
   {
    "id": "arjunpur_amra_sabai",
@@ -1129,6 +1157,7 @@
    "area_hint": "north",
    "popularity": "4",
    "query": "Arjunpur Amra Sabai",
+   "locality": "Arjunpur, Kolkata",
    "match": {
     "osm": "way/841643502",
     "name": "Kashipur durga utshab committee",
@@ -1138,7 +1167,14 @@
     "class": "leisure:park",
     "src": "overpass"
    },
-   "similarity": 0.48
+   "similarity": 0.48,
+   "locality_match": {
+    "name": "Arjunpur",
+    "lat": 22.6199633,
+    "lng": 88.424808,
+    "class": "place:locality",
+    "query": "Arjunpur, Kolkata"
+   }
   },
   {
    "id": "kestopur_prafulla_kanan",
@@ -1147,6 +1183,7 @@
    "area_hint": "north",
    "popularity": "3",
    "query": "Prafulla Kanan Kestopur",
+   "locality": "Prafulla Kanan, Kolkata",
    "match": {
     "name": "Prafulla Kanan Deshapriya Vidyamandir",
     "lat": 22.6029505,
@@ -1163,6 +1200,7 @@
    "area_hint": "east",
    "popularity": "3",
    "query": "33 Pally Beleghata",
+   "locality": "",
    "match": {
     "name": "Beleghata 33 Pally",
     "lat": 22.5685699,
@@ -1179,6 +1217,7 @@
    "area_hint": "south",
    "popularity": "3",
    "query": "Chakraberia Sarbojanin",
+   "locality": "",
    "match": {
     "name": "Chakraberia Sarbojanin",
     "lat": 22.5335735,
@@ -1195,6 +1234,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Bakul Bagan Sarbojanin",
+   "locality": "",
    "match": {
     "name": "Bakulbagan Sarbojanin",
     "lat": 22.5268187,
@@ -1211,6 +1251,7 @@
    "area_hint": "south",
    "popularity": "3",
    "query": "Sanghasree Kalighat",
+   "locality": "Kalighat, Kolkata",
    "match": {
     "osm": "node/10081965664",
     "name": "Nabin Sarkar Street Sarbojanin",
@@ -1220,7 +1261,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.53
+   "similarity": 0.53,
+   "locality_match": {
+    "name": "Kalighat",
+    "lat": 22.5153313,
+    "lng": 88.3477052,
+    "class": "place:suburb",
+    "query": "Kalighat, Kolkata"
+   }
   },
   {
    "id": "kalighat_milan_sangha",
@@ -1229,6 +1277,7 @@
    "area_hint": "south",
    "popularity": "3",
    "query": "Kalighat Milan Sangha",
+   "locality": "",
    "match": {
     "name": "Kalighat Milan Sangha",
     "lat": 22.5245094,
@@ -1245,6 +1294,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Hindusthan Club Durga Puja",
+   "locality": "",
    "match": {
     "name": "Hindustan Club",
     "lat": 22.5195091,
@@ -1261,6 +1311,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "95 Pally Jodhpur Park",
+   "locality": "Jodhpur Park, Kolkata",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1270,7 +1321,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.73
+   "similarity": 0.73,
+   "locality_match": {
+    "name": "Jodhpur Park",
+    "lat": 22.5056055,
+    "lng": 88.363674,
+    "class": "place:suburb",
+    "query": "Jodhpur Park, Kolkata"
+   }
   },
   {
    "id": "selimpur_pally",
@@ -1279,6 +1337,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Selimpur Pally",
+   "locality": "Selimpur, Kolkata",
    "match": {
     "osm": "node/10083540463",
     "name": "Rabindra Pally Sarbojanin",
@@ -1288,7 +1347,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.57
+   "similarity": 0.57,
+   "locality_match": {
+    "name": "Selimpur Lane",
+    "lat": 22.5053514,
+    "lng": 88.3812082,
+    "class": "highway:tertiary",
+    "query": "Selimpur, Kolkata"
+   }
   },
   {
    "id": "santoshpur_lake_pally",
@@ -1297,6 +1363,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Santoshpur Lake Pally",
+   "locality": "",
    "match": {
     "name": "Santoshpur Lake",
     "lat": 22.4914272,
@@ -1313,6 +1380,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Trikon Park Santoshpur",
+   "locality": "Santoshpur, Kolkata",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1322,7 +1390,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.59
+   "similarity": 0.59,
+   "locality_match": {
+    "name": "Santoshpur",
+    "lat": 22.4960484,
+    "lng": 88.3822296,
+    "class": "place:neighbourhood",
+    "query": "Santoshpur, Kolkata"
+   }
   },
   {
    "id": "purbachal_shakti_sangha",
@@ -1331,6 +1406,7 @@
    "area_hint": "south",
    "popularity": "3",
    "query": "Purbachal Shakti Sangha",
+   "locality": "Purbachal, Kolkata",
    "match": {
     "osm": "node/10083371976",
     "name": "Purbachal Sarbojanin",
@@ -1340,7 +1416,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.72
+   "similarity": 0.72,
+   "locality_match": {
+    "name": "Purbachal Main Road",
+    "lat": 22.502355,
+    "lng": 88.3967382,
+    "class": "highway:residential",
+    "query": "Purbachal, Kolkata"
+   }
   },
   {
    "id": "naktala_udayan",
@@ -1349,6 +1432,7 @@
    "area_hint": "south",
    "popularity": "5",
    "query": "Naktala Udayan Sangha",
+   "locality": "",
    "match": {
     "name": "Naktala Udayan Sangha",
     "lat": 22.4744913,
@@ -1365,6 +1449,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "SB Park Thakurpukur",
+   "locality": "Thakurpukur, Kolkata",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1374,7 +1459,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.52
+   "similarity": 0.52,
+   "locality_match": {
+    "name": "Thakurpukur",
+    "lat": 22.4625369,
+    "lng": 88.3155256,
+    "class": "place:suburb",
+    "query": "Thakurpukur, Kolkata"
+   }
   },
   {
    "id": "behala_club",
@@ -1383,6 +1475,7 @@
    "area_hint": "south",
    "popularity": "3",
    "query": "Behala Club Durga Puja",
+   "locality": "",
    "match": {
     "name": "Behala Club",
     "lat": 22.5053684,
@@ -1399,6 +1492,7 @@
    "area_hint": "south",
    "popularity": "4",
    "query": "Ajeya Sanghati Haridevpur",
+   "locality": "Haridevpur, Kolkata",
    "match": {
     "osm": "way/636399668",
     "name": "Dakshinpara Durga Mandir",
@@ -1408,7 +1502,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.45
+   "similarity": 0.45,
+   "locality_match": {
+    "name": "Haridevpur",
+    "lat": 22.4652952,
+    "lng": 88.3311283,
+    "class": "place:suburb",
+    "query": "Haridevpur, Kolkata"
+   }
   },
   {
    "id": "salt_lake_ck",
@@ -1417,6 +1518,7 @@
    "area_hint": "east",
    "popularity": "3",
    "query": "CK Block Salt Lake Durga Puja",
+   "locality": "",
    "match": {
     "name": "CK Block",
     "lat": 22.5859248,
@@ -1433,6 +1535,7 @@
    "area_hint": "east",
    "popularity": "3",
    "query": "EE Block Salt Lake Durga Puja",
+   "locality": "",
    "match": {
     "name": "EE Block",
     "lat": 22.5801249,
@@ -1449,6 +1552,7 @@
    "area_hint": "east",
    "popularity": "3",
    "query": "IA Block Salt Lake Durga Puja",
+   "locality": "",
    "match": {
     "name": "IA Block",
     "lat": 22.5728823,
@@ -1465,6 +1569,7 @@
    "area_hint": "east",
    "popularity": "3",
    "query": "CL Block Salt Lake Durga Puja",
+   "locality": "",
    "match": {
     "name": "CL Block",
     "lat": 22.5833745,
@@ -1481,6 +1586,7 @@
    "area_hint": "howrah",
    "popularity": "3",
    "query": "Mandirtala Shibpur Durga Puja",
+   "locality": "Mandirtala, Howrah|Shibpur, Howrah",
    "match": {
     "osm": "way/636399668",
     "name": "Dakshinpara Durga Mandir",
@@ -1490,7 +1596,14 @@
     "class": "amenity:place_of_worship",
     "src": "overpass"
    },
-   "similarity": 0.62
+   "similarity": 0.62,
+   "locality_match": {
+    "name": "Mandirtala Bus Stand",
+    "lat": 22.5697077,
+    "lng": 88.3176363,
+    "class": "highway:bus_stop",
+    "query": "Mandirtala, Howrah"
+   }
   },
   {
    "id": "salkia_sarbojanin",
@@ -1499,6 +1612,7 @@
    "area_hint": "howrah",
    "popularity": "3",
    "query": "Salkia Sarbojanin",
+   "locality": "Salkia, Howrah",
    "match": {
     "osm": "node/10083413842",
     "name": "Dhakuria Sarbojanin",
