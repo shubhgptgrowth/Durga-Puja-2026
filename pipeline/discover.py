@@ -27,10 +27,23 @@ BB = config.BBOX
 BBOX_Q = f'{BB["lat_min"]},{BB["lng_min"]},{BB["lat_max"]},{BB["lng_max"]}'
 
 
+MIRRORS = [OVERPASS, "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter"]
+
+
 def overpass(q, timeout=180):
-    req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": q}).encode(), headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout + 30) as r:
-        return json.load(r)["elements"]
+    """POST to Overpass, retrying across public mirrors (they 429/504 under load)."""
+    last = None
+    for attempt in range(6):
+        url = MIRRORS[attempt % len(MIRRORS)]
+        try:
+            req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(), headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=timeout + 30) as r:
+                return json.load(r)["elements"]
+        except Exception as e:  # 429 / 504 / timeouts
+            last = e
+            print(f"overpass {url} failed ({e}); retrying", file=sys.stderr)
+            time.sleep(15 * (attempt + 1))
+    raise last
 
 
 def center(e):
