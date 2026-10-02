@@ -44,3 +44,28 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  verify:
+    # Smoke-check the live site: shell, data, service worker and manifest are served,
+    # and the published guide.json is the version that was just built.
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Live site serves the current build
+        env:
+          SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          expected=$(python -c "import json;print(json.load(open('app/data/guide.json'))['meta']['version'])")
+          for i in 1 2 3 4 5 6; do
+            live=$(curl -fsS "${SITE}data/guide.json?cb=$RANDOM" | python -c "import json,sys;print(json.load(sys.stdin)['meta']['version'])" || true)
+            [ "$live" = "$expected" ] && break
+            echo "waiting for CDN ($live != $expected)"; sleep 10
+          done
+          [ "$live" = "$expected" ] || { echo "live data version $live != $expected"; exit 1; }
+          for p in "" index.html app.js core.js i18n.js sw.js manifest.webmanifest vendor/leaflet/leaflet.js; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${p}")
+            echo "$code /${p}"; [ "$code" = 200 ] || exit 1
+          done
+          curl -fsS "$SITE" | grep -q '<title>Pujo Parikrama 2026</title>'
+          echo "Live: $SITE (data v$expected)"
