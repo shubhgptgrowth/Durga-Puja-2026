@@ -18,23 +18,27 @@ data/raw/*.csv  ──►  python -m pipeline  ──►  app/data/guide.json  �
 | [`docs/SCOPE.md`](docs/SCOPE.md) | Project scope: personas, v1 features, data model, fitness maths, roadmap |
 | `data/raw/` | **Source of truth.** Zones, pandals, food, parking and transit as CSV (editable in a spreadsheet) |
 | `pipeline/` | Stdlib-only Python: ingest → validate → enrich → plan → emit |
-| `app/` | Static PWA (vanilla JS + Leaflet, vendored). Works offline once it has loaded |
-| `tests/` | Pipeline unit tests, plus a Playwright mobile smoke test (`tests/e2e/smoke.mjs`) |
+| `app/` | Static PWA (vanilla JS + Leaflet, vendored). Works offline once it has loaded. English and বাংলা |
+| `app/core.js` | DOM-free maths shared with the tests: routing, crowd, fitness, GPS filter, step detector, share links |
+| `tests/` | Python pipeline tests, JS unit tests (`tests/js`), and a Playwright mobile end-to-end test (`tests/e2e/smoke.mjs`) |
 
 ## Quick start
 
 ```bash
-python -m pipeline                    # build app/data/guide.json (+ guide.geojson, BUILD_REPORT.md)
-python -m unittest discover -s tests  # run the pipeline tests
-python -m http.server -d app 8000     # open http://localhost:8000 on your phone or in desktop devtools
+npm ci                                 # dev only: Playwright for the e2e test
+npm run build                          # python -m pipeline → app/data/guide.json (+ guide.geojson, BUILD_REPORT.md)
+npm test                               # Python pipeline tests + JS unit tests
+npx playwright install chromium        # once
+npm run test:e2e                       # iPhone-size end-to-end run, screenshots in ./screenshots
+npm run serve                          # http://localhost:8123 (open it on your phone or in devtools)
 ```
 
-Mobile smoke test. Needs Playwright with Chromium, and the server above running on port 8123:
-
-```bash
-python -m http.server -d app 8123 &
-node tests/e2e/smoke.mjs http://localhost:8123/ screenshots
-```
+The end-to-end test starts its own server. It:
+* walks every tab, a curated trail, and a time-budgeted custom route
+* opens a shared route link and checks it produces the same stops
+* simulates a GPS walk and accelerometer steps
+* switches to Bengali and dark mode
+* reloads **offline**, and checks for horizontal overflow and console errors
 
 ## The pipeline
 
@@ -46,8 +50,12 @@ node tests/e2e/smoke.mjs http://localhost:8123/ screenshots
 | 4 plan | `plan.py` | A walking order for each zone (nearest-neighbour + 2-opt), plus 6 curated multi-zone itineraries with timed stops, crowd-adjusted dwell, metro hops, steps and kcal |
 | 5 emit | `emit.py` | `guide.json` (content-hashed version), `guide.geojson`, `BUILD_REPORT.md` |
 
-CI (`.github/workflows/pipeline.yml`) runs the tests, validates the data,
-rebuilds the bundle and **fails if the committed `guide.json` is stale**.
+CI (`.github/workflows/pipeline.yml`) runs two jobs:
+
+* **Data:** Python tests, data validation, a rebuild, and a check that **fails if the committed `guide.json` is stale**.
+* **App:**
+  * JS unit tests, including a parity test: the in-app planner must produce exactly the pipeline's route for every zone, plus step and crowd parity and Bengali coverage.
+  * The mobile end-to-end test. Its screenshots are uploaded as an artifact.
 
 ### Editing data
 
@@ -75,12 +83,20 @@ Once a pandal's coordinates have been checked on the ground, set `verified=true`
 * **Food:** filter by zone, veg, budget, sweets, street food or open now. Log what you ate.
 * **Park:** a car advisory per zone, parking and metro lists, and **"I parked here"** to save your car's spot and walk back to it later.
 * **Fit:**
-  * live GPS walk tracking, with fixes discarded if accuracy is worse than 35 m or speed is above 10 km/h
-  * steps from your height-based stride, and kcal from MET values
-  * a daily goal ring and auto check-in within 80 m
-  * badges and a day-by-day history
+  * live GPS walk tracking, with fixes discarded if accuracy is worse than 35 m or speed is above 10 km/h (an auto or cab)
+  * **steps from the phone's motion sensor** when it's available. iOS asks for permission when the walk starts. Steps only count after a run of 4, so a bump doesn't count. Otherwise steps are estimated from GPS distance ÷ your stride.
+  * kcal from MET values, a daily goal ring and auto check-in within 80 m
+  * a "next stop" prompt for the active plan
+  * 12 badges and a day-by-day history
 
   Everything stays in `localStorage` on the device.
+* **Share:** any route can be shared as a link (`#plan=…` or `#trail=…`). It uses the phone's share sheet, or copies the link to the clipboard. Whoever opens it gets the same route.
+* **বাংলা:** a one-tap language toggle in the header. It translates the UI, plus pandal, zone, day and trail names. Highlights and notes stay in English for now.
+* **Resilience:**
+  * the guide data is network-first, so fixes pushed during the festival reach people, and "Guide updated" shows when they do
+  * the cached copy is used offline, with an offline notice
+  * the screen stays awake while tracking
+  * cards work with the keyboard, and screen readers get labels
 
 Map tiles come from © OpenStreetMap contributors / © CARTO. For heavy
 production traffic, use your own tile key or provider.

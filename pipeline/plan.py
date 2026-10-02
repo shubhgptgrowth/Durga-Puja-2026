@@ -98,11 +98,12 @@ def plan(data):
 
         n = sum(len(s["stops"]) for s in segments if s["type"] == "walk")
         itineraries.append({
-            "id": spec["id"], "name": spec["name"], "blurb": spec["blurb"], "zones": spec["zones"],
+            "id": spec["id"], "name": spec["name"], "name_bn": spec.get("name_bn"),
+            "blurb": spec["blurb"], "blurb_bn": spec.get("blurb_bn"), "zones": spec["zones"],
             "day": spec["suggested_day"], "start_time": spec["suggested_start"], "end_time": _hhmm(clock),
             "segments": segments, "pandal_count": n,
             "totals": {
-                "walk_km": round(walk_m_sum / 1000, 2), "walk_min": walk_min_sum, "dwell_min": dwell_sum,
+                "walk_km": round(walk_m_sum / 1000, 2), "walk_m": round(walk_m_sum), "walk_min": walk_min_sum, "dwell_min": dwell_sum,
                 "ride_min": ride_min_sum, "duration_min": walk_min_sum + dwell_sum + ride_min_sum,
                 "steps": steps_for(walk_m_sum), "kcal": kcal_for(walk_min_sum, dwell_sum),
             },

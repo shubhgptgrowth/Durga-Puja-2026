@@ -2,11 +2,12 @@ name: pipeline
 
 on:
   push:
-    paths: ["data/**", "pipeline/**", "tests/**", "app/**", ".github/workflows/pipeline.yml"]
+    paths: ["data/**", "pipeline/**", "tests/**", "app/**", "package*.json", ".github/workflows/pipeline.yml"]
   pull_request:
 
 jobs:
-  build:
+  data:
+    name: Data pipeline
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,3 +35,28 @@ jobs:
         with:
           name: guide-bundle
           path: app/data/
+
+  app:
+    name: App (JS unit + mobile e2e)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: npm ci
+      - name: JS unit tests (core maths, parity with the pipeline, i18n coverage)
+        run: npm run test:js
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Mobile smoke test
+        run: npm run test:e2e -- screenshots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-screenshots
+          path: screenshots/

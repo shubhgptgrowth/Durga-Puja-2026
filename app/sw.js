@@ -1,8 +1,10 @@
-/* Offline support: the app shell and guide data use stale-while-revalidate,
- * and map tiles use a size-capped cache-first strategy. */
-const VERSION = 'pp-2026-v1';
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
-  'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js'];
+/* Offline support.
+ * - guide.json: network-first, so data fixes reach people during the festival, with the cache as a fallback.
+ * - App shell: stale-while-revalidate.
+ * - Map tiles: cache-first, capped at TILE_MAX entries. */
+const VERSION = 'pp-2026-v2';
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'manifest.webmanifest',
+  'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json', 'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 600;
 
 self.addEventListener('install', (e) => {
@@ -35,9 +37,21 @@ self.addEventListener('fetch', (e) => {
     }));
     return;
   }
+  if (url.origin !== location.origin) return;
+
+  if (url.pathname.endsWith('/data/guide.json')) {
+    e.respondWith(caches.open(VERSION).then(async (c) => {
+      try {
+        const res = await fetch(req, { cache: 'no-cache' });
+        if (res.ok) c.put('data/guide.json', res.clone());
+        return res;
+      } catch { return (await c.match('data/guide.json')) || new Response('{}', { status: 503 }); }
+    }));
+    return;
+  }
 
   e.respondWith(caches.open(VERSION).then(async (c) => {
-    const hit = await c.match(req, { ignoreSearch: url.origin === location.origin });
+    const hit = await c.match(req, { ignoreSearch: true });
     const net = fetch(req).then((res) => { if (res.ok) c.put(req, res.clone()); return res; }).catch(() => hit);
     return hit || net;
   }));

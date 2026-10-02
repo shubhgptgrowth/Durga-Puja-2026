@@ -40,6 +40,8 @@ def validate(data):
                     errors.append(f"{where}: coordinates {row['lat']},{row['lng']} are outside Kolkata")
             if kind not in ("zones", "transit") and row.get("zone") not in zone_ids:
                 errors.append(f"{where}: unknown zone '{row.get('zone')}'")
+            if kind in ("zones", "pandals") and not row.get("name_bn"):
+                warnings.append(f"{where}: missing Bengali name (name_bn)")
             if "verified" in row and not row["verified"]:
                 warnings.append(f"{where}: coordinates not ground-verified")
 

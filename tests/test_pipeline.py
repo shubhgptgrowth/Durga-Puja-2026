@@ -81,6 +81,10 @@ class ValidationTests(unittest.TestCase):
             validate(bad)
         self.assertTrue(any("duplicate id" in e for e in cm.exception.errors))
 
+    def test_every_pandal_and_zone_has_bengali_name(self):
+        warnings = validate(self.data)
+        self.assertFalse([w for w in warnings if "name_bn" in w])
+
     def test_rejects_bad_slot(self):
         bad = copy.deepcopy(self.data)
         bad["pandals"][0]["best_slot"] = "brunch"

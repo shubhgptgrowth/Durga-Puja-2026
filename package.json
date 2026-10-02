@@ -1,0 +1,16 @@
+{
+  "name": "pujo-parikrama-2026",
+  "private": true,
+  "type": "module",
+  "description": "Mobile guide for Durga Puja 2026 pandal hopping in Kolkata",
+  "scripts": {
+    "build": "python3 -m pipeline",
+    "test": "python3 -m unittest discover -s tests && node --test tests/js/*.test.mjs",
+    "test:js": "node --test tests/js/*.test.mjs",
+    "test:e2e": "node tests/e2e/smoke.mjs",
+    "serve": "python3 -m http.server -d app 8123"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

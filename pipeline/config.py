@@ -7,13 +7,13 @@ OUT_DIR = ROOT / "app" / "data"
 
 YEAR = 2026
 PUJA_DAYS = [
-    {"id": "mahalaya", "name": "Mahalaya", "date": "2026-10-10", "factor": 0.35},
-    {"id": "panchami", "name": "Panchami", "date": "2026-10-16", "factor": 0.6},
-    {"id": "shashthi", "name": "Shashthi", "date": "2026-10-17", "factor": 0.8},
-    {"id": "saptami", "name": "Saptami", "date": "2026-10-18", "factor": 1.0},
-    {"id": "ashtami", "name": "Ashtami", "date": "2026-10-19", "factor": 1.1},
-    {"id": "navami", "name": "Navami", "date": "2026-10-20", "factor": 1.0},
-    {"id": "dashami", "name": "Dashami", "date": "2026-10-21", "factor": 0.55},
+    {"id": "mahalaya", "name_bn": "মহালয়া", "name": "Mahalaya", "date": "2026-10-10", "factor": 0.35},
+    {"id": "panchami", "name_bn": "পঞ্চমী", "name": "Panchami", "date": "2026-10-16", "factor": 0.6},
+    {"id": "shashthi", "name_bn": "ষষ্ঠী", "name": "Shashthi", "date": "2026-10-17", "factor": 0.8},
+    {"id": "saptami", "name_bn": "সপ্তমী", "name": "Saptami", "date": "2026-10-18", "factor": 1.0},
+    {"id": "ashtami", "name_bn": "অষ্টমী", "name": "Ashtami", "date": "2026-10-19", "factor": 1.1},
+    {"id": "navami", "name_bn": "নবমী", "name": "Navami", "date": "2026-10-20", "factor": 1.0},
+    {"id": "dashami", "name_bn": "দশমী", "name": "Dashami", "date": "2026-10-21", "factor": 0.55},
 ]
 
 # Relative crowd by hour of day (0..23). Early morning is quiet, and the peak is 8 pm to midnight.
@@ -53,6 +53,8 @@ QUEUE_MET = 1.5            # standing in a queue still burns something
 CURATED_ITINERARIES = [
     {
         "id": "north_heritage",
+        "name_bn": "উত্তর কলকাতার ঐতিহ্য পরিক্রমা",
+        "blurb_bn": "কুমোরটুলি, বাগবাজার, বনেদি বাড়ি আর হাতিবাগান। শেষে মিত্র ক্যাফের কবিরাজি।",
         "name": "North Kolkata Heritage Trail",
         "zones": ["north"],
         "min_popularity": 1,
@@ -63,6 +65,8 @@ CURATED_ITINERARIES = [
     },
     {
         "id": "central_blockbusters",
+        "name_bn": "ভোরের মধ্য কলকাতা",
+        "blurb_bn": "লাইন পড়ার আগে মহম্মদ আলি পার্ক আর সন্তোষ মিত্র স্কোয়ার। তারপর পুঁটিরামের কচুরি।",
         "name": "Central Blockbusters at Dawn",
         "zones": ["central"],
         "min_popularity": 4,
@@ -73,6 +77,8 @@ CURATED_ITINERARIES = [
     },
     {
         "id": "south_classic",
+        "name_bn": "দক্ষিণের হেভিওয়েট",
+        "blurb_bn": "চেতলা, ত্রিধারা, ৬৬ পল্লী, ম্যাডক্স, তারপর একডালিয়া আর সিংহী পার্ক। পথে ফুচকা।",
         "name": "South Heavyweights",
         "zones": ["south_lakemarket", "south_gariahat"],
         "min_popularity": 4,
@@ -83,6 +89,8 @@ CURATED_ITINERARIES = [
     },
     {
         "id": "behala_trail",
+        "name_bn": "বেহালা ও নিউ আলিপুর থিম পরিক্রমা",
+        "blurb_bn": "সুরুচির রাজ্য-শিল্পের থিম, তারপর পার্পল লাইন ধরে বেহালার থিম পুজো।",
         "name": "Behala & New Alipore Theme Trail",
         "zones": ["southwest"],
         "min_popularity": 1,
@@ -93,6 +101,8 @@ CURATED_ITINERARIES = [
     },
     {
         "id": "east_hop",
+        "name_bn": "সল্টলেক + লেক টাউন",
+        "blurb_bn": "পরিবারের জন্য সল্টলেকের ব্লক, সন্ধের ভিড় কমলে শ্রীভূমি।",
         "name": "Salt Lake + Lake Town Hop",
         "zones": ["salt_lake", "lake_town_dumdum"],
         "min_popularity": 3,
@@ -103,6 +113,8 @@ CURATED_ITINERARIES = [
     },
     {
         "id": "all_nighter",
+        "name_bn": "সারা রাত: উত্তর থেকে দক্ষিণ",
+        "blurb_bn": "শুধু পাঁচ-তারা পুজো। ব্লু লাইনে চড়ে ক্লাস্টার বদলান, ভোর পর্যন্ত হাঁটুন।",
         "name": "The All-Nighter: North → South",
         "zones": ["north", "central", "south_lakemarket"],
         "min_popularity": 5,

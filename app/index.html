@@ -23,6 +23,7 @@
         <p id="countdown" class="sub">Durga Puja 2026 · Kolkata</p>
       </div>
     </div>
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Switch to Bengali">বাংলা</button>
     <label class="day-pick">
       <span class="sr-only">Puja day</span>
       <select id="daySelect" aria-label="Puja day"></select>
@@ -42,18 +43,18 @@
         </button>
       </div>
       <div class="panel">
-        <div class="chips" id="zoneChips" role="tablist" aria-label="Zones"></div>
+        <div class="chips" id="zoneChips" aria-label="Zones"></div>
         <div class="zone-banner" id="zoneBanner"></div>
         <div class="time-row">
-          <label for="hourRange">Crowd at <strong id="hourLabel"></strong></label>
+          <label for="hourRange"><span data-i18n="crowd.at">Crowd at</span> <strong id="hourLabel"></strong></label>
           <input type="range" id="hourRange" min="0" max="23" step="1">
         </div>
         <div class="list-head">
           <span id="listCount"></span>
           <select id="sortSelect" aria-label="Sort pandals">
-            <option value="popular">Most famous</option>
-            <option value="quiet">Least crowded now</option>
-            <option value="near">Nearest to me</option>
+            <option value="popular" data-i18n="sort.popular">Most famous</option>
+            <option value="quiet" data-i18n="sort.quiet">Least crowded now</option>
+            <option value="near" data-i18n="sort.near">Nearest to me</option>
           </select>
         </div>
         <ul class="cards" id="pandalList"></ul>
@@ -63,8 +64,8 @@
     <!-- PLAN -->
     <section id="view-plan" class="view" aria-label="Plan">
       <div class="seg" role="tablist">
-        <button class="seg-btn active" data-seg="curated" role="tab">Curated trails</button>
-        <button class="seg-btn" data-seg="custom" role="tab">Build my route</button>
+        <button class="seg-btn active" data-seg="curated" role="tab" aria-selected="true" data-i18n="seg.curated">Curated trails</button>
+        <button class="seg-btn" data-seg="custom" role="tab" aria-selected="false" data-i18n="seg.custom">Build my route</button>
       </div>
       <div id="seg-curated" class="seg-pane active">
         <ul class="cards" id="itinList"></ul>
@@ -72,36 +73,36 @@
       <div id="seg-custom" class="seg-pane">
         <form id="planForm" class="form">
           <fieldset>
-            <legend>Zones</legend>
+            <legend data-i18n="f.zones">Zones</legend>
             <div class="chips wrap" id="planZones"></div>
           </fieldset>
           <div class="grid2">
-            <label>Start from
+            <label><span data-i18n="f.start">Start from</span>
               <select id="planStart"></select>
             </label>
-            <label>Start time
+            <label><span data-i18n="f.time">Start time</span>
               <input type="time" id="planTime" value="17:00">
             </label>
-            <label>Only pandals rated
+            <label><span data-i18n="f.stars">Only pandals rated</span>
               <select id="planStars">
-                <option value="1">All</option>
-                <option value="3">3★ and up</option>
-                <option value="4" selected>4★ and up</option>
-                <option value="5">5★ only</option>
+                <option value="1" data-i18n="stars.1">All</option>
+                <option value="3" data-i18n="stars.3">3★ and up</option>
+                <option value="4" data-i18n="stars.4" selected>4★ and up</option>
+                <option value="5" data-i18n="stars.5">5★ only</option>
               </select>
             </label>
-            <label>Time budget
+            <label><span data-i18n="f.budget">Time budget</span>
               <select id="planBudget">
-                <option value="120">2 hours</option>
-                <option value="180">3 hours</option>
-                <option value="240" selected>4 hours</option>
-                <option value="360">6 hours</option>
-                <option value="600">All night</option>
+                <option value="120" data-i18n="budget.120">2 hours</option>
+                <option value="180" data-i18n="budget.180">3 hours</option>
+                <option value="240" data-i18n="budget.240" selected>4 hours</option>
+                <option value="360" data-i18n="budget.360">6 hours</option>
+                <option value="600" data-i18n="budget.600">All night</option>
               </select>
             </label>
           </div>
-          <label class="toggle"><input type="checkbox" id="planBrisk"> <span>Brisk pace (more pandals, more calories)</span></label>
-          <button type="submit" class="btn primary block">Build route</button>
+          <label class="toggle"><input type="checkbox" id="planBrisk"> <span data-i18n="f.brisk">Brisk pace (more pandals, more calories)</span></label>
+          <button type="submit" class="btn primary block" data-i18n="f.build">Build route</button>
         </form>
       </div>
       <div id="planResult" class="plan-result" hidden></div>
@@ -112,11 +113,11 @@
       <div class="filters">
         <div class="chips" id="foodZones"></div>
         <div class="chips" id="foodFilters">
-          <button class="chip" data-f="veg">🟢 Veg only</button>
-          <button class="chip" data-f="cheap">₹ Budget</button>
-          <button class="chip" data-f="sweets">Sweets</button>
-          <button class="chip" data-f="street">Street food</button>
-          <button class="chip" data-f="open">Open now</button>
+          <button class="chip" data-f="veg" data-i18n="ff.veg">🟢 Veg only</button>
+          <button class="chip" data-f="cheap" data-i18n="ff.cheap">₹ Budget</button>
+          <button class="chip" data-f="sweets" data-i18n="ff.sweets">Sweets</button>
+          <button class="chip" data-f="street" data-i18n="ff.street">Street food</button>
+          <button class="chip" data-f="open" data-i18n="ff.open">Open now</button>
         </div>
       </div>
       <ul class="cards" id="foodList"></ul>
@@ -127,11 +128,11 @@
       <div class="car-card" id="carCard"></div>
       <div class="chips" id="parkZones"></div>
       <div id="parkAdvisory"></div>
-      <h2 class="h2">Parking</h2>
+      <h2 class="h2" data-i18n="h.parking">Parking</h2>
       <ul class="cards" id="parkList"></ul>
-      <h2 class="h2">Metro &amp; rail</h2>
+      <h2 class="h2" data-i18n="h.transit">Metro &amp; rail</h2>
       <ul class="cards compact" id="transitList"></ul>
-      <p class="fine">Traffic rules change every day of the festival. Check <a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">Kolkata Traffic Police</a> before you drive.</p>
+      <p class="fine" id="parkFine"></p>
     </section>
 
     <!-- FIT -->
@@ -141,45 +142,47 @@
           <circle class="ring-bg" cx="100" cy="100" r="86"/>
           <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="86"/>
         </svg>
-        <div class="ring-center">
+        <div class="ring-center" aria-live="polite">
           <div class="ring-steps" id="fitSteps">0</div>
-          <div class="ring-goal">of <span id="fitGoal">10,000</span> steps</div>
+          <div class="ring-goal" id="fitGoal"></div>
         </div>
       </div>
+      <p class="fine center" id="fitSource"></p>
       <div class="stats">
-        <div><b id="fitKm">0.00</b><span>km</span></div>
-        <div><b id="fitKcal">0</b><span>kcal</span></div>
-        <div><b id="fitTime">0:00</b><span>walking</span></div>
-        <div><b id="fitPandals">0</b><span>pandals</span></div>
+        <div><b id="fitKm">0.00</b><span data-i18n="fit.km">km</span></div>
+        <div><b id="fitKcal">0</b><span data-i18n="fit.kcal">kcal</span></div>
+        <div><b id="fitTime">0:00</b><span data-i18n="fit.walking">walking</span></div>
+        <div><b id="fitPandals">0</b><span data-i18n="fit.pandals">pandals</span></div>
       </div>
       <div class="fit-actions">
         <button class="btn primary block" id="walkBtn">Start pujo walk</button>
-        <p class="fine center" id="walkStatus">GPS tracking stays on your phone. Pandals check in automatically when you're within 80 m.</p>
+        <p class="fine center" id="walkStatus"></p>
       </div>
-      <h2 class="h2">Badges</h2>
+      <h2 class="h2" data-i18n="fit.badges">Badges</h2>
       <ul class="badges" id="badgeList"></ul>
-      <h2 class="h2">Your puja days</h2>
+      <h2 class="h2" data-i18n="fit.days">Your puja days</h2>
       <ul class="history" id="historyList"></ul>
       <details class="settings">
-        <summary>Profile &amp; settings</summary>
+        <summary data-i18n="fit.settings">Profile &amp; settings</summary>
         <form id="profileForm" class="form grid2">
-          <label>Height (cm)<input type="number" id="pHeight" min="100" max="230" inputmode="numeric"></label>
-          <label>Weight (kg)<input type="number" id="pWeight" min="25" max="200" inputmode="numeric"></label>
-          <label>Daily step goal<input type="number" id="pGoal" min="1000" max="60000" step="500" inputmode="numeric"></label>
-          <label class="toggle"><input type="checkbox" id="pLowData"> <span>Low-data map</span></label>
-          <button class="btn block" type="submit">Save</button>
-          <button class="btn ghost block" type="button" id="resetBtn">Reset all my data</button>
+          <label><span data-i18n="fit.height">Height (cm)</span><input type="number" id="pHeight" min="100" max="230" inputmode="numeric"></label>
+          <label><span data-i18n="fit.weight">Weight (kg)</span><input type="number" id="pWeight" min="25" max="200" inputmode="numeric"></label>
+          <label><span data-i18n="fit.goal">Daily step goal</span><input type="number" id="pGoal" min="1000" max="60000" step="500" inputmode="numeric"></label>
+          <label class="toggle"><input type="checkbox" id="pLowData"> <span data-i18n="fit.lowData">Low-data map</span></label>
+          <label class="toggle" style="grid-column:1/-1"><input type="checkbox" id="pMotion"> <span data-i18n="fit.motion">Use motion sensor for steps</span></label>
+          <button class="btn block" type="submit" data-i18n="fit.save">Save</button>
+          <button class="btn ghost block" type="button" id="resetBtn" data-i18n="fit.reset">Reset all my data</button>
         </form>
       </details>
     </section>
   </main>
 
   <nav class="tabbar" aria-label="Sections">
-    <button class="tab active" data-view="explore"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Explore</span></button>
-    <button class="tab" data-view="plan"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none"/></svg><span>Plan</span></button>
-    <button class="tab" data-view="food"><svg viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-2 2-2 2-4M12 7c0-2 2-2 2-4" fill="none"/></svg><span>Food</span></button>
-    <button class="tab" data-view="park"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3" fill="none"/></svg><span>Park</span></button>
-    <button class="tab" data-view="fit"><svg viewBox="0 0 24 24"><path d="M13 4a2 2 0 1 0 0 .01M9 21l2-6 3 2v5M8 12l3-4 3 3 3 1M11 8l-3 1-1 3" fill="none"/></svg><span>Fit</span></button>
+    <button class="tab active" data-view="explore"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="tab.explore">Explore</span></button>
+    <button class="tab" data-view="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none"/></svg><span data-i18n="tab.plan">Plan</span></button>
+    <button class="tab" data-view="food"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><path d="M8 7c0-2 2-2 2-4M12 7c0-2 2-2 2-4" fill="none"/></svg><span data-i18n="tab.food">Food</span></button>
+    <button class="tab" data-view="park"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3" fill="none"/></svg><span data-i18n="tab.park">Park</span></button>
+    <button class="tab" data-view="fit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4a2 2 0 1 0 0 .01M9 21l2-6 3 2v5M8 12l3-4 3 3 3 1M11 8l-3 1-1 3" fill="none"/></svg><span data-i18n="tab.fit">Fit</span></button>
   </nav>
 
   <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
