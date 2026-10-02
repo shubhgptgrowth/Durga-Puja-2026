@@ -14,6 +14,9 @@ on:
         required: false
         default: ""
 
+permissions:
+  contents: write   # commits the public URL and anon key into app/config.js
+
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -84,3 +87,20 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
           echo "CONFIG_URL=$url"
           echo "CONFIG_ANON_KEY=$anon"
+
+      - name: Write app/config.js and commit
+        run: |
+          ref=${{ steps.ref.outputs.ref }}; url="https://$ref.supabase.co"
+          anon=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects/$ref/api-keys?reveal=true" | jq -r '[.[] | select(.name == "anon" or .type == "publishable")][0].api_key')
+          python3 - "$url" "$anon" <<'PY'
+          import re, sys
+          url, key = sys.argv[1], sys.argv[2]
+          p = "app/config.js"; s = open(p).read()
+          s = re.sub(r"url: '[^']*',(\s*// e\.g\.[^\n]*)?", f"url: '{url}',", s, count=1)
+          s = re.sub(r"anonKey: '[^']*',(\s*// Project[^\n]*)?", f"anonKey: '{key}',  // public by design; RLS + RPCs enforce the rules", s, count=1)
+          open(p, "w").write(s)
+          PY
+          if git diff --quiet -- app/config.js; then echo "config.js already up to date"; exit 0; fi
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Connect the community backend (Supabase $ref)" -- app/config.js
+          git push origin HEAD:${{ github.ref_name }}
