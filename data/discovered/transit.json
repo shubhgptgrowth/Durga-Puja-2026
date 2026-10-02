@@ -1,0 +1,1398 @@
+{
+ "routes": [
+  {
+   "id": 2900668,
+   "mode": "bus",
+   "ref": "L30B",
+   "name": "",
+   "from": "Esplanade",
+   "to": "Dum Dum Airport",
+   "operator": "",
+   "stops": [
+    1554591190,
+    1554595779,
+    2457678690,
+    2284379642
+   ]
+  },
+  {
+   "id": 3221981,
+   "mode": "bus",
+   "ref": "173",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461214063,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221982,
+   "mode": "bus",
+   "ref": "AS-1",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251724,
+    2461210032
+   ]
+  },
+  {
+   "id": 3221983,
+   "mode": "bus",
+   "ref": "AS-2",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251724,
+    2461210032
+   ]
+  },
+  {
+   "id": 3221984,
+   "mode": "bus",
+   "ref": "AS-2a",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251724,
+    2461210032
+   ]
+  },
+  {
+   "id": 3221985,
+   "mode": "bus",
+   "ref": "AS-3",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461251724
+   ]
+  },
+  {
+   "id": 3221986,
+   "mode": "bus",
+   "ref": "Barasat Baruipur",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221987,
+   "mode": "bus",
+   "ref": "C-18",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221988,
+   "mode": "bus",
+   "ref": "DN-16",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221989,
+   "mode": "bus",
+   "ref": "Dhamakhali Barasat",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032
+   ]
+  },
+  {
+   "id": 3221990,
+   "mode": "bus",
+   "ref": "GLS-11",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221991,
+   "mode": "bus",
+   "ref": "IC-21",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221992,
+   "mode": "bus",
+   "ref": "JM-2",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221993,
+   "mode": "bus",
+   "ref": "RT-007",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461214063,
+    2461251724,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221994,
+   "mode": "bus",
+   "ref": "RT-239",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461214063,
+    2036319857,
+    2461210032,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221995,
+   "mode": "bus",
+   "ref": "RT-S/4",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461251724,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221996,
+   "mode": "bus",
+   "ref": "S-4",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2461251736,
+    2461251724,
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 3221997,
+   "mode": "bus",
+   "ref": "S-9",
+   "name": "",
+   "from": "",
+   "to": "",
+   "operator": "",
+   "stops": [
+    2234881819,
+    2461204982
+   ]
+  },
+  {
+   "id": 4147368,
+   "mode": "bus",
+   "ref": "V9",
+   "name": "",
+   "from": "Kudghat",
+   "to": "New Town Bus Depot",
+   "operator": "WBSTC",
+   "stops": [
+    3157361872,
+    2211350535,
+    1591425421,
+    419272419,
+    1865813499,
+    423615236,
+    3157361873
+   ]
+  },
+  {
+   "id": 15351819,
+   "mode": "bus",
+   "ref": "S-9",
+   "name": "Bus S-9: Salt Lake Karunamoyee - Jadavpur",
+   "from": "Salt Lake Karunamoyee",
+   "to": "Jadavpur",
+   "operator": "West Bengal Transport Corporation (WBTC)",
+   "stops": [
+    2460767454,
+    2460767461,
+    11971707028,
+    2460884256,
+    11971707027,
+    5574213459,
+    11971707025,
+    2234881819,
+    11971707023,
+    11971707024,
+    2461251736,
+    11971707021,
+    11971707020,
+    11971707019,
+    423615236,
+    11971707018,
+    4254019156,
+    11971705750,
+    11971705749,
+    11971705748,
+    11971705747,
+    11971705746,
+    11971705745,
+    11971705744,
+    11971705743,
+    11971705742,
+    6791412446,
+    11971705741,
+    11971705740,
+    11971705739,
+    11971705738,
+    11971705737,
+    651804657
+   ]
+  },
+  {
+   "id": 15413988,
+   "mode": "bus",
+   "ref": "S-22",
+   "name": "Bus S-22: Shakuntala Park - Salt Lake Karunamoyee",
+   "from": "Shakuntala Park",
+   "to": "Salt Lake Karunamoyee",
+   "operator": "West Bengal Transport Corporation",
+   "stops": [
+    2461251724,
+    2461214063,
+    2460767454
+   ]
+  }
+ ],
+ "stops": {
+  "423615236": {
+   "name": "VIP Bazar",
+   "lat": 22.526093,
+   "lng": 88.395674
+  },
+  "2211350535": {
+   "name": "Tollygunj Metro",
+   "lat": 22.494687,
+   "lng": 88.345475
+  },
+  "11971705737": {
+   "name": "KPC Hospital",
+   "lat": 22.493395,
+   "lng": 88.371659
+  },
+  "11971707018": {
+   "name": "Tagore Park",
+   "lat": 22.52121,
+   "lng": 88.39855
+  },
+  "11971707019": {
+   "name": "Panchana Gram",
+   "lat": 22.528202,
+   "lng": 88.395112
+  },
+  "2461251724": {
+   "name": "Mathpukur",
+   "lat": 22.548669,
+   "lng": 88.40052
+  },
+  "1591425421": {
+   "name": "Prince Anwar Shah Road",
+   "lat": 22.50135,
+   "lng": 88.344928
+  },
+  "11971707021": {
+   "name": "Bus stop",
+   "lat": 22.541633,
+   "lng": 88.39839
+  },
+  "11971707023": {
+   "name": "Chingrighata (Evening)",
+   "lat": 22.555911,
+   "lng": 88.412197
+  },
+  "11971707024": {
+   "name": "Metropolitan",
+   "lat": 22.552221,
+   "lng": 88.406433
+  },
+  "11971707025": {
+   "name": "Salt Lake Stadium",
+   "lat": 22.56906,
+   "lng": 88.411676
+  },
+  "11971707020": {
+   "name": "Uttara Panchanna Gram",
+   "lat": 22.53102,
+   "lng": 88.395862
+  },
+  "11971707027": {
+   "name": "GD Island",
+   "lat": 22.576419,
+   "lng": 88.413673
+  },
+  "11971707028": {
+   "name": "FE Block",
+   "lat": 22.583314,
+   "lng": 88.418349
+  },
+  "11971705749": {
+   "name": "Singha Bari",
+   "lat": 22.501456,
+   "lng": 88.400467
+  },
+  "11971705750": {
+   "name": "Kalikapur",
+   "lat": 22.502643,
+   "lng": 88.400701
+  },
+  "11971705748": {
+   "name": "Metro Cash & Carry",
+   "lat": 22.496511,
+   "lng": 88.399011
+  },
+  "2461251736": {
+   "name": "Dhapa",
+   "lat": 22.547823,
+   "lng": 88.400231
+  },
+  "11971705747": {
+   "name": "Medica",
+   "lat": 22.494424,
+   "lng": 88.397937
+  },
+  "11971705746": {
+   "name": "Mukundapur",
+   "lat": 22.492061,
+   "lng": 88.39677
+  },
+  "2234881819": {
+   "name": "Paribesh Bhavan",
+   "lat": 22.561469,
+   "lng": 88.408803
+  },
+  "11971705740": {
+   "name": "Santoshpur Bot Tala",
+   "lat": 22.493045,
+   "lng": 88.379715
+  },
+  "11971705739": {
+   "name": "Sukanata Setu",
+   "lat": 22.493766,
+   "lng": 88.375729
+  },
+  "11971705741": {
+   "name": "Santoshpur Modern Girls School",
+   "lat": 22.492691,
+   "lng": 88.381845
+  },
+  "2460884256": {
+   "name": "FD Block",
+   "lat": 22.579385,
+   "lng": 88.414393
+  },
+  "11971705742": {
+   "name": "Shining Residency",
+   "lat": 22.4928,
+   "lng": 88.388011
+  },
+  "11971705743": {
+   "name": "Jora Bridge (Santoshpur)",
+   "lat": 22.493853,
+   "lng": 88.389983
+  },
+  "11971705744": {
+   "name": "Survey Park",
+   "lat": 22.492224,
+   "lng": 88.392291
+  },
+  "2461210032": {
+   "name": "Chingrighata",
+   "lat": 22.558022,
+   "lng": 88.411317
+  },
+  "11971705745": {
+   "name": "Ajoynagar",
+   "lat": 22.489805,
+   "lng": 88.39486
+  },
+  "11971705738": {
+   "name": "Sulekha",
+   "lat": 22.491333,
+   "lng": 88.372665
+  },
+  "1554595779": {
+   "name": "Nagerbazar",
+   "lat": 22.622809,
+   "lng": 88.414126
+  },
+  "3157361872": {
+   "name": "Kudghat",
+   "lat": 22.481371,
+   "lng": 88.345816
+  },
+  "3157361873": {
+   "name": "New Town Bus Depot",
+   "lat": 22.582658,
+   "lng": 88.453921
+  },
+  "5574213459": {
+   "name": "Bijan Bhavan",
+   "lat": 22.573494,
+   "lng": 88.412882
+  },
+  "4254019156": {
+   "name": "Ruby",
+   "lat": 22.512757,
+   "lng": 88.402077
+  },
+  "1554591190": {
+   "name": "Chhatakal",
+   "lat": 22.621666,
+   "lng": 88.404609
+  },
+  "2460767454": {
+   "name": "Karunamoyee",
+   "lat": 22.585995,
+   "lng": 88.420911
+  },
+  "6791412446": {
+   "name": "Santoshpur Lake Pally Bus Stop",
+   "lat": 22.491752,
+   "lng": 88.383087
+  },
+  "2457678690": {
+   "name": "Airport No. 1 Gate",
+   "lat": 22.641575,
+   "lng": 88.431293
+  },
+  "419272419": {
+   "name": "Jadavpur Thana",
+   "lat": 22.502958,
+   "lng": 88.367733
+  },
+  "2460767461": {
+   "name": "Karunamoyee 1",
+   "lat": 22.585264,
+   "lng": 88.421959
+  },
+  "2461214063": {
+   "name": "Chingrighata",
+   "lat": 22.558656,
+   "lng": 88.410802
+  },
+  "2036319857": {
+   "name": "Chingrighata",
+   "lat": 22.556843,
+   "lng": 88.41235
+  },
+  "651804657": {
+   "name": "Jadavpur 8B",
+   "lat": 22.495654,
+   "lng": 88.370612
+  },
+  "2461204982": {
+   "name": "Beleghata",
+   "lat": 22.562192,
+   "lng": 88.407966
+  },
+  "2284379642": {
+   "name": "Babu Ghat",
+   "lat": 22.565099,
+   "lng": 88.339662
+  },
+  "1865813499": {
+   "name": "Ruby Hospital",
+   "lat": 22.512769,
+   "lng": 88.401791
+  }
+ },
+ "stands": [
+  {
+   "name": "14 No Bus Stop",
+   "kind": "bus_station",
+   "lat": 22.502288,
+   "lng": 88.318335,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "15 No Bus Stand (S30)",
+   "kind": "bus_station",
+   "lat": 22.592654,
+   "lng": 88.388746,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "CSTC Bus Terminal",
+   "kind": "bus_station",
+   "lat": 22.481455,
+   "lng": 88.346423,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Belur Math Bus stop",
+   "kind": "bus_station",
+   "lat": 22.631405,
+   "lng": 88.352059,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "45 BUS STAND",
+   "kind": "bus_station",
+   "lat": 22.471246,
+   "lng": 88.37725,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Gujarat Co-operative Milk Marketing Federation",
+   "kind": "bus_station",
+   "lat": 22.570966,
+   "lng": 88.412696,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.597735,
+   "lng": 88.31817,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Nabanna Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.565963,
+   "lng": 88.313151,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Parnasree Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.509398,
+   "lng": 88.306527,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Kolkata Station Bus Terminal",
+   "kind": "bus_station",
+   "lat": 22.601515,
+   "lng": 88.382206,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "B.B.D. Bag",
+   "kind": "bus_station",
+   "lat": 22.571599,
+   "lng": 88.35026,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Howrah Bus Station",
+   "kind": "bus_station",
+   "lat": 22.586179,
+   "lng": 88.342985,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Esplanade",
+   "kind": "bus_station",
+   "lat": 22.564821,
+   "lng": 88.351447,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Park Circus - Chittaranjan Hospital",
+   "kind": "bus_station",
+   "lat": 22.545159,
+   "lng": 88.370374,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.452979,
+   "lng": 88.302209,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Masterda Surya Sen",
+   "kind": "taxi",
+   "lat": 22.473255,
+   "lng": 88.360986,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Auto Stand",
+   "kind": "taxi",
+   "lat": 22.519446,
+   "lng": 88.382794,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Sitala Mandir Taxi / Auto Stand",
+   "kind": "taxi",
+   "lat": 22.519324,
+   "lng": 88.384928,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Auto Stand",
+   "kind": "taxi",
+   "lat": 22.519548,
+   "lng": 88.376328,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Auto Stand",
+   "kind": "taxi",
+   "lat": 22.521277,
+   "lng": 88.369097,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Esplanade Bus Stand to Airport (line VS2)",
+   "kind": "bus_station",
+   "lat": 22.562569,
+   "lng": 88.349599,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Airport Bus Stand (lines VS1, VS2, AC37A, AC39, AC43, AC49A)",
+   "kind": "bus_station",
+   "lat": 22.644756,
+   "lng": 88.438729,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Birati Minibus",
+   "kind": "bus_station",
+   "lat": 22.662685,
+   "lng": 88.43087,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Anandapur Auto Stand",
+   "kind": "taxi",
+   "lat": 22.512002,
+   "lng": 88.409227,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Kalindi Housing",
+   "kind": "taxi",
+   "lat": 22.612424,
+   "lng": 88.401029,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.582223,
+   "lng": 88.343148,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Esplanade",
+   "kind": "bus_station",
+   "lat": 22.565246,
+   "lng": 88.349994,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.509045,
+   "lng": 88.333467,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Babughat bus stand",
+   "kind": "bus_station",
+   "lat": 22.56512,
+   "lng": 88.339783,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "4B,Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.618911,
+   "lng": 88.373181,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Santoshpur BBD BAG mini bus stopage",
+   "kind": "bus_station",
+   "lat": 22.488696,
+   "lng": 88.416252,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Ganguli Pukur Taxi Stand",
+   "kind": "taxi",
+   "lat": 22.503098,
+   "lng": 88.379004,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Paikpara",
+   "kind": "bus_station",
+   "lat": 22.61605,
+   "lng": 88.379102,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "12B Bus Station (Matiaburj to Dharamtalla)",
+   "kind": "bus_station",
+   "lat": 22.548512,
+   "lng": 88.287861,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Balaka Bus Terminus",
+   "kind": "bus_station",
+   "lat": 22.574309,
+   "lng": 88.455856,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "S-3B Bus Terminus",
+   "kind": "bus_station",
+   "lat": 22.580991,
+   "lng": 88.39119,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Kudghat Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.481503,
+   "lng": 88.346365,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Nagerbazar Bus Station",
+   "kind": "bus_station",
+   "lat": 22.623059,
+   "lng": 88.414085,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "kestopur auto stand",
+   "kind": "taxi",
+   "lat": 22.603721,
+   "lng": 88.424513,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Jadavpur 8b Bus Terminal",
+   "kind": "bus_station",
+   "lat": 22.49566,
+   "lng": 88.370563,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "West Bengal Transport Corporation - Belgachia Deopt",
+   "kind": "bus_station",
+   "lat": 22.605582,
+   "lng": 88.384664,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Calcutta State Transport Corporation Depot",
+   "kind": "bus_station",
+   "lat": 22.506812,
+   "lng": 88.354079,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Tollygunge Tram Depot",
+   "kind": "bus_station",
+   "lat": 22.493976,
+   "lng": 88.346172,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "taxi",
+   "lat": 22.610037,
+   "lng": 88.428119,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "taxi",
+   "lat": 22.603576,
+   "lng": 88.423676,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "42A BUS STAND",
+   "kind": "bus_station",
+   "lat": 22.530747,
+   "lng": 88.38945,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Esplanade",
+   "kind": "bus_station",
+   "lat": 22.562495,
+   "lng": 88.349831,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Rajabazar Tram Depot",
+   "kind": "bus_station",
+   "lat": 22.574211,
+   "lng": 88.373803,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Salt Lake Bus Depot",
+   "kind": "bus_station",
+   "lat": 22.580079,
+   "lng": 88.429585,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "47/1 BUS DEPOT (SALTLAKE - TOLLYGUNJ METRO)",
+   "kind": "bus_station",
+   "lat": 22.57842,
+   "lng": 88.418711,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Karunamoyee International Coach Terminus",
+   "kind": "bus_station",
+   "lat": 22.585606,
+   "lng": 88.421024,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "ST-6 W-3 Bus Terminus‎",
+   "kind": "bus_station",
+   "lat": 22.579929,
+   "lng": 88.430839,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Babu Ghat",
+   "kind": "bus_station",
+   "lat": 22.565437,
+   "lng": 88.339679,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Howrah Station Taxi Stand",
+   "kind": "taxi",
+   "lat": 22.582964,
+   "lng": 88.34324,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.468248,
+   "lng": 88.403812,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "44 Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.610812,
+   "lng": 88.428527,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "New Town Bus Depot",
+   "kind": "bus_station",
+   "lat": 22.582708,
+   "lng": 88.4538,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "206 Bus Terminal‎",
+   "kind": "bus_station",
+   "lat": 22.591903,
+   "lng": 88.427935,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "WBTC Bus Terminal",
+   "kind": "bus_station",
+   "lat": 22.474069,
+   "lng": 88.310808,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.514973,
+   "lng": 88.400137,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "3A bus stand",
+   "kind": "bus_station",
+   "lat": 22.456729,
+   "lng": 88.304576,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Anandapur Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.512076,
+   "lng": 88.408583,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.478678,
+   "lng": 88.405671,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Garia 6 no. bus terminus",
+   "kind": "bus_station",
+   "lat": 22.465144,
+   "lng": 88.377238,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Garia 5no. bus terminus",
+   "kind": "bus_station",
+   "lat": 22.466434,
+   "lng": 88.378262,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "taxi",
+   "lat": 22.578528,
+   "lng": 88.460441,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Auto Taxi Stop",
+   "kind": "taxi",
+   "lat": 22.578723,
+   "lng": 88.472679,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "30D Bus Stop",
+   "kind": "bus_station",
+   "lat": 22.636716,
+   "lng": 88.412685,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Howrah Station Taxi Stand",
+   "kind": "taxi",
+   "lat": 22.583681,
+   "lng": 88.343599,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "taxi",
+   "lat": 22.581365,
+   "lng": 88.34236,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "",
+   "kind": "bus_station",
+   "lat": 22.59267,
+   "lng": 88.389107,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Sarsuna Bus Stand",
+   "kind": "bus_station",
+   "lat": 22.480315,
+   "lng": 88.294596,
+   "taxi": "",
+   "auto": ""
+  },
+  {
+   "name": "Nabadiganta Bus Terminus",
+   "kind": "bus_station",
+   "lat": 22.576881,
+   "lng": 88.439225,
+   "taxi": "",
+   "auto": ""
+  }
+ ],
+ "autos": [
+  {
+   "id": "gariahat_jadavpur",
+   "from": "Gariahat More",
+   "to": "Jadavpur 8B Bus Stand",
+   "note": "Via Gariahat Road South and Dhakuria",
+   "ends": [
+    {
+     "name": "Gariahat More"
+    },
+    {
+     "name": "Jadavpur 8B Bus Stand"
+    }
+   ]
+  },
+  {
+   "id": "rashbehari_gariahat",
+   "from": "Rashbehari More",
+   "to": "Gariahat More",
+   "note": "Along Rashbehari Avenue",
+   "ends": [
+    {
+     "name": "Rashbehari More"
+    },
+    {
+     "name": "Gariahat More"
+    }
+   ]
+  },
+  {
+   "id": "tollygunge_jadavpur",
+   "from": "Tollygunge Phari",
+   "to": "Jadavpur 8B Bus Stand",
+   "note": "Via Prince Anwar Shah Road",
+   "ends": [
+    {
+     "name": "Tollygunge Phari"
+    },
+    {
+     "name": "Jadavpur 8B Bus Stand"
+    }
+   ]
+  },
+  {
+   "id": "behala_tollygunge",
+   "from": "Behala Chowrasta",
+   "to": "Tollygunge Phari",
+   "note": "Via Diamond Harbour Road and Taratala",
+   "ends": [
+    {
+     "name": "Behala Chowrasta",
+     "lat": 22.487355,
+     "lng": 88.313379,
+     "osm_name": "Behala Chowrasta"
+    },
+    {
+     "name": "Tollygunge Phari"
+    }
+   ]
+  },
+  {
+   "id": "jadavpur_garia",
+   "from": "Jadavpur 8B Bus Stand",
+   "to": "Garia More",
+   "note": "Along Raja SC Mullick Road",
+   "ends": [
+    {
+     "name": "Jadavpur 8B Bus Stand"
+    },
+    {
+     "name": "Garia More",
+     "lat": 22.46577,
+     "lng": 88.377808,
+     "osm_name": "Garia More traffic police kiosk"
+    }
+   ]
+  },
+  {
+   "id": "ultadanga_karunamoyee",
+   "from": "Ultadanga",
+   "to": "Karunamoyee",
+   "note": "Into Salt Lake",
+   "ends": [
+    {
+     "name": "Ultadanga",
+     "lat": 22.601277,
+     "lng": 88.384147,
+     "osm_name": "Kolkata"
+    },
+    {
+     "name": "Karunamoyee",
+     "lat": 22.58638,
+     "lng": 88.421531,
+     "osm_name": "Karunamoyee"
+    }
+   ]
+  },
+  {
+   "id": "shyambazar_ultadanga",
+   "from": "Shyambazar Five Point Crossing",
+   "to": "Ultadanga",
+   "note": "Along Bidhan Sarani and Khanna",
+   "ends": [
+    {
+     "name": "Shyambazar Five Point Crossing"
+    },
+    {
+     "name": "Ultadanga",
+     "lat": 22.601277,
+     "lng": 88.384147,
+     "osm_name": "Kolkata"
+    }
+   ]
+  },
+  {
+   "id": "dumdum_nagerbazar",
+   "from": "Dum Dum Station",
+   "to": "Nagerbazar",
+   "note": "Via Dum Dum Road",
+   "ends": [
+    {
+     "name": "Dum Dum Station",
+     "lat": 22.621114,
+     "lng": 88.392897,
+     "osm_name": "Dum Dum"
+    },
+    {
+     "name": "Nagerbazar",
+     "lat": 22.622835,
+     "lng": 88.413932,
+     "osm_name": "Nagerbazar"
+    }
+   ]
+  },
+  {
+   "id": "lake_town_ultadanga",
+   "from": "Lake Town",
+   "to": "Ultadanga",
+   "note": "Along VIP Road",
+   "ends": [
+    {
+     "name": "Lake Town",
+     "lat": 22.605728,
+     "lng": 88.402961,
+     "osm_name": "Lake Town"
+    },
+    {
+     "name": "Ultadanga",
+     "lat": 22.601277,
+     "lng": 88.384147,
+     "osm_name": "Kolkata"
+    }
+   ]
+  },
+  {
+   "id": "park_circus_ballygunge",
+   "from": "Park Circus Seven Point Crossing",
+   "to": "Ballygunge Phari",
+   "note": "Via Gorachand Road and Syed Amir Ali Avenue",
+   "ends": [
+    {
+     "name": "Park Circus Seven Point Crossing"
+    },
+    {
+     "name": "Ballygunge Phari",
+     "lat": 22.524881,
+     "lng": 88.365811,
+     "osm_name": "Ballygunge Phari"
+    }
+   ]
+  },
+  {
+   "id": "kalighat_rashbehari",
+   "from": "Kalighat Metro Station",
+   "to": "Rashbehari More",
+   "note": "Along SP Mukherjee Road",
+   "ends": [
+    {
+     "name": "Kalighat Metro Station",
+     "lat": 22.519103,
+     "lng": 88.346118,
+     "osm_name": "Kalighat Metro Station"
+    },
+    {
+     "name": "Rashbehari More"
+    }
+   ]
+  },
+  {
+   "id": "golpark_kasba",
+   "from": "Gariahat More",
+   "to": "Kasba",
+   "note": "Via Gariahat Road and Kasba Road",
+   "ends": [
+    {
+     "name": "Gariahat More"
+    },
+    {
+     "name": "Kasba",
+     "lat": 22.504435,
+     "lng": 88.372166,
+     "osm_name": "Kasba"
+    }
+   ]
+  }
+ ]
+}

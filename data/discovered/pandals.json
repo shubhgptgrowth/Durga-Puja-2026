@@ -1,0 +1,1514 @@
+{
+ "candidates": [
+  {
+   "osm": "node/1352782200",
+   "name": "Bapuji Nagar",
+   "name_bn": "বাপুজি নগর",
+   "lat": 22.488485,
+   "lng": 88.371754,
+   "class": ":"
+  },
+  {
+   "osm": "node/2378503814",
+   "name": "Durganagar",
+   "name_bn": "",
+   "lat": 22.650497,
+   "lng": 88.419215,
+   "class": ":"
+  },
+  {
+   "osm": "node/4644394618",
+   "name": "durga mandir",
+   "name_bn": "",
+   "lat": 22.467455,
+   "lng": 88.412684,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/6257381319",
+   "name": "Shiv Durga Temple",
+   "name_bn": "",
+   "lat": 22.500952,
+   "lng": 88.345076,
+   "class": ":"
+  },
+  {
+   "osm": "node/6395309585",
+   "name": "Gariahat Sarbojanin Durgotsab",
+   "name_bn": "",
+   "lat": 22.517351,
+   "lng": 88.366752,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/6520561085",
+   "name": "Durga Apartment",
+   "name_bn": "",
+   "lat": 22.528591,
+   "lng": 88.387436,
+   "class": "tourism:apartment"
+  },
+  {
+   "osm": "node/6910618467",
+   "name": "Mukherjee Barir Durgadalan",
+   "name_bn": "",
+   "lat": 22.630539,
+   "lng": 88.481118,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/7592890544",
+   "name": "Durga Temple",
+   "name_bn": "",
+   "lat": 22.560872,
+   "lng": 88.268704,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/7592904208",
+   "name": "Shibtala Baroari Durga Temple",
+   "name_bn": "",
+   "lat": 22.564508,
+   "lng": 88.272626,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/7593224106",
+   "name": "Podra More Durga Temple",
+   "name_bn": "",
+   "lat": 22.560595,
+   "lng": 88.272067,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/9602553317",
+   "name": "Maa Durga pharmacy",
+   "name_bn": "",
+   "lat": 22.586023,
+   "lng": 88.391901,
+   "class": "amenity:pharmacy"
+  },
+  {
+   "osm": "node/9602553417",
+   "name": "Maa Durga",
+   "name_bn": "",
+   "lat": 22.586068,
+   "lng": 88.391923,
+   "class": ":"
+  },
+  {
+   "osm": "node/10081941244",
+   "name": "Bagbazar Sarbojanin Durgotsav",
+   "name_bn": "",
+   "lat": 22.604699,
+   "lng": 88.366135,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10081941245",
+   "name": "Bagbazar Pally Puja",
+   "name_bn": "",
+   "lat": 22.60293,
+   "lng": 88.36752,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10081941246",
+   "name": "Jagat Mukherjee Park Sadharan Durgotsab",
+   "name_bn": "",
+   "lat": 22.599704,
+   "lng": 88.366186,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10081941249",
+   "name": "Sovabazar 9 Pally Sarbojanin",
+   "name_bn": "",
+   "lat": 22.595794,
+   "lng": 88.369361,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10081941251",
+   "name": "Gouribari Sarbojanin",
+   "name_bn": "",
+   "lat": 22.594579,
+   "lng": 88.379144,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10081965664",
+   "name": "Nabin Sarkar Street Sarbojanin",
+   "name_bn": "",
+   "lat": 22.591607,
+   "lng": 88.372821,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082038822",
+   "name": "Ahiritola Sarbojanin Durgotsav",
+   "name_bn": "",
+   "lat": 22.594589,
+   "lng": 88.357046,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082038827",
+   "name": "Chorbagan Sarbojanin",
+   "name_bn": "",
+   "lat": 22.583511,
+   "lng": 88.363163,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082130652",
+   "name": "Taltala Sarbojanin",
+   "name_bn": "",
+   "lat": 22.554545,
+   "lng": 88.362175,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082130654",
+   "name": "Adi Sammilati Sarbojanin",
+   "name_bn": "",
+   "lat": 22.546751,
+   "lng": 88.369107,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082374506",
+   "name": "Hazra Park Durgotsab",
+   "name_bn": "",
+   "lat": 22.524838,
+   "lng": 88.346141,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082374507",
+   "name": "Chakraberia Sarbojanin",
+   "name_bn": "",
+   "lat": 22.533573,
+   "lng": 88.352198,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383690",
+   "name": "Ray Street Sarbojanin",
+   "name_bn": "",
+   "lat": 22.535645,
+   "lng": 88.352112,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383692",
+   "name": "Bhowanipore Durgotsab",
+   "name_bn": "",
+   "lat": 22.526289,
+   "lng": 88.351521,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383693",
+   "name": "Bakulbagan Sarbojanin",
+   "name_bn": "",
+   "lat": 22.526819,
+   "lng": 88.347954,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383698",
+   "name": "Adi Ballygunge Sarbojanin",
+   "name_bn": "",
+   "lat": 22.531728,
+   "lng": 88.372075,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383700",
+   "name": "Durgabari Pratisthan",
+   "name_bn": "",
+   "lat": 22.52572,
+   "lng": 88.369579,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383703",
+   "name": "Singhi Park Durgotsav",
+   "name_bn": "",
+   "lat": 22.521224,
+   "lng": 88.363011,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383707",
+   "name": "Dakshin Kolkata Sarbojanin",
+   "name_bn": "",
+   "lat": 22.518604,
+   "lng": 88.353481,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383709",
+   "name": "64 Pally Durga Pujo",
+   "name_bn": "",
+   "lat": 22.520603,
+   "lng": 88.347451,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383713",
+   "name": "66 Pally Durga Pujo",
+   "name_bn": "",
+   "lat": 22.518244,
+   "lng": 88.342864,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10082383714",
+   "name": "Badamtala Ashar Sangha Durgotsav",
+   "name_bn": "",
+   "lat": 22.517927,
+   "lng": 88.344165,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083292913",
+   "name": "Rupchand Mukherjee Sarbojanin",
+   "name_bn": "",
+   "lat": 22.527449,
+   "lng": 88.345151,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083307835",
+   "name": "Hindustan Park Sarbojanin",
+   "name_bn": "",
+   "lat": 22.517867,
+   "lng": 88.362093,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083307836",
+   "name": "Sanghati Puja Samiti",
+   "name_bn": "",
+   "lat": 22.502811,
+   "lng": 88.359434,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083344095",
+   "name": "Golmath Durga Puja Samiti",
+   "name_bn": "",
+   "lat": 22.526931,
+   "lng": 88.349544,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083344096",
+   "name": "Alipore Sarbojanin",
+   "name_bn": "",
+   "lat": 22.519627,
+   "lng": 88.333657,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083344101",
+   "name": "Akalbodhan Durga Mandir",
+   "name_bn": "",
+   "lat": 22.515754,
+   "lng": 88.33663,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083344103",
+   "name": "C N Roy Road Sarbojanin",
+   "name_bn": "",
+   "lat": 22.530561,
+   "lng": 88.386694,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083371971",
+   "name": "R K Chatterjee Sarbojanin",
+   "name_bn": "",
+   "lat": 22.517684,
+   "lng": 88.378263,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083371976",
+   "name": "Purbachal Sarbojanin",
+   "name_bn": "",
+   "lat": 22.506087,
+   "lng": 88.39853,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083371977",
+   "name": "Ramlal Bazar Sarbojanin",
+   "name_bn": "",
+   "lat": 22.507535,
+   "lng": 88.385151,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083377732",
+   "name": "Madhya Garfa Sarbojanin",
+   "name_bn": "",
+   "lat": 22.502581,
+   "lng": 88.385356,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083413842",
+   "name": "Dhakuria Sarbojanin",
+   "name_bn": "",
+   "lat": 22.510028,
+   "lng": 88.371987,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083413847",
+   "name": "Shahidnagar Sarbojanin",
+   "name_bn": "",
+   "lat": 22.504606,
+   "lng": 88.37334,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083413852",
+   "name": "Mukundapur Sarbojanin",
+   "name_bn": "",
+   "lat": 22.491794,
+   "lng": 88.404764,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083540456",
+   "name": "Poddar Nagar Sarbojanin",
+   "name_bn": "",
+   "lat": 22.498238,
+   "lng": 88.369253,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083540461",
+   "name": "Pallishree Sarbojanin",
+   "name_bn": "",
+   "lat": 22.485342,
+   "lng": 88.36539,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083540463",
+   "name": "Rabindra Pally Sarbojanin",
+   "name_bn": "",
+   "lat": 22.482534,
+   "lng": 88.382409,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083540471",
+   "name": "Patyuli Sarbojanin",
+   "name_bn": "",
+   "lat": 22.472309,
+   "lng": 88.381175,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083645566",
+   "name": "Naba Durga",
+   "name_bn": "",
+   "lat": 22.462484,
+   "lng": 88.380916,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083645567",
+   "name": "Pancha Durga",
+   "name_bn": "",
+   "lat": 22.461541,
+   "lng": 88.378297,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083645574",
+   "name": "Diamond Park Sarbojanin",
+   "name_bn": "",
+   "lat": 22.448792,
+   "lng": 88.303927,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10083645575",
+   "name": "Bratachari Gram Sarbojanin",
+   "name_bn": "",
+   "lat": 22.455494,
+   "lng": 88.304782,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831369",
+   "name": "Sahapur Sarbojanin",
+   "name_bn": "",
+   "lat": 22.51163,
+   "lng": 88.328018,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831379",
+   "name": "Naskarpur Sarbojanin",
+   "name_bn": "",
+   "lat": 22.507105,
+   "lng": 88.312287,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831382",
+   "name": "Bakultala Sarbojanin",
+   "name_bn": "",
+   "lat": 22.484073,
+   "lng": 88.299267,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831383",
+   "name": "Notunpara Sarbojanin",
+   "name_bn": "",
+   "lat": 22.484426,
+   "lng": 88.306742,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831384",
+   "name": "Barisha Sarbojanin",
+   "name_bn": "",
+   "lat": 22.479989,
+   "lng": 88.308078,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084831387",
+   "name": "Bhola Maheshwartala Sarbojanin",
+   "name_bn": "",
+   "lat": 22.480845,
+   "lng": 88.308844,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/10084950337",
+   "name": "Kidderpore Sarbojanin",
+   "name_bn": "",
+   "lat": 22.538423,
+   "lng": 88.324918,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/11271502618",
+   "name": "Ahiritola Sarbojanin Durgotsav",
+   "name_bn": "",
+   "lat": 22.594838,
+   "lng": 88.357193,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/11271732101",
+   "name": "Nalin Sarkar Street Durgotsav",
+   "name_bn": "",
+   "lat": 22.595346,
+   "lng": 88.373396,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/11274488316",
+   "name": "Jodhpur Park Sarbojanin",
+   "name_bn": "",
+   "lat": 22.504579,
+   "lng": 88.365595,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "node/11449358469",
+   "name": "Tala Prattoy - Durga Puja Art",
+   "name_bn": "",
+   "lat": 22.608923,
+   "lng": 88.382266,
+   "class": "tourism:attraction"
+  },
+  {
+   "osm": "node/11949719569",
+   "name": "Durga Museum (Maa Phire Elo)",
+   "name_bn": "",
+   "lat": 22.50942,
+   "lng": 88.359042,
+   "class": "tourism:museum"
+  },
+  {
+   "osm": "node/13205504771",
+   "name": "Durga Medical",
+   "name_bn": "",
+   "lat": 22.637091,
+   "lng": 88.413215,
+   "class": "amenity:pharmacy"
+  },
+  {
+   "osm": "node/13571767712",
+   "name": "Proposed Durga Angan",
+   "name_bn": "",
+   "lat": 22.5798,
+   "lng": 88.454934,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/52097603",
+   "name": "Vijay Durg",
+   "name_bn": "বিজয় দুর্গ",
+   "lat": 22.554724,
+   "lng": 88.337902,
+   "class": "historic:"
+  },
+  {
+   "osm": "way/101994129",
+   "name": "Durgacharan Mitra Street",
+   "name_bn": "",
+   "lat": 22.593013,
+   "lng": 88.362487,
+   "class": ":"
+  },
+  {
+   "osm": "way/102004649",
+   "name": "Durga Das Mukherjee St",
+   "name_bn": "",
+   "lat": 22.594563,
+   "lng": 88.367797,
+   "class": ":"
+  },
+  {
+   "osm": "way/105015963",
+   "name": "Durga Charan Mukherjee Steet",
+   "name_bn": "",
+   "lat": 22.605667,
+   "lng": 88.367402,
+   "class": ":"
+  },
+  {
+   "osm": "way/106086742",
+   "name": "Durgan Charan Dr Rd",
+   "name_bn": "",
+   "lat": 22.559159,
+   "lng": 88.365666,
+   "class": ":"
+  },
+  {
+   "osm": "way/118246733",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.665999,
+   "lng": 88.303749,
+   "class": ":"
+  },
+  {
+   "osm": "way/118246734",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.664742,
+   "lng": 88.304435,
+   "class": ":"
+  },
+  {
+   "osm": "way/142358774",
+   "name": "Durga Das Lane",
+   "name_bn": "",
+   "lat": 22.541739,
+   "lng": 88.325378,
+   "class": ":"
+  },
+  {
+   "osm": "way/142705155",
+   "name": "Durgapur Siding Road",
+   "name_bn": "",
+   "lat": 22.522474,
+   "lng": 88.321214,
+   "class": ":"
+  },
+  {
+   "osm": "way/159615948",
+   "name": "Durga Pujo Ground",
+   "name_bn": "",
+   "lat": 22.584193,
+   "lng": 88.404134,
+   "class": "leisure:park"
+  },
+  {
+   "osm": "way/190971230",
+   "name": "Durgapur Lane",
+   "name_bn": "",
+   "lat": 22.516779,
+   "lng": 88.331795,
+   "class": ":"
+  },
+  {
+   "osm": "way/190971236",
+   "name": "Durgapur Lane",
+   "name_bn": "",
+   "lat": 22.514793,
+   "lng": 88.331645,
+   "class": ":"
+  },
+  {
+   "osm": "way/191145359",
+   "name": "Durga Bari",
+   "name_bn": "",
+   "lat": 22.525392,
+   "lng": 88.369556,
+   "class": "amenity:theatre"
+  },
+  {
+   "osm": "way/215055276",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.677829,
+   "lng": 88.298356,
+   "class": ":"
+  },
+  {
+   "osm": "way/224411646",
+   "name": "23 Palli Durga Temple",
+   "name_bn": "",
+   "lat": 22.525402,
+   "lng": 88.343998,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/357685222",
+   "name": "Basunagar Durga Mondoph Stage",
+   "name_bn": "",
+   "lat": 22.697046,
+   "lng": 88.462479,
+   "class": "amenity:community_centre"
+  },
+  {
+   "osm": "way/357787894",
+   "name": "Kanjialpara Durga Mandir",
+   "name_bn": "",
+   "lat": 22.63504,
+   "lng": 88.483213,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/358814619",
+   "name": "Durga Mandir",
+   "name_bn": "",
+   "lat": 22.622804,
+   "lng": 88.402645,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/359030948",
+   "name": "Naktala Udayan Sangha Durga Puja",
+   "name_bn": "",
+   "lat": 22.47435,
+   "lng": 88.36653,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/359044509",
+   "name": "durga paler math",
+   "name_bn": "",
+   "lat": 22.609581,
+   "lng": 88.347157,
+   "class": "leisure:playground"
+  },
+  {
+   "osm": "way/359472636",
+   "name": "Durga Apartments",
+   "name_bn": "",
+   "lat": 22.515262,
+   "lng": 88.390661,
+   "class": "building:"
+  },
+  {
+   "osm": "way/379065386",
+   "name": "Jagaddhatri Puja Mandap",
+   "name_bn": "জগদ্ধাত্রী পূজা মন্ডপ",
+   "lat": 22.568881,
+   "lng": 88.320812,
+   "class": ":"
+  },
+  {
+   "osm": "way/612041735",
+   "name": "Basunagar Durga Mandap",
+   "name_bn": "",
+   "lat": 22.697104,
+   "lng": 88.4626,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/636399668",
+   "name": "Dakshinpara Durga Mandir",
+   "name_bn": "",
+   "lat": 22.56498,
+   "lng": 88.313219,
+   "class": "amenity:place_of_worship"
+  },
+  {
+   "osm": "way/656955052",
+   "name": "Durgabari road",
+   "name_bn": "",
+   "lat": 22.633833,
+   "lng": 88.41081,
+   "class": ":"
+  },
+  {
+   "osm": "way/841413829",
+   "name": "Apu Durga Park",
+   "name_bn": "",
+   "lat": 22.598903,
+   "lng": 88.320332,
+   "class": "leisure:park"
+  },
+  {
+   "osm": "way/841643502",
+   "name": "Kashipur durga utshab committee",
+   "name_bn": "",
+   "lat": 22.605757,
+   "lng": 88.310231,
+   "class": "leisure:park"
+  },
+  {
+   "osm": "way/961846342",
+   "name": "Bansdroni Sarbojaneen Durgotsav Park",
+   "name_bn": "",
+   "lat": 22.474364,
+   "lng": 88.358132,
+   "class": "leisure:park"
+  },
+  {
+   "osm": "way/1027260520",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.686936,
+   "lng": 88.294434,
+   "class": ":"
+  },
+  {
+   "osm": "way/1027260521",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.701508,
+   "lng": 88.287722,
+   "class": ":"
+  },
+  {
+   "osm": "way/1027260522",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.702629,
+   "lng": 88.287035,
+   "class": ":"
+  },
+  {
+   "osm": "way/1027260523",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.686931,
+   "lng": 88.294318,
+   "class": ":"
+  },
+  {
+   "osm": "way/1029944969",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.677866,
+   "lng": 88.298541,
+   "class": ":"
+  },
+  {
+   "osm": "way/1040137789",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.683461,
+   "lng": 88.296026,
+   "class": ":"
+  },
+  {
+   "osm": "way/1093618347",
+   "name": "Sabuj Chakra Club & Durgabari Samiti",
+   "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+   "lat": 22.692889,
+   "lng": 88.444008,
+   "class": "building:"
+  },
+  {
+   "osm": "way/1173344746",
+   "name": "Durgacharan Mitra Street",
+   "name_bn": "",
+   "lat": 22.592738,
+   "lng": 88.365103,
+   "class": ":"
+  },
+  {
+   "osm": "way/1252219994",
+   "name": "Durgan Charan Dr Rd",
+   "name_bn": "",
+   "lat": 22.558648,
+   "lng": 88.363902,
+   "class": ":"
+  },
+  {
+   "osm": "way/1252219995",
+   "name": "Durgan Charan Dr Rd",
+   "name_bn": "",
+   "lat": 22.559103,
+   "lng": 88.364874,
+   "class": ":"
+  },
+  {
+   "osm": "way/1287678365",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.686383,
+   "lng": 88.294562,
+   "class": ":"
+  },
+  {
+   "osm": "way/1287678366",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.686328,
+   "lng": 88.294715,
+   "class": ":"
+  },
+  {
+   "osm": "way/1287678369",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.671774,
+   "lng": 88.30122,
+   "class": ":"
+  },
+  {
+   "osm": "way/1311471049",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.690442,
+   "lng": 88.292691,
+   "class": ":"
+  },
+  {
+   "osm": "way/1355768536",
+   "name": "Durgacharan Mitra Street",
+   "name_bn": "",
+   "lat": 22.592535,
+   "lng": 88.366004,
+   "class": ":"
+  },
+  {
+   "osm": "way/1367274136",
+   "name": "Durga Pujo groud",
+   "name_bn": "",
+   "lat": 22.584193,
+   "lng": 88.404134,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614357",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.683294,
+   "lng": 88.295912,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614358",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.680897,
+   "lng": 88.296986,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614360",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.680923,
+   "lng": 88.29718,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614361",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.668918,
+   "lng": 88.302489,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614362",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.685744,
+   "lng": 88.294829,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614363",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.673835,
+   "lng": 88.30032,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614364",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.67471,
+   "lng": 88.299945,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614365",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.672201,
+   "lng": 88.300884,
+   "class": ":"
+  },
+  {
+   "osm": "way/1380614366",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.674663,
+   "lng": 88.299772,
+   "class": ":"
+  },
+  {
+   "osm": "way/1448154746",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.690429,
+   "lng": 88.292866,
+   "class": ":"
+  },
+  {
+   "osm": "way/1448154747",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.693929,
+   "lng": 88.291295,
+   "class": ":"
+  },
+  {
+   "osm": "way/1448154748",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.69525,
+   "lng": 88.290496,
+   "class": ":"
+  },
+  {
+   "osm": "way/1448154749",
+   "name": "Durgapur Expressway",
+   "name_bn": "দুর্গাপুর এক্সপ্রেসওয়ে",
+   "lat": 22.693932,
+   "lng": 88.291076,
+   "class": ":"
+  }
+ ],
+ "seeds": [
+  {
+   "id": "chorbagan",
+   "name": "Chorbagan Sarbojanin",
+   "name_bn": "চোরবাগান সার্বজনীন",
+   "area_hint": "central",
+   "popularity": "4",
+   "query": "Chorbagan Sarbojanin",
+   "match": {
+    "name": "Chorbagan Sarbojanin",
+    "lat": 22.5835113,
+    "lng": 88.3631633,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "sikdarbagan",
+   "name": "Sikdarbagan Sarbojanin",
+   "name_bn": "সিকদারবাগান সার্বজনীন",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Sikdar Bagan Sarbojanin",
+   "match": {
+    "osm": "node/10082038827",
+    "name": "Chorbagan Sarbojanin",
+    "name_bn": "",
+    "lat": 22.583511,
+    "lng": 88.363163,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.6
+  },
+  {
+   "id": "pathuriaghata_5",
+   "name": "Pathuriaghata Panchar Pally",
+   "name_bn": "পাথুরিয়াঘাটা পাঁচের পল্লী",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Pathuriaghata Panchar Pally",
+   "match": {
+    "osm": "node/9602553317",
+    "name": "Maa Durga pharmacy",
+    "name_bn": "",
+    "lat": 22.586023,
+    "lng": 88.391901,
+    "class": "amenity:pharmacy",
+    "src": "overpass"
+   },
+   "similarity": 0.53
+  },
+  {
+   "id": "darjipara",
+   "name": "Darjipara Sarbojanin",
+   "name_bn": "দর্জিপাড়া সার্বজনীন",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Darjipara Sarbojanin",
+   "match": {
+    "osm": "node/10083413842",
+    "name": "Dhakuria Sarbojanin",
+    "name_bn": "",
+    "lat": 22.510028,
+    "lng": 88.371987,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.59
+  },
+  {
+   "id": "ultadanga_sangrami",
+   "name": "Ultadanga Sangrami",
+   "name_bn": "উল্টোডাঙা সংগ্রামী",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Ultadanga Sangrami",
+   "match": {
+    "name": "SANGRAMI",
+    "lat": 22.5904187,
+    "lng": 88.3949357,
+    "class": "amenity:community_centre",
+    "src": "nominatim"
+   },
+   "similarity": 0.62
+  },
+  {
+   "id": "dumdum_tarun_dal",
+   "name": "Dum Dum Park Tarun Dal",
+   "name_bn": "দমদম পার্ক তরুণ দল",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Dum Dum Park Tarun Dal",
+   "match": {
+    "osm": "way/841413829",
+    "name": "Apu Durga Park",
+    "name_bn": "",
+    "lat": 22.598903,
+    "lng": 88.320332,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.5
+  },
+  {
+   "id": "arjunpur_amra_sabai",
+   "name": "Arjunpur Amra Sabai Club",
+   "name_bn": "অর্জুনপুর আমরা সবাই ক্লাব",
+   "area_hint": "north",
+   "popularity": "4",
+   "query": "Arjunpur Amra Sabai",
+   "match": {
+    "osm": "way/841643502",
+    "name": "Kashipur durga utshab committee",
+    "name_bn": "",
+    "lat": 22.605757,
+    "lng": 88.310231,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.48
+  },
+  {
+   "id": "kestopur_prafulla_kanan",
+   "name": "Kestopur Prafulla Kanan",
+   "name_bn": "কেষ্টপুর প্রফুল্লকানন",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Prafulla Kanan Kestopur",
+   "match": {
+    "name": "Prafulla Kanan Deshapriya Vidyamandir",
+    "lat": 22.6029505,
+    "lng": 88.4239869,
+    "class": "amenity:school",
+    "src": "nominatim"
+   },
+   "similarity": 0.47
+  },
+  {
+   "id": "beleghata_33_pally",
+   "name": "Beleghata 33 Pally",
+   "name_bn": "বেলেঘাটা ৩৩ পল্লী",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "33 Pally Beleghata",
+   "match": {
+    "name": "Beleghata 33 Pally",
+    "lat": 22.5685699,
+    "lng": 88.3912469,
+    "class": "highway:bus_stop",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "chakraberia",
+   "name": "Chakraberia Sarbojanin",
+   "name_bn": "চক্রবেড়িয়া সার্বজনীন",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Chakraberia Sarbojanin",
+   "match": {
+    "name": "Chakraberia Sarbojanin",
+    "lat": 22.5335735,
+    "lng": 88.3521978,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "bakulbagan",
+   "name": "Bakulbagan Sarbojanin",
+   "name_bn": "বকুলবাগান সার্বজনীন",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Bakul Bagan Sarbojanin",
+   "match": {
+    "name": "Bakulbagan Sarbojanin",
+    "lat": 22.5268187,
+    "lng": 88.347954,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "sanghasree",
+   "name": "Kalighat Sanghasree",
+   "name_bn": "কালীঘাট সংঘশ্রী",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Sanghasree Kalighat",
+   "match": {
+    "osm": "node/10081965664",
+    "name": "Nabin Sarkar Street Sarbojanin",
+    "name_bn": "",
+    "lat": 22.591607,
+    "lng": 88.372821,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.53
+  },
+  {
+   "id": "kalighat_milan_sangha",
+   "name": "Kalighat Milan Sangha",
+   "name_bn": "কালীঘাট মিলন সংঘ",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Kalighat Milan Sangha",
+   "match": {
+    "name": "Kalighat Milan Sangha",
+    "lat": 22.5245094,
+    "lng": 88.3410755,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "hindustan_club",
+   "name": "Hindustan Club",
+   "name_bn": "হিন্দুস্থান ক্লাব",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Hindusthan Club Durga Puja",
+   "match": {
+    "name": "Hindustan Club",
+    "lat": 22.5195091,
+    "lng": 88.3605935,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "jodhpur_park_95",
+   "name": "Jodhpur Park 95 Pally",
+   "name_bn": "যোধপুর পার্ক ৯৫ পল্লী",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "95 Pally Jodhpur Park",
+   "match": {
+    "osm": "node/11274488316",
+    "name": "Jodhpur Park Sarbojanin",
+    "name_bn": "",
+    "lat": 22.504579,
+    "lng": 88.365595,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.73
+  },
+  {
+   "id": "selimpur_pally",
+   "name": "Selimpur Pally",
+   "name_bn": "সেলিমপুর পল্লী",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Selimpur Pally",
+   "match": {
+    "osm": "node/10083540463",
+    "name": "Rabindra Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.482534,
+    "lng": 88.382409,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.57
+  },
+  {
+   "id": "santoshpur_lake_pally",
+   "name": "Santoshpur Lake Pally",
+   "name_bn": "সন্তোষপুর লেক পল্লী",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Santoshpur Lake Pally",
+   "match": {
+    "name": "Santoshpur Lake",
+    "lat": 22.4914272,
+    "lng": 88.3836912,
+    "class": "water:pond",
+    "src": "nominatim"
+   },
+   "similarity": 0.77
+  },
+  {
+   "id": "santoshpur_trikon_park",
+   "name": "Santoshpur Trikon Park",
+   "name_bn": "সন্তোষপুর ত্রিকোণ পার্ক",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Trikon Park Santoshpur",
+   "match": {
+    "osm": "node/11274488316",
+    "name": "Jodhpur Park Sarbojanin",
+    "name_bn": "",
+    "lat": 22.504579,
+    "lng": 88.365595,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.59
+  },
+  {
+   "id": "purbachal_shakti_sangha",
+   "name": "Purbachal Shakti Sangha",
+   "name_bn": "পূর্বাচল শক্তি সংঘ",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Purbachal Shakti Sangha",
+   "match": {
+    "osm": "node/10083371976",
+    "name": "Purbachal Sarbojanin",
+    "name_bn": "",
+    "lat": 22.506087,
+    "lng": 88.39853,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.72
+  },
+  {
+   "id": "naktala_udayan",
+   "name": "Naktala Udayan Sangha",
+   "name_bn": "নাকতলা উদয়ন সংঘ",
+   "area_hint": "south",
+   "popularity": "5",
+   "query": "Naktala Udayan Sangha",
+   "match": {
+    "name": "Naktala Udayan Sangha",
+    "lat": 22.4744913,
+    "lng": 88.3665749,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "thakurpukur_sb_park",
+   "name": "Thakurpukur SB Park Sarbojanin",
+   "name_bn": "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "SB Park Thakurpukur",
+   "match": {
+    "osm": "node/11274488316",
+    "name": "Jodhpur Park Sarbojanin",
+    "name_bn": "",
+    "lat": 22.504579,
+    "lng": 88.365595,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.52
+  },
+  {
+   "id": "behala_club",
+   "name": "Behala Club",
+   "name_bn": "বেহালা ক্লাব",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Behala Club Durga Puja",
+   "match": {
+    "name": "Behala Club",
+    "lat": 22.5053684,
+    "lng": 88.3142848,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "haridevpur_ajeya",
+   "name": "Haridevpur Ajeya Sanghati",
+   "name_bn": "হরিদেবপুর অজেয় সংহতি",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Ajeya Sanghati Haridevpur",
+   "match": {
+    "osm": "way/636399668",
+    "name": "Dakshinpara Durga Mandir",
+    "name_bn": "",
+    "lat": 22.56498,
+    "lng": 88.313219,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.45
+  },
+  {
+   "id": "salt_lake_ck",
+   "name": "CK Block Salt Lake",
+   "name_bn": "সিকে ব্লক সল্টলেক",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "CK Block Salt Lake Durga Puja",
+   "match": {
+    "name": "CK Block",
+    "lat": 22.5859248,
+    "lng": 88.4267575,
+    "class": "place:neighbourhood",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "salt_lake_ee",
+   "name": "EE Block Salt Lake",
+   "name_bn": "ইই ব্লক সল্টলেক",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "EE Block Salt Lake Durga Puja",
+   "match": {
+    "name": "EE Block",
+    "lat": 22.5801249,
+    "lng": 88.4236604,
+    "class": "place:neighbourhood",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "salt_lake_ia",
+   "name": "IA Block Salt Lake",
+   "name_bn": "আইএ ব্লক সল্টলেক",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "IA Block Salt Lake Durga Puja",
+   "match": {
+    "name": "IA Block",
+    "lat": 22.5728823,
+    "lng": 88.4107677,
+    "class": "place:neighbourhood",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "salt_lake_cl",
+   "name": "CL Block Salt Lake",
+   "name_bn": "সিএল ব্লক সল্টলেক",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "CL Block Salt Lake Durga Puja",
+   "match": {
+    "name": "CL Block",
+    "lat": 22.5833745,
+    "lng": 88.4284214,
+    "class": "place:neighbourhood",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "shibpur_mandirtala",
+   "name": "Shibpur Mandirtala Sarbojanin",
+   "name_bn": "শিবপুর মন্দিরতলা সার্বজনীন",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Mandirtala Shibpur Durga Puja",
+   "match": {
+    "osm": "way/636399668",
+    "name": "Dakshinpara Durga Mandir",
+    "name_bn": "",
+    "lat": 22.56498,
+    "lng": 88.313219,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.62
+  },
+  {
+   "id": "salkia_sarbojanin",
+   "name": "Salkia Sarbojanin",
+   "name_bn": "সালকিয়া সার্বজনীন",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Salkia Sarbojanin",
+   "match": {
+    "osm": "node/10083413842",
+    "name": "Dhakuria Sarbojanin",
+    "name_bn": "",
+    "lat": 22.510028,
+    "lng": 88.371987,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.57
+  }
+ ]
+}
