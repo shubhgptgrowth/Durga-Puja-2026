@@ -2,6 +2,7 @@
 
   python scripts/hero_photo.py candidates           # small previews -> data/hero_candidates/ (+ index.json)
   python scripts/hero_photo.py hero <n>             # candidate n -> app/img/hero.jpg (1200 px) + app/img/hero.json (credit)
+  python scripts/hero_photo.py set "<title>|<title>…"  # banner slideshow: each Commons photo (by title) -> app/img/hero-<i>.jpg + app/img/heroes.json
 """
 import io, json, sys, urllib.request
 from pathlib import Path
@@ -46,5 +47,24 @@ def hero(n):
     Path("app/img/hero.json").write_text(json.dumps({k: ph[k] for k in ("title", "author", "license", "page", "year", "pandal", "pandal_name")}, ensure_ascii=False, indent=1))
     print("hero", im.size, ph["title"])
 
+def slideshow(titles):
+    g = json.loads(Path("app/data/guide.json").read_text())
+    by_title = {ph["title"]: {**ph, "pandal": p["id"], "pandal_name": p["name"]} for p in g["pandals"] for ph in p.get("photos", [])}
+    Path("app/img").mkdir(exist_ok=True)
+    out = []
+    for i, title in enumerate(t.strip() for t in titles.split("|") if t.strip()):
+        ph = by_title[title]
+        try: im = fetch(ph["src"].replace("/960px-", "/1600px-"))
+        except Exception: im = fetch(ph["src"])
+        im.thumbnail((1100, 1100))
+        name = f"hero-{i + 1}.jpg"
+        im.save(f"app/img/{name}", quality=74, optimize=True, progressive=True)
+        out.append({"src": f"img/{name}", "w": im.width, "h": im.height, **{k: ph[k] for k in ("title", "author", "license", "page", "year", "pandal", "pandal_name")}})
+        print(name, im.size, title)
+    Path("app/img/heroes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
+
 if __name__ == "__main__":
-    candidates() if sys.argv[1] == "candidates" else hero(int(sys.argv[2]))
+    mode = sys.argv[1]
+    if mode == "candidates": candidates()
+    elif mode == "set": slideshow(sys.argv[2])
+    else: hero(int(sys.argv[2]))
