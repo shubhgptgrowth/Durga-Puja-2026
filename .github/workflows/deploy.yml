@@ -54,7 +54,7 @@ jobs:
           if scripts/build_tiles.sh app/tiles && node tests/e2e/map_tiles.mjs map-check; then
             echo "::notice::Vector map: $(cat app/tiles/kolkata.json)"
           else
-            echo "::warning::Vector map unavailable this deploy; the app falls back to raster tiles."
+            echo "::warning::Vector map unavailable this deploy (see the step log); the app falls back to raster tiles."
             rm -f app/tiles/*.pmtiles && git checkout -- app/tiles/kolkata.json
           fi
       - uses: actions/upload-artifact@v4
