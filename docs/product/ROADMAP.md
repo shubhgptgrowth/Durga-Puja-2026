@@ -49,8 +49,8 @@ Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 | # | Item | Why | Status |
 |---|---|---|---|
 | [P0-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/3) | **Supabase Pro for October** (US$25) | The free plan's 5 GB egress doesn't survive the push. Live counts were already slowed to every 3 minutes | ⏸ owner decision, billing |
-| [P0-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/4) | **Hosting that scales**: Cloudflare Pages (free, no bandwidth cap), optionally with a short domain | GitHub Pages has a soft limit of about 100 GB a month. Moving means changing `SITE` in `marketing/kit.py` and the OG tags in `app/index.html` | ⏸ owner decision |
-| [P0-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/5) | **Map tiles for scale**: Ola Maps, or self-hosted Protomaps for the Kolkata box | The CARTO tiles are fair-use only (see [MAPS.md](MAPS.md)) | ⬜ |
+| [P0-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/4) | **A short domain that scales**: GitHub Pages with a custom domain, with Cloudflare DNS and CDN in front (see [HOSTING.md](HOSTING.md)) | Easy to say on posters. GitHub Pages has a soft limit of about 100 GB a month, and Cloudflare caching takes most of the load off it. Old github.io links and printed QR codes redirect automatically | 🟡 wiring done (`site.json`); waiting on the domain purchase |
+| [P0-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/5) | **Map tiles for scale**: a self-hosted Protomaps vector map of Kolkata and Howrah | No API key and no per-view cost. Bengali labels, light and dark styles, and offline caching. Rebuilt weekly at deploy, with automatic fallback to raster tiles (see [MAPS.md](MAPS.md)) | 🟡 shipped; check the first deploy |
 | [P0-4](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/6) | **Ground-check the top 40 pandal pins**, starting with the 16 approximate and 28 curated ones | A wrong pin breaks check-in and directions. Approximate pins already get a 600 m check-in radius | ⬜ needs local help |
 | [P0-5](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/8) | **The 5 missing well-known pujas**: Sikdarbagan, Pathuriaghata Panchar Pally, Darjipara, Kestopur Prafulla Kanan, Salkia Sarbojanin | People will search for them | ⬜ needs an address or landmark |
 | [P0-6](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/7) | **Error and quota monitoring**: a client error beacon, and a daily check of Supabase usage in `marketing-report` | So we see breakage on puja nights before users do | ⬜ |
@@ -102,4 +102,4 @@ Don't break these without telling the marketing track:
 | Place ids and names | `app/data/guide.json` | `marketing/kit.py` builds every card from it |
 | Reach counting | `track_open()`, `growth_report()` in `supabase/migrations/*_growth.sql` | The `marketing-report` workflow |
 | Share UI | WhatsApp, Story card and Link buttons on sheets; My Pujo card on the Me tab | The viral loop in the marketing plan |
-| `SITE` URL | `marketing/kit.py`, the OG tags in `app/index.html` | All links. Change both together (P0-2) |
+| Public address | `site.json` (change it with `python scripts/site.py set …`) | All links, the kit, QR posters and link previews. Printed posters keep working through GitHub's redirect (see [HOSTING.md](HOSTING.md)) |

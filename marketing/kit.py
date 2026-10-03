@@ -20,7 +20,8 @@ import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://shubhgptgrowth.github.io/Durga-Puja-2026/"
+SITE = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))["url"]   # see scripts/site.py
+SITE_DISPLAY = urllib.parse.urlparse(SITE).netloc + urllib.parse.urlparse(SITE).path.rstrip("/")
 START, END = dt.date(2026, 10, 3), dt.date(2026, 10, 22)
 TAGS = "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো"
 REGION_TAG = {"north": "#NorthKolkata", "central": "#CentralKolkata", "south": "#SouthKolkata", "east": "#SaltLake #NewTown", "howrah": "#Howrah"}
@@ -361,7 +362,7 @@ def build(out, today=None, stats=None):
     for day in days:
         (out / day["date"]).mkdir(exist_ok=True)
         (out / day["date"] / "assets.json").write_text(json.dumps(day, ensure_ascii=False, indent=1), encoding="utf-8")
-    bundle = {"site": SITE, "today": today.isoformat(), "cards": [c for day in days for c in day["cards"]], "posters": posters(g),
+    bundle = {"site": SITE, "site_display": SITE_DISPLAY, "today": today.isoformat(), "cards": [c for day in days for c in day["cards"]], "posters": posters(g),
               "flyer": {"url": f"{SITE}?src=qr_flyer", "pandals": len(g["pandals"])}}
     (out / "assets.json").write_text(json.dumps(bundle, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "index.html").write_text(page(days, today), encoding="utf-8")
