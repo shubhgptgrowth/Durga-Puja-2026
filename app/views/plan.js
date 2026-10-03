@@ -1,4 +1,4 @@
-/* Plan: curated trails and the time-budgeted custom route builder. */
+/* My route: a 3-step wizard (areas → start point → route), with ready-made trails as a shortcut on step 1. */
 import { hav, orderRoute, routeUrls, hhmm, encodePlan, rideOption } from '../core.js';
 import {
   S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon,
@@ -9,7 +9,7 @@ import { startWalk, walking } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
 
-let planSel = new Set(), seg = 'curated', planMap = null, transitData = null, transitLoading = null;
+let planSel = new Set(), step = 0, planMap = null, transitData = null, transitLoading = null;
 // Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
 function loadTransit() {
   transitLoading ||= fetch('data/transit.json').then((r) => (r.ok ? r.json() : null)).then((d) => { transitData = d; if (d && S.view === 'plan' && planValid(S.plan)) render(); }).catch(() => null);
@@ -108,7 +108,6 @@ export async function buildCustom() {
 export function showTrail(id) {
   const it = G.data.itineraries.find((x) => x.id === id);
   if (!it) return;
-  seg = 'curated';
   const first = it.segments.find((s) => s.type === 'walk');
   setPlan({
     kind: 'trail', id: it.id, day: it.day, start: it.start_time, end: it.end_time, startPt: idx.transit[first.start],
@@ -116,16 +115,15 @@ export function showTrail(id) {
     totals: { pandals: it.pandal_count, walk_m: it.totals.walk_m ?? it.totals.walk_km * 1000, walk_min: it.totals.walk_min, dwell_min: it.totals.dwell_min, ride_min: it.totals.ride_min, brisk: false },
   });
 }
-function setPlan(plan) { S.plan = plan; store.set('activePlan', plan); if (S.view === 'plan') render(true); }
+function setPlan(plan) { S.plan = plan; step = 3; store.set('activePlan', plan); if (S.view === 'plan') render(true); }
 
 export function presetPlan(zones, startId) {
-  planSel = new Set(zones); seg = 'custom';
+  planSel = new Set(zones);
   form.start = 't:' + (startId || zoneOf(zones[0]).route.start);
   go('plan'); buildCustom();
 }
 export function openSharedPlan(p) {
-  seg = 'custom';
-  if (!p) return go('plan');
+  if (!p) { step = 1; return go('plan'); }
   planSel = new Set(p.z.filter((z) => idx.zone[z]));
   const ok = p.s === 'me' || !!startRecord(p.s);
   if (ok) form.start = p.s;
@@ -153,22 +151,33 @@ async function share(plan) {
 }
 
 /* ---------------- render ---------------- */
-function formHtml() {
+function areasHtml() {
   const regionRows = G.data.regions.map((r) => {
     const all = r.zone_ids.every((id) => planSel.has(id)), some = r.zone_ids.some((id) => planSel.has(id));
     return `<div class="region-row"><button type="button" class="chip region" data-pr="${r.id}" aria-pressed="${all}" ${some && !all ? 'data-partial="1"' : ''}><span class="dot" style="background:${r.color}"></span>${esc(rname(r))}</button>
       ${r.zone_ids.length > 1 ? r.zone_ids.map((id) => idx.zone[id]).map((z) => `<button type="button" class="chip sm" data-pz="${z.id}" aria-pressed="${planSel.has(z.id)}">${esc(zs(z))}</button>`).join('') : ''}</div>`;
   }).join('');
-  return `<form id="planForm" class="form">
-    <fieldset><legend>${t('f.zones')} <span class="fine">· ${t('f.zonesHint')}</span></legend><div id="planZones">${regionRows}</div></fieldset>
+  return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><p class="fine">${t('f.zonesHint')}</p><div id="planZones">${regionRows}</div></div>
+    <div class="wz-foot"><span class="fine">${planSel.size ? t(planSel.size === 1 ? 'wz.picked1' : 'wz.picked', { n: planSel.size }) : t('wz.pickOne')}</span>
+      <button type="button" class="btn primary" id="planNext" ${planSel.size ? '' : 'aria-disabled="true"'}>${t('wz.next')} ${icon('chev', 'sm')}</button></div>
+    <div class="section-head" style="margin-top:22px"><h2>${t('wz.orTrail')}</h2></div><p class="fine pad" style="margin:-4px 0 10px">${t('h.trailsSub')}</p>
+    ${trailsHtml()}`;
+}
+function formHtml() {
+  return `<form id="planForm" class="form wz-body">
+    <h3 class="wz-q">${t('wz.q2')}</h3>
     <label>${t('f.start')}<button type="button" class="btn block picker-btn" id="planStartBtn">${esc(startLabel(form.start))} ${icon('chev', 'sm')}</button></label>
     <div class="grid2">
       <label>${t('f.time')}<input type="time" id="planTime" value="${form.time}"></label>
-      <label>${t('f.stars')}<select id="planStars">${['1', '3', '4', '5'].map((v) => `<option value="${v}" ${form.stars === v ? 'selected' : ''}>${t('stars.' + v)}</option>`).join('')}</select></label>
       <label>${t('f.budget')}<select id="planBudget">${['120', '180', '240', '360', '600'].map((v) => `<option value="${v}" ${form.budget === v ? 'selected' : ''}>${t('budget.' + v)}</option>`).join('')}</select></label>
     </div>
-    <label class="toggle"><input type="checkbox" id="planBrisk" ${form.brisk ? 'checked' : ''}> <span>${t('f.brisk')}</span></label>
-    <button type="submit" class="btn primary block">${icon('route')} ${t('f.build')}</button>
+    <details class="more"><summary>${t('wz.more')}</summary>
+      <div class="form" style="padding:10px 0 0">
+        <label>${t('f.stars')}<select id="planStars">${['1', '3', '4', '5'].map((v) => `<option value="${v}" ${form.stars === v ? 'selected' : ''}>${t('stars.' + v)}</option>`).join('')}</select></label>
+        <label class="toggle"><input type="checkbox" id="planBrisk" ${form.brisk ? 'checked' : ''}> <span>${t('f.brisk')}</span></label>
+      </div></details>
+    <div class="wz-foot"><button type="button" class="btn" data-step="1">${t('wz.back')}</button>
+      <button type="submit" class="btn primary">${icon('route')} ${t('f.build')}</button></div>
   </form>`;
 }
 function trailsHtml() {
@@ -218,18 +227,27 @@ function resultHtml(plan) {
     <ol class="timeline">${tl.join('')}</ol>`;
 }
 
+function stepperHtml(plan) {
+  const labels = [t('wz.s1'), t('wz.s2'), t('wz.s3')];
+  const can = (n) => n === 1 || (n === 2 && planSel.size > 0) || (n === 3 && !!plan);
+  return `<ol class="stepper">${labels.map((l, i) => {
+    const n = i + 1;
+    return `<li><button type="button" data-step="${n}" ${n === step ? 'aria-current="step"' : ''} ${can(n) ? '' : 'disabled'} class="${n < step ? 'done' : ''}"><b>${n < step ? '✓' : n}</b>${l}</button></li>`;
+  }).join('')}</ol>`;
+}
 function render(scrollToResult = false) {
   const el = $('#view-plan'), plan = planValid(S.plan) ? S.plan : null;
-  if (plan && !transitData) loadTransit();
-  el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>
-    <div class="seg" role="tablist" style="margin-top:12px">
-      <button role="tab" data-seg="curated" aria-selected="${seg === 'curated'}">${t('seg.curated')}</button>
-      <button role="tab" data-seg="custom" aria-selected="${seg === 'custom'}">${t('seg.custom')}</button></div>
-    ${seg === 'curated' ? trailsHtml() : formHtml()}
-    <div id="planResult" style="margin-top:16px">${plan ? resultHtml(plan) : ''}</div>`;
+  if (!step || (step === 3 && !plan)) step = plan ? 3 : 1;
+  if (step === 2 && !planSel.size) step = 1;
+  if (plan && step === 3 && !transitData) loadTransit();
+  const body = step === 1 ? areasHtml() : step === 2 ? formHtml()
+    : `<div class="wz-foot top"><button type="button" class="btn sm" id="planEdit">${t(plan.kind === 'custom' ? 'wz.edit' : 'wz.other')}</button><button type="button" class="btn sm" id="planNew">${icon('plus', 'sm')} ${t('wz.new')}</button></div>
+       <div id="planResult">${resultHtml(plan)}</div>`;
+  el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>${stepperHtml(plan)}${body}`;
+  if (planMap && step !== 3) { planMap.off(); planMap.remove(); planMap = null; }
   wire(el, plan);
-  if (plan) drawPlanMap(plan);
-  if (scrollToResult && plan) window.scrollTo({ top: $('#planResult').getBoundingClientRect().top + window.scrollY - $('.topbar').offsetHeight - 8, behavior: 'smooth' });
+  if (step === 3) drawPlanMap(plan);
+  if (scrollToResult || step !== 3) window.scrollTo({ top: 0 });
 }
 function drawPlanMap(plan) {
   // The plan map is rebuilt on every render, so it must not animate (a pending zoom frame would hit a removed map).
@@ -246,11 +264,14 @@ function drawPlanMap(plan) {
 const keepScroll = (fn) => { const y = window.scrollY; fn(); window.scrollTo(0, y); };
 function wire(el, plan) {
   el.onclick = (e) => {
-    const sg = e.target.closest('[data-seg]')?.dataset.seg; if (sg) { seg = sg; return render(); }
+    const sp = e.target.closest('[data-step]:not([disabled])')?.dataset.step; if (sp) { step = +sp; return render(); }
     const pz = e.target.closest('[data-pz]')?.dataset.pz;
     if (pz) { planSel.has(pz) ? planSel.delete(pz) : planSel.add(pz); return keepScroll(render); }
     const pr = e.target.closest('[data-pr]')?.dataset.pr;
     if (pr) { const ids = idx.region[pr].zone_ids, all = ids.every((id) => planSel.has(id)); ids.forEach((id) => (all ? planSel.delete(id) : planSel.add(id))); return keepScroll(render); }
+    if (e.target.closest('#planNext')) { if (!planSel.size) return toast(t('plan.pickZone')); step = 2; return render(); }
+    if (e.target.closest('#planEdit')) { step = plan?.kind === 'custom' ? 2 : 1; return render(); }
+    if (e.target.closest('#planNew')) { planSel = new Set(); step = 1; return render(); }
     if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start, (v) => { form.start = v; keepScroll(render); });
     const tr = e.target.closest('[data-trail]')?.dataset.trail; if (tr) return showTrail(tr);
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);

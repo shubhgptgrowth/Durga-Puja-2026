@@ -1,15 +1,11 @@
-/* Home: the at-a-glance overview. */
+/* Home: a simple start screen. "What would you like to do?" tasks, areas to pick, and ready-made routes. */
 import { hav, fmtCount, searchEntries } from '../core.js';
-import {
-  S, G, idx, t, community, ll, nm, zn, zs, dn, zoneOf, esc, km, dist, ampm, crowdNow, todayKey, btn, icon, stepsFor, bnDigits,
-} from '../state.js';
-import { $, go, registerView } from '../ui.js';
-import { openPlace, crowdPill, thumbHtml, momentSheet, momentCache } from '../sheets.js';
+import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits } from '../state.js';
+import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
+import { openPlace } from '../sheets.js';
 import { showTrail } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
-
-let homeRegion = null;
 
 let searchIndex = null;
 function buildIndex() {
@@ -21,24 +17,26 @@ function buildIndex() {
   return e;
 }
 
+const fmtDate = (d) => new Date(d.date + 'T00:00:00').toLocaleDateString(S.prefs.lang === 'bn' ? 'bn-IN' : 'en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+
+/* A short "today" strip: which puja day the crowd times are for, and the one tip that matters. */
 function heroHtml() {
-  const days = G.data.meta.days, today = days.find((d) => d.date === todayKey()), sel = idx.day[S.day];
+  const sel = idx.day[S.day], today = G.data.meta.days.find((d) => d.date === todayKey());
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), now = new Date(); now.setHours(0, 0, 0, 0);
   const diff = Math.round((shashthi - now) / 864e5);
   const eyebrow = today ? t('h.today') : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
-  const hf = G.data.meta.model.hour_factors;
-  const quiet = [...hf.keys()].filter((h) => h >= 5 && h <= 9).sort((a, b) => hf[a] - hf[b])[0];
-  return `<div class="hero">
-    <div class="eyebrow">${eyebrow}</div>
-    <h2>${esc(dn(sel))} · ${new Date(sel.date + 'T00:00:00').toLocaleDateString(S.prefs.lang === 'bn' ? 'bn-IN' : 'en-IN', { weekday: 'short', day: 'numeric', month: 'short' })}</h2>
-    <p>${t('h.tip', { quiet: ampm(quiet), peak: `${ampm(20)}–${ampm(0)}` })}</p>
-    <div class="hero-row">
-      <span class="hero-chip">${icon('people', 'sm')} ${t('h.pandalsN', { n: G.data.pandals.length })}</span>
-      <span class="hero-chip">${icon('food', 'sm')} ${t('h.foodN', { n: G.data.food.length })}</span>
-      <span class="hero-chip">${icon('map', 'sm')} ${t('h.zonesN', { n: G.data.zones.length })}</span>
-    </div>
+  return `<div class="hero compact">
+    <div class="hero-top"><div><div class="eyebrow">${eyebrow}</div>
+      <h2>${t('h.dayLine', { day: esc(dn(sel)), date: fmtDate(sel) })}</h2></div>
+      <button class="hero-link" data-q="day">${t('h.changeDay')}</button></div>
+    <p>${t('h.simpleTip')}</p>
   </div>`;
 }
+
+const TASKS = [
+  ['near', 'locate'], ['plan', 'route'], ['famous', 'star'],
+  ['food', 'food'], ['park', 'car'], ['photos', 'camera'],
+];
 
 function miniPandal(p, extra) {
   const z = zoneOf(p.zone);
@@ -52,81 +50,65 @@ function miniPandal(p, extra) {
 function render() {
   const el = $('#view-home');
   const st = community.enabled ? community.stats.byPlace : {};
-  const trending = Object.values(st).filter((s) => s.last_hour > 0 || s.today > 0)
+  const busy = Object.values(st).filter((s) => s.last_hour > 0 || s.today > 0)
     .sort((a, b) => b.last_hour - a.last_hour || b.today - a.today).slice(0, 8)
-    .map((s) => idx.pandal[s.place_id] || idx.food[s.place_id]).filter(Boolean);
-  const goodNow = G.data.pandals.filter((p) => p.popularity >= 4)
-    .map((p) => [p, crowdNow(p)]).sort((a, b) => a[1] - b[1] || b[0].popularity - a[0].popularity).slice(0, 8);
-  const near = S.me ? G.data.pandals.map((p) => [p, hav(S.me, ll(p))]).sort((a, b) => a[1] - b[1]).slice(0, 6) : [];
+    .map((s) => idx.pandal[s.place_id]).filter(Boolean);
+  const showIntro = !store.get('introDone', false);
 
   el.innerHTML = `
     ${heroHtml()}
+    <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
+      <div class="tasks">${TASKS.map(([k, ic]) => `<button class="task" data-q="${k}">
+        <span class="task-ic">${icon(ic)}</span><span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`).join('')}</div>
+    </section>
+
     <div class="search" role="search">
       ${icon('search')}
       <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
       <ul class="results" id="homeResults" role="listbox"></ul>
     </div>
-    <div class="quick">
-      <button data-q="plan">${icon('route')}${t('h.qPlan')}</button>
-      <button data-q="near">${icon('locate')}${t('h.qNear')}</button>
-      <button data-q="food">${icon('food')}${t('h.qFood')}</button>
-      <button data-q="park">${icon('car')}${t('h.qPark')}</button>
-    </div>
 
-    ${trending.length ? `<section class="section"><div class="section-head"><div><h2>${t('h.trending')}</h2><p class="sub">${t('h.trendingSub')}</p></div></div>
-      <div class="hscroll">${trending.map((p) => { const s = st[p.id]; return miniPandal(p, s.last_hour
+    ${showIntro ? `<section class="intro" aria-label="${t('h.introTitle')}">
+      <div class="intro-head"><h2>${t('h.introTitle')}</h2><button class="icon-btn" data-q="introClose" aria-label="${t('h.introClose')}">×</button></div>
+      <ol><li>${t('h.intro1')}</li><li>${t('h.intro2')}</li><li>${t('h.intro3')}</li></ol>
+    </section>` : ''}
+
+    <section class="section"><div class="section-head"><div><h2>${t('h.pickArea')}</h2><p class="sub">${t('h.pickAreaSub')}</p></div></div>
+      <div class="regions">${G.data.regions.map((r) => {
+        const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
+        const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
+        return `<button class="region" data-hr="${r.id}" style="--zc:${r.color}"><span class="region-n">${esc(rname(r))}</span><span class="region-c">${t('h.pandalsN', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
+      }).join('')}</div>
+    </section>
+
+    ${busy.length ? `<section class="section"><div class="section-head"><div><h2>${t('h.trending')}</h2><p class="sub">${t('h.trendingSub')}</p></div></div>
+      <div class="hscroll">${busy.map((p) => { const s = st[p.id]; return miniPandal(p, s.last_hour
         ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>`
         : `<span class="pill">${icon('people', 'sm')} ${t('c.todayN', { n: fmtCount(s.today) })}</span>`); }).join('')}</div></section>` : ''}
 
-    ${near.length ? `<section class="section"><div class="section-head"><h2>${t('h.near')}</h2></div>
-      <div class="hscroll">${near.map(([p]) => miniPandal(p, crowdPill(crowdNow(p)))).join('')}</div></section>` : ''}
-
-    <section class="section"><div class="section-head"><div><h2>${t('h.goodNow')}</h2><p class="sub">${t('h.goodNowSub', { time: ampm(S.hour), day: dn(idx.day[S.day]) })}</p></div><button class="link-btn" data-q="explore">${t('h.seeAll')}</button></div>
-      <div class="hscroll">${goodNow.map(([p, c]) => miniPandal(p, crowdPill(c))).join('')}</div></section>
-
-    <section class="section"><div class="section-head"><h2>${t('h.zones')}</h2></div>
-      <div class="chips">${G.data.regions.map((r) => `<button class="chip" data-hr="${r.id}" aria-pressed="${r.id === (homeRegion ||= G.data.regions[0].id)}"><span class="dot" style="background:${r.color}"></span>${esc(rname(r))} · ${r.zone_ids.reduce((n, id) => n + (idx.zone[id]?.pandal_ids.length || 0), 0)}</button>`).join('')}</div>
-      <div class="zone-list">${G.data.zones.filter((z) => z.region === homeRegion).map((z) => `<div class="zone-card" data-zone="${z.id}" style="--zc:${z.color}" ${btn(`aria-label="${esc(zn(z))}"`)}>
-        <span class="bar"></span>
-        <div><h3>${esc(zn(z))}</h3><p>${esc(z.vibe)}</p>
-          <div class="meta"><span>${t('z.pandals', { n: z.pandal_ids.length })}</span><span>${t('z.loop', { km: km(z.route.walk_m) })}</span><span>${t('z.steps', { n: fmtCount(stepsFor(z.route.walk_m)) })}</span><span class="pill car-${z.car_advisory}">${t('car.' + z.car_advisory)}</span></div></div>
-        ${icon('chev')}</div>`).join('')}</div></section>
-
-    ${community.enabled ? `<section class="section"><div class="section-head"><h2>${t('h.moments')}</h2><button class="link-btn" data-q="moments">${t('h.seeAll')}</button></div><div id="homeMoments" class="grid-photos"></div></section>` : ''}
-
-    <section class="section"><div class="section-head"><h2>${t('h.trails')}</h2><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
+    <section class="section"><div class="section-head"><div><h2>${t('h.trails')}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
       <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail" data-trail="${it.id}" ${btn()}>
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>`;
 
   wire(el);
-  if (community.enabled) loadHomeMoments();
-}
-
-async function loadHomeMoments() {
-  const box = $('#homeMoments'); if (!box) return;
-  try {
-    const items = await community.feed({ limit: 6 });
-    momentCache.push(...items);
-    box.innerHTML = items.length ? items.map(thumbHtml).join('') : `<p class="fine" style="grid-column:1/-1">${t('m.empty')}</p>`;
-  } catch { box.innerHTML = `<p class="fine" style="grid-column:1/-1">${t('m.offline')}</p>`; }
 }
 
 function wire(el) {
   el.onclick = (e) => {
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
-    if (q === 'explore') { setExplore({ seg: 'pandals', sort: 'quiet' }); return go('explore'); }
-    if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near' }); return go('explore'); }
-    if (q === 'food') { setExplore({ seg: 'food' }); return go('explore'); }
-    if (q === 'park') { setExplore({ seg: 'parking' }); return go('explore'); }
-    if (q === 'moments') return go('moments');
+    if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
+    if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }
+    if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }
+    if (q === 'park') { setExplore({ seg: 'parking', mode: 'list' }); return go('explore'); }
+    if (q === 'photos') return go('moments');
+    if (q === 'day') { const d = $('#daySelect'); d.focus(); d.showPicker?.(); return; }
+    if (q === 'introClose') { store.set('introDone', true); return render(); }
     const place = e.target.closest('[data-place]')?.dataset.place; if (place) return openPlace(place);
-    const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { homeRegion = hr; const y = window.scrollY; render(); return window.scrollTo(0, y); }
-    const zone = e.target.closest('[data-zone]')?.dataset.zone; if (zone) { setExplore({ seg: 'pandals', ...selectArea(zone) }); return go('explore'); }
+    const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { setExplore({ seg: 'pandals', region: hr, area: 'all', mode: 'list' }); return go('explore'); }
     const trail = e.target.closest('[data-trail]')?.dataset.trail; if (trail) { go('plan'); return showTrail(trail); }
-    const m = e.target.closest('[data-moment]')?.dataset.moment; if (m) return momentSheet(momentCache.find((x) => x.id === m));
     const r = e.target.closest('[data-result]'); if (r) return pickResult(r.dataset.kind, r.dataset.result);
   };
   const input = $('#homeSearch', el), out = $('#homeResults', el);
@@ -143,7 +125,7 @@ function wire(el) {
   };
 }
 function pickResult(kind, id) {
-  if (kind === 'zone') { setExplore({ seg: 'pandals', ...selectArea(id) }); return go('explore'); }
+  if (kind === 'zone') { setExplore({ seg: 'pandals', ...selectArea(id), mode: 'list' }); return go('explore'); }
   openPlace(id);
 }
 

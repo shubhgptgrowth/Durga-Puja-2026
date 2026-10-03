@@ -56,7 +56,7 @@ const painted = () => page.evaluate(() => {
 let ok = true;
 try {
   await page.goto(base + '#explore');
-  await page.waitForSelector('#map .leaflet-pane');
+  await page.waitForSelector('#map.leaflet-container');
   const engine = await page.waitForFunction(async () => (await import('./ui.js')).mapEngine() === 'vector', null, { timeout: 15000 }).then(() => 'vector').catch(() => 'raster');
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(3500);

@@ -24,7 +24,7 @@ if [ ! -s "$out/$name" ]; then
   rm -f "$out"/kolkata-*.pmtiles
   "$pm" extract "https://build.protomaps.com/$build" "$out/$name" --bbox="$bbox" --maxzoom="$maxz" --download-threads=4
 fi
-"$pm" show "$out/$name" | head -20
+"$pm" show "$out/$name" | head -20 || true   # head closes the pipe early; fine under pipefail
 size=$(stat -c %s "$out/$name")
 jq -n --arg file "$name" --arg build "${build%.pmtiles}" --argjson maxzoom "$maxz" --argjson bytes "$size" \
   '{file: $file, build: $build, maxzoom: $maxzoom, bytes: $bytes}' > "$out/kolkata.json"
