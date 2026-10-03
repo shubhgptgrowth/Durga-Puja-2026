@@ -1,0 +1,62 @@
+[
+ {
+  "src": "img/hero-1.jpg",
+  "w": 960,
+  "h": 720,
+  "title": "Bagbazar Srbojanin Durga Puja 2025 02",
+  "author": "Tarunsamanta",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bagbazar_Srbojanin_Durga_Puja_2025_02.jpg",
+  "year": 2025,
+  "pandal": "bagbazar",
+  "pandal_name": "Bagbazar Sarbojanin"
+ },
+ {
+  "src": "img/hero-2.jpg",
+  "w": 960,
+  "h": 720,
+  "title": "Kumartuli Sarbojanin Durgatsab 2025 01",
+  "author": "Tarunsamanta",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Sarbojanin_Durgatsab_2025_01.jpg",
+  "year": 2025,
+  "pandal": "kumartuli_sarbojanin",
+  "pandal_name": "Kumartuli Sarbojanin"
+ },
+ {
+  "src": "img/hero-3.jpg",
+  "w": 960,
+  "h": 720,
+  "title": "Jagat Mukherjee Park Durga Puja 2025 09",
+  "author": "Tarunsamanta",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_09.jpg",
+  "year": 2025,
+  "pandal": "jagat_mukherjee",
+  "pandal_name": "Jagat Mukherjee Park"
+ },
+ {
+  "src": "img/hero-4.jpg",
+  "w": 789,
+  "h": 1100,
+  "title": "Durga College Square Arnab Dutta 2011",
+  "author": "Jonoikobangali",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_College_Square_Arnab_Dutta_2011.jpg",
+  "year": 2011,
+  "pandal": "college_square",
+  "pandal_name": "College Square Sarbojanin"
+ },
+ {
+  "src": "img/hero-5.jpg",
+  "w": 960,
+  "h": 720,
+  "title": "DurgaPuja2017 - Durga Idol of Mohammad Ali Park 01",
+  "author": "Indrajit Das",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+  "year": 2017,
+  "pandal": "md_ali_park",
+  "pandal_name": "Mohammad Ali Park"
+ }
+]
