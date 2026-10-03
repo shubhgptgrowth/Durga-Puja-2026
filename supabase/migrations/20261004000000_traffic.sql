@@ -28,6 +28,14 @@ create table if not exists public.traffic_fetch_log (
 );
 alter table public.traffic_fetch_log enable row level security;
 
+-- The Edge Function writes as service_role (tables made through the Management API don't get Supabase's default grants).
+do $$ begin
+  grant select, insert, update on public.traffic_notices to service_role;
+  grant select, insert on public.traffic_fetch_log to service_role;
+  grant usage, select on sequence public.traffic_fetch_log_id_seq to service_role;
+exception when undefined_object then raise notice 'no service_role here (local tests)';
+end $$;
+
 -- Freshness for the app: when the fetcher last reached the site.
 create or replace function public.traffic_status()
 returns json language sql stable security definer set search_path = public as $$

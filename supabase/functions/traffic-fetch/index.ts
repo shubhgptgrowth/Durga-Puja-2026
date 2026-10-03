@@ -6,8 +6,12 @@
 // Deployed with --no-verify-jwt; a 20-minute throttle keeps it from hitting the police site more often.
 
 const BASE = 'https://kolkatatrafficpolice.gov.in/';
-const PAGES = ['', 'notification.php', 'notifications.php', 'notice.php', 'trafficadvisory.php', 'advisory.php', 'whatsnew.php', 'news.php'];
-const PUJA = /puja|pujo|durga|mahalaya|immersion|bisarjan|visarjan|festiv|carnival|sharod|navaratri|navratri/i;
+// Start at the homepage, then follow up to MAX_SUB of its own links that look like notice listings.
+const LISTING = /notification|notice|advisory|circular|what'?s ?new|news|press|puja/i;
+const MAX_SUB = 6;
+const PUJA = /puja|pujo|durga(?!pur)|mahalaya|immersion|bisarjan|visarjan|festiv|carnival|sharod|navaratri|navratri|utsab|utsav/i;
+// A notice that names an earlier year (e.g. "05.10.2016", "2019") is an old one.
+const OLD = (text: string) => [...text.matchAll(/(?:^|\D)(20\d\d)(?:\D|$)/g)].some((m) => +m[1] < new Date().getFullYear());
 const NOTICE = /traffic|arrangement|restriction|regulation|diversion|advisory|notification|notice|one[- ]?way|parking/i;
 const THROTTLE_MIN = 20;
 
@@ -43,17 +47,20 @@ Deno.serve(async (req) => {
   }
   const pages: Record<string, string | number> = {};
   const found = new Map<string, { url: string; title: string; page: string; relevant: boolean }>();
-  for (const p of PAGES) {
-    const page = new URL(p, BASE).href;
+  const queue = [BASE];
+  for (let qi = 0; qi < queue.length && qi <= MAX_SUB; qi++) {
+    const page = queue[qi];
     try {
       const r = await fetch(page, { headers: { 'User-Agent': 'PujoParikrama/1.0 (+https://shubhgptgrowth.github.io/Durga-Puja-2026/)' }, signal: AbortSignal.timeout(20000) });
       pages[page] = r.status;
       if (!r.ok) continue;
       for (const l of links(await r.text(), page)) {
         const text = `${l.title} ${l.url}`;
+        const sameSite = l.url.startsWith(BASE);
+        if (page === BASE && sameSite && !/\.pdf($|\?)/i.test(l.url) && LISTING.test(l.title) && !queue.includes(l.url) && queue.length <= MAX_SUB) queue.push(l.url);
         const isDoc = /\.pdf($|\?)/i.test(l.url) || NOTICE.test(text);
         if (!isDoc) continue;
-        found.set(l.url, { ...l, page, relevant: PUJA.test(text) });
+        found.set(l.url, { ...l, page, relevant: PUJA.test(text) && !OLD(text) });
       }
     } catch (e) {
       pages[page] = String((e as Error).message || e).slice(0, 80);
