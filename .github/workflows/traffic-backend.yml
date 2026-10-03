@@ -62,3 +62,12 @@ jobs:
           {
             echo "### traffic-fetch from Mumbai"; echo '```json'; echo "$out" | jq . 2>/dev/null || echo "$out"; echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Check the app can read them (anon key, like the browser)
+        run: |
+          ref=${{ steps.ref.outputs.ref }}; url="https://$ref.supabase.co"
+          anon=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects/$ref/api-keys?reveal=true" | jq -r '[.[] | select(.name == "anon" or .type == "publishable")][0].api_key')
+          curl -fsS -H "apikey: $anon" "$url/rest/v1/traffic_notices?select=title,url,first_seen&order=first_seen.desc" | tee /tmp/n.json | jq .
+          curl -fsS -X POST -H "apikey: $anon" -H "Content-Type: application/json" -d '{}' "$url/rest/v1/rpc/traffic_status" | jq .
+          n=$(jq length /tmp/n.json); echo "anon sees $n puja notices"
+          log=$(curl -sS -o /dev/null -w '%{http_code}' -H "apikey: $anon" "$url/rest/v1/traffic_fetch_log?select=id&limit=1")
+          echo "anon read of the fetch log: HTTP $log (expect an empty list or 401/403)"
