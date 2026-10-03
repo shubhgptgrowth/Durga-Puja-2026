@@ -82,7 +82,8 @@ def scout():
 def check():
     data = json.loads(Path("app/data/music.json").read_text())
     bad = 0
-    for tr in data["tracks"]:
+    tracks = {t["yt"]: t for st in data["stations"] for t in st["tracks"]}.values()
+    for tr in tracks:
         r = oembed(tr["yt"])
         print(("OK  " if r["ok"] else "BAD ") + tr["yt"], tr["title"], "|", r.get("channel") or r.get("status"))
         bad += not r["ok"]
