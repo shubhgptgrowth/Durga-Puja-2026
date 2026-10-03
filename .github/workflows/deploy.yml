@@ -14,8 +14,10 @@ permissions:
   pages: write
   id-token: write
 
+# One deploy at a time per branch. Pushes to other branches (whose deploy is skipped) must not cancel
+# a running deploy of the default branch.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
