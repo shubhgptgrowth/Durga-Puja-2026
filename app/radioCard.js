@@ -94,7 +94,7 @@ export function wireRadio(el) {
 export function initMini() {
   const b = document.createElement('button');
   b.id = 'radioMini'; b.type = 'button'; b.className = 'radio-mini'; b.hidden = true;
-  b.innerHTML = `🥁<span class="sr-only"></span>`;
+  b.innerHTML = '<span class="mini-ic" aria-hidden="true">🥁</span>';
   document.body.appendChild(b);
   const sync = () => { b.hidden = !radio.playing(); b.setAttribute('aria-label', t('r.stopMini')); };
   radio.onBeat((kind) => {

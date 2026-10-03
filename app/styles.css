@@ -512,5 +512,6 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .radio-links { display: flex; gap: 12px; align-items: center; margin-top: 10px; font-size: 13px; color: #6B3A22; }
 .radio-links a { color: #9F1239; font-weight: 700; }
 .radio-mini { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; width: 46px; height: 46px; border-radius: 50%; border: 3px solid #B91C1C; background: #FFF8EC; font-size: 22px; box-shadow: var(--shadow); cursor: pointer; }
-.radio-mini.beat { animation: boom .22s ease-out; }
+.radio-mini .mini-ic { display: inline-block; }
+.radio-mini.beat .mini-ic { animation: boom .22s ease-out; }
 body:has(#view-home.active) .radio-mini { display: none; }
