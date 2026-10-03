@@ -59,9 +59,18 @@ const makePng = () => page.evaluate(async () => {
 try {
   await page.goto(base);
   await page.waitForSelector('.hero');
-  must(await count('.zone-card') >= 1, 'area cards missing on home');
-  must(await count('[data-hr]') === G.regions.length, 'region chips missing on home');
+  must(await count('.tasks .task') === 6, 'task buttons missing on home');
+  must(await count('[data-hr]') === G.regions.length, 'area buttons missing on home');
   await shot('01-home');
+  // Home is a launcher: an area opens the map filtered to it; "Must-see" opens the famous list.
+  await page.click('[data-hr="south"]');
+  await page.waitForSelector('#view-explore.active [data-fr="south"][aria-pressed="true"]');
+  await page.click('.tab[data-view="home"]');
+  await page.click('.task[data-q="famous"]');
+  await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
+  await page.click('.tab[data-view="home"]');
+  await page.click('[data-q="introClose"]');
+  must(await count('.intro') === 0, 'intro card should close');
 
   // Search (English and Bengali)
   await page.fill('#homeSearch', 'tridh');
