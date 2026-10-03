@@ -333,7 +333,7 @@ try {
   must(await page.evaluate(async () => (await import('./growth.js')).myCard().title) === "Rina's Pujo 2026", 'name not on the story card');
   if (fake) {
     const st = await (await fetch(`${fake.url}/__state`)).json();
-    must(st.profiles.some((x) => x.phone === '+919830012345' && x.name === 'Rina Sen'), 'profile not saved with consent');
+    must(st.profiles.some((x) => x.phone === '+919830012345' && x.name === 'Rina Sen' && x.lang === 'en' && x.device_id), 'profile not saved with consent and data points: ' + JSON.stringify(st.profiles));
     await page.click('.profile-box summary').catch(() => {});
     await page.uncheck('#cConsent');
     await page.click('#contactForm button[type="submit"]');

@@ -22,7 +22,7 @@ export function captureSource() {
   S.src = src || 'direct';
 }
 
-function deviceId() {
+export function deviceId() {
   let id = store.get('device', null);
   if (!id) { id = crypto.randomUUID?.() || 'xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx'.replace(/x/g, () => ((Math.random() * 16) | 0).toString(16)); store.set('device', id); }
   return id;

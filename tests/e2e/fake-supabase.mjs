@@ -71,7 +71,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (!a.p_consent) { db.profiles.delete(uid); return { status: 'deleted' }; }
       const d = String(a.p_phone || '').replace(/\D/g, '').replace(/^(91|0)(?=[6-9]\d{9}$)/, '');
       if (!/^[6-9]\d{9}$/.test(d)) return { status: 'bad_phone' };
-      db.profiles.set(uid, { name: (a.p_name || '').trim().slice(0, 60) || null, phone: '+91' + d });
+      db.profiles.set(uid, { name: (a.p_name || '').trim().slice(0, 60) || null, phone: '+91' + d, lang: a.p_lang, first_src: a.p_src, device_id: a.p_device });
       return { status: 'ok' };
     },
     add_photo(uid, a) {

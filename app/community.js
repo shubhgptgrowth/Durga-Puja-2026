@@ -108,7 +108,9 @@ export class Community {
   }
 
   /* ------------------------------------------------------------ contact profile (opt-in) */
-  saveProfile(name, phone, consent) { return this.rpc('save_profile', { p_name: name, p_phone: phone, p_consent: !!consent }); }
+  saveProfile(name, phone, consent, { lang = null, src = null, device = null } = {}) {
+    return this.rpc('save_profile', { p_name: name, p_phone: phone, p_consent: !!consent, p_lang: lang, p_src: src, p_device: device });
+  }
   bump(id, patch) {
     const cur = this.stats.byPlace[id] || { place_id: id, visits: 0, today: 0, last_hour: 0, photos: 0 };
     this.stats.byPlace[id] = { ...cur, ...patch };

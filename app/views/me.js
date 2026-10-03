@@ -6,7 +6,7 @@ import { CONFIG } from '../config.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
-import { shareCard, myCard, appLink, myName } from '../growth.js';
+import { shareCard, myCard, appLink, myName, deviceId } from '../growth.js';
 
 const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const syncUrl = () => `${location.origin}${location.pathname}?src=ios_shortcut#steps=`;
@@ -129,7 +129,7 @@ function render() {
     Object.assign(S.prefs, { name, phone, contactOk: consent }); savePrefs();
     if (community.enabled && (consent || wasOk)) {
       try {
-        const r = await community.saveProfile(name, phone, consent);
+        const r = await community.saveProfile(name, phone, consent, { lang: S.prefs.lang, src: store.get('firstSrc', S.src || 'direct'), device: deviceId() });
         toast(t(r.status === 'deleted' ? 'pr.erased' : r.status === 'ok' ? 'pr.savedShared' : 'pr.badPhone'));
       } catch { toast(t('pr.savedLocal')); }
     } else toast(t('pr.savedLocal'));
