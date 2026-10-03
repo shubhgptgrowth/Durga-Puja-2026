@@ -2,6 +2,7 @@
 
     python -m pipeline.discover pandals   # OSM pujas + matches for data/seeds/pandal_seeds.csv
     python -m pipeline.discover transit   # OSM bus/share-auto routes and stops, taxi/auto stands, auto-route endpoints
+    python -m pipeline.discover food      # OSM restaurants, sweet shops, cafes, street food (named) in the bbox
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
@@ -235,5 +236,24 @@ def discover_photos():
     write("photos", res)
 
 
+# ---------------------------------------------------------------- food
+def discover_food():
+    """Named eateries from OSM. `python -m pipeline.discovered food` picks the ones near pandals."""
+    sel = '["amenity"~"^(restaurant|fast_food|cafe|ice_cream|food_court)$"]'
+    shop = '["shop"~"^(confectionery|bakery|pastry|sweets)$"]'
+    q = f'[out:json][timeout:180];(nwr{sel}["name"]({BBOX_Q});nwr{shop}["name"]({BBOX_Q}););out center tags;'
+    out = []
+    for e in overpass(q):
+        tags = e.get("tags", {})
+        lat, lng = center(e)
+        if lat is None or tags.get("disused") or tags.get("opening_hours") == "closed":
+            continue
+        keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "amenity", "shop", "cuisine", "diet:vegetarian",
+                                      "diet:vegan", "opening_hours", "addr:street", "brand") if k in tags}
+        out.append({"osm": f'{e["type"]}/{e["id"]}', "lat": round(lat, 6), "lng": round(lng, 6), **keep})
+    write("food", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"), "places": out})
+    print(f"{len(out)} eateries", file=sys.stderr)
+
+
 if __name__ == "__main__":
-    {"pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
+    {"food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
