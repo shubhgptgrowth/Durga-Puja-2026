@@ -9,7 +9,7 @@ for id in $NEED; do
  if [ ${id:0:1} = c ]; then s=$(grep "^$id " ai_urls.txt | cut -d' ' -f2); curl -sfo src/$id.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261003_$s.mp4"; continue; fi
  read u w h <<<"$(python3 -c "import json;f=json.load(open('footage.json'))['$id'];print(f['url'],f['w'],f['h'])")"
  n=${u##*/}; ext=${n##*.}; got=""
- if [ "$w" -gt 1920 ] || { [ "$w" -gt "$h" ] && [ "$h" -ge 1080 ] && [ "$ext" = ogv ]; }; then
+ if [ "$w" -gt "$h" ] && { [ "$w" -gt 1920 ] || [ "$ext" = ogv ]; }; then   # landscape: 1080p transcode; portrait: original (transcodes are only 608 px wide)
    tb=${u%/*}; tb=${tb/commons\//commons/transcoded/}/$n
    for s in 1080p.vp9.webm 1080p.webm; do curl -sfL -A "$UA" -o src/$id.webm "$tb/$n.$s" && { got=1; break; }; sleep 2; done
  fi
