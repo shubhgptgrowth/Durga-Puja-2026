@@ -1,6 +1,6 @@
-# Build report — 2026-10-03T15:04:19+00:00
+# Build report — 2026-10-03T15:15:05+00:00
 
-Bundle version `c8da642d670a`
+Bundle version `311a0c81d499`
 
 | Entity | Count |
 |---|---|
@@ -45,5 +45,5 @@ Bundle version `c8da642d670a`
 ## Warnings (181)
 
 - 179 records are not ground-verified yet
-- zones (new_town): has no pandals yet, so it is left out of the bundle
 - zones (baguiati_kestopur): has no pandals yet, so it is left out of the bundle
+- zones (new_town): has no pandals yet, so it is left out of the bundle
