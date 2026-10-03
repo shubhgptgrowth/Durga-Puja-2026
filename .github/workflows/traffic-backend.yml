@@ -34,10 +34,9 @@ jobs:
           jq -Rs '{query: .}' supabase/migrations/*_traffic.sql > /tmp/q.json
           curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json \
             "$API/projects/${{ steps.ref.outputs.ref }}/database/query" >/dev/null && echo "migration applied"
-      - uses: supabase/setup-cli@v1
-        with: { version: latest }
       - name: Deploy the Edge Function
-        run: supabase functions deploy traffic-fetch --project-ref ${{ steps.ref.outputs.ref }} --no-verify-jwt --use-api
+        # The CLI comes from npm: setup-cli's "latest" lookup hits GitHub's API rate limit.
+        run: npx --yes supabase@2 functions deploy traffic-fetch --project-ref ${{ steps.ref.outputs.ref }} --no-verify-jwt --use-api
       - name: Schedule it (pg_cron, every 3 hours, Mumbai)
         run: |
           ref=${{ steps.ref.outputs.ref }}
