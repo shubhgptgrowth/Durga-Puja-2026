@@ -1,9 +1,14 @@
-/* Pujo Radio engine: plays official uploads (app/data/music.json) through YouTube's embedded player,
- * so every play is licensed and counted for the label. The player iframe lives in the Home card,
- * which is built once and never re-rendered, so music keeps playing while you browse other tabs. */
+/* Pujo Radio engine. Two kinds of track (app/data/music.json):
+ * - "audio": freely licensed recordings hosted in app/audio (the dhak). Played by an <audio> element: no ads, no
+ *   channel intro, starts instantly and works offline.
+ * - "yt": the labels' official uploads, played through YouTube's embedded player so every play is licensed.
+ * The YouTube iframe lives in the Home card, which is built once and never re-rendered, so music keeps playing
+ * while you browse other tabs. */
 
-let data = null, apiReady = null, player = null, host = null;
-let station = null, idx = 0, state = 'idle', ready = false; // state: idle | cued | loading | playing | paused
+let data = null, apiReady = null, player = null, host = null, ytReady = false;
+let station = null, idx = 0, state = 'idle'; // idle | cued | loading | playing | paused
+const audio = new Audio();
+audio.preload = 'none';
 const listeners = new Set();
 const emit = () => listeners.forEach((fn) => fn());
 
@@ -11,6 +16,7 @@ export const onChange = (fn) => { listeners.add(fn); return () => listeners.dele
 export const status = () => ({ state, station, idx, track: current() });
 export const stations = () => data?.stations || [];
 export function current() { const s = stations().find((x) => x.id === station); return s ? s.tracks[idx] : null; }
+export const isAudio = () => !!current()?.audio;
 
 export function loadMusic() {
   data ||= fetch('data/music.json').then((r) => r.json()).then((d) => (data = d)).catch(() => { data = null; return null; });
@@ -30,10 +36,11 @@ function loadApi() {
   return apiReady;
 }
 
-/** The element the player iframe replaces. Called once by the Home card. */
+/** The element the YouTube iframe replaces. Called once by the Home card. */
 export function attach(el) { host = el; }
 
-function onState(e) {
+function onYtState(e) {
+  if (isAudio()) return; // a stale event from the paused YouTube player
   const YT = window.YT;
   if (e.data === YT.PlayerState.PLAYING) state = 'playing';
   else if (e.data === YT.PlayerState.PAUSED) state = 'paused';
@@ -41,55 +48,75 @@ function onState(e) {
   else if (e.data === YT.PlayerState.ENDED) return next();
   emit();
 }
+audio.addEventListener('playing', () => { if (isAudio()) { state = 'playing'; emit(); } });
+audio.addEventListener('pause', () => { if (isAudio() && state !== 'idle') { state = 'paused'; emit(); } });
+audio.addEventListener('ended', () => { if (isAudio()) next(); });
+
+function select(stationId, i) {
+  const s = stations().find((x) => x.id === stationId);
+  if (!s) return null;
+  station = stationId; idx = (i + s.tracks.length) % s.tracks.length;
+  return s.tracks[idx];
+}
+function playAudio(tr) {
+  if (player && ytReady) player.pauseVideo();
+  if (!audio.src.endsWith(tr.audio)) audio.src = tr.audio;
+  audio.loop = !!tr.loop;
+  state = 'loading'; emit();
+  const p = audio.play();
+  p?.catch(() => { state = 'paused'; emit(); });
+  return true;
+}
 
 export async function play(stationId, i = 0) {
   await loadMusic();
-  const s = stations().find((x) => x.id === stationId);
-  if (!s || !host) return false;
-  station = stationId; idx = (i + s.tracks.length) % s.tracks.length; state = 'loading'; emit();
-  const id = s.tracks[idx].yt;
+  const tr = select(stationId, i);
+  if (!tr) return false;
+  if (tr.audio) return playAudio(tr);
+  audio.pause();
+  if (!host) return false;
+  state = 'loading'; emit();
   try {
     const YT = await loadApi();
-    if (player) player.loadVideoById(id);
+    if (player) player.loadVideoById(tr.yt);
     else {
       player = new YT.Player(host, {
-        host: 'https://www.youtube-nocookie.com', videoId: id, width: '100%', height: '100%',
+        host: 'https://www.youtube-nocookie.com', videoId: tr.yt, width: '100%', height: '100%',
         playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, controls: 0, iv_load_policy: 3, fs: 0, disablekb: 1 },
-        events: { onReady: (e) => { ready = true; e.target.playVideo(); }, onStateChange: onState, onError: () => next() },
+        events: { onReady: (e) => { ytReady = true; e.target.playVideo(); }, onStateChange: onYtState, onError: () => next() },
       });
     }
     return true;
   } catch { state = 'idle'; emit(); return false; }
 }
-/** Load a track into the player without playing it, so a later tap can start it instantly (iOS needs the
- * play call to happen inside the tap itself, which only works if the player already exists). */
+
+/** Get a track ready so a later tap can start it instantly (browsers only allow sound from inside a tap). */
 export async function cue(stationId, i = 0) {
   await loadMusic();
-  const s = stations().find((x) => x.id === stationId);
-  if (!s || !host || player) return false;
-  station = stationId; idx = i % s.tracks.length; state = 'cued'; emit();
-  try {
-    const YT = await loadApi();
-    player = new YT.Player(host, {
-      host: 'https://www.youtube-nocookie.com', videoId: s.tracks[idx].yt, width: '100%', height: '100%',
-      playerVars: { autoplay: 0, playsinline: 1, rel: 0, modestbranding: 1, controls: 0, iv_load_policy: 3, fs: 0, disablekb: 1 },
-      events: { onReady: () => { ready = true; emit(); }, onStateChange: onState, onError: () => next() },
-    });
-    return true;
-  } catch { state = 'idle'; emit(); return false; }
+  if (state !== 'idle') return false;
+  const tr = select(stationId, i);
+  if (!tr?.audio) return false; // only the hosted dhak is cued; YouTube tracks load when chosen
+  audio.src = tr.audio; audio.loop = !!tr.loop; audio.preload = 'auto';
+  state = 'cued'; emit();
+  return true;
 }
-/** Start whatever is loaded, synchronously when the player is ready (call from inside a tap). */
+/** Start whatever is loaded. Call from inside a tap. */
 export function playNow() {
-  if (player && ready) { state = 'loading'; player.playVideo(); emit(); return true; }
+  const tr = current();
+  if (tr?.audio) return playAudio(tr);
+  if (player && ytReady) { state = 'loading'; player.playVideo(); emit(); return true; }
   return play(station || 'dhak', idx);
 }
-export const isReady = () => ready;
 export function toggle() {
-  if (!player || state === 'idle') return play(station || 'mahalaya', idx);
+  if (state === 'idle') return play(station || 'dhak', idx);
   if (state === 'cued') return playNow();
-  state === 'playing' ? player.pauseVideo() : player.playVideo();
+  if (state === 'playing' || state === 'loading') return pause();
+  return playNow();
 }
-export const next = () => play(station || 'mahalaya', idx + 1);
-export const prev = () => play(station || 'mahalaya', idx - 1);
-export const pause = () => { if (player && state === 'playing') player.pauseVideo(); };
+export const next = () => play(station || 'dhak', idx + 1);
+export const prev = () => play(station || 'dhak', idx - 1);
+export function pause() {
+  if (isAudio()) audio.pause();
+  else if (player && ytReady) player.pauseVideo();
+}
 export const playing = () => state === 'playing' || state === 'loading';

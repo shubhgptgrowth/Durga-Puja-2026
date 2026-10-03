@@ -3,14 +3,13 @@ import { hav, orderRoute, hhmm, encodePlan, rideOption } from '../core.js';
 import {
   S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon, loc,
 } from '../state.js';
-import { $, go, registerView, makeMap, toast, getFix } from '../ui.js';
+import { $, go, registerView, toast, getFix } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
-import { loadTraffic, trafficHtml } from '../traffic.js';
 
-let planSel = new Set(), step = 0, planMap = null, transitData = null, transitLoading = null;
+let planSel = new Set(), step = 0, inPlan = false, transitData = null, transitLoading = null;
 // Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
 function loadTransit() {
   transitLoading ||= fetch('data/transit.json').then((r) => (r.ok ? r.json() : null)).then((d) => { transitData = d; if (d && S.view === 'plan' && planValid(S.plan)) render(); }).catch(() => null);
@@ -182,14 +181,17 @@ async function share(plan) {
 }
 
 /* ---------------- render ---------------- */
+const pickedRegions = () => G.data.regions.filter((r) => r.zone_ids.some((id) => planSel.has(id))).length;
 function areasHtml() {
-  const regionRows = G.data.regions.map((r) => {
-    const all = r.zone_ids.every((id) => planSel.has(id)), some = r.zone_ids.some((id) => planSel.has(id));
-    return `<div class="region-row"><button type="button" class="chip region" data-pr="${r.id}" aria-pressed="${all}" ${some && !all ? 'data-partial="1"' : ''}><span class="dot" style="background:${r.color}"></span>${esc(rname(r))}</button>
-      ${r.zone_ids.length > 1 ? r.zone_ids.map((id) => idx.zone[id]).map((z) => `<button type="button" class="chip sm" data-pz="${z.id}" aria-pressed="${planSel.has(z.id)}">${esc(zs(z))}</button>`).join('') : ''}</div>`;
-  }).join('');
-  return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><p class="fine">${t('f.zonesHint')}</p><div id="planZones">${regionRows}</div></div>
-    <div class="wz-foot"><span class="fine">${planSel.size ? t(planSel.size === 1 ? 'wz.picked1' : 'wz.picked', { n: planSel.size }) : t('wz.pickOne')}</span>
+  const regionRows = `<div class="regions pick">${G.data.regions.map((r) => {
+    const on = r.zone_ids.some((id) => planSel.has(id));
+    const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
+    const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
+    return `<button type="button" class="region" data-pr="${r.id}" aria-pressed="${on}" style="--zc:${r.color}">
+      <span class="region-n">${on ? '✓ ' : ''}${esc(rname(r))}</span><span class="region-c">${t('it.pandals', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
+  }).join('')}</div>`;
+  return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><div id="planZones">${regionRows}</div></div>
+    <div class="wz-foot"><span class="fine">${pickedRegions() ? t(pickedRegions() === 1 ? 'wz.picked1' : 'wz.picked', { n: pickedRegions() }) : t('wz.pickOne')}</span>
       <button type="button" class="btn primary" id="planNext" ${planSel.size ? '' : 'aria-disabled="true"'}>${t('wz.next')} ${icon('chev', 'sm')}</button></div>
     <div class="section-head" style="margin-top:22px"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
     ${dayPlanHtml()}
@@ -204,7 +206,7 @@ function formHtml() {
     <label>${t('f.start')}<button type="button" class="btn block picker-btn" id="planStartBtn">${esc(startLabel(form.start))} ${icon('chev', 'sm')}</button></label>
     <div class="grid2">
       <label>${t('f.time')}<input type="time" id="planTime" value="${form.time}"></label>
-      <label>${t('f.budget')}<select id="planBudget">${['120', '180', '240', '360', '600'].map((v) => `<option value="${v}" ${form.budget === v ? 'selected' : ''}>${t('budget.' + v)}</option>`).join('')}</select></label>
+      <label>${t('f.budget')}<select id="planBudget">${['120', '180', '240', '360', '720', '600'].map((v) => `<option value="${v}" ${form.budget === v ? 'selected' : ''}>${t('budget.' + v)}</option>`).join('')}</select></label>
     </div>
     <details class="more"><summary>${t('wz.more')}</summary>
       <div class="form" style="padding:10px 0 0">
@@ -270,8 +272,6 @@ function resultHtml(plan) {
       <div class="btn-row" style="margin-top:8px"><button class="btn" id="planWalk">${icon('walk')} ${t('plan.startWalk')}</button><button class="btn" id="planShare">${icon('share')} ${t('plan.share')}</button></div>
       <p class="fine" style="margin:8px 0 0">${t('plan.dirHint')}</p>
     </div>
-    <div class="pad" style="margin-top:12px">${trafficHtml()}</div>
-    <div id="planMap" class="map short" style="margin:12px 16px;border-radius:16px;overflow:hidden"></div>
     <ol class="timeline">${tl.join('')}</ol>`;
 }
 function stepperHtml(plan) {
@@ -287,41 +287,19 @@ function render(scrollToResult = false) {
   if (!step || (step === 3 && !plan)) step = plan ? 3 : 1;
   if (step === 2 && !planSel.size) step = 1;
   if (plan && step === 3 && !transitData) loadTransit();
-  loadTraffic(() => S.view === 'plan' && step === 3 && render());
   const body = step === 1 ? areasHtml() : step === 2 ? formHtml()
     : `<div class="wz-foot top"><button type="button" class="btn sm" id="planEdit">${t(plan.kind === 'custom' ? 'wz.edit' : 'wz.other')}</button><button type="button" class="btn sm" id="planNew">${icon('plus', 'sm')} ${t('wz.new')}</button></div>
        <div id="planResult">${resultHtml(plan)}</div>`;
   el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>${stepperHtml(plan)}${body}`;
-  if (planMap && step !== 3) { planMap.off(); planMap.remove(); planMap = null; }
   wire(el, plan);
-  if (step === 3) drawPlanMap(plan);
   if (scrollToResult || step !== 3) window.scrollTo({ top: 0 });
-}
-function drawPlanMap(plan) {
-  // The plan map is rebuilt on every render, so it must not animate (a pending zoom frame would hit a removed map).
-  if (planMap) { planMap.off(); planMap.remove(); planMap = null; }
-  planMap = makeMap($('#planMap'), { animate: false });
-  if (!planMap) return;
-  const stops = stopsOf(plan), pts = [ll(plan.startPt), ...stops.map((s) => ll(idx.pandal[s.pandal]))];
-  // Ride legs (metro hops between areas, and auto hops between far-apart pandals) are solid orange; walks are dotted.
-  const afterRide = new Set(plan.segments.filter((sg, i) => sg.type === 'walk' && plan.segments[i - 1]?.type === 'ride').map((sg) => sg.stops[0]?.pandal));
-  pts.slice(1).forEach((pt, i) => {
-    const ride = stops[i].walk_m > HOP_M || afterRide.has(stops[i].pandal);
-    L.polyline([pts[i], pt], ride ? { color: '#EA580C', weight: 4, opacity: .9 } : { color: '#9F1239', weight: 4, opacity: .85, dashArray: '2 8', lineCap: 'round' }).addTo(planMap);
-  });
-  L.marker(pts[0], { icon: L.divIcon({ className: '', html: '<div class="seq" style="background:#1C1917">▶</div>', iconSize: [26, 26] }), keyboard: false }).addTo(planMap);
-  stops.forEach((st, i) => L.marker(ll(idx.pandal[st.pandal]), { icon: L.divIcon({ className: '', html: `<div class="seq">${i + 1}</div>`, iconSize: [26, 26] }), title: nm(idx.pandal[st.pandal]) })
-    .on('click', () => openPlace(st.pandal)).addTo(planMap));
-  planMap.fitBounds(L.latLngBounds(pts), { padding: [24, 24], animate: false });
 }
 const keepScroll = (fn) => { const y = window.scrollY; fn(); window.scrollTo(0, y); };
 function wire(el, plan) {
   el.onclick = (e) => {
     const sp = e.target.closest('[data-step]:not([disabled])')?.dataset.step; if (sp) { step = +sp; return render(); }
-    const pz = e.target.closest('[data-pz]')?.dataset.pz;
-    if (pz) { planSel.has(pz) ? planSel.delete(pz) : planSel.add(pz); return keepScroll(render); }
     const pr = e.target.closest('[data-pr]')?.dataset.pr;
-    if (pr) { const ids = idx.region[pr].zone_ids, all = ids.every((id) => planSel.has(id)); ids.forEach((id) => (all ? planSel.delete(id) : planSel.add(id))); return keepScroll(render); }
+    if (pr) { const ids = idx.region[pr].zone_ids, on = ids.some((id) => planSel.has(id)); ids.forEach((id) => (on ? planSel.delete(id) : planSel.add(id))); return keepScroll(render); }
     if (e.target.closest('#planNext')) { if (!planSel.size) return toast(t('plan.pickZone')); step = 2; return render(); }
     if (e.target.closest('#planEdit')) { step = plan?.kind === 'custom' ? 2 : 1; return render(); }
     if (e.target.closest('#planNew')) { planSel = new Set(); step = 1; return render(); }
@@ -335,9 +313,18 @@ function wire(el, plan) {
   };
   const f = $('#planForm', el);
   if (f) {
-    f.onchange = () => { S.day = $('#planDay').value; store.set('day', S.day); form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
+    f.onchange = (ev) => {
+      // Whole day starts in the morning, whole night in the evening.
+      if (ev?.target?.id === 'planBudget') {
+        const b = $('#planBudget').value, h = +($('#planTime').value || '17:00').slice(0, 2);
+        if (b === '720' && h >= 13) $('#planTime').value = '10:00';
+        if (b === '600' && h < 16) $('#planTime').value = '19:00';
+      }
+      S.day = $('#planDay').value; store.set('day', S.day); form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
     f.onsubmit = (e) => { e.preventDefault(); f.onchange(); buildCustom(); };
   }
 }
 
-registerView('plan', { render: () => render(false), onShow: () => setTimeout(() => planMap?.invalidateSize(), 60) });
+// Opening the tab starts at Areas; re-renders while you're here (e.g. a language switch) keep your step.
+registerView('plan', { render: () => { if (!inPlan) step = 1; render(false); } });
+addEventListener('viewchange', (e) => { inPlan = e.detail === 'plan'; });

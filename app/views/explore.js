@@ -7,7 +7,6 @@ import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { openPlace, crowdPill, statsHtml, dirUrl } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
-import { loadTraffic, trafficHtml } from '../traffic.js';
 
 let map = null, layers = {}, meMarker = null, moreOpen = false;
 const LINE = { blue: '#2563EB', green: '#16A34A', purple: '#9333EA', orange: '#EA580C', suburban: '#57534E' };
@@ -111,8 +110,7 @@ function listHtml(e, list) {
   if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
   const car = S.car, zl = areasOf(e).map(zoneOf), ids = zl.flatMap((z) => z.pandal_ids);
   const near = e.region === 'all' ? G.data.transit : G.data.transit.filter((s) => ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
-  loadTraffic(() => S.view === 'explore' && S.explore.seg === 'parking' && render());
-  return `<div class="pad" style="margin-bottom:10px">${trafficHtml()}</div><div class="pad" style="margin-bottom:10px">${car
+  return `<div class="pad" style="margin-bottom:10px">${car
     ? `<div class="card"><b>${t('car.yours')}</b><p class="fine" style="margin:2px 0 8px">${t('car.saved', { when: new Date(car.ts).toLocaleString(loc(), { weekday: 'short', hour: 'numeric', minute: '2-digit' }) })}${S.me ? ` · ${dist(hav(S.me, [car.lat, car.lng]))}` : ''}</p>
        <div class="btn-row"><a class="btn sm primary" target="_blank" rel="noopener" href="${dirUrl([car.lat, car.lng])}">${t('car.walkBack')}</a><button class="btn sm" id="carClear">${t('car.clear')}</button></div></div>`
     : `<button class="btn block" id="carSave">${icon('pin')} ${t('car.save')}</button>`}</div>

@@ -47,12 +47,11 @@ function heroHtml() {
       <img src="${x.src}" alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></button>`).join('')}
     <div class="hero-shade"></div>
     <div class="hero-copy">
-      <div class="sharad-greet" lang="bn">শুভ শারদীয়া</div>
+      <div class="sharad-greet">${t(today ? 'lingo.heroToday' : diff > 0 ? 'lingo.hero' : 'lingo.after')}</div>
       <div class="sharad-sub">${t('h.greetSub')}</div>
       <div class="sharad-when"><span>${when}</span><span class="sep">·</span><span>${span()}</span></div>
     </div>
-    <div class="hero-meta"><span class="hero-place">📍 <span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span>
-      <a class="hero-credit" id="slideCredit" href="${SLIDES[slide].page}" target="_blank" rel="noopener">© ${esc(SLIDES[slide].author)}, ${SLIDES[slide].license}</a></div>
+    <div class="hero-meta"><span class="hero-place">📍 <span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span></div>
     <div class="dots" aria-hidden="true">${SLIDES.map((_, k) => `<i class="${k === slide ? 'on' : ''}"></i>`).join('')}</div>
   </div>`;
 }
@@ -69,7 +68,6 @@ function startSlides(el) {
     hero.querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === slide));
     const x = SLIDES[slide];
     $('#slidePlace', hero).textContent = nm(idx.pandal[x.pandal]);
-    const c = $('#slideCredit', hero); c.href = x.page; c.textContent = `© ${x.author}, ${x.license}`;
   }, 5500);
 }
 
@@ -137,7 +135,8 @@ function render() {
       <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail" data-trail="${it.id}" ${btn()}>
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
-    <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>`;
+    <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>
+    <p class="fine center photo-credits">${t('h.photoCredits')} ${slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`).join(', ')} (${t('h.ccNote')})</p>`;
 
   wire(el);
 }

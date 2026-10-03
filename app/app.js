@@ -81,6 +81,8 @@ function applyStatic() {
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), dashami = new Date(idx.day.dashami.date + 'T00:00:00');
   const todayDay = G.data.meta.days.find((d) => d.date === todayKey()), diff = Math.round((shashthi - now) / 864e5);
+  // The big line is the day's greeting in Bengali: শুভ শারদীয়া before the pujo, শুভ সপ্তমী on the day, শুভ বিজয়া after.
+  $('#greet').textContent = todayDay ? (todayDay.id === 'dashami' ? 'শুভ বিজয়া' : `শুভ ${todayDay.name_bn}`) : now > dashami ? 'শুভ বিজয়া' : 'শুভ শারদীয়া';
   // The line under the name rotates through what people say around the pujo, led by the countdown.
   const lead = todayDay ? t('lingo.today', { day: dn(todayDay) }) : now > dashami ? t('lingo.after')
     : t('lingo.count', { n: bnDigits(Math.max(1, diff)) });

@@ -76,6 +76,16 @@ try {
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
   must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');
   must(await count('.hero.slides .slide') >= 3, 'banner slideshow expected');
+  // Tapping the banner opens the pandal on the visible slide (the hidden slides used to swallow taps)
+  const shown = await page.locator('#slidePlace').innerText();
+  await page.click('.hero.slides .slide.on');
+  await page.waitForSelector('.sheet.open h2.title');
+  must((await page.locator('.sheet.open h2.title').innerText()).trim() === shown.trim(), `banner opened the wrong pandal (expected ${shown})`);
+  await closeSheet();
+  must(await count('.hero-credit') === 0, 'no photo credit on the banner');
+  // Tap pads: a dhak stroke and the shankh
+  await page.click('.radio-card [data-sfx="dhak"]');
+  await page.click('.radio-card [data-sfx="shankh"]');
   await page.click('.st-tiles [data-station="dhak"]');
   await page.waitForSelector('.st-tiles [data-station="dhak"][aria-checked="true"]');
   await page.click('.radio-card .tracks-wrap summary');
@@ -168,7 +178,6 @@ try {
   // Parking segment and the car spot
   await page.click('#exploreBar [data-seg="parking"]');
   must(await count('#explorePanel .item'), 'no parking listed');
-  if (fake) await page.waitForSelector('#explorePanel .notice.traffic a[href*="puja2026.pdf"]');  // live KTP notice from traffic_notices
   await shot('06-parking');
 
   // Moments: upload a photo at Tridhara (on-site), then like it
@@ -228,7 +237,8 @@ try {
   // The wizard: 1 areas → 2 start point → 3 route
   await page.click('#planNew');
   await page.waitForSelector('.stepper [data-step="1"][aria-current="step"]');
-  await page.click('#view-plan [data-pz="south_lakemarket"]');
+  must(await count('#view-plan [data-pz]') === 0, 'step 1 should only show regions');
+  await page.click('#view-plan [data-pr="south"]');
   await shot('10c-wizard-areas');
   await page.click('#planNext');
   await page.waitForSelector('.stepper [data-step="2"][aria-current="step"]');

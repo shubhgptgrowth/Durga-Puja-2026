@@ -1,10 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#9F1239"/>
-  <g fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round">
-    <circle cx="32" cy="32" r="21" stroke-dasharray="3 4.2"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <!-- Pujo Parikrama: Ma Durga's three eyes (trinayani) in gold on sindoor, framed by an alpana ring. -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#B3162E"/><stop offset=".65" stop-color="#8E0E1C"/><stop offset="1" stop-color="#5A0812"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE38A"/><stop offset=".5" stop-color="#F6C343"/><stop offset="1" stop-color="#C98A12"/></linearGradient>
+    <clipPath id="eyeClip"><path d="M248 280 C 222 248, 168 240, 118 258 L 96 248 C 116 280, 172 310, 248 280 Z"/></clipPath>
+    <g id="half">
+      <path d="M252 226 C 212 186, 148 182, 86 210 C 150 196, 206 202, 252 236 Z" fill="url(#gold)"/>
+      <path d="M248 280 C 222 248, 168 240, 118 258 L 96 248 C 116 280, 172 310, 248 280 Z" fill="#FFF6E2"/>
+      <g clip-path="url(#eyeClip)"><circle cx="186" cy="270" r="23" fill="#1A0705"/><circle cx="179" cy="262" r="6" fill="#fff"/></g>
+      <path d="M248 280 C 222 248, 168 240, 118 258 L 96 248 C 116 280, 172 310, 248 280 Z" fill="none" stroke="url(#gold)" stroke-width="7" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="206" fill="none" stroke="url(#gold)" stroke-width="6"/>
+  <circle cx="256" cy="256" r="192" fill="none" stroke="#F6C343" stroke-opacity=".45" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round"/>
+  <use xlink:href="#half"/>
+  <use xlink:href="#half" transform="translate(512 0) scale(-1 1)"/>
+  <path d="M256 128 C 272 148, 272 178, 256 198 C 240 178, 240 148, 256 128 Z" fill="#FFF6E2" stroke="url(#gold)" stroke-width="6"/>
+  <circle cx="256" cy="163" r="10" fill="#1A0705"/>
+  <circle cx="256" cy="222" r="9" fill="#F6C343"/>
+  <path d="M176 338 Q 256 372 336 338" fill="none" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#F6C343">
+    <circle cx="256" cy="366" r="6"/><circle cx="226" cy="362" r="4.5"/><circle cx="286" cy="362" r="4.5"/><circle cx="200" cy="354" r="3.5"/><circle cx="312" cy="354" r="3.5"/>
   </g>
-  <path d="M14 34c6-8 12-11 18-11s12 3 18 11c-6 6-12 8-18 8s-12-2-18-8Z" fill="#FFF7ED"/>
-  <circle cx="32" cy="33" r="6.5" fill="#1C1917"/>
-  <circle cx="34" cy="31" r="1.8" fill="#FFF7ED"/>
-  <path d="M32 9c2.4 3.4 2.4 6.6 0 10-2.4-3.4-2.4-6.6 0-10Z" fill="#F43F5E"/>
 </svg>

@@ -1,38 +1,200 @@
 {
-  "_note": "Official uploads only (the label's own YouTube channel), embedded with YouTube's player so plays count for the rights holder. The 'music' workflow re-checks weekly that each id still exists and allows embedding; scripts/music_scout.py scout lists new candidates.",
-  "stations": [
-    { "id": "mahalaya", "tracks": [
-      { "yt": "mnKcHhCOyT8", "title": "Bajlo Tomar Aalor Benu", "artist": "Supriti Ghosh", "label": "Saregama Bengali", "dur": "3:46" },
-      { "yt": "IfSJy3_Lkuo", "title": "Jago Durga Dashapraharanadharinee", "artist": "Dwijen Mukherjee", "label": "Saregama Bengali", "dur": "2:11" },
-      { "yt": "8FytVk54-dw", "title": "Ya Chandi", "artist": "Chorus · Pankaj Kumar Mullick", "label": "Saregama Bengali", "dur": "2:03" },
-      { "yt": "RuJ_BPKdJpo", "title": "Ya Devi Sarbabhutesu", "artist": "Birendra Krishna Bhadra", "label": "Saregama Bengali", "dur": "5:18" },
-      { "yt": "YQyo8QeoYhc", "title": "Mahishasuramardini (full Mahalaya)", "artist": "Birendra Krishna Bhadra", "label": "Saregama Bengali", "dur": "1:29:19" }
-    ]},
-    { "id": "dhak", "tracks": [
-      { "yt": "CekmhAUc6mo", "title": "Shashthi · Pujar Dhak", "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy", "label": "Saregama Bengali", "dur": "4:09" },
-      { "yt": "abjVDvpnhT8", "title": "Ashtami · Pujar Dhak", "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy", "label": "Saregama Bengali", "dur": "5:11" },
-      { "yt": "xdLFc3oAhOM", "title": "Dashami · Pujar Dhak", "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy", "label": "Saregama Bengali", "dur": "10:10" }
-    ]},
-    { "id": "gaan", "tracks": [
-      { "yt": "MsqpjM09MrY", "title": "Agomonir Gaan", "artist": "Anupam Roy", "label": "SVF Music", "dur": "6:04" },
-      { "yt": "JrcqCpFjE7Q", "title": "Aaj Baaje Mon Majhe", "artist": "Bickram Ghosh · Durga Sohay", "label": "Amara Muzik Bengali", "dur": "3:37" },
-      { "yt": "xlElO06nQy8", "title": "Dugga Elo", "artist": "Monali Thakur", "label": "Zee Music Bangla", "dur": "2:31" },
-      { "yt": "sPuZ0Q3KDWo", "title": "Dugga Ma", "artist": "Arijit Singh", "label": "SVF", "dur": "2:53" },
-      { "yt": "hbXuXt7gkFY", "title": "Dhaker Taley", "artist": "Abhijeet, Parinita, Sudipto · Jeet Gannguli", "label": "SVF", "dur": "4:23" },
-      { "yt": "id5_3dKvEBg", "title": "Dhak Baja Kashor Baja", "artist": "Shreya Ghoshal · Jeet Gannguli", "label": "T-Series", "dur": "4:23" },
-      { "yt": "m9D4Dt1h-jg", "title": "Top 100 Durga Pujo Songs", "artist": "Various artists", "label": "Saregama Bengali", "dur": "6:07:56" }
-    ]},
-    { "id": "arati", "tracks": [
-      { "yt": "EIpOmPg9EsI", "title": "Ya Devi Sarbabhuteshu · Matri Stotra", "artist": "Swagatalakshmi Dasgupta", "label": "Saregama Bengali", "dur": "3:49" },
-      { "yt": "442ewPgXHQ0", "title": "Aigiri Nandini · Mahishasura Mardini Stotram", "artist": "Rajalakshmee Sanjay", "label": "Rajshri Soul", "dur": "15:14" },
-      { "yt": "-rKAOaS7Q3I", "title": "Jai Ambe Gauri Aarti", "artist": "Anuradha Paudwal", "label": "T-Series Bhakti Sagar", "dur": "7:40" },
-      { "yt": "AXvmt88JLWg", "title": "Durga Chalisa", "artist": "Anuradha Paudwal", "label": "T-Series Bhakti Sagar", "dur": "8:24" }
-    ]},
-    { "id": "bijoya", "tracks": [
-      { "yt": "jk0ZLYkAKEQ", "title": "Joyo Joyo Bijoyagaman", "artist": "Iman Chakraborty", "label": "Times Music Bangla", "dur": "4:45" },
-      { "yt": "evPFlJ3rfXY", "title": "Maa Ebar Firbe Barite", "artist": "Anushka Patra", "label": "T-Series Bangla", "dur": "2:58" },
-      { "yt": "60tSbJWJCr0", "title": "Maa Go Tui", "artist": "Bickram Ghosh", "label": "SVF Music", "dur": "2:09" },
-      { "yt": "xdLFc3oAhOM", "title": "Dashami · Pujar Dhak", "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy", "label": "Saregama Bengali", "dur": "10:10" }
-    ]}
-  ]
+ "_note": "Official uploads only (the label's own YouTube channel), embedded with YouTube's player so plays count for the rights holder. The 'music' workflow re-checks weekly that each id still exists and allows embedding; scripts/music_scout.py scout lists new candidates. Tracks with \"audio\" are freely licensed recordings hosted in app/audio (no ads, work offline).",
+ "stations": [
+  {
+   "id": "mahalaya",
+   "tracks": [
+    {
+     "yt": "mnKcHhCOyT8",
+     "title": "Bajlo Tomar Aalor Benu",
+     "artist": "Supriti Ghosh",
+     "label": "Saregama Bengali",
+     "dur": "3:46"
+    },
+    {
+     "yt": "IfSJy3_Lkuo",
+     "title": "Jago Durga Dashapraharanadharinee",
+     "artist": "Dwijen Mukherjee",
+     "label": "Saregama Bengali",
+     "dur": "2:11"
+    },
+    {
+     "yt": "8FytVk54-dw",
+     "title": "Ya Chandi",
+     "artist": "Chorus · Pankaj Kumar Mullick",
+     "label": "Saregama Bengali",
+     "dur": "2:03"
+    },
+    {
+     "yt": "RuJ_BPKdJpo",
+     "title": "Ya Devi Sarbabhutesu",
+     "artist": "Birendra Krishna Bhadra",
+     "label": "Saregama Bengali",
+     "dur": "5:18"
+    },
+    {
+     "yt": "YQyo8QeoYhc",
+     "title": "Mahishasuramardini (full Mahalaya)",
+     "artist": "Birendra Krishna Bhadra",
+     "label": "Saregama Bengali",
+     "dur": "1:29:19"
+    }
+   ]
+  },
+  {
+   "id": "dhak",
+   "tracks": [
+    {
+     "audio": "audio/dhak.mp3",
+     "loop": true,
+     "title": "Pujor Dhak · live recording",
+     "artist": "Recorded by Sumita Roy Dutta",
+     "label": "Wikimedia Commons · CC BY-SA 4.0",
+     "dur": "2:08",
+     "page": "https://commons.wikimedia.org/wiki/File:Rhythm_of_Dhak_a_huge_membranophone_instrument_from_Bengal_and_Assam,_used_in_Hindu_religious_festivals,_especially_Durga_Puja.mp3"
+    },
+    {
+     "yt": "CekmhAUc6mo",
+     "title": "Shashthi · Pujar Dhak",
+     "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy",
+     "label": "Saregama Bengali",
+     "dur": "4:09"
+    },
+    {
+     "yt": "abjVDvpnhT8",
+     "title": "Ashtami · Pujar Dhak",
+     "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy",
+     "label": "Saregama Bengali",
+     "dur": "5:11"
+    },
+    {
+     "yt": "xdLFc3oAhOM",
+     "title": "Dashami · Pujar Dhak",
+     "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy",
+     "label": "Saregama Bengali",
+     "dur": "10:10"
+    }
+   ]
+  },
+  {
+   "id": "gaan",
+   "tracks": [
+    {
+     "yt": "MsqpjM09MrY",
+     "title": "Agomonir Gaan",
+     "artist": "Anupam Roy",
+     "label": "SVF Music",
+     "dur": "6:04"
+    },
+    {
+     "yt": "JrcqCpFjE7Q",
+     "title": "Aaj Baaje Mon Majhe",
+     "artist": "Bickram Ghosh · Durga Sohay",
+     "label": "Amara Muzik Bengali",
+     "dur": "3:37"
+    },
+    {
+     "yt": "xlElO06nQy8",
+     "title": "Dugga Elo",
+     "artist": "Monali Thakur",
+     "label": "Zee Music Bangla",
+     "dur": "2:31"
+    },
+    {
+     "yt": "sPuZ0Q3KDWo",
+     "title": "Dugga Ma",
+     "artist": "Arijit Singh",
+     "label": "SVF",
+     "dur": "2:53"
+    },
+    {
+     "yt": "hbXuXt7gkFY",
+     "title": "Dhaker Taley",
+     "artist": "Abhijeet, Parinita, Sudipto · Jeet Gannguli",
+     "label": "SVF",
+     "dur": "4:23"
+    },
+    {
+     "yt": "id5_3dKvEBg",
+     "title": "Dhak Baja Kashor Baja",
+     "artist": "Shreya Ghoshal · Jeet Gannguli",
+     "label": "T-Series",
+     "dur": "4:23"
+    },
+    {
+     "yt": "m9D4Dt1h-jg",
+     "title": "Top 100 Durga Pujo Songs",
+     "artist": "Various artists",
+     "label": "Saregama Bengali",
+     "dur": "6:07:56"
+    }
+   ]
+  },
+  {
+   "id": "arati",
+   "tracks": [
+    {
+     "yt": "EIpOmPg9EsI",
+     "title": "Ya Devi Sarbabhuteshu · Matri Stotra",
+     "artist": "Swagatalakshmi Dasgupta",
+     "label": "Saregama Bengali",
+     "dur": "3:49"
+    },
+    {
+     "yt": "442ewPgXHQ0",
+     "title": "Aigiri Nandini · Mahishasura Mardini Stotram",
+     "artist": "Rajalakshmee Sanjay",
+     "label": "Rajshri Soul",
+     "dur": "15:14"
+    },
+    {
+     "yt": "-rKAOaS7Q3I",
+     "title": "Jai Ambe Gauri Aarti",
+     "artist": "Anuradha Paudwal",
+     "label": "T-Series Bhakti Sagar",
+     "dur": "7:40"
+    },
+    {
+     "yt": "AXvmt88JLWg",
+     "title": "Durga Chalisa",
+     "artist": "Anuradha Paudwal",
+     "label": "T-Series Bhakti Sagar",
+     "dur": "8:24"
+    }
+   ]
+  },
+  {
+   "id": "bijoya",
+   "tracks": [
+    {
+     "yt": "jk0ZLYkAKEQ",
+     "title": "Joyo Joyo Bijoyagaman",
+     "artist": "Iman Chakraborty",
+     "label": "Times Music Bangla",
+     "dur": "4:45"
+    },
+    {
+     "yt": "evPFlJ3rfXY",
+     "title": "Maa Ebar Firbe Barite",
+     "artist": "Anushka Patra",
+     "label": "T-Series Bangla",
+     "dur": "2:58"
+    },
+    {
+     "yt": "60tSbJWJCr0",
+     "title": "Maa Go Tui",
+     "artist": "Bickram Ghosh",
+     "label": "SVF Music",
+     "dur": "2:09"
+    },
+    {
+     "yt": "xdLFc3oAhOM",
+     "title": "Dashami · Pujar Dhak",
+     "artist": "Phani Natta, Joydeb Nandy, Manindra Das, Brajakanta Nandy",
+     "label": "Saregama Bengali",
+     "dur": "10:10"
+    }
+   ]
+  }
+ ]
 }
