@@ -62,7 +62,7 @@ try {
   await page.waitForTimeout(3500);
   const en = await painted();
   await page.screenshot({ path: `${out}/map-vector-en.png` });
-  await page.click('#langBtn'); await page.waitForTimeout(3500);
+  await page.selectOption('#langSelect', 'bn'); await page.waitForTimeout(3500);
   const bn = await painted();
   await page.screenshot({ path: `${out}/map-vector-bn.png` });
   console.log(`engine=${engine} canvases=${en.canvases} painted(en)=${en.ratio.toFixed(2)} painted(bn)=${bn.ratio.toFixed(2)}`);

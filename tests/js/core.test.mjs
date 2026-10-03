@@ -115,8 +115,10 @@ test('plan share links round-trip and reject junk', () => {
 test('every English UI string has a Bengali translation and the same placeholders', () => {
   const ph = (s) => (s.match(/\{\w+\}/g) || []).sort().join();
   for (const [k, v] of Object.entries(STR.en)) {
-    assert.ok(STR.bn[k], `missing bn: ${k}`);
-    assert.equal(ph(STR.bn[k]), ph(v), `placeholder mismatch: ${k}`);
+    for (const lang of ['bn', 'hi']) {
+      assert.ok(STR[lang][k], `missing ${lang}: ${k}`);
+      assert.equal(ph(STR[lang][k]), ph(v), `placeholder mismatch (${lang}): ${k}`);
+    }
   }
 });
 
@@ -193,6 +195,6 @@ test('every translation key used in the app exists in both languages', () => {
     'b.': ['first', 'five', 'fifteen', 'thirty', 'zone', 'k10', 'ashtami', 'dawn', 'owl', 'foodie', 'ns', 'goal', 'lens'],
   };
   for (const [prefix, ids] of Object.entries(families)) for (const id of ids) used.add(prefix + id);
-  const missing = [...used].filter((k) => !STR.en[k] || !STR.bn[k]);
+  const missing = [...used].filter((k) => !STR.en[k] || !STR.bn[k] || !STR.hi[k]);
   assert.deepEqual(missing, [], 'missing translations');
 });

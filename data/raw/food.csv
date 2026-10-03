@@ -28,3 +28,32 @@ dumdum_park_stalls,Dum Dum Park Puja Stalls,lake_town_dumdum,22.6175,88.4135,cur
 bosepukur_stalls,Bosepukur Puja Food Row,kasba,22.5140,88.3902,curated,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,Pop-up stalls between the two Bosepukur pandals.,false
 sakherbazar_stalls,Sakherbazar Puja Food Stalls,southwest,22.481515,88.313553,curated,street,Fish fry|Egg roll|Phuchka,both,1,16:00-01:00,The food row on the Diamond Harbour Road side of Barisha Club.,false
 naktala_stalls,Naktala Puja Food Stalls,tolly_naktala,22.475191,88.367075,curated,street,Phuchka|Fish fry|Chicken roll,both,1,16:00-01:00,The food row that grows around Naktala Udayan Sangha during the pujas.,false
+sen_mahasay,Sen Mahasay (Shyambazar),north,22.5990,88.3718,curated,sweets,Abar khabo|Nolen gur sandesh|Mishti doi,veg,1,08:00-22:00,"An old Shyambazar sweet house, a few steps from the five-point crossing.",false
+laxmi_narayan_shaw,Laxmi Narayan Shaw & Sons,north,22.5918,88.3688,curated,street,Alur chop|Beguni|Fuluri,veg,1,16:00-22:00,"The century-old telebhaja shop near Hedua, said to have fed Netaji.",false
+nobin_chandra_das,Nobin Chandra Das & Sons (Bagbazar),north,22.6038,88.3665,curated,sweets,Rosogolla|Sandesh|Mishti doi,veg,1,08:00-21:30,"The family that gave Kolkata the rosogolla, close to Bagbazar Sarbojanin.",false
+dilkhusha_cabin,Dilkhusha Cabin,central,22.5738,88.3622,curated,cabin,Kabiraji cutlet|Mutton cutlet|Fish fry,nonveg,2,12:00-22:00,"An old-school cabin on MG Road, just round the corner from College Street.",false
+favourite_cabin,Favourite Cabin,central,22.5733,88.3655,curated,cabin,Toast and butter|Tea|Pudding,veg,1,08:00-21:00,A tea cabin since 1918 where revolutionaries once met. Simple and cheap.,false
+swadhin_bharat_hindu_hotel,Swadhin Bharat Hindu Hotel,central,22.5743,88.3651,curated,restaurant,Rice and fish curry|Shukto|Chutney,nonveg,1,10:00-16:00,"A pice hotel off College Square, serving Bengali lunch on brass plates.",false
+anadi_cabin,Anadi Cabin,central,22.5627,88.3522,curated,cabin,Mughlai paratha|Kosha mangsho,nonveg,2,11:00-22:30,The Esplanade cabin famous for its thick egg mughlai paratha.,false
+kc_das_esplanade,K.C. Das (Esplanade),central,22.5640,88.3510,curated,sweets,Rosogolla|Rasmalai|Sandesh,veg,1,08:00-22:00,The canned-rosogolla family's flagship at Esplanade.,false
+chitto_babur_dokan,Chitto Babur Dokan,central,22.5648,88.3492,curated,street,Chicken stew|Toast|Fish fry,nonveg,1,08:00-20:00,Office-goers' stew and toast stall on Dacres Lane.,false
+sabir_hotel,Sabir's Hotel,central,22.5660,88.3545,curated,restaurant,Mutton rezala|Chicken chaap|Tandoori roti,nonveg,2,11:00-23:00,Old Chandni Chowk spot where the rezala is the reason to go.,false
+haji_allauddin,Haji Allauddin Sweets,central,22.5795,88.3566,curated,sweets,Habshi halwa|Sohan halwa|Lachcha,veg,1,09:00-23:00,"Old Chitpur sweet shop near Nakhoda Masjid, a short walk from Md. Ali Park.",false
+adams_kabab,Adam's Kabab Shop,central,22.5792,88.3555,curated,street,Beef kabab|Sheekh kabab|Roomali roti,nonveg,1,17:00-23:00,A tiny kabab shop in the Zakaria Street lanes.,false
+tiretta_bazaar_breakfast,Tiretta Bazaar Chinese Breakfast,central,22.5733,88.3528,curated,street,Pork momo|Fish ball soup|Sausages,nonveg,1,05:30-08:30,"Old Chinatown's dawn street breakfast. Over by 8:30 am, so go after an all-nighter.",false
+nahoums,Nahoum & Sons,central,22.5591,88.3520,curated,sweets,Plum cake|Lemon tart|Cheese samosa,both,1,09:30-20:00,"The Jewish bakery inside New Market, open since 1902.",false
+peter_cat,Peter Cat,central,22.5527,88.3527,curated,restaurant,Chelo kebab|Sizzlers,nonveg,3,11:00-23:30,The Park Street chelo kebab queue moves faster after midnight.,false
+mocambo,Mocambo,central,22.5530,88.3536,curated,restaurant,Devilled crab|Fish a la diana|Baked Alaska,nonveg,3,11:00-23:30,Park Street's continental old-timer. Expect a wait during pujo.,false
+flurys,Flurys,central,22.5531,88.3513,curated,restaurant,English breakfast|Rum ball|Pastries,both,2,07:30-22:00,"The 1927 Park Street tearoom, good for an early breakfast.",false
+kusum_rolls,Kusum Rolls,central,22.5535,88.3529,curated,street,Double egg chicken roll|Mutton roll|Paneer roll,both,1,11:00-23:30,Park Street's busy roll counter.,false
+shiraz_golden,Shiraz Golden Restaurant,bhowanipore,22.5476,88.3635,curated,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,Biryani at the Park Street and AJC Bose Road crossing.,false
+dollys_tea_shop,Dolly's Tea Shop,south_gariahat,22.5090,88.3645,curated,drinks,Iced tea|Masala chai|Toast,veg,1,10:00-21:00,"A tea bar in Dakshinapan, handy between the Dhakuria and Jodhpur Park pandals.",false
+south_city_food,South City Mall Food Court,south_gariahat,22.5017,88.3618,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Seats, air conditioning and clean toilets near Jodhpur Park.",false
+zeeshan,Zeeshan (Park Circus),bhowanipore,22.5422,88.3664,curated,restaurant,Mutton biryani|Chicken chaap|Firni,nonveg,2,12:00-00:00,A Park Circus biryani favourite near the Adi Sammilati pandal.,false
+balaram_mullick,Balaram Mullick & Radharaman Mullick,bhowanipore,22.5297,88.3481,curated,sweets,Nolen gur sandesh|Baked rosogolla|Mishti doi,veg,1,08:00-22:00,A Bhowanipore sweet house famous for nolen gur sandesh.,false
+sri_hari_mistanna,Sri Hari Mistanna Bhandar,bhowanipore,22.5320,88.3463,curated,sweets,Kochuri|Chholar dal|Jilipi,veg,1,06:00-21:00,A Bhowanipore kochuri breakfast near Jadubabur Bazar.,false
+forum_mall_food,Forum Mall Food Court,bhowanipore,22.5368,88.3520,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned seats and toilets on Elgin Road.,false
+lake_mall_food,Lake Mall Food Court,south_lakemarket,22.5170,88.3505,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Seats and toilets in the middle of the Lake Market cluster.,false
+acropolis_food,Acropolis Mall Food Court,kasba,22.5147,88.3932,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned break right next to the Rajdanga and Bosepukur pandals.,false
+beijing_tangra,Beijing (Tangra),beleghata,22.5552,88.3958,curated,restaurant,Chilli chicken|Hakka noodles|Fried rice,nonveg,2,12:00-23:00,"Indian-Chinese in the old Tangra Chinatown, a short cab ride from Beleghata.",false
+big_boss_tangra,Big Boss (Tangra),beleghata,22.5546,88.3970,curated,restaurant,Chilli prawn|Chimney soup|Hakka noodles,nonveg,2,12:00-23:00,A big Tangra Chinese place that handles puja-night groups well.,false

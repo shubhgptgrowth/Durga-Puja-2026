@@ -23,7 +23,9 @@ async function boot() {
   if (prev && prev !== g.meta.version) setTimeout(() => toast(t('data.updated')), 900);
   store.set('dataVersion', g.meta.version);
   const todayDay = g.meta.days.find((d) => d.date === todayKey());
-  S.day = todayDay ? todayDay.id : store.get('day', null) || 'saptami';
+  // The puja day drives crowd estimates. It follows the calendar; My route and the Map's crowd panel can look at another day.
+  const ahead = g.meta.days.find((d) => d.date > todayKey() && d.id !== 'mahalaya');
+  S.day = todayDay ? todayDay.id : store.get('day', null) || (ahead ? 'saptami' : 'dashami');
   const lf = store.get('lastFix', null);
   if (lf && Date.now() - lf.t < 30 * 60e3) S.me = [lf[0], lf[1]];
 
@@ -64,22 +66,18 @@ function setupCommunity() {
 }
 
 function setupHeader() {
-  $('#daySelect').onchange = (e) => { S.day = e.target.value; store.set('day', S.day); rerender(); };
-  $('#langBtn').onclick = () => { S.prefs.lang = S.prefs.lang === 'bn' ? 'en' : 'bn'; savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
+  $('#langSelect').onchange = (e) => { S.prefs.lang = e.target.value; savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
 }
 
 /* Static text in index.html carries data-i18n keys; the views re-render themselves. */
 function applyStatic() {
   document.documentElement.lang = S.prefs.lang;
   $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
-  $('#langBtn').textContent = t('lang.toggle');
-  $('#langBtn').setAttribute('aria-label', t('lang.aria'));
+  $('#langSelect').value = S.prefs.lang;
+  $('#langSelect').setAttribute('aria-label', t('lang.aria'));
   $('#sheetClose').setAttribute('aria-label', t('sheet.close'));
   $('#fabAdd').setAttribute('aria-label', t('m.add'));
   $('#locateBtn').setAttribute('aria-label', t('loc.me'));
-  const sel = $('#daySelect');
-  sel.innerHTML = G.data.meta.days.map((d) => `<option value="${d.id}">${dn(d)}</option>`).join('');
-  sel.value = S.day;
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), dashami = new Date(idx.day.dashami.date + 'T00:00:00');
   const todayDay = G.data.meta.days.find((d) => d.date === todayKey()), diff = Math.round((shashthi - now) / 864e5);

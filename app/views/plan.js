@@ -1,7 +1,7 @@
 /* My route: a 3-step wizard (areas → start point → route), with ready-made trails as a shortcut on step 1. */
 import { hav, orderRoute, hhmm, encodePlan, rideOption } from '../core.js';
 import {
-  S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon,
+  S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon, loc,
 } from '../state.js';
 import { $, go, registerView, makeMap, toast, getFix } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
@@ -76,6 +76,7 @@ function startPoint(val) {
   const r = startRecord(val);
   return r ? Promise.resolve(r) : Promise.reject(new Error('unknown start'));
 }
+const fmtDay = (d) => new Date(d.date + 'T00:00:00').toLocaleDateString(loc(), { weekday: 'short', day: 'numeric', month: 'short' });
 const ptName = (pt) => (pt.id === 'me' ? t('plan.me') : pt.name);
 
 export async function buildCustom() {
@@ -120,11 +121,37 @@ export function showTrail(id) {
 }
 function setPlan(plan) { S.plan = plan; step = 3; store.set('activePlan', plan); if (S.view === 'plan') render(true); }
 
-export function presetPlan(zones, startId) {
+export function presetPlan(zones, startId, opts = {}) {
   planSel = new Set(zones);
   form.start = 't:' + (startId || zoneOf(zones[0]).route.start);
+  if (opts.time) form.time = opts.time;
+  if (opts.budget) form.budget = String(opts.budget);
+  if (opts.day && idx.day[opts.day]) { S.day = opts.day; store.set('day', S.day); }
   go('plan'); buildCustom();
 }
+
+/* "All of Kolkata in 6 days": one part of the city per puja day, ordered so the biggest crowds
+ * (Saptami to Navami nights) land on the areas with the best metro access. Each day opens a timed route. */
+export const DAYPLAN = [
+  { day: 'panchami', zones: ['lake_town_dumdum', 'salt_lake'], time: '17:00', budget: 300 },
+  { day: 'shashthi', zones: ['north', 'central'], time: '16:00', budget: 420 },
+  { day: 'saptami', zones: ['south_lakemarket', 'south_gariahat'], time: '16:00', budget: 420 },
+  { day: 'ashtami', zones: ['bhowanipore', 'kasba', 'jadavpur_santoshpur'], time: '15:00', budget: 420 },
+  { day: 'navami', zones: ['southwest', 'tolly_naktala'], time: '16:00', budget: 360 },
+  { day: 'dashami', zones: ['howrah', 'beleghata'], time: '09:00', budget: 180 },
+];
+export function dayPlanHtml() {
+  return `<div class="dayplan">${DAYPLAN.filter((d) => idx.day[d.day] && d.zones.every((z) => idx.zone[z])).map((d, i) => {
+    const n = d.zones.reduce((c, z) => c + idx.zone[z].pandal_ids.length, 0);
+    return `<button type="button" class="dp-day" data-dayplan="${i}">
+      <span class="dp-n">${i + 1}</span>
+      <span class="dp-body"><b>${esc(dn(idx.day[d.day]))} · ${fmtDay(idx.day[d.day])}</b>
+        <span class="dp-areas">${d.zones.map((z) => esc(zs(idx.zone[z]))).join(' + ')} · ${t('it.pandals', { n })}</span>
+        <span class="dp-tip">${t('dp.' + d.day)}</span></span>
+      <span class="dp-go">${icon('chev', 'sm')}</span></button>`;
+  }).join('')}</div>`;
+}
+export function openDayPlan(i) { const d = DAYPLAN[i]; if (d) presetPlan(d.zones, null, d); }
 export function openSharedPlan(p) {
   if (!p) { step = 1; return go('plan'); }
   planSel = new Set(p.z.filter((z) => idx.zone[z]));
@@ -134,7 +161,7 @@ export function openSharedPlan(p) {
   if (p.r) form.stars = String(p.r);
   if (p.b) form.budget = String(p.b);
   form.brisk = !!p.k;
-  if (p.d && idx.day[p.d]) { S.day = p.d; $('#daySelect').value = p.d; }
+  if (p.d && idx.day[p.d]) S.day = p.d;
   go('plan');
   if (planSel.size) { buildCustom(); toast(t('share.loaded')); }
 }
@@ -163,12 +190,16 @@ function areasHtml() {
   return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><p class="fine">${t('f.zonesHint')}</p><div id="planZones">${regionRows}</div></div>
     <div class="wz-foot"><span class="fine">${planSel.size ? t(planSel.size === 1 ? 'wz.picked1' : 'wz.picked', { n: planSel.size }) : t('wz.pickOne')}</span>
       <button type="button" class="btn primary" id="planNext" ${planSel.size ? '' : 'aria-disabled="true"'}>${t('wz.next')} ${icon('chev', 'sm')}</button></div>
+    <div class="section-head" style="margin-top:22px"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
+    ${dayPlanHtml()}
     <div class="section-head" style="margin-top:22px"><h2>${t('wz.orTrail')}</h2></div><p class="fine pad" style="margin:-4px 0 10px">${t('h.trailsSub')}</p>
     ${trailsHtml()}`;
 }
 function formHtml() {
   return `<form id="planForm" class="form wz-body">
     <h3 class="wz-q">${t('wz.q2')}</h3>
+    <label>${t('f.day')}<select id="planDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))} · ${fmtDay(d)}</option>`).join('')}</select>
+      <span class="fine" style="font-weight:400">${t('f.dayHint')}</span></label>
     <label>${t('f.start')}<button type="button" class="btn block picker-btn" id="planStartBtn">${esc(startLabel(form.start))} ${icon('chev', 'sm')}</button></label>
     <div class="grid2">
       <label>${t('f.time')}<input type="time" id="planTime" value="${form.time}"></label>
@@ -292,6 +323,7 @@ function wire(el, plan) {
     if (e.target.closest('#planEdit')) { step = plan?.kind === 'custom' ? 2 : 1; return render(); }
     if (e.target.closest('#planNew')) { planSel = new Set(); step = 1; return render(); }
     if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start, (v) => { form.start = v; keepScroll(render); });
+    const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const tr = e.target.closest('[data-trail]')?.dataset.trail; if (tr) return showTrail(tr);
     if (e.target.closest('a')) return; // direction links open Google Maps
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
@@ -300,7 +332,7 @@ function wire(el, plan) {
   };
   const f = $('#planForm', el);
   if (f) {
-    f.onchange = () => { form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
+    f.onchange = () => { S.day = $('#planDay').value; store.set('day', S.day); form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
     f.onsubmit = (e) => { e.preventDefault(); f.onchange(); buildCustom(); };
   }
 }

@@ -72,13 +72,12 @@ img { max-width: 100%; display: block; }
 .brand-mark { width: 34px; height: 34px; border-radius: 10px; }
 .brand h1 { font-size: 17px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .01em; }
 .brand .sub { margin: 0; font-size: 12px; opacity: .88; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lang-btn { flex: none; border: 1px solid rgba(255,255,255,.35); background: transparent; color: inherit; border-radius: 999px; height: 34px; padding: 0 10px; font-size: 13px; font-weight: 700; cursor: pointer; }
-.day-pick select {
+.lang-pick select {
   appearance: none; border: 0; border-radius: 999px; padding: 8px 28px 8px 12px; font-weight: 600; font-size: 13.5px; flex: none;
   background: rgba(255,255,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 11px center / 10px;
   color: inherit;
 }
-.day-pick option { color: #1C1917; }
+.lang-pick option { color: #1C1917; }
 
 /* ---------- layout ---------- */
 main { padding-top: calc(var(--top-h) + var(--safe-t)); padding-bottom: calc(var(--tabbar-h) + var(--safe-b) + 24px); }
@@ -458,60 +457,81 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .timeline li[data-place] { padding-right: 46px; }
 .timeline .go { position: absolute; right: 0; top: 0; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--brand); }
 
-/* ---------- Home: pujo vibes (garland, laal-paar card, Pujo Radio) ---------- */
-.hero.pujo { position: relative; padding-top: 30px; overflow: hidden; }
-.hero.pujo .garland { position: absolute; left: 0; top: 0; width: 100%; height: 26px; transform-origin: top center; animation: sway 6s ease-in-out infinite; }
-@keyframes sway { 50% { transform: rotate(.6deg) translateY(1px); } }
 
-.radio-card { position: relative; margin: 16px 16px 0; padding: 14px 14px 12px; border-radius: 18px; color: #3B1A0E;
+.time-row select { flex: 1; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 6px 8px; min-height: 36px; color: var(--ink); }
+
+/* ---------- Home banner: Ma's eyes on sindoor, a laal-paar border ---------- */
+.hero.sharad { position: relative; overflow: hidden; margin: 12px 16px 0; padding: 12px 14px 0; border-radius: 20px; text-align: center; color: #FFF4E0;
   background:
-    radial-gradient(circle at 100% 0, rgba(159,18,57,.10) 0 18px, transparent 19px),
-    radial-gradient(circle at 100% 0, transparent 0 26px, rgba(183,121,31,.25) 27px 28px, transparent 29px),
-    radial-gradient(circle, rgba(159,18,57,.13) 1.4px, transparent 1.6px) 0 0 / 14px 14px,
-    #FFF8EC;
-  border: 5px solid #B91C1C; box-shadow: inset 0 0 0 2px #FFF8EC, inset 0 0 0 4px #D4A017, var(--shadow); }
-.radio-head h2 { margin: 0; font-size: 19px; color: #9F1239; }
-.radio-head p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.4; color: #6B3A22; }
-.radio-stage { display: grid; grid-template-columns: 1fr 112px; gap: 6px; align-items: end; margin-top: 12px; }
-.radio { border-radius: 16px 16px 12px 12px; padding: 8px 10px 10px; color: #FDE68A;
-  background: linear-gradient(160deg, #8B4513 0%, #5C2E0E 55%, #3E1F0A 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.18), 0 6px 14px rgba(60,20,0,.35); }
-.radio-brand { text-align: center; font-weight: 700; letter-spacing: .12em; font-size: 12px; color: #FCD34D; text-shadow: 0 1px 0 #000; }
-.grille { height: 54px; margin: 6px 0; border-radius: 8px; display: flex; gap: 5px; align-items: flex-end; justify-content: center; padding: 6px 10px;
-  background: radial-gradient(circle, #6B4423 1.2px, transparent 1.4px) 0 0 / 6px 6px, linear-gradient(#E9D8B4, #D9C29A); box-shadow: inset 0 2px 6px rgba(0,0,0,.35); }
-.grille i { flex: 1; height: 100%; border-radius: 3px 3px 0 0; background: linear-gradient(#F97316, #B91C1C); transform: scaleY(.12); transform-origin: bottom; transition: transform .12s ease-out; opacity: .85; }
-.dial { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; font-size: 9.5px; font-weight: 700; color: #3B1A0E; padding: 9px 2px 3px; border-radius: 6px;
-  background: linear-gradient(#FEF3C7, #FDE68A); box-shadow: inset 0 1px 3px rgba(0,0,0,.4); }
-.radio.on .dial { box-shadow: inset 0 1px 3px rgba(0,0,0,.4), 0 0 12px rgba(253,224,71,.8); }
+    radial-gradient(120% 70% at 50% 0%, rgba(255,200,120,.20), transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 38%, rgba(232,185,35,.07) 0 6deg, transparent 6deg 12deg),
+    linear-gradient(180deg, #8E0E1C 0%, #6B0A16 70%, #5A0812 100%);
+  box-shadow: 0 10px 28px rgba(90,8,18,.35); }
+.trinayani { width: min(62%, 230px); height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 3px 6px rgba(0,0,0,.35)); }
+.sharad-text { padding: 2px 4px 10px; }
+.sharad-greet { font-family: "Galada", "Noto Serif Bengali", serif; font-size: 30px; line-height: 1.1; color: #F6C343; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
+.sharad-sub { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; margin-top: 2px; }
+.sharad-when { margin-top: 8px; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 6px; font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.2); border: 1px solid rgba(246,195,67,.45); }
+.sharad-when .sep { opacity: .6; }
+.hero.sharad p { margin: 6px auto 0; max-width: 34ch; font-size: 12.5px; opacity: .92; }
+/* The red-and-white border of a laal-paar saree, with a gold thread. */
+.laalpaar { height: 22px; margin: 0 -14px;
+  background:
+    linear-gradient(#D4A017, #D4A017) 0 3px / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, #FFF8EC 0 10px, #C8102E 10px 13px, #FFF8EC 13px 16px, #C8102E 16px 18px) 0 7px / 100% 6px no-repeat,
+    linear-gradient(#C8102E, #C8102E) 0 13px / 100% 9px no-repeat,
+    #FFF8EC; }
+
+/* ---------- Pujo Radio ---------- */
+.radio-card { margin: 18px 16px 0; padding: 14px; border-radius: 18px; color: #3B1A0E; background: #FFF8EC; border: 4px solid #B91C1C; box-shadow: inset 0 0 0 2px #FFF8EC, inset 0 0 0 3px #D4A017, var(--shadow); }
+.radio-head h2 { margin: 0; font-size: 19px; color: #8E0E1C; }
+.radio-head p { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: #6B3A22; }
+.radio { margin-top: 12px; border-radius: 16px 16px 12px 12px; padding: 8px 10px 10px; background: linear-gradient(160deg, #7A3B12 0%, #4E240B 60%, #351806 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.15), 0 6px 14px rgba(60,20,0,.35); }
+.radio-brand { text-align: center; font-family: "Galada", serif; font-size: 17px; color: #F6C343; }
+.radio-screen { position: relative; height: 200px; margin: 6px 0 8px; border-radius: 10px; overflow: hidden; background: radial-gradient(circle, #6B4423 1.2px, transparent 1.4px) 0 0 / 6px 6px, linear-gradient(#E9D8B4, #D9C29A); box-shadow: inset 0 2px 8px rgba(0,0,0,.45); }
+.radio-screen iframe, #ytHost { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.radio-card:not(.live) #ytHost { display: none; }
+.screen-idle { position: absolute; inset: 0; display: flex; gap: 6px; align-items: flex-end; justify-content: center; padding: 30px 30px 24px; }
+.screen-idle i { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(#E8B923, #8E0E1C); opacity: .55; }
+.screen-idle i:nth-child(odd) { height: 40%; } .screen-idle i:nth-child(even) { height: 70%; } .screen-idle i:nth-child(3n) { height: 55%; }
+.dial { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 10px; font-weight: 700; color: #3B1A0E; padding: 9px 2px 3px; border-radius: 6px; background: linear-gradient(#FEF3C7, #FDE68A); box-shadow: inset 0 1px 3px rgba(0,0,0,.4); }
+.radio-card.live .dial { box-shadow: inset 0 1px 3px rgba(0,0,0,.4), 0 0 12px rgba(253,224,71,.7); }
 .dial .ticks { position: absolute; inset: 2px 6px auto; height: 5px; background: repeating-linear-gradient(90deg, #7C2D12 0 1px, transparent 1px 6px); }
 .dial span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.dial .needle { position: absolute; top: 1px; bottom: 1px; width: 2px; background: #DC2626; border-radius: 1px; transition: left .5s cubic-bezier(.3,1.4,.5,1); }
+.dial .needle { position: absolute; top: 1px; bottom: 1px; width: 2px; background: #DC2626; transition: left .5s cubic-bezier(.3,1.4,.5,1); }
 .radio-foot { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
-.radio-now { flex: 1; text-align: center; font-size: 12px; font-weight: 600; color: #FDE68A; }
-.knob { width: 42px; height: 42px; flex: none; border-radius: 50%; border: 0; cursor: pointer; font-size: 15px; color: #3B1A0E;
-  background: radial-gradient(circle at 35% 30%, #FFF7D6, #D4A017 60%, #8B6508); box-shadow: 0 2px 4px rgba(0,0,0,.45), inset 0 -2px 3px rgba(0,0,0,.25); }
+.radio-now { flex: 1; min-width: 0; display: grid; color: #FDE68A; font-size: 12px; text-align: left; }
+.radio-now b { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.radio-now small { opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.knob { width: 40px; height: 40px; flex: none; border-radius: 50%; border: 0; cursor: pointer; font-size: 13px; color: #3B1A0E; background: radial-gradient(circle at 35% 30%, #FFF7D6, #D4A017 60%, #8B6508); box-shadow: 0 2px 4px rgba(0,0,0,.45), inset 0 -2px 3px rgba(0,0,0,.25); }
 .knob.play { width: 48px; height: 48px; font-size: 16px; }
 .knob:active { transform: scale(.94); }
-.dhak { position: relative; border: 0; background: none; padding: 0; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-.dhak svg { width: 112px; height: auto; display: block; overflow: visible; filter: drop-shadow(0 6px 6px rgba(60,20,0,.3)); }
-.dhak .plume { transform-origin: 76px 76px; }
-.dhak .drum, .dhak .stick { transform-box: view-box; }
-.dhak.boom svg { animation: boom .22s ease-out; }
-.dhak.boom .plume { animation: plume .5s ease-out; }
-.dhak.tak .stick { animation: stick .12s ease-out; transform-origin: 122px 76px; }
-@keyframes boom { 30% { transform: scale(1.06) rotate(-2deg); } }
-@keyframes plume { 30% { transform: rotate(-5deg) scale(1.03); } 65% { transform: rotate(4deg); } }
-@keyframes stick { 50% { transform: rotate(-18deg); } }
-.dhak-hint { position: absolute; top: 4px; right: -2px; background: #9F1239; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 7px; border-radius: 999px; transform: rotate(8deg); animation: bob 2.4s ease-in-out infinite; }
-@keyframes bob { 50% { transform: rotate(8deg) translateY(-3px); } }
 .stations { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
 .stations button { text-align: left; border: 1.5px solid #E7C9A0; background: #FFFDF7; border-radius: 12px; padding: 8px 10px; cursor: pointer; display: grid; gap: 1px; color: #3B1A0E; font: inherit; }
+.stations button:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .stations b { font-size: 14px; }
-.stations small { font-size: 12px; color: #8A5A3C; }
-.stations button[aria-checked="true"] { border-color: #9F1239; background: #9F1239; color: #fff; }
+.stations small { font-size: 11.5px; color: #8A5A3C; line-height: 1.3; }
+.stations button[aria-checked="true"] { border-color: #8E0E1C; background: #8E0E1C; color: #fff; }
 .stations button[aria-checked="true"] small { color: #FECDD3; }
-.radio-links { display: flex; gap: 12px; align-items: center; margin-top: 10px; font-size: 13px; color: #6B3A22; }
-.radio-links a { color: #9F1239; font-weight: 700; }
-.radio-mini { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; width: 46px; height: 46px; border-radius: 50%; border: 3px solid #B91C1C; background: #FFF8EC; font-size: 22px; box-shadow: var(--shadow); cursor: pointer; }
-.radio-mini .mini-ic { display: inline-block; }
-.radio-mini.beat .mini-ic { animation: boom .22s ease-out; }
+.tracks { list-style: none; margin: 10px 0 0; padding: 0; border-top: 1px dashed #E7C9A0; }
+.tracks button { width: 100%; display: grid; text-align: left; gap: 1px; border: 0; border-bottom: 1px dashed #E7C9A0; background: none; padding: 8px 2px; cursor: pointer; color: #3B1A0E; font: inherit; }
+.tracks .tn { font-weight: 600; font-size: 14px; }
+.tracks .ta { font-size: 12px; color: #8A5A3C; }
+.tracks button[aria-current="true"] .tn::before { content: "♪ "; color: #B91C1C; }
+.radio-credit { margin: 10px 0 0; font-size: 12px; color: #8A5A3C; }
+.radio-links { display: flex; gap: 12px; align-items: center; margin-top: 6px; font-size: 13px; color: #6B3A22; flex-wrap: wrap; }
+.radio-links a { color: #8E0E1C; font-weight: 700; }
+.radio-mini { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid #B91C1C; background: #FFF8EC; color: #8E0E1C; font-weight: 700; display: inline-flex; gap: 8px; align-items: center; box-shadow: var(--shadow); cursor: pointer; }
+.radio-mini .mini-ic { font-size: 18px; }
 body:has(#view-home.active) .radio-mini { display: none; }
+
+/* ---------- All of Kolkata in 6 days ---------- */
+.dayplan { display: grid; gap: 8px; margin: 0 16px; }
+.dp-day { display: grid; grid-template-columns: 34px 1fr 18px; gap: 10px; align-items: center; text-align: left; padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font: inherit; box-shadow: var(--shadow); }
+.dp-n { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #8E0E1C, #C2410C); }
+.dp-body { display: grid; gap: 2px; min-width: 0; }
+.dp-body b { font-size: 15px; }
+.dp-areas { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+.dp-tip { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; }
+.dp-go { color: var(--ink-3); }
+.wz-body + .wz-foot ~ .dayplan, #view-plan .dayplan { margin-bottom: 4px; }

@@ -1,5 +1,6 @@
 /* Me: walk tracker, my pujo (visits and food), badges, history and settings. */
-import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFor, todayKey, savePrefs, icon, btn } from '../state.js';
+import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFor, todayKey, savePrefs, icon, btn, loc,
+} from '../state.js';
 import { $, registerView, toast } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive } from '../actions.js';
@@ -22,7 +23,7 @@ function render() {
   const visited = Object.entries(S.checkins).sort((a, b) => b[1].ts - a[1].ts).map(([id]) => idx.pandal[id]).filter(Boolean);
   const foods = [...new Set(Object.values(S.history).flatMap((r) => r.foods || []))].map((id) => idx.food[id]).filter(Boolean);
   const rows = Object.entries(S.history).sort((a, b) => b[0].localeCompare(a[0]));
-  const dayName = (date) => { const pd = G.data.meta.days.find((x) => x.date === date); return pd ? dn(pd) : new Date(date + 'T00:00').toLocaleDateString(S.prefs.lang === 'bn' ? 'bn-IN' : 'en-IN', { day: 'numeric', month: 'short' }); };
+  const dayName = (date) => { const pd = G.data.meta.days.find((x) => x.date === date); return pd ? dn(pd) : new Date(date + 'T00:00').toLocaleDateString(loc(), { day: 'numeric', month: 'short' }); };
   const status = S.walk?.status || nextStop() || (live ? t('fit.live') : t('fit.idle'));
 
   el.innerHTML = `<div class="view-title"><h2>${t('me.title')}</h2><p>${t('me.subtitle')}</p></div>

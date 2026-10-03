@@ -1,14 +1,14 @@
 /* Explore (the Map tab): Pandals / Food / Parking, one row of filters, and a full-screen map or a list. */
 import { hav, isOpen } from '../core.js';
 import {
-  S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon,
+  S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { openPlace, crowdPill, statsHtml, dirUrl } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
 
-let map = null, layers = {}, meMarker = null;
+let map = null, layers = {}, meMarker = null, moreOpen = false;
 const LINE = { blue: '#2563EB', green: '#16A34A', purple: '#9333EA', orange: '#EA580C', suburban: '#57534E' };
 
 export function setExplore(patch) { Object.assign(S.explore, patch); }
@@ -102,15 +102,16 @@ function listHtml(e, list) {
     const z = e.area !== 'all' ? zoneOf(e.area) : null;
     return `${z ? `<div class="notice ${z.car_advisory}"><b>${esc(zn(z))}</b><span>${esc(z.vibe)}</span><span>${t('car.' + z.car_advisory)} · ${esc(z.walk_tip)}</span></div>` : ''}
       <div class="toolbar"><span>${t('list.count', { n: list.length })}</span></div>
-      <details class="more" ${S.hour !== new Date().getHours() ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
-        <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}, ${esc(dn(idx.day[S.day]))}</strong></div></details>
+      <details class="more" ${S.hour !== new Date().getHours() || moreOpen ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
+        <div class="time-row"><label for="crowdDay">${t('f.day')}</label><select id="crowdDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))}</option>`).join('')}</select></div>
+        <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>
       <ul class="list">${list.map(pandalItem).join('')}</ul>`;
   }
   if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
   const car = S.car, zl = areasOf(e).map(zoneOf), ids = zl.flatMap((z) => z.pandal_ids);
   const near = e.region === 'all' ? G.data.transit : G.data.transit.filter((s) => ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
   return `<div class="pad" style="margin-bottom:10px">${car
-    ? `<div class="card"><b>${t('car.yours')}</b><p class="fine" style="margin:2px 0 8px">${t('car.saved', { when: new Date(car.ts).toLocaleString(S.prefs.lang === 'bn' ? 'bn-IN' : 'en-IN', { weekday: 'short', hour: 'numeric', minute: '2-digit' }) })}${S.me ? ` · ${dist(hav(S.me, [car.lat, car.lng]))}` : ''}</p>
+    ? `<div class="card"><b>${t('car.yours')}</b><p class="fine" style="margin:2px 0 8px">${t('car.saved', { when: new Date(car.ts).toLocaleString(loc(), { weekday: 'short', hour: 'numeric', minute: '2-digit' }) })}${S.me ? ` · ${dist(hav(S.me, [car.lat, car.lng]))}` : ''}</p>
        <div class="btn-row"><a class="btn sm primary" target="_blank" rel="noopener" href="${dirUrl([car.lat, car.lng])}">${t('car.walkBack')}</a><button class="btn sm" id="carClear">${t('car.clear')}</button></div></div>`
     : `<button class="btn block" id="carSave">${icon('pin')} ${t('car.save')}</button>`}</div>
     ${e.region === 'all' ? '' : zl.map((z) => `<div class="notice ${z.car_advisory}"><b>${esc(zs(z))}: ${t('adv.' + z.car_advisory)}</b><span>${esc(z.walk_tip)}</span></div>`).join('')}
@@ -160,6 +161,8 @@ function wire(view) {
   if (as) as.onchange = () => { setAreaValue(S.explore, as.value); render(); };
   const hr = $('#hourRange', view);
   if (hr) hr.oninput = () => { S.hour = +hr.value; const y = window.scrollY; render(); window.scrollTo(0, y); $('#hourRange')?.focus(); };
+  const cd = $('#crowdDay', view);
+  if (cd) cd.onchange = () => { moreOpen = true; S.day = cd.value; store.set('day', S.day); const y = window.scrollY; render(); window.scrollTo(0, y); };
   const so = $('#sortSelect', view);
   if (so) so.onchange = () => {
     S.explore.sort = so.value;

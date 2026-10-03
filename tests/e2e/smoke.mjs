@@ -73,21 +73,23 @@ try {
   await page.click('[data-q="introClose"]');
   must(await count('.intro') === 0, 'intro card should close');
 
-  // Pujo Radio: a station plays (synthesised in the browser), the dhak takes taps, and a mini stop button follows you to other tabs
-  await page.click('#radioDhak');
-  await page.click('.stations [data-station="dhunuchi"]');
-  await page.waitForSelector('.stations [data-station="dhunuchi"][aria-checked="true"]');
-  must(await page.locator('#radioPlay').getAttribute('aria-pressed') === 'true', 'radio should be playing');
-  await page.waitForTimeout(600);
+  // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
+  must(await count('.radio-card .stations [data-station]') === 5, 'five radio stations expected');
+  await page.click('.stations [data-station="dhak"]');
+  await page.waitForSelector('.stations [data-station="dhak"][aria-checked="true"]');
+  must(await count('.radio-card .tracks [data-track]') >= 3, 'dhak station should list its tracks');
+  must(/Pujar Dhak/.test(await page.locator('.radio-card .tracks').innerText()), 'dhak tracks missing');
   await page.locator('.radio-card').scrollIntoViewIfNeeded();
   await shot('01b-radio');
-  must(await page.locator('#radioMini').isHidden(), 'mini player should hide on Home');
-  await page.click('.tab[data-view="plan"]');
-  await page.waitForSelector('#radioMini:visible');
-  await page.click('#radioMini');
-  must(await page.locator('#radioMini').isHidden(), 'mini player should stop the radio');
+
+  // All of Kolkata in 6 days: a day opens its timed route
+  must(await count('#view-home .dayplan [data-dayplan]') === 6, 'six day plans expected');
+  await page.click('#view-home [data-dayplan="2"]');
+  await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
+  must(await count('.timeline li[data-place]') >= 4, 'Saptami day plan should have a route');
+  await shot('01c-dayplan');
+  await page.click('#planNew');
   await page.click('.tab[data-view="home"]');
-  must(await page.locator('#radioPlay').getAttribute('aria-pressed') === 'false', 'radio should be stopped');
 
   // Search (English and Bengali)
   await page.fill('#homeSearch', 'tridh');
@@ -292,11 +294,14 @@ try {
   await ctx2.close();
 
   // Bengali, dark mode, offline reload
-  await page.click('#langBtn');
+  await page.selectOption('#langSelect', 'bn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');
   await page.click('.tab[data-view="home"]');
   await shot('12-home-bn');
-  await page.click('#langBtn');
+  await page.selectOption('#langSelect', 'hi');
+  must((await page.locator('#tab-home span').innerText()) === 'होम', 'tabs not translated to Hindi');
+  await shot('12b-home-hi');
+  await page.selectOption('#langSelect', 'en');
   await page.emulateMedia({ colorScheme: 'dark' });
   await shot('13-home-dark');
   await page.reload(); await page.waitForSelector('.hero');
