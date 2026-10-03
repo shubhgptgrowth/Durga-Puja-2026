@@ -31,6 +31,7 @@ jobs:
         run: |
           python -m unittest discover -s tests
           python -m pipeline --check
+          python scripts/site.py check
       # The marketing content kit (docs/marketing/PLAN.md) is published at /kit/. It never blocks the app deploy.
       - uses: actions/setup-node@v4
         with:
@@ -78,6 +79,27 @@ jobs:
         with:
           path: app
 
+  domain:
+    # Keeps the GitHub Pages custom domain in step with site.json (docs/product/HOSTING.md).
+    # Needs a token that can manage Pages settings; without one it prints the manual step.
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pages custom domain
+        env:
+          GH_TOKEN: ${{ secrets.PAGES_ADMIN_TOKEN || github.token }}
+        run: |
+          host=$(python -c "import json,urllib.parse as u;print(u.urlparse(json.load(open('site.json'))['url']).netloc)")
+          case "$host" in *.github.io) want="";; *) want="$host";; esac
+          have=$(gh api "repos/${{ github.repository }}/pages" --jq '.cname // ""' 2>/dev/null || echo "?")
+          echo "Pages custom domain: have '$have', want '$want'"
+          [ "$have" = "$want" ] && exit 0
+          if [ -n "$want" ]; then args=(-f "cname=$want"); else args=(-F "cname=null"); fi
+          gh api -X PUT "repos/${{ github.repository }}/pages" "${args[@]}" \
+            && echo "::notice::Pages custom domain set to '$want'" \
+            || echo "::warning::Could not set the custom domain automatically. Set it in Settings → Pages → Custom domain: $want"
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -96,9 +118,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Live site serves the current build
-        env:
-          SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: |
+          SITE=$(python -c "import json;print(json.load(open('site.json'))['url'])")
+          PAGES=$(python -c "import json;print(json.load(open('site.json'))['pages_url'])")
+          if [ "$SITE" != "$PAGES" ]; then
+            # Custom domain: the old github.io address must redirect, so printed QR codes keep working.
+            loc=$(curl -s -o /dev/null -w '%{redirect_url}' "${PAGES}?src=qr_test#p=x")
+            echo "old address redirects to: $loc"
+            case "$loc" in "$SITE"*) ;; *) echo "::warning::$PAGES does not redirect to $SITE yet (DNS or HTTPS still provisioning?)";; esac
+          fi
           expected=$(python -c "import json;print(json.load(open('app/data/guide.json'))['meta']['version'])")
           for i in 1 2 3 4 5 6; do
             live=$(curl -fsS "${SITE}data/guide.json?cb=$RANDOM" | python -c "import json,sys;print(json.load(sys.stdin)['meta']['version'])" || true)
@@ -123,9 +151,8 @@ jobs:
           kit=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}kit/index.html?cb=$RANDOM")
           if [ "$kit" = 200 ]; then echo "::notice::Content kit: ${SITE}kit/"; else echo "::warning::Content kit not published ($kit)"; fi
       - name: Live site reaches the community backend (read-only)
-        env:
-          SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: |
+          SITE=$(python -c "import json;print(json.load(open('site.json'))['url'])")
           cfg=$(curl -fsS "${SITE}config.js?cb=$RANDOM")
           url=$(echo "$cfg" | sed -n "s/.*url: '\([^']*\)'.*/\1/p" | head -1)
           key=$(echo "$cfg" | sed -n "s/.*anonKey: '\([^']*\)'.*/\1/p" | head -1)
@@ -134,6 +161,6 @@ jobs:
           expected=$(python -c "import json; g=json.load(open('app/data/guide.json')); print(len(g['pandals'])+len(g['food']))")
           echo "place_stats via live config: $n rows (expected $expected)"
           [ "$n" = "$expected" ] || { echo "::error::Supabase places out of sync with the app. Re-run supabase-setup."; exit 1; }
-          code=$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS -H "Origin: https://${{ github.repository_owner }}.github.io" \
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS -H "Origin: $(python -c "import json,urllib.parse as u;p=u.urlparse(json.load(open('site.json'))['url']);print(p.scheme+'://'+p.netloc)")" \
             -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: apikey,authorization,content-type" "$url/rest/v1/rpc/record_visit")
           echo "CORS preflight from the site origin: $code"; [ "${code:0:1}" = 2 ] || exit 1

@@ -27,7 +27,23 @@ Don't build on the **Google Maps JavaScript API**. Its Essentials tier includes 
 | Google Maps Platform | 10,000 Dynamic Maps loads a month (Essentials) | About $7 per 1,000 |
 | Self-hosted Protomaps | No limit; you pay only for static hosting | — |
 
-Today the app uses free CARTO raster tiles, which are fine for testing. Swap them before the public launch.
+## What the app uses now (October 2026)
+
+**A self-hosted Protomaps vector map.**
+* At deploy time, `scripts/build_tiles.sh` extracts Kolkata and Howrah (zoom 0–15) from the latest Protomaps OpenStreetMap build into one `.pmtiles` file.
+* It's published at `tiles/kolkata-<build>.pmtiles`, with a `tiles/kolkata.json` manifest, and the app draws it with `protomaps-leaflet` (in `app/vendor/`).
+* Light and dark styles follow the theme, and street names switch to Bengali with the app language (where OSM has `name:bn`).
+
+**Why it scales:**
+* It's one static file that browsers read in small byte ranges. There are no keys, quotas or per-load fees.
+* Behind Cloudflare ([HOSTING.md](HOSTING.md)), the ranges are served from the edge.
+* The service worker keeps the ranges you've viewed, so those areas work offline.
+
+**Safety net:**
+* The deploy only publishes the file after `tests/e2e/map_tiles.mjs` confirms it renders. Otherwise it publishes a stub manifest.
+* If the manifest is empty or the file can't be read, the app quietly uses the CARTO raster tiles as before.
+
+Ola Maps remains an option for search and routing APIs later. Turn-by-turn navigation still hands off to Google Maps.
 
 ## How to switch
 
