@@ -1,0 +1,21 @@
+name: hero-photo
+# Banner photo from the guide's Commons photos. candidates: previews into data/hero_candidates. hero: chosen n into app/img.
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'candidates or hero', default: 'candidates' }
+      n: { description: 'candidate number (hero mode)', default: '' }
+permissions: { contents: write }
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pillow
+      - run: python scripts/hero_photo.py ${{ inputs.mode }} ${{ inputs.n }}
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/hero_candidates app/img || true
+          git diff --cached --quiet || { git commit -m "Banner photo: ${{ inputs.mode }} ${{ inputs.n }}"; git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}; }
