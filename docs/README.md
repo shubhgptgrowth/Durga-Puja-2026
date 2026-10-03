@@ -9,6 +9,7 @@ The work runs in two tracks.
 | **Reference** | [product/SCOPE.md](product/SCOPE.md) (features, data model) · [product/COMMUNITY.md](product/COMMUNITY.md) (backend) · [product/MAPS.md](product/MAPS.md) (map providers) | [`/kit/`](https://shubhgptgrowth.github.io/Durga-Puja-2026/kit/) (daily content) · Actions → **marketing-report** (reach) |
 | **Code** | `app/`, `pipeline/`, `data/`, `supabase/`, `tests/` | `marketing/` |
 | **Workflows** | `pipeline`, `deploy`, `discover`, `geo-audit`, `supabase-setup` | `marketing-report`, `marketing-publish` (the kit itself is built inside `deploy`) |
+| **GitHub issues** | [#1 Product track](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/1) · label [`product`](https://github.com/shubhgptgrowth/Durga-Puja-2026/labels/product) | [#2 Marketing track](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/2) · label [`marketing`](https://github.com/shubhgptgrowth/Durga-Puja-2026/labels/marketing) |
 | **Measure of success** | Pins correct, no outages, check-ins working, pages fast on a crowded network | Devices reached, by source; check-ins per device |
 
 **Where the tracks meet:**

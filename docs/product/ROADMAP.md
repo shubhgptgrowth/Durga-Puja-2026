@@ -39,6 +39,8 @@ Marketing lives in [../marketing/](../marketing/). The seam between the two trac
 
 ## Backlog
 
+Each item is a GitHub issue under the [Product track (#1)](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/1). Labels: `product`, `P0`/`P1`/`P2`, `decision-needed`, `local-help`. Close the issue when an item ships, and update the status here.
+
 Priority: **P0** = before Mahalaya (10 Oct). **P1** = before Shashthi (17 Oct). **P2** = nice to have, or next year.
 Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 
@@ -46,28 +48,28 @@ Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 
 | # | Item | Why | Status |
 |---|---|---|---|
-| P0-1 | **Supabase Pro for October** (US$25) | The free plan's 5 GB egress doesn't survive the push. Live counts were already slowed to every 3 minutes | ⏸ owner decision, billing |
-| P0-2 | **Hosting that scales**: Cloudflare Pages (free, no bandwidth cap), optionally with a short domain | GitHub Pages has a soft limit of about 100 GB a month. Moving means changing `SITE` in `marketing/kit.py` and the OG tags in `app/index.html` | ⏸ owner decision |
-| P0-3 | **Map tiles for scale**: Ola Maps, or self-hosted Protomaps for the Kolkata box | The CARTO tiles are fair-use only (see [MAPS.md](MAPS.md)) | ⬜ |
-| P0-4 | **Ground-check the top 40 pandal pins**, starting with the 16 approximate and 28 curated ones | A wrong pin breaks check-in and directions. Approximate pins already get a 600 m check-in radius | ⬜ needs local help |
-| P0-5 | **The 5 missing well-known pujas**: Sikdarbagan, Pathuriaghata Panchar Pally, Darjipara, Kestopur Prafulla Kanan, Salkia Sarbojanin | People will search for them | ⬜ needs an address or landmark |
-| P0-6 | **Error and quota monitoring**: a client error beacon, and a daily check of Supabase usage in `marketing-report` | So we see breakage on puja nights before users do | ⬜ |
+| [P0-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/3) | **Supabase Pro for October** (US$25) | The free plan's 5 GB egress doesn't survive the push. Live counts were already slowed to every 3 minutes | ⏸ owner decision, billing |
+| [P0-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/4) | **Hosting that scales**: Cloudflare Pages (free, no bandwidth cap), optionally with a short domain | GitHub Pages has a soft limit of about 100 GB a month. Moving means changing `SITE` in `marketing/kit.py` and the OG tags in `app/index.html` | ⏸ owner decision |
+| [P0-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/5) | **Map tiles for scale**: Ola Maps, or self-hosted Protomaps for the Kolkata box | The CARTO tiles are fair-use only (see [MAPS.md](MAPS.md)) | ⬜ |
+| [P0-4](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/6) | **Ground-check the top 40 pandal pins**, starting with the 16 approximate and 28 curated ones | A wrong pin breaks check-in and directions. Approximate pins already get a 600 m check-in radius | ⬜ needs local help |
+| [P0-5](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/8) | **The 5 missing well-known pujas**: Sikdarbagan, Pathuriaghata Panchar Pally, Darjipara, Kestopur Prafulla Kanan, Salkia Sarbojanin | People will search for them | ⬜ needs an address or landmark |
+| [P0-6](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/7) | **Error and quota monitoring**: a client error beacon, and a daily check of Supabase usage in `marketing-report` | So we see breakage on puja nights before users do | ⬜ |
 
 ### P1: before Shashthi
 
 | # | Item | Why | Status |
 |---|---|---|---|
-| P1-1 | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | ⬜ |
-| P1-2 | **Bengali names** for the 31 OSM-discovered pandals | The Bengali UI shows English names for them | ⬜ |
-| P1-3 | **"Add to home screen" prompt** after a first check-in or a saved plan | Repeat use during the 5 days, and fewer cold loads | ⬜ |
-| P1-4 | **Crowd report button**: "How's the queue here? Short / Medium / Long" next to check-in | Turns the crowd curve from a guess into a live signal (Phase 6 in [SCOPE.md](SCOPE.md)) | ⬜ |
-| P1-5 | **Howrah coverage**: only 2 pandals today | Howrah is a whole region on the filter | ⬜ |
-| P1-6 | **More photos**: 64 pandals have none. Run discover again after the pujas start (fresh Commons uploads), plus moments | Sheets with photos convert better | ⬜ |
-| P1-7 | **Moderation view** for moments: hide, report queue | 3 reports auto-hide today; puja-night volume needs a human view | ⬜ |
-| P1-8 | **Performance pass**: lazy-load the map on first use, trim `guide.json` (~300 KB) | Slow networks around pandals | ⬜ |
-| P1-9 | **Accessibility pass**: contrast in dark mode, screen-reader labels on map pins | Reach older users and family groups | ⬜ |
+| [P1-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/9) | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | ⬜ |
+| [P1-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/10) | **Bengali names** for the 31 OSM-discovered pandals | The Bengali UI shows English names for them | ⬜ |
+| [P1-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/11) | **"Add to home screen" prompt** after a first check-in or a saved plan | Repeat use during the 5 days, and fewer cold loads | ⬜ |
+| [P1-4](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/12) | **Crowd report button**: "How's the queue here? Short / Medium / Long" next to check-in | Turns the crowd curve from a guess into a live signal (Phase 6 in [SCOPE.md](SCOPE.md)) | ⬜ |
+| [P1-5](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/13) | **Howrah coverage**: only 2 pandals today | Howrah is a whole region on the filter | ⬜ |
+| [P1-6](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/14) | **More photos**: 64 pandals have none. Run discover again after the pujas start (fresh Commons uploads), plus moments | Sheets with photos convert better | ⬜ |
+| [P1-7](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/15) | **Moderation view** for moments: hide, report queue | 3 reports auto-hide today; puja-night volume needs a human view | ⬜ |
+| [P1-8](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/16) | **Performance pass**: lazy-load the map on first use, trim `guide.json` (~300 KB) | Slow networks around pandals | ⬜ |
+| [P1-9](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/17) | **Accessibility pass**: contrast in dark mode, screen-reader labels on map pins | Reach older users and family groups | ⬜ |
 
-### P2: later
+### P2: later ([#18](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/18))
 
 | # | Item |
 |---|---|

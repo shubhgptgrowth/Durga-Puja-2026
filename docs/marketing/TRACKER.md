@@ -7,18 +7,20 @@ Update it as you go: edit on GitHub, or ask Claude to update it.
 
 Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ blocked
 
+Every task is also a GitHub issue under the [Marketing track (#2)](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/2): setup #19–#22, committees #23, eateries #24, creators #25, groups #26, Mahalaya #27, Reels #28, daily routine #29, weekly review #30, auto-posting #31.
+
 ## 1. Setup (by 5 Oct)
 
 | Task | Owner | Status | Notes |
 |---|---|---|---|
-| Instagram professional account (e.g. `@pujoparikrama`) | | ⬜ | Bio link: `…/Durga-Puja-2026/?src=ig_bio` |
-| 4 Highlights: North, South, Food, How to use | | ⬜ | Covers from the kit's area cards |
-| Connect Meta Business Suite to Instagram, for scheduling | | ⬜ | |
-| WhatsApp Business number + Channel "Pujo Parikrama 2026" | | ⬜ | Put the Channel link in the Instagram Highlights |
-| Print 50 flyers (`/kit/flyer.png`, A5) | | ⬜ | |
-| Pick 20 posters from `/kit/posters.pdf` and print them | | ⬜ | Only for places that said yes (§3) |
-| Optional: Instagram auto-posting (secrets + `IG_AUTOPUBLISH`) | | ⬜ | [PLAN.md §7](PLAN.md#7-instagram-auto-posting-optional) |
-| Ask the product track for the capacity upgrades (Supabase Pro, hosting) | | ⏸ | Product roadmap P0-1 and P0-2, **by 10 Oct** |
+| Instagram professional account (e.g. `@pujoparikrama`) ([#19](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/19)) | | ⬜ | Bio link: `…/Durga-Puja-2026/?src=ig_bio` |
+| 4 Highlights: North, South, Food, How to use ([#19](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/19)) | | ⬜ | Covers from the kit's area cards |
+| Connect Meta Business Suite to Instagram, for scheduling ([#20](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/20)) | | ⬜ | |
+| WhatsApp Business number + Channel "Pujo Parikrama 2026" ([#21](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/21)) | | ⬜ | Put the Channel link in the Instagram Highlights |
+| Print 50 flyers (`/kit/flyer.png`, A5) ([#22](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/22)) | | ⬜ | |
+| Pick 20 posters from `/kit/posters.pdf` and print them ([#22](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/22)) | | ⬜ | Only for places that said yes (§3) |
+| Optional: Instagram auto-posting (secrets + `IG_AUTOPUBLISH`) ([#31](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/31)) | | ⬜ | [PLAN.md §7](PLAN.md#7-instagram-auto-posting-optional) |
+| Ask the product track for the capacity upgrades (Supabase Pro, hosting) ([#3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/3)) | | ⏸ | Product roadmap P0-1 and P0-2, **by 10 Oct** |
 
 ## 2. Daily routine log (3–22 Oct)
 
