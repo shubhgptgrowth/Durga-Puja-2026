@@ -13,7 +13,7 @@ Every task is also a GitHub issue under the [Marketing track (#2)](https://githu
 
 | Task | Owner | Status | Notes |
 |---|---|---|---|
-| Instagram professional account (e.g. `@pujoparikrama`) ([#19](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/19)) | | ⬜ | Bio link: `…/Durga-Puja-2026/?src=ig_bio` |
+| Instagram professional account: [`@pujoparikrama.guide`](https://www.instagram.com/pujoparikrama.guide/) ([#19](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/19)) | | 🟡 | Handle taken 3 Oct. Still to do: switch to Creator, display name "Pujo Parikrama 2026 \| Kolkata Pandal Guide", bio, bio link `…/Durga-Puja-2026/?src=ig_bio` |
 | 4 Highlights: North, South, Food, How to use ([#19](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/19)) | | ⬜ | Covers from the kit's area cards |
 | Connect Meta Business Suite to Instagram, for scheduling ([#20](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/20)) | | ⬜ | |
 | WhatsApp Business number + Channel "Pujo Parikrama 2026" ([#21](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/21)) | | ⬜ | Put the Channel link in the Instagram Highlights |
