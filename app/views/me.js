@@ -3,7 +3,7 @@ import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFo
 } from '../state.js';
 import { $, registerView, toast } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
-import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive } from '../actions.js';
+import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
 import { shareCard, myCard, appLink } from '../growth.js';
 
@@ -41,6 +41,16 @@ function render() {
       <p class="fine center" id="walkStatus">${status}</p>
     </div>
 
+    <details class="more health-sync pad-x" ${d.health ? '' : ''}>
+      <summary>⌚ ${t('hs.title')}${d.health ? ` · ${fmt(d.health)}` : ''}</summary>
+      <div class="hs-body">
+        <p class="fine">${t('hs.why')}</p>
+        <form id="healthForm" class="hs-row"><input id="healthSteps" type="number" inputmode="numeric" min="0" max="100000" placeholder="${t('hs.ph')}" value="${d.health || ''}" aria-label="${t('hs.ph')}">
+          <button class="btn primary sm" type="submit">${t('hs.save')}</button></form>
+        <p class="fine">${t('hs.where')}</p>
+      </div>
+    </details>
+
     <div class="pad" style="margin-top:6px"><button class="btn block story-btn" id="myCardBtn">📸 ${t('g.myCard')}</button><p class="fine center">${t('g.myCardSub')}</p></div>
 
     <section class="section"><div class="section-head"><h2>${t('me.visited', { n: visited.length })}</h2></div>
@@ -72,6 +82,11 @@ function render() {
     if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#resetBtn') && confirm(t('fit.confirmReset'))) { store.clear(); location.reload(); }
+  };
+  $('#healthForm', el).onsubmit = (e) => {
+    e.preventDefault();
+    const n = Math.max(0, Math.min(100000, Math.round(+$('#healthSteps', el).value || 0)));
+    const r = dayRec(); r.health = n; saveHistory(); toast(t('hs.saved', { n: fmt(n) })); render();
   };
   $('#profileForm', el).onsubmit = (e) => {
     e.preventDefault();

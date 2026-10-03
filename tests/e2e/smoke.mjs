@@ -74,9 +74,11 @@ try {
   must(await page.locator('#radioFab').isVisible(), 'sticky radio button should show from the start');
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
-  must(await count('.radio-card .stations [data-station]') === 5, 'five radio stations expected');
-  await page.click('.stations [data-station="dhak"]');
-  await page.waitForSelector('.stations [data-station="dhak"][aria-checked="true"]');
+  must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');
+  must(await count('.hero.slides .slide') >= 3, 'banner slideshow expected');
+  await page.click('.st-tiles [data-station="dhak"]');
+  await page.waitForSelector('.st-tiles [data-station="dhak"][aria-checked="true"]');
+  await page.click('.radio-card .tracks-wrap summary');
   must(await count('.radio-card .tracks [data-track]') >= 3, 'dhak station should list its tracks');
   must(/Pujar Dhak/.test(await page.locator('.radio-card .tracks').innerText()), 'dhak tracks missing');
   await page.locator('.radio-card').scrollIntoViewIfNeeded();
@@ -271,6 +273,11 @@ try {
   must(s1 - s0 >= 8, `motion sensor steps not counted (${s0} → ${s1})`);
   must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
   await shot('11-me');
+  // Steps copied from the phone's Health app win when higher than what the app tracked
+  await page.click('.health-sync summary');
+  await page.fill('#healthSteps', '23456');
+  await page.click('#healthForm button[type="submit"]');
+  await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '23456');
 
   // Growth: a story-size card, a tracked deep link (?src=…#p=…), the WhatsApp share link, and the open count
   const dl = page.waitForEvent('download', { timeout: 8000 });

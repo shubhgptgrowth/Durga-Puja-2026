@@ -3,7 +3,7 @@
  * which is built once and never re-rendered, so music keeps playing while you browse other tabs. */
 
 let data = null, apiReady = null, player = null, host = null;
-let station = null, idx = 0, state = 'idle'; // idle | loading | playing | paused
+let station = null, idx = 0, state = 'idle', ready = false; // state: idle | cued | loading | playing | paused
 const listeners = new Set();
 const emit = () => listeners.forEach((fn) => fn());
 
@@ -55,14 +55,38 @@ export async function play(stationId, i = 0) {
       player = new YT.Player(host, {
         host: 'https://www.youtube-nocookie.com', videoId: id, width: '100%', height: '100%',
         playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, controls: 0, iv_load_policy: 3, fs: 0, disablekb: 1 },
-        events: { onReady: (e) => e.target.playVideo(), onStateChange: onState, onError: () => next() },
+        events: { onReady: (e) => { ready = true; e.target.playVideo(); }, onStateChange: onState, onError: () => next() },
       });
     }
     return true;
   } catch { state = 'idle'; emit(); return false; }
 }
+/** Load a track into the player without playing it, so a later tap can start it instantly (iOS needs the
+ * play call to happen inside the tap itself, which only works if the player already exists). */
+export async function cue(stationId, i = 0) {
+  await loadMusic();
+  const s = stations().find((x) => x.id === stationId);
+  if (!s || !host || player) return false;
+  station = stationId; idx = i % s.tracks.length; state = 'cued'; emit();
+  try {
+    const YT = await loadApi();
+    player = new YT.Player(host, {
+      host: 'https://www.youtube-nocookie.com', videoId: s.tracks[idx].yt, width: '100%', height: '100%',
+      playerVars: { autoplay: 0, playsinline: 1, rel: 0, modestbranding: 1, controls: 0, iv_load_policy: 3, fs: 0, disablekb: 1 },
+      events: { onReady: () => { ready = true; emit(); }, onStateChange: onState, onError: () => next() },
+    });
+    return true;
+  } catch { state = 'idle'; emit(); return false; }
+}
+/** Start whatever is loaded, synchronously when the player is ready (call from inside a tap). */
+export function playNow() {
+  if (player && ready) { state = 'loading'; player.playVideo(); emit(); return true; }
+  return play(station || 'dhak', idx);
+}
+export const isReady = () => ready;
 export function toggle() {
   if (!player || state === 'idle') return play(station || 'mahalaya', idx);
+  if (state === 'cued') return playNow();
   state === 'playing' ? player.pauseVideo() : player.playVideo();
 }
 export const next = () => play(station || 'mahalaya', idx + 1);

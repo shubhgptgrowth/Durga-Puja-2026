@@ -9,23 +9,26 @@ import { visit, visitPrivately, visitMessage, visitedToday } from './actions.js'
 import { prepareMedia } from './media.js';
 import { CONFIG } from './config.js';
 import { shareRowHtml, wireShareRow } from './growth.js';
+import { estVisitors, estDiners, short } from './footfall.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
 /* ---------------- shared bits ---------------- */
 export function statsHtml(id, { compact = false } = {}) {
   const s = community.enabled ? community.statFor(id) : null;
-  if (!s) return '';
-  const food = placeKind(id) === 'food';
+  const food = placeKind(id) === 'food', place = food ? idx.food[id] : idx.pandal[id];
+  const est = place ? (food ? estDiners(place) : estVisitors(place)) : 0;
+  const estTxt = est ? t(food ? 'est.dinersShort' : 'est.dayShort', { n: short(est) }) : '';
   if (compact) {
-    const live = s.last_hour >= 5 ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>` : '';
-    return `${live}<span class="count">${icon(food ? 'food' : 'people', 'sm')} ${fmtCount(s.visits)}</span>`;
+    const live = s?.last_hour >= 5 ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>` : '';
+    const real = s?.visits ? `<span class="count">${icon('check', 'sm')} ${fmtCount(s.visits)}</span>` : '';
+    return `${live}${estTxt ? `<span class="count est" title="${t('est.note')}">${icon(food ? 'food' : 'people', 'sm')} ${estTxt}</span>` : ''}${real}`;
   }
   return `<div class="stat-row">
-    <div class="stat"><b>${fmtCount(s.visits)}</b><span>${t(food ? 'c.ate' : 'c.visits')}</span></div>
-    <div class="stat"><b>${fmtCount(s.today)}</b><span>${t('c.today')}</span></div>
-    <div class="stat"><b>${s.last_hour >= 1 ? fmtCount(s.last_hour) : fmtCount(s.photos)}</b><span>${s.last_hour >= 1 ? t('c.lastHour') : t('c.moments')}</span></div>
-  </div>`;
+    ${est ? `<div class="stat est"><b>≈${short(est)}</b><span>${t(food ? 'est.diners' : 'est.visitors', { day: dn(idx.day[S.day]) })}</span></div>` : ''}
+    ${s ? `<div class="stat"><b>${fmtCount(s.visits)}</b><span>${t(food ? 'c.ate' : 'c.visits')}</span></div>
+    <div class="stat"><b>${s.last_hour >= 1 ? fmtCount(s.last_hour) : fmtCount(s.today)}</b><span>${s.last_hour >= 1 ? t('c.lastHour') : t('c.today')}</span></div>` : ''}
+  </div>${est ? `<p class="fine est-note">${t('est.note')}</p>` : ''}`;
 }
 export const crowdPill = (c) => `<span class="pill ${crowdLevel(c)}"><span class="dot"></span>${crowdWord(c)}</span>`;
 export function agoText(iso) {

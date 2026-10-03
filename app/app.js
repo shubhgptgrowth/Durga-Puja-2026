@@ -81,8 +81,23 @@ function applyStatic() {
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), dashami = new Date(idx.day.dashami.date + 'T00:00:00');
   const todayDay = G.data.meta.days.find((d) => d.date === todayKey()), diff = Math.round((shashthi - now) / 864e5);
-  $('#countdown').textContent = todayDay ? t('count.today', { day: dn(todayDay) }) : now > dashami ? t('count.after')
-    : diff === 1 ? t('count.day') : t('count.days', { n: bnDigits(diff) });
+  // The line under the name rotates through what people say around the pujo, led by the countdown.
+  const lead = todayDay ? t('lingo.today', { day: dn(todayDay) }) : now > dashami ? t('lingo.after')
+    : t('lingo.count', { n: bnDigits(Math.max(1, diff)) });
+  startTicker([lead, ...[1, 2, 3, 4, 5, 6].map((i) => t('lingo.' + i))]);
+}
+
+let tickTimer = null;
+function startTicker(lines) {
+  const el = $('#countdown'); let i = 0;
+  el.textContent = lines[0];
+  clearInterval(tickTimer);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  tickTimer = setInterval(() => {
+    i = (i + 1) % lines.length;
+    el.classList.add('out');
+    setTimeout(() => { el.textContent = lines[i]; el.classList.remove('out'); }, 260);
+  }, 3800);
 }
 
 boot();

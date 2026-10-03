@@ -21,27 +21,56 @@ function buildIndex() {
 
 const fmtDate = (d) => new Date(d.date + 'T00:00:00').toLocaleDateString(loc(), { weekday: 'short', day: 'numeric', month: 'short' });
 
-/* Banner photo: Bagbazar Sarbojanin's protima in daker saaj (Wikimedia Commons, credited on the banner). */
-const HERO = { src: 'img/hero.jpg', page: 'https://commons.wikimedia.org/wiki/File:Bagbazar_Srbojanin_Durga_Puja_2025_02.jpg', author: 'Tarunsamanta', license: 'CC BY-SA 4.0', place: 'Bagbazar Sarbojanin' };
+/* Banner: a slow slideshow of real protimas (Wikimedia Commons; each slide credits its photographer).
+ * Tapping a slide opens that pandal. Positions keep Ma's face in frame on a wide crop. */
+const SLIDE_DATA = [
+  { src: 'img/hero-1.jpg', pos: '50% 12%', pandal: 'bagbazar', author: 'Tarunsamanta', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Bagbazar_Srbojanin_Durga_Puja_2025_02.jpg' },
+  { src: 'img/hero-2.jpg', pos: '50% 30%', pandal: 'kumartuli_sarbojanin', author: 'Tarunsamanta', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Kumartuli_Sarbojanin_Durgatsab_2025_01.jpg' },
+  { src: 'img/hero-3.jpg', pos: '50% 32%', pandal: 'jagat_mukherjee', author: 'Tarunsamanta', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_09.jpg' },
+  { src: 'img/hero-4.jpg', pos: '50% 20%', pandal: 'college_square', author: 'Jonoikobangali', license: 'CC BY-SA 3.0', page: 'https://commons.wikimedia.org/wiki/File:Durga_College_Square_Arnab_Dutta_2011.jpg' },
+  { src: 'img/hero-5.jpg', pos: '50% 28%', pandal: 'md_ali_park', author: 'Indrajit Das', license: 'CC BY-SA 3.0', page: 'https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg' },
+];
+const slides = () => SLIDE_DATA.filter((x) => idx.pandal[x.pandal]);
+let slide = 0, slideTimer = null;
 
 const span = () => { const o = { day: 'numeric' }, a = new Date(idx.day.shashthi.date + 'T00:00:00'), b = new Date(idx.day.dashami.date + 'T00:00:00');
   return `${a.toLocaleDateString(loc(), o)}–${b.toLocaleDateString(loc(), { day: 'numeric', month: 'short' })}`; };
 /* The banner: greeting, the puja dates, and the one crowd tip that matters. */
 function heroHtml() {
+  const SLIDES = slides();
   const today = G.data.meta.days.find((d) => d.date === todayKey());
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), now = new Date(); now.setHours(0, 0, 0, 0);
   const diff = Math.round((shashthi - now) / 864e5);
   const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
-  return `<div class="hero photo">
-    <img class="hero-img" src="${HERO.src}" alt="${t('h.heroAlt', { place: HERO.place })}" fetchpriority="high" decoding="async">
+  return `<div class="hero slides" role="group" aria-roledescription="carousel" aria-label="${t('h.heroAlt', { place: '' })}">
+    ${SLIDES.map((x, k) => `<button type="button" class="slide ${k === slide ? 'on' : ''}" data-slide="${k}" data-place="${x.pandal}" aria-label="${esc(nm(idx.pandal[x.pandal]))}">
+      <img src="${x.src}" alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></button>`).join('')}
     <div class="hero-shade"></div>
     <div class="hero-copy">
       <div class="sharad-greet" lang="bn">শুভ শারদীয়া</div>
       <div class="sharad-sub">${t('h.greetSub')}</div>
       <div class="sharad-when"><span>${when}</span><span class="sep">·</span><span>${span()}</span></div>
     </div>
-    <a class="hero-credit" href="${HERO.page}" target="_blank" rel="noopener">${esc(HERO.place)} · ${esc(HERO.author)}, ${HERO.license}</a>
+    <div class="hero-meta"><span class="hero-place">📍 <span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span>
+      <a class="hero-credit" id="slideCredit" href="${SLIDES[slide].page}" target="_blank" rel="noopener">© ${esc(SLIDES[slide].author)}, ${SLIDES[slide].license}</a></div>
+    <div class="dots" aria-hidden="true">${SLIDES.map((_, k) => `<i class="${k === slide ? 'on' : ''}"></i>`).join('')}</div>
   </div>`;
+}
+
+function startSlides(el) {
+  const SLIDES = slides();
+  clearInterval(slideTimer);
+  if (SLIDES.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  slideTimer = setInterval(() => {
+    if (S.view !== 'home' || document.hidden) return;
+    const hero = $('.hero.slides', el); if (!hero) return;
+    slide = (slide + 1) % SLIDES.length;
+    hero.querySelectorAll('.slide').forEach((b, k) => b.classList.toggle('on', k === slide));
+    hero.querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === slide));
+    const x = SLIDES[slide];
+    $('#slidePlace', hero).textContent = nm(idx.pandal[x.pandal]);
+    const c = $('#slideCredit', hero); c.href = x.page; c.textContent = `© ${x.author}, ${x.license}`;
+  }, 5500);
 }
 
 const TASKS = [
@@ -70,6 +99,7 @@ function render() {
   const slot = $('#radioSlot', el), card = radioCard();
   if (card.parentNode !== slot) slot.appendChild(card);
   watchCard();
+  startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
     <ol class="how" aria-label="${t('h.introTitle')}">${[1, 2, 3].map((n) => `<li><span class="how-n">${n}</span><b>${t('how.t' + n)}</b><span>${t('how.s' + n)}</span></li>`).join('')}</ol>
