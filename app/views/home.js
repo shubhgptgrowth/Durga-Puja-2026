@@ -99,15 +99,15 @@ function wire(el) {
   el.onclick = (e) => {
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
-    if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
-    if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all' }); return go('explore'); }
-    if (q === 'food') { setExplore({ seg: 'food' }); return go('explore'); }
-    if (q === 'park') { setExplore({ seg: 'parking' }); return go('explore'); }
+    if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
+    if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }
+    if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }
+    if (q === 'park') { setExplore({ seg: 'parking', mode: 'list' }); return go('explore'); }
     if (q === 'photos') return go('moments');
     if (q === 'day') { const d = $('#daySelect'); d.focus(); d.showPicker?.(); return; }
     if (q === 'introClose') { store.set('introDone', true); return render(); }
     const place = e.target.closest('[data-place]')?.dataset.place; if (place) return openPlace(place);
-    const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { setExplore({ seg: 'pandals', region: hr, area: 'all' }); return go('explore'); }
+    const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { setExplore({ seg: 'pandals', region: hr, area: 'all', mode: 'list' }); return go('explore'); }
     const trail = e.target.closest('[data-trail]')?.dataset.trail; if (trail) { go('plan'); return showTrail(trail); }
     const r = e.target.closest('[data-result]'); if (r) return pickResult(r.dataset.kind, r.dataset.result);
   };
@@ -125,7 +125,7 @@ function wire(el) {
   };
 }
 function pickResult(kind, id) {
-  if (kind === 'zone') { setExplore({ seg: 'pandals', ...selectArea(id) }); return go('explore'); }
+  if (kind === 'zone') { setExplore({ seg: 'pandals', ...selectArea(id), mode: 'list' }); return go('explore'); }
   openPlace(id);
 }
 

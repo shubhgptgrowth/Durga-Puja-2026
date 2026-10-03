@@ -64,7 +64,8 @@ try {
   await shot('01-home');
   // Home is a launcher: an area opens the map filtered to it; "Must-see" opens the famous list.
   await page.click('[data-hr="south"]');
-  await page.waitForSelector('#view-explore.active [data-fr="south"][aria-pressed="true"]');
+  await page.waitForSelector('#view-explore.active[data-mode="list"] #explorePanel .item[data-place]');
+  must(await page.locator('#areaSelect').inputValue() === 'r:south', 'home area button should filter the map to South');
   await page.click('.tab[data-view="home"]');
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
@@ -97,8 +98,16 @@ try {
 
   // Too far: Bagbazar from Lake Market is refused publicly, but can be kept privately
   await page.click('.tab[data-view="explore"]');
-  await page.click('#exploreZones [data-fr="north"]');
-  await page.click('#exploreZones [data-fa="north"]');
+  // The Map tab: one filter row, and a pill that flips between a full-screen map and the list
+  await page.selectOption('#areaSelect', 'all');
+  await page.click('#modeBtn[data-to="map"]');
+  await page.waitForSelector('#view-explore[data-mode="map"] #map.leaflet-container');
+  must(await page.locator('#explorePanel').isHidden(), 'list should hide in map mode');
+  must(/107|\d+ pandals/.test(await page.locator('#modeBtn').innerText()), 'map pill should show the count');
+  await shot('03b-map-mode');
+  await page.click('#modeBtn[data-to="list"]');
+  await page.waitForSelector('#view-explore[data-mode="list"] #explorePanel .item');
+  await page.selectOption('#areaSelect', 'a:north');
   must(await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'area filter count');
   await page.click('#explorePanel .item[data-place="bagbazar"]');
   await page.click('#visitBtn');
@@ -113,8 +122,8 @@ try {
   // "I ate here" at a food spot, standing at it
   const foodId = G.food.find((f) => f.zone === 'south_lakemarket').id;
   await ctx.setGeolocation(at(foodId));
-  await page.click('#explorePanel [data-seg="food"]');
-  await page.click('#exploreZones [data-fr="all"]');
+  await page.click('#exploreBar [data-seg="food"]');
+  await page.selectOption('#areaSelect', 'all');
   await page.click(`#explorePanel .item[data-place="${foodId}"]`);
   await page.click('#visitBtn');
   await waitToast(/#1|Logged/, 'ate here');
@@ -125,7 +134,7 @@ try {
 
   // Offline check-in queues, then syncs when the network returns
   await ctx.setGeolocation(at('66_pally'));
-  await page.click('#explorePanel [data-seg="pandals"]');
+  await page.click('#exploreBar [data-seg="pandals"]');
   await ctx.setOffline(true);
   await page.click('#explorePanel .item[data-place="66_pally"]');
   await page.click('#visitBtn');
@@ -137,7 +146,7 @@ try {
   must((await statFor('66_pally')).visits === 1, 'queued check-in did not sync after reconnecting');
 
   // Parking segment and the car spot
-  await page.click('#explorePanel [data-seg="parking"]');
+  await page.click('#exploreBar [data-seg="parking"]');
   must(await count('#explorePanel .item'), 'no parking listed');
   await shot('06-parking');
 
@@ -193,16 +202,23 @@ try {
   await page.waitForSelector('.timeline li.ride');
   must(/Line|Bus|auto|Cab/i.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'ride leg has no transport advice');
   await shot('10-trail');
-  await page.click('#view-plan [data-seg="custom"]');
+  // The wizard: 1 areas → 2 start point → 3 route
+  await page.click('#planNew');
+  await page.waitForSelector('.stepper [data-step="1"][aria-current="step"]');
   await page.click('#view-plan [data-pz="south_lakemarket"]');
+  await shot('10c-wizard-areas');
+  await page.click('#planNext');
+  await page.waitForSelector('.stepper [data-step="2"][aria-current="step"]');
   await page.selectOption('#planBudget', '180');
   await page.click('#planStartBtn');
   await page.fill('#pickSearch', 'kalig');
   await page.click('[data-pick="t:kalighat"]');
   await page.waitForTimeout(300);
   must(/Kalighat/.test(await page.locator('#planStartBtn').innerText()), 'start picker did not set Kalighat');
+  await shot('10d-wizard-start');
   await page.click('#planForm button[type="submit"]');
   await page.waitForTimeout(400);
+  await page.waitForSelector('.stepper [data-step="3"][aria-current="step"]');
   const stops = await count('.timeline li[data-place]');
   must(stops >= 3, `custom 3 h Lake Market plan should fit 3+ pandals, got ${stops}`);
   const params = await page.evaluate(() => JSON.parse(localStorage.getItem('pp:activePlan')).params);

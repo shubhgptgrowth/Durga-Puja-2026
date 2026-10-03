@@ -52,7 +52,7 @@ export const STR = {
     'kindLabel.pandal': 'Pandal', 'kindLabel.food': 'Food', 'kindLabel.parking': 'Parking',
 
     // zones / crowd / cards
-    'zones.all': 'All zones', 'crowd.at': 'Crowd at',
+    'zones.all': 'All areas', 'crowd.at': 'Crowd at',
     'z.pandals': '{n} pandals', 'z.loop': '{km} km loop', 'z.steps': '≈ {n} steps',
     'car.ok': 'Car OK', 'car.limited': 'Limited parking', 'car.avoid': 'Leave the car',
     'crowd.quiet': 'Quiet', 'crowd.moderate': 'Moderate', 'crowd.busy': 'Busy', 'crowd.packed': 'Packed',
@@ -95,7 +95,11 @@ export const STR = {
     'park.fine': 'Traffic rules change every day of the festival. Check {link} before you drive.', 'park.kp': 'Kolkata Traffic Police',
 
     // plan
-    'plan.title': 'Plan your pujo', 'plan.subtitle': 'Pick a ready-made trail, or build a route that fits your time.',
+    'crowd.other': 'Crowd at another time', 'list.countFood': '{n} places to eat', 'list.countPark': '{n} car parks', 'mode.list': 'List', 'mode.map': 'Map',
+    'wz.s1': 'Areas', 'wz.s2': 'Start', 'wz.s3': 'Route', 'wz.q1': 'Which areas do you want to visit?', 'wz.q2': 'Where and when do you start?',
+    'wz.picked': '{n} areas picked', 'wz.picked1': '1 area picked', 'wz.pickOne': 'Pick at least one area', 'wz.next': 'Next', 'wz.back': 'Back', 'wz.more': 'More options',
+    'wz.orTrail': 'Or take a ready-made route', 'wz.edit': 'Change start or time', 'wz.other': 'Pick another route', 'wz.new': 'New route',
+    'plan.title': 'My route', 'plan.subtitle': 'Three quick steps: pick areas, pick where you start, and get a walking route with times.',
     'seg.curated': 'Curated trails', 'seg.custom': 'Build my route',
     'p.approx': 'Approximate pin', 'f.zones': 'Areas', 'f.start': 'Start from', 'f.time': 'Start time', 'f.stars': 'Only pandals rated', 'f.budget': 'Time budget',
     'f.brisk': 'Brisk pace (more pandals, more calories)', 'f.build': 'Build route', 'f.me': '📍 My current location',
@@ -209,7 +213,7 @@ export const STR = {
     'h.parking': 'পার্কিং', 'h.transit': 'মেট্রো ও রেল',
     'kindLabel.pandal': 'প্যান্ডেল', 'kindLabel.food': 'খাবার', 'kindLabel.parking': 'পার্কিং',
 
-    'zones.all': 'সব অঞ্চল', 'crowd.at': 'ভিড়',
+    'zones.all': 'সব এলাকা', 'crowd.at': 'ভিড়',
     'z.pandals': '{n}টি প্যান্ডেল', 'z.loop': '{km} কিমি চক্কর', 'z.steps': '≈ {n} পা',
     'car.ok': 'গাড়ি চলবে', 'car.limited': 'পার্কিং কম', 'car.avoid': 'গাড়ি রেখে আসুন',
     'crowd.quiet': 'ফাঁকা', 'crowd.moderate': 'মাঝারি', 'crowd.busy': 'ভিড়', 'crowd.packed': 'ঠাসা ভিড়',
@@ -248,7 +252,11 @@ export const STR = {
     'park.walkTo': 'হেঁটে যান', 'park.onward': 'এখান থেকে ক্যাব বা মেট্রো নিন', 'park.drive': 'গাড়ি নিয়ে যান',
     'park.fine': 'পুজোর প্রতিদিন ট্রাফিকের নিয়ম বদলায়। গাড়ি বার করার আগে {link} দেখে নিন।', 'park.kp': 'কলকাতা ট্রাফিক পুলিশ',
 
-    'plan.title': 'পুজোর পরিকল্পনা', 'plan.subtitle': 'তৈরি পরিক্রমা বেছে নিন, অথবা আপনার সময় মতো রুট বানান।',
+    'crowd.other': 'অন্য সময়ের ভিড়', 'list.countFood': '{n}টি খাবারের জায়গা', 'list.countPark': '{n}টি পার্কিং', 'mode.list': 'তালিকা', 'mode.map': 'ম্যাপ',
+    'wz.s1': 'এলাকা', 'wz.s2': 'শুরু', 'wz.s3': 'রুট', 'wz.q1': 'কোন কোন এলাকায় ঘুরবেন?', 'wz.q2': 'কোথা থেকে, কখন শুরু করবেন?',
+    'wz.picked': '{n}টি এলাকা বাছা হয়েছে', 'wz.picked1': '১টি এলাকা বাছা হয়েছে', 'wz.pickOne': 'অন্তত একটি এলাকা বাছুন', 'wz.next': 'পরের ধাপ', 'wz.back': 'পিছনে', 'wz.more': 'আরও বিকল্প',
+    'wz.orTrail': 'অথবা তৈরি রুট বেছে নিন', 'wz.edit': 'শুরু বা সময় বদলান', 'wz.other': 'অন্য রুট বাছুন', 'wz.new': 'নতুন রুট',
+    'plan.title': 'আমার রুট', 'plan.subtitle': 'তিনটি ধাপ: এলাকা বাছুন, কোথা থেকে শুরু বাছুন, তারপর সময় ধরে হাঁটার রুট।',
     'seg.curated': 'বাছাই করা পরিক্রমা', 'seg.custom': 'নিজের রুট',
     'p.approx': 'আনুমানিক অবস্থান', 'f.zones': 'এলাকা', 'f.start': 'কোথা থেকে শুরু', 'f.time': 'শুরুর সময়', 'f.stars': 'কোন রেটিংয়ের প্যান্ডেল', 'f.budget': 'হাতে কত সময়',
     'f.brisk': 'জোরে হাঁটা (বেশি প্যান্ডেল, বেশি ক্যালোরি)', 'f.build': 'রুট বানান', 'f.me': '📍 আমার এখনকার লোকেশন',

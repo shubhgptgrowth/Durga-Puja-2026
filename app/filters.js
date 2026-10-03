@@ -49,3 +49,20 @@ export function bboxOf(sel) {
   return [[Math.min(...zs.map((z) => z.bbox[0][0])), Math.min(...zs.map((z) => z.bbox[0][1]))],
     [Math.max(...zs.map((z) => z.bbox[1][0])), Math.max(...zs.map((z) => z.bbox[1][1]))]];
 }
+
+/** The whole region → area choice as one native dropdown: 'all', 'r:<region>' or 'a:<zone>'. */
+export const areaValue = (sel) => (sel.area !== 'all' ? 'a:' + sel.area : sel.region !== 'all' ? 'r:' + sel.region : 'all');
+export function areaSelectHtml(sel, id) {
+  const v = areaValue(sel), o = (val, label) => `<option value="${val}" ${v === val ? 'selected' : ''}>${esc(label)}</option>`;
+  return `<select id="${id}" aria-label="${t('f.areas')}">${o('all', t('zones.all'))}${G.data.regions.map((r) => {
+    const zs = r.zone_ids.map((zid) => idx.zone[zid]).filter(Boolean);
+    return `<optgroup label="${esc(rname(r))}">${o('r:' + r.id, t('f.allIn', { region: rname(r) }))}${zs.length > 1 ? zs.map((z) => o('a:' + z.id, zshort(z))).join('') : ''}</optgroup>`;
+  }).join('')}</select>`;
+}
+/** Apply a dropdown value from areaSelectHtml to `sel` in place. */
+export function setAreaValue(sel, v) {
+  const [k, id] = v.split(':');
+  if (k === 'a' && idx.zone[id]) Object.assign(sel, selectArea(id));
+  else if (k === 'r' && idx.region[id]) Object.assign(sel, { region: id, area: 'all' });
+  else Object.assign(sel, { region: 'all', area: 'all' });
+}
