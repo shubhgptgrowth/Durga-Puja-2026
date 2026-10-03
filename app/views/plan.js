@@ -1,11 +1,11 @@
 /* My route: a 3-step wizard (areas → start point → route), with ready-made trails as a shortcut on step 1. */
-import { hav, orderRoute, routeUrls, hhmm, encodePlan, rideOption } from '../core.js';
+import { hav, orderRoute, hhmm, encodePlan, rideOption } from '../core.js';
 import {
   S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon,
 } from '../state.js';
 import { $, go, registerView, makeMap, toast, getFix } from '../ui.js';
-import { openPlace } from '../sheets.js';
-import { startWalk, walking } from '../actions.js';
+import { openPlace, dirUrl } from '../sheets.js';
+import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
 
@@ -21,6 +21,9 @@ function rideText(opt, toName) {
   if (opt.mode === 'auto') return opt.routes ? t('tl.autoOsm', { routes: esc(opt.routes.join(', ')), from: esc(opt.board || '—') }) : t('tl.auto', { route: esc(opt.route) });
   return t('tl.cab', { name: esc(toName) });
 }
+// Further apart than this, two stops are a ride (auto, bus or metro), not a walk through puja crowds.
+export const HOP_M = 1300;
+const hopsIn = (stops) => stops.filter((x) => x.walk_m > HOP_M);
 const form = { start: 't:kalighat', time: '17:00', stars: '4', budget: '240', brisk: false };
 
 /* ---------------- routing ---------------- */
@@ -186,15 +189,13 @@ function trailsHtml() {
     return `<div class="card trail" data-trail="${it.id}" ${btn()}>
       <div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3><span class="pill">${esc(dn(idx.day[it.day]))} · ${it.start_time}</span></div>
       <p>${esc((S.prefs.lang === 'bn' && it.blurb_bn) || it.blurb)}</p>
-      <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${x.walk_km} km</span><span>${fmt(stepsFor(x.walk_m ?? x.walk_km * 1000))} ${t('kpi.steps')}</span><span>${t('it.dur', { h: Math.floor(x.duration_min / 60), m: x.duration_min % 60 })}</span></div>
+      <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span>${(() => { const n = it.segments.filter((sg) => sg.type === 'ride').length + hopsIn(it.segments.flatMap((sg) => sg.stops || [])).length; return n ? `<span>🛺 ${t('it.rides', { n })}</span>` : ''; })()}<span>${x.walk_km} km</span><span>${fmt(stepsFor(x.walk_m ?? x.walk_km * 1000))} ${t('kpi.steps')}</span><span>${t('it.dur', { h: Math.floor(x.duration_min / 60), m: x.duration_min % 60 })}</span></div>
     </div>`;
   }).join('')}</div>`;
 }
 function resultHtml(plan) {
   const x = plan.totals, stops = stopsOf(plan);
-  const pts = [ll(plan.startPt), ...stops.map((s) => ll(idx.pandal[s.pandal]))];
-  const legs = routeUrls(pts);
-  let n = 0, lastFood = -9; const used = new Set();
+  let n = 0, lastFood = -9, hopM = 0; const used = new Set();
   const tl = [`<li class="start"><div class="t">${plan.start}</div><div class="nm">${t('tl.start', { name: esc(ptName(plan.startPt)) })}</div></li>`];
   let prev = ll(plan.startPt);
   for (const s of plan.segments) {
@@ -208,25 +209,38 @@ function resultHtml(plan) {
     for (const st of s.stops) {
       n++;
       const p = idx.pandal[st.pandal], hour = +st.arrive.slice(0, 2), meal = (hour >= 12 && hour <= 14) || (hour >= 19 && hour <= 21);
+      const hop = st.walk_m > HOP_M;
+      if (hop) {
+        // Too far to walk: say how to ride it. Arrival times stay as planned (walking pace), so riding only buys slack.
+        hopM += st.walk_m;
+        const opt = rideOption(prev, ll(p), G.data.transit, transitData), kmTxt = km(st.walk_m);
+        const mins = Math.round((st.walk_m * 1.3) / (15000 / 60)) + 5;
+        tl.push(`<li class="ride hop"><div class="t"></div><div class="nm">${t('tl.hop', { km: kmTxt })}</div>
+          <div class="sub">${opt.mode === 'cab' ? t('tl.hopAuto', { name: esc(nm(p)) }) : rideText(opt, nm(p))} · ${t('tl.rideMin', { n: mins })} · ${t('tl.orWalk', { n: st.walk_min })}</div></li>`);
+      }
       let eat = '';
       const f = p.food.filter((ff) => ff.distance_m <= 800).map((ff) => idx.food[ff.id]).find((ff) => !used.has(ff.id));
       if (f && (n - lastFood >= 3 || (meal && n - lastFood >= 2))) { used.add(f.id); lastFood = n; eat = `<div class="eat">${t('tl.eat', { dish: esc(f.dishes[0]), place: esc(f.name) })}</div>`; }
       prev = ll(p);
-      tl.push(`<li data-n="${n}" data-place="${st.pandal}" ${btn()}><div class="t">${st.arrive}</div><div class="nm">${esc(nm(p))}${S.checkins[st.pandal] ? ' ✓' : ''}</div>
-        <div class="sub">${st.walk_m ? `${t('tl.walk', { m: st.walk_m })} · ` : ''}${crowdWord(st.crowd)} · ${t('tl.inside', { n: st.dwell_min })}</div>${eat}</li>`);
+      tl.push(`<li data-n="${n}" data-place="${st.pandal}" ${btn()}><div class="t">${st.arrive}</div><div class="nm">${esc(nm(p))}${visitedToday(st.pandal) ? ' ✓' : ''}</div>
+        <div class="sub">${st.walk_m && !hop ? `${t('tl.walk', { m: st.walk_m })} · ` : ''}${crowdWord(st.crowd)} · ${t('tl.inside', { n: st.dwell_min })}</div>${eat}
+        <a class="go" target="_blank" rel="noopener" href="${dirUrl(ll(p), hop ? 'transit' : 'walking')}" aria-label="${t('p.directions')}: ${esc(nm(p))}">${icon('pin', 'sm')}</a></li>`);
     }
   }
+  // One clear "go" button: directions to the first stop you haven't checked in at yet.
+  const next = stops.find((st) => !visitedToday(st.pandal)) || stops[0], np = idx.pandal[next.pandal];
+  const walkM = Math.max(0, x.walk_m - hopM);
   return `<div class="card plan-sum">
       <h3>${esc(planTitle(plan))}</h3>
       <div class="fine">${t('plan.sub', { day: dn(idx.day[plan.day]), from: plan.start, to: plan.end, start: esc(ptName(plan.startPt)) })}${plan.skipped ? ` · ${t('plan.dropped', { n: plan.skipped })}` : ''}</div>
-      <div class="kpis"><div><b>${x.pandals}</b><span>${t('kpi.pandals')}</span></div><div><b>${km(x.walk_m)}</b><span>${t('kpi.km')}</span></div><div><b>${fmt(stepsFor(x.walk_m))}</b><span>${t('kpi.steps')}</span></div><div><b>${fmt(kcalFor(x.walk_min, x.dwell_min, x.brisk))}</b><span>${t('kpi.kcal')}</span></div></div>
-      <div class="btn-row"><button class="btn primary" id="planWalk">${icon('walk')} ${t('plan.startWalk')}</button><button class="btn" id="planShare">${icon('share')} ${t('plan.share')}</button></div>
-      <div class="btn-row" style="margin-top:8px">${legs.map((u, i) => `<a class="btn sm" target="_blank" rel="noopener" href="${u}">${t('plan.maps')}${legs.length > 1 ? ` · ${t('plan.leg', { n: i + 1 })}` : ''}</a>`).join('')}</div>
+      <div class="kpis"><div><b>${x.pandals}</b><span>${t('kpi.pandals')}</span></div><div><b>${km(walkM)}</b><span>${t('kpi.km')}</span></div><div><b>${fmt(stepsFor(walkM))}</b><span>${t('kpi.steps')}</span></div><div><b>${fmt(kcalFor(x.walk_min, x.dwell_min, x.brisk))}</b><span>${t('kpi.kcal')}</span></div></div>
+      <a class="btn primary block" id="planNextDir" target="_blank" rel="noopener" href="${dirUrl(ll(np), next.walk_m > HOP_M ? 'transit' : 'walking')}">${icon('pin')} ${t('plan.nextDir', { name: esc(nm(np)) })}</a>
+      <div class="btn-row" style="margin-top:8px"><button class="btn" id="planWalk">${icon('walk')} ${t('plan.startWalk')}</button><button class="btn" id="planShare">${icon('share')} ${t('plan.share')}</button></div>
+      <p class="fine" style="margin:8px 0 0">${t('plan.dirHint')}</p>
     </div>
     <div id="planMap" class="map short" style="margin:12px 16px;border-radius:16px;overflow:hidden"></div>
     <ol class="timeline">${tl.join('')}</ol>`;
 }
-
 function stepperHtml(plan) {
   const labels = [t('wz.s1'), t('wz.s2'), t('wz.s3')];
   const can = (n) => n === 1 || (n === 2 && planSel.size > 0) || (n === 3 && !!plan);
@@ -255,7 +269,12 @@ function drawPlanMap(plan) {
   planMap = makeMap($('#planMap'), { animate: false });
   if (!planMap) return;
   const stops = stopsOf(plan), pts = [ll(plan.startPt), ...stops.map((s) => ll(idx.pandal[s.pandal]))];
-  L.polyline(pts, { color: '#9F1239', weight: 4, opacity: .85, dashArray: '2 8', lineCap: 'round' }).addTo(planMap);
+  // Ride legs (metro hops between areas, and auto hops between far-apart pandals) are solid orange; walks are dotted.
+  const afterRide = new Set(plan.segments.filter((sg, i) => sg.type === 'walk' && plan.segments[i - 1]?.type === 'ride').map((sg) => sg.stops[0]?.pandal));
+  pts.slice(1).forEach((pt, i) => {
+    const ride = stops[i].walk_m > HOP_M || afterRide.has(stops[i].pandal);
+    L.polyline([pts[i], pt], ride ? { color: '#EA580C', weight: 4, opacity: .9 } : { color: '#9F1239', weight: 4, opacity: .85, dashArray: '2 8', lineCap: 'round' }).addTo(planMap);
+  });
   L.marker(pts[0], { icon: L.divIcon({ className: '', html: '<div class="seq" style="background:#1C1917">▶</div>', iconSize: [26, 26] }), keyboard: false }).addTo(planMap);
   stops.forEach((st, i) => L.marker(ll(idx.pandal[st.pandal]), { icon: L.divIcon({ className: '', html: `<div class="seq">${i + 1}</div>`, iconSize: [26, 26] }), title: nm(idx.pandal[st.pandal]) })
     .on('click', () => openPlace(st.pandal)).addTo(planMap));
@@ -274,6 +293,7 @@ function wire(el, plan) {
     if (e.target.closest('#planNew')) { planSel = new Set(); step = 1; return render(); }
     if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start, (v) => { form.start = v; keepScroll(render); });
     const tr = e.target.closest('[data-trail]')?.dataset.trail; if (tr) return showTrail(tr);
+    if (e.target.closest('a')) return; // direction links open Google Maps
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#planWalk')) { go('me'); if (!walking()) startWalk(); return; }
     if (e.target.closest('#planShare')) return share(plan);

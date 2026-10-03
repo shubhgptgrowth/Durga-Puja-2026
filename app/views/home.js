@@ -6,6 +6,7 @@ import { openPlace } from '../sheets.js';
 import { showTrail } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
+import { garlandSvg, radioHtml, wireRadio } from '../radioCard.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -25,7 +26,7 @@ function heroHtml() {
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), now = new Date(); now.setHours(0, 0, 0, 0);
   const diff = Math.round((shashthi - now) / 864e5);
   const eyebrow = today ? t('h.today') : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
-  return `<div class="hero compact">
+  return `<div class="hero compact pujo">${garlandSvg()}
     <div class="hero-top"><div><div class="eyebrow">${eyebrow}</div>
       <h2>${t('h.dayLine', { day: esc(dn(sel)), date: fmtDate(sel) })}</h2></div>
       <button class="hero-link" data-q="day">${t('h.changeDay')}</button></div>
@@ -68,6 +69,8 @@ function render() {
       <ul class="results" id="homeResults" role="listbox"></ul>
     </div>
 
+    ${radioHtml()}
+
     ${showIntro ? `<section class="intro" aria-label="${t('h.introTitle')}">
       <div class="intro-head"><h2>${t('h.introTitle')}</h2><button class="icon-btn" data-q="introClose" aria-label="${t('h.introClose')}">×</button></div>
       <ol><li>${t('h.intro1')}</li><li>${t('h.intro2')}</li><li>${t('h.intro3')}</li></ol>
@@ -96,7 +99,9 @@ function render() {
 }
 
 function wire(el) {
+  wireRadio(el);
   el.onclick = (e) => {
+    if (e.target.closest('.radio-card')) return;
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }

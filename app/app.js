@@ -11,6 +11,7 @@ import './views/me.js';
 import { CONFIG } from './config.js';
 import { captureSource, trackOpen } from './growth.js';
 import { openPlace } from './sheets.js';
+import { initMini } from './radioCard.js';
 
 async function boot() {
   let g;
@@ -39,6 +40,7 @@ async function boot() {
 
   setupCommunity();
   trackOpen();
+  initMini();
   if (!S.prefs.lowData) initVectorTiles();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
   addEventListener('offline', () => toast(t('net.off')));

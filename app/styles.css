@@ -446,3 +446,71 @@ details.more .time-row { padding: 0 12px 12px; }
 .wz-foot.top { position: static; border: 0; background: none; padding: 0 16px 10px; margin: 0; justify-content: flex-start; }
 .btn[aria-disabled="true"] { opacity: .5; }
 body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--safe-b) + 72px); }
+
+/* Place sheets: Directions and "I'm here" come first */
+.action-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.action-bar .btn { min-height: 52px; font-size: 15.5px; }
+.btn.here { background: var(--surface); color: var(--ink); border: 2px solid var(--ok); }
+.btn.here .ic { color: var(--ok); }
+.timeline li.hop { background: color-mix(in srgb, #EA580C 10%, transparent); border-radius: 12px; padding: 8px 10px 8px 14px; margin: 0 0 14px; }
+.timeline li.hop::before { content: "🛺"; background: #FFEDD5; top: 8px; }
+.timeline li.hop .nm { color: #C2410C; }
+.timeline li[data-place] { padding-right: 46px; }
+.timeline .go { position: absolute; right: 0; top: 0; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--brand); }
+
+/* ---------- Home: pujo vibes (garland, laal-paar card, Pujo Radio) ---------- */
+.hero.pujo { position: relative; padding-top: 30px; overflow: hidden; }
+.hero.pujo .garland { position: absolute; left: 0; top: 0; width: 100%; height: 26px; transform-origin: top center; animation: sway 6s ease-in-out infinite; }
+@keyframes sway { 50% { transform: rotate(.6deg) translateY(1px); } }
+
+.radio-card { position: relative; margin: 16px 16px 0; padding: 14px 14px 12px; border-radius: 18px; color: #3B1A0E;
+  background:
+    radial-gradient(circle at 100% 0, rgba(159,18,57,.10) 0 18px, transparent 19px),
+    radial-gradient(circle at 100% 0, transparent 0 26px, rgba(183,121,31,.25) 27px 28px, transparent 29px),
+    radial-gradient(circle, rgba(159,18,57,.13) 1.4px, transparent 1.6px) 0 0 / 14px 14px,
+    #FFF8EC;
+  border: 5px solid #B91C1C; box-shadow: inset 0 0 0 2px #FFF8EC, inset 0 0 0 4px #D4A017, var(--shadow); }
+.radio-head h2 { margin: 0; font-size: 19px; color: #9F1239; }
+.radio-head p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.4; color: #6B3A22; }
+.radio-stage { display: grid; grid-template-columns: 1fr 112px; gap: 6px; align-items: end; margin-top: 12px; }
+.radio { border-radius: 16px 16px 12px 12px; padding: 8px 10px 10px; color: #FDE68A;
+  background: linear-gradient(160deg, #8B4513 0%, #5C2E0E 55%, #3E1F0A 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.18), 0 6px 14px rgba(60,20,0,.35); }
+.radio-brand { text-align: center; font-weight: 700; letter-spacing: .12em; font-size: 12px; color: #FCD34D; text-shadow: 0 1px 0 #000; }
+.grille { height: 54px; margin: 6px 0; border-radius: 8px; display: flex; gap: 5px; align-items: flex-end; justify-content: center; padding: 6px 10px;
+  background: radial-gradient(circle, #6B4423 1.2px, transparent 1.4px) 0 0 / 6px 6px, linear-gradient(#E9D8B4, #D9C29A); box-shadow: inset 0 2px 6px rgba(0,0,0,.35); }
+.grille i { flex: 1; height: 100%; border-radius: 3px 3px 0 0; background: linear-gradient(#F97316, #B91C1C); transform: scaleY(.12); transform-origin: bottom; transition: transform .12s ease-out; opacity: .85; }
+.dial { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; font-size: 9.5px; font-weight: 700; color: #3B1A0E; padding: 9px 2px 3px; border-radius: 6px;
+  background: linear-gradient(#FEF3C7, #FDE68A); box-shadow: inset 0 1px 3px rgba(0,0,0,.4); }
+.radio.on .dial { box-shadow: inset 0 1px 3px rgba(0,0,0,.4), 0 0 12px rgba(253,224,71,.8); }
+.dial .ticks { position: absolute; inset: 2px 6px auto; height: 5px; background: repeating-linear-gradient(90deg, #7C2D12 0 1px, transparent 1px 6px); }
+.dial span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dial .needle { position: absolute; top: 1px; bottom: 1px; width: 2px; background: #DC2626; border-radius: 1px; transition: left .5s cubic-bezier(.3,1.4,.5,1); }
+.radio-foot { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.radio-now { flex: 1; text-align: center; font-size: 12px; font-weight: 600; color: #FDE68A; }
+.knob { width: 42px; height: 42px; flex: none; border-radius: 50%; border: 0; cursor: pointer; font-size: 15px; color: #3B1A0E;
+  background: radial-gradient(circle at 35% 30%, #FFF7D6, #D4A017 60%, #8B6508); box-shadow: 0 2px 4px rgba(0,0,0,.45), inset 0 -2px 3px rgba(0,0,0,.25); }
+.knob.play { width: 48px; height: 48px; font-size: 16px; }
+.knob:active { transform: scale(.94); }
+.dhak { position: relative; border: 0; background: none; padding: 0; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.dhak svg { width: 112px; height: auto; display: block; overflow: visible; filter: drop-shadow(0 6px 6px rgba(60,20,0,.3)); }
+.dhak .plume { transform-origin: 76px 76px; }
+.dhak .drum, .dhak .stick { transform-box: view-box; }
+.dhak.boom svg { animation: boom .22s ease-out; }
+.dhak.boom .plume { animation: plume .5s ease-out; }
+.dhak.tak .stick { animation: stick .12s ease-out; transform-origin: 122px 76px; }
+@keyframes boom { 30% { transform: scale(1.06) rotate(-2deg); } }
+@keyframes plume { 30% { transform: rotate(-5deg) scale(1.03); } 65% { transform: rotate(4deg); } }
+@keyframes stick { 50% { transform: rotate(-18deg); } }
+.dhak-hint { position: absolute; top: 4px; right: -2px; background: #9F1239; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 7px; border-radius: 999px; transform: rotate(8deg); animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 50% { transform: rotate(8deg) translateY(-3px); } }
+.stations { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.stations button { text-align: left; border: 1.5px solid #E7C9A0; background: #FFFDF7; border-radius: 12px; padding: 8px 10px; cursor: pointer; display: grid; gap: 1px; color: #3B1A0E; font: inherit; }
+.stations b { font-size: 14px; }
+.stations small { font-size: 12px; color: #8A5A3C; }
+.stations button[aria-checked="true"] { border-color: #9F1239; background: #9F1239; color: #fff; }
+.stations button[aria-checked="true"] small { color: #FECDD3; }
+.radio-links { display: flex; gap: 12px; align-items: center; margin-top: 10px; font-size: 13px; color: #6B3A22; }
+.radio-links a { color: #9F1239; font-weight: 700; }
+.radio-mini { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; width: 46px; height: 46px; border-radius: 50%; border: 3px solid #B91C1C; background: #FFF8EC; font-size: 22px; box-shadow: var(--shadow); cursor: pointer; }
+.radio-mini.beat { animation: boom .22s ease-out; }
+body:has(#view-home.active) .radio-mini { display: none; }

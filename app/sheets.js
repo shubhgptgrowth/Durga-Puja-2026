@@ -55,7 +55,7 @@ export const momentCache = [];
 function visitButton(id) {
   const food = placeKind(id) === 'food';
   const done = visitedToday(id);
-  return `<button class="btn ${done ? 'success' : 'primary'}" id="visitBtn" ${done ? 'disabled' : ''}>
+  return `<button class="btn ${done ? 'success' : 'here'}" id="visitBtn" ${done ? 'disabled' : ''}>
     ${icon(food ? 'food' : 'check')} ${done ? t(food ? 'v.ateDone' : 'v.done') : t(food ? 'v.ate' : 'v.checkin')}</button>`;
 }
 function wireVisit(el, id, reopen) {
@@ -75,6 +75,11 @@ function wireVisit(el, id, reopen) {
     reopen(); rerender();
   };
 }
+
+/** The two things people want first at a place: get there, and say "I'm here". */
+const actionBar = (id, p) => `<div class="action-bar">
+  <a class="btn primary" target="_blank" rel="noopener" href="${dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
+  ${visitButton(id)}</div><div id="verifyBox" class="verify"></div>`;
 
 /* ---------------- photos (Wikimedia Commons, curated) ---------------- */
 const transitUrl = (dest) => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=transit`;
@@ -123,15 +128,11 @@ export function pandalSheet(id) {
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     <h2 class="title">${esc(nm(p))}</h2>
     <div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>
-    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
+    ${actionBar(id, p)}
+    <div class="btn-row" style="margin-top:10px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
     ${galleryHtml(p.photos)}
     ${statsHtml(id)}
-    <div class="btn-row" style="margin-top:12px">
-      ${visitButton(id)}
-      <a class="btn" target="_blank" rel="noopener" href="${dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
-    </div>
     ${shareRowHtml(id)}
-    <div id="verifyBox" class="verify"></div>
     <p class="lead">${esc(p.highlight)}</p>
 
     <h3 class="sh">${t('p.when', { day: dn(idx.day[S.day]) })}</h3>
@@ -164,15 +165,11 @@ export function foodSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
     <h2 class="title">${esc(f.name)}</h2>
-    <div class="btn-row" style="margin-top:8px"><span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span><span class="pill">${'₹'.repeat(f.price)}</span><span class="pill">${t('diet.' + f.veg)}</span></div>
+    ${actionBar(id, f)}
+    <div class="btn-row" style="margin-top:10px"><span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span><span class="pill">${'₹'.repeat(f.price)}</span><span class="pill">${t('diet.' + f.veg)}</span></div>
     ${galleryHtml(f.photos)}
     ${statsHtml(id)}
-    <div class="btn-row" style="margin-top:12px">
-      ${visitButton(id)}
-      <a class="btn" target="_blank" rel="noopener" href="${dirUrl(ll(f))}">${icon('pin')} ${t('p.directions')}</a>
-    </div>
     ${shareRowHtml(id)}
-    <div id="verifyBox" class="verify"></div>
     <p class="lead">${esc(f.note)}</p>
     <h3 class="sh">${t('food.mustTry')}</h3>
     ${dishesHtml(f)}
