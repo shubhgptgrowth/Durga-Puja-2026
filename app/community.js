@@ -77,6 +77,21 @@ export class Community {
     return res.json();
   }
 
+  /** Usage events + presence (anonymous device id, no sign-in). Returns { live } or null. */
+  async track(device, events, { keepalive = false } = {}) {
+    if (!this.enabled) return null;
+    const res = await fetch(`${this.url}/rest/v1/rpc/track`, { method: 'POST', headers: this._headers(false), keepalive,
+      body: JSON.stringify({ p_device: device, p_events: events }) });
+    if (!res.ok) throw new Error(`track ${res.status}`);
+    return res.json();
+  }
+  async siteCounts() {
+    if (!this.enabled) return null;
+    const res = await fetch(`${this.url}/rest/v1/rpc/site_counts`, { method: 'POST', headers: this._headers(false), body: '{}' });
+    if (!res.ok) throw new Error(`site_counts ${res.status}`);
+    return res.json();
+  }
+
   /* ------------------------------------------------------------ place stats */
   async refreshStats() {
     if (!this.enabled) return this.stats;
@@ -195,6 +210,7 @@ export class Community {
     const fullType = item.full.type || (item.mediaType === 'video' ? 'video/mp4' : 'image/jpeg');
     await this.upload(path, item.full, fullType, (p) => onProgress?.(p * 0.85));
     await this.upload(thumbPath, item.thumb, 'image/jpeg', (p) => onProgress?.(0.85 + p * 0.1));
+    this.emit('moment', { placeId: item.placeId, mediaType: item.mediaType });
     const r = await this.rpc('add_photo', {
       p_place: item.placeId, p_path: path, p_thumb_path: thumbPath, p_media_type: item.mediaType,
       p_caption: item.caption || null, p_lat: item.fix?.lat ?? null, p_lng: item.fix?.lng ?? null, p_accuracy: item.fix?.accuracy ?? null,

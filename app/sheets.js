@@ -11,6 +11,7 @@ import { CONFIG } from './config.js';
 import { shareRowHtml, wireShareRow } from './growth.js';
 import { estVisitors, estDiners, short } from './footfall.js';
 import { hasEgg, cost2, rupees } from './foodinfo.js';
+import { track, placeOpened } from './analytics.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
@@ -70,6 +71,7 @@ function wireRate(el, id, reopen) {
     const tags = [...f.querySelectorAll('[data-rtag][aria-pressed="true"]')].map((b) => b.dataset.rtag);
     try {
       const r = await community.rate(id, sel, tags);
+      track('rate', { place: id, kind: placeKind(id), d: sel });
       toast(t(r.status === 'ok' ? 'rt.thanks' : r.status === 'visit_first' ? 'rt.visitFirst' : 'rt.failed'), 3000);
       if (r.status === 'ok') { const y = $('#sheet').scrollTop; reopen(); $('#sheet').scrollTop = y; rerender(); }
     } catch { toast(t('rt.failed')); }
@@ -124,6 +126,7 @@ function wireVisit(el, id, reopen) {
   b.onclick = async () => {
     b.disabled = true; b.innerHTML = `${icon('locate')} ${t('v.locating')}`;
     const r = await visit(id);
+    track('checkin', { place: id, kind: placeKind(id), d: r.status });
     if (!['too_far', 'no_fix', 'denied'].includes(r.status)) toast(visitMessage(id, r), 3500);
     if (r.status === 'too_far' || r.status === 'no_fix' || r.status === 'denied') {
       const v = $('#verifyBox', el);
@@ -179,6 +182,7 @@ function gettingThereHtml(p, parks = []) {
 
 /* ---------------- pandal ---------------- */
 export function pandalSheet(id) {
+  placeOpened(id, 'pandal');
   const p = idx.pandal[id], z = zoneOf(p.zone), df = dayFactor();
   const hours = [...Array(24).keys()].map((h) => crowdIndex(p.crowd_base, df, h));
   const now = hours[S.hour];
@@ -222,6 +226,7 @@ export function pandalSheet(id) {
 
 /* ---------------- eatery ---------------- */
 export function foodSheet(id) {
+  placeOpened(id, 'food');
   const f = idx.food[id], z = zoneOf(f.zone);
   const away = S.me ? ` · ${dist(hav(S.me, ll(f)))}` : '';
   openSheet(`
@@ -264,6 +269,7 @@ function dishesHtml(f) {
 
 /* ---------------- parking ---------------- */
 export function parkSheet(id) {
+  placeOpened(id, 'parking');
   const p = idx.parking[id];
   const pandals = nearest(ll(p), G.data.pandals, { maxM: 2000, limit: 5 });
   openSheet(`<div class="eyebrow">${icon('car', 'sm')} ${t('kind.' + p.kind)}</div>

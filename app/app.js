@@ -13,6 +13,7 @@ import { CONFIG } from './config.js';
 import { captureSource, trackOpen } from './growth.js';
 import { openPlace } from './sheets.js';
 import { initMini } from './radioCard.js';
+import { startAnalytics, track } from './analytics.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
@@ -54,6 +55,7 @@ async function boot() {
 
   setupCommunity();
   trackOpen();
+  startAnalytics();
   initMini();
   if (!S.prefs.lowData) initVectorTiles();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -78,7 +80,7 @@ function setupCommunity() {
 }
 
 function setupHeader() {
-  $('#langSelect').onchange = (e) => { S.prefs.lang = e.target.value; savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
+  $('#langSelect').onchange = (e) => { S.prefs.lang = e.target.value; track('lang', { d: e.target.value }); savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
 }
 
 /* Static text in index.html carries data-i18n keys; the views re-render themselves. */

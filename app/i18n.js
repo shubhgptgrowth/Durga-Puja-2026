@@ -151,7 +151,7 @@ export const STR = {
     // me / fit
     'me.title': 'My pujo', 'me.subtitle': 'Your steps, visits and badges. Saved on this phone.',
     'me.visited': 'Pandals visited ({n})', 'me.ate': 'Food logged ({n})', 'me.noVisits': 'Check in at a pandal and it shows up here.',
-    'me.privacyOn': 'Check-ins and moments use an anonymous ID. Your GPS position is only used to verify that you\'re at the place, and it is never stored.',
+    'me.privacyOn': 'Check-ins and moments use an anonymous ID. Your GPS position is only used to verify that you\'re at the place, and it is never stored. To improve the guide we count anonymous usage (pages, places opened, taps) with a random ID: no name, no location. Turn on "Do Not Track" in your browser to opt out.',
     'me.privacyOff': 'Everything stays on this phone.',
     'fit.of': 'of {n} steps', 'fit.km': 'km', 'fit.kcal': 'kcal', 'fit.walking': 'walking', 'fit.pandals': 'pandals',
     'fit.start': 'Start pujo walk', 'fit.resume': 'Resume pujo walk', 'fit.tracking': 'Tracking · tap to stop',
@@ -290,6 +290,8 @@ export const STR = {
     'hs.synced': '⌚ {n} steps synced from Apple Health',
     'hs.bad': 'Couldn\'t read a step count from the Shortcut. Check its last step.',
     'rt.one': '1 rating from someone who ate here',
+    'lv.now': '{n} people on Pujo Parikrama right now',
+    'lv.total': '{n} have planned their pujo here',
   },
   bn: {
 
@@ -426,7 +428,7 @@ export const STR = {
 
     'me.title': 'আমার পুজো', 'me.subtitle': 'আপনার পা, দেখা প্যান্ডেল আর ব্যাজ। এই ফোনেই সেভ থাকে।',
     'me.visited': 'দেখা প্যান্ডেল ({n})', 'me.ate': 'খাওয়ার তালিকা ({n})', 'me.noVisits': 'প্যান্ডেলে চেক-ইন করলে এখানে দেখা যাবে।',
-    'me.privacyOn': 'চেক-ইন আর মুহূর্তের জন্য একটা বেনামি আইডি ব্যবহার হয়। আপনার GPS শুধু জায়গায় আছেন কিনা যাচাই করতে লাগে, কোথাও সেভ হয় না।',
+    'me.privacyOn': 'চেক-ইন আর মুহূর্তের জন্য একটা বেনামি আইডি ব্যবহার হয়। আপনার GPS শুধু জায়গায় আছেন কিনা যাচাই করতে লাগে, কোথাও সেভ হয় না। গাইড ভালো করতে আমরা বেনামি ব্যবহার গুনি (পাতা, খোলা জায়গা, ট্যাপ), একটা র‍্যান্ডম আইডি দিয়ে: নাম বা লোকেশন নয়। বাদ দিতে চাইলে ব্রাউজারে "Do Not Track" চালু করুন।',
     'me.privacyOff': 'সব তথ্য এই ফোনেই থাকে।',
     'fit.of': '{n} পায়ের মধ্যে', 'fit.km': 'কিমি', 'fit.kcal': 'ক্যালোরি', 'fit.walking': 'হাঁটা', 'fit.pandals': 'প্যান্ডেল',
     'fit.start': 'পুজো-হাঁটা শুরু', 'fit.resume': 'পুজো-হাঁটা আবার শুরু', 'fit.tracking': 'ট্র্যাক হচ্ছে · থামাতে ছুঁন',
@@ -565,6 +567,8 @@ export const STR = {
     'hs.synced': '⌚ Apple Health থেকে {n} পা সিঙ্ক হয়েছে',
     'hs.bad': 'শর্টকাট থেকে পা-এর সংখ্যা পড়া গেল না। শেষ ধাপটা দেখুন।',
     'rt.one': 'এখানে খেয়েছেন এমন ১ জনের রেটিং',
+    'lv.now': 'এই মুহূর্তে Pujo Parikrama-য় {n} জন',
+    'lv.total': '{n} জন এখানে পুজোর প্ল্যান করেছেন',
   },
 };
 STR.hi = HI;

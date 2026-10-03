@@ -8,6 +8,7 @@ import { openPlace, dirUrl } from '../sheets.js';
 import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
+import { track } from '../analytics.js';
 
 let planSel = new Set(), step = 0, inPlan = false, transitData = null, transitLoading = null;
 // Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
@@ -82,6 +83,7 @@ const ptName = (pt) => (pt.id === 'me' ? t('plan.me') : pt.name);
 export async function buildCustom() {
   if (!planSel.size) return toast(t('plan.pickZone'));
   const zones = [...planSel], minStars = +form.stars, budget = +form.budget, brisk = form.brisk;
+  track('plan', { d: `custom:${zones.length}z:${budget}m` });
   const [h, m] = form.time.split(':').map(Number), startMin = h * 60 + m;
   let start;
   try { start = await startPoint(form.start); } catch { return toast(t('loc.fail')); }
@@ -112,6 +114,7 @@ export async function buildCustom() {
 export function showTrail(id) {
   const it = G.data.itineraries.find((x) => x.id === id);
   if (!it) return;
+  track('trail', { d: id });
   const first = it.segments.find((s) => s.type === 'walk');
   setPlan({
     kind: 'trail', id: it.id, day: it.day, start: it.start_time, end: it.end_time, startPt: idx.transit[first.start],
@@ -122,6 +125,7 @@ export function showTrail(id) {
 function setPlan(plan) { S.plan = plan; step = 3; store.set('activePlan', plan); if (S.view === 'plan') render(true); }
 
 export function presetPlan(zones, startId, opts = {}) {
+  track('plan', { d: 'preset:' + zones.join('+') });
   planSel = new Set(zones);
   form.start = 't:' + (startId || zoneOf(zones[0]).route.start);
   if (opts.time) form.time = opts.time;

@@ -5,6 +5,8 @@
  * The YouTube iframe lives in the Home card, which is built once and never re-rendered, so music keeps playing
  * while you browse other tabs. */
 
+import { track } from './analytics.js';
+
 let data = null, apiReady = null, player = null, host = null, ytReady = false;
 let station = null, idx = 0, state = 'idle'; // idle | cued | loading | playing | paused
 const audio = new Audio();
@@ -72,6 +74,7 @@ export async function play(stationId, i = 0) {
   await loadMusic();
   const tr = select(stationId, i);
   if (!tr) return false;
+  track('music', { d: `${stationId}:${tr.title}` });
   if (tr.audio) return playAudio(tr);
   audio.pause();
   if (!host) return false;
@@ -103,6 +106,7 @@ export async function cue(stationId, i = 0) {
 /** Start whatever is loaded. Call from inside a tap. */
 export function playNow() {
   const tr = current();
+  track('music', { d: `${station}:${tr?.title || ''}` });
   if (tr?.audio) return playAudio(tr);
   if (player && ytReady) { state = 'loading'; player.playVideo(); emit(); return true; }
   return play(station || 'dhak', idx);
@@ -116,6 +120,7 @@ export function toggle() {
 export const next = () => play(station || 'dhak', idx + 1);
 export const prev = () => play(station || 'dhak', idx - 1);
 export function pause() {
+  track('music', { d: 'pause' });
   if (isAudio()) audio.pause();
   else if (player && ytReady) player.pauseVideo();
 }

@@ -1,5 +1,7 @@
 /* Tap sounds: a single dhak stroke and the shankh, real recordings (app/audio, Wikimedia Commons).
  * Web Audio, so taps are instant and overlap like a real dhaki's. The context starts inside the first tap. */
+import { track } from './analytics.js';
+
 let ctx = null;
 const buffers = {};
 const SOUNDS = { dhak: 'audio/dhak_hit.mp3', shankh: 'audio/shankh.mp3' };
@@ -23,6 +25,7 @@ export function preload() { if (ensure()) Object.keys(SOUNDS).forEach((n) => loa
 /** Play a sound; `vary` nudges pitch and level a little so repeated taps sound like a hand, not a machine. */
 export async function play(name, { vary = true } = {}) {
   if (!ensure() || !SOUNDS[name]) return;
+  track('sfx', { d: name });
   try {
     const buf = await load(name);
     const src = ctx.createBufferSource(), g = ctx.createGain();

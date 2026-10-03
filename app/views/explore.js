@@ -6,6 +6,7 @@ import {
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl } from '../sheets.js';
 import { visitedToday } from '../actions.js';
+import { track } from '../analytics.js';
 import { dietMatch, hasEgg, cost2, rupees, DIETS } from '../foodinfo.js';
 import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
 
@@ -153,22 +154,22 @@ function render() {
 
 function wire(view) {
   view.onclick = (ev) => {
-    const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; return render(); }
-    if (ev.target.closest('#modeBtn')) { S.explore.mode = S.explore.mode === 'map' ? 'list' : 'map'; window.scrollTo(0, 0); return render(); }
-    const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); return render(); }
+    const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; track('filter', { d: 'seg:' + seg }); return render(); }
+    if (ev.target.closest('#modeBtn')) { S.explore.mode = S.explore.mode === 'map' ? 'list' : 'map'; track('filter', { d: 'mode:' + S.explore.mode }); window.scrollTo(0, 0); return render(); }
+    const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); track('filter', { d: 'food:' + f }); return render(); }
     const place = ev.target.closest('#explorePanel [data-place]')?.dataset.place; if (place) return openPlace(place);
     if (ev.target.closest('#carClear')) { S.car = null; store.set('car', null); return render(); }
     if (ev.target.closest('#carSave')) return getFix().then((p) => { S.car = { lat: p.lat, lng: p.lng, ts: Date.now() }; store.set('car', S.car); toast(t('car.savedToast')); render(); }).catch(() => toast(t('loc.fail')));
   };
   const as = $('#areaSelect', view);
-  if (as) as.onchange = () => { setAreaValue(S.explore, as.value); render(); };
+  if (as) as.onchange = () => { setAreaValue(S.explore, as.value); track('filter', { d: 'area:' + as.value }); render(); };
   const hr = $('#hourRange', view);
   if (hr) hr.oninput = () => { S.hour = +hr.value; const y = window.scrollY; render(); window.scrollTo(0, y); $('#hourRange')?.focus(); };
   const cd = $('#crowdDay', view);
   if (cd) cd.onchange = () => { moreOpen = true; S.day = cd.value; const y = window.scrollY; render(); window.scrollTo(0, y); };
   const so = $('#sortSelect', view);
   if (so) so.onchange = () => {
-    S.explore.sort = so.value;
+    S.explore.sort = so.value; track('filter', { d: 'sort:' + so.value });
     if (so.value === 'near' && !S.me) getFix().then(() => render()).catch(() => toast(t('loc.fail'))); else render();
   };
 }

@@ -12,7 +12,7 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), offline: false };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), events: [], presence: new Map(), offline: false };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
@@ -59,6 +59,16 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (!dup) db.visits.push({ user: uid, place_id: p.id, day, at: at.getTime() });
       const s = stats().find((x) => x.place_id === p.id);
       return { status: dup ? 'duplicate' : 'counted', distance_m: Math.round(d), today: s.today, visits: s.visits };
+    },
+    track(uid, a) {
+      if (!a.p_device) return { status: 'no_device' };
+      db.presence.set(a.p_device, Date.now());
+      const ok = (a.p_events || []).slice(0, 50).filter((e) => /^[a-z_]{1,24}$/.test(e.n || ''));
+      db.events.push(...ok.map((e) => ({ device: a.p_device, name: e.n, view: e.view, place: e.place, kind: e.kind, detail: e.d })));
+      return { status: 'ok', stored: ok.length, live: [...db.presence.values()].filter((x) => Date.now() - x < 300e3).length + (db.extraLive || 0) };
+    },
+    site_counts() {
+      return { live: [...db.presence.values()].filter((x) => Date.now() - x < 300e3).length + (db.extraLive || 0), people: db.opens.size + (db.extraPeople || 0) };
     },
     rate_place(uid, a) {
       if (!places.has(a.p_place)) return { status: 'unknown_place' };
@@ -108,7 +118,8 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (req.method === 'OPTIONS') { res.writeHead(204, cors); return res.end(); }
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
-    if (p === '/__state') return json(res, 200, { ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__crowd') { db.extraLive = +url.searchParams.get('live') || 0; db.extraPeople = +url.searchParams.get('people') || 0; return json(res, 200, {}); }
+    if (p === '/__state') return json(res, 200, { events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
     if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/')) return json(res, 401, { message: 'no apikey' });
 
@@ -132,7 +143,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     }
     if (p.startsWith('/rest/v1/rpc/') && req.method === 'POST') {
       const name = p.slice('/rest/v1/rpc/'.length), uid = uidOf(req);
-      if (!uid && name !== 'track_open') return json(res, 401, { message: 'JWT required' });  // track_open is granted to anon
+      if (!uid && !['track_open', 'track', 'site_counts'].includes(name)) return json(res, 401, { message: 'JWT required' });  // granted to anon
       const fn = rpc[name]; if (!fn) return json(res, 404, { message: 'no such function' });
       return json(res, 200, fn(uid, JSON.parse(await body(req) || '{}')));
     }

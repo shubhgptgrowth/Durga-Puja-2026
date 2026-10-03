@@ -363,6 +363,26 @@ try {
   }
   await ctx2.close();
 
+  // Analytics: anonymous events reach the backend; the live strip shows real counts once they are big enough
+  if (fake) {
+    await page.evaluate(async () => (await import('./analytics.js')).flush());
+    const ev = (await (await fetch(`${fake.url}/__state`)).json()).events;
+    for (const n of ['view', 'place_open', 'checkin', 'rate', 'filter', 'share']) must(ev.some((e) => e.name === n), `no ${n} event: ` + JSON.stringify(ev.slice(0, 5)));
+    must(ev.some((e) => e.name === 'place_open' && e.kind === 'food'), 'eatery opens not tagged');
+    must(ev.some((e) => e.name === 'view' && e.detail === 'me'), 'page views missing');
+    must(!JSON.stringify(ev).includes('Rina'), 'events must not carry the name');
+    await page.click('.tab[data-view="home"]');
+    must(await page.locator('#liveStrip').isHidden(), 'small counts must not be shown');
+    await fetch(`${fake.url}/__crowd?live=1482&people=12345`);
+    await page.reload(); await page.waitForSelector('.hero');
+    await page.waitForSelector('#liveStrip .live-now', { timeout: 8000 });
+    await page.waitForTimeout(1500);
+    const strip = await page.locator('#liveStrip').innerText();
+    must(/1,48\d people on Pujo Parikrama right now/.test(strip) && /12,300\+ have planned/.test(strip), 'live strip: ' + strip);
+    await shot('01c-live');
+    await fetch(`${fake.url}/__crowd?live=0&people=0`);
+  }
+
   // Bengali, dark mode, offline reload
   await page.selectOption('#langSelect', 'bn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');

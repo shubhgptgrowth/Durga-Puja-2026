@@ -8,6 +8,7 @@ import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard } from '../radioCard.js';
+import { liveHtml, startLiveCount } from '../livecount.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -98,8 +99,10 @@ function render() {
   if (card.parentNode !== slot) slot.appendChild(card);
   watchCard();
   startSlides(el);
+  startLiveCount();
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
+    ${liveHtml()}
     <ol class="how" aria-label="${t('h.introTitle')}">${[1, 2, 3].map((n) => `<li><span class="how-n">${n}</span><b>${t('how.t' + n)}</b><span>${t('how.s' + n)}</span></li>`).join('')}</ol>
     <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => `<button class="task" data-q="${k}">

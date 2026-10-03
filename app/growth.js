@@ -4,6 +4,7 @@
 import { S, G, idx, t, store, community, nm, fmt, km, dn, todayKey } from './state.js';
 import { toast } from './ui.js';
 import { daySteps, dayDist, earned } from './actions.js';
+import { track } from './analytics.js';
 
 const SRC_RE = /^[a-z0-9_]{1,40}$/;
 const BASE = () => location.origin + location.pathname;
@@ -62,6 +63,7 @@ export function wireShareRow(el, id) {
 }
 
 export async function shareLink(text, url) {
+  track('share', { d: 'link' });
   try {
     if (navigator.share) { await navigator.share({ title: 'Pujo Parikrama', text, url }); return; }
     await navigator.clipboard.writeText(`${text}\n${url}`); toast(t('share.copied'));
@@ -138,6 +140,7 @@ export function drawCard(c) {
 }
 
 export async function shareCard(card, text, filename) {
+  track('share', { d: 'card:' + filename.replace(/\.png$/, '') });
   const cv = drawCard(card);
   const blob = await new Promise((r) => cv.toBlob(r, 'image/png'));
   const file = new File([blob], filename, { type: 'image/png' });
