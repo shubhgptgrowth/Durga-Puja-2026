@@ -1,4 +1,0 @@
-{
-  "_how": "Kolkata Traffic Police notices for this puja. Add each new notice (newest first) when KTP publishes it: title, date (YYYY-MM-DD), url to the official PDF or post. The app shows the latest three. Its website blocks requests from outside India, so this can't be fetched automatically from GitHub.",
-  "notices": []
-}
