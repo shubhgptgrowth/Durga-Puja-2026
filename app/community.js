@@ -84,12 +84,31 @@ export class Community {
     if (!res.ok) throw new Error(`stats ${res.status}`);
     const byPlace = {};
     for (const r of await res.json()) byPlace[r.place_id] = r;
-    this.stats = { at: Date.now(), byPlace };
+    const rr = await fetch(`${this.url}/rest/v1/place_rating_stats?select=place_id,rating,ratings,top_tags`, { headers: this._headers(false) }).catch(() => null);
+    const ratings = rr?.ok ? Object.fromEntries((await rr.json()).map((r) => [r.place_id, r])) : this.stats.ratings || {};
+    this.stats = { at: Date.now(), byPlace, ratings };
     lsSet('community.stats', this.stats);
     this.emit('stats', this.stats);
     return this.stats;
   }
   statFor(id) { return this.stats.byPlace[id] || null; }
+  ratingFor(id) { const r = this.stats.ratings?.[id]; return r?.ratings ? r : null; }
+
+  /* ------------------------------------------------------------ ratings (only after a check-in) */
+  myRating(id) { return lsGet('community.myRatings', {})[id] || null; }
+  async rate(id, stars, tags = []) {
+    const r = await this.rpc('rate_place', { p_place: id, p_stars: stars, p_tags: tags });
+    if (r.status === 'ok') {
+      lsSet('community.myRatings', { ...lsGet('community.myRatings', {}), [id]: { stars, tags } });
+      this.stats.ratings = { ...(this.stats.ratings || {}), [id]: { place_id: id, rating: r.rating, ratings: r.ratings, top_tags: r.top_tags } };
+      lsSet('community.stats', this.stats);
+      this.emit('stats', this.stats);
+    }
+    return r;
+  }
+
+  /* ------------------------------------------------------------ contact profile (opt-in) */
+  saveProfile(name, phone, consent) { return this.rpc('save_profile', { p_name: name, p_phone: phone, p_consent: !!consent }); }
   bump(id, patch) {
     const cur = this.stats.byPlace[id] || { place_id: id, visits: 0, today: 0, last_hour: 0, photos: 0 };
     this.stats.byPlace[id] = { ...cur, ...patch };

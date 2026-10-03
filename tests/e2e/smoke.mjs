@@ -167,7 +167,26 @@ try {
   await waitToast(/#1|Logged/, 'ate here');
   await page.waitForTimeout(300);
   must((await statFor(foodId)).visits >= 1, 'ate-here not counted');
+  // Rate it: only possible after "I ate here"; the average shows on the page and in the list
+  await page.waitForSelector('.sheet.open #rateForm');
+  await page.click('#rateForm [data-star="4"]');
+  await page.click('#rateForm [data-rtag="tasty"]');
+  await page.click('#rateForm [type="submit"]');
+  await waitToast(/Thanks/, 'rating');
+  await page.waitForSelector('.sheet.open .rating-sum b');
+  must((await page.locator('.sheet.open .rating-sum b').innerText()) === '4', 'rating average not shown');
+  must(/for two/.test(await page.locator('.sheet.open').innerText()), 'cost for two missing on the eatery page');
+  if (fake) must((await (await fetch(`${fake.url}/__state`)).json()).ratings === 1, 'rating not stored');
   await closeSheet();
+  must(/★ 4/.test(await page.locator(`#explorePanel .item[data-place="${foodId}"] .rating`).innerText()), 'rating not in the list');
+  // Diet chips: Veg = pure veg, Egg = places with egg dishes
+  await page.click('#exploreBar [data-f="egg"]');
+  const eggN = await count('#explorePanel .item');
+  must(eggN > 0 && eggN === await count('#explorePanel .item .pill.diet:has-text("Egg")'), 'egg filter shows places without egg dishes');
+  await page.click('#exploreBar [data-f="egg"]');
+  await page.click('#exploreBar [data-f="veg"]');
+  must(await count('#explorePanel .item') === G.food.filter((f) => f.veg === 'veg').length, 'veg filter count');
+  await page.click('#exploreBar [data-f="veg"]');
   await shot('05-food');
 
   // Offline check-in queues, then syncs when the network returns
@@ -296,6 +315,29 @@ try {
   await page.fill('#healthSteps', '23456');
   await page.click('#healthForm button[type="submit"]');
   await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '23456');
+
+  // iPhone Shortcut sync: the Shortcut opens …#steps=N with Apple Health's total
+  await page.goto(base + '?src=ios_shortcut#steps=12%2C345.0');
+  await waitToast(/12,345 steps synced/, 'shortcut sync');
+  must(/#me$/.test(page.url()), 'steps link should land on My Pujo with a tidy URL: ' + page.url());
+  await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '12345');
+
+  // Name (and, with consent, phone) for share cards
+  await page.fill('#cName', 'Rina Sen');
+  await page.fill('#cPhone', '98300 12345');
+  await page.check('#cConsent');
+  await page.click('#contactForm button[type="submit"]');
+  await waitToast(/Saved/, 'profile');
+  must(await page.evaluate(async () => (await import('./growth.js')).myCard().title) === "Rina's Pujo 2026", 'name not on the story card');
+  if (fake) {
+    const st = await (await fetch(`${fake.url}/__state`)).json();
+    must(st.profiles.some((x) => x.phone === '+919830012345' && x.name === 'Rina Sen'), 'profile not saved with consent');
+    await page.click('.profile-box summary').catch(() => {});
+    await page.uncheck('#cConsent');
+    await page.click('#contactForm button[type="submit"]');
+    await waitToast(/erased/, 'profile erased');
+    must((await (await fetch(`${fake.url}/__state`)).json()).profiles.length === 0, 'unticking consent must erase the number');
+  }
 
   // Growth: a story-size card, a tracked deep link (?src=…#p=…), the WhatsApp share link, and the open count
   const dl = page.waitForEvent('download', { timeout: 8000 });

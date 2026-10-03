@@ -3,7 +3,7 @@ import csv
 
 from . import config
 
-INT_FIELDS = {"popularity", "crowd_base", "visit_min", "price"}
+INT_FIELDS = {"popularity", "crowd_base", "visit_min", "price", "cost2"}
 FLOAT_FIELDS = {"lat", "lng"}
 LIST_FIELDS = {"tags", "dishes"}
 BOOL_FIELDS = {"verified"}

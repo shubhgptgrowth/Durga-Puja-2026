@@ -2,6 +2,8 @@
 
   * Pandals are a one-off, reviewable step that writes rows into data/raw/pandals.csv:
         python -m pipeline.discovered pandals [--dry-run]
+  * Eateries near pandals, also a reviewable step, into data/raw/food.csv:
+        python -m pipeline.discovered food [--dry-run]
   * Transit (bus stops, routes, autos) and photos are attached at build time by
     attach_transit() and attach_photos(), which enrich() calls when the files exist.
 """
@@ -112,6 +114,96 @@ def apply_pandals(dry_run=False):
     print(f"{len(added)} pandals added", file=sys.stderr)
     if not dry_run:
         with open(raw / "pandals.csv", "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(rows)
+
+
+# ---------------------------------------------------------------- food (CSV writer)
+FOOD_NEAR_M = 500       # walkable from a pandal
+FOOD_PER_PANDAL = 3     # so one busy street doesn't flood the list
+FOOD_MAX_NEW = 240
+# Global chains: the guide is about where to eat during pujo, and these are the same everywhere.
+CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa", re.I)
+CUISINE_DISH = {
+    "bengali": "Bengali thali", "indian": "Indian meals", "north_indian": "North Indian", "south_indian": "Dosa",
+    "mughlai": "Mughlai paratha", "biryani": "Biryani", "chinese": "Chilli chicken", "indo_chinese": "Chowmein",
+    "kathi_roll": "Kathi roll", "roll": "Egg roll", "momo": "Momo", "tibetan": "Momo", "pizza": "Pizza", "burger": "Burger",
+    "sweets": "Mishti", "ice_cream": "Ice cream", "cake": "Cakes", "coffee_shop": "Coffee", "tea": "Tea", "juice": "Juice",
+    "kebab": "Kebab", "sandwich": "Sandwich", "chaat": "Phuchka", "street_food": "Phuchka", "thai": "Thai", "continental": "Continental",
+}
+TYPE_DISHES = {"sweets": ["Mishti", "Sandesh"], "street": ["Rolls", "Snacks"], "drinks": ["Tea", "Coffee"], "restaurant": ["Meals"]}
+HOURS = re.compile(r"^(?:Mo-Su\s+)?(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})$")
+
+
+def _food_type(e):
+    a, sh = e.get("amenity", ""), e.get("shop", "")
+    if sh or a == "ice_cream":
+        return "sweets"
+    return {"fast_food": "street", "food_court": "street", "cafe": "drinks"}.get(a, "restaurant")
+
+
+def _food_row(e, typ, zone, near_name):
+    cuis = [c.strip().lower() for c in re.split(r"[;,]", e.get("cuisine", "")) if c.strip()]
+    dishes = list(dict.fromkeys(CUISINE_DISH[c] for c in cuis if c in CUISINE_DISH))[:3] or TYPE_DISHES[typ]
+    vegtag = (e.get("diet:vegetarian") or e.get("diet:vegan") or "").lower()
+    veg = "veg" if vegtag == "only" or "vegetarian" in cuis or (typ == "sweets" and e.get("shop") != "bakery") else "both"
+    m = HOURS.match((e.get("opening_hours") or "").strip())
+    hours = f"{int(m[1]):02d}:{m[2]}-{int(m[3]):02d}:{m[4]}" if m and m[1] + m[2] != m[3] + m[4] else ""
+    name = e.get("name:en") if re.search(r"[\u0980-\u09FF]", e["name"]) and e.get("name:en") else e["name"]
+    return {"name": name.strip(), "zone": zone, "lat": f"{e['lat']:.6f}", "lng": f"{e['lng']:.6f}", "geo_source": "osm", "type": typ,
+            "dishes": "|".join(dishes), "veg": veg, "price": "2" if typ == "restaurant" else "1", "hours": hours,
+            "note": f"Near {near_name}. Listed on OpenStreetMap; menu and timings not checked by us yet.", "verified": "false"}
+
+
+def apply_food(dry_run=False):
+    disc = _load("food")
+    if not disc:
+        sys.exit("data/discovered/food.json missing: run the discover workflow with what=food first")
+    raw = config.RAW_DIR
+    rows = list(csv.DictReader(open(raw / "food.csv", encoding="utf-8")))
+    fields = list(rows[0].keys()) + [f for f in ("cost2",) if f not in rows[0]]
+    pandals = [r for r in csv.DictReader(open(raw / "pandals.csv", encoding="utf-8"))]
+    pts = [((float(p["lat"]), float(p["lng"])), p) for p in pandals]
+    have = [((float(r["lat"]), float(r["lng"])), r["name"]) for r in rows]
+    ids = {r["id"] for r in rows}
+    per = {}
+    for r in rows:  # curated eateries count toward each pandal's share
+        near = min(pts, key=lambda x: haversine_m(x[0], (float(r["lat"]), float(r["lng"]))))
+        per[near[1]["id"]] = per.get(near[1]["id"], 0) + 1
+
+    def score(e):  # richer OSM entries first; local sweet shops and street food are what people come for
+        return (bool(e.get("cuisine")) + bool(e.get("opening_hours")) + bool(e.get("diet:vegetarian"))
+                + (_food_type(e) in ("sweets", "street")) + (e.get("amenity") == "restaurant" and bool(e.get("cuisine"))))
+
+    cands = []
+    for e in disc["places"]:
+        if not e.get("name") or CHAINS.search(e["name"] + " " + e.get("brand", "")):
+            continue
+        pt = (e["lat"], e["lng"])
+        d, near = min((haversine_m(x[0], pt), x[1]) for x in pts) if pts else (1e9, None)
+        if d <= FOOD_NEAR_M:
+            cands.append((-score(e), d, e, near))
+    cands.sort(key=lambda c: (c[0], c[1]))
+    added = []
+    for _, d, e, near in cands:
+        if len(added) >= FOOD_MAX_NEW:
+            break
+        if per.get(near["id"], 0) >= FOOD_PER_PANDAL:
+            continue
+        pt = (e["lat"], e["lng"])
+        if any(haversine_m(pt, q) < 40 or (haversine_m(pt, q) < 400 and similarity(e["name"], n) > 0.75) for q, n in have):
+            continue
+        row = _food_row(e, _food_type(e), near["zone"], near["name"])
+        fid = re.sub(r"[^a-z0-9]+", "_", row["name"].lower()).strip("_")[:36] or "eatery"
+        while fid in ids:
+            fid += "_2"
+        row = {**{k: "" for k in fields}, "id": fid, **row}
+        rows.append(row); have.append((pt, row["name"])); ids.add(fid); added.append(row)
+        per[near["id"]] = per.get(near["id"], 0) + 1
+    for r in added:
+        print(f"ADD  {r['zone']:20} {r['type']:10} {r['veg']:6} {r['id']:36} {r['name']}", file=sys.stderr)
+    print(f"{len(added)} eateries added ({len(cands)} OSM places within {FOOD_NEAR_M} m of a pandal)", file=sys.stderr)
+    if not dry_run:
+        with open(raw / "food.csv", "w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(rows)
 
 
@@ -285,3 +377,5 @@ def attach_photos(pandals, food):
 if __name__ == "__main__":
     if sys.argv[1:2] == ["pandals"]:
         apply_pandals(dry_run="--dry-run" in sys.argv)
+    elif sys.argv[1:2] == ["food"]:
+        apply_food(dry_run="--dry-run" in sys.argv)

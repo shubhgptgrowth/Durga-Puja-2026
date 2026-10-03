@@ -1,7 +1,8 @@
 /* Pujo Parikrama 2026: entry point. Loads the guide data, wires up the shell and the
  * community sync, then hands off to the views in ./views. */
-import { decodePlan } from './core.js';
-import { S, G, idx, t, store, community, loadGuide, dn, todayKey, savePrefs, bnDigits } from './state.js';
+import { decodePlan, parseSteps } from './core.js';
+import { S, G, idx, t, store, community, loadGuide, dn, todayKey, savePrefs, bnDigits, loc } from './state.js';
+import { dayRec, saveHistory } from './actions.js';
 import { $, $$, go, rerender, toast, setupSheet, setupA11y, VIEWS, sheetIsOpen, initVectorTiles, refreshBaseLayers } from './ui.js';
 import './views/home.js';
 import './views/explore.js';
@@ -12,6 +13,15 @@ import { CONFIG } from './config.js';
 import { captureSource, trackOpen } from './growth.js';
 import { openPlace } from './sheets.js';
 import { initMini } from './radioCard.js';
+
+function syncSteps(s) {
+  const r = parseSteps(s, todayKey());
+  history.replaceState(null, '', location.pathname + location.search + '#me');
+  go('me');
+  if (!r) return toast(t('hs.bad'));
+  dayRec(r.date).health = r.n; saveHistory(); rerender();
+  toast(t('hs.synced', { n: r.n.toLocaleString(loc()) }), 3500);
+}
 
 async function boot() {
   let g;
@@ -36,7 +46,8 @@ async function boot() {
   applyStatic();
 
   const hash = location.hash.slice(1);
-  if (hash.startsWith('plan=')) openSharedPlan(decodePlan(hash.slice(5)));
+  if (hash.startsWith('steps=')) syncSteps(hash.slice(6));
+  else if (hash.startsWith('plan=')) openSharedPlan(decodePlan(hash.slice(5)));
   else if (hash.startsWith('trail=') && g.itineraries.some((i) => i.id === hash.slice(6))) { go('plan'); showTrail(hash.slice(6)); toast(t('share.loaded')); }
   else if (hash.startsWith('p=') && (idx.pandal[hash.slice(2)] || idx.food[hash.slice(2)] || idx.parking[hash.slice(2)])) { go('home'); openPlace(hash.slice(2)); }
   else go(VIEWS.includes(hash) ? hash : hash === 'fit' ? 'me' : hash === 'food' || hash === 'park' ? 'explore' : 'home');

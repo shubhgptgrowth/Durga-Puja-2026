@@ -56,7 +56,7 @@ export function shareRowHtml(id) {
 
 export function wireShareRow(el, id) {
   const story = el.querySelector('#storyShare');
-  if (story) story.onclick = () => shareCard(placeCard(id), `${placeText(id)}\n${placeLink(id, 'ig_story')}`, `pujo-${id}.png`);
+  if (story) story.onclick = () => shareCard(placeCard(id), `${myName() ? t('g.fromName', { name: myName() }) + ' ' : ''}${placeText(id)}\n${placeLink(id, 'ig_story')}`, `pujo-${id}.png`);
   const link = el.querySelector('#linkShare');
   if (link) link.onclick = () => shareLink(placeText(id), placeLink(id, 'share'));
 }
@@ -68,6 +68,9 @@ export async function shareLink(text, url) {
   } catch (e) { if (e?.name !== 'AbortError') prompt(t('share.copyPrompt'), url); }
 }
 
+/** The name people gave in My Pujo (first name only on cards, so a full name isn't posted publicly). */
+export const myName = () => (S.prefs.name || '').trim().split(/\s+/)[0] || '';
+
 /* ---------------- story cards (1080×1920) ---------------- */
 const W = 1080, H = 1920;
 
@@ -77,7 +80,7 @@ export function myCard() {
   const visited = Object.entries(S.checkins).sort((a, b) => a[1].ts - b[1].ts).map(([id]) => idx.pandal[id]).filter(Boolean);
   const foods = new Set(days.flatMap((r) => r.foods || []));
   return {
-    kicker: t('g.cardKicker'), title: t('g.cardTitle'),
+    kicker: t('g.cardKicker'), title: myName() ? t('g.cardTitleName', { name: myName() }) : t('g.cardTitle'),
     stats: [[fmt(visited.length), t('g.cardPandals')], [fmt(steps), t('g.cardSteps')], [km(dist), t('g.cardKm')], [fmt(foods.size), t('g.cardFood')]],
     lines: visited.slice(-5).reverse().map((p) => '• ' + nm(p)),
     foot: t('g.cardBadges', { n: earned().size }),
@@ -91,7 +94,7 @@ export function placeCard(id) {
     kicker: `${dn(day)} · ${z ? (S.prefs.lang === 'bn' && z.short_bn) || z.short : ''}`, title: nm(p), big: true,
     stats: [['★'.repeat(p.popularity), t('g.cardFame')], ...(live?.today ? [[fmt(live.today), t('g.cardHereToday')]] : [])],
     lines: [p.highlight, '', t('g.cardQuiet', { slot: G.data.meta.slots[p.best_slot]?.label || '' }), `🚇 ${p.nearest_metro.name}`],
-    foot: t('g.cardAtPandal'),
+    foot: myName() ? t('g.cardAtPandalName', { name: myName() }) : t('g.cardAtPandal'),
   };
 }
 

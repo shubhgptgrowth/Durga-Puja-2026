@@ -10,6 +10,7 @@ import { prepareMedia } from './media.js';
 import { CONFIG } from './config.js';
 import { shareRowHtml, wireShareRow } from './growth.js';
 import { estVisitors, estDiners, short } from './footfall.js';
+import { hasEgg, cost2, rupees } from './foodinfo.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
@@ -22,7 +23,7 @@ export function statsHtml(id, { compact = false, day = S.day } = {}) {
   if (compact) {
     const live = s?.last_hour >= 5 ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>` : '';
     const real = s?.visits ? `<span class="count">${icon('check', 'sm')} ${fmtCount(s.visits)}</span>` : '';
-    return `${live}${estTxt ? `<span class="count est" title="${t('est.note')}">${icon(food ? 'food' : 'people', 'sm')} ${estTxt}</span>` : ''}${real}`;
+    return `${live}${estTxt ? `<span class="count est" title="${t('est.note')}">${estTxt}</span>` : ''}${real}`;
   }
   return `<div class="stat-row">
     ${est ? `<div class="stat est"><b>≈${short(est)}</b><span>${t(food ? 'est.diners' : 'est.visitors', { day: dn(idx.day[day]) })}</span></div>` : ''}
@@ -30,6 +31,51 @@ export function statsHtml(id, { compact = false, day = S.day } = {}) {
     <div class="stat"><b>${s.last_hour >= 1 ? fmtCount(s.last_hour) : fmtCount(s.today)}</b><span>${s.last_hour >= 1 ? t('c.lastHour') : t('c.today')}</span></div>` : ''}
   </div>${est ? `<p class="fine est-note">${t('est.note')}</p>` : ''}`;
 }
+/* ---------------- ratings: stars from people who checked in ---------------- */
+const TAGS = ['tasty', 'value', 'quick', 'clean', 'friendly', 'crowded', 'pricey', 'slow'];
+const stars = (v) => `<span class="stars" aria-hidden="true" style="--v:${v}">★★★★★</span>`;
+/** "★ 4.3 (27)" for lists; the full summary with the most-said tags on a place's page. */
+export function ratingHtml(id, compact = false) {
+  const r = community.enabled ? community.ratingFor(id) : null;
+  if (compact) return r ? `<span class="rating" title="${t('rt.count', { n: fmtCount(r.ratings) })}">★ ${r.rating} <small>(${fmtCount(r.ratings)})</small></span>` : '';
+  if (!r) return `<p class="fine">${t('rt.none')}</p>`;
+  return `<div class="rating-sum"><b>${r.rating}</b>${stars(r.rating)}<span>${t('rt.count', { n: fmtCount(r.ratings) })}</span></div>
+    ${r.top_tags?.length ? `<div class="btn-row">${r.top_tags.map((x) => `<span class="pill">${t('rt.' + x)}</span>`).join('')}</div>` : ''}`;
+}
+function rateBoxHtml(id) {
+  if (!community.enabled) return '';
+  const mine = community.myRating(id);
+  if (!visitedToday(id) && !mine) return `<p class="fine">${t('rt.visitFirst')}</p>`;
+  const sel = mine?.stars || 0, tags = new Set(mine?.tags || []);
+  return `<form class="rate-box" id="rateForm">
+    <div class="rate-stars" role="radiogroup" aria-label="${t('rt.yourStars')}">${[1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" data-star="${n}" aria-checked="${n === sel}" aria-label="${n}" class="${n <= sel ? 'on' : ''}">★</button>`).join('')}</div>
+    <div class="chips wrap">${TAGS.map((x) => `<button type="button" class="chip sm" data-rtag="${x}" aria-pressed="${tags.has(x)}">${t('rt.' + x)}</button>`).join('')}</div>
+    <button class="btn sm primary" type="submit" ${sel ? '' : 'disabled'}>${mine ? t('rt.update') : t('rt.submit')}</button></form>`;
+}
+function wireRate(el, id, reopen) {
+  const f = $('#rateForm', el); if (!f) return;
+  let sel = community.myRating(id)?.stars || 0;
+  f.querySelectorAll('[data-star]').forEach((b) => (b.onclick = () => {
+    sel = +b.dataset.star;
+    f.querySelectorAll('[data-star]').forEach((x) => { x.classList.toggle('on', +x.dataset.star <= sel); x.setAttribute('aria-checked', String(+x.dataset.star === sel)); });
+    f.querySelector('[type=submit]').disabled = false;
+  }));
+  f.querySelectorAll('[data-rtag]').forEach((b) => (b.onclick = () => {
+    const on = b.getAttribute('aria-pressed') !== 'true', n = f.querySelectorAll('[data-rtag][aria-pressed="true"]').length;
+    if (on && n >= 3) return toast(t('rt.max3'));
+    b.setAttribute('aria-pressed', String(on));
+  }));
+  f.onsubmit = async (e) => {
+    e.preventDefault();
+    const tags = [...f.querySelectorAll('[data-rtag][aria-pressed="true"]')].map((b) => b.dataset.rtag);
+    try {
+      const r = await community.rate(id, sel, tags);
+      toast(t(r.status === 'ok' ? 'rt.thanks' : r.status === 'visit_first' ? 'rt.visitFirst' : 'rt.failed'), 3000);
+      if (r.status === 'ok') { const y = $('#sheet').scrollTop; reopen(); $('#sheet').scrollTop = y; rerender(); }
+    } catch { toast(t('rt.failed')); }
+  };
+}
+
 /** Puja-day chips on a place's page: footfall and the crowd-by-hour chart follow the chosen day. */
 export function dayToggleHtml() {
   return `<div class="day-toggle" role="radiogroup" aria-label="${t('p.dayToggle')}">${G.data.meta.days.filter((d) => d.id !== 'mahalaya').map((d) => `<button type="button" role="radio" data-sday="${d.id}" aria-checked="${S.day === d.id}">${esc(dn(d))}</button>`).join('')}</div>`;
@@ -182,12 +228,13 @@ export function foodSheet(id) {
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
     <h2 class="title">${esc(f.name)}</h2>
     ${actionBar(id, f)}
-    <div class="btn-row" style="margin-top:10px"><span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span><span class="pill">${'₹'.repeat(f.price)}</span><span class="pill">${t('diet.' + f.veg)}</span></div>
+    <div class="btn-row" style="margin-top:10px">${f.hours ? `<span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span>` : ''}<span class="pill">${t('food.for2', { cost: rupees(cost2(f)) })}</span><span class="pill">${t('diet.' + f.veg)}</span>${hasEgg(f) ? `<span class="pill">🥚 ${t('diet.egg')}</span>` : ''}</div>
     ${galleryHtml(f.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
+    ${community.enabled ? `<h3 class="sh">${t('rt.title')}</h3>${ratingHtml(id)}${rateBoxHtml(id)}` : ''}
     ${shareRowHtml(id)}
-    <p class="lead">${esc(f.note)}</p>
+    ${f.note ? `<p class="lead">${esc(f.note)}</p>` : ''}
     <h3 class="sh">${t('food.mustTry')}</h3>
     ${dishesHtml(f)}
     <h3 class="sh">${t('food.walkable')}</h3>
@@ -196,7 +243,7 @@ export function foodSheet(id) {
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
   (el) => {
-    wireVisit(el, id, () => foodSheet(id)); wireDayToggle(el, () => foodSheet(id));
+    wireVisit(el, id, () => foodSheet(id)); wireDayToggle(el, () => foodSheet(id)); wireRate(el, id, () => foodSheet(id));
     wireGallery(el, f.photos || [], () => foodSheet(id)); wireShareRow(el, id);
     const dp = G.data.dish_photos || {};
     el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));

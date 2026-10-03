@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   hav, orderRoute, pathLen, crowdIndex, stepsFor, kcalFor, judgeFix, StepDetector,
-  routeUrls, isOpen, hhmm, encodePlan, decodePlan,
+  routeUrls, isOpen, hhmm, encodePlan, decodePlan, parseSteps,
 } from '../../app/core.js';
+import { dietMatch, hasEgg, cost2 } from '../../app/foodinfo.js';
 import { STR } from '../../app/i18n.js';
 
 const G = JSON.parse(readFileSync(new URL('../../app/data/guide.json', import.meta.url)));
@@ -188,13 +189,41 @@ test('every translation key used in the app exists in both languages', () => {
   // Families built dynamically ('slot.' + id, ...): every member must exist.
   const families = {
     'slot.': Object.keys(G.meta.slots), 'crowd.': ['quiet', 'moderate', 'busy', 'packed'], 'car.': ['ok', 'limited', 'avoid'],
-    'adv.': ['ok', 'limited', 'avoid'], 'type.': [...new Set(G.food.map((f) => f.type))], 'diet.': ['veg', 'nonveg', 'both'],
+    'adv.': ['ok', 'limited', 'avoid'], 'type.': [...new Set(G.food.map((f) => f.type))], 'diet.': ['veg', 'nonveg', 'both', 'egg'],
     'kind.': [...new Set(G.parking.map((p) => p.kind))], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
     'sort.': ['popular', 'quiet', 'near', 'live'], 'stars.': ['1', '3', '4', '5'], 'budget.': ['120', '180', '240', '360', '600'],
-    'ff.': ['veg', 'cheap', 'sweets', 'street', 'open'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],
+    'ff.': ['veg', 'nonveg', 'egg', 'sweets', 'street', 'open'], 'hs.ios': ['1', '2', '3', '4'],
+    'rt.': ['tasty', 'value', 'quick', 'clean', 'friendly', 'crowded', 'pricey', 'slow'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],
     'b.': ['first', 'five', 'fifteen', 'thirty', 'zone', 'k10', 'ashtami', 'dawn', 'owl', 'foodie', 'ns', 'goal', 'lens'],
   };
   for (const [prefix, ids] of Object.entries(families)) for (const id of ids) used.add(prefix + id);
   const missing = [...used].filter((k) => !STR.en[k] || !STR.bn[k] || !STR.hi[k]);
   assert.deepEqual(missing, [], 'missing translations');
+});
+
+test('iPhone Shortcut step links', () => {
+  assert.deepEqual(parseSteps('8432', '2026-10-18'), { n: 8432, date: '2026-10-18' });
+  assert.deepEqual(parseSteps('8%2C432.6', '2026-10-18'), { n: 8433, date: '2026-10-18' });
+  assert.deepEqual(parseSteps('500000&date=2026-10-17', '2026-10-18'), { n: 100000, date: '2026-10-17' });
+  assert.equal(parseSteps('12&date=2026-10-30', '2026-10-18').date, '2026-10-18', 'future dates fall back to today');
+  assert.equal(parseSteps('abc', '2026-10-18'), null);
+  assert.equal(parseSteps('-5', '2026-10-18').n, 5, 'a stray minus sign is ignored, not negative');
+});
+
+test('food diet filters, egg detection and cost for two', () => {
+  const roll = { veg: 'both', dishes: ['Egg roll'], type: 'street', price: 1 };
+  const sweets = { veg: 'veg', dishes: ['Sandesh'], type: 'sweets', price: 1 };
+  const cabin = { veg: 'nonveg', dishes: ['Fish kabiraji', 'Mughlai paratha'], type: 'cabin', price: 2 };
+  assert.ok(hasEgg(roll) && hasEgg(cabin) && !hasEgg(sweets));
+  assert.ok(!hasEgg({ veg: 'both', dishes: ['Biryani', 'Dimsum'], type: 'restaurant', price: 2 }), 'dimsum is not dim (egg)');
+  const pick = (...d) => [roll, sweets, cabin].filter((f) => dietMatch(f, new Set(d)));
+  assert.deepEqual(pick(), [roll, sweets, cabin]);
+  assert.deepEqual(pick('veg'), [sweets]);
+  assert.deepEqual(pick('nonveg'), [roll, cabin]);
+  assert.deepEqual(pick('egg'), [roll, cabin]);
+  assert.deepEqual(pick('veg', 'egg'), [roll, sweets, cabin], 'several chips = any of them');
+  assert.equal(cost2(roll), 150);
+  assert.equal(cost2(cabin), 500);
+  assert.equal(cost2({ ...cabin, cost2: 650 }), 650, 'a checked cost2 wins');
+  for (const f of G.food) assert.ok(cost2(f) >= 100 && cost2(f) <= 3000, f.id);
 });
