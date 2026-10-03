@@ -140,6 +140,14 @@ try {
   await page.selectOption('#areaSelect', 'a:north');
   must(await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'area filter count');
   await page.click('#explorePanel .item[data-place="bagbazar"]');
+  // Puja-day chips on the page: footfall follows the chosen day (Saptami by default before the pujo)
+  await page.waitForSelector('.sheet.open .day-toggle [data-sday="saptami"][aria-checked="true"]');
+  const estOf = async () => (await page.locator('.sheet.open .stat.est b').innerText()).trim();
+  const sapt = await estOf();
+  await page.click('.sheet.open [data-sday="panchami"]');
+  await page.waitForSelector('.sheet.open [data-sday="panchami"][aria-checked="true"]');
+  must((await estOf()) !== sapt, 'footfall estimate should change with the day');
+  await page.click('.sheet.open [data-sday="saptami"]');
   await page.click('#visitBtn');
   await page.waitForSelector('#privBtn');
   must(/away/.test(await page.locator('#verifyBox').innerText()), 'too-far notice missing');

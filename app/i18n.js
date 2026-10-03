@@ -236,7 +236,8 @@ export const STR = {
     'lingo.heroToday': 'Thakur dekhte cholo! 🪔',
     'r.padDhak': 'Dhak bajao',
     'r.padShankh': 'Shankh bajao',
-    'r.soundCredit': 'Dhak and shankh recordings: Sumita Roy Dutta, Tito Dutta and others, via Wikimedia Commons (CC BY-SA / CC BY).',
+    'r.soundCredit': 'Dhak and shankh recordings: Sumita Roy Dutta, Tito Dutta and Jyoti Chiring, via Wikimedia Commons (CC BY-SA / CC BY).',
+    'p.dayToggle': 'Puja day',
   },
   bn: {
 
@@ -458,7 +459,8 @@ export const STR = {
     'lingo.heroToday': 'ঠাকুর দেখতে চলো! 🪔',
     'r.padDhak': 'ঢাক বাজাও',
     'r.padShankh': 'শাঁখ বাজাও',
-    'r.soundCredit': 'ঢাক আর শাঁখের রেকর্ডিং: সুমিতা রায় দত্ত, টিটো দত্ত ও অন্যরা, উইকিমিডিয়া কমন্স থেকে (CC BY-SA / CC BY)।',
+    'r.soundCredit': 'ঢাক আর শাঁখের রেকর্ডিং: সুমিতা রায় দত্ত, টিটো দত্ত ও জ্যোতি চিরিং, উইকিমিডিয়া কমন্স থেকে (CC BY-SA / CC BY)।',
+    'p.dayToggle': 'পুজোর দিন',
   },
 };
 STR.hi = HI;

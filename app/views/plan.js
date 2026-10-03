@@ -126,7 +126,7 @@ export function presetPlan(zones, startId, opts = {}) {
   form.start = 't:' + (startId || zoneOf(zones[0]).route.start);
   if (opts.time) form.time = opts.time;
   if (opts.budget) form.budget = String(opts.budget);
-  if (opts.day && idx.day[opts.day]) { S.day = opts.day; store.set('day', S.day); }
+  if (opts.day && idx.day[opts.day]) { S.day = opts.day; }
   go('plan'); buildCustom();
 }
 
@@ -320,7 +320,7 @@ function wire(el, plan) {
         if (b === '720' && h >= 13) $('#planTime').value = '10:00';
         if (b === '600' && h < 16) $('#planTime').value = '19:00';
       }
-      S.day = $('#planDay').value; store.set('day', S.day); form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
+      S.day = $('#planDay').value; form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
     f.onsubmit = (e) => { e.preventDefault(); f.onchange(); buildCustom(); };
   }
 }

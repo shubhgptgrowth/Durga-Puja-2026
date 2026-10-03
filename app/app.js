@@ -25,7 +25,8 @@ async function boot() {
   const todayDay = g.meta.days.find((d) => d.date === todayKey());
   // The puja day drives crowd estimates. It follows the calendar; My route and the Map's crowd panel can look at another day.
   const ahead = g.meta.days.find((d) => d.date > todayKey() && d.id !== 'mahalaya');
-  S.day = todayDay ? todayDay.id : store.get('day', null) || (ahead ? 'saptami' : 'dashami');
+  // Not remembered between visits: a day picked while planning (e.g. the 6-day plan's Panchami) shouldn't become everyone's default.
+  S.day = todayDay && todayDay.id !== 'mahalaya' ? todayDay.id : ahead ? 'saptami' : 'dashami';
   const lf = store.get('lastFix', null);
   if (lf && Date.now() - lf.t < 30 * 60e3) S.me = [lf[0], lf[1]];
 

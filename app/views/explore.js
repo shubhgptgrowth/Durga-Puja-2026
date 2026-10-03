@@ -162,7 +162,7 @@ function wire(view) {
   const hr = $('#hourRange', view);
   if (hr) hr.oninput = () => { S.hour = +hr.value; const y = window.scrollY; render(); window.scrollTo(0, y); $('#hourRange')?.focus(); };
   const cd = $('#crowdDay', view);
-  if (cd) cd.onchange = () => { moreOpen = true; S.day = cd.value; store.set('day', S.day); const y = window.scrollY; render(); window.scrollTo(0, y); };
+  if (cd) cd.onchange = () => { moreOpen = true; S.day = cd.value; const y = window.scrollY; render(); window.scrollTo(0, y); };
   const so = $('#sortSelect', view);
   if (so) so.onchange = () => {
     S.explore.sort = so.value;

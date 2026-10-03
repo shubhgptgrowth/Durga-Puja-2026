@@ -14,10 +14,10 @@ import { estVisitors, estDiners, short } from './footfall.js';
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
 /* ---------------- shared bits ---------------- */
-export function statsHtml(id, { compact = false } = {}) {
+export function statsHtml(id, { compact = false, day = S.day } = {}) {
   const s = community.enabled ? community.statFor(id) : null;
   const food = placeKind(id) === 'food', place = food ? idx.food[id] : idx.pandal[id];
-  const est = place ? (food ? estDiners(place) : estVisitors(place)) : 0;
+  const est = place ? (food ? estDiners(place, day) : estVisitors(place, day)) : 0;
   const estTxt = est ? t(food ? 'est.dinersShort' : 'est.dayShort', { n: short(est) }) : '';
   if (compact) {
     const live = s?.last_hour >= 5 ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>` : '';
@@ -25,10 +25,22 @@ export function statsHtml(id, { compact = false } = {}) {
     return `${live}${estTxt ? `<span class="count est" title="${t('est.note')}">${icon(food ? 'food' : 'people', 'sm')} ${estTxt}</span>` : ''}${real}`;
   }
   return `<div class="stat-row">
-    ${est ? `<div class="stat est"><b>≈${short(est)}</b><span>${t(food ? 'est.diners' : 'est.visitors', { day: dn(idx.day[S.day]) })}</span></div>` : ''}
+    ${est ? `<div class="stat est"><b>≈${short(est)}</b><span>${t(food ? 'est.diners' : 'est.visitors', { day: dn(idx.day[day]) })}</span></div>` : ''}
     ${s ? `<div class="stat"><b>${fmtCount(s.visits)}</b><span>${t(food ? 'c.ate' : 'c.visits')}</span></div>
     <div class="stat"><b>${s.last_hour >= 1 ? fmtCount(s.last_hour) : fmtCount(s.today)}</b><span>${s.last_hour >= 1 ? t('c.lastHour') : t('c.today')}</span></div>` : ''}
   </div>${est ? `<p class="fine est-note">${t('est.note')}</p>` : ''}`;
+}
+/** Puja-day chips on a place's page: footfall and the crowd-by-hour chart follow the chosen day. */
+export function dayToggleHtml() {
+  return `<div class="day-toggle" role="radiogroup" aria-label="${t('p.dayToggle')}">${G.data.meta.days.filter((d) => d.id !== 'mahalaya').map((d) => `<button type="button" role="radio" data-sday="${d.id}" aria-checked="${S.day === d.id}">${esc(dn(d))}</button>`).join('')}</div>`;
+}
+function wireDayToggle(el, reopen) {
+  el.querySelectorAll('[data-sday]').forEach((b) => (b.onclick = () => {
+    if (S.day === b.dataset.sday) return;
+    S.day = b.dataset.sday;
+    const y = $('#sheet').scrollTop; reopen(); $('#sheet').scrollTop = y;
+    rerender(); // lists behind the sheet show the same day's numbers
+  }));
 }
 export const crowdPill = (c) => `<span class="pill ${crowdLevel(c)}"><span class="dot"></span>${crowdWord(c)}</span>`;
 export function agoText(iso) {
@@ -134,6 +146,7 @@ export function pandalSheet(id) {
     ${actionBar(id, p)}
     <div class="btn-row" style="margin-top:10px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
     ${galleryHtml(p.photos)}
+    ${dayToggleHtml()}
     ${statsHtml(id)}
     ${shareRowHtml(id)}
     <p class="lead">${esc(p.highlight)}</p>
@@ -152,7 +165,7 @@ export function pandalSheet(id) {
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>`,
   (el) => {
-    wireVisit(el, id, () => pandalSheet(id));
+    wireVisit(el, id, () => pandalSheet(id)); wireDayToggle(el, () => pandalSheet(id));
     wireGallery(el, p.photos || [], () => pandalSheet(id)); wireShareRow(el, id);
     el.querySelectorAll('[data-food]').forEach((li) => (li.onclick = () => foodSheet(li.dataset.food)));
     el.querySelectorAll('[data-park]').forEach((li) => (li.onclick = () => parkSheet(li.dataset.park)));
@@ -171,6 +184,7 @@ export function foodSheet(id) {
     ${actionBar(id, f)}
     <div class="btn-row" style="margin-top:10px"><span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span><span class="pill">${'₹'.repeat(f.price)}</span><span class="pill">${t('diet.' + f.veg)}</span></div>
     ${galleryHtml(f.photos)}
+    ${dayToggleHtml()}
     ${statsHtml(id)}
     ${shareRowHtml(id)}
     <p class="lead">${esc(f.note)}</p>
@@ -182,7 +196,7 @@ export function foodSheet(id) {
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
   (el) => {
-    wireVisit(el, id, () => foodSheet(id));
+    wireVisit(el, id, () => foodSheet(id)); wireDayToggle(el, () => foodSheet(id));
     wireGallery(el, f.photos || [], () => foodSheet(id)); wireShareRow(el, id);
     const dp = G.data.dish_photos || {};
     el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));
