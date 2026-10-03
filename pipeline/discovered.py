@@ -118,11 +118,16 @@ def apply_pandals(dry_run=False):
 
 
 # ---------------------------------------------------------------- food (CSV writer)
-FOOD_NEAR_M = 500       # walkable from a pandal
-FOOD_PER_PANDAL = 3     # so one busy street doesn't flood the list
+FOOD_NEAR_M = 600       # walkable from a pandal (the discover radius)
+FOOD_PER_PANDAL = 5     # so one busy street does not flood the list
 FOOD_MAX_NEW = 240
 # Global chains: the guide is about where to eat during pujo, and these are the same everywhere.
-CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa", re.I)
+CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa|taco bell|barbeque nation|monginis|blue tokai|bean stop|caterer", re.I)
+GENERIC = re.compile(r"^(tea ?shop|tea stall|cakes?|roll shop|phuchka stand|restaurant|hotel|cafe|canteen|sweets?|bakery)$", re.I)
+SWEET_WORDS = re.compile(r"sweet|mishti|misti|mithai|mistanna|bhandar", re.I)
+BAKE_WORDS = re.compile(r"cake|bake|pastry|patisserie|cookie|kookie|caf[eé]|dough|amore|pie\b", re.I)
+VEG_NAME = re.compile(r"pure veg|\bveg\b|vegetarian|vaishnav|niramish", re.I)
+FOOD_PER_NAME = 2       # at most two branches of the same name
 CUISINE_DISH = {
     "bengali": "Bengali thali", "indian": "Indian meals", "north_indian": "North Indian", "south_indian": "Dosa",
     "mughlai": "Mughlai paratha", "biryani": "Biryani", "chinese": "Chilli chicken", "indo_chinese": "Chowmein",
@@ -145,10 +150,13 @@ def _food_row(e, typ, zone, near_name):
     cuis = [c.strip().lower() for c in re.split(r"[;,]", e.get("cuisine", "")) if c.strip()]
     dishes = list(dict.fromkeys(CUISINE_DISH[c] for c in cuis if c in CUISINE_DISH))[:3] or TYPE_DISHES[typ]
     vegtag = (e.get("diet:vegetarian") or e.get("diet:vegan") or "").lower()
-    veg = "veg" if vegtag == "only" or "vegetarian" in cuis or (typ == "sweets" and e.get("shop") != "bakery") else "both"
+    # Mishti shops are vegetarian; bakeries and cake shops usually use egg, so they stay "both".
+    veg = "veg" if vegtag == "only" or "vegetarian" in cuis or VEG_NAME.search(e["name"]) or e.get("amenity") == "ice_cream" or (
+        e.get("shop") in ("confectionery", "sweets") and (SWEET_WORDS.search(e["name"]) or not BAKE_WORDS.search(e["name"]))) else "both"
     m = HOURS.match((e.get("opening_hours") or "").strip())
     hours = f"{int(m[1]):02d}:{m[2]}-{int(m[3]):02d}:{m[4]}" if m and m[1] + m[2] != m[3] + m[4] else ""
     name = e.get("name:en") if re.search(r"[\u0980-\u09FF]", e["name"]) and e.get("name:en") else e["name"]
+    name = name.split(";")[0]
     return {"name": name.strip(), "zone": zone, "lat": f"{e['lat']:.6f}", "lng": f"{e['lng']:.6f}", "geo_source": "osm", "type": typ,
             "dishes": "|".join(dishes), "veg": veg, "price": "2" if typ == "restaurant" else "1", "hours": hours,
             "note": f"Near {near_name}. Listed on OpenStreetMap; menu and timings not checked by us yet.", "verified": "false"}
@@ -176,14 +184,14 @@ def apply_food(dry_run=False):
 
     cands = []
     for e in disc["places"]:
-        if not e.get("name") or CHAINS.search(e["name"] + " " + e.get("brand", "")):
+        if not e.get("name") or CHAINS.search(e["name"] + " " + e.get("brand", "")) or GENERIC.match(e["name"].split(";")[0].strip()):
             continue
         pt = (e["lat"], e["lng"])
         d, near = min((haversine_m(x[0], pt), x[1]) for x in pts) if pts else (1e9, None)
         if d <= FOOD_NEAR_M:
             cands.append((-score(e), d, e, near))
     cands.sort(key=lambda c: (c[0], c[1]))
-    added = []
+    added, names = [], {}
     for _, d, e, near in cands:
         if len(added) >= FOOD_MAX_NEW:
             break
@@ -193,9 +201,16 @@ def apply_food(dry_run=False):
         if any(haversine_m(pt, q) < 40 or (haversine_m(pt, q) < 400 and similarity(e["name"], n) > 0.75) for q, n in have):
             continue
         row = _food_row(e, _food_type(e), near["zone"], near["name"])
+        key = re.sub(r"[^a-z0-9]+", "", row["name"].lower())
+        if names.get(key, 0) >= FOOD_PER_NAME:
+            continue
+        names[key] = names.get(key, 0) + 1
         fid = re.sub(r"[^a-z0-9]+", "_", row["name"].lower()).strip("_")[:36] or "eatery"
+        if fid in ids:
+            fid = f"{fid}_{row['zone']}"[:48]
+        n = 2
         while fid in ids:
-            fid += "_2"
+            fid = f"{fid.rsplit('_', 1)[0] if n > 2 else fid}_{n}"; n += 1
         row = {**{k: "" for k in fields}, "id": fid, **row}
         rows.append(row); have.append((pt, row["name"])); ids.add(fid); added.append(row)
         per[near["id"]] = per.get(near["id"], 0) + 1

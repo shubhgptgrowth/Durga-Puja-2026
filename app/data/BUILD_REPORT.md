@@ -1,13 +1,13 @@
-# Build report — 2026-10-03T15:15:05+00:00
+# Build report — 2026-10-03T21:20:38+00:00
 
-Bundle version `311a0c81d499`
+Bundle version `ef6a8aa691c4`
 
 | Entity | Count |
 |---|---|
 | regions | 5 |
 | zones | 13 |
 | pandals | 107 |
-| food | 58 |
+| food | 175 |
 | parking | 14 |
 | transit | 24 |
 | itineraries | 6 |
@@ -42,8 +42,8 @@ Bundle version `311a0c81d499`
 | Salt Lake + Lake Town Hop | 13 | 16:00–00:03 | 13.41 km | 19,581 |
 | The All-Nighter: North → South | 10 | 22:00–07:13 | 11.21 km | 16,375 |
 
-## Warnings (181)
+## Warnings (298)
 
-- 179 records are not ground-verified yet
-- zones (baguiati_kestopur): has no pandals yet, so it is left out of the bundle
+- 296 records are not ground-verified yet
 - zones (new_town): has no pandals yet, so it is left out of the bundle
+- zones (baguiati_kestopur): has no pandals yet, so it is left out of the bundle

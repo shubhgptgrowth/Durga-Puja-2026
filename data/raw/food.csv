@@ -1,59 +1,176 @@
-id,name,zone,lat,lng,geo_source,type,dishes,veg,price,hours,note,verified
-mitra_cafe,Mitra Cafe (Sovabazar),north,22.5945,88.3660,curated,cabin,Fish kabiraji|Brain chop|Mutton cutlet,nonveg,2,12:00-23:00,A century-old cabin. The kabiraji is the reason you queue.,false
-girish_nakur,Girish Chandra Dey & Nakur Chandra Nandy,north,22.5928,88.3642,curated,sweets,Nolen gur sandesh|Jolbhora|Monohara,veg,1,08:00-21:00,Sandesh royalty since 1844. Sells out by evening.,false
-chittaranjan,Chittaranjan Mistanna Bhandar,north,22.6001,88.3716,curated,sweets,Rosogolla|Amritakumbha|Mishti doi,veg,1,07:00-22:00,The Shyambazar sweet stop.,false
-golbari,Golbari,north,22.6003,88.3728,curated,restaurant,Kosha mangsho|Paratha,nonveg,2,12:00-23:30,The kosha mangsho at Shyambazar five-point crossing is legendary.,false
-allens_kitchen,Allen's Kitchen,north,22.5938,88.3648,curated,cabin,Prawn cutlet|Chicken stew,nonveg,2,16:00-21:00,Tiny 1900s cabin. Cutlets are fried in pure ghee.,false
-royal_indian,Royal Indian Hotel,central,22.5793,88.3556,curated,restaurant,Mutton biryani|Chicken chaap|Rezala,nonveg,2,11:00-23:00,Chitpur's Mughlai institution since 1905.,false
-putiram,Putiram,central,22.5745,88.3628,curated,sweets,Kochuri|Jilipi|Mohanbhog,veg,1,07:00-21:00,The College Street breakfast: kochuri and jilipi.,false
-paramount,Paramount,central,22.5753,88.3644,curated,drinks,Daab sherbet|Green mango sherbet,veg,1,11:00-21:00,"Sherbet parlour since 1918, on the corner of College Square.",false
-coffee_house,Indian Coffee House,central,22.576097,88.363891,osm,cabin,Infusion|Chicken kabiraji|Mutton cutlet,both,1,09:00-21:00,Adda under high ceilings on College Street.,false
-bhim_nag,Bhim Chandra Nag,central,22.5680,88.3605,curated,sweets,Ledikeni|Sandesh,veg,1,08:00-21:30,"Home of the ledikeni, a short walk from Santosh Mitra Square.",false
-aminia,Aminia (New Market),central,22.5600,88.3521,curated,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,A classic biryani pit stop in the New Market area.,false
-nizams,Nizam's,central,22.562144,88.353538,osm,street,Kathi roll|Beef roll|Chicken roll,nonveg,1,12:00-23:30,The kathi roll is said to have been born here.,false
-vivekananda_park_phuchka,Vivekananda Park Phuchka,south_lakemarket,22.5195,88.3590,curated,street,Phuchka|Churmur|Dahi phuchka,veg,1,15:00-23:00,Often called Kolkata's most famous phuchka. Ask for the tok-jhal-mishti.,false
-lake_market_stalls,Lake Market Telebhaja Stalls,south_lakemarket,22.5190,88.3530,curated,street,Beguni|Alur chop|Egg roll,both,1,16:00-01:00,Late-night fuel between Tridhara and 66 Pally.,false
-balwant_singh,Balwant Singh's Eating House,bhowanipore,22.537783,88.344129,osm,cabin,Doodh cha|Tadka|Paratha,veg,1,06:00-23:00,Bhowanipore's milky tea and dhaba-style tadka.,false
-kewpies,Kewpie's Kitchen,bhowanipore,22.5380,88.3505,curated,restaurant,Bengali thali|Daab chingri|Bhetki paturi,both,3,12:30-22:30,A home-style Bengali thali close to Maddox Square.,false
-gariahat_stalls,Gariahat Mor Street Food,south_gariahat,22.5185,88.3665,curated,street,Egg chicken roll|Chowmein|Momo,both,1,15:00-01:00,"Cheap and quick, right on the Ekdalia–Singhi Park loop.",false
-bhojohori_manna,Bhojohori Manna (Ekdalia),south_gariahat,22.5168,88.3702,curated,restaurant,Bhetki paturi|Kosha mangsho|Chingri malaikari,both,2,12:00-22:30,A Bengali chain started here. Book ahead during puja.,false
-ballygunge_place,6 Ballygunge Place,south_gariahat,22.527799,88.368637,osm,restaurant,Daab chingri|Bengali thali,both,3,12:00-23:00,An upscale Bengali spread in a heritage house.,false
-arsalan,Arsalan (Park Circus),south_gariahat,22.543872,88.365952,osm,restaurant,Mutton biryani|Chicken chaap,nonveg,2,12:00-00:00,A biryani heavyweight on the way north from Gariahat.,false
-suruchi_stalls,New Alipore Puja Stalls,southwest,22.4970,88.3415,curated,street,Fish fry|Egg devil|Phuchka,both,1,16:00-02:00,The pop-up food row that grows around Suruchi Sangha.,false
-behala_chowrasta,Behala Chowrasta Stalls,southwest,22.4990,88.3180,curated,street,Moghlai paratha|Rolls|Mishti,both,1,15:00-00:00,Street classics at the Behala crossing.,false
-city_centre_food,City Centre 1 Food Court,salt_lake,22.5885,88.4083,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Air-conditioned toilets and seats, which is gold during pujo.",false
-central_park_stalls,Central Park Mela Stalls,salt_lake,22.5850,88.4170,curated,street,Fish fry|Kebab|Ice cream,both,1,16:00-23:00,Mela food near BJ Block.,false
-lake_town_stalls,Lake Town Footbridge Stalls,lake_town_dumdum,22.6030,88.4030,curated,street,Phuchka|Chowmein|Rolls,both,1,15:00-02:00,Pop-up stalls along the Sreebhumi queue.,false
-dumdum_park_stalls,Dum Dum Park Puja Stalls,lake_town_dumdum,22.6175,88.4135,curated,street,Fish fry|Mughlai paratha,both,1,16:00-01:00,Food row between the Dum Dum Park pandals.,false
-bosepukur_stalls,Bosepukur Puja Food Row,kasba,22.5140,88.3902,curated,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,Pop-up stalls between the two Bosepukur pandals.,false
-sakherbazar_stalls,Sakherbazar Puja Food Stalls,southwest,22.481515,88.313553,curated,street,Fish fry|Egg roll|Phuchka,both,1,16:00-01:00,The food row on the Diamond Harbour Road side of Barisha Club.,false
-naktala_stalls,Naktala Puja Food Stalls,tolly_naktala,22.475191,88.367075,curated,street,Phuchka|Fish fry|Chicken roll,both,1,16:00-01:00,The food row that grows around Naktala Udayan Sangha during the pujas.,false
-sen_mahasay,Sen Mahasay (Shyambazar),north,22.5990,88.3718,curated,sweets,Abar khabo|Nolen gur sandesh|Mishti doi,veg,1,08:00-22:00,"An old Shyambazar sweet house, a few steps from the five-point crossing.",false
-laxmi_narayan_shaw,Laxmi Narayan Shaw & Sons,north,22.5918,88.3688,curated,street,Alur chop|Beguni|Fuluri,veg,1,16:00-22:00,"The century-old telebhaja shop near Hedua, said to have fed Netaji.",false
-nobin_chandra_das,Nobin Chandra Das & Sons (Bagbazar),north,22.6038,88.3665,curated,sweets,Rosogolla|Sandesh|Mishti doi,veg,1,08:00-21:30,"The family that gave Kolkata the rosogolla, close to Bagbazar Sarbojanin.",false
-dilkhusha_cabin,Dilkhusha Cabin,central,22.5738,88.3622,curated,cabin,Kabiraji cutlet|Mutton cutlet|Fish fry,nonveg,2,12:00-22:00,"An old-school cabin on MG Road, just round the corner from College Street.",false
-favourite_cabin,Favourite Cabin,central,22.5733,88.3655,curated,cabin,Toast and butter|Tea|Pudding,veg,1,08:00-21:00,A tea cabin since 1918 where revolutionaries once met. Simple and cheap.,false
-swadhin_bharat_hindu_hotel,Swadhin Bharat Hindu Hotel,central,22.5743,88.3651,curated,restaurant,Rice and fish curry|Shukto|Chutney,nonveg,1,10:00-16:00,"A pice hotel off College Square, serving Bengali lunch on brass plates.",false
-anadi_cabin,Anadi Cabin,central,22.5627,88.3522,curated,cabin,Mughlai paratha|Kosha mangsho,nonveg,2,11:00-22:30,The Esplanade cabin famous for its thick egg mughlai paratha.,false
-kc_das_esplanade,K.C. Das (Esplanade),central,22.5640,88.3510,curated,sweets,Rosogolla|Rasmalai|Sandesh,veg,1,08:00-22:00,The canned-rosogolla family's flagship at Esplanade.,false
-chitto_babur_dokan,Chitto Babur Dokan,central,22.5648,88.3492,curated,street,Chicken stew|Toast|Fish fry,nonveg,1,08:00-20:00,Office-goers' stew and toast stall on Dacres Lane.,false
-sabir_hotel,Sabir's Hotel,central,22.566851,88.356025,osm,restaurant,Mutton rezala|Chicken chaap|Tandoori roti,nonveg,2,11:00-23:00,Old Chandni Chowk spot where the rezala is the reason to go.,false
-haji_allauddin,Haji Allauddin Sweets,central,22.5795,88.3566,curated,sweets,Habshi halwa|Sohan halwa|Lachcha,veg,1,09:00-23:00,"Old Chitpur sweet shop near Nakhoda Masjid, a short walk from Md. Ali Park.",false
-adams_kabab,Adam's Kabab Shop,central,22.5792,88.3555,curated,street,Beef kabab|Sheekh kabab|Roomali roti,nonveg,1,17:00-23:00,A tiny kabab shop in the Zakaria Street lanes.,false
-tiretta_bazaar_breakfast,Tiretta Bazaar Chinese Breakfast,central,22.5733,88.3528,curated,street,Pork momo|Fish ball soup|Sausages,nonveg,1,05:30-08:30,"Old Chinatown's dawn street breakfast. Over by 8:30 am, so go after an all-nighter.",false
-nahoums,Nahoum & Sons,central,22.560164,88.352978,osm,sweets,Plum cake|Lemon tart|Cheese samosa,both,1,09:30-20:00,"The Jewish bakery inside New Market, open since 1902.",false
-peter_cat,Peter Cat,central,22.5527,88.3527,curated,restaurant,Chelo kebab|Sizzlers,nonveg,3,11:00-23:30,The Park Street chelo kebab queue moves faster after midnight.,false
-mocambo,Mocambo,central,22.5530,88.3536,curated,restaurant,Devilled crab|Fish a la diana|Baked Alaska,nonveg,3,11:00-23:30,Park Street's continental old-timer. Expect a wait during pujo.,false
-flurys,Flurys,central,22.5531,88.3513,curated,restaurant,English breakfast|Rum ball|Pastries,both,2,07:30-22:00,"The 1927 Park Street tearoom, good for an early breakfast.",false
-kusum_rolls,Kusum Rolls,central,22.5535,88.3529,curated,street,Double egg chicken roll|Mutton roll|Paneer roll,both,1,11:00-23:30,Park Street's busy roll counter.,false
-shiraz_golden,Shiraz Golden Restaurant,bhowanipore,22.5476,88.3635,curated,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,Biryani at the Park Street and AJC Bose Road crossing.,false
-dollys_tea_shop,Dolly's Tea Shop,south_gariahat,22.5090,88.3645,curated,drinks,Iced tea|Masala chai|Toast,veg,1,10:00-21:00,"A tea bar in Dakshinapan, handy between the Dhakuria and Jodhpur Park pandals.",false
-south_city_food,South City Mall Food Court,south_gariahat,22.5017,88.3618,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Seats, air conditioning and clean toilets near Jodhpur Park.",false
-zeeshan,Zeeshan (Park Circus),bhowanipore,22.541328,88.365897,osm,restaurant,Mutton biryani|Chicken chaap|Firni,nonveg,2,12:00-00:00,A Park Circus biryani favourite near the Adi Sammilati pandal.,false
-balaram_mullick,Balaram Mullick & Radharaman Mullick,bhowanipore,22.5297,88.3481,curated,sweets,Nolen gur sandesh|Baked rosogolla|Mishti doi,veg,1,08:00-22:00,A Bhowanipore sweet house famous for nolen gur sandesh.,false
-sri_hari_mistanna,Sri Hari Mistanna Bhandar,bhowanipore,22.5320,88.3463,curated,sweets,Kochuri|Chholar dal|Jilipi,veg,1,06:00-21:00,A Bhowanipore kochuri breakfast near Jadubabur Bazar.,false
-forum_mall_food,Forum Mall Food Court,bhowanipore,22.5368,88.3520,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned seats and toilets on Elgin Road.,false
-lake_mall_food,Lake Mall Food Court,south_lakemarket,22.5170,88.3505,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Seats and toilets in the middle of the Lake Market cluster.,false
-acropolis_food,Acropolis Mall Food Court,kasba,22.5147,88.3932,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned break right next to the Rajdanga and Bosepukur pandals.,false
-beijing_tangra,Beijing (Tangra),beleghata,22.546521,88.387096,osm,restaurant,Chilli chicken|Hakka noodles|Fried rice,nonveg,2,12:00-23:00,"Indian-Chinese in the old Tangra Chinatown, a short cab ride from Beleghata.",false
-big_boss_tangra,Big Boss (Tangra),beleghata,22.5546,88.3970,curated,restaurant,Chilli prawn|Chimney soup|Hakka noodles,nonveg,2,12:00-23:00,A big Tangra Chinese place that handles puja-night groups well.,false
+id,name,zone,lat,lng,geo_source,type,dishes,veg,price,hours,note,verified,cost2
+mitra_cafe,Mitra Cafe (Sovabazar),north,22.5945,88.3660,curated,cabin,Fish kabiraji|Brain chop|Mutton cutlet,nonveg,2,12:00-23:00,A century-old cabin. The kabiraji is the reason you queue.,false,
+girish_nakur,Girish Chandra Dey & Nakur Chandra Nandy,north,22.5928,88.3642,curated,sweets,Nolen gur sandesh|Jolbhora|Monohara,veg,1,08:00-21:00,Sandesh royalty since 1844. Sells out by evening.,false,
+chittaranjan,Chittaranjan Mistanna Bhandar,north,22.6001,88.3716,curated,sweets,Rosogolla|Amritakumbha|Mishti doi,veg,1,07:00-22:00,The Shyambazar sweet stop.,false,
+golbari,Golbari,north,22.6003,88.3728,curated,restaurant,Kosha mangsho|Paratha,nonveg,2,12:00-23:30,The kosha mangsho at Shyambazar five-point crossing is legendary.,false,
+allens_kitchen,Allen's Kitchen,north,22.5938,88.3648,curated,cabin,Prawn cutlet|Chicken stew,nonveg,2,16:00-21:00,Tiny 1900s cabin. Cutlets are fried in pure ghee.,false,
+royal_indian,Royal Indian Hotel,central,22.5793,88.3556,curated,restaurant,Mutton biryani|Chicken chaap|Rezala,nonveg,2,11:00-23:00,Chitpur's Mughlai institution since 1905.,false,
+putiram,Putiram,central,22.5745,88.3628,curated,sweets,Kochuri|Jilipi|Mohanbhog,veg,1,07:00-21:00,The College Street breakfast: kochuri and jilipi.,false,
+paramount,Paramount,central,22.5753,88.3644,curated,drinks,Daab sherbet|Green mango sherbet,veg,1,11:00-21:00,"Sherbet parlour since 1918, on the corner of College Square.",false,
+coffee_house,Indian Coffee House,central,22.576097,88.363891,osm,cabin,Infusion|Chicken kabiraji|Mutton cutlet,both,1,09:00-21:00,Adda under high ceilings on College Street.,false,
+bhim_nag,Bhim Chandra Nag,central,22.5680,88.3605,curated,sweets,Ledikeni|Sandesh,veg,1,08:00-21:30,"Home of the ledikeni, a short walk from Santosh Mitra Square.",false,
+aminia,Aminia (New Market),central,22.5600,88.3521,curated,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,A classic biryani pit stop in the New Market area.,false,
+nizams,Nizam's,central,22.562144,88.353538,osm,street,Kathi roll|Beef roll|Chicken roll,nonveg,1,12:00-23:30,The kathi roll is said to have been born here.,false,
+vivekananda_park_phuchka,Vivekananda Park Phuchka,south_lakemarket,22.5195,88.3590,curated,street,Phuchka|Churmur|Dahi phuchka,veg,1,15:00-23:00,Often called Kolkata's most famous phuchka. Ask for the tok-jhal-mishti.,false,
+lake_market_stalls,Lake Market Telebhaja Stalls,south_lakemarket,22.5190,88.3530,curated,street,Beguni|Alur chop|Egg roll,both,1,16:00-01:00,Late-night fuel between Tridhara and 66 Pally.,false,
+balwant_singh,Balwant Singh's Eating House,bhowanipore,22.537783,88.344129,osm,cabin,Doodh cha|Tadka|Paratha,veg,1,06:00-23:00,Bhowanipore's milky tea and dhaba-style tadka.,false,
+kewpies,Kewpie's Kitchen,bhowanipore,22.5380,88.3505,curated,restaurant,Bengali thali|Daab chingri|Bhetki paturi,both,3,12:30-22:30,A home-style Bengali thali close to Maddox Square.,false,
+gariahat_stalls,Gariahat Mor Street Food,south_gariahat,22.5185,88.3665,curated,street,Egg chicken roll|Chowmein|Momo,both,1,15:00-01:00,"Cheap and quick, right on the Ekdalia–Singhi Park loop.",false,
+bhojohori_manna,Bhojohori Manna (Ekdalia),south_gariahat,22.5168,88.3702,curated,restaurant,Bhetki paturi|Kosha mangsho|Chingri malaikari,both,2,12:00-22:30,A Bengali chain started here. Book ahead during puja.,false,
+ballygunge_place,6 Ballygunge Place,south_gariahat,22.527799,88.368637,osm,restaurant,Daab chingri|Bengali thali,both,3,12:00-23:00,An upscale Bengali spread in a heritage house.,false,
+arsalan,Arsalan (Park Circus),south_gariahat,22.543872,88.365952,osm,restaurant,Mutton biryani|Chicken chaap,nonveg,2,12:00-00:00,A biryani heavyweight on the way north from Gariahat.,false,
+suruchi_stalls,New Alipore Puja Stalls,southwest,22.4970,88.3415,curated,street,Fish fry|Egg devil|Phuchka,both,1,16:00-02:00,The pop-up food row that grows around Suruchi Sangha.,false,
+behala_chowrasta,Behala Chowrasta Stalls,southwest,22.4990,88.3180,curated,street,Moghlai paratha|Rolls|Mishti,both,1,15:00-00:00,Street classics at the Behala crossing.,false,
+city_centre_food,City Centre 1 Food Court,salt_lake,22.5885,88.4083,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Air-conditioned toilets and seats, which is gold during pujo.",false,
+central_park_stalls,Central Park Mela Stalls,salt_lake,22.5850,88.4170,curated,street,Fish fry|Kebab|Ice cream,both,1,16:00-23:00,Mela food near BJ Block.,false,
+lake_town_stalls,Lake Town Footbridge Stalls,lake_town_dumdum,22.6030,88.4030,curated,street,Phuchka|Chowmein|Rolls,both,1,15:00-02:00,Pop-up stalls along the Sreebhumi queue.,false,
+dumdum_park_stalls,Dum Dum Park Puja Stalls,lake_town_dumdum,22.6175,88.4135,curated,street,Fish fry|Mughlai paratha,both,1,16:00-01:00,Food row between the Dum Dum Park pandals.,false,
+bosepukur_stalls,Bosepukur Puja Food Row,kasba,22.5140,88.3902,curated,street,Phuchka|Fish fry|Chicken pakora,both,1,16:00-01:00,Pop-up stalls between the two Bosepukur pandals.,false,
+sakherbazar_stalls,Sakherbazar Puja Food Stalls,southwest,22.481515,88.313553,curated,street,Fish fry|Egg roll|Phuchka,both,1,16:00-01:00,The food row on the Diamond Harbour Road side of Barisha Club.,false,
+naktala_stalls,Naktala Puja Food Stalls,tolly_naktala,22.475191,88.367075,curated,street,Phuchka|Fish fry|Chicken roll,both,1,16:00-01:00,The food row that grows around Naktala Udayan Sangha during the pujas.,false,
+sen_mahasay,Sen Mahasay (Shyambazar),north,22.5990,88.3718,curated,sweets,Abar khabo|Nolen gur sandesh|Mishti doi,veg,1,08:00-22:00,"An old Shyambazar sweet house, a few steps from the five-point crossing.",false,
+laxmi_narayan_shaw,Laxmi Narayan Shaw & Sons,north,22.5918,88.3688,curated,street,Alur chop|Beguni|Fuluri,veg,1,16:00-22:00,"The century-old telebhaja shop near Hedua, said to have fed Netaji.",false,
+nobin_chandra_das,Nobin Chandra Das & Sons (Bagbazar),north,22.6038,88.3665,curated,sweets,Rosogolla|Sandesh|Mishti doi,veg,1,08:00-21:30,"The family that gave Kolkata the rosogolla, close to Bagbazar Sarbojanin.",false,
+dilkhusha_cabin,Dilkhusha Cabin,central,22.5738,88.3622,curated,cabin,Kabiraji cutlet|Mutton cutlet|Fish fry,nonveg,2,12:00-22:00,"An old-school cabin on MG Road, just round the corner from College Street.",false,
+favourite_cabin,Favourite Cabin,central,22.5733,88.3655,curated,cabin,Toast and butter|Tea|Pudding,veg,1,08:00-21:00,A tea cabin since 1918 where revolutionaries once met. Simple and cheap.,false,
+swadhin_bharat_hindu_hotel,Swadhin Bharat Hindu Hotel,central,22.5743,88.3651,curated,restaurant,Rice and fish curry|Shukto|Chutney,nonveg,1,10:00-16:00,"A pice hotel off College Square, serving Bengali lunch on brass plates.",false,
+anadi_cabin,Anadi Cabin,central,22.5627,88.3522,curated,cabin,Mughlai paratha|Kosha mangsho,nonveg,2,11:00-22:30,The Esplanade cabin famous for its thick egg mughlai paratha.,false,
+kc_das_esplanade,K.C. Das (Esplanade),central,22.5640,88.3510,curated,sweets,Rosogolla|Rasmalai|Sandesh,veg,1,08:00-22:00,The canned-rosogolla family's flagship at Esplanade.,false,
+chitto_babur_dokan,Chitto Babur Dokan,central,22.5648,88.3492,curated,street,Chicken stew|Toast|Fish fry,nonveg,1,08:00-20:00,Office-goers' stew and toast stall on Dacres Lane.,false,
+sabir_hotel,Sabir's Hotel,central,22.566851,88.356025,osm,restaurant,Mutton rezala|Chicken chaap|Tandoori roti,nonveg,2,11:00-23:00,Old Chandni Chowk spot where the rezala is the reason to go.,false,
+haji_allauddin,Haji Allauddin Sweets,central,22.5795,88.3566,curated,sweets,Habshi halwa|Sohan halwa|Lachcha,veg,1,09:00-23:00,"Old Chitpur sweet shop near Nakhoda Masjid, a short walk from Md. Ali Park.",false,
+adams_kabab,Adam's Kabab Shop,central,22.5792,88.3555,curated,street,Beef kabab|Sheekh kabab|Roomali roti,nonveg,1,17:00-23:00,A tiny kabab shop in the Zakaria Street lanes.,false,
+tiretta_bazaar_breakfast,Tiretta Bazaar Chinese Breakfast,central,22.5733,88.3528,curated,street,Pork momo|Fish ball soup|Sausages,nonveg,1,05:30-08:30,"Old Chinatown's dawn street breakfast. Over by 8:30 am, so go after an all-nighter.",false,
+nahoums,Nahoum & Sons,central,22.560164,88.352978,osm,sweets,Plum cake|Lemon tart|Cheese samosa,both,1,09:30-20:00,"The Jewish bakery inside New Market, open since 1902.",false,
+peter_cat,Peter Cat,central,22.5527,88.3527,curated,restaurant,Chelo kebab|Sizzlers,nonveg,3,11:00-23:30,The Park Street chelo kebab queue moves faster after midnight.,false,
+mocambo,Mocambo,central,22.5530,88.3536,curated,restaurant,Devilled crab|Fish a la diana|Baked Alaska,nonveg,3,11:00-23:30,Park Street's continental old-timer. Expect a wait during pujo.,false,
+flurys,Flurys,central,22.5531,88.3513,curated,restaurant,English breakfast|Rum ball|Pastries,both,2,07:30-22:00,"The 1927 Park Street tearoom, good for an early breakfast.",false,
+kusum_rolls,Kusum Rolls,central,22.5535,88.3529,curated,street,Double egg chicken roll|Mutton roll|Paneer roll,both,1,11:00-23:30,Park Street's busy roll counter.,false,
+shiraz_golden,Shiraz Golden Restaurant,bhowanipore,22.5476,88.3635,curated,restaurant,Mutton biryani|Chaap|Firni,nonveg,2,11:00-23:30,Biryani at the Park Street and AJC Bose Road crossing.,false,
+dollys_tea_shop,Dolly's Tea Shop,south_gariahat,22.5090,88.3645,curated,drinks,Iced tea|Masala chai|Toast,veg,1,10:00-21:00,"A tea bar in Dakshinapan, handy between the Dhakuria and Jodhpur Park pandals.",false,
+south_city_food,South City Mall Food Court,south_gariahat,22.5017,88.3618,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,"Seats, air conditioning and clean toilets near Jodhpur Park.",false,
+zeeshan,Zeeshan (Park Circus),bhowanipore,22.541328,88.365897,osm,restaurant,Mutton biryani|Chicken chaap|Firni,nonveg,2,12:00-00:00,A Park Circus biryani favourite near the Adi Sammilati pandal.,false,
+balaram_mullick,Balaram Mullick & Radharaman Mullick,bhowanipore,22.5297,88.3481,curated,sweets,Nolen gur sandesh|Baked rosogolla|Mishti doi,veg,1,08:00-22:00,A Bhowanipore sweet house famous for nolen gur sandesh.,false,
+sri_hari_mistanna,Sri Hari Mistanna Bhandar,bhowanipore,22.5320,88.3463,curated,sweets,Kochuri|Chholar dal|Jilipi,veg,1,06:00-21:00,A Bhowanipore kochuri breakfast near Jadubabur Bazar.,false,
+forum_mall_food,Forum Mall Food Court,bhowanipore,22.5368,88.3520,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned seats and toilets on Elgin Road.,false,
+lake_mall_food,Lake Mall Food Court,south_lakemarket,22.5170,88.3505,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Seats and toilets in the middle of the Lake Market cluster.,false,
+acropolis_food,Acropolis Mall Food Court,kasba,22.5147,88.3932,curated,restaurant,Biryani|Chinese|Desserts,both,2,11:00-22:00,Air-conditioned break right next to the Rajdanga and Bosepukur pandals.,false,
+beijing_tangra,Beijing (Tangra),beleghata,22.546521,88.387096,osm,restaurant,Chilli chicken|Hakka noodles|Fried rice,nonveg,2,12:00-23:00,"Indian-Chinese in the old Tangra Chinatown, a short cab ride from Beleghata.",false,
+big_boss_tangra,Big Boss (Tangra),beleghata,22.5546,88.3970,curated,restaurant,Chilli prawn|Chimney soup|Hakka noodles,nonveg,2,12:00-23:00,A big Tangra Chinese place that handles puja-night groups well.,false,
+pawan_putra,Pawan Putra,beleghata,22.568492,88.391180,osm,restaurant,Indian meals,both,2,,Near Beleghata 33 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mio_amore,Mio Amore,lake_town_dumdum,22.615857,88.411890,osm,sweets,Mishti|Sandesh,both,1,09:00-21:30,Near Dum Dum Park Tarun Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+arsalan_restaurant_caterar,Arsalan Restaurant & Caterar,lake_town_dumdum,22.612332,88.411140,osm,restaurant,Meals,both,2,11:00-23:00,Near Dum Dum Park Tarun Dal. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+swastineer_canteen,Swastineer Canteen,salt_lake,22.580968,88.424852,osm,restaurant,Chilli chicken|Indian meals,both,2,08:00-22:00,Near EE Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+oudh_1590,Oudh 1590,salt_lake,22.592121,88.411819,osm,restaurant,Mughlai paratha,both,2,,Near AE Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+punjabee_rasoi,Punjabee Rasoi,kasba,22.515896,88.392403,osm,restaurant,Indian meals,both,2,,Near Bosepukur Talbagan. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+aminia_lake_town_dumdum,Aminia,lake_town_dumdum,22.615090,88.411974,osm,restaurant,Meals,both,2,11:30-23:30,Near Dum Dum Park Tarun Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+benfish,Benfish,north,22.607235,88.382856,osm,restaurant,Chilli chicken|Indian meals,both,2,03:00-10:30,Near Tala Prattoy. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+la_komida,la komida,jadavpur_santoshpur,22.503656,88.375170,osm,restaurant,Chilli chicken|Kebab,both,2,10:00-22:00,Near Shahidnagar Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_fat_monk,The Fat Monk,salt_lake,22.589468,88.408905,osm,street,Sandwich|Chilli chicken|Thai,both,1,14:00-22:30,Near FD Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+momo_huy,MOMO HUY,north,22.607677,88.383910,osm,restaurant,Chilli chicken,both,2,05:30-10:00,Near Tala Prattoy. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+flame_and_grill,Flame And Grill,south_gariahat,22.501430,88.361054,osm,restaurant,Indian meals,both,2,12:30-23:00,Near Sanghati Puja Samiti. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+cfc,CFC,north,22.605728,88.386139,osm,street,Chilli chicken,both,1,18:00-22:30,Near Telengabagan Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+india_restaurant,India Restaurant,bhowanipore,22.538844,88.322208,osm,restaurant,Mughlai paratha|Indian meals|Chilli chicken,both,2,09:00-22:00,Near Kidderpore Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+ubuntu_eat,Ubuntu Eat,southwest,22.508335,88.336896,osm,drinks,Indian meals|Pizza|Burger,both,1,12:00-22:00,Near Suruchi Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bhojohori_manna_north,Bhojohori Manna,north,22.594063,88.370835,osm,restaurant,Indian meals,both,2,12:00-22:00,Near Nalin Sarkar Street. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+momo_i_am,Momo I Am,salt_lake,22.590474,88.408261,osm,restaurant,Chilli chicken,both,2,12:00-23:00,Near FD Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tasty_corner,Tasty Corner,south_gariahat,22.524535,88.366953,osm,restaurant,Pizza,both,2,,Near Ekdalia Evergreen. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+royal_biryani,Royal Biryani,north,22.605252,88.384432,osm,street,Indian meals,both,1,13:00-23:59,Near Telengabagan Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+aminia_restaurant,Aminia Restaurant,north,22.598857,88.372672,osm,restaurant,Indian meals|Kebab,both,2,11:30-23:30,Near Nalin Sarkar Street. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+akram_s_biriyani,Akram's Biriyani,lake_town_dumdum,22.622569,88.412906,osm,street,Indian meals|Kebab,both,1,12:00-00:00,Near Dum Dum Park Bharat Chakra. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tandoor,Tandoor,south_gariahat,22.517281,88.367051,osm,restaurant,Meals,both,2,,Near Gariahat Sarbojanin Durgotsab. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+kowloon,Kowloon,southwest,22.509093,88.333749,osm,restaurant,Chilli chicken,both,2,,Near Suruchi Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+aminia_south_gariahat,Aminia,south_gariahat,22.516815,88.366870,osm,restaurant,Indian meals,both,2,,Near Gariahat Sarbojanin Durgotsab. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+harvey_s,Harvey's,kasba,22.514517,88.390321,osm,restaurant,Meals,both,2,,Near Bosepukur Talbagan. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+panna_sweets,Panna Sweets,southwest,22.499211,88.317066,osm,street,Indian meals,both,1,,Near Behala Notun Dal. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+alibaba,Alibaba,south_gariahat,22.516568,88.366010,osm,street,Indian meals,both,1,,Near Gariahat Sarbojanin Durgotsab. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tandor_house,tandor house,south_lakemarket,22.515804,88.348797,osm,restaurant,Meals,both,2,,Near Kalighat Sanghasree. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+dawntown_cafe,Dawntown Cafe,bhowanipore,22.533162,88.353368,osm,drinks,Pizza|Burger|Coffee,both,1,12:00-04:00,Near Chakraberia Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+naushijaan,Naushijaan,kasba,22.515235,88.389897,osm,restaurant,Indian meals,both,2,,Near Bosepukur Talbagan. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+cheese_cherry_pineapple,Cheese Cherry Pineapple,south_lakemarket,22.514424,88.352550,osm,drinks,Pizza|Coffee|Burger,both,1,11:00-23:00,Near 66 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+haji_saheb,Haji Saheb,southwest,22.499746,88.317319,osm,restaurant,Meals,both,2,,Near Behala Notun Dal. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+blue_plum,Blue Plum,salt_lake,22.581298,88.424613,osm,restaurant,Chilli chicken|Indian meals|Coffee,both,2,,Near EE Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tak_heng,Tak Heng,south_lakemarket,22.514891,88.357593,osm,restaurant,Chilli chicken,both,2,,Near Samaj Sebi Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+chowman_gouribari,Chowman Gouribari,north,22.594514,88.377385,osm,restaurant,Chilli chicken|Thai|Continental,both,2,,Near Gouribari Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+new_rajkumar_sweets,New Rajkumar Sweets,lake_town_dumdum,22.620153,88.413501,osm,street,Indian meals,both,1,,Near Dum Dum Park Bharat Chakra. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+icy_fusion,Icy Fusion,salt_lake,22.585870,88.405242,osm,sweets,Mishti|Sandesh,veg,1,10:30-24:00,Near Durga Pujo Ground. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+my_big_fat_belly,My Big Fat Belly,bhowanipore,22.534969,88.353786,osm,restaurant,Burger|Sandwich,both,2,,Near Chakraberia Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+oudh_1590_south_gariahat,Oudh 1590,south_gariahat,22.515208,88.358350,osm,restaurant,Indian meals|Kebab,both,2,,Near Hindustan Park Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+banana_leaf,Banana Leaf,south_lakemarket,22.517004,88.349319,osm,restaurant,Indian meals,both,2,,Near Kalighat Sanghasree. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mirch_masala,Mirch Masala,south_gariahat,22.523206,88.364710,osm,restaurant,North Indian|Burger|Pizza,both,2,,Near Ekdalia Evergreen. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+ikura_flavours_of_pan_asia,Ikura - Flavours of Pan Asia,south_lakemarket,22.517163,88.334755,osm,restaurant,Chilli chicken,both,2,,Near Chetla Agrani Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tero_parbon,Tero Parbon,south_gariahat,22.516777,88.362768,osm,restaurant,Indian meals,both,2,,Near Hindustan Park Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mrs_baker,Mrs. Baker,salt_lake,22.586138,88.402401,osm,sweets,Mishti|Sandesh,both,1,10:00-21:00,Near Durga Pujo Ground. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+6_ballygunge_place,6 Ballygunge Place,salt_lake,22.590242,88.409238,osm,restaurant,Meals,both,2,,Near FD Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mio_amore_lake_town_dumdum,Mio Amore,lake_town_dumdum,22.601897,88.405687,osm,sweets,Mishti|Sandesh,both,1,,Near Lake Town Adhibasi Brinda. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+sen_sweets,Sen Sweets,central,22.564061,88.367959,osm,sweets,Mishti|Sandesh,veg,1,07:00-22:00,Near Santosh Mitra Square (Lebutala). Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+healthy_and_tasty_kitchen,Healthy and Tasty Kitchen,lake_town_dumdum,22.620601,88.421538,osm,street,Rolls|Snacks,both,1,,Near Arjunpur Amra Sabai Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tasty_bites,Tasty Bites,lake_town_dumdum,22.617031,88.425872,osm,street,Rolls|Snacks,both,1,,Near Arjunpur Amra Sabai Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+kewpie_s,Kewpie's,bhowanipore,22.536589,88.350951,osm,restaurant,Bengali thali|Indian meals,both,2,,Near Chakraberia Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+banzara_a_c_restaurant,Banzara A. C. Restaurant,jadavpur_santoshpur,22.494935,88.369827,osm,restaurant,Chilli chicken|Indian meals,both,2,,Near Poddar Nagar Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+shiv_sai_hotel_south_indian_restaura,"Shiv Sai Hotel, South Indian Restaurant",salt_lake,22.574728,88.414063,osm,restaurant,Indian meals,both,2,,Near IA Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+7th_mandeville_multi_cuisine_restro,7th Mandeville Multi Cuisine Restro,south_gariahat,22.524909,88.366276,osm,restaurant,Burger|Pizza,both,2,,Near Ekdalia Evergreen. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bohemian,Bohemian,south_gariahat,22.529494,88.368797,osm,restaurant,Burger|Pizza,both,2,,Near Adi Ballygunge Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+golden_city,Golden City,salt_lake,22.580358,88.411745,osm,restaurant,Chilli chicken,both,2,,Near BJ Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+combo_kolkata,Combo Kolkata,lake_town_dumdum,22.616396,88.427860,osm,street,Rolls|Snacks,both,1,,Near Arjunpur Amra Sabai Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+baati_chokha,Baati Chokha,salt_lake,22.583178,88.409396,osm,restaurant,North Indian|Indian meals,both,2,,Near FD Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+loading_tummy,Loading Tummy,bhowanipore,22.537073,88.343674,osm,restaurant,Pizza|Burger|Sandwich,both,2,,Near Bhowanipore 75 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+suchali_s_artisan_bakehouse,Suchali's Artisan Bakehouse,south_lakemarket,22.514785,88.347707,osm,sweets,Mishti|Sandesh,both,1,,Near Kalighat Sanghasree. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+armaan_s_cafe,Armaan's Cafe,south_gariahat,22.516443,88.360684,osm,drinks,Tea|Coffee,both,1,12:00-21:00,Near Hindustan Park Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+sharma_snacks,Sharma Snacks,lake_town_dumdum,22.603502,88.404122,osm,street,Rolls|Snacks,both,1,,Near Lake Town Adhibasi Brinda. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+radu_babu_s,Radu Babu's,south_lakemarket,22.516341,88.348303,osm,drinks,Tea|Coffee,both,1,,Near Kalighat Sanghasree. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+sampa_snacks,Sampa Snacks,south_gariahat,22.518021,88.376790,osm,street,Rolls|Snacks,both,1,,Near R K Chatterjee Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+apanjan,Apanjan,south_lakemarket,22.519311,88.345238,osm,street,Rolls|Snacks,both,1,,Near Badamtala Ashar Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bengali_sweets,Bengali Sweets,bhowanipore,22.533141,88.347228,osm,sweets,Mishti|Sandesh,both,1,,Near Bhowanipore 75 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+wtf_where_s_the_food,WTF! Where's The Food,lake_town_dumdum,22.614893,88.411587,osm,restaurant,Meals,both,2,12:30-22:30,Near Dum Dum Park Tarun Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+prema_vilas,Prema Vilas,south_lakemarket,22.517212,88.348890,osm,restaurant,Meals,both,2,08:00-21:30,Near Kalighat Sanghasree. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mystic_yoga_cafe,Mystic Yoga Cafe,south_gariahat,22.517588,88.359441,osm,drinks,Tea|Coffee,both,1,,Near Hindustan Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+fatso_s_roll,Fatso's roll,north,22.588787,88.369664,osm,street,Rolls|Snacks,both,1,,Near Kashi Bose Lane. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_tasty_bytes,The Tasty Bytes,south_gariahat,22.519276,88.380424,osm,street,Rolls|Snacks,both,1,,Near R K Chatterjee Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+jan_aahar_sealdah_station,Jan Aahar sealdah station,central,22.566955,88.370945,osm,street,Rolls|Snacks,both,1,,Near Sealdah Railway Athletic Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+hindustan_sweets,Hindustan Sweets,south_gariahat,22.501787,88.362231,osm,sweets,Mishti|Sandesh,veg,1,,Near Sanghati Puja Samiti. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bojangles,Bojangles,bhowanipore,22.525531,88.357591,osm,restaurant,Meals,both,2,11:00-23:00,Near Maddox Square. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+balaram_mullick_and_radharaman_mulli,Balaram Mullick and Radharaman Mullick - Lake Gardens,south_gariahat,22.502231,88.356023,osm,sweets,Mishti|Sandesh,veg,1,,Near Sanghati Puja Samiti. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+kookie_jar,Kookie jar,south_lakemarket,22.522201,88.331280,osm,street,Rolls|Snacks,both,1,,Near Alipore Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+banyan_tree_pure_veg_green_kitchen,Banyan tree pure veg green kitchen,lake_town_dumdum,22.601449,88.407121,osm,restaurant,Meals,veg,2,,Near Lake Town Adhibasi Brinda. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+a1_fast_food_centre,A1 Fast Food Centre,tolly_naktala,22.470009,88.377767,osm,street,Rolls|Snacks,both,1,,Near Patyuli Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+dough_as_you_like,Dough As You Like,beleghata,22.572061,88.389068,osm,sweets,Mishti|Sandesh,both,1,,Near Beleghata 33 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+kolkata_tram_world,Kolkata Tram World,south_gariahat,22.525300,88.365438,osm,drinks,Pizza|Burger,both,1,,Near Ekdalia Evergreen. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+celestial_cafe,Celestial Cafe,southwest,22.484681,88.314407,osm,drinks,Coffee|Pizza|Burger,both,1,,Near Barisha Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+aqua_java_air,Aqua Java Air,lake_town_dumdum,22.601263,88.407547,osm,drinks,Coffee,both,1,,Near Lake Town Adhibasi Brinda. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+annapurna_sweets,Annapurna Sweets,salt_lake,22.577280,88.410307,osm,sweets,Mishti|Sandesh,veg,1,,Near IA Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+rajdarbar_sweet_shop,Rajdarbar Sweet Shop,tolly_naktala,22.476811,88.381469,osm,sweets,Mishti|Sandesh,veg,1,,Near Patyuli Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tutupie_caf,Tutupie Café,beleghata,22.564009,88.390044,osm,sweets,Mishti|Sandesh,veg,1,,Near Beleghata 33 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+annapurna_sweets_salt_lake,Annapurna sweets,salt_lake,22.588267,88.401297,osm,sweets,Mishti|Sandesh,veg,1,,Near Durga Pujo Ground. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+mukharuchi,Mukharuchi,beleghata,22.564274,88.388619,osm,street,Rolls|Snacks,both,1,,Near Beleghata 33 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+basanti,Basanti,lake_town_dumdum,22.622281,88.410277,osm,sweets,Mishti|Sandesh,veg,1,,Near Dum Dum Park Bharat Chakra. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_bengal_rowing_club_brc,The Bengal Rowing Club (BRC),south_lakemarket,22.509554,88.354789,osm,restaurant,Meals,both,2,,Near Samaj Sebi Sangha. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_bhawanipur_house,The Bhawanipur House,bhowanipore,22.526113,88.347801,osm,restaurant,Meals,both,2,,Near Bakulbagan Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bhojohori_manna_6,Bhojohori Manna 6,south_gariahat,22.520208,88.360860,osm,restaurant,Meals,both,2,,Near Hindustan Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+fillers,Fillers,south_gariahat,22.514673,88.360649,osm,drinks,Tea|Coffee,both,1,,Near Hindustan Park Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_teapot_boiler,The teapot boiler,south_gariahat,22.516344,88.361325,osm,drinks,Tea|Coffee,both,1,,Near Hindustan Park Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+forkstruck,FORKSTRUCK,south_gariahat,22.503073,88.358298,osm,restaurant,Meals,both,2,,Near Sanghati Puja Samiti. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+the_daily,The Daily,south_lakemarket,22.515951,88.351952,osm,drinks,Tea|Coffee,both,1,,Near 66 Pally. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+cafe_hq,Cafe HQ,south_lakemarket,22.509209,88.345324,osm,restaurant,Meals,both,2,,Near Mudiali Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+steak_factory,Steak Factory,south_lakemarket,22.510964,88.348225,osm,restaurant,Meals,both,2,,Near Mudiali Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+diner_49b,Diner 49B,south_gariahat,22.507683,88.365278,osm,restaurant,Meals,both,2,,Near Jodhpur Park. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+tandoor_park,Tandoor Park,south_gariahat,22.506554,88.367319,osm,restaurant,Meals,both,2,,Near Jodhpur Park. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+ammini,Ammini,south_lakemarket,22.520888,88.352851,osm,restaurant,Meals,both,2,,Near Shib Mandir Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+kasturi_ac_resturant,Kasturi Ac Resturant,jadavpur_santoshpur,22.496409,88.367938,osm,restaurant,Meals,both,2,,Near Poddar Nagar Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+potboiler_coffee_house,Potboiler Coffee House,south_lakemarket,22.517541,88.357803,osm,drinks,Tea|Coffee,both,1,,Near Ballygunge Cultural Association. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+eatelicious,Eatelicious,southwest,22.501343,88.320021,osm,drinks,Tea|Coffee,both,1,,Near Behala Friends. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+cafe_kathmandu,Cafe Kathmandu,south_lakemarket,22.511536,88.348968,osm,drinks,Tea|Coffee,both,1,,Near Mudiali Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+shree_ram_dhaba,Shree Ram Dhaba,central,22.579331,88.358935,osm,restaurant,Meals,both,2,,Near Mohammad Ali Park. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+new_madras_tiffin,New Madras Tiffin,north,22.596747,88.370901,osm,restaurant,Meals,both,2,,Near Nalin Sarkar Street. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+spice_of_joy,Spice Of Joy,jadavpur_santoshpur,22.503754,88.376128,osm,restaurant,Meals,both,2,,Near Shahidnagar Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+sienna_store_cafe,Sienna Store & Cafe,south_gariahat,22.517556,88.362955,osm,drinks,Tea|Coffee,both,1,,Near Hindustan Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+bb_s,BB's,salt_lake,22.577125,88.425681,osm,restaurant,Meals,both,2,,Near EE Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+rose,Rose,lake_town_dumdum,22.601239,88.406309,osm,restaurant,Meals,both,2,,Near Sreebhumi Sporting Club. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+stadel_poolside_restaurant,Stadel Poolside Restaurant,salt_lake,22.568798,88.411023,osm,restaurant,Meals,both,2,,Near IA Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+national_economic_restaurant,National Economic Restaurant,north,22.601704,88.373869,osm,drinks,Tea|Coffee,both,1,,Near Lalabagan Nabankur. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+shiraz,Shiraz,salt_lake,22.577151,88.410858,osm,restaurant,Meals,both,2,,Near IA Block Salt Lake. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+katheleen,Katheleen,tolly_naktala,22.476637,88.381888,osm,restaurant,Meals,both,2,,Near Patyuli Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+chowman,Chowman,southwest,22.489294,88.316895,osm,restaurant,Meals,both,2,,Near Behala Sahajatri. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+sitala_cafe,Sitala Cafe,jadavpur_santoshpur,22.478037,88.381330,osm,drinks,Tea|Coffee,both,1,,Near Rabindra Pally Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+baba_tea,Baba Tea,bhowanipore,22.543876,88.364997,osm,drinks,Tea|Coffee,both,1,,Near Adi Sammilati Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
+brothers_kitchen,Brothers Kitchen,tolly_naktala,22.477243,88.381762,osm,restaurant,Meals,both,2,,Near Patyuli Sarbojanin. Listed on OpenStreetMap; menu and timings not checked by us yet.,false,
