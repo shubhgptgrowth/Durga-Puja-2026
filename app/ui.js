@@ -19,6 +19,7 @@ export function go(view, { keepScroll = false } = {}) {
   if (!keepScroll) window.scrollTo(0, 0);
   views[view]?.render?.();
   views[view]?.onShow?.();
+  dispatchEvent(new CustomEvent('viewchange', { detail: view }));
 }
 export const rerender = () => views[S.view]?.render?.();
 

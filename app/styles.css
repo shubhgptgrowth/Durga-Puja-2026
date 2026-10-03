@@ -460,27 +460,23 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 
 .time-row select { flex: 1; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 6px 8px; min-height: 36px; color: var(--ink); }
 
-/* ---------- Home banner: Ma's eyes on sindoor, a laal-paar border ---------- */
-.hero.sharad { position: relative; overflow: hidden; margin: 12px 16px 0; padding: 12px 14px 0; border-radius: 20px; text-align: center; color: #FFF4E0;
-  background:
-    radial-gradient(120% 70% at 50% 0%, rgba(255,200,120,.20), transparent 60%),
-    repeating-conic-gradient(from 0deg at 50% 38%, rgba(232,185,35,.07) 0 6deg, transparent 6deg 12deg),
-    linear-gradient(180deg, #8E0E1C 0%, #6B0A16 70%, #5A0812 100%);
-  box-shadow: 0 10px 28px rgba(90,8,18,.35); }
-.trinayani { width: min(62%, 230px); height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 3px 6px rgba(0,0,0,.35)); }
-.sharad-text { padding: 2px 4px 10px; }
-.sharad-greet { font-family: "Galada", "Noto Serif Bengali", serif; font-size: 30px; line-height: 1.1; color: #F6C343; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
-.sharad-sub { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; margin-top: 2px; }
-.sharad-when { margin-top: 8px; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 6px; font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.2); border: 1px solid rgba(246,195,67,.45); }
+/* ---------- Home banner: a real protima, quietly framed ---------- */
+.hero.photo { position: relative; overflow: hidden; margin: 12px 16px 0; padding: 0; height: 216px; border-radius: 18px; background: #3A0A10; color: #FFF4E0; box-shadow: 0 8px 24px rgba(58,10,16,.3); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,6,10,0) 30%, rgba(40,6,10,.55) 58%, rgba(40,6,10,.92) 100%); }
+.hero-copy { position: absolute; left: 0; right: 0; bottom: 14px; padding: 0 16px; }
+.sharad-greet { font-family: "Galada", "Noto Serif Bengali", serif; font-size: 30px; line-height: 1.05; color: #F6C343; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.sharad-sub { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; opacity: .9; margin-top: 3px; }
+.sharad-when { margin-top: 8px; display: inline-flex; flex-wrap: wrap; gap: 6px; font-weight: 700; font-size: 13.5px; padding: 5px 11px; border-radius: 999px; background: rgba(0,0,0,.35); border: 1px solid rgba(246,195,67,.5); backdrop-filter: blur(4px); }
 .sharad-when .sep { opacity: .6; }
-.hero.sharad p { margin: 6px auto 0; max-width: 34ch; font-size: 12.5px; opacity: .92; }
-/* The red-and-white border of a laal-paar saree, with a gold thread. */
-.laalpaar { height: 22px; margin: 0 -14px;
-  background:
-    linear-gradient(#D4A017, #D4A017) 0 3px / 100% 2px no-repeat,
-    repeating-linear-gradient(90deg, #FFF8EC 0 10px, #C8102E 10px 13px, #FFF8EC 13px 16px, #C8102E 16px 18px) 0 7px / 100% 6px no-repeat,
-    linear-gradient(#C8102E, #C8102E) 0 13px / 100% 9px no-repeat,
-    #FFF8EC; }
+.hero-credit { position: absolute; right: 8px; top: 8px; font-size: 9.5px; color: rgba(255,255,255,.85); background: rgba(0,0,0,.35); padding: 2px 7px; border-radius: 999px; text-decoration: none; }
+
+/* How it works: three steps, right under the banner */
+.how { list-style: none; margin: 12px 16px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.how li { display: grid; gap: 2px; align-content: start; padding: 10px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.how-n { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: #fff; background: #8E0E1C; margin-bottom: 2px; }
+.how b { font-size: 14px; }
+.how li > span:last-child { font-size: 12px; line-height: 1.3; color: var(--ink-3); }
 
 /* ---------- Pujo Radio ---------- */
 .radio-card { margin: 18px 16px 0; padding: 14px; border-radius: 18px; color: #3B1A0E; background: #FFF8EC; border: 4px solid #B91C1C; box-shadow: inset 0 0 0 2px #FFF8EC, inset 0 0 0 3px #D4A017, var(--shadow); }
@@ -488,12 +484,14 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .radio-head p { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: #6B3A22; }
 .radio { margin-top: 12px; border-radius: 16px 16px 12px 12px; padding: 8px 10px 10px; background: linear-gradient(160deg, #7A3B12 0%, #4E240B 60%, #351806 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.15), 0 6px 14px rgba(60,20,0,.35); }
 .radio-brand { text-align: center; font-family: "Galada", serif; font-size: 17px; color: #F6C343; }
-.radio-screen { position: relative; height: 200px; margin: 6px 0 8px; border-radius: 10px; overflow: hidden; background: radial-gradient(circle, #6B4423 1.2px, transparent 1.4px) 0 0 / 6px 6px, linear-gradient(#E9D8B4, #D9C29A); box-shadow: inset 0 2px 8px rgba(0,0,0,.45); }
-.radio-screen iframe, #ytHost { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.radio-face { display: grid; grid-template-columns: minmax(0,1fr) 200px minmax(0,1fr); gap: 8px; align-items: stretch; margin: 6px 0 8px; }
+.radio-face .grille { border-radius: 10px; background: radial-gradient(circle, #6B4423 1.3px, transparent 1.5px) 0 0 / 7px 7px, linear-gradient(#E9D8B4, #CDB48A); box-shadow: inset 0 2px 6px rgba(0,0,0,.4); }
+.radio-screen { position: relative; width: 200px; height: 200px; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 50% 40%, #5A2A10, #1E0C05); box-shadow: inset 0 0 0 4px #C9A24A, inset 0 0 0 6px #3B1A0E, 0 2px 6px rgba(0,0,0,.4); }
+.radio-screen iframe, #ytHost { position: absolute; inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); border: 0; border-radius: 9px; }
 .radio-card:not(.live) #ytHost { display: none; }
-.screen-idle { position: absolute; inset: 0; display: flex; gap: 6px; align-items: flex-end; justify-content: center; padding: 30px 30px 24px; }
-.screen-idle i { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(#E8B923, #8E0E1C); opacity: .55; }
-.screen-idle i:nth-child(odd) { height: 40%; } .screen-idle i:nth-child(even) { height: 70%; } .screen-idle i:nth-child(3n) { height: 55%; }
+.screen-idle { position: absolute; inset: 0; display: grid; place-items: center; }
+.screen-idle .om { font-size: 64px; color: #E8B923; opacity: .85; text-shadow: 0 0 18px rgba(232,185,35,.5); }
+.screen-idle .tune { position: absolute; bottom: 16px; left: 30px; right: 30px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, transparent, #E8B923, transparent); opacity: .6; }
 .dial { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 10px; font-weight: 700; color: #3B1A0E; padding: 9px 2px 3px; border-radius: 6px; background: linear-gradient(#FEF3C7, #FDE68A); box-shadow: inset 0 1px 3px rgba(0,0,0,.4); }
 .radio-card.live .dial { box-shadow: inset 0 1px 3px rgba(0,0,0,.4), 0 0 12px rgba(253,224,71,.7); }
 .dial .ticks { position: absolute; inset: 2px 6px auto; height: 5px; background: repeating-linear-gradient(90deg, #7C2D12 0 1px, transparent 1px 6px); }
@@ -521,9 +519,18 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .radio-credit { margin: 10px 0 0; font-size: 12px; color: #8A5A3C; }
 .radio-links { display: flex; gap: 12px; align-items: center; margin-top: 6px; font-size: 13px; color: #6B3A22; flex-wrap: wrap; }
 .radio-links a { color: #8E0E1C; font-weight: 700; }
-.radio-mini { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid #B91C1C; background: #FFF8EC; color: #8E0E1C; font-weight: 700; display: inline-flex; gap: 8px; align-items: center; box-shadow: var(--shadow); cursor: pointer; }
-.radio-mini .mini-ic { font-size: 18px; }
-body:has(#view-home.active) .radio-mini { display: none; }
+.radio-fab { position: fixed; left: 14px; bottom: calc(var(--tabbar-h) + var(--safe-b) + 14px); z-index: 860; width: 52px; height: 52px; border-radius: 50%; border: 2px solid #C9A24A; background: #FFF8EC; display: grid; place-items: center; box-shadow: 0 6px 16px rgba(60,20,0,.3); cursor: pointer; transition: transform .2s, opacity .2s; }
+.radio-fab[hidden] { display: grid; opacity: 0; transform: scale(.6); pointer-events: none; }
+.radio-fab svg { width: 32px; height: 32px; }
+.radio-fab .eq rect { transform-box: fill-box; transform-origin: bottom; }
+.radio-fab.on { border-color: #B91C1C; }
+.radio-fab.on .eq rect { animation: eq .9s ease-in-out infinite; }
+.radio-fab.on .eq rect:nth-child(2) { animation-delay: .2s; } .radio-fab.on .eq rect:nth-child(3) { animation-delay: .4s; }
+@keyframes eq { 50% { transform: scaleY(.4); } }
+.radio-card { transform-origin: 0 100%; }
+.radio-card.arrive { animation: arrive .45s cubic-bezier(.2,.9,.3,1.2); }
+@keyframes arrive { from { transform: scale(.4); opacity: .3; } }
+.knob.ytm { display: grid; place-items: center; text-decoration: none; }
 
 /* ---------- All of Kolkata in 6 days ---------- */
 .dayplan { display: grid; gap: 8px; margin: 0 16px; }
@@ -535,3 +542,6 @@ body:has(#view-home.active) .radio-mini { display: none; }
 .dp-tip { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; }
 .dp-go { color: var(--ink-3); }
 .wz-body + .wz-foot ~ .dayplan, #view-plan .dayplan { margin-bottom: 4px; }
+
+.notice.traffic { display: grid; gap: 6px; margin: 0; }
+.notice.traffic a { font-weight: 600; color: var(--brand); }

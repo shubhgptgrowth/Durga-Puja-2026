@@ -75,7 +75,7 @@ Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 |---|---|
 | P2-1 | Offline map pack (PMTiles) for a whole area, downloaded on Wi-Fi |
 | P2-2 | Curated bus routes (OSM has only 21 routes for Kolkata) and auto fares |
-| P2-3 | Kolkata Traffic Police advisories and road closures, if a feed exists |
+| P2-3 | Kolkata Traffic Police advisories: no feed or API exists, and kolkatatrafficpolice.gov.in times out from GitHub's (non-Indian) runners. Today the team adds each puja notice to `app/data/traffic.json` (shown on routes and Parking), and Directions open Google Maps, where KTP has published puja closures in past years. Automating it needs a fetcher hosted in India |
 | P2-4 | Turn a plan into a shareable group plan ("our pujo route", where friends can vote) |
 | P2-5 | Hindi UI |
 | P2-6 | A post-puja year-in-review page per device, built from local history |

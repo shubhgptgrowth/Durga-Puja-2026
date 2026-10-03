@@ -70,8 +70,8 @@ try {
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
   await page.click('.tab[data-view="home"]');
-  await page.click('[data-q="introClose"]');
-  must(await count('.intro') === 0, 'intro card should close');
+  must(await count('#view-home .how li') === 3, '"How it works" should sit in the first fold');
+  must(await page.locator('#radioFab').isVisible(), 'sticky radio button should show from the start');
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
   must(await count('.radio-card .stations [data-station]') === 5, 'five radio stations expected');

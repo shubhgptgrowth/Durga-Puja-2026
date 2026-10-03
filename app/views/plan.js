@@ -8,6 +8,7 @@ import { openPlace, dirUrl } from '../sheets.js';
 import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
+import { loadTraffic, trafficHtml } from '../traffic.js';
 
 let planSel = new Set(), step = 0, planMap = null, transitData = null, transitLoading = null;
 // Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
@@ -269,6 +270,7 @@ function resultHtml(plan) {
       <div class="btn-row" style="margin-top:8px"><button class="btn" id="planWalk">${icon('walk')} ${t('plan.startWalk')}</button><button class="btn" id="planShare">${icon('share')} ${t('plan.share')}</button></div>
       <p class="fine" style="margin:8px 0 0">${t('plan.dirHint')}</p>
     </div>
+    <div class="pad" style="margin-top:12px">${trafficHtml()}</div>
     <div id="planMap" class="map short" style="margin:12px 16px;border-radius:16px;overflow:hidden"></div>
     <ol class="timeline">${tl.join('')}</ol>`;
 }
@@ -285,6 +287,7 @@ function render(scrollToResult = false) {
   if (!step || (step === 3 && !plan)) step = plan ? 3 : 1;
   if (step === 2 && !planSel.size) step = 1;
   if (plan && step === 3 && !transitData) loadTransit();
+  loadTraffic(() => S.view === 'plan' && step === 3 && render());
   const body = step === 1 ? areasHtml() : step === 2 ? formHtml()
     : `<div class="wz-foot top"><button type="button" class="btn sm" id="planEdit">${t(plan.kind === 'custom' ? 'wz.edit' : 'wz.other')}</button><button type="button" class="btn sm" id="planNew">${icon('plus', 'sm')} ${t('wz.new')}</button></div>
        <div id="planResult">${resultHtml(plan)}</div>`;

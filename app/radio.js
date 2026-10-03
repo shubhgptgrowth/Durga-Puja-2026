@@ -54,7 +54,7 @@ export async function play(stationId, i = 0) {
     else {
       player = new YT.Player(host, {
         host: 'https://www.youtube-nocookie.com', videoId: id, width: '100%', height: '100%',
-        playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1 },
+        playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, controls: 0, iv_load_policy: 3, fs: 0, disablekb: 1 },
         events: { onReady: (e) => e.target.playVideo(), onStateChange: onState, onError: () => next() },
       });
     }
