@@ -37,8 +37,8 @@ Shortcut** button instead of the build steps.
 ## Notes
 
 - **Phone + Apple Watch:** "Find Health Samples → Sum" can count the same walk twice when both devices record
-  it. Health's own total de-duplicates; if numbers look high, swap steps 1–2 for **Get Health Quantity**-style
-  actions where available on your iOS, or filter Source to one device.
+  it (Health's own total de-duplicates; the raw samples don't). If the number looks high, add a filter in step 1:
+  **Source is** your iPhone (or your Watch), so only one device counts.
 - **Android:** no equivalent. Health Connect and Google Fit have no web API, so Android users type the number
   in (or the app's own motion-sensor count is used).
 - Nothing leaves the phone: the number stays in the browser's local storage like the rest of My Pujo.

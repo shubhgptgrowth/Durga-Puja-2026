@@ -289,6 +289,7 @@ export const STR = {
     'hs.copy': 'Copy',
     'hs.synced': '⌚ {n} steps synced from Apple Health',
     'hs.bad': 'Couldn\'t read a step count from the Shortcut. Check its last step.',
+    'rt.one': '1 rating from someone who ate here',
   },
   bn: {
 
@@ -563,6 +564,7 @@ export const STR = {
     'hs.copy': 'কপি',
     'hs.synced': '⌚ Apple Health থেকে {n} পা সিঙ্ক হয়েছে',
     'hs.bad': 'শর্টকাট থেকে পা-এর সংখ্যা পড়া গেল না। শেষ ধাপটা দেখুন।',
+    'rt.one': 'এখানে খেয়েছেন এমন ১ জনের রেটিং',
   },
 };
 STR.hi = HI;

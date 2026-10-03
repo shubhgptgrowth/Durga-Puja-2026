@@ -39,7 +39,7 @@ export function ratingHtml(id, compact = false) {
   const r = community.enabled ? community.ratingFor(id) : null;
   if (compact) return r ? `<span class="rating" title="${t('rt.count', { n: fmtCount(r.ratings) })}">★ ${r.rating} <small>(${fmtCount(r.ratings)})</small></span>` : '';
   if (!r) return `<p class="fine">${t('rt.none')}</p>`;
-  return `<div class="rating-sum"><b>${r.rating}</b>${stars(r.rating)}<span>${t('rt.count', { n: fmtCount(r.ratings) })}</span></div>
+  return `<div class="rating-sum"><b>${r.rating}</b>${stars(r.rating)}<span>${r.ratings === 1 ? t('rt.one') : t('rt.count', { n: fmtCount(r.ratings) })}</span></div>
     ${r.top_tags?.length ? `<div class="btn-row">${r.top_tags.map((x) => `<span class="pill">${t('rt.' + x)}</span>`).join('')}</div>` : ''}`;
 }
 function rateBoxHtml(id) {

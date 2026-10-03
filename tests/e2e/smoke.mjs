@@ -177,6 +177,7 @@ try {
   must((await page.locator('.sheet.open .rating-sum b').innerText()) === '4', 'rating average not shown');
   must(/for two/.test(await page.locator('.sheet.open').innerText()), 'cost for two missing on the eatery page');
   if (fake) must((await (await fetch(`${fake.url}/__state`)).json()).ratings === 1, 'rating not stored');
+  await page.locator('.sheet.open .rating-sum').scrollIntoViewIfNeeded(); await shot('05b-rating');
   await closeSheet();
   must(/★ 4/.test(await page.locator(`#explorePanel .item[data-place="${foodId}"] .rating`).innerText()), 'rating not in the list');
   // Diet chips: Veg = pure veg, Egg = places with egg dishes
@@ -323,6 +324,7 @@ try {
   await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '12345');
 
   // Name (and, with consent, phone) for share cards
+  await page.locator('.profile-box').scrollIntoViewIfNeeded(); await shot('11c-profile');
   await page.fill('#cName', 'Rina Sen');
   await page.fill('#cPhone', '98300 12345');
   await page.check('#cConsent');
