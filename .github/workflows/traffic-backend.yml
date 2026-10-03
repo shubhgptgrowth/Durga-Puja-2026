@@ -1,0 +1,65 @@
+name: traffic-backend
+# Sets up the Kolkata Traffic Police notice fetcher on the Supabase project:
+#   1. applies supabase/migrations/*_traffic.sql (table, RLS, status function)
+#   2. deploys the `traffic-fetch` Edge Function
+#   3. schedules it every 3 hours with pg_cron + pg_net, pinned to Mumbai (x-region: ap-south-1)
+#   4. runs it once and prints what it found
+# Needs the SUPABASE_ACCESS_TOKEN repository secret (same as supabase-setup).
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref: { description: "Project ref; empty = the only project", default: "" }
+      schedule: { description: "cron for the fetcher (UTC)", default: "7 */3 * * *" }
+permissions: { contents: read }
+jobs:
+  traffic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SBT: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      API: https://api.supabase.com/v1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve project
+        id: ref
+        run: |
+          ref="${{ inputs.project_ref }}"
+          projects=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects")
+          echo "$projects" | jq -r '.[] | "  \(.ref)  \(.name)  region=\(.region)"'
+          [ -n "$ref" ] || ref=$(echo "$projects" | jq -r '.[0].ref')
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+      - name: Apply the traffic migration
+        run: |
+          jq -Rs '{query: .}' supabase/migrations/*_traffic.sql > /tmp/q.json
+          curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json \
+            "$API/projects/${{ steps.ref.outputs.ref }}/database/query" >/dev/null && echo "migration applied"
+      - uses: supabase/setup-cli@v1
+        with: { version: latest }
+      - name: Deploy the Edge Function
+        run: supabase functions deploy traffic-fetch --project-ref ${{ steps.ref.outputs.ref }} --no-verify-jwt --use-api
+      - name: Schedule it (pg_cron, every 3 hours, Mumbai)
+        run: |
+          ref=${{ steps.ref.outputs.ref }}
+          sql=$(cat <<SQL
+          select cron.unschedule(jobid) from cron.job where jobname = 'traffic-fetch';
+          select cron.schedule('traffic-fetch', '${{ inputs.schedule }}', \$cron\$
+            select net.http_post(
+              url := 'https://$ref.supabase.co/functions/v1/traffic-fetch',
+              headers := '{"Content-Type": "application/json", "x-region": "ap-south-1"}'::jsonb,
+              body := '{}'::jsonb, timeout_milliseconds := 120000);
+          \$cron\$);
+          select jobname, schedule, active from cron.job where jobname = 'traffic-fetch';
+          SQL
+          )
+          jq -n --arg q "$sql" '{query: $q}' > /tmp/q.json
+          curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json "$API/projects/$ref/database/query" | jq .
+      - name: Run once from Mumbai
+        run: |
+          ref=${{ steps.ref.outputs.ref }}
+          out=$(curl -sS --max-time 150 -X POST -H "Content-Type: application/json" -H "x-region: ap-south-1" -d '{}' \
+            "https://$ref.supabase.co/functions/v1/traffic-fetch?force=1")
+          echo "$out" | jq . || echo "$out"
+          {
+            echo "### traffic-fetch from Mumbai"; echo '```json'; echo "$out" | jq . 2>/dev/null || echo "$out"; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -166,6 +166,7 @@ try {
   // Parking segment and the car spot
   await page.click('#exploreBar [data-seg="parking"]');
   must(await count('#explorePanel .item'), 'no parking listed');
+  if (fake) await page.waitForSelector('#explorePanel .notice.traffic a[href*="puja2026.pdf"]');  // live KTP notice from traffic_notices
   await shot('06-parking');
 
   // Moments: upload a photo at Tridhara (on-site), then like it

@@ -94,6 +94,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       return uid ? json(res, 200, issue(uid)) : json(res, 400, { error: 'invalid_grant' });
     }
     if (p === '/rest/v1/place_stats') return json(res, 200, stats());
+    if (p === '/rest/v1/traffic_notices') return json(res, 200, [{ title: 'Traffic arrangements for Durga Puja 2026', url: 'https://kolkatatrafficpolice.gov.in/puja2026.pdf', first_seen: '2026-10-10T06:00:00Z' }]);
     if (p === '/rest/v1/photos_feed') {
       const uid = uidOf(req); let rows = db.photos.filter((x) => !x.hidden);
       const pid = url.searchParams.get('place_id');
