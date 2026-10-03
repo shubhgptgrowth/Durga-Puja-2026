@@ -1,6 +1,6 @@
 name: marketing-report
 
-# Daily reach report (docs/MARKETING.md): devices that opened the app, by day and by the link that
+# Daily reach report (docs/marketing/PLAN.md): devices that opened the app, by day and by the link that
 # brought them, plus check-ins. Shows up in this run's summary. Uses the SUPABASE_ACCESS_TOKEN secret.
 on:
   schedule:

@@ -1,5 +1,7 @@
 # Marketing playbook: Instagram + WhatsApp, 3–22 October 2026
 
+> **Marketing track.** This is the plan. Progress, owners and partners go in [TRACKER.md](TRACKER.md). App changes are requested from the product track: [../product/ROADMAP.md](../product/ROADMAP.md).
+
 **Goal:** every pandal hopper in Kolkata opens Pujo Parikrama at least once during the pujas.
 
 We can't count people, so we count **devices**: phones that open the app. The count is anonymous and per day. The goal ladder:
@@ -36,12 +38,14 @@ The code is in `marketing/`. `kit.py` writes the plan and captions, `render.mjs`
 
 The free tiers are fine for thousands of users. They are not fine for lakhs.
 
+These are owned by the product track as P0-1 to P0-3 in [ROADMAP.md](../product/ROADMAP.md#p0-launch-blocking). Marketing's job is to make sure they're done before the Mahalaya push.
+
 | Limit | Free plan | What breaks first | Action |
 |---|---|---|---|
 | **Supabase egress** | 5 GB/month | Live counts are about 12 KB per phone every 3 minutes (already slowed from 90 s). 10,000 phones open for an evening ≈ 2 GB | **Upgrade to Supabase Pro for October** (US$25/month: 250 GB egress, 100k monthly active users, no pausing). Downgrade after Bijoya |
 | Supabase monthly active users | 50,000 | Only people who check in or post a moment become users. Opening the app does not (the reach counter uses an anonymous device id on purpose) | Covered by Pro |
 | GitHub Pages bandwidth | ~100 GB/month (soft limit) | First load ≈ 0.5 MB compressed, so 1 lakh new phones plus repeat visits ≈ 60–100 GB | For the stretch goal, move hosting to **Cloudflare Pages** (free, no bandwidth cap): connect the repo, output dir `app`. Keep the same paths. Point the QR and links at the new domain by changing `SITE` in `marketing/kit.py` |
-| Map tiles (CARTO) | Fair use | Heavy puja-week traffic | Swap to Ola Maps or self-hosted Protomaps (see [MAPS.md](MAPS.md)) |
+| Map tiles (CARTO) | Fair use | Heavy puja-week traffic | Swap to Ola Maps or self-hosted Protomaps (see [MAPS.md](../product/MAPS.md)) |
 | A short domain | — | `shubhgptgrowth.github.io/Durga-Puja-2026` is long to say on a poster | Optional: buy something like `pujoparikrama.in` (≈ ₹700/year) and point it at Cloudflare Pages |
 
 ---

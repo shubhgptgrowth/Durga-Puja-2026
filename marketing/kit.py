@@ -1,4 +1,4 @@
-"""Daily Instagram + WhatsApp content kit for the Durga Puja 2026 push (docs/MARKETING.md).
+"""Daily Instagram + WhatsApp content kit for the Durga Puja 2026 push (docs/marketing/PLAN.md).
 
     python -m marketing.kit --out app/kit [--today 2026-10-11] [--stats place_stats.json]
 

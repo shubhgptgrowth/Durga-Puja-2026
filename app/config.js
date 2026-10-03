@@ -14,7 +14,7 @@ export const CONFIG = {
     maxVideoMB: 20,
   },
   map: {
-    // Raster tile templates. Swap these for a keyed provider before a big launch (see docs/MAPS.md).
+    // Raster tile templates. Swap these for a keyed provider before a big launch (see docs/product/MAPS.md).
     light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
     dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
     subdomains: 'abcd',

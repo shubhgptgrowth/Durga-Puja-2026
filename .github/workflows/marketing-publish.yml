@@ -1,6 +1,6 @@
 name: marketing-publish
 
-# Optional Instagram auto-posting of the day's kit cards (docs/MARKETING.md → "Instagram auto-posting").
+# Optional Instagram auto-posting of the day's kit cards (docs/marketing/PLAN.md → "Instagram auto-posting").
 # Off by default: scheduled runs only post when the repository variable IG_AUTOPUBLISH is "true" and the
 # IG_USER_ID / IG_ACCESS_TOKEN secrets exist. Otherwise they print what they would post.
 on:

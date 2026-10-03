@@ -31,7 +31,7 @@ jobs:
         run: |
           python -m unittest discover -s tests
           python -m pipeline --check
-      # The marketing content kit (docs/MARKETING.md) is published at /kit/. It never blocks the app deploy.
+      # The marketing content kit (docs/marketing/PLAN.md) is published at /kit/. It never blocks the app deploy.
       - uses: actions/setup-node@v4
         with:
           node-version: "22"

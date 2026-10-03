@@ -1,6 +1,6 @@
 /* Growth: which link brought someone (?src=), an anonymous once-per-boot open count, deep links to
  * places (#p=<id>), WhatsApp/share buttons, and shareable 1080×1920 story cards for Instagram and
- * WhatsApp Status. See docs/MARKETING.md for the link codes. */
+ * WhatsApp Status. See docs/marketing/PLAN.md for the link codes. */
 import { S, G, idx, t, store, community, nm, fmt, km, dn, todayKey } from './state.js';
 import { toast } from './ui.js';
 import { daySteps, dayDist, earned } from './actions.js';

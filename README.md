@@ -23,10 +23,7 @@ data/raw/*.csv ─► python -m pipeline ─► app/data/guide.json ─► app/ 
 
 | Path | What |
 |---|---|
-| [`docs/SCOPE.md`](docs/SCOPE.md) | Scope: personas, features, data model, fitness maths, roadmap |
-| [`docs/COMMUNITY.md`](docs/COMMUNITY.md) | Community backend: how counts are verified, setup in 10 minutes, free-tier budget |
-| [`docs/MAPS.md`](docs/MAPS.md) | Which map provider to connect, and why |
-| [`docs/MARKETING.md`](docs/MARKETING.md) | Instagram + WhatsApp playbook: goal, capacity checklist, daily routine, calendar, partner scripts, reach report |
+| [`docs/`](docs/README.md) | Two tracks. **Product:** [roadmap and backlog](docs/product/ROADMAP.md), [scope](docs/product/SCOPE.md), [community backend](docs/product/COMMUNITY.md), [maps](docs/product/MAPS.md). **Marketing:** [plan](docs/marketing/PLAN.md), [tracker](docs/marketing/TRACKER.md) |
 | `data/raw/` | **Source of truth.** Regions, areas (`zones.csv`), pandals, food, parking and transit as CSV. `geo_source=osm` marks pins confirmed against OpenStreetMap |
 | `pipeline/` | Stdlib-only Python: ingest → validate → enrich → plan → emit. Also `audit` and `audit_apply` for OSM coordinate checks, and `discover` / `discovered` for pulling more pandals, transit and photos from open data |
 | `data/seeds/`, `data/discovered/` | Well-known pujas to look up, curated auto routes, and the raw open-data pulls (OSM, Wikimedia Commons) |
@@ -68,7 +65,7 @@ npx playwright install chromium && npm run test:e2e   # iPhone-size e2e against 
 npm run serve                  # http://localhost:8123
 ```
 
-Community features stay off until `app/config.js` has a Supabase URL and anon key. Setup is in [docs/COMMUNITY.md](docs/COMMUNITY.md).
+Community features stay off until `app/config.js` has a Supabase URL and anon key. Setup is in [docs/product/COMMUNITY.md](docs/product/COMMUNITY.md).
 
 ## Data accuracy
 

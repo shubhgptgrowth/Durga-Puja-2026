@@ -1,4 +1,4 @@
--- Reach measurement for the marketing push (docs/MARKETING.md).
+-- Reach measurement for the marketing push (docs/marketing/PLAN.md).
 -- Counts distinct devices that open the app, per IST day, and which link brought them
 -- (?src=ig_bio, wa_channel, qr_<place>, ...). The device id is a random UUID the app keeps in
 -- localStorage. It is deliberately not an auth user, so a visit doesn't count towards Supabase's

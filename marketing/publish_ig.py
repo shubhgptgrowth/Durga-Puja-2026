@@ -3,7 +3,7 @@
     IG_USER_ID=… IG_ACCESS_TOKEN=… python -m marketing.publish_ig [--date 2026-10-11] [--dry-run] [--only post|story]
 
 Needs an Instagram professional account linked to a Facebook Page, and a long-lived token with
-instagram_basic + instagram_content_publish (docs/MARKETING.md → "Instagram auto-posting").
+instagram_basic + instagram_content_publish (docs/marketing/PLAN.md → "Instagram auto-posting").
 Images are fetched by Instagram from the published kit (https://…/kit/<date>/<card>.jpg), so the
 day's deploy must have run first. Without credentials, or with --dry-run, it only prints the plan.
 Stdlib only.

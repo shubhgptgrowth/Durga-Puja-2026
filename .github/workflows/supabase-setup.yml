@@ -1,6 +1,6 @@
 name: supabase-setup
 
-# One-click setup of the community backend on a hosted Supabase project (docs/COMMUNITY.md, steps 2–4):
+# One-click setup of the community backend on a hosted Supabase project (docs/product/COMMUNITY.md, steps 2–4):
 #   1. turns on anonymous sign-ins
 #   2. applies supabase/migrations/*.sql, then supabase/seed.sql (both are idempotent, so re-running is safe)
 #   3. verifies the REST API, the seeded places and anonymous sign-in
