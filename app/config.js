@@ -14,6 +14,10 @@ export const CONFIG = {
     maxVideoMB: 20,
   },
   map: {
+    // Vector base map: a Kolkata extract of the Protomaps/OpenStreetMap basemap, built at deploy time
+    // into app/tiles/ (scripts/build_tiles.sh). The manifest names the current file. If it's missing
+    // or can't be read, the raster tiles below are used instead.
+    vectorManifest: 'tiles/kolkata.json',
     // Raster tile templates. Swap these for a keyed provider before a big launch (see docs/product/MAPS.md).
     light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
     dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',

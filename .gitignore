@@ -6,3 +6,4 @@ screenshots/
 screenshots-real/
 kit-preview/
 app/kit/
+app/tiles/*.pmtiles

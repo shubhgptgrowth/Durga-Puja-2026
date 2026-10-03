@@ -3,11 +3,11 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v5';
+const VERSION = 'pp-2026-v6';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
   'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
-  'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js'];
+  'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js', 'vendor/protomaps-leaflet/protomaps-leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 800, MEDIA_CACHE = 'pp-media', MEDIA_MAX = 400;
 const isTile = (u) => /\/\d+\/\d+\/\d+(@2x)?\.(png|jpg|jpeg|webp|pbf)$/.test(u.pathname);
 const isMedia = (u) => u.pathname.includes('/storage/v1/object/public/');
@@ -36,10 +36,33 @@ function cacheFirst(e, name, max) {
   }));
 }
 
+/* Vector map tiles: the browser asks for byte ranges of one .pmtiles file. A 206 response can't be put in
+ * the Cache API as is, so each range is stored as its own entry (keyed by file + range) and replayed as a
+ * 206. The file name carries its build, so ranges from different builds never mix. */
+async function pmtilesRange(e) {
+  const req = e.request, range = req.headers.get('range');
+  if (!range) return fetch(req);
+  const c = await caches.open(TILE_CACHE), key = `${req.url}?range=${encodeURIComponent(range)}`;
+  const hit = await c.match(key);
+  if (hit) {
+    const body = await hit.arrayBuffer();
+    return new Response(body, { status: 206, headers: { 'Content-Type': 'application/octet-stream', 'Content-Length': String(body.byteLength),
+      'Content-Range': hit.headers.get('x-content-range') || '' } });
+  }
+  const res = await fetch(req);
+  if (res.status === 206) {
+    const body = await res.clone().arrayBuffer();
+    c.put(key, new Response(body, { headers: { 'x-content-range': res.headers.get('content-range') || '' } })).then(() => trim(TILE_CACHE, TILE_MAX));
+  }
+  return res;
+}
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  if (url.pathname.endsWith('.pmtiles')) return e.respondWith(pmtilesRange(e).catch(() => new Response('', { status: 504 })));
+  if (url.pathname.endsWith('/tiles/kolkata.json')) return;   // tiny manifest: always ask the network
   if (isMedia(url)) return cacheFirst(e, MEDIA_CACHE, MEDIA_MAX);
   if (url.origin !== location.origin) return isTile(url) ? cacheFirst(e, TILE_CACHE, TILE_MAX) : undefined;
 

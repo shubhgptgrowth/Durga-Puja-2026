@@ -2,7 +2,7 @@
  * community sync, then hands off to the views in ./views. */
 import { decodePlan } from './core.js';
 import { S, G, idx, t, store, community, loadGuide, dn, todayKey, savePrefs, bnDigits } from './state.js';
-import { $, $$, go, rerender, toast, setupSheet, setupA11y, VIEWS, sheetIsOpen } from './ui.js';
+import { $, $$, go, rerender, toast, setupSheet, setupA11y, VIEWS, sheetIsOpen, initVectorTiles, refreshBaseLayers } from './ui.js';
 import './views/home.js';
 import './views/explore.js';
 import { openSharedPlan, showTrail } from './views/plan.js';
@@ -39,6 +39,7 @@ async function boot() {
 
   setupCommunity();
   trackOpen();
+  if (!S.prefs.lowData) initVectorTiles();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
   addEventListener('offline', () => toast(t('net.off')));
   addEventListener('online', () => { toast(t('net.on')); community.sync(); });
@@ -62,7 +63,7 @@ function setupCommunity() {
 
 function setupHeader() {
   $('#daySelect').onchange = (e) => { S.day = e.target.value; store.set('day', S.day); rerender(); };
-  $('#langBtn').onclick = () => { S.prefs.lang = S.prefs.lang === 'bn' ? 'en' : 'bn'; savePrefs(); applyStatic(); rerender(); };
+  $('#langBtn').onclick = () => { S.prefs.lang = S.prefs.lang === 'bn' ? 'en' : 'bn'; savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
 }
 
 /* Static text in index.html carries data-i18n keys; the views re-render themselves. */

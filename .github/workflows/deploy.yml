@@ -36,11 +36,35 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      # Self-hosted vector base map (docs/product/MAPS.md). Rebuilt weekly from the latest Protomaps build.
+      # If it can't be built or doesn't render, app/tiles is removed and the app falls back to raster tiles.
+      - name: Map tile cache key
+        id: tiles
+        run: echo "week=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: app/tiles
+          key: tiles-${{ hashFiles('scripts/build_tiles.sh') }}-${{ steps.tiles.outputs.week }}
+          restore-keys: tiles-${{ hashFiles('scripts/build_tiles.sh') }}-
+      - name: Vector base map (app/tiles)
+        run: |
+          if scripts/build_tiles.sh app/tiles && node tests/e2e/map_tiles.mjs map-check; then
+            echo "::notice::Vector map: $(cat app/tiles/kolkata.json)"
+          else
+            echo "::warning::Vector map unavailable this deploy; the app falls back to raster tiles."
+            rm -f app/tiles/*.pmtiles && git checkout -- app/tiles/kolkata.json
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: map-check
+          path: map-check/
+          if-no-files-found: ignore
       - name: Content kit (/kit/) and link preview image
         continue-on-error: true
         run: |
-          npm ci
-          npx playwright install --with-deps chromium
           url=$(sed -n "s/.*url: '\([^']*\)'.*/\1/p" app/config.js | head -1)
           key=$(sed -n "s/.*anonKey: '\([^']*\)'.*/\1/p" app/config.js | head -1)
           if [ -n "$url" ]; then curl -fsS -H "apikey: $key" "$url/rest/v1/place_stats?select=place_id,visits,today" -o /tmp/stats.json || rm -f /tmp/stats.json; fi
@@ -88,6 +112,14 @@ jobs:
           done
           curl -fsS "$SITE" | grep -q '<title>Pujo Parikrama 2026</title>'
           echo "Live: $SITE (data v$expected)"
+          file=$(curl -fsS "${SITE}tiles/kolkata.json?cb=$RANDOM" | python -c "import json,sys;print(json.load(sys.stdin).get('file') or '')" || true)
+          if [ -n "$file" ]; then
+            code=$(curl -s -o /tmp/head.bin -w '%{http_code}' -H 'Range: bytes=0-6' "${SITE}tiles/$file")
+            echo "vector tiles: $file → HTTP $code, magic $(head -c 7 /tmp/head.bin)"
+            [ "$code" = 206 ] && [ "$(head -c 7 /tmp/head.bin)" = PMTiles ] || { echo "::error::vector tiles not served with range support"; exit 1; }
+          else
+            echo "::warning::No vector tiles published; the map is on raster tiles."
+          fi
           kit=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}kit/index.html?cb=$RANDOM")
           if [ "$kit" = 200 ]; then echo "::notice::Content kit: ${SITE}kit/"; else echo "::warning::Content kit not published ($kit)"; fi
       - name: Live site reaches the community backend (read-only)
