@@ -1,0 +1,18 @@
+name: music
+# scout: list official, embeddable YouTube uploads for curating app/data/music.json.
+# check: weekly (and on demand) confirm every track the app plays still exists and allows embedding.
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'scout or check', default: 'check' }
+  schedule:
+    - cron: '17 3 * * 1'
+permissions: { contents: read }
+jobs:
+  music:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python scripts/music_scout.py ${{ github.event.inputs.mode || 'check' }}
