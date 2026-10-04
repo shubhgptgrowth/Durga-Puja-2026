@@ -8,7 +8,7 @@ import { openSheet, closeSheet, toast, go, getFix, rerender, $ } from './ui.js';
 import { visit, visitPrivately, visitMessage, visitedToday, celebrateVisit } from './actions.js';
 import { prepareMedia } from './media.js';
 import { CONFIG } from './config.js';
-import { shareRowHtml, wireShareRow } from './growth.js';
+import { shareCtaHtml, wireShareCta } from './growth.js';
 import { estVisitors, estDiners, short } from './footfall.js';
 import { hasEgg, cost2, rupees } from './foodinfo.js';
 import { track, placeOpened } from './analytics.js';
@@ -134,13 +134,13 @@ export const momentCache = [];
 function visitButton(id) {
   const food = placeKind(id) === 'food';
   const done = visitedToday(id);
-  return `<button class="btn ${done ? 'success' : 'here'}" id="visitBtn" ${done ? 'disabled' : ''}>
-    ${icon(food ? 'food' : 'check')} ${done ? t(food ? 'v.ateDone' : 'v.done') : t(food ? 'v.ate' : 'v.checkin')}</button>`;
+  return `<button class="btn sm visit-cta ${done ? 'success' : 'here'}" id="visitBtn" ${done ? 'disabled' : ''}>
+    ${icon(food ? 'food' : 'check', 'sm')} ${done ? t(food ? 'v.ateShort' : 'v.doneShort') : t(food ? 'v.ate' : 'v.checkin')}</button>`;
 }
 function wireVisit(el, id, reopen) {
   const b = $('#visitBtn', el); if (!b) return;
   b.onclick = async () => {
-    b.disabled = true; b.innerHTML = `${icon('locate')} ${t('v.locating')}`;
+    b.disabled = true; b.innerHTML = `${icon('locate', 'sm')} ${t('v.locatingShort')}`;
     const r = await visit(id);
     track('checkin', { place: id, kind: placeKind(id), d: r.status });
     celebrateVisit(id, r);
@@ -150,20 +150,22 @@ function wireVisit(el, id, reopen) {
       v.innerHTML = `<div class="notice limited"><b>${visitMessage(id, r)}</b><span>${t('v.privateHint')}</span>
         <button class="btn sm" id="privBtn">${t('v.private')}</button></div>`;
       $('#privBtn', el).onclick = () => { visitPrivately(id); reopen(); rerender(); };
-      b.disabled = false; b.innerHTML = `${icon('check')} ${t('v.retry')}`;
+      b.disabled = false; b.innerHTML = `${icon('check', 'sm')} ${t('v.retry')}`;
       return;
     }
     reopen(); rerender();
   };
 }
 
-/** The two things people want first at a place: get there, and say "I'm here". */
-const actionBar = (id, p) => `<div class="action-bar">
+/** Name with a compact "I'm here" / "I ate here" beside it. */
+const titleRow = (id, name, sub = '') => `<div class="title-row"><div class="tr-name"><h2 class="title">${esc(name)}</h2>${sub}</div>${visitButton(id)}</div>
+  <div id="verifyBox" class="verify"></div>`;
+/** Pinned to the bottom of the page: Directions (Google Maps offers walk, transit and drive) and one Share. */
+const ctaBar = (id, p) => `<div class="sheet-cta">
   <a class="btn primary" target="_blank" rel="noopener" href="${dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
-  ${visitButton(id)}</div><div id="verifyBox" class="verify"></div>`;
+  ${shareCtaHtml(id)}</div>`;
 
 /* ---------------- photos (Wikimedia Commons, curated) ---------------- */
-const transitUrl = (dest) => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=transit`;
 function galleryHtml(photos) {
   if (!photos?.length) return '';
   return `<div class="gallery" role="list">${photos.map((ph, i) => `<button class="gal" role="listitem" data-photo="${i}" aria-label="${esc(ph.title)}">
@@ -197,8 +199,7 @@ function gettingThereHtml(p, parks = []) {
       ${bus}${auto}${stands}
       ${parks.map((x) => `<li data-park="${x.id}" ${btn()}><span>${icon('car', 'sm')} ${esc(x.name)}</span><small>${km(x.distance_m)} km</small></li>`).join('')}
     </ul>
-    ${auto ? `<p class="fine" style="margin-top:6px">${t('tr.autoNote')}</p>` : ''}
-    <div class="btn-row" style="margin-top:10px"><a class="btn sm" target="_blank" rel="noopener" href="${transitUrl(ll(p))}">${icon('route', 'sm')} ${t('tr.transitDir')}</a></div>`;
+    ${auto ? `<p class="fine" style="margin-top:6px">${t('tr.autoNote')}</p>` : ''}`;
 }
 
 /* ---------------- pandal ---------------- */
@@ -212,14 +213,11 @@ export function pandalSheet(id) {
   const away = S.me ? ` · ${dist(hav(S.me, ll(p)))}` : '';
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
-    <h2 class="title">${esc(nm(p))}</h2>
-    <div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>
-    ${actionBar(id, p)}
-    <div class="btn-row" style="margin-top:10px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
+    ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
+    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
     ${galleryHtml(p.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
-    ${shareRowHtml(id)}
     <p class="lead">${esc(p.highlight)}</p>
 
     <h3 class="sh">${t('p.when', { day: dn(idx.day[S.day]) })}</h3>
@@ -234,10 +232,11 @@ export function pandalSheet(id) {
     <ul class="mini-list">${foods.map((f) => `<li data-food="${f.id}" ${btn()}><span><b>${esc(f.name)}</b><br><small>${esc(f.dishes.slice(0, 2).join(' · '))}</small></span><small>${t('p.walkMin', { n: f.walk_min })}</small></li>`).join('') || `<li>${t('p.noeat')}</li>`}</ul>
 
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
-    <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>`,
+    <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>
+    ${ctaBar(id, p)}`,
   (el) => {
     wireVisit(el, id, () => pandalSheet(id)); wireDayToggle(el, () => pandalSheet(id));
-    wireGallery(el, p.photos || [], () => pandalSheet(id)); wireShareRow(el, id);
+    wireGallery(el, p.photos || [], () => pandalSheet(id)); wireShareCta(el, id);
     el.querySelectorAll('[data-food]').forEach((li) => (li.onclick = () => foodSheet(li.dataset.food)));
     el.querySelectorAll('[data-park]').forEach((li) => (li.onclick = () => parkSheet(li.dataset.park)));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
@@ -252,15 +251,13 @@ export function foodSheet(id) {
   const away = S.me ? ` · ${dist(hav(S.me, ll(f)))}` : '';
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
-    <h2 class="title">${esc(f.name)}</h2>
-    ${actionBar(id, f)}
+    ${titleRow(id, f.name)}
     <div class="food-facts">${openHtml(f, { long: true })}${costHtml(f)}${f.veg === 'veg' ? `<span class="diet-l">${dietMarks({ ...f, dishes: [] })} ${t('diet.veg')}</span>` : ''}${hasEgg(f) ? `<span class="diet-l"><span class="egg-mark" aria-hidden="true">🥚</span> ${t('diet.egg')}</span>` : ''}</div>
-    ${offersHtml(id)}
     ${galleryHtml(f.photos)}
+    ${offersHtml(id)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
     ${community.enabled ? `<h3 class="sh">${t('rt.title')}</h3>${ratingHtml(id)}${rateBoxHtml(id)}` : ''}
-    ${shareRowHtml(id)}
     ${f.note ? `<p class="lead">${esc(f.note)}</p>` : ''}
     <h3 class="sh">${t('food.mustTry')}</h3>
     ${dishesHtml(f)}
@@ -270,10 +267,11 @@ export function foodSheet(id) {
     ${gettingThereHtml(f)}
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     ${community.enabled ? `<div class="owner-cta"><span>🏪 ${t('of.ownQ')}</span><button class="btn sm" id="postOfferBtn">🏷️ ${t('of.post')}</button></div>` : ''}
-    <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
+    <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>
+    ${ctaBar(id, f)}`,
   (el) => {
     wireVisit(el, id, () => foodSheet(id)); wireDayToggle(el, () => foodSheet(id)); wireRate(el, id, () => foodSheet(id));
-    wireGallery(el, f.photos || [], () => foodSheet(id)); wireShareRow(el, id);
+    wireGallery(el, f.photos || [], () => foodSheet(id)); wireShareCta(el, id);
     const dp = G.data.dish_photos || {};
     el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));
     el.querySelectorAll('[data-p]').forEach((li) => (li.onclick = () => pandalSheet(li.dataset.p)));

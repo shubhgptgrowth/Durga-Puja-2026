@@ -417,6 +417,10 @@ export const STR = {
     'mn.captionPh': 'e.g. Pujo special menu 2026',
     'mn.posted': 'Menu photo added. Thank you!',
     'm.err.menuPhoto': 'Menus need a photo, not a video.',
+    'v.doneShort': 'Checked in',
+    'v.ateShort': 'Logged',
+    'v.locatingShort': 'Checking…',
+    'g.shareWa': 'Share on WhatsApp',
   },
   bn: {
 
@@ -819,6 +823,10 @@ export const STR = {
     'mn.captionPh': 'যেমন: পুজো স্পেশাল মেনু ২০২৬',
     'mn.posted': 'মেনুর ছবি যোগ হল। ধন্যবাদ!',
     'm.err.menuPhoto': 'মেনুর জন্য ছবি লাগবে, ভিডিও নয়।',
+    'v.doneShort': 'চেক-ইন হয়েছে',
+    'v.ateShort': 'লেখা হয়েছে',
+    'v.locatingShort': 'দেখছি…',
+    'g.shareWa': 'হোয়াটসঅ্যাপে শেয়ার',
   },
 };
 STR.hi = HI;

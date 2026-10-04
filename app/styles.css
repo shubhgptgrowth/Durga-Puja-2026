@@ -1008,3 +1008,15 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .sh.sh-row { display: flex; justify-content: space-between; align-items: center; }
 .owner-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
 .owner-cta .btn { flex: none; }
+
+/* Place pages: name with a compact "I'm here" / "I ate here"; Directions + Share pinned at the bottom */
+.title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.title-row .tr-name { min-width: 0; flex: 1; }
+.title-row .title { margin: 2px 0 0; }
+.btn.visit-cta { flex: none; margin-top: 4px; min-height: 38px; padding: 6px 12px; font-size: 13.5px; border-radius: 999px; white-space: nowrap; }
+.btn.visit-cta:disabled { opacity: 1; }
+.sheet-cta { position: sticky; bottom: calc(-22px - var(--safe-b)); z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 10px;
+  margin: 18px -16px calc(-22px - var(--safe-b)); padding: 10px 16px calc(12px + var(--safe-b)); background: var(--bg); border-top: 1px solid var(--line); box-shadow: 0 -8px 18px rgba(0,0,0,.06); }
+.sheet-cta .btn { min-height: 48px; }
+.sheet-cta .btn.wa { display: inline-flex; align-items: center; gap: 6px; padding: 0 16px; }
+.wa-ico { width: 20px; height: 20px; flex: none; }

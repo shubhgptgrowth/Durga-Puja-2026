@@ -454,6 +454,13 @@ try {
   must(!/src=/.test(p2.url()), 'tracking code not tidied from the URL: ' + p2.url());
   const wa = decodeURIComponent(await p2.getAttribute('#waShare', 'href'));
   must(wa.startsWith('https://wa.me/?text=') && wa.includes('?src=wa_place#p=sreebhumi'), 'WhatsApp link wrong: ' + wa);
+  // Place page layout: "I'm here" beside the name, photos in the first fold, Directions + one Share at the bottom
+  must(await p2.locator('.sheet.open .title-row #visitBtn').count() === 1, "I'm here should sit beside the name");
+  must(await p2.locator('.sheet.open .sheet-cta a').count() === 2 && /maps\/dir/.test(await p2.getAttribute('.sheet.open .sheet-cta a.primary', 'href')), 'bottom bar should hold Directions and Share');
+  must(!(await p2.locator('.sheet.open .action-bar, .sheet.open #storyShare, .sheet.open #linkShare, .sheet.open .share-row').count()), 'old top Directions / extra share buttons still there');
+  must(!(await p2.locator('.sheet.open .mini-list ~ .btn-row a[href*="travelmode=transit"]').count()), 'the separate bus & metro directions button should be gone');
+  const galTop = await p2.locator('.sheet.open .gallery').first().evaluate((e) => e.getBoundingClientRect().top);
+  must(galTop < 844, 'photos should be in the first fold, top at ' + galTop);
   await p2.waitForTimeout(250); await p2.screenshot({ path: `${out}/11b-share-row.png` });
   if (fake) {
     await p2.waitForTimeout(1800);

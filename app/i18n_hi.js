@@ -413,4 +413,8 @@ export const HI = {
     'mn.captionPh': 'जैसे: पूजो स्पेशल मेनू 2026',
     'mn.posted': 'मेनू की फ़ोटो जुड़ गई। धन्यवाद!',
     'm.err.menuPhoto': 'मेनू के लिए फ़ोटो चाहिए, वीडियो नहीं।',
+    'v.doneShort': 'चेक-इन हुआ',
+    'v.ateShort': 'दर्ज हुआ',
+    'v.locatingShort': 'देख रहे हैं…',
+    'g.shareWa': 'WhatsApp पर शेयर',
   };
