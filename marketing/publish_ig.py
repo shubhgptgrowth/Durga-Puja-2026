@@ -2,8 +2,10 @@
 
     IG_USER_ID=… IG_ACCESS_TOKEN=… python -m marketing.publish_ig [--date 2026-10-11] [--dry-run] [--only post|story]
 
-Needs an Instagram professional account linked to a Facebook Page, and a long-lived token with
-instagram_basic + instagram_content_publish (docs/marketing/PLAN.md → "Instagram auto-posting").
+Needs an Instagram professional account and a long-lived token, either from Instagram Login (token starts
+with "IG", scopes instagram_business_basic + instagram_business_content_publish, no Facebook Page needed) or
+from Facebook Login (account linked to a Facebook Page, instagram_basic + instagram_content_publish).
+See docs/marketing/PLAN.md → "Instagram auto-posting".
 Images are fetched by Instagram from the published kit (https://…/kit/<date>/<card>.jpg), so the
 day's deploy must have run first. Without credentials, or with --dry-run, it only prints the plan.
 Stdlib only.
@@ -21,6 +23,11 @@ import urllib.request
 from .kit import SITE
 
 GRAPH = "https://graph.facebook.com/v21.0"
+IG_GRAPH = "https://graph.instagram.com/v21.0"  # Instagram Login tokens ("IG…") only work here
+
+
+def api_base(token):
+    return IG_GRAPH if token.startswith("IG") else GRAPH
 
 
 def ist_today():
@@ -35,7 +42,7 @@ def get_json(url):
 def graph(method, path, token, **params):
     params["access_token"] = token
     data = urllib.parse.urlencode(params).encode()
-    url = f"{GRAPH}/{path}"
+    url = f"{api_base(token)}/{path}"
     req = urllib.request.Request(url if method == "POST" else f"{url}?{data.decode()}", data=data if method == "POST" else None, method=method)
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
