@@ -117,9 +117,30 @@ def tiles(overrides=""):
     (out_dir / "tiles.json").write_text(json.dumps(credits, ensure_ascii=False, indent=1))
 
 
+def tile_candidates(spec):
+    """'key|search' -> up to 8 small previews in data/tile_candidates/<key>_<i>.jpg (+ index.json) to choose from."""
+    key, q = spec.split("|", 1)
+    out = Path("data/tile_candidates"); out.mkdir(parents=True, exist_ok=True)
+    idx = []
+    for pg in commons_search(q, 30):
+        ii = (pg.get("imageinfo") or [{}])[0]
+        if not ii.get("thumburl") or ii.get("width", 0) < 800:
+            continue
+        try:
+            im = fetch(ii["thumburl"]); im.thumbnail((360, 360)); im.save(out / f"{key}_{len(idx)}.jpg", quality=70)
+            idx.append({"n": len(idx), "title": pg["title"]})
+        except Exception as e:
+            print("skip", pg["title"], e)
+        if len(idx) >= 8:
+            break
+    (out / f"{key}.json").write_text(json.dumps(idx, indent=1, ensure_ascii=False))
+    print(len(idx), "candidates for", key)
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
-    if mode == "tiles": tiles(sys.argv[2] if len(sys.argv) > 2 else "")
+    if mode == "tilecands": tile_candidates(sys.argv[2])
+    elif mode == "tiles": tiles(sys.argv[2] if len(sys.argv) > 2 else "")
     elif mode == "candidates": candidates()
     elif mode == "set": slideshow(sys.argv[2])
     else: hero(int(sys.argv[2]))

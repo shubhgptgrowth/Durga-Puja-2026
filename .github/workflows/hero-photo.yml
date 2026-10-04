@@ -17,5 +17,5 @@ jobs:
       - run: python scripts/hero_photo.py "${{ inputs.mode }}" "${{ inputs.n }}"
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for d in data/hero_candidates app/img; do [ -e "$d" ] && git add -A -- "$d"; done; true
+          for d in data/hero_candidates data/tile_candidates app/img; do [ -e "$d" ] && git add -A -- "$d"; done; true
           git diff --cached --quiet || { git commit -m "Banner photo: ${{ inputs.mode }} ${{ inputs.n }}"; git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}; }
