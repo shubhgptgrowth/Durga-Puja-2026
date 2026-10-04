@@ -12,7 +12,7 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), events: [], presence: new Map(), offline: false };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), events: [], presence: new Map(), offline: false };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
@@ -107,6 +107,23 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (ph) { ph.reports++; ph.hidden ||= ph.reports >= 3; }
       return { status: 'ok', hidden: !!ph?.hidden };
     },
+    save_progress(uid, a) {
+      if (!a.p_data || typeof a.p_data !== 'object') return { status: 'bad_data' };
+      let code = db.members.get(uid);
+      if (!code) { const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', r = () => Array.from({ length: 4 }, () => L[Math.floor(Math.random() * 32)]).join('');
+        code = `PUJO-${r()}-${r()}`; db.members.set(uid, code); }
+      db.progress.set(code, a.p_data);
+      return { status: 'ok', code };
+    },
+    load_progress(uid) { const code = db.members.get(uid); return code ? { status: 'ok', code, data: db.progress.get(code) } : null; },
+    claim_progress(uid, a) {
+      const m = String(a.p_code || '').trim().toUpperCase().match(/^(?:PUJO)?-?([A-Z0-9]{4})-?([A-Z0-9]{4})$/);
+      const code = m ? `PUJO-${m[1]}-${m[2]}` : '';
+      if (!db.progress.has(code)) return { status: 'not_found' };
+      const old = db.members.get(uid); db.members.set(uid, code);
+      if (old && old !== code && ![...db.members.values()].includes(old)) db.progress.delete(old);
+      return { status: 'ok', code, data: db.progress.get(code) };
+    },
     delete_photo(uid, a) {
       const i = db.photos.findIndex((x) => x.id === a.p_photo && x.user === uid); if (i < 0) return { status: 'not_found' };
       const [ph] = db.photos.splice(i, 1);
@@ -120,7 +137,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
     if (p === '/__crowd') { db.extraLive = +url.searchParams.get('live') || 0; db.extraPeople = +url.searchParams.get('people') || 0; return json(res, 200, {}); }
-    if (p === '/__state') return json(res, 200, { events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__state') return json(res, 200, { progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
     if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/')) return json(res, 401, { message: 'no apikey' });
 

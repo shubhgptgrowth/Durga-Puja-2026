@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   hav, orderRoute, pathLen, crowdIndex, stepsFor, kcalFor, judgeFix, StepDetector,
-  routeUrls, isOpen, hhmm, encodePlan, decodePlan, parseSteps,
+  routeUrls, isOpen, hhmm, encodePlan, decodePlan, parseSteps, mergeProgress,
 } from '../../app/core.js';
 import { dietMatch, hasEgg, cost2 } from '../../app/foodinfo.js';
 import { STR } from '../../app/i18n.js';
@@ -234,4 +234,20 @@ test('food diet filters, egg detection and cost for two', () => {
   assert.equal(cost2(cabin), 500);
   assert.equal(cost2({ ...cabin, cost2: 650 }), 650, 'a checked cost2 wins');
   for (const f of G.food) assert.ok(cost2(f) >= 100 && cost2(f) <= 3000, f.id);
+});
+
+test('My Pujo progress from two browsers merges without losing anything', () => {
+  const phone = { history: { '2026-10-18': { m: 3000, ms: 1, steps: 4200, pandals: ['a', 'b'], foods: ['x'] } }, checkins: { a: { ts: 200 }, b: { ts: 300 } }, name: 'Rina', goal: 12000, myMoments: 1 };
+  const laptop = { history: { '2026-10-18': { m: 1000, ms: 5, steps: 9000, health: 9500, pandals: ['c'], foods: [] }, '2026-10-17': { m: 10, ms: 1, steps: 5, pandals: [], foods: [] } },
+    checkins: { a: { ts: 100 }, c: { ts: 400 } }, name: '', myMoments: 3, myRatings: { x: { stars: 5 } } };
+  const m = mergeProgress(phone, laptop);
+  const d = m.history['2026-10-18'];
+  assert.deepEqual([d.m, d.ms, d.steps, d.health], [3000, 5, 9000, 9500]);
+  assert.deepEqual(d.pandals.sort(), ['a', 'b', 'c']);
+  assert.ok(m.history['2026-10-17'], 'days only one side has are kept');
+  assert.deepEqual(Object.keys(m.checkins).sort(), ['a', 'b', 'c']);
+  assert.equal(m.checkins.a.ts, 100, 'earliest check-in time wins');
+  assert.equal(m.name, 'Rina'); assert.equal(m.goal, 12000); assert.equal(m.myMoments, 3);
+  assert.deepEqual(m.myRatings, { x: { stars: 5 } });
+  assert.deepEqual(mergeProgress(m, m), mergeProgress(m, {}), 'merging the same backup again changes nothing');
 });

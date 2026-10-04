@@ -437,6 +437,38 @@ try {
     await fetch(`${fake.url}/__crowd?live=0&people=0`);
   }
 
+  // My Pujo on another browser: the progress here is backed up under a Pujo code; a fresh browser opening its
+  // link gets the same check-ins and steps back, and its own progress is merged in, not wiped.
+  {
+    await page.click('.tab[data-view="me"]');
+    const code = await page.waitForFunction(() => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null'), null, { timeout: 15000 }).then((h) => h.jsonValue());
+    must(/^PUJO-[A-Z2-9]{4}-[A-Z2-9]{4}$/.test(code), 'pujo code: ' + code);
+    await page.click('details.sync-box summary');
+    must((await page.locator('#pujoCode').innerText()) === code, 'code shown on My Pujo');
+    await page.locator('details.sync-box').scrollIntoViewIfNeeded(); await shot('11q-sync-card');
+    const mine = await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')));
+    must(mine.length > 0, 'expected check-ins to back up');
+    const ctx2 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx2.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx2.addInitScript(() => { if (!localStorage.getItem('pp:history')) localStorage.setItem('pp:history', JSON.stringify({ '2026-10-01': { m: 900, ms: 0, pandals: [], foods: [], steps: 1234 } })); });
+    const p2 = await ctx2.newPage();
+    p2.on('pageerror', (e) => errors.push('pageerror (2nd browser): ' + e.message));
+    // This browser already has a day of its own before the link is opened
+    await p2.goto(base + '#restore=' + code.toLowerCase().replace('pujo-', ''));
+    await p2.waitForFunction((c) => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null') === c, code, { timeout: 8000 });
+    const got = await p2.evaluate(() => ({ checkins: Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')), hist: JSON.parse(localStorage.getItem('pp:history') || '{}') }));
+    must(mine.every((id) => got.checkins.includes(id)), 'restored check-ins: ' + got.checkins.join(','));
+    must(got.hist['2026-10-01']?.steps === 1234, 'second browser lost its own steps in the merge: ' + JSON.stringify(got.hist));
+    must(await p2.locator('#view-me.active').count() === 1 && !p2.url().includes('restore='), 'restore link should land on My Pujo: ' + p2.url());
+    await p2.screenshot({ path: `${out}/11r-restored.png` });
+    // A wrong code says so and changes nothing
+    await p2.click('details.sync-box summary').catch(() => {});
+    await p2.fill('#syCode', 'PUJO-ZZZZ-ZZZZ'); await p2.click('#syncForm button');
+    await p2.waitForFunction(() => /No backup/.test(document.querySelector('#toast')?.textContent || ''), null, { timeout: 5000 });
+    must(await p2.evaluate(() => JSON.parse(localStorage.getItem('pp:pujoCode'))) === code, 'a wrong code must not switch the backup');
+    await ctx2.close();
+  }
+
   // Back button: closes an open page, then returns to the previous tab, never leaving the site
   await page.click('.tab[data-view="home"]');
   await page.click('.tab[data-view="explore"]');

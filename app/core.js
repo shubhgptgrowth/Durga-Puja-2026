@@ -254,3 +254,26 @@ export function parseSteps(s, today) {
   if (!Number.isFinite(n) || n < 0) return null;
   return { n: Math.min(n, 100000), date: /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date <= today ? date : today };
 }
+
+/** Merge two copies of My Pujo progress (this browser's and the backup) so neither loses anything:
+ * per day the larger distance, time and step counts, and the union of pandals and food stops; check-ins
+ * keep the earliest; counters take the larger; the name and goal come from `a` when set. */
+export function mergeProgress(a = {}, b = {}) {
+  const days = {}, ha = a.history || {}, hb = b.history || {};
+  for (const d of new Set([...Object.keys(ha), ...Object.keys(hb)])) {
+    const x = ha[d] || {}, y = hb[d] || {};
+    days[d] = {
+      m: Math.max(x.m || 0, y.m || 0), ms: Math.max(x.ms || 0, y.ms || 0),
+      steps: Math.max(x.steps || 0, y.steps || 0), health: Math.max(x.health || 0, y.health || 0) || undefined,
+      pandals: [...new Set([...(x.pandals || []), ...(y.pandals || [])])], foods: [...new Set([...(x.foods || []), ...(y.foods || [])])],
+    };
+    if (!days[d].health) delete days[d].health;
+  }
+  const checkins = { ...(b.checkins || {}) };
+  for (const [id, c] of Object.entries(a.checkins || {})) if (!checkins[id] || c.ts < checkins[id].ts) checkins[id] = c;
+  return {
+    v: 1, history: days, checkins,
+    name: a.name || b.name || '', goal: a.goal || b.goal, height: a.height || b.height, weight: a.weight || b.weight,
+    myMoments: Math.max(a.myMoments || 0, b.myMoments || 0), myRatings: { ...(b.myRatings || {}), ...(a.myRatings || {}) },
+  };
+}

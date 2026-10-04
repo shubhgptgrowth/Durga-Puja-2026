@@ -9,6 +9,7 @@ import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
 import { shareCard, myCard, appLink, myName, deviceId } from '../growth.js';
+import { pujoCode, restoreLink, claimCode } from '../sync.js';
 
 const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const syncUrl = () => `${location.origin}${location.pathname}?src=ios_shortcut#steps=`;
@@ -47,6 +48,24 @@ function profileHtml() {
   </details>`;
 }
 
+/** My Pujo on another phone or browser: this browser's Pujo code, its link, and a box to enter another one. */
+function syncHtml() {
+  if (!community.enabled) return '';
+  const code = pujoCode();
+  return `<details class="more sync-box pad-x" ${openState?.['sync-box'] ? 'open' : ''}>
+    <summary>🔁 ${t('sy.title')}</summary>
+    <div class="sync-body">
+      <p class="fine">${t('sy.why')}</p>
+      ${code ? `<div class="pujo-code" aria-label="${t('sy.yourCode')}"><small>${t('sy.yourCode')}</small><b id="pujoCode">${esc(code)}</b></div>
+        <div class="btn-row"><button class="btn sm primary" type="button" id="syShare">🔗 ${t('sy.share')}</button><button class="btn sm" type="button" id="syCopy">${t('sy.copy')}</button></div>
+        <p class="fine">${t('sy.keep')}</p>` : `<p class="fine">${t('sy.noneYet')}</p>`}
+      <form id="syncForm" class="hs-row"><input id="syCode" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="14" placeholder="PUJO-XXXX-XXXX" aria-label="${t('sy.enter')}">
+        <button class="btn sm" type="submit">${t('sy.restore')}</button></form>
+      <p class="fine">${t('sy.enterHint')}</p>
+    </div>
+  </details>`;
+}
+
 function iosHtml() {
   const link = CONFIG.healthShortcut; // set by scripts/sign_shortcut.sh, or an iCloud link
   return `<div class="ios-sync"><h4>${t('hs.iosTitle')}</h4>
@@ -68,7 +87,7 @@ function nextStop() {
 /* The step counter redraws this page up to once a second while the phone moves. Typed-but-unsaved text and
  * which sections are open must survive that, and while someone is typing only the numbers are updated. */
 const drafts = {};
-const openKeys = ['profile-box', 'health-sync', 'settings'];
+const openKeys = ['profile-box', 'sync-box', 'health-sync', 'settings'];
 let openState = null;
 
 function liveUpdate(el, d, steps, goal) {
@@ -107,6 +126,7 @@ function render() {
     <p class="walk-status" id="walkStatus">${status}</p>
     </section>
     ${profileHtml()}
+    ${syncHtml()}
 
     <details class="more health-sync pad-x" ${openState?.['health-sync'] ? 'open' : ''}>
       <summary>⌚ ${t('hs.title')}${d.health ? ` · ${fmt(d.health)}` : ''}</summary>
@@ -160,12 +180,25 @@ function render() {
       Object.assign(S.prefs, { phone: '', contactOk: false }); savePrefs(); delete drafts.cPhone;
       toast(t('pr.erased')); return render();
     }
+    if (e.target.closest('#syCopy')) { navigator.clipboard?.writeText(pujoCode()).then(() => toast(t('share.copied')), () => {}); return; }
+    if (e.target.closest('#syShare')) {
+      const text = t('sy.shareText', { code: pujoCode() }), url = restoreLink();
+      if (navigator.share) return navigator.share({ title: t('sy.title'), text, url }).catch(() => {});
+      navigator.clipboard?.writeText(`${text}\n${url}`).then(() => toast(t('share.copied')), () => {}); return;
+    }
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
     if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${myName() ? t('g.inviteFrom', { name: myName() }) : t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
     if (e.target.closest('#copySync')) { const i = $('#syncUrl', el); i.select(); navigator.clipboard?.writeText(i.value).then(() => toast(t('share.copied')), () => {}); return; }
     const bd = e.target.closest('[data-badge]')?.dataset.badge; if (bd) return badgeSheet(bd);
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#resetBtn') && confirm(t('fit.confirmReset'))) { store.clear(); location.reload(); }
+  };
+  const syf = $('#syncForm', el);
+  if (syf) syf.onsubmit = async (e) => {
+    e.preventDefault();
+    const code = $('#syCode', el).value.trim(); if (!code) return $('#syCode', el).focus();
+    if (code.toUpperCase().replace(/[^A-Z0-9]/g, '') === (pujoCode() || '').replace(/-/g, '')) return toast(t('sy.same'));
+    clearDrafts(e.target); await claimCode(code);
   };
   $('#healthForm', el).onsubmit = (e) => {
     e.preventDefault();

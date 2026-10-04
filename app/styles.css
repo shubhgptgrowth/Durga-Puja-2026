@@ -986,3 +986,13 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .dir-leg b { font-size: 14px; white-space: nowrap; }
 .dir-leg span { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dir-leg .dl-go { font-weight: 800; color: #FDE68A; }
+
+/* My Pujo on another phone: the Pujo code card */
+.sync-box { margin: 4px 16px 10px; }
+.sync-body { padding: 0 12px 12px; display: grid; gap: 8px; }
+.sync-body .fine { margin: 0; }
+.pujo-code { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px; border: 1.5px dashed var(--brand); border-radius: 12px; background: var(--surface); }
+.pujo-code small { color: var(--ink-3, #8a7f77); font-size: 12px; }
+.pujo-code b { font: 700 22px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.06em; color: var(--brand); user-select: all; }
+.sync-body .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+#syCode { text-transform: uppercase; letter-spacing: 0.04em; }
