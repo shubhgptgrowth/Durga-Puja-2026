@@ -1,6 +1,10 @@
 """Builds the 'how to use the app' video (1080×1920, about 40 s) from the screen recording made by record.cjs.
 
-    python3 compose.py <rec dir> <fonts dir> <assets dir> <out.mp4>
+    python3 compose.py <rec dir> <fonts dir> <assets dir> <out.mp4> [voiceover dir]
+
+With a voiceover dir (vo_00.mp3 for the intro, vo_01…vo_06 for the app scenes, vo_07 for the end card), each line
+starts just after its scene appears, a scene is held on its last frame if the line runs longer, and the music
+ducks under the voice.
 
 The video opens on a real Durga photo with a Bengali hook. Each app scene then sits in a phone frame on maroon, with a
 numbered Bengali caption and English under it. It ends on a laal-paar card with the link and the Instagram handle.
@@ -39,6 +43,7 @@ CREDITS = ("Photo: Jonoikobangali, CC BY-SA 3.0 · Dhak: Sumita Roy Dutta, CC BY
            "Shankh: Jyoti Chiring, CC BY 4.0 (Wikimedia Commons)")
 INTRO_S, END_S, XF = 3.6, 4.6, 0.3
 SPEED = 1.15  # screen scenes play slightly faster than real time
+VO_LEAD, VO_TAIL = 0.45, 0.55  # voiceover starts this long into its scene, and the scene runs this long after it
 
 FONTS = None
 
@@ -181,7 +186,7 @@ def dur(f):
     return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(f)]))
 
 
-def main(rec, fonts, assets, out):
+def main(rec, fonts, assets, out, vo=None):
     global FONTS
     rec, FONTS, assets, out = Path(rec), Path(fonts), Path(assets), Path(out)
     tmp = out.parent / "howto_tmp"
@@ -189,31 +194,37 @@ def main(rec, fonts, assets, out):
     marks = {s["seg"]: s for s in json.load(open(rec / "scenes.json"))}
     mask(tmp / "mask.png")
     clips = []
+    lines = [Path(vo) / f"vo_{k:02d}.mp3" for k in range(len(SCENES) + 2)] if vo else []
+    need = [dur(f) + VO_LEAD + VO_TAIL if f.exists() else 0 for f in lines] or [0] * (len(SCENES) + 2)
 
     # intro: slow push-in on the photo, overlay fades in
     intro_overlay(tmp / "intro.png")
-    n = int(INTRO_S * FPS)
+    intro_s = max(INTRO_S, need[0])
+    n = int(intro_s * FPS)
     run("ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", str(assets / "durga.jpg"), "-loop", "1", "-i", str(tmp / "intro.png"),
         "-filter_complex",
         f"[0]scale={W * 2}:{H * 2}:force_original_aspect_ratio=increase,crop={W * 2}:{H * 2},"
         f"zoompan=z='1.0+0.06*on/{n}':x='iw/2-iw/zoom/2':y='ih/2.6-ih/zoom/2.6':d={n}:s={W}x{H}:fps={FPS}[bg];"
         f"[1]format=rgba,fade=in:st=0.35:d=0.6:alpha=1[ov];[bg][ov]overlay=0:0,format=yuv420p",
-        "-t", str(INTRO_S), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / "c00.mp4"))
+        "-t", f"{intro_s:.3f}", "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / "c00.mp4"))
     clips.append(tmp / "c00.mp4")
 
     for i, (sid, bn, en, step) in enumerate(SCENES, 1):
         scene_bg(bn, en, step, tmp / f"bg_{sid}.png")
         screen_clip(rec, sid, marks[sid]["t1"], tmp / f"s_{sid}.mp4")
+        d = dur(tmp / f"s_{sid}.mp4")
+        hold = max(0.0, need[i] - d)  # freeze the last frame while the voiceover finishes
         run("ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", str(tmp / f"bg_{sid}.png"), "-i", str(tmp / f"s_{sid}.mp4"),
             "-loop", "1", "-i", str(tmp / "mask.png"),
-            "-filter_complex", f"[2]format=gray[m];[1][m]alphamerge[s];[0][s]overlay={PH_X}:{PH_Y}:shortest=1,format=yuv420p",
+            "-filter_complex", f"[1]tpad=stop_mode=clone:stop_duration={hold:.3f}[sv];[2]format=gray[m];[sv][m]alphamerge[s];"
+                               f"[0][s]overlay={PH_X}:{PH_Y}:shortest=1,format=yuv420p",
             # -t: the looped stills never end on their own
-            "-t", "%.3f" % dur(tmp / f"s_{sid}.mp4"), "-r", str(FPS), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / f"c{i:02d}.mp4"))
+            "-t", f"{d + hold:.3f}", "-r", str(FPS), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / f"c{i:02d}.mp4"))
         clips.append(tmp / f"c{i:02d}.mp4")
 
     end_card(tmp / "end.png")
     run("ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", str(tmp / "end.png"), "-vf", "format=yuv420p", "-r", str(FPS),
-        "-t", str(END_S), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / "c99.mp4"))
+        "-t", f"{max(END_S, need[-1]):.3f}", "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / "c99.mp4"))
     clips.append(tmp / "c99.mp4")
 
     # crossfade the clips together
@@ -233,7 +244,23 @@ def main(rec, fonts, assets, out):
     fc.append(f"[{a}:a]atrim=0:3.2,afade=t=out:st=2.4:d=0.8,volume=0.9[sk]")
     fc.append(f"[{a + 1}:a]atrim=0:{total:.2f},asetpts=PTS-STARTPTS,afade=t=in:d=1.2,"
               f"afade=t=out:st={total - 1.8:.2f}:d=1.8,volume=0.75,adelay=1800|1800[dk]")
-    fc.append(f"[sk][dk]amix=inputs=2:duration=longest:normalize=0,atrim=0:{total:.2f},alimiter=limit=0.9[a]")
+    if not lines:
+        fc.append(f"[sk][dk]amix=inputs=2:duration=longest:normalize=0,atrim=0:{total:.2f},alimiter=limit=0.9[a]")
+    else:
+        # each line starts VO_LEAD into its clip; the music ducks under the voice
+        fc.append("[sk][dk]amix=inputs=2:duration=longest:normalize=0[mus]")
+        start, labs = 0.0, []
+        for k, f in enumerate(lines):
+            if f.exists():
+                args += ["-i", str(f)]
+                ms = int((start + VO_LEAD) * 1000)
+                fc.append(f"[{a + 2 + len(labs)}:a]aresample=48000,aformat=channel_layouts=stereo,adelay={ms}|{ms},volume=1.6[v{k}]")
+                labs.append(f"[v{k}]")
+            start += durs[k] - XF
+        fc.append(f"{''.join(labs)}amix=inputs={len(labs)}:duration=longest:normalize=0,asplit=2[vo1][vo2]")
+        fc.append("[mus]aresample=48000,aformat=channel_layouts=stereo[mus2]")
+        fc.append("[mus2][vo1]sidechaincompress=threshold=0.015:ratio=12:attack=15:release=450:makeup=1[duck]")
+        fc.append(f"[duck][vo2]amix=inputs=2:duration=first:normalize=0,atrim=0:{total:.2f},alimiter=limit=0.92[a]")
     run("ffmpeg", "-v", "error", "-y", *args, "-filter_complex", ";".join(fc), "-map", prev, "-map", "[a]",
         "-c:v", "libx264", "-crf", "21", "-preset", "slow", "-profile:v", "high", "-pix_fmt", "yuv420p",
         "-maxrate", "3M", "-bufsize", "6M", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(out))
@@ -241,4 +268,4 @@ def main(rec, fonts, assets, out):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    main(*sys.argv[1:6])
