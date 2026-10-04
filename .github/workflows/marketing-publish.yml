@@ -40,6 +40,7 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: |
+          set -o pipefail  # a failed post must fail the run, not hide behind tee
           args=()
           [ -n "${{ inputs.date }}" ] && args+=(--date "${{ inputs.date }}")
           [ -n "${{ inputs.only }}" ] && args+=(--only "${{ inputs.only }}")
