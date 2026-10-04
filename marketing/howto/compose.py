@@ -207,7 +207,8 @@ def main(rec, fonts, assets, out):
         run("ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", str(tmp / f"bg_{sid}.png"), "-i", str(tmp / f"s_{sid}.mp4"),
             "-loop", "1", "-i", str(tmp / "mask.png"),
             "-filter_complex", f"[2]format=gray[m];[1][m]alphamerge[s];[0][s]overlay={PH_X}:{PH_Y}:shortest=1,format=yuv420p",
-            "-r", str(FPS), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / f"c{i:02d}.mp4"))
+            # -t: the looped stills never end on their own
+            "-t", "%.3f" % dur(tmp / f"s_{sid}.mp4"), "-r", str(FPS), "-c:v", "libx264", "-crf", "17", "-preset", "veryfast", str(tmp / f"c{i:02d}.mp4"))
         clips.append(tmp / f"c{i:02d}.mp4")
 
     end_card(tmp / "end.png")
