@@ -86,6 +86,9 @@ function miniPandal(p, extra) {
   </div>`;
 }
 
+// How to use the app, in order: each step opens that part of it.
+const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
+
 function render() {
   const el = $('#view-home');
   const st = community.enabled ? community.stats.byPlace : {};
@@ -103,7 +106,11 @@ function render() {
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
     ${liveHtml()}
-    <ol class="how" aria-label="${t('h.introTitle')}">${[1, 2, 3].map((n) => `<li><span class="how-n">${n}</span><b>${t('how.t' + n)}</b><span>${t('how.s' + n)}</span></li>`).join('')}</ol>
+    <section class="how-wrap" aria-label="${t('h.introTitle')}">
+      <p class="how-lingo">${t('how.lingo')}</p>
+      <ol class="how">${HOW.map(([q, em], i) => `<li><button type="button" data-q="${q}"><span class="how-n">${i + 1}</span><span class="how-em" aria-hidden="true">${em}</span>
+        <span class="how-tx"><b>${t('how.t' + (i + 1))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
+    </section>
     <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => `<button class="task" data-q="${k}">
         <span class="task-ic">${icon(ic)}</span><span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`).join('')}</div>
@@ -155,6 +162,8 @@ function wire(el) {
     if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }
     if (q === 'park') { setExplore({ seg: 'parking', mode: 'list' }); return go('explore'); }
     if (q === 'photos') return go('moments');
+    if (q === 'go') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => {}); return; }
+    if (q === 'share') return go('me');
     const place = e.target.closest('[data-place]')?.dataset.place; if (place) return openPlace(place);
     const hr = e.target.closest('[data-hr]')?.dataset.hr; if (hr) { setExplore({ seg: 'pandals', region: hr, area: 'all', mode: 'list' }); return go('explore'); }
     const trail = e.target.closest('[data-trail]')?.dataset.trail; if (trail) { go('plan'); return showTrail(trail); }

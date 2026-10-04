@@ -70,7 +70,7 @@ try {
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
   await page.click('.tab[data-view="home"]');
-  must(await count('#view-home .how li') === 3, '"How it works" should sit in the first fold');
+  must(await count('#view-home .how li') === 4, 'the how-to steps should be on Home');
   must(await page.locator('#radioFab').isVisible(), 'sticky radio button should show from the start');
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
@@ -325,6 +325,13 @@ try {
 
   // Name (and, with consent, phone) for share cards
   await page.locator('.profile-box').scrollIntoViewIfNeeded(); await shot('11c-profile');
+  // Phone: only 10 digits of an Indian mobile; pasted +91/0/spaces are tidied, letters dropped
+  await page.fill('#cPhone', '+91 98300-12345');
+  must(await page.inputValue('#cPhone') === '9830012345', 'pasted +91 number not tidied: ' + await page.inputValue('#cPhone'));
+  await page.fill('#cPhone', '98300123456789abc');
+  must(await page.inputValue('#cPhone') === '9830012345', 'more than 10 digits allowed');
+  await page.fill('#cPhone', '5830012345');
+  must(/6, 7, 8 or 9/.test(await page.locator('#phoneHint').innerText()), 'invalid number not flagged');
   await page.fill('#cName', 'Rina Sen');
   await page.fill('#cPhone', '98300 12345');
   // Walking redraws this page every second: unsaved text and open sections must survive it
@@ -337,7 +344,7 @@ try {
     }
   });
   await page.waitForTimeout(1200);
-  must(await page.inputValue('#cName') === 'Rina Sen' && await page.inputValue('#cPhone') === '98300 12345', 'unsaved name/phone wiped by a redraw');
+  must(await page.inputValue('#cName') === 'Rina Sen' && await page.inputValue('#cPhone') === '9830012345', 'unsaved name/phone wiped by a redraw: ' + await page.inputValue('#cName') + '|' + await page.inputValue('#cPhone'));
   must(await page.locator('details.health-sync').evaluate((d) => d.open), 'opened section snapped shut on redraw');
   await page.check('#cConsent');
   await page.click('#contactForm button[type="submit"]');

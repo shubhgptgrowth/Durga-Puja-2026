@@ -61,12 +61,20 @@ function pandalItem(p) {
 }
 function foodItem(f) {
   const near = f.near_pandals.slice(0, 2).map((id) => nm(idx.pandal[id]));
+  const marks = dietMarks(f);
   return `<li class="item food-item ${visitedToday(f.id) ? 'visited' : ''}" data-place="${f.id}" ${btn(`aria-label="${esc(f.name)}"`)}>
-    <h3 class="nm">${esc(f.name)}</h3>
-    <div class="side">${ratingHtml(f.id, true)}</div>
-    <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
-    <div class="facts">${openHtml(f)}${costHtml(f)}${dietMarks(f)}</div>
-    <div class="foot">${statsHtml(f.id, { compact: true })}${near.length ? `<span>📍 ${t('food.near', { list: esc(near.join(', ')) })}</span>` : ''}</div>
+    <div class="main">
+      <h3 class="nm">${esc(f.name)}</h3>
+      <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
+      ${openHtml(f)}
+      ${near.length ? `<div class="near">📍 ${t('food.near', { list: esc(near.join(', ')) })}</div>` : ''}
+    </div>
+    <div class="side">
+      ${ratingHtml(f.id, true)}
+      ${costHtml(f)}
+      ${statsHtml(f.id, { compact: true })}
+      ${marks ? `<div class="marks">${marks}</div>` : ''}
+    </div>
   </li>`;
 }
 
@@ -96,7 +104,11 @@ function barHtml(e) {
   const extra = e.seg === 'pandals'
     ? `<select id="sortSelect" aria-label="${t('sort.label')}">${['popular', 'quiet', 'near', ...(community.enabled ? ['live'] : [])].map((k) => `<option value="${k}" ${e.sort === k ? 'selected' : ''}>${t('sort.' + k)}</option>`).join('')}</select>`
     : e.seg === 'food' ? [...DIETS, 'sweets', 'street', 'open'].map((k) => `<button class="chip sm" data-f="${k}" aria-pressed="${e.food.has(k)}">${k === 'veg' ? '<span class="veg-mark sm" aria-hidden="true"></span>' : ''}${t('ff.' + k)}</button>`).join('') : '';
-  return `<div class="seg" role="tablist">${segs.map(([k, ic, label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}">${icon(ic, 'sm')} ${label}</button>`).join('')}</div>
+  const n = { pandals: G.data.pandals.length, food: G.data.food.length, parking: G.data.parking.length };
+  const em = { pandals: '🛕', food: '🍛', parking: '🅿️' };
+  return `<h2 class="ex-title">${t('ex.title')}</h2>
+    <div class="seg big" role="tablist">${segs.map(([k, , label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}">
+      <span class="seg-em" aria-hidden="true">${em[k]}</span><span class="seg-l">${label}</span><span class="seg-n">${n[k]}</span></button>`).join('')}</div>
     <div class="filter-row ${e.seg}">${areaSelectHtml(e, 'areaSelect')}${extra}</div>`;
 }
 

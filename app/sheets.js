@@ -173,8 +173,12 @@ export function photoSheet(ph, back) {
   openSheet(`<div class="moment-view"><img referrerpolicy="no-referrer" src="${esc(ph.src)}" alt="${esc(ph.title)}"></div>
     <p class="lead" style="margin-top:10px">${esc(ph.title)}${ph.year ? ` · ${ph.year}` : ''}</p>
     <p class="fine">${t('ph.by', { author: esc(ph.author), license: esc(ph.license) })} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${t('ph.source')}</a></p>
-    <div class="btn-row" style="margin-top:12px"><button class="btn" id="phBack">${icon('chev', 'sm')} ${t('ph.back')}</button></div>`,
-  (el) => { $('#phBack', el).onclick = back; });
+    <div class="btn-row" style="margin-top:12px">${back ? `<button class="btn" id="phBack">${icon('chev', 'sm')} ${t('ph.back')}</button>` : ''}
+      ${ph.pandal && idx.pandal[ph.pandal] ? `<button class="btn primary" id="phPandal">${icon('pin', 'sm')} ${t('ar.seePandal', { name: esc(nm(idx.pandal[ph.pandal])) })}</button>` : ''}</div>`,
+  (el) => {
+    if (back) $('#phBack', el).onclick = back;
+    const pp = $('#phPandal', el); if (pp) pp.onclick = () => pandalSheet(ph.pandal);
+  });
 }
 function wireGallery(el, photos, back) {
   el.querySelectorAll('[data-photo]').forEach((b) => (b.onclick = () => photoSheet(photos[+b.dataset.photo], back)));

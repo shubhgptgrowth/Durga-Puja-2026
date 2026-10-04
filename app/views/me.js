@@ -11,6 +11,23 @@ import { shareCard, myCard, appLink, myName, deviceId } from '../growth.js';
 const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const syncUrl = () => `${location.origin}${location.pathname}?src=ios_shortcut#steps=`;
 
+/** Ten digits of an Indian mobile number from whatever was typed or pasted (+91, 0, spaces, dashes). */
+function digits10(v) {
+  let d = String(v || '').replace(/\D/g, '');
+  if (d.length > 10 && d.startsWith('91')) d = d.slice(2);
+  else if (d.length > 10 && d.startsWith('0')) d = d.slice(1);
+  return d.slice(0, 10);
+}
+const phoneOk = (d) => /^[6-9]\d{9}$/.test(d);
+function phoneHint(el, final = false) {
+  const d = $('#cPhone', el).value, h = $('#phoneHint', el);
+  const bad = d && (/^[0-5]/.test(d) || (final || d.length === 10) && !phoneOk(d));
+  h.textContent = !d ? '' : bad ? t('pr.badPhone') : d.length < 10 ? t('pr.moreDigits', { n: 10 - d.length }) : '✓';
+  h.className = 'hint ' + (bad ? 'bad' : d.length === 10 ? 'ok' : '');
+  $('#cPhone', el).setAttribute('aria-invalid', String(!!bad));
+  return !d || phoneOk(d);
+}
+
 function profileHtml() {
   const p = S.prefs, name = myName();
   const open = openState?.['profile-box'] ?? !name;
@@ -18,7 +35,9 @@ function profileHtml() {
     <summary>${name ? t('pr.hi', { name: esc(name) }) : `👋 ${t('pr.title')}`}</summary>
     <form id="contactForm" class="form grid2">
       <label>${t('pr.name')}<input id="cName" name="name" autocomplete="name" maxlength="40" value="${esc(p.name || '')}" placeholder="${t('pr.namePh')}"></label>
-      <label>${t('pr.phone')}<input id="cPhone" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="16" value="${esc(p.phone || '')}" placeholder="98300 12345"></label>
+      <label>${t('pr.phone')}<span class="phone-in"><span class="cc">+91</span><input id="cPhone" name="tel" type="tel" autocomplete="tel-national" inputmode="numeric"
+        pattern="[6-9][0-9]{9}" value="${esc(digits10(p.phone))}" placeholder="9830012345" aria-describedby="phoneHint"></span>
+        <small id="phoneHint" class="hint"></small></label>
       ${community.enabled ? `<label class="toggle" style="grid-column:1/-1"><input type="checkbox" id="cConsent" ${p.contactOk ? 'checked' : ''}> <span>${t('pr.consent')}</span></label>` : ''}
       <button class="btn primary block" type="submit" style="grid-column:1/-1">${t('pr.save')}</button>
     </form>
@@ -27,7 +46,7 @@ function profileHtml() {
 }
 
 function iosHtml() {
-  const link = CONFIG.healthShortcut;
+  const link = CONFIG.healthShortcut; // set by scripts/sign_shortcut.sh, or an iCloud link
   return `<div class="ios-sync"><h4>${t('hs.iosTitle')}</h4>
     ${link ? `<a class="btn sm primary" href="${esc(link)}" target="_blank" rel="noopener">${t('hs.iosAdd')}</a><p class="fine">${t('hs.iosAuto')}</p>`
     : `<ol class="fine">${['hs.ios1', 'hs.ios2', 'hs.ios3', 'hs.ios4'].map((k) => `<li>${t(k)}</li>`).join('')}</ol>
@@ -71,21 +90,21 @@ function render() {
   const dayName = (date) => { const pd = G.data.meta.days.find((x) => x.date === date); return pd ? dn(pd) : new Date(date + 'T00:00').toLocaleDateString(loc(), { day: 'numeric', month: 'short' }); };
   const status = S.walk?.status || nextStop() || (live ? t('fit.live') : t('fit.idle'));
 
-  el.innerHTML = `<div class="view-title"><h2>${t('me.title')}</h2><p>${t('me.subtitle')}</p></div>
-    ${profileHtml()}
+  el.innerHTML = `<section class="me-hero">
+    <div class="me-hi"><h2>${myName() ? t('me.hiName', { name: esc(myName()) }) : t('me.title')}</h2><p>${t('me.subtitle')}</p></div>
     <div class="ring-wrap"><svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-bg" cx="100" cy="100" r="86"/><circle class="ring-fg" cx="100" cy="100" r="86" style="stroke-dashoffset:${C * (1 - Math.min(1, steps / goal))}"/></svg>
       <div class="ring-center" aria-live="polite"><div class="ring-steps" id="fitSteps">${fmt(steps)}</div><div class="ring-goal">${t('fit.of', { n: fmt(goal) })}</div></div></div>
-    <p class="fine center" id="fitSource">${live ? (motionLive() ? t('fit.src.motion') : t('fit.src.gps')) : ''}</p>
+    <p class="fit-src" id="fitSource">${live ? (motionLive() ? t('fit.src.motion') : t('fit.src.gps')) : ''}</p>
     <div class="stats4">
-      <div><b id="fitKm">${km(dayDist(d))}</b><span>${t('fit.km')}</span></div>
-      <div><b>${fmt(kcalFor(mins))}</b><span>${t('fit.kcal')}</span></div>
-      <div><b>${Math.floor(mins / 60)}:${String(Math.floor(mins % 60)).padStart(2, '0')}</b><span>${t('fit.walking')}</span></div>
-      <div><b id="fitPandals">${d.pandals.length}</b><span>${t('fit.pandals')}</span></div>
+      <div class="s-km"><i aria-hidden="true">👣</i><b id="fitKm">${km(dayDist(d))}</b><span>${t('fit.km')}</span></div>
+      <div class="s-kcal"><i aria-hidden="true">🔥</i><b>${fmt(kcalFor(mins))}</b><span>${t('fit.kcal')}</span></div>
+      <div class="s-time"><i aria-hidden="true">⏱️</i><b>${Math.floor(mins / 60)}:${String(Math.floor(mins % 60)).padStart(2, '0')}</b><span>${t('fit.walking')}</span></div>
+      <div class="s-pandal"><i aria-hidden="true">🛕</i><b id="fitPandals">${d.pandals.length}</b><span>${t('fit.pandals')}</span></div>
     </div>
-    <div class="pad" style="margin-top:12px">
-      <button class="btn ${live ? 'live' : 'primary'} block" id="walkBtn">${live ? `<span class="pulse"></span> ${t('fit.tracking')}` : `${icon('walk')} ${store.get('walking', false) ? t('fit.resume') : t('fit.start')}`}</button>
-      <p class="fine center" id="walkStatus">${status}</p>
-    </div>
+    <button class="btn ${live ? 'live' : 'gold'} block" id="walkBtn">${live ? `<span class="pulse"></span> ${t('fit.tracking')}` : `${icon('walk')} ${store.get('walking', false) ? t('fit.resume') : t('fit.start')}`}</button>
+    <p class="walk-status" id="walkStatus">${status}</p>
+    </section>
+    ${profileHtml()}
 
     <details class="more health-sync pad-x" ${openState?.['health-sync'] ? 'open' : ''}>
       <summary>⌚ ${t('hs.title')}${d.health ? ` · ${fmt(d.health)}` : ''}</summary>
@@ -125,7 +144,11 @@ function render() {
     </details>`;
 
   for (const [id, v] of Object.entries(drafts)) { const f = $('#' + id, el); if (f) f.type === 'checkbox' ? (f.checked = v) : (f.value = v); }
-  el.oninput = el.onchange = (e) => { if (e.target.id && e.target.closest('form')) drafts[e.target.id] = e.target.type === 'checkbox' ? e.target.checked : e.target.value; };
+  el.oninput = el.onchange = (e) => {
+    if (e.target.id === 'cPhone') { const v = digits10(e.target.value); if (v !== e.target.value) e.target.value = v; phoneHint(el); }
+    if (e.target.id && e.target.closest('form')) drafts[e.target.id] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+  };
+  if ($('#cPhone', el)?.value) phoneHint(el);
   const clearDrafts = (form) => form.querySelectorAll('[id]').forEach((f) => delete drafts[f.id]);
   el.onclick = (e) => {
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
@@ -141,10 +164,9 @@ function render() {
   };
   $('#contactForm', el).onsubmit = async (e) => {
     e.preventDefault();
-    const name = $('#cName', el).value.trim().slice(0, 40), phone = $('#cPhone', el).value.trim();
+    const name = $('#cName', el).value.trim().slice(0, 40), phone = digits10($('#cPhone', el).value);
     const consent = !!$('#cConsent', el)?.checked, wasOk = S.prefs.contactOk;
-    const digits = phone.replace(/\D/g, '').replace(/^(91|0)(?=[6-9]\d{9}$)/, '');
-    if (phone && !/^[6-9]\d{9}$/.test(digits)) return toast(t('pr.badPhone'));
+    if (!phoneHint(el, true)) { $('#cPhone', el).focus(); return toast(t('pr.badPhone')); }
     if (consent && !phone) return toast(t('pr.needPhone'));
     Object.assign(S.prefs, { name, phone, contactOk: consent }); savePrefs(); clearDrafts(e.target);
     $('details.profile-box', el).open = false; // saved: fold it away, the summary shows the name

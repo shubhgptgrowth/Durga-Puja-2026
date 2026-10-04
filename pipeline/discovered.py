@@ -417,8 +417,19 @@ def build_archive(pandals):
         match = next((pid for pid, ns in names.items() if any(_strict(n, text, shared) for n in ns)), None)
         seen.add(x["page"])
         items.append({**ph, "pandal": match, "zone": next((p["zone"] for p in pandals if p["id"] == match), None)})
-    items.sort(key=lambda x: (-x["year"], x["pandal"] is None))
-    return items[:ARCHIVE_MAX]
+    # Newest year first; within a year, take turns between pandals so one well-photographed puja doesn't fill the grid.
+    out = []
+    for y in sorted({x["year"] for x in items}, reverse=True):
+        groups = {}
+        for x in items:
+            if x["year"] == y:
+                groups.setdefault(x["pandal"] or x["page"], []).append(x)
+        queues = sorted(groups.values(), key=lambda g: (g[0]["pandal"] is None, -len(g)))
+        while any(queues):
+            for q in queues:
+                if q:
+                    out.append(q.pop(0))
+    return out[:ARCHIVE_MAX]
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v21';
+const VERSION = 'pp-2026-v23';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
   'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'radio.js', 'radioCard.js', 'i18n_hi.js', 'data/music.json', 'img/hero-1.jpg', 'footfall.js', 'foodinfo.js', 'analytics.js', 'livecount.js', 'sfx.js', 'audio/dhak_hit.mp3', 'audio/shankh.mp3', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',

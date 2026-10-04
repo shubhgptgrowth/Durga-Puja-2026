@@ -28,11 +28,23 @@ Optional, automatic: Shortcuts → **Automation** → *Time of Day* 11:00 pm, da
 The same steps are written out in the app (My Pujo → "Add steps from your Health app or watch"), with a copy
 button for the link.
 
-## Sharing one ready-made Shortcut
+## One-tap install (the ready-made Shortcut)
 
-To give people a one-tap install instead: build the Shortcut above on an iPhone, then Share → **Copy iCloud
-Link**, and put the link in `app/config.js` as `healthShortcut`. My Pujo then shows an **Add the "Pujo steps"
-Shortcut** button instead of the build steps.
+`scripts/make_shortcut.py` builds the Shortcut above as a file. iOS only installs **signed** Shortcuts, and
+Apple only signs on a Mac that is **signed into iCloud**. GitHub's Macs aren't, so the `shortcut` workflow
+attaches the unsigned file to its run and stops there. To finish, on any Mac with this repo:
+
+```
+scripts/sign_shortcut.sh      # builds, signs (shortcuts sign --mode anyone), points app/config.js at it
+git add app/shortcut app/config.js && git commit -m "Signed Pujo steps Shortcut" && git push
+```
+
+My Pujo then shows **Add the "Pujo steps" Shortcut** on iPhones: one tap opens it in the Shortcuts app.
+Before announcing it, run it once on an iPhone (Health asks for permission the first time) and check that
+the app opens with today's steps.
+
+No Mac? Build the Shortcut on an iPhone (steps above), then Share → **Copy iCloud Link**, and put that
+link in `app/config.js` as `healthShortcut`. Same result.
 
 ## Notes
 
