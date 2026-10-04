@@ -267,8 +267,23 @@ try {
   await page.waitForSelector('.timeline li.ride');
   must(/Line|Bus|auto|Cab/i.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'ride leg has no transport advice');
   must(await count('.timeline li.hop') >= 1, 'far-apart pandals should get an auto/bus/metro hop');
-  must(/google\.com\/maps\/dir/.test(await page.locator('#planNextDir').getAttribute('href')), 'one Directions-to-next button expected');
+  // Directions at the bottom: Google Maps links that together cover every stop, in order
+  const legs = await page.locator('.route-dirs .dir-leg').evaluateAll((as) => as.map((a) => a.href));
+  must(legs.length >= 1 && legs.every((u) => /google\.com\/maps\/dir/.test(u)), 'route directions missing');
+  const stopsN = await count('.timeline li[data-place]');
+  const covered = legs.reduce((n, u) => n + (decodeURIComponent(new URL(u).searchParams.get('waypoints') || '').split('|').filter(Boolean).length) + 1, 0);
+  must(covered === stopsN, `directions cover ${covered} of ${stopsN} stops`);
+  must(!(await count('#planNextDir')), 'the overview card should not carry a Directions button');
   await shot('10-trail');
+  // How you're travelling changes every ride: walk → long walks, car → drive (+ parking)
+  await page.click('.mode-row [data-mode="walk"]');
+  const rides = (await page.locator('.timeline li.ride').allInnerTexts()).join(' | ');
+  must(await count('.timeline li.hop.walk') >= 1 && !/🚇|🚌|🛺|🚕/.test(rides), 'walk mode still shows rides: ' + rides.slice(0, 300));
+  await page.click('.mode-row [data-mode="car"]');
+  must(/Drive/.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'car mode should drive');
+  must((await page.locator('.route-dirs .dir-leg >> nth=0').getAttribute('href')).includes('travelmode=driving'), 'car directions should drive');
+  await shot('10a-trail-car');
+  await page.click('.mode-row [data-mode="any"]');
   // The wizard: 1 areas → 2 start point → 3 route
   await page.click('#planNew');
   await page.waitForSelector('.stepper [data-step="1"][aria-current="step"]');

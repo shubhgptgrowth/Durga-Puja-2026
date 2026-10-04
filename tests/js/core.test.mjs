@@ -198,7 +198,7 @@ test('every translation key used in the app exists in both languages', () => {
   const families = {
     'slot.': Object.keys(G.meta.slots), 'crowd.': ['quiet', 'moderate', 'busy', 'packed'], 'car.': ['ok', 'limited', 'avoid'],
     'adv.': ['ok', 'limited', 'avoid'], 'type.': [...new Set(G.food.map((f) => f.type))], 'diet.': ['veg', 'nonveg', 'both', 'egg'],
-    'kind.': [...new Set(G.parking.map((p) => p.kind))], 'cap.': [...new Set(G.parking.map((p) => p.capacity))], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
+    'kind.': [...new Set(G.parking.map((p) => p.kind))], 'cap.': [...new Set(G.parking.map((p) => p.capacity))], 'mode.': ['any', 'walk', 'metro', 'bus', 'auto', 'car'], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
     'sort.': ['popular', 'quiet', 'near', 'live'], 'stars.': ['1', '3', '4', '5'], 'budget.': ['120', '180', '240', '360', '600'],
     'ff.': ['veg', 'nonveg', 'egg', 'sweets', 'street', 'open'], 'hs.ios': ['1', '2', '3', '4'],
     'rt.': ['tasty', 'value', 'quick', 'clean', 'friendly', 'crowded', 'pricey', 'slow'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],

@@ -956,3 +956,33 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .metro-chips .mc span { font-size: 10px; }
 .tiny-note { margin: 14px 16px 0; font-size: 11px; line-height: 1.4; color: var(--ink-3); opacity: .85; }
 .tiny-note a { color: inherit; }
+
+/* ---------- Plan route result: hero overview, travel modes, directions ---------- */
+.plan-hero { position: relative; isolation: isolate; overflow: hidden; margin: 0 16px 12px; padding: 18px 16px 14px; border-radius: 22px; color: #fff;
+  background: linear-gradient(160deg, #9F1239, #7F1D1D 55%, #5B1A0A); box-shadow: 0 10px 28px rgba(127,29,29,.3); }
+.plan-hero .ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; z-index: -2; }
+.plan-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(60,6,14,.55), rgba(40,6,10,.92) 70%); }
+.ph-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #FDE68A; }
+.plan-hero h3 { margin: 4px 0 2px; font-size: 22px; font-weight: 800; line-height: 1.15; }
+.ph-sub { font-size: 13px; opacity: .88; }
+.kpis.big { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 14px 0 12px; }
+.kpis.big div { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 8px 4px; text-align: center; }
+.kpis.big b { display: block; font-size: 20px; color: #fff; }
+.kpis.big span { font-size: 11px; color: rgba(255,255,255,.8); }
+.ph-actions { display: flex; gap: 8px; }
+.ph-actions .btn.sm { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); color: #fff; font-size: 12.5px; padding: 6px 10px; }
+.mode-row { margin: 4px 16px 12px; display: grid; gap: 6px; }
+.mode-q { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.mode-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.mode-chips::-webkit-scrollbar { display: none; }
+.mode-chips button { flex: none; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.mode-chips button[aria-checked="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.field-l { display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.timeline .fb { color: var(--ink-3); font-style: italic; }
+.route-dirs { margin-top: 18px; }
+.dir-legs { display: grid; gap: 8px; margin: 8px 16px 0; }
+.dir-leg { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none;
+  color: #fff; background: linear-gradient(135deg, #1E3A8A, #1D4ED8); box-shadow: 0 6px 16px rgba(29,78,216,.25); }
+.dir-leg b { font-size: 14px; white-space: nowrap; }
+.dir-leg span { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dir-leg .dl-go { font-weight: 800; color: #FDE68A; }
