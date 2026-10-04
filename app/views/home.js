@@ -9,6 +9,7 @@ import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
+import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
 
 let searchIndex = null;
@@ -128,6 +129,8 @@ function render() {
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
 
+    <div id="homeCar">${carCardHtml()}</div>
+
     <div class="search" role="search">
       ${icon('search')}
       <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
@@ -168,6 +171,7 @@ function render() {
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
+    if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');

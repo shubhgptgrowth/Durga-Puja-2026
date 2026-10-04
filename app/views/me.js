@@ -3,6 +3,7 @@ import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFo
 } from '../state.js';
 import { $, registerView, toast } from '../ui.js';
 import { CONFIG } from '../config.js';
+import { badgeSheet } from '../badges.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
@@ -125,7 +126,7 @@ function render() {
     </section>
 
     <section class="section"><div class="section-head"><h2>${t('fit.badges')}</h2><span class="fine">${got.size}/${BADGES.length}</span></div>
-      <ul class="badges">${BADGES.map((x) => `<li class="badge-tile ${got.has(x.id) ? 'got' : ''}"><span class="em" aria-hidden="true">${x.em}</span>${esc(S.prefs.lang === 'bn' ? x.bn : x.name)}<br><small class="fine">${t('b.' + x.id)}</small></li>`).join('')}</ul></section>
+      <ul class="badges">${BADGES.map((x) => `<li><button type="button" class="badge-tile ${got.has(x.id) ? 'got' : ''}" data-badge="${x.id}"><span class="em" aria-hidden="true">${x.em}</span>${esc(S.prefs.lang === 'bn' ? x.bn : x.name)}<br><small class="fine">${got.has(x.id) ? `📸 ${t('bd.tapShare')}` : t('b.' + x.id)}</small></button></li>`).join('')}</ul></section>
 
     <section class="section"><div class="section-head"><h2>${t('fit.days')}</h2></div>
       <ul class="rows">${rows.map(([date, r]) => `<li><span><b>${esc(dayName(date))}</b> · ${t('fit.dayRow', { n: (r.pandals || []).length })}</span><span>${t('fit.dayStats', { s: fmt(daySteps(r)), km: km(dayDist(r)) })}</span></li>`).join('') || `<li><span class="fine">${t('fit.noDays')}</span></li>`}</ul></section>
@@ -159,6 +160,7 @@ function render() {
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
     if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${myName() ? t('g.inviteFrom', { name: myName() }) : t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
     if (e.target.closest('#copySync')) { const i = $('#syncUrl', el); i.select(); navigator.clipboard?.writeText(i.value).then(() => toast(t('share.copied')), () => {}); return; }
+    const bd = e.target.closest('[data-badge]')?.dataset.badge; if (bd) return badgeSheet(bd);
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#resetBtn') && confirm(t('fit.confirmReset'))) { store.clear(); location.reload(); }
   };

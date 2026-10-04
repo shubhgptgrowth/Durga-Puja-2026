@@ -15,6 +15,7 @@ import { openPlace } from './sheets.js';
 import { initMini } from './radioCard.js';
 import { startAnalytics, track } from './analytics.js';
 import { startLiveCount, counts, onCounts } from './livecount.js';
+import { initCelebrations } from './celebrate.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
@@ -57,6 +58,7 @@ async function boot() {
   setupCommunity();
   trackOpen();
   startAnalytics();
+  initCelebrations();
   startLiveCount();
   onCounts(() => applyStatic(false));
   initMini();

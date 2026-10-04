@@ -37,14 +37,17 @@ function tween(to) {
 }
 
 /* Header pill: the real number of people on the app in the last 5 minutes. */
+// Real numbers only. Below PILL_LIVE_MIN people online, the pill shows "Live" with the (real) all-time count instead.
+const PILL_LIVE_MIN = 50;
 function paintHeader() {
   const pill = document.getElementById('livePill');
   if (!pill) return;
-  if (live == null || live < 1) { pill.hidden = true; return; }
+  if (live == null) { pill.hidden = true; return; }
   pill.hidden = false;
-  document.getElementById('livePillN').textContent = fmt(live);
-  document.getElementById('livePillL').textContent = t('lv.pill');
-  pill.setAttribute('aria-label', t('lv.now', { n: fmt(live) }).replace(/<[^>]+>/g, ''));
+  const big = live >= PILL_LIVE_MIN, allTime = people >= PEOPLE_MIN;
+  document.getElementById('livePillN').textContent = big ? fmt(live) : t('lv.liveWord');
+  document.getElementById('livePillL').textContent = big ? t('lv.pill') : allTime ? t('lv.pillAll', { n: peopleText(people) }) : t('lv.pillSoon');
+  pill.setAttribute('aria-label', big ? t('lv.now', { n: fmt(live) }).replace(/<[^>]+>/g, '') : t('lv.liveWord'));
 }
 
 function paint() {

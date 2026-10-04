@@ -5,7 +5,7 @@ import {
   crowdIndex, crowdWord, crowdColor, crowdLevel, dayFactor, btn, icon, savePrefs,
 } from './state.js';
 import { openSheet, closeSheet, toast, go, getFix, rerender, $ } from './ui.js';
-import { visit, visitPrivately, visitMessage, visitedToday } from './actions.js';
+import { visit, visitPrivately, visitMessage, visitedToday, celebrateVisit } from './actions.js';
 import { prepareMedia } from './media.js';
 import { CONFIG } from './config.js';
 import { shareRowHtml, wireShareRow } from './growth.js';
@@ -142,6 +142,7 @@ function wireVisit(el, id, reopen) {
     b.disabled = true; b.innerHTML = `${icon('locate')} ${t('v.locating')}`;
     const r = await visit(id);
     track('checkin', { place: id, kind: placeKind(id), d: r.status });
+    celebrateVisit(id, r);
     if (!['too_far', 'no_fix', 'denied'].includes(r.status)) toast(visitMessage(id, r), 3500);
     if (r.status === 'too_far' || r.status === 'no_fix' || r.status === 'denied') {
       const v = $('#verifyBox', el);

@@ -120,9 +120,16 @@ try {
   await page.waitForSelector('.sheet.open #visitBtn');
   await page.click('#visitBtn');
   await waitToast(/checked in|Visitor/, 'check-in');
+  await page.waitForSelector('.cheer', { timeout: 3000 });          // petals + "জয় মা!"
+  await shot('03a-cheer');
   await page.waitForTimeout(400);
   must((await statFor('tridhara')).visits === before + 1, 'community visit count did not increase');
   must(await page.locator('#visitBtn').isDisabled(), 'check-in button should show done');
+  // First check-in unlocks "Prothom Darshan": the medallion pops up over the page, which stays open
+  await page.waitForSelector('.badge-modal .medal', { timeout: 6000 });
+  await shot('03b-badge');
+  await page.click('#bdDone');
+  must(await page.locator('.sheet.open #visitBtn').count() === 1, 'the pandal page should still be open under the badge');
   await shot('03-checked-in');
   await closeSheet();
 
@@ -310,6 +317,16 @@ try {
   const s1 = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
   must(s1 - s0 >= 8, `motion sensor steps not counted (${s0} → ${s1})`);
   must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
+  // Badges open their own page; earned ones can be shared as a story card
+  await page.click('[data-badge="first"]');
+  await page.waitForSelector('.sheet.open .badge-pop #bdShare');
+  const bdl = page.waitForEvent('download', { timeout: 8000 });
+  await page.click('.sheet.open #bdShare');
+  must(/pujo-badge-first\.png$/.test((await bdl).suggestedFilename()), 'badge card not produced');
+  await closeSheet();
+  await page.click('[data-badge="thirty"]');
+  await page.waitForSelector('.sheet.open .badge-pop.locked');
+  await closeSheet();
   await shot('11-me');
   // Steps copied from the phone's Health app win when higher than what the app tracked
   await page.click('.health-sync summary');

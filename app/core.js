@@ -61,7 +61,8 @@ export function judgeFix(last, fix, { maxAccuracy = 35, minMove = 3, maxKmh = 10
  *  threshold crossings 0.28–2 s apart. Steps only count once a streak of 4 is
  *  reached, so a single shake or a bump in an auto doesn't count. */
 export class StepDetector {
-  constructor({ threshold = 1.1, minGap = 280, maxGap = 2000, streak = 4 } = {}) {
+  // threshold 0.55 m/s²: a phone carried in the hand bounces only ~0.6–1.2 m/s² per step (1.1 missed most of them).
+  constructor({ threshold = 0.55, minGap = 280, maxGap = 2000, streak = 4 } = {}) {
     Object.assign(this, { threshold, minGap, maxGap, streak });
     this.g = null; this.s = 0; this.above = false; this.lastStep = -Infinity; this.pending = 0; this.total = 0;
   }

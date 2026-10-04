@@ -134,10 +134,26 @@ export function initMini() {
     if (radio.status().state !== 'idle') return guard(() => radio.playNow());
     guard(() => radio.play(AUTO.station, AUTO.track));
   };
-  radio.onChange(syncFab);
+  radio.onChange(syncFab); radio.onChange(syncHeader); syncHeader();
+  document.getElementById('dhakBtn')?.addEventListener('click', (e) => { e.stopPropagation(); toggleMusic(); });
   addEventListener('viewchange', viewChanged);
   syncFab();
   armAutoplay();
+}
+
+/** The header's dhaki photo: play or pause the music, and show which. */
+export function toggleMusic() {
+  if (radio.playing()) { wantAuto(false); radio.pause(); return; }
+  wantAuto(true);
+  if (radio.status().state !== 'idle') return guard(() => radio.playNow());
+  guard(() => radio.play(AUTO.station, AUTO.track));
+}
+function syncHeader() {
+  const b = document.getElementById('dhakBtn'); if (!b) return;
+  const on = radio.playing();
+  b.classList.toggle('on', on);
+  b.querySelector('.dhak-state').textContent = on ? '❚❚' : '▶';
+  b.setAttribute('aria-label', on ? t('r.pause') : t('r.play') + ': ' + t('r.title'));
 }
 
 /* Dhak on arrival: cue now, play on the first tap anywhere (unless they paused it before). */
@@ -147,7 +163,7 @@ function armAutoplay() {
   if (store.get('radioAuto', true) === false || S.prefs.lowData) return;
   radio.cue(AUTO.station, AUTO.track);
   const start = (e) => {
-    if (e.target.closest?.('.radio-card, .radio-fab-wrap')) return disarm(); // they're using the radio themselves
+    if (e.target.closest?.('.radio-card, .radio-fab-wrap, #dhakBtn')) return disarm(); // they're using the radio themselves
     disarm();
     if (radio.status().state === 'cued') { radio.playNow(); toast(t('r.autoToast'), 4200); }
   };

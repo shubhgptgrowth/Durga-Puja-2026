@@ -851,3 +851,82 @@ main { padding-top: calc(var(--top-h) + var(--safe-t) + 8px); }
 .trail.photo p { color: rgba(255,255,255,.9); }
 .trail.photo .pill { background: rgba(0,0,0,.45); color: #fff; }
 .park-item .main { grid-column: 2; grid-row: 1; } .park-item .side { grid-column: 3; grid-row: 1; } .park-item .pk-ic { grid-column: 1; grid-row: 1; }
+
+/* ---------- celebrations: petals + "জয় মা!", badge medallion ---------- */
+.petal-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2000; pointer-events: none; }
+.cheer { position: fixed; inset: 0; z-index: 1999; display: grid; place-items: center; pointer-events: auto; background: radial-gradient(circle at 50% 42%, rgba(91,26,10,.35), transparent 60%); animation: cheerIn .35s ease both; }
+.cheer.out { animation: cheerOut .4s ease both; }
+.cheer-card { text-align: center; padding: 18px 26px; border-radius: 22px; color: #fff; max-width: 82vw;
+  background: linear-gradient(160deg, #9F1239, #7F1D1D 60%, #5B1A0A); box-shadow: 0 18px 50px rgba(91,26,10,.45), inset 0 0 0 2px rgba(251,191,36,.6); animation: pop .5s cubic-bezier(.2,1.6,.4,1) both; }
+.cheer-bn { font-family: "Galada", serif; font-size: 44px; line-height: 1.05; color: #FBBF24; text-shadow: 0 2px 10px rgba(0,0,0,.4); }
+.cheer-card b { display: block; margin-top: 4px; font-size: 16px; }
+@keyframes pop { from { transform: scale(.4) rotate(-6deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cheerIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cheerOut { to { opacity: 0; transform: scale(.96); } }
+.badge-pop { text-align: center; padding: 6px 4px 8px; }
+.badge-pop h2 { margin: 4px 0 6px; font-size: 26px; font-weight: 800; }
+.badge-eyebrow { margin: 10px 0 0; font-size: 12.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B45309; }
+.medal { position: relative; width: 132px; height: 132px; margin: 6px auto 0; border-radius: 50%; display: grid; place-items: center; isolation: isolate;
+  background: radial-gradient(circle at 35% 30%, #FDE68A, #F59E0B 55%, #B45309); box-shadow: 0 10px 30px rgba(180,83,9,.45), inset 0 0 0 6px rgba(255,255,255,.35); animation: medalIn .7s cubic-bezier(.2,1.5,.4,1) both; }
+.medal span { font-size: 64px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.medal .rays { position: absolute; inset: -38px; z-index: -1; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(251,191,36,.45) 0 8deg, transparent 8deg 22deg); animation: spin 9s linear infinite; mask: radial-gradient(circle, #000 40%, transparent 70%); -webkit-mask: radial-gradient(circle, #000 40%, transparent 70%); }
+.badge-pop.locked .medal { background: radial-gradient(circle at 35% 30%, #E7E5E4, #A8A29E 60%, #78716C); animation: none; }
+.badge-pop.locked .medal span { filter: grayscale(1); opacity: .55; }
+@keyframes medalIn { from { transform: scale(.2) rotate(-30deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .medal, .medal .rays, .cheer-card { animation: none; } }
+.badges li { list-style: none; }
+button.badge-tile { width: 100%; height: 100%; font: inherit; cursor: pointer; }
+button.badge-tile.got { border-color: #F59E0B; background: linear-gradient(180deg, #FFFBEB, var(--surface)); box-shadow: 0 4px 12px rgba(245,158,11,.18); }
+button.badge-tile.got small { color: #B45309; font-weight: 700; }
+
+/* ---------- header v3: real photos, no drawn ornaments ---------- */
+/* behind: a real night photo of pandal lights, deepened to maroon so the text reads */
+.topbar { background: linear-gradient(100deg, rgba(74,6,18,.92) 0%, rgba(110,10,30,.78) 55%, rgba(74,6,18,.88) 100%), url("img/tiles/pandals.jpg") center 40% / cover, #6E0A17; }
+.topbar::after { content: none; }
+.topbar { box-shadow: 0 2px 0 #D4A017, 0 6px 16px rgba(0,0,0,.25); }
+main { padding-top: calc(var(--top-h) + var(--safe-t) + 4px); }
+/* the dhaki: a real photo that plays/pauses the dhak; gold ring spins while it plays */
+.dhak-btn { position: relative; flex: none; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: #3B0A0A; cursor: pointer; }
+.dhak-btn img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 48% 58%; display: block; box-shadow: 0 0 0 2px rgba(246,195,67,.85); }
+.dhak-ring { position: absolute; inset: -4px; border-radius: 50%; border: 2px dashed rgba(251,191,36,.0); pointer-events: none; }
+.dhak-btn.on .dhak-ring { border-color: rgba(251,191,36,.95); animation: spin 6s linear infinite; }
+.dhak-state { position: absolute; right: -3px; bottom: -3px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 9px; font-weight: 900; color: #3B0A0A; background: #FBBF24; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.dhak-btn.on img { animation: dhakBeat .43s ease-in-out infinite alternate; }
+@keyframes dhakBeat { to { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { .dhak-btn.on img, .dhak-btn.on .dhak-ring { animation: none; } }
+
+/* ---------- "I parked here" card (Home + Explore → Parking) ---------- */
+.car-card { position: relative; isolation: isolate; overflow: hidden; margin: 14px 16px; padding: 14px; border-radius: 18px; color: #fff;
+  display: grid; gap: 10px; background: linear-gradient(135deg, #1E3A8A, #1D4ED8); box-shadow: 0 8px 22px rgba(29,78,216,.28); }
+.car-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.car-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(15,23,62,.92) 0%, rgba(30,58,138,.75) 60%, rgba(30,58,138,.35)); }
+.car-tx { display: grid; gap: 2px; }
+.car-tx b { font-size: 18px; font-weight: 800; }
+.car-tx span { font-size: 13px; opacity: .9; }
+.btn.car-save { justify-self: start; background: #FBBF24; color: #1E1B4B; border: 0; font-weight: 800; font-size: 15.5px; padding: 11px 18px; box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+.car-btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.car-btns .btn.ghost { color: #fff; border-color: rgba(255,255,255,.5); background: transparent; }
+
+/* ---------- keep Ma Durga's face in frame on every screen ----------
+   Cropped photos keep the upper part of the frame (where the protima's face is), and the banner's slow zoom
+   now zooms toward the face instead of the centre. Saved photos get their own measured focus points. */
+.tile-img, .seg-img, .car-img, .thumb img, .gal img, .fi-img { object-position: 50% 20%; }
+img[src$="hero-1.jpg"] { object-position: 50% 12% !important; }
+img[src$="hero-2.jpg"] { object-position: 50% 26% !important; }
+img[src$="hero-3.jpg"] { object-position: 50% 30% !important; }
+img[src$="hero-4.jpg"] { object-position: 50% 18% !important; }
+img[src$="hero-5.jpg"] { object-position: 50% 24% !important; }
+img[src$="tiles/east.jpg"] { object-position: 50% 28% !important; }
+img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
+.hero.slides .slide img { transform-origin: 50% 18%; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero.slides .slide.on img { animation: kenburns2 9s ease-out both; }
+  @keyframes kenburns2 { from { transform: scale(1.0); } to { transform: scale(1.09); } }
+}
+/* very wide tiles crop a lot of height: give them more of it */
+@media (min-width: 700px) { .task.photo { min-height: 170px; } .regions .region.photo { min-height: 170px; } .seg.photo-seg button { min-height: 110px; } }
+.badge-modal { position: fixed; inset: 0; z-index: 1998; display: grid; place-items: center; padding: 20px; background: rgba(20,4,6,.55); animation: cheerIn .25s ease both; }
+.card-pop { background: var(--surface); color: var(--ink); border-radius: 24px; padding: 22px 20px 18px; max-width: 360px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.4); animation: pop .5s cubic-bezier(.2,1.6,.4,1) both; }

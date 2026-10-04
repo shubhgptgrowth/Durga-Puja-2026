@@ -74,7 +74,15 @@ test('step detector counts a 1.9 Hz walking cadence', () => {
   assert.ok(Math.abs(steps - 38) <= 3, `got ${steps}`);
 });
 
+test('step detector counts gentle walking with the phone in the hand', () => {
+  for (const amp of [0.9, 1.2]) {
+    const steps = simulate(new StepDetector(), { seconds: 20, amp, noise: 0.3 });
+    assert.ok(Math.abs(steps - 38) <= 3, `amp ${amp}: got ${steps}`);
+  }
+});
+
 test('step detector ignores sensor noise and a single bump', () => {
+  assert.equal(simulate(new StepDetector(), { amp: 0, noise: 0.8 }), 0, 'a shaky hand while standing');
   assert.equal(simulate(new StepDetector(), { amp: 0, noise: 0.3 }), 0);
   const d = new StepDetector();
   for (let i = 0; i < 100; i++) d.push(0, 0, 9.81 + (i === 50 ? 6 : 0), i * 20);
