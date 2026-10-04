@@ -142,6 +142,13 @@ def alpona(d, cx, cy, r, color, petals=12):
     d.ellipse((cx - r * 0.18, cy - r * 0.18, cx + r * 0.18, cy + r * 0.18), fill=color)
 
 
+def panel(im, box, color, alpha):
+    """A translucent rounded panel behind text, so it stays readable over busy photos or drawings."""
+    layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    ImageDraw.Draw(layer).rounded_rectangle(box, radius=26, fill=color + (alpha,))
+    return Image.alpha_composite(im.convert("RGBA"), layer).convert("RGB")
+
+
 def brand(d, size, dark_bg=True, page=None):
     fill = CREAM if dark_bg else MAROON
     d.text((66, 58), BRAND_BN, font=font("callig", 46), fill=fill)
@@ -186,13 +193,15 @@ def t_word(s, size, src, footage, page):
     im = Image.alpha_composite(im.convert("RGBA"), gradient(size, top=150, start=0.32)).convert("RGB")
     d = ImageDraw.Draw(im)
     w, h = size
-    y = h - 560 if size[1] == 1350 else h - 760
     f = fit_font(d, s["bn"], "callig", 150, w - 140, 84, max_lines=2)
+    fe = font("en", 38)
+    block = len(wrap(d, s["bn"], f, w - 140)) * int(f.size * 1.12) + 86 + len(wrap(d, s["en"], fe, w - 150)) * int(38 * 1.35)
+    y = h - 150 - block
     y = text_block(d, (70, y), s["bn"], f, CREAM, w - 140, lh=1.12, shadow=(0, 0, 0))
     y += 6
     d.text((72, y), s["tr"], font=font("serif_i", 52), fill=GOLD)
     y += 80
-    text_block(d, (72, y), s["en"], font("en", 38), (255, 236, 220), w - 150, lh=1.35)
+    text_block(d, (72, y), s["en"], fe, (255, 236, 220), w - 150, lh=1.35)
     brand(d, size, True, page)
     footer(d, size, True, credit_of(s["img"], footage))
     return border(im)
@@ -209,13 +218,14 @@ def t_cover(s, size, src, footage, page):
     d = ImageDraw.Draw(im)
     w, h = size
     if s.get("grid"):  # 2×2 thumbnails of the carousel's illustrations
-        tw, th = (w - 170) // 2, round((w - 170) // 2 * 1.25)
+        tw, th = 300, 375 if h > 1350 else 330
+        x0 = (w - 2 * tw - 30) // 2
         for i, ref in enumerate(s["grid"][:4]):
             t = cover_crop(load(src, ref), (tw, th), 0.5, 0.6)
-            x, y0 = 70 + (i % 2) * (tw + 30), 150 + (i // 2) * (th + 26)
+            x, y0 = x0 + (i % 2) * (tw + 30), 140 + (i // 2) * (th + 22)
             im.paste(t, (x, y0))
             d.rectangle((x - 4, y0 - 4, x + tw + 3, y0 + th + 3), outline=RED, width=4)
-        y = 150 + 2 * (th + 26) + 10
+        y = 140 + 2 * (th + 22) + 6
     else:
         y = h - 620 if size[1] == 1350 else h - 860
     if s.get("kicker"):
@@ -251,10 +261,18 @@ def t_pat(s, size, src, footage, page):
     else:
         x0 = 70
     f = fit_font(d, s["bn"], "bn_b", 62, w - x0 - 70, 44, max_lines=2)
+    fe = font("serif_i", 40)
+    th = len(wrap(d, s["bn"], f, w - x0 - 70)) * int(f.size * 1.28) + len(wrap(d, s["en"], fe, w - x0 - 70)) * int(40 * 1.25)
+    im = panel(im, (50, 124, w - 50, 160 + th), CREAM, 235)
+    im = panel(im, (40, h - 130, w - 40, h - 40), CREAM, 240)
+    d = ImageDraw.Draw(im)
+    if s.get("num"):
+        d.ellipse((66, 140, 146, 220), fill=RED)
+        fn = font("bn_b", 48)
+        d.text((106 - d.textlength(s["num"], font=fn) / 2, 146), s["num"], font=fn, fill=CREAM)
     y = text_block(d, (x0, 136), s["bn"], f, MAROON, w - x0 - 70, lh=1.28)
-    text_block(d, (x0, y + 4), s["en"], font("serif_i", 40), INK, w - x0 - 70, lh=1.25)
+    text_block(d, (x0, y + 4), s["en"], fe, INK, w - x0 - 70, lh=1.25)
     brand(d, size, False, page)
-    d.rectangle((60, 50, 420, 112), fill=None)
     footer(d, size, False, credit_of(s["img"], footage))
     return border(im)
 
@@ -268,11 +286,14 @@ def t_versus(s, size, src, footage, page):
         im.paste(cover_crop(load(src, ref), half, cx, 0.5), (i * w // 2, 0))
     im = Image.alpha_composite(im.convert("RGBA"), gradient(size, top=230, start=0.55, bottom=230)).convert("RGB")
     d = ImageDraw.Draw(im)
-    d.line((w // 2, 0, w // 2, h), fill=GOLD, width=6)
+    f = fit_font(d, s["bn"], "callig", 104, w - 140, 64, max_lines=2)
+    th = len(wrap(d, s["bn"], f, w - 140)) * int(f.size * 1.12) + len(wrap(d, s["en"], font("serif_i", 42), w - 140)) * int(42 * 1.25)
+    im = panel(im, (50, 128, w - 50, 160 + th), (30, 6, 8), 205)
+    d = ImageDraw.Draw(im)
+    d.line((w // 2, 175 + th, w // 2, h), fill=GOLD, width=6)
     vs = font("serif_i", 64)
     d.ellipse((w // 2 - 62, h // 2 - 62, w // 2 + 62, h // 2 + 62), fill=RED, outline=GOLD, width=5)
     d.text((w // 2 - d.textlength("vs", font=vs) / 2, h // 2 - 46), "vs", font=vs, fill=CREAM)
-    f = fit_font(d, s["bn"], "callig", 104, w - 140, 64, max_lines=2)
     y = text_block(d, (70, 140), s["bn"], f, CREAM, w - 140, lh=1.12, align="center", shadow=(0, 0, 0))
     text_block(d, (70, y), s["en"], font("serif_i", 42), GOLD, w - 140, align="center")
     lf = font("callig", 76)
@@ -298,11 +319,11 @@ def t_list(s, size, src, footage, page):
     cw = (w - 140 - 40 * (len(cols) - 1)) // len(cols)
     for i, col in enumerate(cols):
         x, yy = 70 + i * (cw + 40), y
-        d.text((x, yy), col["head"], font=font("bn_b", 52), fill=RED)
-        yy += 80
+        d.text((x, yy), col["head"], font=font("bn_b", 64), fill=RED)
+        yy += 96
         for it in col["items"]:
             d.ellipse((x, yy + 20, x + 14, yy + 34), fill=GOLD)
-            yy = text_block(d, (x + 30, yy), it, font("bn_m", 40), INK, cw - 30, lh=1.3) + 14
+            yy = text_block(d, (x + 30, yy), it, font("bn_m", 46), INK, cw - 30, lh=1.3) + 22
     brand(d, size, False, page)
     footer(d, size, False)
     return border(im)
