@@ -294,7 +294,7 @@ export function parkSheet(id) {
   openSheet(`<div class="eyebrow">${icon('car', 'sm')} ${t('kind.' + p.kind)}</div>
     <h2 class="title">${esc(p.name)}</h2>
     <p class="lead">${esc(p.note)}</p>
-    <dl class="kv" style="margin-top:12px"><dt>${t('park.size')}</dt><dd>${esc(p.capacity)}</dd><dt>${t('park.rate')}</dt><dd>${esc(p.rate_hint)} ${t('park.approx')}</dd></dl>
+    <div class="park-facts"><span class="park-cost big"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span><span class="pill">${t('cap.' + p.capacity)}</span></div>
     <div class="btn-row" style="margin-top:12px"><a class="btn primary" target="_blank" rel="noopener" href="${dirUrl(ll(p), 'driving')}">${icon('car')} ${t('park.drive')}</a></div>
     <h3 class="sh">${t('park.walkTo')}</h3>
     <ul class="mini-list">${pandals.map(({ place: x, distance: d }) => `<li data-p="${x.id}" ${btn()}><b>${esc(nm(x))}</b><small>${dist(d * M().detour)}</small></li>`).join('') || `<li>${t('park.onward')}</li>`}</ul>`,

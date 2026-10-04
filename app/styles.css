@@ -803,3 +803,51 @@ main { padding-top: calc(var(--top-h) + var(--safe-t) + 8px); }
 .ticker { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 @media (max-width: 400px) { .greet { font-size: 22px; } .brand-mark { width: 40px; height: 40px; } .ticker { font-size: 12.5px; } }
 @media (max-width: 360px) { .live-pill .lp-tx span { display: block; } }
+
+/* ---------- Explore: photo switcher, food thumbnails, parking rows ---------- */
+.seg.photo-seg { gap: 8px; padding: 0; background: none; border: 0; margin: 0 16px 10px; }
+.seg.photo-seg button { position: relative; isolation: isolate; overflow: hidden; flex: 1; display: grid; align-content: end; justify-items: start; gap: 0;
+  min-height: 86px; padding: 8px 10px; border-radius: 16px; text-align: left; color: #fff; background: linear-gradient(160deg, #9F1239, #5B1A0A);
+  border: 2px solid transparent; box-shadow: var(--shadow); font-weight: 800; }
+.seg.photo-seg .seg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: saturate(1.05); transition: transform .4s ease; }
+.seg.photo-seg button::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(30,4,8,.85)); transition: background .2s; }
+.seg.photo-seg button[aria-selected="false"]::after { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(20,4,6,.9)); }
+.seg.photo-seg button[aria-selected="false"] .seg-img { filter: grayscale(.45) brightness(.85); }
+.seg.photo-seg button[aria-selected="true"] { border-color: #FBBF24; box-shadow: 0 6px 18px rgba(159,18,57,.35); background: linear-gradient(160deg, #9F1239, #5B1A0A); color: #fff; }
+.seg.photo-seg button[aria-selected="true"] .seg-img { transform: scale(1.06); }
+.seg.photo-seg .seg-em { position: absolute; top: 7px; right: 8px; font-size: 16px; }
+.seg.photo-seg .seg-l { font-size: 16px; line-height: 1.1; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.seg.photo-seg .seg-n { font-size: 11.5px; font-weight: 700; color: #FDE68A; }
+.seg.photo-seg button[aria-selected="true"] .seg-n { color: #FDE68A; opacity: 1; }
+
+.food-item.has-thumb { grid-template-columns: 64px 1fr auto; }
+.food-item.has-thumb .main { grid-column: 2; }
+.food-item.has-thumb .side { grid-column: 3; }
+.fi-thumb { grid-row: 1; grid-column: 1; width: 64px; height: 64px; border-radius: 12px; overflow: hidden; background: var(--surface-2); position: relative; }
+.fi-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.park-item { grid-template-columns: auto 1fr auto; align-items: start; gap: 4px 12px; }
+.park-item .main { display: grid; gap: 3px; min-width: 0; }
+.park-item .fine { font-size: 12.5px; color: var(--ink-3); }
+.pk-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 22px; color: #fff; background: #1D4ED8; box-shadow: inset 0 -3px 0 rgba(0,0,0,.18); }
+.park-item .side { grid-row: 1; }
+.park-cost { display: grid; justify-items: center; padding: 6px 10px; border-radius: 12px; background: #DBEAFE; color: #1E3A8A; border: 1px solid #93C5FD; text-align: center; }
+.park-cost b { font-size: 16px; line-height: 1.1; white-space: nowrap; }
+.park-cost small { font-size: 10.5px; font-weight: 600; opacity: .8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .park-cost { background: rgba(59,130,246,.16); color: #BFDBFE; border-color: rgba(147,197,253,.35); } }
+:root[data-theme="dark"] .park-cost { background: rgba(59,130,246,.16); color: #BFDBFE; border-color: rgba(147,197,253,.35); }
+.park-facts { display: flex; align-items: center; gap: 10px; margin: 12px 0 4px; } .park-cost.big b { font-size: 20px; } .park-cost.big { padding: 8px 14px; }
+
+/* ---------- Plan route: photo tiles for areas, the 6-day plan and trails ---------- */
+.dp-day.photo { position: relative; isolation: isolate; overflow: hidden; min-height: 96px; border: 0; color: #fff; background: #3B0A0A; }
+.dp-day.photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(30,4,8,.88) 0%, rgba(30,4,8,.6) 60%, rgba(30,4,8,.25)); }
+.dp-day.photo .dp-areas { color: #FDE68A; }
+.dp-day.photo .dp-tip, .dp-day.photo .dp-go { color: rgba(255,255,255,.85); }
+.dp-day.photo b { font-size: 16px; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+.dp-day.photo .dp-n { box-shadow: 0 0 0 2px rgba(251,191,36,.8); }
+.regions.pick .region.photo[aria-pressed="true"] { box-shadow: inset 0 0 0 3px #FBBF24, 0 6px 18px rgba(159,18,57,.35); background: #3B0A0A; }
+.regions.pick .region.photo[aria-pressed="true"]::after { background: linear-gradient(180deg, rgba(159,18,57,.25), rgba(40,6,10,.88)); }
+.regions.pick .region.photo[aria-pressed="false"] .tile-img { filter: saturate(.8); }
+.trail.photo p { color: rgba(255,255,255,.9); }
+.trail.photo .pill { background: rgba(0,0,0,.45); color: #fff; }
+.park-item .main { grid-column: 2; grid-row: 1; } .park-item .side { grid-column: 3; grid-row: 1; } .park-item .pk-ic { grid-column: 1; grid-row: 1; }

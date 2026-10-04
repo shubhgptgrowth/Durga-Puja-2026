@@ -9,6 +9,7 @@ import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
+import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -86,25 +87,17 @@ function miniPandal(p, extra) {
   </div>`;
 }
 
-/* Real photos on the tiles (Commons, credited on the place pages and in Moments). Commons thumbnails come in
- * fixed widths, so the URL's size is swapped for a small one. Low-data mode keeps plain colour tiles. */
-const px = (src, w) => (src ? src.replace(/\/\d+px-/, `/${w}px-`) : '');
-const pandalPhoto = (id, w = 330) => px(idx.pandal[id]?.photos?.[0]?.src, w);
-const dishPhoto = (...names) => { const dp = G.data.dish_photos || {}; const k = names.find((n) => dp[n]); return k ? px(dp[k].src, 330) : ''; };
+// Credits for the saved tile photos (img/tiles), shown with the banner credits at the foot of Home.
+let tileCredits = {};
+fetch('img/tiles/tiles.json').then((r) => r.json()).then((c) => { tileCredits = c; if (S.view === 'home' && G.data) render(); }).catch(() => {});
+
 function taskImg(k) {
-  if (S.prefs.lowData) return '';
-  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto('Kathi roll', 'Biryani', 'Egg roll'),
-    park: pandalPhoto('sreebhumi') || 'img/hero-5.jpg', photos: 'img/hero-2.jpg' })[k] || '';
+  if (!photosOn()) return '';
+  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
+    park: tilePhoto('parking'), photos: 'img/hero-2.jpg' })[k] || '';
 }
-function regionImg(r) {
-  if (S.prefs.lowData) return '';
-  const best = r.zone_ids.flatMap((id) => idx.zone[id]?.pandal_ids || []).map((id) => idx.pandal[id])
-    .filter((p) => p?.photos?.length).sort((a, b) => b.popularity - a.popularity)[0];
-  return best ? px(best.photos[0].src, 500) : '';
-}
-const trailImg = (it) => (S.prefs.lowData ? '' : it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '');
-// A photo that fails to load (poor network) is dropped, leaving the tile's maroon background.
-const photoBg = (src) => (src ? `<img class="tile-img" src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '');
+const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
+const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
 
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
@@ -166,7 +159,8 @@ function render() {
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>
-    <p class="fine center photo-credits">${t('h.photoCredits')} ${slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`).join(', ')} (${t('h.ccNote')})</p>`;
+    <p class="fine center photo-credits">${t('h.photoCredits')} ${[...slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`),
+      ...Object.values(tileCredits).map((x) => `<a href="${esc(x.page)}" target="_blank" rel="noopener">${esc(x.title.replace(/\.\w+$/, ''))} · ${esc(x.author)}</a>`)].join(', ')} (${t('h.ccNote')})</p>`;
 
   wire(el);
 }

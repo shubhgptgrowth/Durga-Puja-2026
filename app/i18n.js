@@ -319,6 +319,10 @@ export const STR = {
     'pr.shareNote': 'Saving your number shares it with the Pujo Parikrama team, only for pujo updates.',
     'pr.remove': 'Remove my number',
     'pr.why2': 'Your first name goes on the story cards you share.',
+    'park.costLbl': 'car, approx.',
+    'cap.small': 'Small lot',
+    'cap.medium': 'Medium lot',
+    'cap.large': 'Large lot',
   },
   bn: {
 
@@ -623,6 +627,10 @@ export const STR = {
     'pr.shareNote': 'নম্বর সেভ করলে সেটা শুধু পুজোর আপডেটের জন্য Pujo Parikrama টিমের কাছে যাবে।',
     'pr.remove': 'আমার নম্বর মুছে দিন',
     'pr.why2': 'আপনার নামের প্রথম অংশ শেয়ার করা স্টোরি কার্ডে থাকবে।',
+    'park.costLbl': 'গাড়ি, আনুমানিক',
+    'cap.small': 'ছোট জায়গা',
+    'cap.medium': 'মাঝারি জায়গা',
+    'cap.large': 'বড় জায়গা',
   },
 };
 STR.hi = HI;

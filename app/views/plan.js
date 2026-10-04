@@ -8,6 +8,7 @@ import { openPlace, dirUrl } from '../sheets.js';
 import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
+import { areaPhoto, pandalPhoto, photoBg } from '../photos.js';
 import { track } from '../analytics.js';
 
 let planSel = new Set(), step = 0, inPlan = false, transitData = null, transitLoading = null;
@@ -144,10 +145,15 @@ export const DAYPLAN = [
   { day: 'navami', zones: ['southwest', 'tolly_naktala'], time: '16:00', budget: 360 },
   { day: 'dashami', zones: ['howrah', 'beleghata'], time: '09:00', budget: 180 },
 ];
+// Photo for a set of areas: their most famous pandal's, else the saved photo for the first area's region.
+const zonesPhoto = (zones) => areaPhoto(zones, zones.map((z) => idx.zone[z]?.region).find((r) => r === 'east' || r === 'howrah'));
+const trailPhoto = (it) => it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '';
+
 export function dayPlanHtml() {
   return `<div class="dayplan">${DAYPLAN.filter((d) => idx.day[d.day] && d.zones.every((z) => idx.zone[z])).map((d, i) => {
     const n = d.zones.reduce((c, z) => c + idx.zone[z].pandal_ids.length, 0);
-    return `<button type="button" class="dp-day" data-dayplan="${i}">
+    const img = zonesPhoto(d.zones);
+    return `<button type="button" class="dp-day ${img ? 'photo' : ''}" data-dayplan="${i}">${photoBg(img)}
       <span class="dp-n">${i + 1}</span>
       <span class="dp-body"><b>${esc(dn(idx.day[d.day]))} · ${fmtDay(idx.day[d.day])}</b>
         <span class="dp-areas">${d.zones.map((z) => esc(zs(idx.zone[z]))).join(' + ')} · ${t('it.pandals', { n })}</span>
@@ -191,7 +197,8 @@ function areasHtml() {
     const on = r.zone_ids.some((id) => planSel.has(id));
     const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
     const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
-    return `<button type="button" class="region" data-pr="${r.id}" aria-pressed="${on}" style="--zc:${r.color}">
+    const img = areaPhoto(r.zone_ids, r.id);
+    return `<button type="button" class="region ${img ? 'photo' : ''}" data-pr="${r.id}" aria-pressed="${on}" style="--zc:${r.color}">${photoBg(img)}
       <span class="region-n">${on ? '✓ ' : ''}${esc(rname(r))}</span><span class="region-c">${t('it.pandals', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
   }).join('')}</div>`;
   return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><div id="planZones">${regionRows}</div></div>
@@ -224,7 +231,8 @@ function formHtml() {
 function trailsHtml() {
   return `<div class="list">${G.data.itineraries.map((it) => {
     const x = it.totals;
-    return `<div class="card trail" data-trail="${it.id}" ${btn()}>
+    const img = trailPhoto(it);
+    return `<div class="card trail ${img ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(img)}
       <div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3><span class="pill">${esc(dn(idx.day[it.day]))} · ${it.start_time}</span></div>
       <p>${esc((S.prefs.lang === 'bn' && it.blurb_bn) || it.blurb)}</p>
       <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span>${(() => { const n = it.segments.filter((sg) => sg.type === 'ride').length + hopsIn(it.segments.flatMap((sg) => sg.stops || [])).length; return n ? `<span>🛺 ${t('it.rides', { n })}</span>` : ''; })()}<span>${x.walk_km} km</span><span>${fmt(stepsFor(x.walk_m ?? x.walk_km * 1000))} ${t('kpi.steps')}</span><span>${t('it.dur', { h: Math.floor(x.duration_min / 60), m: x.duration_min % 60 })}</span></div>
