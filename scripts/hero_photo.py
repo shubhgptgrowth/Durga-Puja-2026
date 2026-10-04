@@ -73,6 +73,7 @@ TILES = {
     "parking": (["Kolkata yellow taxi Ambassador", "Kolkata yellow taxi", "Kolkata traffic Durga Puja night"], ["taxi|traffic"]),
     "pandals": (["Kolkata Durga Puja pandal lights night", "Durga Puja pandal Kolkata lighting"], ["pandal|puja"]),
     "food": (["Kolkata street food kathi roll", "Kathi roll Kolkata", "Kolkata street food"], ["roll|food"]),
+    "dhak": (["Dhaki Durga Puja Kolkata", "Dhaki playing dhak Durga Puja", "Dhak drum Durga Puja", "Dhakis Kolkata"], ["dhak"]),
 }
 API = "https://commons.wikimedia.org/w/api.php"
 
@@ -91,7 +92,10 @@ def tiles(overrides=""):
     chosen = dict(x.split("=", 1) for x in overrides.split(";") if "=" in x)
     out_dir = Path("app/img/tiles"); out_dir.mkdir(parents=True, exist_ok=True)
     credits = {}
+    old = json.loads((out_dir / "tiles.json").read_text()) if (out_dir / "tiles.json").exists() else {}
     for key, (queries, need) in TILES.items():
+        if key in old and key not in chosen and (out_dir / f"{key}.jpg").exists() and "refresh" not in chosen:
+            credits[key] = old[key]; continue  # keep the photo already chosen
         pick = None
         if key in chosen:  # an exact file, looked up by title
             import urllib.parse
