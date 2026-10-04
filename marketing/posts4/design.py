@@ -358,11 +358,16 @@ def t_prompt(s, size, src, footage, page):
     w, h = size
     ink, sub = (MAROON, INK) if pat else (CREAM, GOLD)
     f = fit_font(d, s["bn"], "callig", 128, w - 140, 70, max_lines=3)
+    fe = font("serif_i", 44)
+    th = (len(wrap(d, s["bn"], f, w - 140)) * int(f.size * 1.1) + (80 if s.get("blank") else 0)
+          + len(wrap(d, s["en"], fe, w - 180)) * int(44 * 1.25))
+    im = panel(im, (50, 124, w - 50, 175 + th), CREAM if pat else (30, 6, 8), 235 if pat else 190)
+    d = ImageDraw.Draw(im)
     y = text_block(d, (70, 140), s["bn"], f, ink, w - 140, lh=1.1, align="center", shadow=None if pat else (0, 0, 0))
     if s.get("blank"):
         d.line((200, y + 40, w - 200, y + 40), fill=RED if pat else GOLD, width=8)
         y += 80
-    text_block(d, (90, y + 10), s["en"], font("serif_i", 44), sub, w - 180, align="center", lh=1.25)
+    text_block(d, (90, y + 10), s["en"], fe, sub, w - 180, align="center", lh=1.25)
     brand(d, size, not pat, page)
     footer(d, size, not pat, credit_of(s["img"], footage))
     return border(im)
@@ -401,8 +406,8 @@ def t_story(s, size, src, footage, page):
     d = ImageDraw.Draw(im)
     w, h = size
     ink, sub = (MAROON, INK) if pat else (CREAM, GOLD)
-    if pat:  # a paper panel keeps the text readable over the drawing
-        d.rounded_rectangle((60, 150, w - 60, 560), radius=28, fill=(255, 244, 224))
+    im = panel(im, (60, 150, w - 60, 560), CREAM if pat else (30, 6, 8), 240 if pat else 185)
+    d = ImageDraw.Draw(im)
     f = fit_font(d, s["bn"], "callig", 120, w - 160, 70, max_lines=2)
     y = text_block(d, (80, 190), s["bn"], f, ink, w - 160, lh=1.1, align="center", shadow=None if pat else (0, 0, 0))
     text_block(d, (90, y + 10), s["en"], font("serif_i", 46), sub, w - 180, align="center")
