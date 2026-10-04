@@ -11,7 +11,7 @@ Shots are cut to 1080x1920 with a shared colour grade and 0.3 s crossfades. The 
 sound (crowd, dhak) kept low, and loudness-normalised for Instagram. The end card credits every real source.
 Needs ffmpeg and Pillow; fonts/Poppins-*.ttf next to this file or in ./fonts.
 """
-import glob, json, os, subprocess, sys
+import glob, json, os, re, subprocess, sys
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 W, H, FPS, XF = 1080, 1920, 30, 0.3
@@ -39,8 +39,13 @@ def has_audio(path):
     return bool(run("ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", path).strip())
 
 
+def plain(text):
+    """Poppins has no emoji glyphs: keep them for Instagram captions, drop them from text drawn on video."""
+    return re.sub(r"[\U0001F000-\U0001FFFF\u2600-\u27BF\uFE0F\u200D]", "", text or "").strip()
+
+
 def wrap(d, text, f, width):
-    words, lines, cur = text.split(), [], ""
+    words, lines, cur = plain(text).split(), [], ""
     for w in words:
         t = (cur + " " + w).strip()
         if d.textlength(t, font=f) <= width:
