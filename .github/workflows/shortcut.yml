@@ -1,0 +1,32 @@
+name: shortcut
+
+# Builds and signs the "Pujo steps" iPhone Shortcut (scripts/make_shortcut.py). iOS only imports signed
+# shortcuts, and signing needs macOS (`shortcuts sign`). The signed file is committed to
+# app/shortcut/pujo-steps.shortcut, which My Pujo links to.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sign:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: python3 scripts/make_shortcut.py "$RUNNER_TEMP/unsigned.shortcut"
+      - name: Sign
+        run: |
+          sw_vers
+          mkdir -p app/shortcut
+          shortcuts sign --mode anyone --input "$RUNNER_TEMP/unsigned.shortcut" --output app/shortcut/pujo-steps.shortcut
+          ls -la app/shortcut
+      - name: Commit
+        run: |
+          git add app/shortcut
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Signed iPhone Shortcut: Pujo steps"
+          git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}
