@@ -14,5 +14,7 @@ psql=(psql -h "$tmp" -p "$port" -U postgres -v ON_ERROR_STOP=1 -q -X)
 "${psql[@]}" -c "create database pp" >/dev/null
 "${psql[@]}" -d pp -f "$here/supabase_stubs.sql" >/dev/null
 for f in "$root"/supabase/migrations/*.sql; do "${psql[@]}" -d pp -f "$f" >/dev/null; done
+# Twice: supabase-setup re-applies every migration on each run, so they must be safe to re-run.
+for f in "$root"/supabase/migrations/*.sql; do "${psql[@]}" -d pp -f "$f" >/dev/null 2>&1 || { echo "re-running $f failed:"; "${psql[@]}" -d pp -f "$f" >/dev/null; }; done
 "${psql[@]}" -d pp -f "$root/supabase/seed.sql" >/dev/null
 for f in "$here"/*_test.sql; do "${psql[@]}" -d pp -f "$f" -t; done
