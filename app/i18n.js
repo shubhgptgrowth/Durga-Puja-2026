@@ -344,6 +344,9 @@ export const STR = {
     'lv.pillSoon': 'pujo 2026',
     'car.title': 'Came by car? 🚗',
     'car.sub': 'Save where you parked; after the pandals, we\'ll walk you back.',
+    'ms.sub': 'Dhaker bol, Mahalaya, pujor gaan: tap to play',
+    'cr.title': 'Photo & sound credits',
+    'cr.note': 'From Wikimedia Commons, used under their Creative Commons licences. Place pages credit their own photos.',
   },
   bn: {
 
@@ -673,6 +676,9 @@ export const STR = {
     'lv.pillSoon': 'পুজো ২০২৬',
     'car.title': 'গাড়ি নিয়ে এসেছেন? 🚗',
     'car.sub': 'কোথায় রাখলেন সেভ করুন; ঠাকুর দেখা শেষে ফেরার রাস্তা দেখিয়ে দেব।',
+    'ms.sub': 'ঢাকের বোল, মহালয়া, পুজোর গান: চালাতে ট্যাপ করুন',
+    'cr.title': 'ছবি ও শব্দের কৃতজ্ঞতা',
+    'cr.note': 'উইকিমিডিয়া কমন্স থেকে, ক্রিয়েটিভ কমন্স লাইসেন্সে ব্যবহার। জায়গার পাতায় সেই ছবির কৃতজ্ঞতা আছে।',
   },
 };
 STR.hi = HI;

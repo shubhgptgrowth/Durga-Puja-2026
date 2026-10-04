@@ -422,6 +422,17 @@ try {
     await fetch(`${fake.url}/__crowd?live=0&people=0`);
   }
 
+  // Back button: closes an open page, then returns to the previous tab, never leaving the site
+  await page.click('.tab[data-view="home"]');
+  await page.click('.tab[data-view="explore"]');
+  await page.click('#exploreBar [data-seg="pandals"]');
+  await page.click('#explorePanel .item[data-place]');
+  await page.waitForSelector('.sheet.open');
+  await page.goBack(); await page.waitForTimeout(300);
+  must(!(await page.locator('.sheet.open').count()) && await page.locator('#view-explore.active').count() === 1, 'Back should close the page and stay on Explore');
+  await page.goBack(); await page.waitForTimeout(300);
+  must(await page.locator('#view-home.active').count() === 1 && page.url().startsWith(base), 'Back should return to Home: ' + page.url());
+
   // Bengali, dark mode, offline reload
   await page.selectOption('#langSelect', 'bn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');

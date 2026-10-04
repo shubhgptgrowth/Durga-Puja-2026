@@ -9,13 +9,22 @@ export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const views = {};
 export const VIEWS = ['home', 'explore', 'plan', 'moments', 'me'];
 export function registerView(name, { render, onShow } = {}) { views[name] = { render, onShow }; }
-export function go(view, { keepScroll = false } = {}) {
+/* Back button: each tab change and each opened page (sheet) is a history entry, so Back goes to the previous
+ * tab or closes the page instead of leaving the site. */
+let booted = false, sheetEntry = false, skipPop = 0;
+export function go(view, { keepScroll = false, push = true } = {}) {
   if (!VIEWS.includes(view)) view = 'home';
+  const changed = view !== S.view || !booted;
+  // A page (sheet) open while switching tab: reuse its history entry rather than go back and forward at once.
+  let reuse = false;
+  if (sheetIsOpen()) { reuse = sheetEntry; sheetEntry = false; closeSheet(true); }
   S.view = view;
   $$('.tab').forEach((b) => { const on = b.dataset.view === view; b.classList.toggle('active', on); b.setAttribute('aria-current', on ? 'page' : 'false'); });
   $$('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-' + view));
   $('#fabAdd').hidden = view !== 'moments';
-  history.replaceState(null, '', '#' + view);
+  if (booted && push && changed && !reuse) history.pushState({ view }, '', '#' + view);
+  else history.replaceState({ view }, '', '#' + view);
+  booted = true;
   if (!keepScroll) window.scrollTo(0, 0);
   views[view]?.render?.();
   views[view]?.onShow?.();
@@ -46,17 +55,26 @@ export function openSheet(html, onMount, onClose) {
   $('#sheetBody').innerHTML = html; $('#sheetBackdrop').hidden = false;
   s.scrollTop = 0; s.setAttribute('aria-hidden', 'false');
   const tok = ++openTok; requestAnimationFrame(() => { if (tok === openTok) s.classList.add('open'); }); s.focus({ preventScroll: true });
+  if (!sheetEntry && booted) { history.pushState({ view: S.view, sheet: true }, '', location.hash); sheetEntry = true; }
   onMount?.($('#sheetBody'));
 }
-export function closeSheet() {
+export function closeSheet(fromBack = false) {
   const s = $('#sheet');
   if (!sheetIsOpen()) return;
+  if (sheetEntry) { sheetEntry = false; if (fromBack !== true) { skipPop++; history.back(); } } // drop the page's history entry
   openTok++; s.classList.remove('open'); s.setAttribute('aria-hidden', 'true'); $('#sheetBackdrop').hidden = true;
   onCloseCb?.(); onCloseCb = null;
   $$('video', s).forEach((v) => v.pause());
   opener?.focus?.({ preventScroll: true }); opener = null;
 }
 export const sheetIsOpen = () => $('#sheet').getAttribute('aria-hidden') === 'false';
+
+addEventListener('popstate', (e) => {
+  if (skipPop) { skipPop--; return; }
+  if (sheetIsOpen()) return closeSheet(true);
+  const view = e.state?.view || location.hash.slice(1);
+  if (VIEWS.includes(view) && view !== S.view) go(view, { push: false });
+});
 
 /* Make role=button elements keyboard-operable. */
 export function setupA11y() {

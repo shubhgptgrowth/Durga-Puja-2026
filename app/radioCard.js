@@ -84,7 +84,9 @@ function refresh() {
   syncFab();
 }
 
-const wantAuto = (v) => store.set('radioAuto', v);
+// A pause is remembered for this visit only: the next visit greets you with the dhak again.
+const wantAuto = (v) => { try { sessionStorage.setItem('pp:radioAuto', v ? '1' : '0'); } catch { /* private mode */ } };
+const autoOn = () => { try { return sessionStorage.getItem('pp:radioAuto') !== '0'; } catch { return true; } };
 function guard(fn) {
   if (!navigator.onLine && !radio.isAudio()) return toast(t('r.offline'));
   Promise.resolve(fn()).then((ok) => { if (ok === false) toast(t('r.failed')); });
@@ -134,11 +136,30 @@ export function initMini() {
     if (radio.status().state !== 'idle') return guard(() => radio.playNow());
     guard(() => radio.play(AUTO.station, AUTO.track));
   };
-  radio.onChange(syncFab); radio.onChange(syncHeader); syncHeader();
+  radio.onChange(syncFab); radio.onChange(syncHeader); radio.onChange(syncStrip); syncHeader();
   document.getElementById('dhakBtn')?.addEventListener('click', (e) => { e.stopPropagation(); toggleMusic(); });
   addEventListener('viewchange', viewChanged);
   syncFab();
   armAutoplay();
+}
+
+/* Home's music strip, right under the banner: play/pause, what's playing, and one-tap stations. */
+export function musicStripHtml() {
+  const st = radio.status(), on = radio.playing(), cur = st.station || 'dhak', tr = st.track;
+  return `<section class="music-strip ${on ? 'on' : ''}" id="musicStrip" aria-label="${t('r.title')}">
+    <button type="button" class="ms-play" data-ms="toggle" aria-label="${on ? t('r.pause') : t('r.play')}">${on ? '❚❚' : '▶'}</button>
+    <div class="ms-tx"><b><span lang="bn">পুজো রেডিও</span> · ${t('r.title')}</b>
+      <span>${on && tr ? `${ART[cur].em} ${esc(tr.title)}` : t('ms.sub')}</span></div>
+    ${on ? '<span class="eqb" aria-hidden="true"><i></i><i></i><i></i></span>' : ''}
+    <div class="ms-chips">${ORDER.map((k) => `<button type="button" class="ms-chip ${st.station === k && on ? 'on' : ''}" data-ms="${k}" style="--tile:${ART[k].bg}">${ART[k].em} <span lang="bn">${ART[k].bn}</span></button>`).join('')}</div>
+  </section>`;
+}
+function syncStrip() { const el = document.getElementById('musicStrip'); if (el) el.outerHTML = musicStripHtml(); }
+export function musicStripClick(e) {
+  const k = e.target.closest('[data-ms]')?.dataset.ms; if (!k) return false;
+  if (k === 'toggle') { toggleMusic(); return true; }
+  wantAuto(true); guard(() => radio.play(k, 0));
+  return true;
 }
 
 /** The header's dhaki photo: play or pause the music, and show which. */
@@ -156,19 +177,29 @@ function syncHeader() {
   b.setAttribute('aria-label', on ? t('r.pause') : t('r.play') + ': ' + t('r.title'));
 }
 
-/* Dhak on arrival: cue now, play on the first tap anywhere (unless they paused it before). */
+/* Dhak on arrival: cue now, play on the first tap anywhere (unless paused earlier in this visit).
+ * Browsers only allow sound from a real tap: iPhone Safari counts click/touchend but not pointerup, so those are
+ * what we listen to. If the browser still refuses, we try again on the next tap. */
 function armAutoplay() {
-  const first = () => { sfx.preload(); removeEventListener('pointerup', first, true); };
-  addEventListener('pointerup', first, true);
-  if (store.get('radioAuto', true) === false || S.prefs.lowData) return;
+  const first = () => { sfx.preload(); removeEventListener('click', first, true); };
+  addEventListener('click', first, true);
+  if (!autoOn() || S.prefs.lowData) return;
   radio.cue(AUTO.station, AUTO.track);
-  const start = (e) => {
-    if (e.target.closest?.('.radio-card, .radio-fab-wrap, #dhakBtn')) return disarm(); // they're using the radio themselves
-    disarm();
-    if (radio.status().state === 'cued') { radio.playNow(); toast(t('r.autoToast'), 4200); }
-  };
-  const evs = ['pointerup', 'touchend', 'keydown'];
+  const evs = ['click', 'touchend', 'keydown'];
   const disarm = () => evs.forEach((ev) => removeEventListener(ev, start, true));
+  function start(e) {
+    if (e.target.closest?.('.radio-card, .radio-fab-wrap, #dhakBtn, .music-strip')) return disarm(); // they're using the radio themselves
+    if (!autoOn()) return disarm();
+    const st = radio.status().state;
+    if (st === 'playing' || st === 'loading') return disarm();
+    if (st !== 'cued' && st !== 'paused') return;
+    disarm();
+    radio.playNow();
+    setTimeout(() => {
+      if (radio.playing()) toast(t('r.autoToast'), 4200);
+      else evs.forEach((ev) => addEventListener(ev, start, true)); // refused: try on the next tap
+    }, 600);
+  }
   evs.forEach((ev) => addEventListener(ev, start, true));
 }
 

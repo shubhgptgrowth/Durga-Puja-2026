@@ -4,6 +4,7 @@ import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFo
 import { $, registerView, toast } from '../ui.js';
 import { CONFIG } from '../config.js';
 import { badgeSheet } from '../badges.js';
+import { creditsHtml, wireCredits } from '../credits.js';
 import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
@@ -142,8 +143,10 @@ function render() {
         <button class="btn ghost block" type="button" id="resetBtn">${t('fit.reset')}</button>
       </form>
       <p class="fine pad" style="margin-top:10px">${community.enabled ? t('me.privacyOn') : t('me.privacyOff')}</p>
-    </details>`;
+    </details>
+    ${creditsHtml()}`;
 
+  wireCredits(el);
   for (const [id, v] of Object.entries(drafts)) { const f = $('#' + id, el); if (f) f.type === 'checkbox' ? (f.checked = v) : (f.value = v); }
   el.oninput = el.onchange = (e) => {
     if (e.target.id === 'cPhone') { const v = digits10(e.target.value); if (v !== e.target.value) e.target.value = v; phoneHint(el); }

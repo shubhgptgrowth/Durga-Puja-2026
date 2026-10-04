@@ -7,7 +7,7 @@ import { openPlace } from '../sheets.js';
 import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
-import { radioCard, watchCard } from '../radioCard.js';
+import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
 import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
@@ -88,10 +88,6 @@ function miniPandal(p, extra) {
   </div>`;
 }
 
-// Credits for the saved tile photos (img/tiles), shown with the banner credits at the foot of Home.
-let tileCredits = {};
-fetch('img/tiles/tiles.json').then((r) => r.json()).then((c) => { tileCredits = c; if (S.view === 'home' && G.data) render(); }).catch(() => {});
-
 function taskImg(k) {
   if (!photosOn()) return '';
   return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
@@ -118,6 +114,7 @@ function render() {
   startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
+    ${musicStripHtml()}
     ${liveHtml()}
     <section class="how-wrap" aria-label="${t('h.introTitle')}">
       <p class="how-lingo">${t('how.lingo')}</p>
@@ -162,8 +159,7 @@ function render() {
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>
-    <p class="fine center photo-credits">${t('h.photoCredits')} ${[...slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`),
-      ...Object.values(tileCredits).map((x) => `<a href="${esc(x.page)}" target="_blank" rel="noopener">${esc(x.title.replace(/\.\w+$/, ''))} · ${esc(x.author)}</a>`)].join(', ')} (${t('h.ccNote')})</p>`;
+`;
 
   wire(el);
 }
@@ -171,6 +167,7 @@ function render() {
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
+    if (musicStripClick(e)) return;
     if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
