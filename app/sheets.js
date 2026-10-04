@@ -12,6 +12,7 @@ import { shareRowHtml, wireShareRow } from './growth.js';
 import { estVisitors, estDiners, short } from './footfall.js';
 import { hasEgg, cost2, rupees } from './foodinfo.js';
 import { track, placeOpened } from './analytics.js';
+import { offersHtml, offerSheet } from './offers.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
@@ -254,6 +255,7 @@ export function foodSheet(id) {
     <h2 class="title">${esc(f.name)}</h2>
     ${actionBar(id, f)}
     <div class="food-facts">${openHtml(f, { long: true })}${costHtml(f)}${f.veg === 'veg' ? `<span class="diet-l">${dietMarks({ ...f, dishes: [] })} ${t('diet.veg')}</span>` : ''}${hasEgg(f) ? `<span class="diet-l"><span class="egg-mark" aria-hidden="true">🥚</span> ${t('diet.egg')}</span>` : ''}</div>
+    ${offersHtml(id)}
     ${galleryHtml(f.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
@@ -262,10 +264,12 @@ export function foodSheet(id) {
     ${f.note ? `<p class="lead">${esc(f.note)}</p>` : ''}
     <h3 class="sh">${t('food.mustTry')}</h3>
     ${dishesHtml(f)}
+    ${community.enabled ? `<h3 class="sh sh-row">${t('mn.title')}<button class="link-btn" id="addMenuBtn">${icon('camera', 'sm')} ${t('mn.add')}</button></h3><div data-menu><p class="fine">${t('m.loading')}</p></div>` : ''}
     <h3 class="sh">${t('food.walkable')}</h3>
     <ul class="mini-list">${f.near_pandals.map((pid) => `<li data-p="${pid}" ${btn()}><b>${esc(nm(idx.pandal[pid]))}</b><small>${dist(hav(ll(f), ll(idx.pandal[pid])))}</small></li>`).join('') || `<li>${t('food.noneNear')}</li>`}</ul>
     ${gettingThereHtml(f)}
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
+    ${community.enabled ? `<div class="owner-cta"><span>🏪 ${t('of.ownQ')}</span><button class="btn sm" id="postOfferBtn">🏷️ ${t('of.post')}</button></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('food.hoursNote')}</p>`,
   (el) => {
     wireVisit(el, id, () => foodSheet(id)); wireDayToggle(el, () => foodSheet(id)); wireRate(el, id, () => foodSheet(id));
@@ -274,8 +278,23 @@ export function foodSheet(id) {
     el.querySelectorAll('[data-dish]').forEach((b) => (b.onclick = () => photoSheet({ ...dp[b.dataset.dish], title: `${b.dataset.dish} · ${t('ph.representative')}` }, () => foodSheet(id))));
     el.querySelectorAll('[data-p]').forEach((li) => (li.onclick = () => pandalSheet(li.dataset.p)));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
+    const addMenu = $('#addMenuBtn', el); if (addMenu) addMenu.onclick = () => uploadSheet({ placeId: id, tag: 'menu' });
+    const po = $('#postOfferBtn', el); if (po) po.onclick = () => offerSheet(id);
     placeMoments(el, id);
+    placeMenu(el, id);
   });
+}
+
+/** Menu photos people (and the restaurant) have posted. */
+async function placeMenu(el, id) {
+  const box = $('[data-menu]', el);
+  if (!box) return;
+  try {
+    const items = await community.feed({ placeIds: [id], tag: 'menu', limit: 6 });
+    momentCache.push(...items);
+    box.innerHTML = items.length ? `<div class="grid-photos compact menu-grid">${items.map(thumbHtml).join('')}</div>` : `<p class="fine">${t('mn.none')}</p>`;
+    box.onclick = (e) => { const b = e.target.closest('[data-moment]'); if (b) momentSheet(momentCache.find((m) => m.id === b.dataset.moment)); };
+  } catch { box.innerHTML = `<p class="fine">${t('m.offline')}</p>`; }
 }
 
 function dishesHtml(f) {
@@ -351,10 +370,11 @@ export function momentSheet(m) {
 }
 
 /* ---------------- upload ---------------- */
-export function uploadSheet({ placeId = null } = {}) {
+export function uploadSheet({ placeId = null, tag = null } = {}) {
   if (!community.enabled) return toast(t('m.disabled'));
   let fix = null, prepared = null, chosen = placeId;
-  const allPlaces = [...G.data.pandals, ...G.data.food];
+  const menu = tag === 'menu';
+  const allPlaces = menu ? G.data.food : [...G.data.pandals, ...G.data.food];
 
   const placeOptions = (near) => {
     const list = near.length ? near.map((n) => n.place) : [];
@@ -364,8 +384,8 @@ export function uploadSheet({ placeId = null } = {}) {
       + `<optgroup label="${t('m.allPlaces')}">${rest.map((p) => opt(p)).join('')}</optgroup>`;
   };
 
-  openSheet(`<h2 class="title">${t('m.addTitle')}</h2>
-    <p class="fine" style="margin:4px 0 12px">${t('m.addSub')}</p>
+  openSheet(`<h2 class="title">${t(menu ? 'mn.addTitle' : 'm.addTitle')}</h2>
+    <p class="fine" style="margin:4px 0 12px">${t(menu ? 'mn.addSub' : 'm.addSub')}</p>
     <div class="form" style="padding:0">
       <label>${t('m.where')}<select id="upPlace">${placeOptions([])}</select></label>
       <div class="upload-preview" id="upPreview">${icon('image')}</div>
@@ -373,7 +393,7 @@ export function uploadSheet({ placeId = null } = {}) {
         <button class="btn" type="button" id="upCamera">${icon('camera')} ${t('m.camera')}</button>
         <button class="btn" type="button" id="upGallery">${icon('image')} ${t('m.gallery')}</button>
       </div>
-      <label>${t('m.caption')}<textarea id="upCaption" maxlength="140" rows="2" placeholder="${t('m.captionPh')}"></textarea></label>
+      <label>${t('m.caption')}<textarea id="upCaption" maxlength="140" rows="2" placeholder="${t(menu ? 'mn.captionPh' : 'm.captionPh')}"></textarea></label>
       ${S.prefs.consent ? '' : `<label class="toggle"><input type="checkbox" id="upConsent"> <span>${t('m.consent')}</span></label>`}
       <div class="progress" id="upProgress" hidden><i></i></div>
       <button class="btn primary block" id="upPost" disabled>${t('m.post')}</button>
@@ -396,6 +416,7 @@ export function uploadSheet({ placeId = null } = {}) {
       $('#upPreview', el).innerHTML = `<p class="fine">${t('m.preparing')}</p>`;
       try {
         prepared = await prepareMedia(file, { maxSec: CONFIG.community.maxVideoSec, maxMB: CONFIG.community.maxVideoMB });
+        if (menu && prepared.mediaType !== 'image') { prepared = null; throw Object.assign(new Error('photo only'), { code: 'menuPhoto' }); }
         $('#upPreview', el).innerHTML = `<img src="${prepared.previewUrl}" alt="">${prepared.mediaType === 'video' ? `<span class="vid" style="position:absolute;right:10px;top:10px;color:#fff">${icon('play', 'fill')}</span>` : ''}`;
       } catch (e) {
         prepared = null;
@@ -411,7 +432,8 @@ export function uploadSheet({ placeId = null } = {}) {
       const bar = $('#upProgress', el); bar.hidden = false;
       try {
         const r = await community.addMoment({ placeId: sel.value, mediaType: prepared.mediaType, full: prepared.full, thumb: prepared.thumb, ext: prepared.ext,
-          caption: $('#upCaption', el).value.trim(), fix }, (p) => { bar.firstElementChild.style.width = `${Math.round(p * 100)}%`; });
+          caption: $('#upCaption', el).value.trim(), fix, tag }, (p) => { bar.firstElementChild.style.width = `${Math.round(p * 100)}%`; });
+        if (r.status === 'ok' && menu) { toast(t('mn.posted'), 3500); return foodSheet(sel.value); }
         if (r.status === 'ok') {
           store.set('myMoments', store.get('myMoments', 0) + 1);
           toast(r.on_site ? t('m.postedOnSite') : t('m.posted'), 3500);

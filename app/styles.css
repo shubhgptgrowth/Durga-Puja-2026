@@ -996,3 +996,15 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .pujo-code b { font: 700 22px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.06em; color: var(--brand); user-select: all; }
 .sync-body .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
 #syCode { text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Eatery offers and menu */
+.offer-chip { display: inline-flex; align-items: center; gap: 3px; margin: 3px 0 2px; padding: 2px 8px; border-radius: 999px; background: #FEF3C7; color: #92400E; font-size: 12px; font-weight: 700; }
+.offers { display: grid; gap: 8px; margin: 10px 0 4px; }
+.offer-card { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; border: 1.5px dashed #D97706; background: linear-gradient(135deg, #FFFBEB, #FEF3C7); color: #422006; }
+.offer-card .oc-tag { font-size: 22px; line-height: 1; }
+.offer-card b { display: block; font-size: 15px; }
+.offer-card p { margin: 2px 0; font-size: 13px; }
+.offer-card small { color: #92400E; font-size: 12px; }
+.sh.sh-row { display: flex; justify-content: space-between; align-items: center; }
+.owner-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
+.owner-cta .btn { flex: none; }

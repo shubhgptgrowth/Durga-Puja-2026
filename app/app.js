@@ -17,6 +17,7 @@ import { startAnalytics, track } from './analytics.js';
 import { startLiveCount, counts, onCounts } from './livecount.js';
 import { initCelebrations } from './celebrate.js';
 import { startSync, claimCode } from './sync.js';
+import { loadOffers } from './offers.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
@@ -62,6 +63,7 @@ async function boot() {
   startAnalytics();
   initCelebrations();
   startSync();
+  loadOffers();
   // A restore link opened while the app is already open in this tab
   addEventListener('hashchange', () => {
     const h = location.hash.slice(1);

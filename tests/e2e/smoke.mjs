@@ -243,6 +243,52 @@ try {
   await shot('09-moment-view');
   await closeSheet();
 
+  // Eatery: a menu photo (shown under Menu, not in Moments) and a restaurant's pujo offer (live after review)
+  {
+    const momentsBefore = await count('#view-moments .thumb');
+    await page.click('.tab[data-view="home"]');
+    await page.fill('#homeSearch', 'coffee house');
+    await page.click('#homeResults li[data-result="coffee_house"]');
+    await page.waitForSelector('.sheet.open [data-menu] .fine');
+    await page.click('#addMenuBtn');
+    await page.waitForSelector('#upGallery');
+    const [ch] = await Promise.all([page.waitForEvent('filechooser'), page.click('#upGallery')]);
+    await ch.setFiles({ name: 'menu.png', mimeType: 'image/png', buffer: Buffer.from(await makePng()) });
+    await page.waitForSelector('#upPreview img');
+    must(await page.locator('#upPlace').inputValue() === 'coffee_house', 'menu upload should be for this eatery');
+    await page.click('#upPost');
+    await waitToast(/Menu photo added/, 'menu photo');
+    await page.waitForSelector('.sheet.open [data-menu] .thumb');
+    await page.click('#postOfferBtn');
+    await page.waitForSelector('#offerForm');
+    await page.fill('#ofTitle', 'Free mishti doi with every thali');
+    await page.fill('#ofName', 'Ratan');
+    await page.fill('#ofPhone', '98300 12345');
+    await page.check('#ofOwner');
+    await shot('10c-offer-form');
+    await page.click('#offerForm [type="submit"]');
+    await waitToast(/call to confirm/, 'offer sent');
+    if (fake) {
+      const st = await (await fetch(`${fake.url}/__state`)).json();
+      must(st.offers.length === 1 && st.offers[0].phone === '+919830012345' && st.offers[0].status === 'pending', 'offer not stored as pending');
+      await fetch(`${fake.url}/__approveOffers`);
+      await closeSheet();
+      await page.reload(); await page.waitForSelector('.tab[data-view="explore"]');
+      await page.click('.tab[data-view="explore"]');
+      await page.click('#exploreBar [data-seg="food"]');
+      await page.waitForSelector(`#explorePanel .item[data-place="coffee_house"] .offer-chip`, { timeout: 8000 });
+      await page.click('#explorePanel .item[data-place="coffee_house"]');
+      await page.waitForSelector('.sheet.open .offer-card');
+      must(/Free mishti doi/.test(await page.locator('.sheet.open .offer-card').innerText()), 'approved offer not on the eatery page');
+      must(!/98300/.test(await page.locator('.sheet.open').innerText()), 'owner phone must never show');
+      await shot('10d-offer');
+    }
+    await closeSheet();
+    await page.click('.tab[data-view="moments"]');
+    await page.waitForTimeout(800);
+    must(await count('#view-moments .thumb') === momentsBefore, 'menu photo leaked into Moments');
+  }
+
   // Photos: a pandal gallery with credits, and dish photos at an eatery
   await page.click('.tab[data-view="home"]');
   await page.fill('#homeSearch', 'sreebhumi');

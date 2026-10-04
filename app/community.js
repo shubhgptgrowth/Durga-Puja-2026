@@ -172,17 +172,31 @@ export class Community {
   /* ------------------------------------------------------------ moments */
   mediaUrl(path) { return `${this.url}/storage/v1/object/public/${this.bucket}/${path.split('/').map(encodeURIComponent).join('/')}`; }
 
-  async feed({ placeIds = null, onSiteOnly = false, before = null, limit = 30 } = {}) {
+  async feed({ placeIds = null, onSiteOnly = false, before = null, limit = 30, tag = null } = {}) {
     if (!this.enabled) return [];
     if (this.session) { try { await this.ensureSession(); } catch { /* read anonymously */ } }
     const p = new URLSearchParams({ select: '*', order: 'created_at.desc', limit: String(limit) });
     if (placeIds?.length === 1) p.set('place_id', `eq.${placeIds[0]}`);
     else if (placeIds?.length) p.set('place_id', `in.(${placeIds.join(',')})`);
     if (onSiteOnly) p.set('on_site', 'is.true');
+    p.set('tag', tag ? `eq.${tag}` : 'is.null'); // menu photos live on the eatery page, not in Moments
     if (before) p.set('created_at', `lt.${before}`);
     const res = await fetch(`${this.url}/rest/v1/photos_feed?${p}`, { headers: this._headers(true) });
     if (!res.ok) throw new Error(`feed ${res.status}`);
     return res.json();
+  }
+
+  /* ------------------------------------------------------------ eatery offers */
+  /** Approved offers that haven't ended, by eatery id. Fetched once per session (they change rarely). */
+  offers() {
+    if (!this.enabled) return Promise.resolve({});
+    this._offers ||= fetch(`${this.url}/rest/v1/offers_feed?select=*&order=valid_to.asc`, { headers: this._headers(false) })
+      .then((r) => (r.ok ? r.json() : [])).then((rows) => rows.reduce((m, o) => ((m[o.place_id] ||= []).push(o), m), {}))
+      .catch(() => { this._offers = null; return {}; });
+    return this._offers;
+  }
+  submitOffer(o) {
+    return this.rpc('submit_offer', { p_place: o.placeId, p_title: o.title, p_details: o.details || null, p_from: o.from, p_to: o.to, p_name: o.name, p_phone: o.phone });
   }
 
   upload(path, blob, contentType, onProgress) {
@@ -214,9 +228,10 @@ export class Community {
     const r = await this.rpc('add_photo', {
       p_place: item.placeId, p_path: path, p_thumb_path: thumbPath, p_media_type: item.mediaType,
       p_caption: item.caption || null, p_lat: item.fix?.lat ?? null, p_lng: item.fix?.lng ?? null, p_accuracy: item.fix?.accuracy ?? null,
+      ...(item.tag ? { p_tag: item.tag } : {}),
     });
     onProgress?.(1);
-    if (r.status === 'ok') { this.bump(item.placeId, { photos: (this.statFor(item.placeId)?.photos || 0) + 1 }); this.emit('moment', r); }
+    if (r.status === 'ok' && !item.tag) { this.bump(item.placeId, { photos: (this.statFor(item.placeId)?.photos || 0) + 1 }); this.emit('moment', r); }
     return r;
   }
 

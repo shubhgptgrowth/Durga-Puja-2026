@@ -12,7 +12,7 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), events: [], presence: new Map(), offline: false };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), offers: [], events: [], presence: new Map(), offline: false };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
@@ -89,9 +89,10 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       const p = places.get(a.p_place); if (!p) return { status: 'unknown_place' };
       if (!a.p_path.startsWith(uid + '/') || !a.p_thumb_path.startsWith(uid + '/')) return { status: 'bad_path' };
       if (!db.files.has(a.p_path)) return { status: 'not_uploaded' };
+      if (a.p_tag != null && (a.p_tag !== 'menu' || p.kind !== 'food' || a.p_media_type !== 'image')) return { status: 'bad_tag' };
       const on = a.p_lat != null && near(p, a.p_lat, a.p_lng, a.p_accuracy)[1];
       const row = { id: randomUUID(), user: uid, place_id: p.id, media_type: a.p_media_type, path: a.p_path, thumb_path: a.p_thumb_path,
-        caption: (a.p_caption || '').trim().slice(0, 140) || null, on_site: on, likes: 0, reports: 0, hidden: false, created_at: new Date().toISOString() };
+        caption: (a.p_caption || '').trim().slice(0, 140) || null, on_site: on, likes: 0, reports: 0, hidden: false, created_at: new Date().toISOString(), tag: a.p_tag || null };
       db.photos.push(row);
       return { status: 'ok', id: row.id, on_site: on };
     },
@@ -106,6 +107,17 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       db.reports.add(k); const ph = db.photos.find((x) => x.id === a.p_photo);
       if (ph) { ph.reports++; ph.hidden ||= ph.reports >= 3; }
       return { status: 'ok', hidden: !!ph?.hidden };
+    },
+    submit_offer(uid, a) {
+      const p = places.get(a.p_place); if (!p || p.kind !== 'food') return { status: 'unknown_place' };
+      const d = String(a.p_phone || '').replace(/\D/g, '').replace(/^(91|0)(?=[6-9]\d{9}$)/, '');
+      if (!/^[6-9]\d{9}$/.test(d)) return { status: 'bad_phone' };
+      if (String(a.p_title || '').trim().length < 3) return { status: 'bad_title' };
+      if (String(a.p_name || '').trim().length < 2) return { status: 'bad_name' };
+      if (!a.p_from || !a.p_to || a.p_to < a.p_from || a.p_to < istDay()) return { status: 'bad_dates' };
+      const o = { id: randomUUID(), place_id: p.id, title: a.p_title.trim(), details: a.p_details || null, valid_from: a.p_from, valid_to: a.p_to, status: 'pending', phone: '+91' + d };
+      db.offers.push(o);
+      return { status: 'pending', id: o.id };
     },
     save_progress(uid, a) {
       if (!a.p_data || typeof a.p_data !== 'object') return { status: 'bad_data' };
@@ -137,7 +149,8 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
     if (p === '/__crowd') { db.extraLive = +url.searchParams.get('live') || 0; db.extraPeople = +url.searchParams.get('people') || 0; return json(res, 200, {}); }
-    if (p === '/__state') return json(res, 200, { progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__state') return json(res, 200, { offers: db.offers, progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__approveOffers') { db.offers.forEach((o) => (o.status = 'approved')); return json(res, 200, { n: db.offers.length }); }
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
     if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/')) return json(res, 401, { message: 'no apikey' });
 
@@ -146,6 +159,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       const b = JSON.parse(await body(req)); const uid = String(b.refresh_token || '').replace(/^ref-/, '');
       return uid ? json(res, 200, issue(uid)) : json(res, 400, { error: 'invalid_grant' });
     }
+    if (p === '/rest/v1/offers_feed') return json(res, 200, db.offers.filter((o) => o.status === 'approved' && o.valid_to >= istDay()).map(({ phone, status, ...o }) => o));
     if (p === '/rest/v1/place_stats') return json(res, 200, stats());
     if (p === '/rest/v1/place_rating_stats') return json(res, 200, ratingStats());
     if (p === '/rest/v1/traffic_notices') return json(res, 200, [{ title: 'Traffic arrangements for Durga Puja 2026', url: 'https://kolkatatrafficpolice.gov.in/puja2026.pdf', first_seen: '2026-10-10T06:00:00Z' }]);
@@ -155,6 +169,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (pid?.startsWith('eq.')) rows = rows.filter((x) => x.place_id === pid.slice(3));
       if (pid?.startsWith('in.(')) { const set = new Set(pid.slice(4, -1).split(',')); rows = rows.filter((x) => set.has(x.place_id)); }
       if (url.searchParams.get('on_site') === 'is.true') rows = rows.filter((x) => x.on_site);
+      const tg = url.searchParams.get('tag'); if (tg === 'is.null') rows = rows.filter((x) => !x.tag); else if (tg?.startsWith('eq.')) rows = rows.filter((x) => x.tag === tg.slice(3));
       const lt = url.searchParams.get('created_at'); if (lt?.startsWith('lt.')) rows = rows.filter((x) => x.created_at < lt.slice(3));
       rows = rows.sort((a, b) => b.created_at.localeCompare(a.created_at)).slice(0, +(url.searchParams.get('limit') || 30));
       return json(res, 200, rows.map(({ user, reports, hidden, ...r }) => ({ ...r, mine: user === uid, liked: db.likes.has(r.id + uid) })));

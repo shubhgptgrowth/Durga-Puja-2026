@@ -4,6 +4,7 @@ import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
+import { offerChip } from '../offers.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
@@ -70,6 +71,7 @@ function foodItem(f) {
     <div class="main">
       <h3 class="nm">${esc(f.name)}</h3>
       <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
+      ${offerChip(f.id)}
       ${openHtml(f)}
       ${near.length ? `<div class="near">📍 ${t('food.near', { list: esc(near.join(', ')) })}</div>` : ''}
     </div>
