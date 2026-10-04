@@ -90,14 +90,14 @@ export class StepDetector {
 }
 
 /** Google Maps mobile web allows only 3 waypoints, so routes are split into legs of up to 5 points. */
-export function routeUrls(points) {
+export function routeUrls(points, travelmode = 'walking') {
   const legs = [];
   for (let i = 0; i < points.length - 1; i += 4) {
     const seg = points.slice(i, i + 5);
     if (seg.length < 2) break;
     const o = seg[0], d = seg[seg.length - 1], w = seg.slice(1, -1);
     legs.push(`https://www.google.com/maps/dir/?api=1&origin=${o[0]},${o[1]}&destination=${d[0]},${d[1]}`
-      + (w.length ? '&waypoints=' + encodeURIComponent(w.map((p) => p.join(',')).join('|')) : '') + '&travelmode=walking');
+      + (w.length ? '&waypoints=' + encodeURIComponent(w.map((p) => p.join(',')).join('|')) : '') + '&travelmode=' + travelmode);
   }
   return legs;
 }
@@ -203,11 +203,17 @@ function segDist(p, a, b) {
  * {id, name, line, lat, lng}; `transit` is app/data/transit.json (optional).
  * Returns {mode:'metro', line, board, alight} | {mode:'bus'|'auto', routes, board, alight} | {mode:'auto', route, via} | {mode:'cab'}.
  */
-export function rideOption(from, to, stations, transit = null) {
+/** How to ride from one point to another. `prefer` is how the visitor is travelling: 'any' (best available:
+ * metro, then bus, then shared auto, then cab), 'metro', 'bus' or 'auto' (that mode when it serves the hop, else the
+ * best available, marked fallback), 'car' (drive) or 'walk' (no ride). */
+export function rideOption(from, to, stations, transit = null, prefer = 'any') {
+  if (prefer === 'walk') return { mode: 'walk' };
+  if (prefer === 'car') return { mode: 'car' };
+  const opts = {};
   const nearestStation = (pt) => stations.filter((s) => s.line !== 'suburban').map((s) => [s, hav(pt, [s.lat, s.lng])]).sort((a, b) => a[1] - b[1])[0];
   const a = nearestStation(from), b = nearestStation(to);
   if (a && b && a[0].id !== b[0].id && a[1] <= 1000 && b[1] <= 1000 && a[0].line === b[0].line) {
-    return { mode: 'metro', line: a[0].line, board: a[0].name, alight: b[0].name };
+    opts.metro = { mode: 'metro', line: a[0].line, board: a[0].name, alight: b[0].name };
   }
   if (transit) {
     const fs = stopsNear(from, transit.stops, 500), ts = stopsNear(to, transit.stops, 500);
@@ -224,15 +230,19 @@ export function rideOption(from, to, stations, transit = null) {
         if (hits.length) {
           hits.sort((x, y) => x.walk - y.walk);
           const labels = [...new Set(hits.map((h) => h.label))].slice(0, 4);
-          return { mode, routes: labels, board: transit.stops[hits[0].board][2] || '', alight: transit.stops[hits[0].alight][2] || '' };
+          opts[mode] = { mode, routes: labels, board: transit.stops[hits[0].board][2] || '', alight: transit.stops[hits[0].alight][2] || '' };
         }
       }
     }
-    const auto = (transit.autos || []).map((x) => [x, segDist(from, x.a, x.b) + segDist(to, x.a, x.b)])
-      .filter(([x]) => segDist(from, x.a, x.b) <= 700 && segDist(to, x.a, x.b) <= 700).sort((p, q) => p[1] - q[1])[0];
-    if (auto) return { mode: 'auto', route: auto[0].l, via: auto[0].via };
+    if (!opts.auto) {
+      const auto = (transit.autos || []).map((x) => [x, segDist(from, x.a, x.b) + segDist(to, x.a, x.b)])
+        .filter(([x]) => segDist(from, x.a, x.b) <= 700 && segDist(to, x.a, x.b) <= 700).sort((p, q) => p[1] - q[1])[0];
+      if (auto) opts.auto = { mode: 'auto', route: auto[0].l, via: auto[0].via };
+    }
   }
-  return { mode: 'cab' };
+  if (prefer !== 'any' && opts[prefer]) return opts[prefer];
+  const best = opts.metro || opts.bus || opts.auto || { mode: 'cab' };
+  return prefer === 'any' ? best : { ...best, fallback: prefer };
 }
 
 /** iPhone Shortcut sync: the Shortcut opens …#steps=8432 (optionally &date=2026-10-18) with Apple Health's step total.
@@ -243,4 +253,27 @@ export function parseSteps(s, today) {
   const date = new URLSearchParams(rest.join('&')).get('date');
   if (!Number.isFinite(n) || n < 0) return null;
   return { n: Math.min(n, 100000), date: /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date <= today ? date : today };
+}
+
+/** Merge two copies of My Pujo progress (this browser's and the backup) so neither loses anything:
+ * per day the larger distance, time and step counts, and the union of pandals and food stops; check-ins
+ * keep the earliest; counters take the larger; the name and goal come from `a` when set. */
+export function mergeProgress(a = {}, b = {}) {
+  const days = {}, ha = a.history || {}, hb = b.history || {};
+  for (const d of new Set([...Object.keys(ha), ...Object.keys(hb)])) {
+    const x = ha[d] || {}, y = hb[d] || {};
+    days[d] = {
+      m: Math.max(x.m || 0, y.m || 0), ms: Math.max(x.ms || 0, y.ms || 0),
+      steps: Math.max(x.steps || 0, y.steps || 0), health: Math.max(x.health || 0, y.health || 0) || undefined,
+      pandals: [...new Set([...(x.pandals || []), ...(y.pandals || [])])], foods: [...new Set([...(x.foods || []), ...(y.foods || [])])],
+    };
+    if (!days[d].health) delete days[d].health;
+  }
+  const checkins = { ...(b.checkins || {}) };
+  for (const [id, c] of Object.entries(a.checkins || {})) if (!checkins[id] || c.ts < checkins[id].ts) checkins[id] = c;
+  return {
+    v: 1, history: days, checkins,
+    name: a.name || b.name || '', goal: a.goal || b.goal, height: a.height || b.height, weight: a.weight || b.weight,
+    myMoments: Math.max(a.myMoments || 0, b.myMoments || 0), myRatings: { ...(b.myRatings || {}), ...(a.myRatings || {}) },
+  };
 }

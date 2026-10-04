@@ -1,0 +1,39 @@
+name: offers
+
+# Restaurant pujo offers (docs/product/OFFERS.md). List what's waiting, or approve / reject one by id after
+# calling the owner. The repo is public: the summary never shows a phone number (those are in the dashboard).
+on:
+  schedule:
+    - cron: "15 4 * * *"           # 09:45 IST daily: what's waiting
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "list, approve, reject or pending"
+        type: choice
+        options: [list, approve, reject, pending]
+        default: list
+      offer_id:
+        description: "Offer id (for approve / reject / pending)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  offers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Offers
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          ACTION: ${{ inputs.action || 'list' }}
+          OFFER_ID: ${{ inputs.offer_id }}
+        run: |
+          if [ "$ACTION" = "list" ]; then python -m marketing.offers | tee -a "$GITHUB_STEP_SUMMARY"
+          else python -m marketing.offers "$ACTION" "$OFFER_ID" | tee -a "$GITHUB_STEP_SUMMARY"; fi

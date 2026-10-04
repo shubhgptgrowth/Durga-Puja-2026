@@ -123,6 +123,8 @@ create or replace view public.place_stats as
   left join public.place_counters c on c.place_id = p.id
   left join public.place_day_counts d on d.place_id = p.id and d.day = public.ist_today();
 
+-- Dropped first: a later migration adds a column, and re-running this one must not fail on that.
+drop view if exists public.photos_feed;
 create or replace view public.photos_feed as
   select ph.id, ph.place_id, ph.media_type, ph.path, ph.thumb_path, ph.caption, ph.on_site,
          ph.likes, ph.created_at,

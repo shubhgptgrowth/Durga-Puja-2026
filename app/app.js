@@ -16,6 +16,8 @@ import { initMini } from './radioCard.js';
 import { startAnalytics, track } from './analytics.js';
 import { startLiveCount, counts, onCounts } from './livecount.js';
 import { initCelebrations } from './celebrate.js';
+import { startSync, claimCode } from './sync.js';
+import { loadOffers } from './offers.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
@@ -48,17 +50,27 @@ async function boot() {
   $$('.tab').forEach((b) => (b.onclick = () => go(b.dataset.view)));
   applyStatic();
 
+  // Back from Google sign-in: tokens in the URL are taken (and the URL tidied to #me) before anything routes.
+  const authP = community.enabled ? community.authReturn().catch(() => null) : Promise.resolve(null);
   const hash = location.hash.slice(1);
-  if (hash.startsWith('steps=')) syncSteps(hash.slice(6));
+  if (hash.startsWith('restore=')) { history.replaceState(null, '', location.pathname + location.search + '#me'); go('me'); claimCode(decodeURIComponent(hash.slice(8))); }
+  else if (hash.startsWith('steps=')) syncSteps(hash.slice(6));
   else if (hash.startsWith('plan=')) openSharedPlan(decodePlan(hash.slice(5)));
   else if (hash.startsWith('trail=') && g.itineraries.some((i) => i.id === hash.slice(6))) { go('plan'); showTrail(hash.slice(6)); toast(t('share.loaded')); }
   else if (hash.startsWith('p=') && (idx.pandal[hash.slice(2)] || idx.food[hash.slice(2)] || idx.parking[hash.slice(2)])) { go('home'); openPlace(hash.slice(2)); }
   else go(VIEWS.includes(hash) ? hash : hash === 'fit' ? 'me' : hash === 'food' || hash === 'park' ? 'explore' : 'home');
 
-  setupCommunity();
+  authP.then(() => setupCommunity()); // after a sign-in has settled, so queued visits go to the right account
   trackOpen();
   startAnalytics();
   initCelebrations();
+  startSync(authP);
+  loadOffers();
+  // A restore link opened while the app is already open in this tab
+  addEventListener('hashchange', () => {
+    const h = location.hash.slice(1);
+    if (h.startsWith('restore=')) { history.replaceState(null, '', location.pathname + location.search + '#me'); go('me'); claimCode(decodeURIComponent(h.slice(8))); }
+  });
   startLiveCount();
   onCounts(() => applyStatic(false));
   initMini();

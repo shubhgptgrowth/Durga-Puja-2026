@@ -82,9 +82,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: SQL rule tests on plain Postgres
         run: tests/sql/run.sh
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
+      # Straight from the latest release download (no GitHub API call, so no API rate limit to trip over)
+      - name: Install Supabase CLI
+        run: |
+          curl -fsSL --retry 3 https://github.com/supabase/cli/releases/latest/download/supabase_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin supabase
+          supabase --version
       - name: Start local Supabase (migrations + seed)
         run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime
       - uses: actions/setup-node@v4

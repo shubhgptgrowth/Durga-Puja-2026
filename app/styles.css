@@ -930,3 +930,103 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 @media (min-width: 700px) { .task.photo { min-height: 170px; } .regions .region.photo { min-height: 170px; } .seg.photo-seg button { min-height: 110px; } }
 .badge-modal { position: fixed; inset: 0; z-index: 1998; display: grid; place-items: center; padding: 20px; background: rgba(20,4,6,.55); animation: cheerIn .25s ease both; }
 .card-pop { background: var(--surface); color: var(--ink); border-radius: 24px; padding: 22px 20px 18px; max-width: 360px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.4); animation: pop .5s cubic-bezier(.2,1.6,.4,1) both; }
+
+/* ---------- Home: Pujo Radio strip under the banner ---------- */
+.music-strip { margin: 12px 16px 0; padding: 12px 12px 10px; border-radius: 18px; color: #fff; display: grid; grid-template-columns: auto 1fr auto; gap: 10px 12px; align-items: center;
+  background: radial-gradient(120% 120% at 0% 0%, rgba(251,191,36,.25), transparent 50%), linear-gradient(135deg, #7F1D1D, #4C0519); box-shadow: 0 8px 22px rgba(76,5,25,.3); }
+.ms-play { width: 52px; height: 52px; border-radius: 50%; border: 0; background: #FBBF24; color: #3B0A0A; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 0 0 4px rgba(251,191,36,.25); }
+.music-strip.on .ms-play { animation: dhakBeat .43s ease-in-out infinite alternate; }
+.ms-tx { display: grid; gap: 1px; min-width: 0; }
+.ms-tx b { font-size: 15.5px; }
+.ms-tx b span { font-family: "Galada", serif; font-weight: 400; color: #FBBF24; font-size: 17px; }
+.ms-tx > span { font-size: 12.5px; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.music-strip .eqb { position: static; }
+.ms-chips { grid-column: 1 / -1; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.ms-chips::-webkit-scrollbar { display: none; }
+.ms-chip { flex: none; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 5px 11px; color: #fff; background: rgba(255,255,255,.08); font: inherit; font-size: 13px; cursor: pointer; }
+.ms-chip span { font-family: "Galada", serif; font-size: 15px; }
+.ms-chip.on { background: var(--tile); border-color: #FBBF24; }
+.credits-box { margin: 0 16px 16px; padding: 0 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+.credits-box summary { padding: 12px 0; font-weight: 700; font-size: 14px; color: var(--ink-2); }
+.credits { list-style: none; margin: 0; padding: 0 0 6px; display: grid; gap: 6px; font-size: 12px; color: var(--ink-3); }
+.credits a { color: var(--ink-2); }
+/* Metro & rail: compact station chips like the rest of the app; the traffic-rules note is a quiet footnote */
+.metro-chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 16px; }
+.metro-chips .mc { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 11.5px; font-weight: 500; color: var(--ink-2); white-space: nowrap; }
+.metro-chips .mc span { font-size: 10px; }
+.tiny-note { margin: 14px 16px 0; font-size: 11px; line-height: 1.4; color: var(--ink-3); opacity: .85; }
+.tiny-note a { color: inherit; }
+
+/* ---------- Plan route result: hero overview, travel modes, directions ---------- */
+.plan-hero { position: relative; isolation: isolate; overflow: hidden; margin: 0 16px 12px; padding: 18px 16px 14px; border-radius: 22px; color: #fff;
+  background: linear-gradient(160deg, #9F1239, #7F1D1D 55%, #5B1A0A); box-shadow: 0 10px 28px rgba(127,29,29,.3); }
+.plan-hero .ph-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; z-index: -2; }
+.plan-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(60,6,14,.55), rgba(40,6,10,.92) 70%); }
+.ph-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #FDE68A; }
+.plan-hero h3 { margin: 4px 0 2px; font-size: 22px; font-weight: 800; line-height: 1.15; }
+.ph-sub { font-size: 13px; opacity: .88; }
+.kpis.big { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 14px 0 12px; }
+.kpis.big div { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 8px 4px; text-align: center; }
+.kpis.big b { display: block; font-size: 20px; color: #fff; }
+.kpis.big span { font-size: 11px; color: rgba(255,255,255,.8); }
+.ph-actions { display: flex; gap: 8px; }
+.ph-actions .btn.sm { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); color: #fff; font-size: 12.5px; padding: 6px 10px; }
+.mode-row { margin: 4px 16px 12px; display: grid; gap: 6px; }
+.mode-q { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.mode-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.mode-chips::-webkit-scrollbar { display: none; }
+.mode-chips button { flex: none; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.mode-chips button[aria-checked="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.field-l { display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.timeline .fb { color: var(--ink-3); font-style: italic; }
+.route-dirs { margin-top: 18px; }
+.dir-legs { display: grid; gap: 8px; margin: 8px 16px 0; }
+.dir-leg { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 14px; text-decoration: none;
+  color: #fff; background: linear-gradient(135deg, #1E3A8A, #1D4ED8); box-shadow: 0 6px 16px rgba(29,78,216,.25); }
+.dir-leg b { font-size: 14px; white-space: nowrap; }
+.dir-leg span { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dir-leg .dl-go { font-weight: 800; color: #FDE68A; }
+
+/* My Pujo on another phone: the Pujo code card */
+.sync-box { margin: 4px 16px 10px; }
+.sync-body { padding: 0 12px 12px; display: grid; gap: 8px; }
+.sync-body .fine { margin: 0; }
+.pujo-code { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px; border: 1.5px dashed var(--brand); border-radius: 12px; background: var(--surface); }
+.pujo-code small { color: var(--ink-3, #8a7f77); font-size: 12px; }
+.pujo-code b { font: 700 22px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.06em; color: var(--brand); user-select: all; }
+.sync-body .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+#syCode { text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Eatery offers and menu */
+.offer-chip { display: inline-flex; align-items: center; gap: 3px; margin: 3px 0 2px; padding: 2px 8px; border-radius: 999px; background: #FEF3C7; color: #92400E; font-size: 12px; font-weight: 700; }
+.offers { display: grid; gap: 8px; margin: 10px 0 4px; }
+.offer-card { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; border: 1.5px dashed #D97706; background: linear-gradient(135deg, #FFFBEB, #FEF3C7); color: #422006; }
+.offer-card .oc-tag { font-size: 22px; line-height: 1; }
+.offer-card b { display: block; font-size: 15px; }
+.offer-card p { margin: 2px 0; font-size: 13px; }
+.offer-card small { color: #92400E; font-size: 12px; }
+.sh.sh-row { display: flex; justify-content: space-between; align-items: center; }
+.owner-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
+.owner-cta .btn { flex: none; }
+
+/* Place pages: name with a compact "I'm here" / "I ate here"; Directions + Share pinned at the bottom */
+.title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.title-row .tr-name { min-width: 0; flex: 1; }
+.title-row .title { margin: 2px 0 0; }
+.btn.visit-cta { flex: none; margin-top: 4px; min-height: 38px; padding: 6px 12px; font-size: 13.5px; border-radius: 999px; white-space: nowrap; }
+.btn.visit-cta:disabled { opacity: 1; }
+.sheet-cta { position: sticky; bottom: calc(-22px - var(--safe-b)); z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 10px;
+  margin: 18px -16px calc(-22px - var(--safe-b)); padding: 10px 16px calc(12px + var(--safe-b)); background: var(--bg); border-top: 1px solid var(--line); box-shadow: 0 -8px 18px rgba(0,0,0,.06); }
+.sheet-cta .btn { min-height: 48px; }
+.sheet-cta .btn.wa { display: inline-flex; align-items: center; gap: 6px; padding: 0 16px; }
+.wa-ico { width: 20px; height: 20px; flex: none; }
+
+/* My Pujo: Google sign-in */
+.account-box { margin: 4px 16px 10px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 10px; }
+.account-box .ab-txt { display: grid; gap: 2px; }
+.account-box .ab-txt b { font-size: 15.5px; }
+.account-box .ab-txt small { color: var(--ink-2); font-size: 13px; overflow-wrap: anywhere; }
+.account-box.signed { grid-template-columns: auto 1fr auto; align-items: center; }
+.account-box .ab-ic .g-logo { width: 26px; height: 26px; display: block; }
+.btn.g-btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; background: #fff; color: #1f1f1f; border: 1px solid #dadce0; font-weight: 600; }
+.btn.g-btn .g-logo { width: 20px; height: 20px; flex: none; }

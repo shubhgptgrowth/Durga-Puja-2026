@@ -12,13 +12,15 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), events: [], presence: new Map(), offline: false };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), offers: [], events: [], presence: new Map(), offline: false, google: null };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
   const body = (req) => new Promise((r) => { const c = []; req.on('data', (d) => c.push(d)); req.on('end', () => r(Buffer.concat(c))); });
   const uidOf = (req) => db.tokens.get((req.headers.authorization || '').replace(/^Bearer /, '')) || null;
-  const issue = (uid) => { const tok = 'tok-' + randomUUID(); db.tokens.set(tok, uid); return { access_token: tok, refresh_token: 'ref-' + uid, token_type: 'bearer', expires_in: 3600, user: { id: uid } }; };
+  const issue = (uid) => { const tok = 'tok-' + randomUUID(); db.tokens.set(tok, uid); return { access_token: tok, refresh_token: 'ref-' + uid, token_type: 'bearer', expires_in: 3600, user: userOf(uid) }; };
+  // One pretend Google account (rina@gmail.com): linked to the first guest that signs in with it.
+  const userOf = (uid) => ({ id: uid, email: db.google === uid ? 'rina@gmail.com' : null, is_anonymous: db.google !== uid });
 
   const stats = () => [...places.values()].map((p) => {
     const v = db.visits.filter((x) => x.place_id === p.id);
@@ -89,9 +91,10 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       const p = places.get(a.p_place); if (!p) return { status: 'unknown_place' };
       if (!a.p_path.startsWith(uid + '/') || !a.p_thumb_path.startsWith(uid + '/')) return { status: 'bad_path' };
       if (!db.files.has(a.p_path)) return { status: 'not_uploaded' };
+      if (a.p_tag != null && (a.p_tag !== 'menu' || p.kind !== 'food' || a.p_media_type !== 'image')) return { status: 'bad_tag' };
       const on = a.p_lat != null && near(p, a.p_lat, a.p_lng, a.p_accuracy)[1];
       const row = { id: randomUUID(), user: uid, place_id: p.id, media_type: a.p_media_type, path: a.p_path, thumb_path: a.p_thumb_path,
-        caption: (a.p_caption || '').trim().slice(0, 140) || null, on_site: on, likes: 0, reports: 0, hidden: false, created_at: new Date().toISOString() };
+        caption: (a.p_caption || '').trim().slice(0, 140) || null, on_site: on, likes: 0, reports: 0, hidden: false, created_at: new Date().toISOString(), tag: a.p_tag || null };
       db.photos.push(row);
       return { status: 'ok', id: row.id, on_site: on };
     },
@@ -107,6 +110,46 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (ph) { ph.reports++; ph.hidden ||= ph.reports >= 3; }
       return { status: 'ok', hidden: !!ph?.hidden };
     },
+    submit_offer(uid, a) {
+      const p = places.get(a.p_place); if (!p || p.kind !== 'food') return { status: 'unknown_place' };
+      const d = String(a.p_phone || '').replace(/\D/g, '').replace(/^(91|0)(?=[6-9]\d{9}$)/, '');
+      if (!/^[6-9]\d{9}$/.test(d)) return { status: 'bad_phone' };
+      if (String(a.p_title || '').trim().length < 3) return { status: 'bad_title' };
+      if (String(a.p_name || '').trim().length < 2) return { status: 'bad_name' };
+      if (!a.p_from || !a.p_to || a.p_to < a.p_from || a.p_to < istDay()) return { status: 'bad_dates' };
+      const o = { id: randomUUID(), place_id: p.id, title: a.p_title.trim(), details: a.p_details || null, valid_from: a.p_from, valid_to: a.p_to, status: 'pending', phone: '+91' + d };
+      db.offers.push(o);
+      return { status: 'pending', id: o.id };
+    },
+    delete_my_data(uid) {
+      const code = db.members.get(uid);
+      if (code) { db.progress.delete(code); for (const [u, c] of db.members) if (c === code) db.members.delete(u); }
+      db.profiles.delete(uid);
+      for (const k of [...db.ratings.keys()]) if (k.endsWith('|' + uid)) db.ratings.delete(k);
+      const mine = db.photos.filter((x) => x.user === uid);
+      db.photos = db.photos.filter((x) => x.user !== uid);
+      db.visits = db.visits.filter((x) => x.user !== uid);
+      if (db.google === uid) db.google = null;
+      for (const [tok, u] of db.tokens) if (u === uid) db.tokens.delete(tok);
+      return { status: 'ok', files: mine.flatMap((x) => [x.path, x.thumb_path]) };
+    },
+    save_progress(uid, a) {
+      if (!a.p_data || typeof a.p_data !== 'object') return { status: 'bad_data' };
+      let code = db.members.get(uid);
+      if (!code) { const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', r = () => Array.from({ length: 4 }, () => L[Math.floor(Math.random() * 32)]).join('');
+        code = `PUJO-${r()}-${r()}`; db.members.set(uid, code); }
+      db.progress.set(code, a.p_data);
+      return { status: 'ok', code };
+    },
+    load_progress(uid) { const code = db.members.get(uid); return code ? { status: 'ok', code, data: db.progress.get(code) } : null; },
+    claim_progress(uid, a) {
+      const m = String(a.p_code || '').trim().toUpperCase().match(/^(?:PUJO)?-?([A-Z0-9]{4})-?([A-Z0-9]{4})$/);
+      const code = m ? `PUJO-${m[1]}-${m[2]}` : '';
+      if (!db.progress.has(code)) return { status: 'not_found' };
+      const old = db.members.get(uid); db.members.set(uid, code);
+      if (old && old !== code && ![...db.members.values()].includes(old)) db.progress.delete(old);
+      return { status: 'ok', code, data: db.progress.get(code) };
+    },
     delete_photo(uid, a) {
       const i = db.photos.findIndex((x) => x.id === a.p_photo && x.user === uid); if (i < 0) return { status: 'not_found' };
       const [ph] = db.photos.splice(i, 1);
@@ -120,15 +163,40 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
     if (p === '/__crowd') { db.extraLive = +url.searchParams.get('live') || 0; db.extraPeople = +url.searchParams.get('people') || 0; return json(res, 200, {}); }
-    if (p === '/__state') return json(res, 200, { events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__state') return json(res, 200, { offers: db.offers, progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    // The Google consent screen, answered at once: link the guest, or sign in to the account it's linked to.
+    if (p === '/__google') {
+      const back = url.searchParams.get('redirect_to'), uid = url.searchParams.get('uid');
+      let to;
+      if (url.searchParams.get('mode') === 'link' && db.google && db.google !== uid) to = `${back}#error=server_error&error_code=identity_already_exists&error_description=Identity+is+already+linked+to+another+user`;
+      else {
+        if (url.searchParams.get('mode') === 'link') db.google = uid;
+        db.google ||= randomUUID();
+        const s = issue(db.google);
+        to = `${back}#access_token=${s.access_token}&refresh_token=${s.refresh_token}&expires_in=3600&token_type=bearer&provider_token=x`;
+      }
+      res.writeHead(302, { Location: to, ...cors }); return res.end();
+    }
+    if (p === '/__approveOffers') { db.offers.forEach((o) => (o.status = 'approved')); return json(res, 200, { n: db.offers.length }); }
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
-    if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/')) return json(res, 401, { message: 'no apikey' });
+    if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/') && p !== '/auth/v1/authorize') return json(res, 401, { message: 'no apikey' });
 
+    if (p === '/auth/v1/settings') return json(res, 200, { external: { google: true, anonymous_users: true } });
+    if (p === '/auth/v1/user' && req.method === 'GET') { const uid = uidOf(req); return uid ? json(res, 200, userOf(uid)) : json(res, 401, { message: 'invalid JWT' }); }
+    if (p === '/auth/v1/logout') { res.writeHead(204, cors); return res.end(); }
+    if (p === '/auth/v1/user/identities/authorize') {
+      const uid = uidOf(req); if (!uid) return json(res, 401, { message: 'JWT required' });
+      return json(res, 200, { url: `http://${req.headers.host}/__google?mode=link&uid=${uid}&redirect_to=${encodeURIComponent(url.searchParams.get('redirect_to'))}` });
+    }
+    if (p === '/auth/v1/authorize') {
+      res.writeHead(302, { Location: `http://${req.headers.host}/__google?mode=signin&redirect_to=${encodeURIComponent(url.searchParams.get('redirect_to'))}`, ...cors }); return res.end();
+    }
     if (p === '/auth/v1/signup' && req.method === 'POST') return json(res, 200, issue(randomUUID()));
     if (p === '/auth/v1/token' && req.method === 'POST') {
       const b = JSON.parse(await body(req)); const uid = String(b.refresh_token || '').replace(/^ref-/, '');
       return uid ? json(res, 200, issue(uid)) : json(res, 400, { error: 'invalid_grant' });
     }
+    if (p === '/rest/v1/offers_feed') return json(res, 200, db.offers.filter((o) => o.status === 'approved' && o.valid_to >= istDay()).map(({ phone, status, ...o }) => o));
     if (p === '/rest/v1/place_stats') return json(res, 200, stats());
     if (p === '/rest/v1/place_rating_stats') return json(res, 200, ratingStats());
     if (p === '/rest/v1/traffic_notices') return json(res, 200, [{ title: 'Traffic arrangements for Durga Puja 2026', url: 'https://kolkatatrafficpolice.gov.in/puja2026.pdf', first_seen: '2026-10-10T06:00:00Z' }]);
@@ -138,6 +206,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (pid?.startsWith('eq.')) rows = rows.filter((x) => x.place_id === pid.slice(3));
       if (pid?.startsWith('in.(')) { const set = new Set(pid.slice(4, -1).split(',')); rows = rows.filter((x) => set.has(x.place_id)); }
       if (url.searchParams.get('on_site') === 'is.true') rows = rows.filter((x) => x.on_site);
+      const tg = url.searchParams.get('tag'); if (tg === 'is.null') rows = rows.filter((x) => !x.tag); else if (tg?.startsWith('eq.')) rows = rows.filter((x) => x.tag === tg.slice(3));
       const lt = url.searchParams.get('created_at'); if (lt?.startsWith('lt.')) rows = rows.filter((x) => x.created_at < lt.slice(3));
       rows = rows.sort((a, b) => b.created_at.localeCompare(a.created_at)).slice(0, +(url.searchParams.get('limit') || 30));
       return json(res, 200, rows.map(({ user, reports, hidden, ...r }) => ({ ...r, mine: user === uid, liked: db.likes.has(r.id + uid) })));

@@ -4,6 +4,7 @@ import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
+import { offerChip } from '../offers.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
@@ -70,6 +71,7 @@ function foodItem(f) {
     <div class="main">
       <h3 class="nm">${esc(f.name)}</h3>
       <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
+      ${offerChip(f.id)}
       ${openHtml(f)}
       ${near.length ? `<div class="near">📍 ${t('food.near', { list: esc(near.join(', ')) })}</div>` : ''}
     </div>
@@ -140,8 +142,8 @@ function listHtml(e, list) {
         <div class="fine">${esc(p.note)}</div></div>
       <div class="side"><span class="park-cost"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span></div></li>`).join('') || `<li class="empty">${t('park.none')}</li>`}</ul>
     <div class="section-head" style="margin-top:16px"><h2>${t('h.transit')}</h2></div>
-    <div class="chips wrap pad">${near.map((s) => `<span class="pill"><span class="line-${s.line}">●</span> ${esc(s.name)}</span>`).join('')}</div>
-    <p class="fine pad" style="margin-top:12px">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
+    <div class="metro-chips">${near.map((s) => `<span class="mc"><span class="line-${s.line}">●</span> ${esc(s.name)}</span>`).join('')}</div>
+    <p class="tiny-note">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
 }
 
 /** In map mode the map fills the space between the filter bar and the tab bar. */

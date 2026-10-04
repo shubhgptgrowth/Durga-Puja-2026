@@ -4,9 +4,13 @@ import { makeT } from './i18n.js';
 import { CONFIG } from './config.js';
 import { Community } from './community.js';
 
+const SYNCED = new Set(['history', 'checkins', 'prefs', 'myMoments']);
 export const store = {
   get(k, d) { try { const v = localStorage.getItem('pp:' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
-  set(k, v) { try { localStorage.setItem('pp:' + k, JSON.stringify(v)); } catch { /* private mode */ } },
+  set(k, v) {
+    try { localStorage.setItem('pp:' + k, JSON.stringify(v)); } catch { /* private mode */ }
+    if (SYNCED.has(k)) document.dispatchEvent(new CustomEvent('pp:dirty')); // sync.js backs these up
+  },
   clear() { try { Object.keys(localStorage).filter((k) => k.startsWith('pp:')).forEach((k) => localStorage.removeItem(k)); } catch { /* ignore */ } },
 };
 

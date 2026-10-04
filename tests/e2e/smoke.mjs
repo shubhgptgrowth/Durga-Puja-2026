@@ -243,6 +243,52 @@ try {
   await shot('09-moment-view');
   await closeSheet();
 
+  // Eatery: a menu photo (shown under Menu, not in Moments) and a restaurant's pujo offer (live after review)
+  {
+    const momentsBefore = await count('#view-moments .thumb');
+    await page.click('.tab[data-view="home"]');
+    await page.fill('#homeSearch', 'coffee house');
+    await page.click('#homeResults li[data-result="coffee_house"]');
+    await page.waitForSelector('.sheet.open [data-menu] .fine');
+    await page.click('#addMenuBtn');
+    await page.waitForSelector('#upGallery');
+    const [ch] = await Promise.all([page.waitForEvent('filechooser'), page.click('#upGallery')]);
+    await ch.setFiles({ name: 'menu.png', mimeType: 'image/png', buffer: Buffer.from(await makePng()) });
+    await page.waitForSelector('#upPreview img');
+    must(await page.locator('#upPlace').inputValue() === 'coffee_house', 'menu upload should be for this eatery');
+    await page.click('#upPost');
+    await waitToast(/Menu photo added/, 'menu photo');
+    await page.waitForSelector('.sheet.open [data-menu] .thumb');
+    await page.click('#postOfferBtn');
+    await page.waitForSelector('#offerForm');
+    await page.fill('#ofTitle', 'Free mishti doi with every thali');
+    await page.fill('#ofName', 'Ratan');
+    await page.fill('#ofPhone', '98300 12345');
+    await page.check('#ofOwner');
+    await shot('10c-offer-form');
+    await page.click('#offerForm [type="submit"]');
+    await waitToast(/call to confirm/, 'offer sent');
+    if (fake) {
+      const st = await (await fetch(`${fake.url}/__state`)).json();
+      must(st.offers.length === 1 && st.offers[0].phone === '+919830012345' && st.offers[0].status === 'pending', 'offer not stored as pending');
+      await fetch(`${fake.url}/__approveOffers`);
+      await closeSheet();
+      await page.reload(); await page.waitForSelector('.tab[data-view="explore"]');
+      await page.click('.tab[data-view="explore"]');
+      await page.click('#exploreBar [data-seg="food"]');
+      await page.waitForSelector(`#explorePanel .item[data-place="coffee_house"] .offer-chip`, { timeout: 8000 });
+      await page.click('#explorePanel .item[data-place="coffee_house"]');
+      await page.waitForSelector('.sheet.open .offer-card');
+      must(/Free mishti doi/.test(await page.locator('.sheet.open .offer-card').innerText()), 'approved offer not on the eatery page');
+      must(!/98300/.test(await page.locator('.sheet.open').innerText()), 'owner phone must never show');
+      await shot('10d-offer');
+    }
+    await closeSheet();
+    await page.click('.tab[data-view="moments"]');
+    await page.waitForTimeout(800);
+    must(await count('#view-moments .thumb') === momentsBefore, 'menu photo leaked into Moments');
+  }
+
   // Photos: a pandal gallery with credits, and dish photos at an eatery
   await page.click('.tab[data-view="home"]');
   await page.fill('#homeSearch', 'sreebhumi');
@@ -267,8 +313,23 @@ try {
   await page.waitForSelector('.timeline li.ride');
   must(/Line|Bus|auto|Cab/i.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'ride leg has no transport advice');
   must(await count('.timeline li.hop') >= 1, 'far-apart pandals should get an auto/bus/metro hop');
-  must(/google\.com\/maps\/dir/.test(await page.locator('#planNextDir').getAttribute('href')), 'one Directions-to-next button expected');
+  // Directions at the bottom: Google Maps links that together cover every stop, in order
+  const legs = await page.locator('.route-dirs .dir-leg').evaluateAll((as) => as.map((a) => a.href));
+  must(legs.length >= 1 && legs.every((u) => /google\.com\/maps\/dir/.test(u)), 'route directions missing');
+  const stopsN = await count('.timeline li[data-place]');
+  const covered = legs.reduce((n, u) => n + (decodeURIComponent(new URL(u).searchParams.get('waypoints') || '').split('|').filter(Boolean).length) + 1, 0);
+  must(covered === stopsN, `directions cover ${covered} of ${stopsN} stops`);
+  must(!(await count('#planNextDir')), 'the overview card should not carry a Directions button');
   await shot('10-trail');
+  // How you're travelling changes every ride: walk → long walks, car → drive (+ parking)
+  await page.click('.mode-row [data-mode="walk"]');
+  const rides = (await page.locator('.timeline li.ride').allInnerTexts()).join(' | ');
+  must(await count('.timeline li.hop.walk') >= 1 && !/🚇|🚌|🛺|🚕/.test(rides), 'walk mode still shows rides: ' + rides.slice(0, 300));
+  await page.click('.mode-row [data-mode="car"]');
+  must(/Drive/.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'car mode should drive');
+  must((await page.locator('.route-dirs .dir-leg >> nth=0').getAttribute('href')).includes('travelmode=driving'), 'car directions should drive');
+  await shot('10a-trail-car');
+  await page.click('.mode-row [data-mode="any"]');
   // The wizard: 1 areas → 2 start point → 3 route
   await page.click('#planNew');
   await page.waitForSelector('.stepper [data-step="1"][aria-current="step"]');
@@ -393,6 +454,13 @@ try {
   must(!/src=/.test(p2.url()), 'tracking code not tidied from the URL: ' + p2.url());
   const wa = decodeURIComponent(await p2.getAttribute('#waShare', 'href'));
   must(wa.startsWith('https://wa.me/?text=') && wa.includes('?src=wa_place#p=sreebhumi'), 'WhatsApp link wrong: ' + wa);
+  // Place page layout: "I'm here" beside the name, photos in the first fold, Directions + one Share at the bottom
+  must(await p2.locator('.sheet.open .title-row #visitBtn').count() === 1, "I'm here should sit beside the name");
+  must(await p2.locator('.sheet.open .sheet-cta a').count() === 2 && /maps\/dir/.test(await p2.getAttribute('.sheet.open .sheet-cta a.primary', 'href')), 'bottom bar should hold Directions and Share');
+  must(!(await p2.locator('.sheet.open .action-bar, .sheet.open #storyShare, .sheet.open #linkShare, .sheet.open .share-row').count()), 'old top Directions / extra share buttons still there');
+  must(!(await p2.locator('.sheet.open .mini-list ~ .btn-row a[href*="travelmode=transit"]').count()), 'the separate bus & metro directions button should be gone');
+  const galTop = await p2.locator('.sheet.open .gallery').first().evaluate((e) => e.getBoundingClientRect().top);
+  must(galTop < 844, 'photos should be in the first fold, top at ' + galTop);
   await p2.waitForTimeout(250); await p2.screenshot({ path: `${out}/11b-share-row.png` });
   if (fake) {
     await p2.waitForTimeout(1800);
@@ -421,6 +489,110 @@ try {
     await shot('01c-live');
     await fetch(`${fake.url}/__crowd?live=0&people=0`);
   }
+
+  // My Pujo on another browser: the progress here is backed up under a Pujo code; a fresh browser opening its
+  // link gets the same check-ins and steps back, and its own progress is merged in, not wiped.
+  {
+    await page.click('.tab[data-view="me"]');
+    const code = await page.waitForFunction(() => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null'), null, { timeout: 15000 }).then((h) => h.jsonValue());
+    must(/^PUJO-[A-Z2-9]{4}-[A-Z2-9]{4}$/.test(code), 'pujo code: ' + code);
+    await page.click('details.sync-box summary');
+    must((await page.locator('#pujoCode').innerText()) === code, 'code shown on My Pujo');
+    await page.locator('details.sync-box').scrollIntoViewIfNeeded(); await shot('11q-sync-card');
+    const mine = await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')));
+    must(mine.length > 0, 'expected check-ins to back up');
+    const ctx2 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx2.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx2.addInitScript(() => { if (!localStorage.getItem('pp:history')) localStorage.setItem('pp:history', JSON.stringify({ '2026-10-01': { m: 900, ms: 0, pandals: [], foods: [], steps: 1234 } })); });
+    const p2 = await ctx2.newPage();
+    p2.on('pageerror', (e) => errors.push('pageerror (2nd browser): ' + e.message));
+    // This browser already has a day of its own before the link is opened
+    await p2.goto(base + '#restore=' + code.toLowerCase().replace('pujo-', ''));
+    await p2.waitForFunction((c) => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null') === c, code, { timeout: 8000 });
+    const got = await p2.evaluate(() => ({ checkins: Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')), hist: JSON.parse(localStorage.getItem('pp:history') || '{}') }));
+    must(mine.every((id) => got.checkins.includes(id)), 'restored check-ins: ' + got.checkins.join(','));
+    must(got.hist['2026-10-01']?.steps === 1234, 'second browser lost its own steps in the merge: ' + JSON.stringify(got.hist));
+    must(await p2.locator('#view-me.active').count() === 1 && !p2.url().includes('restore='), 'restore link should land on My Pujo: ' + p2.url());
+    await p2.screenshot({ path: `${out}/11r-restored.png` });
+    // A wrong code says so and changes nothing
+    await p2.click('details.sync-box summary').catch(() => {});
+    await p2.fill('#syCode', 'PUJO-ZZZZ-ZZZZ'); await p2.click('#syncForm button');
+    await p2.waitForFunction(() => /No backup/.test(document.querySelector('#toast')?.textContent || ''), null, { timeout: 5000 });
+    must(await p2.evaluate(() => JSON.parse(localStorage.getItem('pp:pujoCode'))) === code, 'a wrong code must not switch the backup');
+    await ctx2.close();
+  }
+
+  // Google sign-in: the guest account is linked (same user, same backup); a second browser signing in with the
+  // same Google account gets everything back automatically and keeps its own steps. (The fake backend plays
+  // Google; a real local stack has no Google provider, so there the button must stay hidden.)
+  if (!fake) {
+    await page.click('.tab[data-view="me"]'); await page.waitForTimeout(800);
+    must(!(await count('#gSignIn')), 'Continue with Google shown though the project has Google sign-in off');
+  } else {
+    await page.click('.tab[data-view="me"]');
+    await page.waitForSelector('#gSignIn', { timeout: 8000 });
+    const before = await page.evaluate(() => ({ uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id, code: JSON.parse(localStorage.getItem('pp:pujoCode')) }));
+    await page.locator('.account-box').scrollIntoViewIfNeeded(); await shot('11s-google-card');
+    await page.click('#gSignIn');
+    await page.waitForSelector('.account-box.signed', { timeout: 10000 });
+    must(/rina@gmail\.com/.test(await page.locator('.account-box.signed').innerText()), 'signed-in email not shown');
+    must(!/access_token/.test(page.url()) && /#me$/.test(page.url()), 'tokens left in the URL: ' + page.url());
+    const after = await page.evaluate(() => ({ uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id, code: JSON.parse(localStorage.getItem('pp:pujoCode')) }));
+    must(after.uid === before.uid && after.code === before.code, 'linking should keep the same account and backup: ' + JSON.stringify({ before, after }));
+    await waitToast(/Signed in/, 'google sign-in');
+    await page.locator('.account-box').scrollIntoViewIfNeeded(); await shot('11t-google-signed');
+    const mine = await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')));
+
+    const ctx3 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx3.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx3.addInitScript(() => { if (!localStorage.getItem('pp:history')) localStorage.setItem('pp:history', JSON.stringify({ '2026-10-02': { m: 500, ms: 0, pandals: [], foods: [], steps: 777 } })); });
+    const p3 = await ctx3.newPage();
+    p3.on('pageerror', (e) => errors.push('pageerror (google 2nd browser): ' + e.message));
+    await p3.goto(base + '#me');
+    await p3.waitForSelector('#gSignIn', { timeout: 8000 });
+    await p3.click('#gSignIn');
+    await p3.waitForSelector('.account-box.signed', { timeout: 10000 });
+    await p3.waitForFunction((c) => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null') === c, after.code, { timeout: 8000 });
+    const got = await p3.evaluate(() => ({ checkins: Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')), hist: JSON.parse(localStorage.getItem('pp:history') || '{}'),
+      uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id }));
+    must(got.uid === after.uid, 'second browser should sign in to the same account');
+    must(mine.every((id) => got.checkins.includes(id)), 'check-ins not restored after Google sign-in: ' + got.checkins.join(','));
+    must(got.hist['2026-10-02']?.steps === 777, 'second browser lost its own steps on sign-in');
+    await ctx3.close();
+  }
+
+  // Privacy policy page, and "Delete all my data" erasing the server copy too (in a separate browser)
+  {
+    const ctx4 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx4.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx4.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('pp:history', JSON.stringify({ '2026-10-03': { m: 400, ms: 0, pandals: [], foods: [], steps: 555 } })); } });
+    const p4 = await ctx4.newPage();
+    p4.on('pageerror', (e) => errors.push('pageerror (delete): ' + e.message));
+    await p4.goto(base + 'privacy.html');
+    must(/Privacy policy/.test(await p4.locator('h1').innerText()) && /Delete all my data/.test(await p4.locator('main').innerText()), 'privacy page');
+    await p4.goto(base + '#me');
+    const code = await p4.waitForFunction(() => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null'), null, { timeout: 15000 }).then((h) => h.jsonValue());
+    if (fake) must(code in (await (await fetch(`${fake.url}/__state`)).json()).progress, 'backup should exist before deleting');
+    await p4.click('details.settings summary');
+    p4.once('dialog', (d) => d.accept());
+    await Promise.all([p4.waitForEvent('load', { timeout: 15000 }), p4.click('#resetBtn')]);
+    await p4.waitForSelector('.tab');
+    const left = await p4.evaluate(() => ({ code: localStorage.getItem('pp:pujoCode'), hist: localStorage.getItem('pp:history') }));
+    must(!left.code && (!left.hist || !left.hist.includes('555')), 'local data should be gone: ' + JSON.stringify(left));
+    if (fake) must(!(code in (await (await fetch(`${fake.url}/__state`)).json()).progress), 'server backup should be deleted');
+    await ctx4.close();
+  }
+
+  // Back button: closes an open page, then returns to the previous tab, never leaving the site
+  await page.click('.tab[data-view="home"]');
+  await page.click('.tab[data-view="explore"]');
+  await page.click('#exploreBar [data-seg="pandals"]');
+  await page.click('#explorePanel .item[data-place]');
+  await page.waitForSelector('.sheet.open');
+  await page.goBack(); await page.waitForTimeout(300);
+  must(!(await page.locator('.sheet.open').count()) && await page.locator('#view-explore.active').count() === 1, 'Back should close the page and stay on Explore');
+  await page.goBack(); await page.waitForTimeout(300);
+  must(await page.locator('#view-home.active').count() === 1 && page.url().startsWith(base), 'Back should return to Home: ' + page.url());
 
   // Bengali, dark mode, offline reload
   await page.selectOption('#langSelect', 'bn');
