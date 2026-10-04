@@ -93,7 +93,13 @@ def tiles(overrides=""):
     credits = {}
     for key, (queries, need) in TILES.items():
         pick = None
-        for q in ([f'"{chosen[key].replace("File:", "")}"'] if key in chosen else queries):
+        if key in chosen:  # an exact file, looked up by title
+            import urllib.parse
+            p = {"action": "query", "format": "json", "titles": chosen[key], "prop": "imageinfo", "iiprop": "url|extmetadata|size", "iiurlwidth": 960}
+            with urllib.request.urlopen(urllib.request.Request(f"{API}?{urllib.parse.urlencode(p)}", headers=UA), timeout=40) as r:
+                pg = next(iter(json.load(r)["query"]["pages"].values()))
+            pick = (pg, pg["imageinfo"][0])
+        for q in ([] if pick else queries):
             for pg in commons_search(q):
                 ii = (pg.get("imageinfo") or [{}])[0]
                 title = pg["title"]
