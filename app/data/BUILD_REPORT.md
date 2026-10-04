@@ -1,4 +1,4 @@
-# Build report — 2026-10-04T05:16:55+00:00
+# Build report — 2026-10-04T05:18:55+00:00
 
 Bundle version `ef6a8aa691c4`
 
@@ -45,5 +45,5 @@ Bundle version `ef6a8aa691c4`
 ## Warnings (298)
 
 - 296 records are not ground-verified yet
-- zones (new_town): has no pandals yet, so it is left out of the bundle
 - zones (baguiati_kestopur): has no pandals yet, so it is left out of the bundle
+- zones (new_town): has no pandals yet, so it is left out of the bundle
