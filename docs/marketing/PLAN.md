@@ -152,9 +152,10 @@ Any `a-z 0-9 _` code up to 40 characters works. Make one per partner so you can 
 
 Scheduling in Meta Business Suite is enough. For hands-free posting:
 
-1. Make the Instagram account professional and link it to a Facebook Page.
-2. At developers.facebook.com, create an app (type Business) and add **Instagram Graph API**.
-3. Generate a **long-lived user token** with `instagram_basic`, `instagram_content_publish` and `pages_show_list`. Get the Instagram **user id** (`GET /me/accounts` → page → `instagram_business_account`).
+1. Make the Instagram account professional (Creator or Business). A Facebook Page is not needed.
+2. At developers.facebook.com, create an app (type Business) and add the **Instagram** product.
+3. Under **Instagram → API setup with Instagram login**, add the account and **Generate token**. This is a 60-day token that starts with `IG`, with `instagram_business_basic` and `instagram_business_content_publish`. The account's **user id** is shown next to it, or comes from `https://graph.instagram.com/v21.0/me?fields=user_id,username`.
+   *Alternative if the account is linked to a Facebook Page:* a long-lived Facebook user token with `instagram_basic`, `instagram_content_publish` and `pages_show_list`, plus the id from `GET /me/accounts` → page → `instagram_business_account`. The script picks the right API from the token.
 4. Add the repository **secrets** `IG_USER_ID` and `IG_ACCESS_TOKEN`, and the **variable** `IG_AUTOPUBLISH` = `true`.
 5. Test with Actions → marketing-publish → dry run ✔, then a run with dry run unticked.
 
