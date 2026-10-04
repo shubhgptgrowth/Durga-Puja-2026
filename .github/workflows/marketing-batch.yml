@@ -1,8 +1,11 @@
 name: marketing-batch
 
 # Posts a hand-picked batch of reels and carousels to Instagram, spaced out (marketing/publish_batch.py).
-# Manual only. Uses the same IG_USER_ID / IG_ACCESS_TOKEN secrets as marketing-publish.
+# Uses the same IG_USER_ID / IG_ACCESS_TOKEN secrets as marketing-publish. Scheduled runs post
+# marketing/batches/<today IST>.json if it exists, only when the repository variable IG_AUTOPUBLISH is "true".
 on:
+  schedule:
+    - cron: "15 13 11-21 10 *"     # 18:45 IST, 11–21 Oct: that day's reel
   workflow_dispatch:
     inputs:
       manifest:
@@ -44,6 +47,13 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: |
           set -o pipefail
-          args=("${{ inputs.manifest }}" --start "${{ inputs.start }}" --count "${{ inputs.count }}" --gap "${{ inputs.gap }}")
-          [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
+          if [ "${{ github.event_name }}" = schedule ]; then
+            m=marketing/batches/$(TZ=Asia/Kolkata date +%F).json
+            [ -f "$m" ] || { echo "No batch for today ($m)."; exit 0; }
+            args=("$m" --gap 300)
+            [ "${{ vars.IG_AUTOPUBLISH }}" = true ] || args+=(--dry-run)
+          else
+            args=("${{ inputs.manifest }}" --start "${{ inputs.start }}" --count "${{ inputs.count }}" --gap "${{ inputs.gap }}")
+            [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
+          fi
           python -m marketing.publish_batch "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
