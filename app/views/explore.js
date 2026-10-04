@@ -7,6 +7,8 @@ import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
+import { carCardHtml, carClick } from '../car.js';
+import { foodPhoto, tilePhoto, photoBg, photosOn } from '../photos.js';
 import { dietMatch, DIETS } from '../foodinfo.js';
 import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
 
@@ -62,7 +64,9 @@ function pandalItem(p) {
 function foodItem(f) {
   const near = f.near_pandals.slice(0, 2).map((id) => nm(idx.pandal[id]));
   const marks = dietMarks(f);
-  return `<li class="item food-item ${visitedToday(f.id) ? 'visited' : ''}" data-place="${f.id}" ${btn(`aria-label="${esc(f.name)}"`)}>
+  const ph = foodPhoto(f);
+  return `<li class="item food-item ${ph ? 'has-thumb' : ''} ${visitedToday(f.id) ? 'visited' : ''}" data-place="${f.id}" ${btn(`aria-label="${esc(f.name)}"`)}>
+    ${ph ? `<div class="fi-thumb">${photoBg(ph, 'fi-img')}</div>` : ''}
     <div class="main">
       <h3 class="nm">${esc(f.name)}</h3>
       <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
@@ -106,9 +110,10 @@ function barHtml(e) {
     : e.seg === 'food' ? [...DIETS, 'sweets', 'street', 'open'].map((k) => `<button class="chip sm" data-f="${k}" aria-pressed="${e.food.has(k)}">${k === 'veg' ? '<span class="veg-mark sm" aria-hidden="true"></span>' : ''}${t('ff.' + k)}</button>`).join('') : '';
   const n = { pandals: G.data.pandals.length, food: G.data.food.length, parking: G.data.parking.length };
   const em = { pandals: '🛕', food: '🍛', parking: '🅿️' };
+  const img = photosOn() ? { pandals: 'img/hero-1.jpg', food: tilePhoto('food'), parking: tilePhoto('parking') } : {}; // saved in the app, so they show on weak networks
   return `<h2 class="ex-title">${t('ex.title')}</h2>
-    <div class="seg big" role="tablist">${segs.map(([k, , label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}">
-      <span class="seg-em" aria-hidden="true">${em[k]}</span><span class="seg-l">${label}</span><span class="seg-n">${n[k]}</span></button>`).join('')}</div>
+    <div class="seg photo-seg" role="tablist">${segs.map(([k, , label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}" class="${img[k] ? 'has-img' : ''}">
+      ${photoBg(img[k], 'seg-img')}<span class="seg-em" aria-hidden="true">${em[k]}</span><span class="seg-l">${label}</span><span class="seg-n">${n[k]}</span></button>`).join('')}</div>
     <div class="filter-row ${e.seg}">${areaSelectHtml(e, 'areaSelect')}${extra}</div>`;
 }
 
@@ -125,15 +130,15 @@ function listHtml(e, list) {
   if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
   const car = S.car, zl = areasOf(e).map(zoneOf), ids = zl.flatMap((z) => z.pandal_ids);
   const near = e.region === 'all' ? G.data.transit : G.data.transit.filter((s) => ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
-  return `<div class="pad" style="margin-bottom:10px">${car
-    ? `<div class="card"><b>${t('car.yours')}</b><p class="fine" style="margin:2px 0 8px">${t('car.saved', { when: new Date(car.ts).toLocaleString(loc(), { weekday: 'short', hour: 'numeric', minute: '2-digit' }) })}${S.me ? ` · ${dist(hav(S.me, [car.lat, car.lng]))}` : ''}</p>
-       <div class="btn-row"><a class="btn sm primary" target="_blank" rel="noopener" href="${dirUrl([car.lat, car.lng])}">${t('car.walkBack')}</a><button class="btn sm" id="carClear">${t('car.clear')}</button></div></div>`
-    : `<button class="btn block" id="carSave">${icon('pin')} ${t('car.save')}</button>`}</div>
+  return `${carCardHtml()}
     ${e.region === 'all' ? '' : zl.map((z) => `<div class="notice ${z.car_advisory}"><b>${esc(zs(z))}: ${t('adv.' + z.car_advisory)}</b><span>${esc(z.walk_tip)}</span></div>`).join('')}
     <div class="section-head" style="margin-top:16px"><h2>${t('h.parking')}</h2></div>
-    <ul class="list">${list.map((p) => `<li class="item" data-place="${p.id}" style="--zc:#1D4ED8" ${btn(`aria-label="${esc(p.name)}"`)}>
-      <h3 class="nm">${esc(p.name)}</h3><div class="side"><span class="count">${esc(p.rate_hint)}</span></div>
-      <div class="meta">${t('kind.' + p.kind)} · ${esc(p.capacity)}</div><div class="status"><span class="fine">${esc(p.note)}</span></div></li>`).join('') || `<li class="empty">${t('park.none')}</li>`}</ul>
+    <ul class="list">${list.map((p) => `<li class="item park-item" data-place="${p.id}" ${btn(`aria-label="${esc(p.name)}"`)}>
+      <div class="pk-ic" aria-hidden="true">P</div>
+      <div class="main"><h3 class="nm">${esc(p.name)}</h3>
+        <div class="meta">${t('kind.' + p.kind)} · ${t('cap.' + p.capacity)}</div>
+        <div class="fine">${esc(p.note)}</div></div>
+      <div class="side"><span class="park-cost"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span></div></li>`).join('') || `<li class="empty">${t('park.none')}</li>`}</ul>
     <div class="section-head" style="margin-top:16px"><h2>${t('h.transit')}</h2></div>
     <div class="chips wrap pad">${near.map((s) => `<span class="pill"><span class="line-${s.line}">●</span> ${esc(s.name)}</span>`).join('')}</div>
     <p class="fine pad" style="margin-top:12px">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
@@ -169,8 +174,7 @@ function wire(view) {
     if (ev.target.closest('#modeBtn')) { S.explore.mode = S.explore.mode === 'map' ? 'list' : 'map'; track('filter', { d: 'mode:' + S.explore.mode }); window.scrollTo(0, 0); return render(); }
     const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); track('filter', { d: 'food:' + f }); return render(); }
     const place = ev.target.closest('#explorePanel [data-place]')?.dataset.place; if (place) return openPlace(place);
-    if (ev.target.closest('#carClear')) { S.car = null; store.set('car', null); return render(); }
-    if (ev.target.closest('#carSave')) return getFix().then((p) => { S.car = { lat: p.lat, lng: p.lng, ts: Date.now() }; store.set('car', S.car); toast(t('car.savedToast')); render(); }).catch(() => toast(t('loc.fail')));
+    if (carClick(ev, render)) return;
   };
   const as = $('#areaSelect', view);
   if (as) as.onchange = () => { setAreaValue(S.explore, as.value); track('filter', { d: 'area:' + as.value }); render(); };

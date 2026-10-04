@@ -68,7 +68,8 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       return { status: 'ok', stored: ok.length, live: [...db.presence.values()].filter((x) => Date.now() - x < 300e3).length + (db.extraLive || 0) };
     },
     site_counts() {
-      return { live: [...db.presence.values()].filter((x) => Date.now() - x < 300e3).length + (db.extraLive || 0), people: db.opens.size + (db.extraPeople || 0) };
+      const live = [...db.presence.values()].filter((x) => Date.now() - x < 300e3).length + (db.extraLive || 0);
+      return { live, today: db.presence.size + (db.extraLive || 0), people: db.opens.size + (db.extraPeople || 0) };
     },
     rate_place(uid, a) {
       if (!places.has(a.p_place)) return { status: 'unknown_place' };

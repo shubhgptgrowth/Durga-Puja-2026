@@ -58,7 +58,8 @@ export function earned() {
 }
 export function announceBadges(before) {
   const now = earned();
-  for (const b of BADGES) if (now.has(b.id) && !before.has(b.id)) setTimeout(() => toast(t('badge.toast', { em: b.em, name: S.prefs.lang === 'bn' ? b.bn : b.name })), 1600);
+  // celebrate.js shows each new badge with an animation (after any check-in celebration).
+  for (const b of BADGES) if (now.has(b.id) && !before.has(b.id)) document.dispatchEvent(new CustomEvent('pp:badge', { detail: b }));
 }
 
 /* ---------------- visits ---------------- */
@@ -93,6 +94,10 @@ export async function visit(id, { fix = null } = {}) {
   if (!community.enabled) return { status: 'local', distance: d };
   try { return { ...(await community.recordVisit(id, f)), distance: d }; } catch { return { status: 'queued', distance: d }; }
 }
+/** Tell the page a visit went through, so celebrate.js can throw petals. Not for duplicates or private marks. */
+export function celebrateVisit(id, r) {
+  if (['counted', 'local', 'queued'].includes(r.status)) document.dispatchEvent(new CustomEvent('pp:visit', { detail: { id, kind: placeKind(id) } }));
+}
 /** "Visited, but only on my phone": used when GPS can't confirm. Never counted publicly. */
 export const visitPrivately = (id) => markLocal(id, 'manual');
 
@@ -119,14 +124,18 @@ export const walking = () => !!S.walk;
 export async function startWalk() {
   if (!navigator.geolocation) return toast(t('fit.noGps'));
   // iOS only grants motion access inside a user gesture, so ask before anything else is awaited.
+  let motion = 'off';
   if (S.prefs.motion && window.DeviceMotionEvent) {
     try {
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        if ((await DeviceMotionEvent.requestPermission()) === 'granted') attachMotion();
-      } else attachMotion();
-    } catch { /* fall back to GPS steps */ }
+        motion = (await DeviceMotionEvent.requestPermission()) === 'granted' ? 'on' : 'denied';
+        if (motion === 'on') attachMotion();
+      } else { attachMotion(); motion = 'on'; }
+    } catch { motion = 'denied'; /* fall back to GPS steps */ }
   }
-  S.walk = { last: null, startedAt: Date.now(), status: '' };
+  S.walk = { last: null, startedAt: Date.now(), status: motion === 'denied' ? t('fit.motionDenied') : '' };
+  // If the sensor never reports (blocked in browser settings, or no sensor), say so: steps then come from GPS distance.
+  if (motion === 'on') setTimeout(() => { if (S.walk && !lastMotion) { S.walk.status = t('fit.noMotion'); rerender(); } }, 5000);
   store.set('walking', true);
   watchId = navigator.geolocation.watchPosition(onPos, (err) => { S.walk && (S.walk.status = err.code === 1 ? t('fit.denied') : t('fit.waiting')); rerender(); },
     { enableHighAccuracy: true, maximumAge: 3000, timeout: 30000 });
@@ -176,7 +185,7 @@ function onPos(pos) {
   // Auto check-in: walking right up to a pandal counts as a verified visit.
   for (const pd of G.data.pandals) {
     if (!S.checkins[pd.id] && !visitedToday(pd.id) && hav([lat, lng], ll(pd)) <= M().checkin_radius_m) {
-      visit(pd.id, { fix }).then((r) => { toast(visitMessage(pd.id, r)); rerender(); });
+      visit(pd.id, { fix }).then((r) => { toast(visitMessage(pd.id, r)); celebrateVisit(pd.id, r); rerender(); });
     }
   }
   document.dispatchEvent(new CustomEvent('pp:position', { detail: fix }));

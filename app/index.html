@@ -21,7 +21,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Baloo+Da+2:wght@400;500;600;700;800&family=Galada&display=swap">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -59,16 +59,17 @@
 
   <header class="topbar">
     <div class="brand">
-      <img class="brand-mark" src="icons/icon.svg" alt="Pujo Parikrama" width="42" height="42">
-      <div>
+      <button type="button" class="dhak-btn" id="dhakBtn" aria-label="Play the dhak"><img src="img/tiles/dhak.jpg" alt="" width="46" height="46" onerror="this.src='icons/icon.svg'"><i class="dhak-ring" aria-hidden="true"></i><span class="dhak-state" aria-hidden="true">▶</span></button>
+      <div class="brand-text">
         <h1 class="sr-only">Pujo Parikrama</h1>
         <div id="greet" class="greet" lang="bn" aria-hidden="true">শুভ শারদীয়া</div>
-        <p id="countdown" class="sub">Durga Puja 2026 · Kolkata</p>
+        <p id="countdown" class="sub ticker" aria-live="off">Durga Puja 2026 · Kolkata</p>
       </div>
     </div>
+    <button type="button" class="live-pill" id="livePill" hidden><span class="live-dot" aria-hidden="true"></span><span class="lp-tx"><b id="livePillN"></b><span id="livePillL"></span></span></button>
     <label class="lang-pick">
       <span class="sr-only">Language</span>
-      <select id="langSelect" aria-label="Language"><option value="en">English</option><option value="bn">বাংলা</option><option value="hi">हिन्दी</option></select>
+      <select id="langSelect" aria-label="Language"><option value="en">EN</option><option value="bn">বাং</option><option value="hi">हिं</option></select>
     </label>
   </header>
 

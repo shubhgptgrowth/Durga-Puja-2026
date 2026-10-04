@@ -74,7 +74,15 @@ test('step detector counts a 1.9 Hz walking cadence', () => {
   assert.ok(Math.abs(steps - 38) <= 3, `got ${steps}`);
 });
 
+test('step detector counts gentle walking with the phone in the hand', () => {
+  for (const amp of [0.9, 1.2]) {
+    const steps = simulate(new StepDetector(), { seconds: 20, amp, noise: 0.3 });
+    assert.ok(Math.abs(steps - 38) <= 3, `amp ${amp}: got ${steps}`);
+  }
+});
+
 test('step detector ignores sensor noise and a single bump', () => {
+  assert.equal(simulate(new StepDetector(), { amp: 0, noise: 0.8 }), 0, 'a shaky hand while standing');
   assert.equal(simulate(new StepDetector(), { amp: 0, noise: 0.3 }), 0);
   const d = new StepDetector();
   for (let i = 0; i < 100; i++) d.push(0, 0, 9.81 + (i === 50 ? 6 : 0), i * 20);
@@ -190,7 +198,7 @@ test('every translation key used in the app exists in both languages', () => {
   const families = {
     'slot.': Object.keys(G.meta.slots), 'crowd.': ['quiet', 'moderate', 'busy', 'packed'], 'car.': ['ok', 'limited', 'avoid'],
     'adv.': ['ok', 'limited', 'avoid'], 'type.': [...new Set(G.food.map((f) => f.type))], 'diet.': ['veg', 'nonveg', 'both', 'egg'],
-    'kind.': [...new Set(G.parking.map((p) => p.kind))], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
+    'kind.': [...new Set(G.parking.map((p) => p.kind))], 'cap.': [...new Set(G.parking.map((p) => p.capacity))], 'kindLabel.': ['pandal', 'food', 'parking'], 'ago.': ['m', 'h', 'd'],
     'sort.': ['popular', 'quiet', 'near', 'live'], 'stars.': ['1', '3', '4', '5'], 'budget.': ['120', '180', '240', '360', '600'],
     'ff.': ['veg', 'nonveg', 'egg', 'sweets', 'street', 'open'], 'hs.ios': ['1', '2', '3', '4'],
     'rt.': ['tasty', 'value', 'quick', 'clean', 'friendly', 'crowded', 'pricey', 'slow'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],

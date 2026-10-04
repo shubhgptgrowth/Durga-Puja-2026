@@ -1,0 +1,44 @@
+{
+ "east": {
+  "src": "img/tiles/east.jpg",
+  "title": "জি. ডি. ব্লক সল্টলেক দুর্গা পুজো ২০১৮.jpg",
+  "author": "Subhrajyoti07",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9C%E0%A6%BF._%E0%A6%A1%E0%A6%BF._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+ },
+ "howrah": {
+  "src": "img/tiles/howrah.jpg",
+  "title": "Durga puja in Howrah.jpg",
+  "author": "रोहित साव27",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_puja_in_Howrah.jpg"
+ },
+ "parking": {
+  "src": "img/tiles/parking.jpg",
+  "title": "Taxi of Kolkata.jpg",
+  "author": "Bernard Gagnon",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taxi_of_Kolkata.jpg"
+ },
+ "pandals": {
+  "src": "img/tiles/pandals.jpg",
+  "title": "Durga puja Festivities 2023 Lights, Pandals, Shopping, food in south Kolkata 59.jpg",
+  "author": "Goutam1962",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_puja_Festivities_2023_Lights,_Pandals,_Shopping,_food_in_south_Kolkata_59.jpg"
+ },
+ "food": {
+  "src": "img/tiles/food.jpg",
+  "title": "Paratha roll.jpg",
+  "author": "Gannu03",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Paratha_roll.jpg"
+ },
+ "dhak": {
+  "src": "img/tiles/dhak.jpg",
+  "title": "Saltlake BJ Block Durga Puja 2009 (43).jpg",
+  "author": "Sumitsurai",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Saltlake_BJ_Block_Durga_Puja_2009_(43).jpg"
+ }
+}

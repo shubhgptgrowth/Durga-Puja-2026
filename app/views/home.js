@@ -8,7 +8,9 @@ import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard } from '../radioCard.js';
-import { liveHtml, startLiveCount } from '../livecount.js';
+import { liveHtml } from '../livecount.js';
+import { carCardHtml, carClick } from '../car.js';
+import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -86,6 +88,18 @@ function miniPandal(p, extra) {
   </div>`;
 }
 
+// Credits for the saved tile photos (img/tiles), shown with the banner credits at the foot of Home.
+let tileCredits = {};
+fetch('img/tiles/tiles.json').then((r) => r.json()).then((c) => { tileCredits = c; if (S.view === 'home' && G.data) render(); }).catch(() => {});
+
+function taskImg(k) {
+  if (!photosOn()) return '';
+  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
+    park: tilePhoto('parking'), photos: 'img/hero-2.jpg' })[k] || '';
+}
+const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
+const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
+
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
 
@@ -102,7 +116,6 @@ function render() {
   if (card.parentNode !== slot) slot.appendChild(card);
   watchCard();
   startSlides(el);
-  startLiveCount();
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
     ${liveHtml()}
@@ -112,9 +125,11 @@ function render() {
         <span class="how-tx"><b>${t('how.t' + (i + 1))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
     </section>
     <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
-      <div class="tasks">${TASKS.map(([k, ic]) => `<button class="task" data-q="${k}">
-        <span class="task-ic">${icon(ic)}</span><span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`).join('')}</div>
+      <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
+        ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
+
+    <div id="homeCar">${carCardHtml()}</div>
 
     <div class="search" role="search">
       ${icon('search')}
@@ -129,7 +144,8 @@ function render() {
       <div class="regions">${G.data.regions.map((r) => {
         const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
         const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
-        return `<button class="region" data-hr="${r.id}" style="--zc:${r.color}"><span class="region-n">${esc(rname(r))}</span><span class="region-c">${t('h.pandalsN', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
+        const img = regionImg(r);
+        return `<button class="region ${img ? 'photo' : ''}" data-hr="${r.id}" style="--zc:${r.color}">${photoBg(img)}<span class="region-n">${esc(rname(r))}</span><span class="region-c">${t('h.pandalsN', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
       }).join('')}</div>
     </section>
 
@@ -142,11 +158,12 @@ function render() {
       ${dayPlanHtml()}</section>
 
     <section class="section"><div class="section-head"><div><h2>${t('h.trails')}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
-      <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail" data-trail="${it.id}" ${btn()}>
+      <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>
-    <p class="fine center photo-credits">${t('h.photoCredits')} ${slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`).join(', ')} (${t('h.ccNote')})</p>`;
+    <p class="fine center photo-credits">${t('h.photoCredits')} ${[...slides().map((x) => `<a href="${x.page}" target="_blank" rel="noopener">${esc(nm(idx.pandal[x.pandal]))} · ${esc(x.author)}</a>`),
+      ...Object.values(tileCredits).map((x) => `<a href="${esc(x.page)}" target="_blank" rel="noopener">${esc(x.title.replace(/\.\w+$/, ''))} · ${esc(x.author)}</a>`)].join(', ')} (${t('h.ccNote')})</p>`;
 
   wire(el);
 }
@@ -154,6 +171,7 @@ function render() {
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
+    if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
