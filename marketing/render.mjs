@@ -14,6 +14,8 @@ const dir = path.resolve(og ? args[1] || 'app/icons' : args[0] || 'app/kit');
 const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const SITE_JSON = JSON.parse(readFileSync(path.resolve(path.dirname(new URL(import.meta.url).pathname), '../site.json'), 'utf8'));
 const SITE_DISPLAY = (() => { const u = new URL(SITE_JSON.url); return (u.host + u.pathname).replace(/\/$/, ''); })();
+// Printed at the foot of cards, posters and the flyer: the Instagram handle while the app lives on github.io.
+const FOOTER = SITE_JSON.footer || SITE_DISPLAY;
 const SIZE = { post: [1080, 1350], story: [1080, 1920], og: [1200, 630], a4: [794, 1123] };
 
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">`;
@@ -53,7 +55,7 @@ function hero(c, [w, h]) {
       <p style="font-size:${story ? 40 : 34}px;margin-top:26px;line-height:1.35;opacity:.95">${esc(d.subtitle)}</p>
       ${d.subtitle_bn ? `<p style="font-family:'Hind Siliguri';font-size:${story ? 38 : 32}px;margin-top:16px;line-height:1.4;opacity:.9">${esc(d.subtitle_bn)}</p>` : ''}
       <div style="margin-top:${story ? 60 : 40}px;display:flex;align-items:center;justify-content:space-between"><span class="cta">${esc(d.cta || 'Link in bio')}</span></div>
-      <div class="url" style="margin-top:28px">${esc(SITE_DISPLAY)}</div>
+      <div class="url" style="margin-top:28px">${esc(FOOTER)}</div>
     </div></div>`);
 }
 
@@ -73,7 +75,7 @@ function list(c, [w, h]) {
     <div class="foot" style="margin-top:auto;padding-top:20px">
       <p style="font-size:${story ? 34 : 30}px;opacity:.95;margin-bottom:${story ? 34 : 24}px">${esc(d.foot || '')}</p>
       <span class="cta" style="font-size:${story ? 42 : 36}px;padding:${story ? '26px 56px' : '20px 44px'}">${esc(d.cta || 'Link in bio')}</span>
-      <div class="url" style="margin-top:22px">${esc(SITE_DISPLAY)}</div>
+      <div class="url" style="margin-top:22px">${esc(FOOTER)}</div>
     </div></div>`,
   `ol{list-style:none;padding:0;margin-top:${story ? 44 : 30}px;display:flex;flex-direction:column;gap:${story ? 22 : 16}px}
    li{display:flex;gap:22px;align-items:center;background:rgba(255,255,255,.12);border-radius:26px;padding:${story ? 24 : 18}px 26px}
@@ -111,7 +113,7 @@ async function flyerHtml(f) {
     <div style="font-family:'Hind Siliguri';font-size:44px;margin-top:10px">ঠাকুর দেখার প্ল্যান, এক অ্যাপে</div>
     <div style="background:#fff;border-radius:36px;padding:26px;margin-top:46px;width:520px;height:520px">${code.replace('<svg', '<svg width="468" height="468"')}</div>
     <div style="font-size:36px;margin-top:40px;line-height:1.4">${f.pandals} pandals · quiet hours · food · parking<br>metro, bus &amp; auto routes · live check-ins</div>
-    <div class="url" style="margin-top:auto">${esc(SITE_DISPLAY)} · Free</div>
+    <div class="url" style="margin-top:auto">${esc(FOOTER)} · Free</div>
   </div>`);
 }
 

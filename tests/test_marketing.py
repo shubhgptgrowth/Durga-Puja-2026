@@ -73,6 +73,37 @@ class KitTest(unittest.TestCase):
         self.assertIn('name="robots" content="noindex"', page)
 
 
+
+class CarouselTest(unittest.TestCase):
+    """Instagram carousels: enough of them, the right shape, bilingual captions, and never the github.io address."""
+
+    @classmethod
+    def setUpClass(cls):
+        from marketing import carousels
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.spec = carousels.build(cls.tmp.name)
+        cls.out = Path(cls.tmp.name)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_shape(self):
+        cs = self.spec["carousels"]
+        self.assertGreaterEqual(len(cs), 14)
+        for c in cs:
+            self.assertTrue(6 <= len(c["slides"]) <= 10, c["id"])
+            self.assertEqual(c["slides"][0]["t"], "cover")
+            self.assertEqual(c["slides"][-1]["t"], "cta")
+            self.assertTrue(8 <= len(c["hashtags"].split()) <= 12, c["id"])
+            self.assertRegex(c["caption_bn"], "[ঀ-৿]")
+            self.assertTrue((self.out / c["id"] / "caption.txt").exists())
+        self.assertTrue((self.out / "index.md").exists())
+
+    def test_no_site_address(self):
+        text = (self.out / "carousels.json").read_text(encoding="utf-8") + (self.out / "index.md").read_text(encoding="utf-8")
+        self.assertNotIn("github.io", text)
+
 if __name__ == "__main__":
     unittest.main()
 
