@@ -75,7 +75,7 @@ export const HI = {
   'p.disclaimer': 'जगहें अनुमानित हैं। थीम और समय हर साल बदलते हैं।',
 
   // food & parking
-  'ff.veg': '🟢 शाकाहारी', 'ff.sweets': 'मिठाई', 'ff.street': 'स्ट्रीट फ़ूड', 'ff.open': 'अभी खुला',
+  'ff.veg': 'शुद्ध शाकाहारी', 'ff.sweets': 'मिठाई', 'ff.street': 'स्ट्रीट फ़ूड', 'ff.open': 'अभी खुला',
   'type.cabin': 'केबिन', 'type.sweets': 'मिठाई', 'type.restaurant': 'रेस्टोरेंट', 'type.street': 'स्ट्रीट फ़ूड', 'type.drinks': 'शरबत',
   'food.open': 'अभी खुला', 'food.closed': 'अभी बंद', 'food.near': '{list} के पास', 'food.none': 'इन फ़िल्टर से कुछ नहीं मिला।',
   'food.mustTry': 'ज़रूर चखें', 'food.hoursNote': 'पूजा के दिनों में अक्सर देर तक खुला रहता है।',
@@ -235,7 +235,7 @@ export const HI = {
     'r.soundCredit': 'ढाक और शंख की रिकॉर्डिंग: सुमिता राय दत्ता, टीटो दत्ता और ज्योति चिरिंग, विकिमीडिया कॉमन्स से (CC BY-SA / CC BY)।',
     'p.dayToggle': 'पूजा का दिन',
     'card.bestHint': 'दिन का वह समय जब इस पंडाल में आम तौर पर सबसे छोटी लाइन होती है',
-    'ff.nonveg': '🔴 मांसाहारी',
+    'ff.nonveg': 'मांसाहारी',
     'ff.egg': '🥚 अंडा',
     'diet.egg': 'अंडे के व्यंजन',
     'food.for2': 'दो लोगों का ≈{cost}',
@@ -288,4 +288,9 @@ export const HI = {
     'rt.one': 'यहाँ खा चुके 1 व्यक्ति की रेटिंग',
     'lv.now': 'अभी Pujo Parikrama पर {n} लोग',
     'lv.total': '{n} लोगों ने यहाँ पूजा की योजना बनाई',
+    'food.openShort': 'खुला',
+    'food.till': '{time} तक',
+    'food.opensAt': '{time} खुलेगा',
+    'food.opensTmrw': 'कल {time} खुलेगा',
+    'food.for2Short': 'दो लोगों का',
   };

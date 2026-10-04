@@ -637,3 +637,29 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .live-total { color: var(--ink-2); }
 @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(22,163,74,.55); } 70% { box-shadow: 0 0 0 9px rgba(22,163,74,0); } 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); } }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
+/* ---------- food tiles: one row of status icons, the cost chip, the veg mark ---------- */
+.food-item { grid-template-columns: 1fr auto; }
+.food-item .side { grid-row: 1; }
+.food-item .meta { grid-column: 1 / -1; }
+.item .facts, .food-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; grid-column: 1 / -1; margin-top: 4px; }
+.food-facts { margin: 12px 0 4px; gap: 8px 14px; font-size: 14px; }
+.item .foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.item .foot .count, .item .foot .pill { font-size: 12px; }
+.st { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.st.open { color: var(--ok, #15803D); }
+.st.open .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.st.open small { font-weight: 500; color: var(--ink-3); }
+.st.closed { color: var(--ink-3); font-weight: 600; }
+.cost-chip { display: inline-flex; align-items: baseline; gap: 4px; padding: 3px 9px; border-radius: 8px; font-size: 12.5px; white-space: nowrap;
+  color: #7C4A03; background: #FEF3C7; border: 1px solid #F5D78E; }
+.cost-chip b { font-size: 13.5px; }
+/* India's vegetarian symbol: a green dot in a green square */
+.veg-mark { display: inline-grid; place-items: center; width: 16px; height: 16px; border: 2px solid #15803D; border-radius: 3px; flex: none; }
+.veg-mark::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #15803D; }
+.egg-mark { font-size: 15px; line-height: 1; }
+.diet-l { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--ink-2); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cost-chip { color: #FDE68A; background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.35); } }
+:root[data-theme="dark"] .cost-chip { color: #FDE68A; background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.35); }
+.item .foot .count.est { font-weight: 500; color: var(--ink-3); }
+.veg-mark.sm { width: 13px; height: 13px; margin-right: 5px; vertical-align: -2px; } .veg-mark.sm::after { width: 5px; height: 5px; }

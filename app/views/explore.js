@@ -4,10 +4,10 @@ import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
-import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl } from '../sheets.js';
+import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
-import { dietMatch, hasEgg, cost2, rupees, DIETS } from '../foodinfo.js';
+import { dietMatch, DIETS } from '../foodinfo.js';
 import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
 
 let map = null, layers = {}, meMarker = null, moreOpen = false;
@@ -60,17 +60,16 @@ function pandalItem(p) {
   </li>`;
 }
 function foodItem(f) {
-  const open = isOpen(f.hours);
   const near = f.near_pandals.slice(0, 2).map((id) => nm(idx.pandal[id]));
-  return `<li class="item ${visitedToday(f.id) ? 'visited' : ''}" data-place="${f.id}" ${btn(`aria-label="${esc(f.name)}"`)}>
+  return `<li class="item food-item ${visitedToday(f.id) ? 'visited' : ''}" data-place="${f.id}" ${btn(`aria-label="${esc(f.name)}"`)}>
     <h3 class="nm">${esc(f.name)}</h3>
-    <div class="side"><span class="score cost">${t('food.for2', { cost: rupees(cost2(f)) })}</span>${ratingHtml(f.id, true)}${statsHtml(f.id, { compact: true })}</div>
+    <div class="side">${ratingHtml(f.id, true)}</div>
     <div class="meta">${esc(f.dishes.slice(0, 3).join(' · '))}</div>
-    <div class="status">${f.hours ? `<span class="pill ${open ? 'ok' : ''}">${open ? t('food.open') : t('food.closed')}</span>` : ''}${dietPills(f)}${near.length ? `<span class="fine">${t('food.near', { list: esc(near.join(', ')) })}</span>` : ''}</div>
+    <div class="facts">${openHtml(f)}${costHtml(f)}${dietMarks(f)}</div>
+    <div class="foot">${statsHtml(f.id, { compact: true })}${near.length ? `<span>📍 ${t('food.near', { list: esc(near.join(', ')) })}</span>` : ''}</div>
   </li>`;
 }
 
-export const dietPills = (f) => `<span class="pill diet">${f.veg === 'veg' ? '🟢' : f.veg === 'nonveg' ? '🔴' : '🟢🔴'} ${t('diet.' + f.veg)}</span>${hasEgg(f) ? `<span class="pill diet">🥚 ${t('diet.egg')}</span>` : ''}`;
 
 function pandalList(e) {
   const list = G.data.pandals.filter((p) => inArea(e, p.zone));
@@ -96,7 +95,7 @@ function barHtml(e) {
   const segs = [['pandals', 'star', t('seg.pandals')], ['food', 'food', t('seg.food')], ['parking', 'car', t('seg.parking')]];
   const extra = e.seg === 'pandals'
     ? `<select id="sortSelect" aria-label="${t('sort.label')}">${['popular', 'quiet', 'near', ...(community.enabled ? ['live'] : [])].map((k) => `<option value="${k}" ${e.sort === k ? 'selected' : ''}>${t('sort.' + k)}</option>`).join('')}</select>`
-    : e.seg === 'food' ? [...DIETS, 'sweets', 'street', 'open'].map((k) => `<button class="chip sm" data-f="${k}" aria-pressed="${e.food.has(k)}">${t('ff.' + k)}</button>`).join('') : '';
+    : e.seg === 'food' ? [...DIETS, 'sweets', 'street', 'open'].map((k) => `<button class="chip sm" data-f="${k}" aria-pressed="${e.food.has(k)}">${k === 'veg' ? '<span class="veg-mark sm" aria-hidden="true"></span>' : ''}${t('ff.' + k)}</button>`).join('') : '';
   return `<div class="seg" role="tablist">${segs.map(([k, ic, label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}">${icon(ic, 'sm')} ${label}</button>`).join('')}</div>
     <div class="filter-row ${e.seg}">${areaSelectHtml(e, 'areaSelect')}${extra}</div>`;
 }

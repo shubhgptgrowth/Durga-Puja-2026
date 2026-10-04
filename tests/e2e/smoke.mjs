@@ -175,7 +175,7 @@ try {
   await waitToast(/Thanks/, 'rating');
   await page.waitForSelector('.sheet.open .rating-sum b');
   must((await page.locator('.sheet.open .rating-sum b').innerText()) === '4', 'rating average not shown');
-  must(/for two/.test(await page.locator('.sheet.open').innerText()), 'cost for two missing on the eatery page');
+  must(/for 2/.test(await page.locator('.sheet.open .cost-chip').innerText()), 'cost for two missing on the eatery page');
   if (fake) must((await (await fetch(`${fake.url}/__state`)).json()).ratings === 1, 'rating not stored');
   await page.locator('.sheet.open .rating-sum').scrollIntoViewIfNeeded(); await shot('05b-rating');
   await closeSheet();
@@ -183,7 +183,7 @@ try {
   // Diet chips: Veg = pure veg, Egg = places with egg dishes
   await page.click('#exploreBar [data-f="egg"]');
   const eggN = await count('#explorePanel .item');
-  must(eggN > 0 && eggN === await count('#explorePanel .item .pill.diet:has-text("Egg")'), 'egg filter shows places without egg dishes');
+  must(eggN > 0 && eggN === await count('#explorePanel .item .egg-mark'), 'egg filter shows places without egg dishes');
   await page.click('#exploreBar [data-f="egg"]');
   await page.click('#exploreBar [data-f="veg"]');
   must(await count('#explorePanel .item') === G.food.filter((f) => f.veg === 'veg').length, 'veg filter count');
@@ -327,6 +327,18 @@ try {
   await page.locator('.profile-box').scrollIntoViewIfNeeded(); await shot('11c-profile');
   await page.fill('#cName', 'Rina Sen');
   await page.fill('#cPhone', '98300 12345');
+  // Walking redraws this page every second: unsaved text and open sections must survive it
+  await page.click('.health-sync summary');
+  await page.evaluate(() => document.activeElement?.blur());
+  await page.evaluate(async () => {
+    for (let i = 0; i < 50 * 3; i++) {
+      window.dispatchEvent(new DeviceMotionEvent('devicemotion', { accelerationIncludingGravity: { x: 0.1, y: 0.2, z: 9.81 + 2.5 * Math.sin(2 * Math.PI * 2 * (i / 50)) } }));
+      await new Promise((r) => setTimeout(r, 20));
+    }
+  });
+  await page.waitForTimeout(1200);
+  must(await page.inputValue('#cName') === 'Rina Sen' && await page.inputValue('#cPhone') === '98300 12345', 'unsaved name/phone wiped by a redraw');
+  must(await page.locator('details.health-sync').evaluate((d) => d.open), 'opened section snapped shut on redraw');
   await page.check('#cConsent');
   await page.click('#contactForm button[type="submit"]');
   await waitToast(/Saved/, 'profile');

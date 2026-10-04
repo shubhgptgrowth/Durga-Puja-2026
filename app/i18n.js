@@ -80,7 +80,7 @@ export const STR = {
     'p.disclaimer': 'Locations are approximate. Themes and timings change every year.',
 
     // food & parking
-    'ff.veg': '🟢 Veg', 'ff.sweets': 'Sweets', 'ff.street': 'Street food', 'ff.open': 'Open now',
+    'ff.veg': 'Pure veg', 'ff.sweets': 'Sweets', 'ff.street': 'Street food', 'ff.open': 'Open now',
     'type.cabin': 'Cabin', 'type.sweets': 'Sweets', 'type.restaurant': 'Restaurant', 'type.street': 'Street food', 'type.drinks': 'Sherbet',
     'food.open': 'Open now', 'food.closed': 'Closed now', 'food.near': 'Near {list}', 'food.none': 'Nothing matches these filters.',
     'food.mustTry': 'Must try', 'food.hoursNote': 'Hours often run later during the pujas.',
@@ -239,7 +239,7 @@ export const STR = {
     'r.soundCredit': 'Dhak and shankh recordings: Sumita Roy Dutta, Tito Dutta and Jyoti Chiring, via Wikimedia Commons (CC BY-SA / CC BY).',
     'p.dayToggle': 'Puja day',
     'card.bestHint': 'The time of day this pandal usually has the shortest queue',
-    'ff.nonveg': '🔴 Non-veg',
+    'ff.nonveg': 'Non-veg',
     'ff.egg': '🥚 Egg',
     'diet.egg': 'Egg dishes',
     'food.for2': '≈{cost} for two',
@@ -292,6 +292,11 @@ export const STR = {
     'rt.one': '1 rating from someone who ate here',
     'lv.now': '{n} people on Pujo Parikrama right now',
     'lv.total': '{n} have planned their pujo here',
+    'food.openShort': 'Open',
+    'food.till': 'till {time}',
+    'food.opensAt': 'Opens at {time}',
+    'food.opensTmrw': 'Opens at {time} tomorrow',
+    'food.for2Short': 'for 2',
   },
   bn: {
 
@@ -360,7 +365,7 @@ export const STR = {
     'p.eat': 'কাছাকাছি খাওয়া', 'p.noeat': 'কাছে বিখ্যাত দোকান নেই। রাস্তার স্টল ট্রাই করুন!',
     'p.disclaimer': 'লোকেশন আনুমানিক। থিম আর সময় প্রতি বছর বদলায়।',
 
-    'ff.veg': '🟢 নিরামিষ', 'ff.sweets': 'মিষ্টি', 'ff.street': 'স্ট্রিট ফুড', 'ff.open': 'এখন খোলা',
+    'ff.veg': 'নিরামিষ', 'ff.sweets': 'মিষ্টি', 'ff.street': 'স্ট্রিট ফুড', 'ff.open': 'এখন খোলা',
     'type.cabin': 'কেবিন', 'type.sweets': 'মিষ্টি', 'type.restaurant': 'রেস্তোরাঁ', 'type.street': 'স্ট্রিট ফুড', 'type.drinks': 'শরবত',
     'food.open': 'এখন খোলা', 'food.closed': 'এখন বন্ধ', 'food.near': 'কাছে: {list}', 'food.none': 'এই ফিল্টারে কিছু মিলল না।',
     'food.mustTry': 'অবশ্যই খান', 'food.hoursNote': 'পুজোর সময় প্রায়ই বেশি রাত পর্যন্ত খোলা থাকে।',
@@ -516,7 +521,7 @@ export const STR = {
     'r.soundCredit': 'ঢাক আর শাঁখের রেকর্ডিং: সুমিতা রায় দত্ত, টিটো দত্ত ও জ্যোতি চিরিং, উইকিমিডিয়া কমন্স থেকে (CC BY-SA / CC BY)।',
     'p.dayToggle': 'পুজোর দিন',
     'card.bestHint': 'দিনের যে সময়ে এই প্যান্ডেলে সাধারণত লাইন সবচেয়ে ছোট',
-    'ff.nonveg': '🔴 আমিষ',
+    'ff.nonveg': 'আমিষ',
     'ff.egg': '🥚 ডিম',
     'diet.egg': 'ডিমের পদ',
     'food.for2': 'দু\'জনের ≈{cost}',
@@ -569,6 +574,11 @@ export const STR = {
     'rt.one': 'এখানে খেয়েছেন এমন ১ জনের রেটিং',
     'lv.now': 'এই মুহূর্তে Pujo Parikrama-য় {n} জন',
     'lv.total': '{n} জন এখানে পুজোর প্ল্যান করেছেন',
+    'food.openShort': 'খোলা',
+    'food.till': '{time} পর্যন্ত',
+    'food.opensAt': 'খুলবে {time}',
+    'food.opensTmrw': 'কাল খুলবে {time}',
+    'food.for2Short': 'দু\'জনের',
   },
 };
 STR.hi = HI;

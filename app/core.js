@@ -109,6 +109,13 @@ export function isOpen(hours, d = new Date()) {
   return a <= b ? now >= a && now <= b : now >= a || now <= b;
 }
 
+/** Opening and closing minutes for "HH:MM-HH:MM", or null when the hours aren't known. */
+export function hoursOf(hours) {
+  if (!/^\d{1,2}:\d{2}-\d{1,2}:\d{2}$/.test(hours || '')) return null;
+  const [open, close] = hours.split('-').map((x) => { const [h, m] = x.split(':').map(Number); return h * 60 + m; });
+  return { open, close };
+}
+
 export const hhmm = (min) => {
   min = ((Math.round(min) % 1440) + 1440) % 1440;
   return `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;

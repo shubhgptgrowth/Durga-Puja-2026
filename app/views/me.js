@@ -13,7 +13,8 @@ const syncUrl = () => `${location.origin}${location.pathname}?src=ios_shortcut#s
 
 function profileHtml() {
   const p = S.prefs, name = myName();
-  return `<details class="more profile-box pad-x" ${name ? '' : 'open'}>
+  const open = openState?.['profile-box'] ?? !name;
+  return `<details class="more profile-box pad-x" ${open ? 'open' : ''}>
     <summary>${name ? t('pr.hi', { name: esc(name) }) : `👋 ${t('pr.title')}`}</summary>
     <form id="contactForm" class="form grid2">
       <label>${t('pr.name')}<input id="cName" name="name" autocomplete="name" maxlength="40" value="${esc(p.name || '')}" placeholder="${t('pr.namePh')}"></label>
@@ -43,10 +44,26 @@ function nextStop() {
   return `${t('fit.next', { d: done, n: stops.length, name: `<b>${esc(nm(p))}</b>` })}${S.me ? ` · ${km(walkM(S.me, ll(p)))} km` : ''} <a href="${dirUrl(ll(p))}" target="_blank" rel="noopener">${t('p.directions')}</a>`;
 }
 
+/* The step counter redraws this page up to once a second while the phone moves. Typed-but-unsaved text and
+ * which sections are open must survive that, and while someone is typing only the numbers are updated. */
+const drafts = {};
+const openKeys = ['profile-box', 'health-sync', 'settings'];
+let openState = null;
+
+function liveUpdate(el, d, steps, goal) {
+  const C = 2 * Math.PI * 86;
+  const set = (sel, v) => { const n = $(sel, el); if (n) n.textContent = v; };
+  set('#fitSteps', fmt(steps)); set('#fitKm', km(dayDist(d))); set('#fitPandals', d.pandals.length);
+  const ring = $('.ring-fg', el); if (ring) ring.style.strokeDashoffset = C * (1 - Math.min(1, steps / goal));
+}
+
 function render() {
   const el = $('#view-me');
   const d = S.history[todayKey()] || { m: 0, ms: 0, pandals: [], foods: [] };
   const steps = daySteps(d), goal = S.prefs.goal, mins = dayWalkMin(d), C = 2 * Math.PI * 86;
+  const typing = el.contains(document.activeElement) && document.activeElement.matches('input, select, textarea');
+  if (typing && $('#fitSteps', el)) return liveUpdate(el, d, steps, goal);
+  if ($('#fitSteps', el)) openState = Object.fromEntries(openKeys.map((k) => [k, !!$(`details.${k}`, el)?.open]));
   const got = earned(), live = walking();
   const visited = Object.entries(S.checkins).sort((a, b) => b[1].ts - a[1].ts).map(([id]) => idx.pandal[id]).filter(Boolean);
   const foods = [...new Set(Object.values(S.history).flatMap((r) => r.foods || []))].map((id) => idx.food[id]).filter(Boolean);
@@ -70,7 +87,7 @@ function render() {
       <p class="fine center" id="walkStatus">${status}</p>
     </div>
 
-    <details class="more health-sync pad-x">
+    <details class="more health-sync pad-x" ${openState?.['health-sync'] ? 'open' : ''}>
       <summary>⌚ ${t('hs.title')}${d.health ? ` · ${fmt(d.health)}` : ''}</summary>
       <div class="hs-body">
         <p class="fine">${t('hs.why')}</p>
@@ -94,7 +111,7 @@ function render() {
     <section class="section"><div class="section-head"><h2>${t('fit.days')}</h2></div>
       <ul class="rows">${rows.map(([date, r]) => `<li><span><b>${esc(dayName(date))}</b> · ${t('fit.dayRow', { n: (r.pandals || []).length })}</span><span>${t('fit.dayStats', { s: fmt(daySteps(r)), km: km(dayDist(r)) })}</span></li>`).join('') || `<li><span class="fine">${t('fit.noDays')}</span></li>`}</ul></section>
 
-    <details class="settings"><summary>${t('fit.settings')}</summary>
+    <details class="settings" ${openState?.settings ? 'open' : ''}><summary>${t('fit.settings')}</summary>
       <form id="profileForm" class="form grid2">
         <label>${t('fit.height')}<input type="number" id="pHeight" min="100" max="230" inputmode="numeric" value="${S.prefs.height}"></label>
         <label>${t('fit.weight')}<input type="number" id="pWeight" min="25" max="200" inputmode="numeric" value="${S.prefs.weight}"></label>
@@ -107,6 +124,9 @@ function render() {
       <p class="fine pad" style="margin-top:10px">${community.enabled ? t('me.privacyOn') : t('me.privacyOff')}</p>
     </details>`;
 
+  for (const [id, v] of Object.entries(drafts)) { const f = $('#' + id, el); if (f) f.type === 'checkbox' ? (f.checked = v) : (f.value = v); }
+  el.oninput = el.onchange = (e) => { if (e.target.id && e.target.closest('form')) drafts[e.target.id] = e.target.type === 'checkbox' ? e.target.checked : e.target.value; };
+  const clearDrafts = (form) => form.querySelectorAll('[id]').forEach((f) => delete drafts[f.id]);
   el.onclick = (e) => {
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
     if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${myName() ? t('g.inviteFrom', { name: myName() }) : t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
@@ -117,7 +137,7 @@ function render() {
   $('#healthForm', el).onsubmit = (e) => {
     e.preventDefault();
     const n = Math.max(0, Math.min(100000, Math.round(+$('#healthSteps', el).value || 0)));
-    const r = dayRec(); r.health = n; saveHistory(); toast(t('hs.saved', { n: fmt(n) })); render();
+    const r = dayRec(); r.health = n; saveHistory(); clearDrafts(e.target); toast(t('hs.saved', { n: fmt(n) })); render();
   };
   $('#contactForm', el).onsubmit = async (e) => {
     e.preventDefault();
@@ -126,7 +146,8 @@ function render() {
     const digits = phone.replace(/\D/g, '').replace(/^(91|0)(?=[6-9]\d{9}$)/, '');
     if (phone && !/^[6-9]\d{9}$/.test(digits)) return toast(t('pr.badPhone'));
     if (consent && !phone) return toast(t('pr.needPhone'));
-    Object.assign(S.prefs, { name, phone, contactOk: consent }); savePrefs();
+    Object.assign(S.prefs, { name, phone, contactOk: consent }); savePrefs(); clearDrafts(e.target);
+    $('details.profile-box', el).open = false; // saved: fold it away, the summary shows the name
     if (community.enabled && (consent || wasOk)) {
       try {
         const r = await community.saveProfile(name, phone, consent, { lang: S.prefs.lang, src: store.get('firstSrc', S.src || 'direct'), device: deviceId() });
@@ -140,7 +161,7 @@ function render() {
     const lowBefore = S.prefs.lowData;
     Object.assign(S.prefs, { height: +$('#pHeight').value || 165, weight: +$('#pWeight').value || 65, goal: +$('#pGoal').value || 10000,
       lowData: $('#pLowData').checked, motion: $('#pMotion').checked });
-    savePrefs(); toast(t('fit.savedToast')); render();
+    savePrefs(); clearDrafts(e.target); toast(t('fit.savedToast')); render();
     if (lowBefore !== S.prefs.lowData) location.reload();
   };
 }

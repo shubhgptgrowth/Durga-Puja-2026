@@ -1,5 +1,5 @@
 /* Detail sheets: pandal, eatery, parking, moment viewer, and the upload flow. */
-import { hav, fmtCount, isOpen, nearest, timeAgo } from './core.js';
+import { hav, fmtCount, isOpen, hoursOf, nearest, timeAgo } from './core.js';
 import {
   S, G, idx, t, store, community, ll, M, nm, zn, dn, zoneOf, placeOf, placeKind, esc, km, dist, ampm,
   crowdIndex, crowdWord, crowdColor, crowdLevel, dayFactor, btn, icon, savePrefs,
@@ -90,6 +90,21 @@ function wireDayToggle(el, reopen) {
     rerender(); // lists behind the sheet show the same day's numbers
   }));
 }
+/* ---------------- eatery status: open/opens-at, cost for two, pure-veg mark, egg ---------------- */
+const clock = (min) => {
+  const h = Math.floor(min / 60) % 24, m = min % 60;
+  return m ? ampm(h).replace(/^(\d+)/, `$1:${String(m).padStart(2, '0')}`) : ampm(h);
+};
+/** "● Open" (with "till 11 pm" on the place page), or "🕐 Opens 5 pm"; nothing when the hours aren't known. */
+export function openHtml(f, { long = false } = {}) {
+  const h = hoursOf(f.hours); if (!h) return '';
+  if (isOpen(f.hours)) return `<span class="st open"><span class="dot"></span>${t('food.openShort')}${long ? ` <small>${t('food.till', { time: clock(h.close) })}</small>` : ''}</span>`;
+  const now = new Date(), mins = now.getHours() * 60 + now.getMinutes();
+  return `<span class="st closed">${icon('clock', 'sm')}${t(h.open > mins ? 'food.opensAt' : 'food.opensTmrw', { time: clock(h.open) })}</span>`;
+}
+export const costHtml = (f) => `<span class="cost-chip"><b>${rupees(cost2(f))}</b> ${t('food.for2Short')}</span>`;
+export const dietMarks = (f) => `${f.veg === 'veg' ? `<span class="veg-mark" role="img" aria-label="${t('diet.veg')}" title="${t('diet.veg')}"></span>` : ''}${hasEgg(f) ? `<span class="egg-mark" role="img" aria-label="${t('diet.egg')}" title="${t('diet.egg')}">🥚</span>` : ''}`;
+
 export const crowdPill = (c) => `<span class="pill ${crowdLevel(c)}"><span class="dot"></span>${crowdWord(c)}</span>`;
 export function agoText(iso) {
   const a = timeAgo(iso);
@@ -233,7 +248,7 @@ export function foodSheet(id) {
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
     <h2 class="title">${esc(f.name)}</h2>
     ${actionBar(id, f)}
-    <div class="btn-row" style="margin-top:10px">${f.hours ? `<span class="pill ${isOpen(f.hours) ? 'ok' : ''}">${isOpen(f.hours) ? t('food.open') : t('food.closed')} · ${esc(f.hours)}</span>` : ''}<span class="pill">${t('food.for2', { cost: rupees(cost2(f)) })}</span><span class="pill">${t('diet.' + f.veg)}</span>${hasEgg(f) ? `<span class="pill">🥚 ${t('diet.egg')}</span>` : ''}</div>
+    <div class="food-facts">${openHtml(f, { long: true })}${costHtml(f)}${f.veg === 'veg' ? `<span class="diet-l">${dietMarks({ ...f, dishes: [] })} ${t('diet.veg')}</span>` : ''}${hasEgg(f) ? `<span class="diet-l"><span class="egg-mark" aria-hidden="true">🥚</span> ${t('diet.egg')}</span>` : ''}</div>
     ${galleryHtml(f.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
