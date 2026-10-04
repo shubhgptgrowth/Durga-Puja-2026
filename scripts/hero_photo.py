@@ -3,6 +3,8 @@
   python scripts/hero_photo.py candidates           # small previews -> data/hero_candidates/ (+ index.json)
   python scripts/hero_photo.py hero <n>             # candidate n -> app/img/hero.jpg (1200 px) + app/img/hero.json (credit)
   python scripts/hero_photo.py set "<title>|<title>…"  # banner slideshow: each Commons photo (by title) -> app/img/hero-<i>.jpg + app/img/heroes.json
+  python scripts/hero_photo.py tiles ["key=File:Title.jpg;…"]  # photo tiles (areas with no pandal photos, Explore switcher)
+                                                             # -> app/img/tiles/<key>.jpg + tiles.json; picks by search unless a file is given
 """
 import io, json, sys, urllib.request
 from pathlib import Path
@@ -63,8 +65,61 @@ def slideshow(titles):
         print(name, im.size, title)
     Path("app/img/heroes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
 
+# Tile photos: what to search Commons for, per tile. The first landscape-ish photo whose title has all the
+# `need` words wins. Override any of them with "key=File:Exact title.jpg" on the command line.
+TILES = {
+    "east": (["Salt Lake Durga Puja", "Salt Lake FD Block Durga Puja", "Bidhannagar Durga Puja pandal", "Durga Puja Salt Lake Kolkata"], ["puja"]),
+    "howrah": (["Howrah Durga Puja", "Howrah Durga Puja pandal", "Durga Puja Howrah 2023", "Howrah Bridge Durga Puja"], ["howrah"]),
+    "parking": (["Kolkata yellow taxi Ambassador", "Kolkata yellow taxi", "Kolkata traffic Durga Puja night"], ["taxi|traffic"]),
+    "pandals": (["Kolkata Durga Puja pandal lights night", "Durga Puja pandal Kolkata lighting"], ["pandal|puja"]),
+    "food": (["Kolkata street food kathi roll", "Kathi roll Kolkata", "Kolkata street food"], ["roll|food"]),
+}
+API = "https://commons.wikimedia.org/w/api.php"
+
+
+def commons_search(q, n=20):
+    import urllib.parse
+    p = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f"{q} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": n,
+         "prop": "imageinfo", "iiprop": "url|extmetadata|size", "iiurlwidth": 960}
+    with urllib.request.urlopen(urllib.request.Request(f"{API}?{urllib.parse.urlencode(p)}", headers=UA), timeout=40) as r:
+        pages = (json.load(r).get("query") or {}).get("pages", {})
+    return sorted(pages.values(), key=lambda x: x.get("index", 99))
+
+
+def tiles(overrides=""):
+    import re
+    chosen = dict(x.split("=", 1) for x in overrides.split(";") if "=" in x)
+    out_dir = Path("app/img/tiles"); out_dir.mkdir(parents=True, exist_ok=True)
+    credits = {}
+    for key, (queries, need) in TILES.items():
+        pick = None
+        for q in ([f'"{chosen[key].replace("File:", "")}"'] if key in chosen else queries):
+            for pg in commons_search(q):
+                ii = (pg.get("imageinfo") or [{}])[0]
+                title = pg["title"]
+                if key in chosen and title != chosen[key]:
+                    continue
+                if not ii.get("thumburl") or ii.get("width", 0) < 800 or ii.get("width", 1) < ii.get("height", 0) * 0.9:
+                    continue
+                if key not in chosen and not all(re.search(w, title, re.I) for w in need):
+                    continue
+                pick = (pg, ii); break
+            if pick: break
+        if not pick:
+            print("no photo for", key); continue
+        pg, ii = pick
+        md = ii.get("extmetadata", {}); val = lambda k: re.sub(r"<[^>]+>", "", (md.get(k) or {}).get("value", "")).strip()
+        im = fetch(ii["thumburl"]); im.thumbnail((720, 720))
+        im.save(out_dir / f"{key}.jpg", quality=72, optimize=True, progressive=True)
+        credits[key] = {"src": f"img/tiles/{key}.jpg", "title": pg["title"].replace("File:", ""), "author": val("Artist")[:80] or "Unknown",
+                        "license": val("LicenseShortName") or "see source", "page": ii.get("descriptionurl")}
+        print(key, im.size, pg["title"])
+    (out_dir / "tiles.json").write_text(json.dumps(credits, ensure_ascii=False, indent=1))
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
-    if mode == "candidates": candidates()
+    if mode == "tiles": tiles(sys.argv[2] if len(sys.argv) > 2 else "")
+    elif mode == "candidates": candidates()
     elif mode == "set": slideshow(sys.argv[2])
     else: hero(int(sys.argv[2]))

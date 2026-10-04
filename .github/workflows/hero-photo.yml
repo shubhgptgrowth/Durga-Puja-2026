@@ -3,7 +3,7 @@ name: hero-photo
 on:
   workflow_dispatch:
     inputs:
-      mode: { description: 'candidates or hero', default: 'candidates' }
+      mode: { description: 'candidates, hero, set or tiles', default: 'candidates' }
       n: { description: 'candidate number (hero mode), or "title|title…" (set mode)', default: '' }
 permissions: { contents: write }
 jobs:
