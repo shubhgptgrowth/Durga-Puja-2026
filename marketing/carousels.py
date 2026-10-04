@@ -364,8 +364,10 @@ Save it 📌 Full walking routes free → link in bio.""",
         central = ["putiram", "paramount", "coffee_house", "bhim_nag"]
         central2 = ["royal_indian", "aminia", "nizams"]
         south = ["vivekananda_park_phuchka", "bhojohori_manna", "kewpies", "balwant_singh"]
-        late = sorted([f for f in self.g["food"] if f["hours"].split("-")[1] in ("00:00", "01:00", "02:00")],
-                      key=lambda f: (f["hours"].split("-")[1] != "02:00", f["name"]))[:4]
+        # Curated places only: OpenStreetMap eateries have patchy or missing opening hours.
+        closes = lambda f: f["hours"].split("-")[1] if f.get("geo_source") == "curated" and "-" in (f.get("hours") or "") else ""
+        late = sorted([f for f in self.g["food"] if closes(f) in ("00:00", "01:00", "02:00")],
+                      key=lambda f: (closes(f) != "02:00", f["name"]))[:4]
         slides = [{"t": "cover", "theme": "red", "kicker": "Pujo food map", "title": "Where to eat between pandals",
                    "accent": "and what to order", "sub": "Iconic cabins, sweet shops and stalls next to the big pujas.",
                    "bn": "প্যান্ডেলের পাশে কোথায় খাবেন, কী অর্ডার করবেন", "tag": "SAVE FOR PET PUJO 📌"}]
