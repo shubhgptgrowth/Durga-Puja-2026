@@ -17,6 +17,8 @@ The button only appears once Google sign-in is on in Supabase. It costs nothing.
    - App name: `Pujo Parikrama`. User support email: your email.
    - Audience: **External**. Contact email: your email. Agree, then **Create**.
    - **Branding → Authorized domains:** add `wmvzakyqnwfekyhjkprp.supabase.co` and `shubhgptgrowth.github.io`. Save.
+   - Logo is optional, and leaving it out avoids Google's brand review. If the console insists, use
+     `pujo-parikrama-logo-120.png` (in this folder, 120×120).
    - **Audience → Publish app**, then confirm. Without this, only "test users" you list can sign in.
      The app only asks for name and email (`openid`, `email`, `profile`), so Google doesn't need to review it.
 3. **The key (OAuth client).** Go to **Clients**, or **Credentials → Create credentials → OAuth client ID**.
