@@ -4,19 +4,23 @@
 
 spec2.json  {"reels": [{"id", "hook", "music": [fid, start_s], "segments": [[src, start_s, secs, text, cx?], ...], "end": [l1, l2]}]}
             src is a footage.json id ("f05", real) or an AI clip id ("c07"); cx (0..1) picks the horizontal crop centre.
-footage.json  id -> {license, artist, label, ...}; files are src_dir/<id>.mp4|.webm|.ogv|.ogg|.mp3 (any container ffmpeg reads).
+footage.json  id -> {license, artist, label, ...}; files are src_dir/<id>.mp4|.webm|.ogv|.ogg|.mp3 (any container ffmpeg reads),
+            or .jpg/.png for photos, which get a slow pan (cx and an optional cy, 0..1, pick the framing).
 
 Shots are cut to 1080x1920 with a shared colour grade and 0.3 s crossfades. The music bed is mixed over each shot's own
 sound (crowd, dhak) kept low, and loudness-normalised for Instagram. The end card credits every real source.
 Needs ffmpeg and Pillow; fonts/Poppins-*.ttf next to this file or in ./fonts.
 """
-import glob, json, os, subprocess, sys
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+import glob, json, os, re, subprocess, sys
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 W, H, FPS, XF = 1080, 1920, 30, 0.3
 HANDLE = "@pujoparikrama.guide"
 FONTS = next(d for d in ("fonts", os.path.join(os.path.dirname(__file__), "fonts")) if os.path.isdir(d))
 font = lambda w, s: ImageFont.truetype(os.path.join(FONTS, f"Poppins-{w}.ttf"), s)
+# Bengali needs raqm shaping; Galada for display lines, Hind Siliguri for the rest (fonts/ from run3.sh)
+bnfont = lambda name, s: ImageFont.truetype(os.path.join(FONTS, name), s, layout_engine=ImageFont.Layout.RAQM)
+RED, GOLD, CREAM, MAROON, INK = (179, 18, 46), (232, 176, 75), (255, 244, 224), (122, 16, 32), (58, 34, 22)
 GRADE = "eq=contrast=1.06:saturation=1.12:gamma=0.98,unsharp=5:5:0.4"
 
 
@@ -38,8 +42,13 @@ def has_audio(path):
     return bool(run("ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", path).strip())
 
 
+def plain(text):
+    """Poppins has no emoji glyphs: keep them for Instagram captions, drop them from text drawn on video."""
+    return re.sub(r"[\U0001F000-\U0001FFFF\u2600-\u27BF\uFE0F\u200D]", "", text or "").strip()
+
+
 def wrap(d, text, f, width):
-    words, lines, cur = text.split(), [], ""
+    words, lines, cur = plain(text).split(), [], ""
     for w in words:
         t = (cur + " " + w).strip()
         if d.textlength(t, font=f) <= width:
@@ -47,6 +56,75 @@ def wrap(d, text, f, width):
         else:
             lines.append(cur); cur = w
     return lines + [cur] if cur else lines
+
+
+def caption_png_bn(path, bn, en, hook=False):
+    """Bengali-first overlay: পুজো পরিক্রমা mark, a big Bengali line, the English line smaller under it."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    grad = Image.new("L", (1, 900))
+    for y in range(900):
+        grad.putpixel((0, y), int(175 * (1 - y / 900) ** 1.3))
+    im.paste((25, 5, 8, 255), (0, 0, W, 900), grad.resize((W, 900)))
+    d = ImageDraw.Draw(im)
+    d.text((70, 104), "পুজো পরিক্রমা", font=bnfont("Galada-Regular.ttf", 46), fill=CREAM + (240,))
+    d.text((W - 70 - d.textlength(HANDLE, font=font("SemiBold", 26)), 118), HANDLE, font=font("SemiBold", 26), fill=GOLD + (230,))
+    y = 220
+    if bn:
+        f = bnfont("Galada-Regular.ttf", 104) if hook else bnfont("HindSiliguri-Bold.ttf", 76)
+        lines = wrap(d, bn, f, W - 140)
+        shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0)); sd = ImageDraw.Draw(shadow)
+        yy = y
+        for ln in lines:
+            sd.text((72, yy + 4), ln, font=f, fill=(0, 0, 0, 210)); yy += int(f.size * 1.25)
+        im.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(7)))
+        for ln in lines:
+            d.text((70, y), ln, font=f, fill=(255, 255, 255, 255)); y += int(f.size * 1.25)
+        y += 6
+    if en:
+        fe = font("SemiBold", 40 if hook else 36)
+        for ln in wrap(d, en, fe, W - 140):
+            d.text((72, y + 2), ln, font=fe, fill=(0, 0, 0, 160)); d.text((70, y), ln, font=fe, fill=GOLD + (255,)); y += int(fe.size * 1.3)
+    if hook:
+        d.rectangle((70, y + 16, 230, y + 26), fill=RED + (255,))
+    im.save(path)
+
+
+def end_png_bn(path, bn, en, credits):
+    """Laal-paar end card: cream paper, red sari border with a gold line, Bengali first."""
+    im = Image.new("RGB", (W, H), CREAM); d = ImageDraw.Draw(im)
+    for y in range(H):
+        t = y / H
+        d.line((0, y, W, y), fill=tuple(int(a + (b - a) * t) for a, b in zip((255, 246, 228), (240, 220, 186))))
+    d.rectangle((0, 0, W - 1, H - 1), outline=RED, width=30)
+    d.rectangle((36, 36, W - 37, H - 37), outline=GOLD, width=4)
+    import math
+    cx, cy, r = W // 2, 470, 120
+    for k in range(12):
+        a = 2 * math.pi * k / 12; px, py = cx + r * math.cos(a), cy + r * math.sin(a)
+        d.ellipse((px - 34, py - 34, px + 34, py + 34), outline=RED, width=4)
+    d.ellipse((cx - 66, cy - 66, cx + 66, cy + 66), outline=RED, width=4); d.ellipse((cx - 22, cy - 22, cx + 22, cy + 22), fill=RED)
+    d.text((W / 2 - d.textlength("পুজো পরিক্রমা", font=bnfont("Galada-Regular.ttf", 58)) / 2, 150), "পুজো পরিক্রমা",
+           font=bnfont("Galada-Regular.ttf", 58), fill=MAROON)
+    y = 700
+    f = bnfont("Galada-Regular.ttf", 110)
+    for ln in wrap(d, bn, f, W - 180):
+        d.text((W / 2 - d.textlength(ln, font=f) / 2, y), ln, font=f, fill=MAROON); y += 132
+    y += 10
+    fe = font("Medium", 42)
+    for ln in wrap(d, en, fe, W - 200):
+        d.text((W / 2 - d.textlength(ln, font=fe) / 2, y), ln, font=fe, fill=INK); y += 58
+    y += 40
+    fb = font("ExtraBold", 50)
+    tw = d.textlength("Link in bio", font=fb)
+    d.rounded_rectangle((W / 2 - tw / 2 - 60, y, W / 2 + tw / 2 + 60, y + 112), radius=56, fill=RED)
+    d.text((W / 2 - tw / 2, y + 22), "Link in bio", font=fb, fill=CREAM)
+    fh = font("SemiBold", 40)
+    d.text((W / 2 - d.textlength(HANDLE, font=fh) / 2, y + 150), HANDLE, font=fh, fill=MAROON)
+    y = 1560
+    fc = font("Medium", 23)
+    for ln in wrap(d, credits, fc, W - 200)[:8]:
+        d.text((100, y), ln, font=fc, fill=INK); y += 32
+    im.save(path)
 
 
 def caption_png(path, text, hook=False):
@@ -96,17 +174,45 @@ def end_png(path, l1, l2, credits):
     im.save(path)
 
 
+PAN = 1.12  # photos are cut 12% larger than the frame and drift across it
+
+
+def still(path, out, cx, cy):
+    """Photo → PAN×frame-sized image cropped around (cx, cy), ready for a slow pan."""
+    im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    bw, bh = round(W * PAN) // 2 * 2, round(H * PAN) // 2 * 2
+    k = max(bw / im.width, bh / im.height)
+    im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+    x = min(max(0, round(im.width * cx - bw / 2)), im.width - bw)
+    y = min(max(0, round(im.height * cy - bh / 2)), im.height - bh)
+    im.crop((x, y, x + bw, y + bh)).save(out, quality=95)
+    return bw - W, bh - H
+
+
 def segment(src_dir, footage, i, seg, reel, tmp):
     sid, start, secs, text, *rest = seg
     cx = rest[0] if rest else 0.5
+    cy = rest[1] if len(rest) > 1 else 0.45
     path = src_file(src_dir, sid)
     png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
     hook = i == 0 and bool(reel.get("hook"))
-    caption_png(png, reel["hook"] if hook else text, hook=hook)
-    crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
-            f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2'")
+    bn = reel.get("bn")
+    if bn:  # Bengali-first look (spec3 reels with a "bn" block)
+        caption_png_bn(png, bn["hook"] if hook else bn["segs"][i], reel["hook"] if hook else text, hook=hook)
+    else:
+        caption_png(png, reel["hook"] if hook else text, hook=hook)
+    if path.lower().endswith((".jpg", ".jpeg", ".png")):
+        jpg = f"{tmp}/{reel['id']}_{i}_still.jpg"
+        mx, my = still(path, jpg, cx, cy)
+        x0, x1 = (0.15 * mx, 0.85 * mx) if i % 2 else (0.85 * mx, 0.15 * mx)
+        crop = f"crop={W}:{H}:'{x0:.1f}+({x1 - x0:.1f})*t/{secs}':'{0.7 * my:.1f}-{0.4 * my:.1f}*t/{secs}'"
+        args = ["ffmpeg", "-y", "-loop", "1", "-framerate", str(FPS), "-t", str(secs), "-i", jpg, "-i", png]
+        path = jpg
+    else:
+        crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
+                f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2'")
+        args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
     v = f"[0:v]{crop},fps={FPS},setsar=1,{GRADE}[v];[v][1:v]overlay=0:0,format=yuv420p[vo]"
-    args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
     if has_audio(path):
         a = "[0:a]aresample=48000,aformat=channel_layouts=stereo,apad[ao]"
     else:
@@ -144,7 +250,10 @@ def credits_for(reel, footage):
 def build(reel, footage, src_dir, out_dir, tmp):
     parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
     endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
-    end_png(endp, *reel["end"], credits_for(reel, footage))
+    if reel.get("bn"):
+        end_png_bn(endp, reel["bn"]["end"], reel["end"][1], credits_for(reel, footage))
+    else:
+        end_png(endp, *reel["end"], credits_for(reel, footage))
     run("ffmpeg", "-y", "-loop", "1", "-t", "3.2", "-i", endp, "-f", "lavfi", "-t", "3.2", "-i", "anullsrc=r=48000:cl=stereo",
         "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", "-shortest", endv)
     parts.append((endv, 3.2))
@@ -173,6 +282,12 @@ def build(reel, footage, src_dir, out_dir, tmp):
     run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc) + ";" + mix, "-map", lv, "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
+    c = reel.get("caption")
+    if c:  # Instagram caption: English, Bengali, hashtags, then the attribution the CC licences require
+        credit = credits_for(reel, footage).replace("Footage: Wikimedia Commons — ", "🎥 Credits (Wikimedia Commons): ")
+        sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
+        with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
+            f.write(f"{c['en']}\n\n{c['bn']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))
     return total
 
 
