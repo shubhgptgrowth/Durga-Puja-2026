@@ -105,6 +105,15 @@ jobs:
           curl -fsS -X POST -H "apikey: $anon" -H "Content-Type: application/json" -d '{"data":{}}' "$url/auth/v1/signup" \
             | jq -e '.access_token and .user.is_anonymous' >/dev/null || { echo "::error::anonymous sign-in failed"; exit 1; }
           echo "anonymous sign-in OK"
+          # "Delete all my data" really removes a (throwaway) guest: backup, then the account itself
+          tok=$(curl -fsS -X POST -H "apikey: $anon" -H "Content-Type: application/json" -d '{"data":{}}' "$url/auth/v1/signup" | jq -r .access_token)
+          curl -fsS -X POST -H "apikey: $anon" -H "Authorization: Bearer $tok" -H "Content-Type: application/json" \
+            -d '{"p_data":{"history":{"2026-10-01":{"steps":1}}}}' "$url/rest/v1/rpc/save_progress" | jq -e '.status == "ok"' >/dev/null
+          curl -fsS -X POST -H "apikey: $anon" -H "Authorization: Bearer $tok" -H "Content-Type: application/json" \
+            -d '{}' "$url/rest/v1/rpc/delete_my_data" | jq -e '.status == "ok"' >/dev/null || { echo "::error::delete_my_data failed"; exit 1; }
+          gone=$(curl -sS -o /dev/null -w '%{http_code}' -H "apikey: $anon" -H "Authorization: Bearer $tok" "$url/auth/v1/user")
+          [ "$gone" != 200 ] || { echo "::error::delete_my_data left the account in place"; exit 1; }
+          echo "delete-my-data OK (account gone: HTTP $gone)"
           echo "Google sign-in: $(curl -fsS -H "apikey: $anon" "$url/auth/v1/settings" | jq -r '.external.google')"
           bucket=$(curl -fsS -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" \
             -d '{"query":"select public from storage.buckets where id = '"'"'moments'"'"'"}' "$API/projects/$ref/database/query")
