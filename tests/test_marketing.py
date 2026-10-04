@@ -115,3 +115,26 @@ class ContactsSummaryTest(unittest.TestCase):
         self.assertIn("**2** people", md)
         self.assertIn("Instagram bio link", md)
         self.assertNotRegex(md, r"\+91|\d{10}")
+
+
+class BatchTest(unittest.TestCase):
+    """Instagram batch files: every item resolves, captions fit Instagram's limits, never the github.io address."""
+
+    def test_batches(self):
+        from marketing import carousels, publish_batch
+        with tempfile.TemporaryDirectory() as tmp:
+            spec = carousels.build(tmp)
+        for f in sorted((Path(__file__).resolve().parents[1] / "marketing" / "batches").glob("*.json")):
+            items = json.loads(f.read_text(encoding="utf-8"))["items"]
+            self.assertTrue(items, f)
+            seen = set()
+            for item in items:
+                p = publish_batch.resolve(item, spec)
+                key = (p["kind"], p["label"])
+                self.assertNotIn(key, seen, f"{f.name}: {key} twice")
+                seen.add(key)
+                self.assertTrue(all(u.startswith("https://") for u in p["urls"]), key)
+                self.assertTrue(2 <= len(p["urls"]) <= 10 if p["kind"] == "carousel" else len(p["urls"]) == 1, key)
+                self.assertLessEqual(len(p["caption"]), 2200, key)
+                self.assertLessEqual(p["caption"].count("#"), 30, key)
+                self.assertNotIn("github.io", p["caption"], key)

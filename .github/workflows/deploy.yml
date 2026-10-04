@@ -74,6 +74,9 @@ jobs:
           python -m marketing.kit --out app/kit --stats /tmp/stats.json
           node marketing/render.mjs app/kit
           node marketing/render.mjs --og app/icons
+          # Instagram carousels at /kit/carousels/ (marketing/carousels.py), which marketing-batch posts from.
+          python -m marketing.carousels --out app/kit/carousels && node marketing/carousels.mjs app/kit/carousels \
+            || echo "::warning::Carousels not rendered"
       # Pages must be switched on once by a repo admin (Settings → Pages → Source: GitHub Actions).
       # The workflow token can't create the Pages site itself.
       - uses: actions/configure-pages@v5
