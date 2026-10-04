@@ -100,6 +100,9 @@ def emit(data, warnings, out_dir=config.OUT_DIR):
     if data.get("transit_bundle"):
         tb = {"version": bundle["meta"]["version"], **data["transit_bundle"]}
         (out_dir / "transit.json").write_text(json.dumps(tb, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    if data.get("photo_archive") is not None:
+        (out_dir / "archive.json").write_text(json.dumps({"version": bundle["meta"]["version"], "photos": data["photo_archive"]},
+                                                         ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     config.SEED_SQL.parent.mkdir(parents=True, exist_ok=True)
     config.SEED_SQL.write_text(seed_sql(data), encoding="utf-8")
     return bundle

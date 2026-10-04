@@ -1,6 +1,6 @@
 """Stage 3: derive zone geometry, nearest metro/parking/food, and crowd windows."""
 from . import config
-from .discovered import attach_photos, attach_transit, transit_bundle, transit_index
+from .discovered import attach_photos, attach_transit, build_archive, transit_bundle, transit_index
 from .geo import centroid, haversine_m, walk_m
 
 
@@ -95,5 +95,8 @@ def enrich(data):
         attach_transit(pandals + food, T, _walk_min)
         extra["transit_bundle"] = transit_bundle(T)
     extra["dish_photos"] = attach_photos(pandals, food)
+    extra["photo_archive"] = build_archive(pandals)
+    for f in food:
+        f.pop("_archive", None)
 
     return {**data, **extra, "zones": list(zones.values()), "pandals": pandals}

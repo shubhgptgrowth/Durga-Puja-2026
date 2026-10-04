@@ -386,7 +386,39 @@ def attach_photos(pandals, food):
     for p in pandals + food:
         items = sorted(per.get(p["id"], []), key=lambda x: -(_year(x) or 0))
         p["photos"] = [_photo(x) for x in items[:6]]
+        p["_archive"] = [_photo(x) for x in items[:12]]
     return {d: _photo(v[0]) for d, v in ph.get("dishes", {}).items() if v and d not in block["dish"]}
+
+
+# ---------------------------------------------------------------- Moments archive (build time)
+ARCHIVE_MAX = 400
+
+
+def build_archive(pandals):
+    """Real pujo photos for the Moments tab: each pandal's matched Commons photos (up to 12) plus city-wide
+    Durga Puja photos by year (data/discovered/archive.json). Newest year first; credited per photo."""
+    items, seen = [], set()
+    for p in pandals:
+        for ph in p.pop("_archive", []):
+            if ph["page"] not in seen and ph["year"]:
+                seen.add(ph["page"]); items.append({**ph, "pandal": p["id"], "zone": p["zone"]})
+    city = _load("archive")
+    bl = config.RAW_DIR / "photo_blocklist.csv"
+    blocked = {r["value"] for r in csv.DictReader(open(bl, encoding="utf-8"))} if bl.exists() else set()
+    names = {p["id"]: [p["name"], *PHOTO_ALIASES.get(p["id"], [])] for p in pandals}
+    shared = set()
+    for x in (city or {}).get("photos", []):
+        if x["page"] in seen or not x.get("thumb") or x["title"] in blocked:
+            continue
+        ph = _photo(x)
+        if not ph["year"]:
+            continue
+        text = f"{x['title']} {x.get('desc', '')}"
+        match = next((pid for pid, ns in names.items() if any(_strict(n, text, shared) for n in ns)), None)
+        seen.add(x["page"])
+        items.append({**ph, "pandal": match, "zone": next((p["zone"] for p in pandals if p["id"] == match), None)})
+    items.sort(key=lambda x: (-x["year"], x["pandal"] is None))
+    return items[:ARCHIVE_MAX]
 
 
 if __name__ == "__main__":

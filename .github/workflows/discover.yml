@@ -3,14 +3,17 @@ name: discover
 # Pulls open data (OpenStreetMap, Wikimedia Commons) into data/discovered/*.json and commits it.
 # Nothing reaches the app until `python -m pipeline` merges it under the review rules.
 on:
+  schedule:
+    - cron: "30 2,14 14-26 10 *"   # 08:00 and 20:00 IST around the pujo: this year's photos for Moments
   workflow_dispatch:
     inputs:
       what:
-        description: "pandals, transit, food, photos (comma-separated)"
+        description: "pandals, transit, food, photos, archive (comma-separated)"
         default: "pandals,transit,photos"
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   discover:
@@ -24,18 +27,24 @@ jobs:
       - name: Discover
         run: |
           failed=""
-          for w in $(echo "${{ inputs.what }}" | tr ',' ' '); do
+          for w in $(echo "${{ inputs.what || 'photos,archive' }}" | tr ',' ' '); do
             echo "::group::$w"; python -m pipeline.discover "$w" || failed="$failed $w"; echo "::endgroup::"
           done
           echo "FAILED=$failed" >> "$GITHUB_ENV"
           if [ -n "$failed" ]; then echo "::warning::discover failed for:$failed (previous data kept)"; fi
+      - name: Rebuild photos into the app
+        if: contains(inputs.what || 'photos,archive', 'photos') || contains(inputs.what || 'photos,archive', 'archive')
+        run: python -m pipeline
       - name: Commit results
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git add data/discovered
+          git add data/discovered app/data supabase/seed.sql
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Discovered data: ${{ inputs.what }}"
+          git commit -m "Discovered data: ${{ inputs.what || 'photos,archive' }}"
           git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}
+          gh workflow run deploy.yml --ref ${{ github.ref_name }} || echo "::warning::could not start a deploy" 
       - name: Report failures
         if: env.FAILED != ''
         run: echo "::error::discover failed for:$FAILED" && exit 1

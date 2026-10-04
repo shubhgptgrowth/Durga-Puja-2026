@@ -236,6 +236,27 @@ def discover_photos():
     write("photos", res)
 
 
+# ---------------------------------------------------------------- Moments archive
+def discover_archive():
+    """City-wide Durga Puja photos on Commons, by year (for the Moments tab's archive)."""
+    this = int(time.strftime("%Y"))
+    out, seen = [], set()
+    for y in range(this, this - 8, -1):
+        for q in (f"Durga Puja Kolkata {y}", f"Kolkata Durga Puja pandal {y}", f"Durga Puja {y} Kolkata idol"):
+            try:
+                hits = commons(q, 50)
+            except Exception as ex:
+                print("commons error", q, ex, file=sys.stderr); continue
+            for h in hits:
+                text = f"{h['title']} {h['desc']} {h['date']}"
+                if h["url"] in seen or not h["thumb"] or str(y) not in text or not re.search(r"durga|puja|pujo|pandal|protima|idol", text, re.I):
+                    continue
+                seen.add(h["url"]); out.append(h)
+            time.sleep(0.5)
+        print(f"archive {y}: {len(out)} so far", file=sys.stderr)
+    write("archive", {"source": "Wikimedia Commons", "fetched": time.strftime("%Y-%m-%d"), "photos": out})
+
+
 # ---------------------------------------------------------------- food
 def discover_food():
     """Named eateries within 600 m of each pandal, from OSM, asked for in small batches (a whole-city query
@@ -273,4 +294,4 @@ def discover_food():
 
 
 if __name__ == "__main__":
-    {"food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
+    {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
