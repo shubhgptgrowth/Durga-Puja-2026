@@ -20,7 +20,7 @@ do $$ declare r jsonb; begin
   r := public.track('eeeeeeee-0000-0000-0000-000000000002', '[]');           -- a heartbeat
   assert (r->>'live')::int = 2 and (r->>'stored')::int = 0, r::text;
   r := public.site_counts();
-  assert (r->>'live')::int = 2, r::text;
+  assert (r->>'live')::int = 2 and (r->>'today')::int = 2, r::text;
   begin perform 1 from public.events; assert false, 'events must not be readable';
   exception when insufficient_privilege then null; end;
   begin perform 1 from analytics.places; assert false, 'the analytics directory must not be readable from the app';

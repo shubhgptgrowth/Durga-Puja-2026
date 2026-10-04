@@ -8,7 +8,7 @@ import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard } from '../radioCard.js';
-import { liveHtml, startLiveCount } from '../livecount.js';
+import { liveHtml } from '../livecount.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -86,6 +86,26 @@ function miniPandal(p, extra) {
   </div>`;
 }
 
+/* Real photos on the tiles (Commons, credited on the place pages and in Moments). Commons thumbnails come in
+ * fixed widths, so the URL's size is swapped for a small one. Low-data mode keeps plain colour tiles. */
+const px = (src, w) => (src ? src.replace(/\/\d+px-/, `/${w}px-`) : '');
+const pandalPhoto = (id, w = 330) => px(idx.pandal[id]?.photos?.[0]?.src, w);
+const dishPhoto = (...names) => { const dp = G.data.dish_photos || {}; const k = names.find((n) => dp[n]); return k ? px(dp[k].src, 330) : ''; };
+function taskImg(k) {
+  if (S.prefs.lowData) return '';
+  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto('Kathi roll', 'Biryani', 'Egg roll'),
+    park: pandalPhoto('sreebhumi') || 'img/hero-5.jpg', photos: 'img/hero-2.jpg' })[k] || '';
+}
+function regionImg(r) {
+  if (S.prefs.lowData) return '';
+  const best = r.zone_ids.flatMap((id) => idx.zone[id]?.pandal_ids || []).map((id) => idx.pandal[id])
+    .filter((p) => p?.photos?.length).sort((a, b) => b.popularity - a.popularity)[0];
+  return best ? px(best.photos[0].src, 500) : '';
+}
+const trailImg = (it) => (S.prefs.lowData ? '' : it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '');
+// A photo that fails to load (poor network) is dropped, leaving the tile's maroon background.
+const photoBg = (src) => (src ? `<img class="tile-img" src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : '');
+
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
 
@@ -102,7 +122,6 @@ function render() {
   if (card.parentNode !== slot) slot.appendChild(card);
   watchCard();
   startSlides(el);
-  startLiveCount();
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
     ${liveHtml()}
@@ -112,8 +131,8 @@ function render() {
         <span class="how-tx"><b>${t('how.t' + (i + 1))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
     </section>
     <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
-      <div class="tasks">${TASKS.map(([k, ic]) => `<button class="task" data-q="${k}">
-        <span class="task-ic">${icon(ic)}</span><span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`).join('')}</div>
+      <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
+        ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
 
     <div class="search" role="search">
@@ -129,7 +148,8 @@ function render() {
       <div class="regions">${G.data.regions.map((r) => {
         const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
         const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
-        return `<button class="region" data-hr="${r.id}" style="--zc:${r.color}"><span class="region-n">${esc(rname(r))}</span><span class="region-c">${t('h.pandalsN', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
+        const img = regionImg(r);
+        return `<button class="region ${img ? 'photo' : ''}" data-hr="${r.id}" style="--zc:${r.color}">${photoBg(img)}<span class="region-n">${esc(rname(r))}</span><span class="region-c">${t('h.pandalsN', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
       }).join('')}</div>
     </section>
 
@@ -142,7 +162,7 @@ function render() {
       ${dayPlanHtml()}</section>
 
     <section class="section"><div class="section-head"><div><h2>${t('h.trails')}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
-      <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail" data-trail="${it.id}" ${btn()}>
+      <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>

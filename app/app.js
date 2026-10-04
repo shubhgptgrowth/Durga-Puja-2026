@@ -14,6 +14,7 @@ import { captureSource, trackOpen } from './growth.js';
 import { openPlace } from './sheets.js';
 import { initMini } from './radioCard.js';
 import { startAnalytics, track } from './analytics.js';
+import { startLiveCount, counts, onCounts } from './livecount.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
@@ -56,6 +57,8 @@ async function boot() {
   setupCommunity();
   trackOpen();
   startAnalytics();
+  startLiveCount();
+  onCounts(() => applyStatic(false));
   initMini();
   if (!S.prefs.lowData) initVectorTiles();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -84,7 +87,8 @@ function setupHeader() {
 }
 
 /* Static text in index.html carries data-i18n keys; the views re-render themselves. */
-function applyStatic() {
+function applyStatic(full = true) {
+  if (!full) return startTicker(tickerLines(), true);
   document.documentElement.lang = S.prefs.lang;
   $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
   $('#langSelect').value = S.prefs.lang;
@@ -100,19 +104,35 @@ function applyStatic() {
   // The line under the name rotates through what people say around the pujo, led by the countdown.
   const lead = todayDay ? t('lingo.today', { day: dn(todayDay) }) : now > dashami ? t('lingo.after')
     : t('lingo.count', { n: bnDigits(Math.max(1, diff)) });
-  startTicker([lead, ...[1, 2, 3, 4, 5, 6].map((i) => t('lingo.' + i))]);
+  leadLine = lead;
+  startTicker(tickerLines());
+}
+
+/* The header ticker: the countdown or today's greeting, real usage numbers when they're worth showing, and pujo lingo. */
+let leadLine = '';
+function tickerLines() {
+  const c = counts(), n = (v) => Number(v).toLocaleString(loc());
+  return [leadLine,
+    c.today >= 50 ? t('lv.today', { n: n(c.today) }) : null,
+    t('lingo.1'), t('lingo.2'),
+    c.people >= 500 ? t('lv.totalTick', { n: n(Math.floor(c.people / 100) * 100) }) : null,
+    t('lingo.3'), t('lingo.4'), t('lingo.5'), t('lingo.6')].filter(Boolean);
 }
 
 let tickTimer = null;
-function startTicker(lines) {
-  const el = $('#countdown'); let i = 0;
+let tickLines = [];
+function startTicker(lines, keep = false) {
+  const el = $('#countdown');
+  tickLines = lines;
+  if (keep && tickTimer) return; // the running ticker picks up the new lines on its next turn
+  let i = 0;
   el.textContent = lines[0];
   clearInterval(tickTimer);
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   tickTimer = setInterval(() => {
-    i = (i + 1) % lines.length;
+    i = (i + 1) % tickLines.length;
     el.classList.add('out');
-    setTimeout(() => { el.textContent = lines[i]; el.classList.remove('out'); }, 260);
+    setTimeout(() => { el.textContent = tickLines[i]; el.classList.remove('out'); }, 260);
   }, 3800);
 }
 

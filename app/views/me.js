@@ -33,15 +33,15 @@ function profileHtml() {
   const open = openState?.['profile-box'] ?? !name;
   return `<details class="more profile-box pad-x" ${open ? 'open' : ''}>
     <summary>${name ? t('pr.hi', { name: esc(name) }) : `👋 ${t('pr.title')}`}</summary>
-    <form id="contactForm" class="form grid2">
-      <label>${t('pr.name')}<input id="cName" name="name" autocomplete="name" maxlength="40" value="${esc(p.name || '')}" placeholder="${t('pr.namePh')}"></label>
-      <label>${t('pr.phone')}<span class="phone-in"><span class="cc">+91</span><input id="cPhone" name="tel" type="tel" autocomplete="tel-national" inputmode="numeric"
+    <form id="contactForm" class="form contact">
+      <label class="field">${t('pr.name')}<input id="cName" name="name" autocomplete="name" maxlength="40" value="${esc(p.name || '')}" placeholder="${t('pr.namePh')}"></label>
+      <label class="field">${t('pr.phone')}<span class="phone-in"><span class="cc">+91</span><input id="cPhone" name="tel" type="tel" autocomplete="tel-national" inputmode="numeric"
         pattern="[6-9][0-9]{9}" value="${esc(digits10(p.phone))}" placeholder="9830012345" aria-describedby="phoneHint"></span>
         <small id="phoneHint" class="hint"></small></label>
-      ${community.enabled ? `<label class="toggle" style="grid-column:1/-1"><input type="checkbox" id="cConsent" ${p.contactOk ? 'checked' : ''}> <span>${t('pr.consent')}</span></label>` : ''}
-      <button class="btn primary block" type="submit" style="grid-column:1/-1">${t('pr.save')}</button>
+      ${community.enabled ? `<p class="fine share-note">${t('pr.shareNote')}${p.contactOk ? ` <button type="button" class="link-btn" id="cRemove">${t('pr.remove')}</button>` : ''}</p>` : ''}
+      <button class="btn primary block" type="submit">${t('pr.save')}</button>
     </form>
-    <p class="fine">${t('pr.why')}</p>
+    <p class="fine">${t('pr.why2')}</p>
   </details>`;
 }
 
@@ -150,7 +150,12 @@ function render() {
   };
   if ($('#cPhone', el)?.value) phoneHint(el);
   const clearDrafts = (form) => form.querySelectorAll('[id]').forEach((f) => delete drafts[f.id]);
-  el.onclick = (e) => {
+  el.onclick = async (e) => {
+    if (e.target.closest('#cRemove')) {
+      try { await community.saveProfile(null, null, false); } catch { /* offline: the flag below keeps trying on the next save */ }
+      Object.assign(S.prefs, { phone: '', contactOk: false }); savePrefs(); delete drafts.cPhone;
+      toast(t('pr.erased')); return render();
+    }
     if (e.target.closest('#walkBtn')) return walking() ? stopWalk() : startWalk();
     if (e.target.closest('#myCardBtn')) return shareCard(myCard(), `${myName() ? t('g.inviteFrom', { name: myName() }) : t('g.inviteText')}\n${appLink('ig_mycard')}`, 'my-pujo-2026.png');
     if (e.target.closest('#copySync')) { const i = $('#syncUrl', el); i.select(); navigator.clipboard?.writeText(i.value).then(() => toast(t('share.copied')), () => {}); return; }
@@ -165,9 +170,9 @@ function render() {
   $('#contactForm', el).onsubmit = async (e) => {
     e.preventDefault();
     const name = $('#cName', el).value.trim().slice(0, 40), phone = digits10($('#cPhone', el).value);
-    const consent = !!$('#cConsent', el)?.checked, wasOk = S.prefs.contactOk;
+    // Saving a number shares it with the team (the note above the button says so); no number, nothing is shared.
+    const consent = community.enabled && !!phone, wasOk = S.prefs.contactOk;
     if (!phoneHint(el, true)) { $('#cPhone', el).focus(); return toast(t('pr.badPhone')); }
-    if (consent && !phone) return toast(t('pr.needPhone'));
     Object.assign(S.prefs, { name, phone, contactOk: consent }); savePrefs(); clearDrafts(e.target);
     $('details.profile-box', el).open = false; // saved: fold it away, the summary shows the name
     if (community.enabled && (consent || wasOk)) {

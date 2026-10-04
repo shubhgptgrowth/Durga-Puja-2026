@@ -724,3 +724,82 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .hint { display: block; min-height: 1.2em; font-size: 12px; font-weight: 500; color: var(--ink-3); margin-top: 3px; }
 .hint.bad { color: var(--bad, #DC2626); }
 .hint.ok { color: var(--ok, #15803D); }
+
+/* =====================================================================
+   Pujo look: Baloo Da 2 (Bengali + Latin, warm and rounded), Baloo 2 for Hindi, Galada for flourishes.
+   ===================================================================== */
+:root { --font: "Baloo Da 2", "Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif; --top-h: 64px; }
+html[lang="hi"] { --font: "Baloo 2", "Baloo Da 2", system-ui, sans-serif; }
+body { font-size: 15.5px; line-height: 1.4; }
+h2, h3, .title, .view-title h2 { letter-spacing: -.005em; }
+.section-head h2 { font-size: 21px; font-weight: 800; line-height: 1.15; position: relative; padding-bottom: 6px; }
+.section-head h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 46px; height: 5px; border-radius: 3px;
+  background: linear-gradient(90deg, #C8102E 0 33%, #F59E0B 33% 66%, #FBBF24 66%); }
+.section-head .sub { font-size: 13.5px; }
+
+/* ---------- header: alpana motif, garland, live pill, ticker ---------- */
+.topbar { background:
+    radial-gradient(circle at 92% -40%, rgba(251,191,36,.28), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23F6C343' stroke-opacity='.13' stroke-width='1.4'%3E%3Ccircle cx='32' cy='32' r='10'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3Cpath d='M32 6c5 8 5 14 0 16-5-2-5-8 0-16zM32 58c5-8 5-14 0-16-5 2-5 8 0 16zM6 32c8-5 14-5 16 0-2 5-8 5-16 0zM58 32c-8-5-14-5-16 0 2 5 8 5 16 0z'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 64px 64px,
+    linear-gradient(100deg, #6E0A17 0%, #9F1239 55%, #7F1D1D 100%); }
+/* a marigold garland (genda phool) instead of the plain border */
+.topbar::after { bottom: -9px; height: 11px; background:
+  radial-gradient(circle at 6px 5px, #F59E0B 0 4.6px, transparent 5px) 0 0 / 12px 11px repeat-x,
+  radial-gradient(circle at 6px 5px, #FBBF24 0 2.2px, transparent 2.6px) 0 0 / 12px 11px repeat-x,
+  radial-gradient(circle at 6px 5px, #EA580C 0 4.6px, transparent 5px) 6px 1px / 24px 11px repeat-x;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25)); }
+main { padding-top: calc(var(--top-h) + var(--safe-t) + 8px); }
+.brand-mark { width: 44px; height: 44px; }
+.greet { font-size: 25px; }
+.ticker { font-size: 13px; font-weight: 600; color: #FFE7B3; opacity: 1; }
+.live-pill { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 11px 0 9px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.28); background: rgba(0,0,0,.22); color: #fff; font: inherit; font-size: 12.5px; cursor: pointer; }
+.live-pill b { font-size: 14px; font-variant-numeric: tabular-nums; }
+.live-pill span:last-child { opacity: .85; }
+.lang-pick select { min-width: 0; padding: 5px 8px; font-weight: 700; }
+
+
+/* ---------- photo tiles: real pujo photos behind the Home shortcuts, areas and trails ---------- */
+.task.photo, .regions .region.photo, .trail.photo { position: relative; overflow: hidden; isolation: isolate; color: #fff; border: 0; background: #3B0A0A; }
+.tile-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s ease; }
+.task.photo::after, .regions .region.photo::after, .trail.photo::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 15%, rgba(40,6,10,.82) 100%); }
+.task.photo:active .tile-img, .region.photo:active .tile-img { transform: scale(1.06); }
+.task.photo { min-height: 132px; align-content: end; padding: 12px; }
+.task.photo .task-t { font-size: 17px; font-weight: 800; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.task.photo .task-s { color: rgba(255,255,255,.88); font-size: 12.5px; }
+.regions .region.photo { min-height: 128px; align-content: end; padding: 12px 14px; }
+.regions .region.photo::before { z-index: 1; width: 5px; }
+.regions .region.photo .region-n { font-size: 19px; font-weight: 800; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.regions .region.photo .region-c { color: #FDE68A; }
+.regions .region.photo .region-a { color: rgba(255,255,255,.85); }
+.trail.photo { min-height: 132px; align-content: end; padding: 14px; border-radius: 18px; }
+.trail.photo h3 { font-size: 18px; font-weight: 800; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.trail.photo .row { color: rgba(255,255,255,.88); }
+/* the banner breathes: a slow Ken Burns zoom on the photo that's showing */
+@media (prefers-reduced-motion: no-preference) {
+  .hero.slides .slide.on img { animation: kenburns 9s ease-out both; }
+  @keyframes kenburns { from { transform: scale(1.0) translate(0, 0); } to { transform: scale(1.12) translate(-1.5%, -2%); } }
+}
+.hero.slides .sharad-greet { font-family: "Galada", "Baloo Da 2", serif; font-size: 40px; font-weight: 400; color: #FBBF24; text-shadow: 0 2px 14px rgba(0,0,0,.6); }
+
+/* My Pujo contact form: one field per row, same height, hints underneath */
+.form.contact { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 4px 14px 0; }
+.form.contact .field { display: grid; gap: 5px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.form.contact .field > input, .form.contact .phone-in { height: 46px; box-sizing: border-box; }
+.form.contact .field > input { width: 100%; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 16px; font-weight: 500; }
+.form.contact .phone-in input { height: 100%; padding: 0 12px; font-size: 16px; font-weight: 500; background: transparent; }
+.form.contact .hint { margin-top: 0; }
+.share-note { margin: -4px 0 0; }
+.share-note .link-btn { font-size: 12.5px; }
+/* header fit on phones: the pill stacks "1,241 / online"; the language picker is a compact chip */
+.live-pill { height: 38px; padding: 0 10px 0 8px; gap: 6px; }
+.live-pill .lp-tx { display: grid; line-height: 1; text-align: left; }
+.live-pill .lp-tx b { font-size: 14.5px; }
+.live-pill .lp-tx span { font-size: 10.5px; opacity: .85; margin-top: 2px; }
+.lang-pick select { appearance: none; -webkit-appearance: none; background-image: none; padding: 6px 10px; border-radius: 999px; text-align: center; }
+.brand { gap: 8px; }
+.brand-text { min-width: 0; }
+.ticker { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+@media (max-width: 400px) { .greet { font-size: 22px; } .brand-mark { width: 40px; height: 40px; } .ticker { font-size: 12.5px; } }
+@media (max-width: 360px) { .live-pill .lp-tx span { display: block; } }

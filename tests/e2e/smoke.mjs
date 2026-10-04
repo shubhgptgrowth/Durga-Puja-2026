@@ -346,7 +346,9 @@ try {
   await page.waitForTimeout(1200);
   must(await page.inputValue('#cName') === 'Rina Sen' && await page.inputValue('#cPhone') === '9830012345', 'unsaved name/phone wiped by a redraw: ' + await page.inputValue('#cName') + '|' + await page.inputValue('#cPhone'));
   must(await page.locator('details.health-sync').evaluate((d) => d.open), 'opened section snapped shut on redraw');
-  await page.check('#cConsent');
+  must(/shares it with the Pujo Parikrama team/.test(await page.locator('.share-note').innerText()), 'saving must say the number is shared');
+  const [nb, pb] = await Promise.all(['#cName', '.phone-in'].map((sel) => page.locator(sel).boundingBox()));
+  must(Math.abs(nb.x - pb.x) < 2 && Math.abs(nb.width - pb.width) < 2 && Math.abs(nb.height - pb.height) < 2, 'name and phone fields not aligned');
   await page.click('#contactForm button[type="submit"]');
   await waitToast(/Saved/, 'profile');
   must(await page.evaluate(async () => (await import('./growth.js')).myCard().title) === "Rina's Pujo 2026", 'name not on the story card');
@@ -354,10 +356,10 @@ try {
     const st = await (await fetch(`${fake.url}/__state`)).json();
     must(st.profiles.some((x) => x.phone === '+919830012345' && x.name === 'Rina Sen' && x.lang === 'en' && x.device_id), 'profile not saved with consent and data points: ' + JSON.stringify(st.profiles));
     await page.click('.profile-box summary').catch(() => {});
-    await page.uncheck('#cConsent');
-    await page.click('#contactForm button[type="submit"]');
+    await page.click('#cRemove');
     await waitToast(/erased/, 'profile erased');
-    must((await (await fetch(`${fake.url}/__state`)).json()).profiles.length === 0, 'unticking consent must erase the number');
+    must((await (await fetch(`${fake.url}/__state`)).json()).profiles.length === 0, '"Remove my number" must erase it');
+    must(await page.inputValue('#cPhone').catch(() => '') === '', 'number still shown after removing');
   }
 
   // Growth: a story-size card, a tracked deep link (?src=…#p=…), the WhatsApp share link, and the open count
@@ -391,13 +393,14 @@ try {
     must(ev.some((e) => e.name === 'view' && e.detail === 'me'), 'page views missing');
     must(!JSON.stringify(ev).includes('Rina'), 'events must not carry the name');
     await page.click('.tab[data-view="home"]');
-    must(await page.locator('#liveStrip').isHidden(), 'small counts must not be shown');
+    must(await page.locator('#liveStrip').isHidden(), 'small all-time counts must not be shown');
     await fetch(`${fake.url}/__crowd?live=1482&people=12345`);
     await page.reload(); await page.waitForSelector('.hero');
-    await page.waitForSelector('#liveStrip .live-now', { timeout: 8000 });
-    await page.waitForTimeout(1500);
+    await page.waitForSelector('#livePill:not([hidden])', { timeout: 8000 });
+    const pill = await page.locator('#livePill').innerText();
+    must(/1,48\d\s*online/.test(pill), 'header live count: ' + pill);
     const strip = await page.locator('#liveStrip').innerText();
-    must(/1,48\d people on Pujo Parikrama right now/.test(strip) && /12,300\+ have planned/.test(strip), 'live strip: ' + strip);
+    must(/12,300\+ have planned/.test(strip), 'live strip: ' + strip);
     await shot('01c-live');
     await fetch(`${fake.url}/__crowd?live=0&people=0`);
   }
