@@ -391,7 +391,8 @@ def attach_photos(pandals, food):
 
 
 # ---------------------------------------------------------------- Moments archive (build time)
-ARCHIVE_MAX = 400
+ARCHIVE_MAX = 600
+ARCHIVE_PER_YEAR = 70   # so every year shows up, not just the last three
 
 
 def build_archive(pandals):
@@ -425,10 +426,12 @@ def build_archive(pandals):
             if x["year"] == y:
                 groups.setdefault(x["pandal"] or x["page"], []).append(x)
         queues = sorted(groups.values(), key=lambda g: (g[0]["pandal"] is None, -len(g)))
-        while any(queues):
+        year = []
+        while any(queues) and len(year) < ARCHIVE_PER_YEAR:
             for q in queues:
-                if q:
-                    out.append(q.pop(0))
+                if q and len(year) < ARCHIVE_PER_YEAR:
+                    year.append(q.pop(0))
+        out += year
     return out[:ARCHIVE_MAX]
 
 
