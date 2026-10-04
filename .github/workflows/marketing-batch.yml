@@ -1,0 +1,49 @@
+name: marketing-batch
+
+# Posts a hand-picked batch of reels and carousels to Instagram, spaced out (marketing/publish_batch.py).
+# Manual only. Uses the same IG_USER_ID / IG_ACCESS_TOKEN secrets as marketing-publish.
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: "Batch file"
+        default: "marketing/batches/2026-10-04.json"
+      start:
+        description: "Start at item (1-based; use the number a failed run printed)"
+        default: "1"
+      count:
+        description: "How many items (0 = all remaining)"
+        default: "0"
+      gap:
+        description: "Seconds between posts"
+        default: "300"
+      dry_run:
+        description: "Only check the files and print what would be posted"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marketing-publish
+  cancel-in-progress: false
+
+jobs:
+  batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Post batch to Instagram
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          set -o pipefail
+          args=("${{ inputs.manifest }}" --start "${{ inputs.start }}" --count "${{ inputs.count }}" --gap "${{ inputs.gap }}")
+          [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
+          python -m marketing.publish_batch "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
