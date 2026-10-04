@@ -2,6 +2,7 @@
 
     python -m pipeline.discover pandals   # OSM pujas + matches for data/seeds/pandal_seeds.csv
     python -m pipeline.discover transit   # OSM bus/share-auto routes and stops, taxi/auto stands, auto-route endpoints
+    python -m pipeline.discover food      # OSM restaurants, sweet shops, cafes, street food near each pandal
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
@@ -235,5 +236,41 @@ def discover_photos():
     write("photos", res)
 
 
+# ---------------------------------------------------------------- food
+def discover_food():
+    """Named eateries within 600 m of each pandal, from OSM, asked for in small batches (a whole-city query
+    times out on the public Overpass servers). `python -m pipeline.discovered food` picks the best ones."""
+    pandals = list(csv.DictReader(open(config.RAW_DIR / "pandals.csv", encoding="utf-8")))
+    amen = '["amenity"~"^(restaurant|fast_food|cafe|ice_cream|food_court)$"]["name"]'
+    shop = '["shop"~"^(confectionery|bakery|pastry|sweets)$"]["name"]'
+    seen, out, failed = set(), [], 0
+    for i in range(0, len(pandals), 15):
+        batch = pandals[i:i + 15]
+        parts = "".join(f'nwr{sel}(around:600,{p["lat"]},{p["lng"]});' for p in batch for sel in (amen, shop))
+        try:
+            els = overpass(f"[out:json][timeout:90];({parts});out center tags;", timeout=90)
+        except Exception as ex:
+            failed += 1
+            print(f"batch {i // 15} failed: {ex}", file=sys.stderr)
+            continue
+        for e in els:
+            key = f'{e["type"]}/{e["id"]}'
+            tags = e.get("tags", {})
+            lat, lng = center(e)
+            if key in seen or lat is None or tags.get("disused") or tags.get("opening_hours") == "closed":
+                continue
+            seen.add(key)
+            keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "amenity", "shop", "cuisine", "diet:vegetarian",
+                                          "diet:vegan", "opening_hours", "addr:street", "brand") if k in tags}
+            out.append({"osm": key, "lat": round(lat, 6), "lng": round(lng, 6), **keep})
+        print(f"batch {i // 15}: {len(out)} eateries so far", file=sys.stderr)
+        time.sleep(3)  # be gentle with the public servers
+    if not out:
+        raise RuntimeError("no eateries fetched")
+    write("food", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"),
+                   "failed_batches": failed, "places": out})
+    print(f"{len(out)} eateries ({failed} batches failed)", file=sys.stderr)
+
+
 if __name__ == "__main__":
-    {"pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
+    {"food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()

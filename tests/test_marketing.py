@@ -106,3 +106,12 @@ class CarouselTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ContactsSummaryTest(unittest.TestCase):
+    def test_summary_is_counts_only(self):
+        from marketing.contacts import summary_md
+        md = summary_md({"contacts": 2, "new_today": 1, "withdrawn": 1, "by_source": {"ig_bio": 2}, "by_lang": {"bn": 2}})
+        self.assertIn("**2** people", md)
+        self.assertIn("Instagram bio link", md)
+        self.assertNotRegex(md, r"\+91|\d{10}")

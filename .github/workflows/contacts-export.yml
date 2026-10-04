@@ -1,0 +1,44 @@
+name: contacts-export
+
+# The contacts repository (docs/product/CONTACTS.md): people who opted in with a name and phone.
+# This repo is public, so the list never appears in logs, git or a readable artifact: the summary shows
+# counts only, and the CSV is encrypted with the CONTACTS_PASSPHRASE secret before upload (kept 3 days).
+on:
+  schedule:
+    - cron: "45 16 * * *"          # 22:15 IST daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Export
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          PASS: ${{ secrets.CONTACTS_PASSPHRASE }}
+        run: |
+          umask 077
+          if [ -z "$PASS" ]; then
+            python -m marketing.contacts | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "::warning::CONTACTS_PASSPHRASE secret not set, so only counts were produced (no list)."
+            exit 0
+          fi
+          python -m marketing.contacts --csv "$RUNNER_TEMP/contacts.csv" | tee -a "$GITHUB_STEP_SUMMARY"
+          mkdir -p out
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in "$RUNNER_TEMP/contacts.csv" -out out/contacts.csv.enc -pass env:PASS
+          shred -u "$RUNNER_TEMP/contacts.csv"
+          printf '\nDecrypt: `openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in contacts.csv.enc -out contacts.csv` (asks for the passphrase)\n' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: contacts-encrypted
+          path: out/contacts.csv.enc
+          if-no-files-found: ignore
+          retention-days: 3

@@ -3,14 +3,14 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v8';
+const VERSION = 'pp-2026-v20';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
-  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'views/home.js', 'views/explore.js', 'views/plan.js',
+  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'radio.js', 'radioCard.js', 'i18n_hi.js', 'data/music.json', 'img/hero-1.jpg', 'footfall.js', 'foodinfo.js', 'analytics.js', 'livecount.js', 'sfx.js', 'audio/dhak_hit.mp3', 'audio/shankh.mp3', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
   'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js', 'vendor/protomaps-leaflet/protomaps-leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 800, MEDIA_CACHE = 'pp-media', MEDIA_MAX = 400;
 const isTile = (u) => /\/\d+\/\d+\/\d+(@2x)?\.(png|jpg|jpeg|webp|pbf)$/.test(u.pathname);
-const isMedia = (u) => u.pathname.includes('/storage/v1/object/public/');
+const isMedia = (u) => u.pathname.includes('/storage/v1/object/public/') || /fonts\.(googleapis|gstatic)\.com$/.test(u.hostname);
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -67,6 +67,7 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== location.origin) return isTile(url) ? cacheFirst(e, TILE_CACHE, TILE_MAX) : undefined;
 
   if (url.pathname.includes('/kit/')) return;   // the team's content kit: always from the network
+  if (url.pathname.includes('/audio/') && req.headers.has('range')) return;   // <audio> streams in byte ranges; the Cache API can't store 206s
   if (url.pathname.endsWith('/data/guide.json')) {
     e.respondWith(caches.open(VERSION).then(async (c) => {
       try {

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       what:
-        description: "pandals, transit, photos (comma-separated)"
+        description: "pandals, transit, food, photos (comma-separated)"
         default: "pandals,transit,photos"
 
 permissions:

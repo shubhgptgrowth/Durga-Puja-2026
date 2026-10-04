@@ -1,0 +1,15 @@
+name: traffic
+# Kolkata Traffic Police puja notices. scout: show what the site exposes. fetch: refresh app/data/traffic.json.
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'scout or fetch', default: 'scout' }
+permissions: { contents: read }
+jobs:
+  traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python scripts/traffic_scout.py ${{ github.event.inputs.mode || 'scout' }}

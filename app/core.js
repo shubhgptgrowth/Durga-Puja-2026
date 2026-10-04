@@ -103,6 +103,7 @@ export function routeUrls(points) {
 
 /** "HH:MM-HH:MM" opening hours, including ranges that cross midnight. */
 export function isOpen(hours, d = new Date()) {
+  if (!/^\d{1,2}:\d{2}-\d{1,2}:\d{2}$/.test(hours || '')) return false; // unknown hours (OSM rows often have none)
   const [a, b] = hours.split('-').map((x) => { const [h, m] = x.split(':').map(Number); return h * 60 + m; });
   const now = d.getHours() * 60 + d.getMinutes();
   return a <= b ? now >= a && now <= b : now >= a || now <= b;
@@ -224,4 +225,14 @@ export function rideOption(from, to, stations, transit = null) {
     if (auto) return { mode: 'auto', route: auto[0].l, via: auto[0].via };
   }
   return { mode: 'cab' };
+}
+
+/** iPhone Shortcut sync: the Shortcut opens …#steps=8432 (optionally &date=2026-10-18) with Apple Health's step total.
+ * Shortcuts may format the number ("8,432", "8432.0"), so separators are dropped and the value rounded. */
+export function parseSteps(s, today) {
+  const [raw, ...rest] = decodeURIComponent(s).split('&');
+  const n = Math.round(parseFloat(raw.replace(/[^\d.]/g, '')));
+  const date = new URLSearchParams(rest.join('&')).get('date');
+  if (!Number.isFinite(n) || n < 0) return null;
+  return { n: Math.min(n, 100000), date: /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date <= today ? date : today };
 }

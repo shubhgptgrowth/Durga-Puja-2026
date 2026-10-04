@@ -20,6 +20,8 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&display=swap">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -57,16 +59,16 @@
 
   <header class="topbar">
     <div class="brand">
-      <img class="brand-mark" src="icons/icon.svg" alt="" width="34" height="34">
+      <img class="brand-mark" src="icons/icon.svg" alt="Pujo Parikrama" width="42" height="42">
       <div>
-        <h1>Pujo Parikrama</h1>
+        <h1 class="sr-only">Pujo Parikrama</h1>
+        <div id="greet" class="greet" lang="bn" aria-hidden="true">শুভ শারদীয়া</div>
         <p id="countdown" class="sub">Durga Puja 2026 · Kolkata</p>
       </div>
     </div>
-    <button class="lang-btn" id="langBtn" type="button" aria-label="Switch to Bengali">বাংলা</button>
-    <label class="day-pick">
-      <span class="sr-only">Puja day</span>
-      <select id="daySelect" aria-label="Puja day"></select>
+    <label class="lang-pick">
+      <span class="sr-only">Language</span>
+      <select id="langSelect" aria-label="Language"><option value="en">English</option><option value="bn">বাংলা</option><option value="hi">हिन्दी</option></select>
     </label>
   </header>
 

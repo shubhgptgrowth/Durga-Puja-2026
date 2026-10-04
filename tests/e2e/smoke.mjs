@@ -70,8 +70,38 @@ try {
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
   await page.click('.tab[data-view="home"]');
-  await page.click('[data-q="introClose"]');
-  must(await count('.intro') === 0, 'intro card should close');
+  must(await count('#view-home .how li') === 3, '"How it works" should sit in the first fold');
+  must(await page.locator('#radioFab').isVisible(), 'sticky radio button should show from the start');
+
+  // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
+  must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');
+  must(await count('.hero.slides .slide') >= 3, 'banner slideshow expected');
+  // Tapping the banner opens the pandal on the visible slide (the hidden slides used to swallow taps)
+  const shown = await page.locator('#slidePlace').innerText();
+  await page.click('.hero.slides .slide.on');
+  await page.waitForSelector('.sheet.open h2.title');
+  must((await page.locator('.sheet.open h2.title').innerText()).trim() === shown.trim(), `banner opened the wrong pandal (expected ${shown})`);
+  await closeSheet();
+  must(await count('.hero-credit') === 0, 'no photo credit on the banner');
+  // Tap pads: a dhak stroke and the shankh
+  await page.click('.radio-card [data-sfx="dhak"]');
+  await page.click('.radio-card [data-sfx="shankh"]');
+  await page.click('.st-tiles [data-station="dhak"]');
+  await page.waitForSelector('.st-tiles [data-station="dhak"][aria-checked="true"]');
+  await page.click('.radio-card .tracks-wrap summary');
+  must(await count('.radio-card .tracks [data-track]') >= 3, 'dhak station should list its tracks');
+  must(/Pujar Dhak/.test(await page.locator('.radio-card .tracks').innerText()), 'dhak tracks missing');
+  await page.locator('.radio-card').scrollIntoViewIfNeeded();
+  await shot('01b-radio');
+
+  // All of Kolkata in 6 days: a day opens its timed route
+  must(await count('#view-home .dayplan [data-dayplan]') === 6, 'six day plans expected');
+  await page.click('#view-home [data-dayplan="2"]');
+  await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
+  must(await count('.timeline li[data-place]') >= 4, 'Saptami day plan should have a route');
+  await shot('01c-dayplan');
+  await page.click('#planNew');
+  await page.click('.tab[data-view="home"]');
 
   // Search (English and Bengali)
   await page.fill('#homeSearch', 'tridh');
@@ -110,6 +140,14 @@ try {
   await page.selectOption('#areaSelect', 'a:north');
   must(await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'area filter count');
   await page.click('#explorePanel .item[data-place="bagbazar"]');
+  // Puja-day chips on the page: footfall follows the chosen day (Saptami by default before the pujo)
+  await page.waitForSelector('.sheet.open .day-toggle [data-sday="saptami"][aria-checked="true"]');
+  const estOf = async () => (await page.locator('.sheet.open .stat.est b').innerText()).trim();
+  const sapt = await estOf();
+  await page.click('.sheet.open [data-sday="panchami"]');
+  await page.waitForSelector('.sheet.open [data-sday="panchami"][aria-checked="true"]');
+  must((await estOf()) !== sapt, 'footfall estimate should change with the day');
+  await page.click('.sheet.open [data-sday="saptami"]');
   await page.click('#visitBtn');
   await page.waitForSelector('#privBtn');
   must(/away/.test(await page.locator('#verifyBox').innerText()), 'too-far notice missing');
@@ -129,7 +167,27 @@ try {
   await waitToast(/#1|Logged/, 'ate here');
   await page.waitForTimeout(300);
   must((await statFor(foodId)).visits >= 1, 'ate-here not counted');
+  // Rate it: only possible after "I ate here"; the average shows on the page and in the list
+  await page.waitForSelector('.sheet.open #rateForm');
+  await page.click('#rateForm [data-star="4"]');
+  await page.click('#rateForm [data-rtag="tasty"]');
+  await page.click('#rateForm [type="submit"]');
+  await waitToast(/Thanks/, 'rating');
+  await page.waitForSelector('.sheet.open .rating-sum b');
+  must((await page.locator('.sheet.open .rating-sum b').innerText()) === '4', 'rating average not shown');
+  must(/for two/.test(await page.locator('.sheet.open').innerText()), 'cost for two missing on the eatery page');
+  if (fake) must((await (await fetch(`${fake.url}/__state`)).json()).ratings === 1, 'rating not stored');
+  await page.locator('.sheet.open .rating-sum').scrollIntoViewIfNeeded(); await shot('05b-rating');
   await closeSheet();
+  must(/★ 4/.test(await page.locator(`#explorePanel .item[data-place="${foodId}"] .rating`).innerText()), 'rating not in the list');
+  // Diet chips: Veg = pure veg, Egg = places with egg dishes
+  await page.click('#exploreBar [data-f="egg"]');
+  const eggN = await count('#explorePanel .item');
+  must(eggN > 0 && eggN === await count('#explorePanel .item .pill.diet:has-text("Egg")'), 'egg filter shows places without egg dishes');
+  await page.click('#exploreBar [data-f="egg"]');
+  await page.click('#exploreBar [data-f="veg"]');
+  must(await count('#explorePanel .item') === G.food.filter((f) => f.veg === 'veg').length, 'veg filter count');
+  await page.click('#exploreBar [data-f="veg"]');
   await shot('05-food');
 
   // Offline check-in queues, then syncs when the network returns
@@ -201,11 +259,14 @@ try {
   await page.click('#view-plan [data-trail="all_nighter"]');
   await page.waitForSelector('.timeline li.ride');
   must(/Line|Bus|auto|Cab/i.test(await page.locator('.timeline li.ride >> nth=0').innerText()), 'ride leg has no transport advice');
+  must(await count('.timeline li.hop') >= 1, 'far-apart pandals should get an auto/bus/metro hop');
+  must(/google\.com\/maps\/dir/.test(await page.locator('#planNextDir').getAttribute('href')), 'one Directions-to-next button expected');
   await shot('10-trail');
   // The wizard: 1 areas → 2 start point → 3 route
   await page.click('#planNew');
   await page.waitForSelector('.stepper [data-step="1"][aria-current="step"]');
-  await page.click('#view-plan [data-pz="south_lakemarket"]');
+  must(await count('#view-plan [data-pz]') === 0, 'step 1 should only show regions');
+  await page.click('#view-plan [data-pr="south"]');
   await shot('10c-wizard-areas');
   await page.click('#planNext');
   await page.waitForSelector('.stepper [data-step="2"][aria-current="step"]');
@@ -250,6 +311,35 @@ try {
   must(s1 - s0 >= 8, `motion sensor steps not counted (${s0} → ${s1})`);
   must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
   await shot('11-me');
+  // Steps copied from the phone's Health app win when higher than what the app tracked
+  await page.click('.health-sync summary');
+  await page.fill('#healthSteps', '23456');
+  await page.click('#healthForm button[type="submit"]');
+  await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '23456');
+
+  // iPhone Shortcut sync: the Shortcut opens …#steps=N with Apple Health's total
+  await page.goto(base + '?src=ios_shortcut#steps=12%2C345.0');
+  await waitToast(/12,345 steps synced/, 'shortcut sync');
+  must(/#me$/.test(page.url()), 'steps link should land on My Pujo with a tidy URL: ' + page.url());
+  await page.waitForFunction(() => document.querySelector('#fitSteps')?.textContent.replace(/\D/g, '') === '12345');
+
+  // Name (and, with consent, phone) for share cards
+  await page.locator('.profile-box').scrollIntoViewIfNeeded(); await shot('11c-profile');
+  await page.fill('#cName', 'Rina Sen');
+  await page.fill('#cPhone', '98300 12345');
+  await page.check('#cConsent');
+  await page.click('#contactForm button[type="submit"]');
+  await waitToast(/Saved/, 'profile');
+  must(await page.evaluate(async () => (await import('./growth.js')).myCard().title) === "Rina's Pujo 2026", 'name not on the story card');
+  if (fake) {
+    const st = await (await fetch(`${fake.url}/__state`)).json();
+    must(st.profiles.some((x) => x.phone === '+919830012345' && x.name === 'Rina Sen' && x.lang === 'en' && x.device_id), 'profile not saved with consent and data points: ' + JSON.stringify(st.profiles));
+    await page.click('.profile-box summary').catch(() => {});
+    await page.uncheck('#cConsent');
+    await page.click('#contactForm button[type="submit"]');
+    await waitToast(/erased/, 'profile erased');
+    must((await (await fetch(`${fake.url}/__state`)).json()).profiles.length === 0, 'unticking consent must erase the number');
+  }
 
   // Growth: a story-size card, a tracked deep link (?src=…#p=…), the WhatsApp share link, and the open count
   const dl = page.waitForEvent('download', { timeout: 8000 });
@@ -273,12 +363,35 @@ try {
   }
   await ctx2.close();
 
+  // Analytics: anonymous events reach the backend; the live strip shows real counts once they are big enough
+  if (fake) {
+    await page.evaluate(async () => (await import('./analytics.js')).flush());
+    const ev = (await (await fetch(`${fake.url}/__state`)).json()).events;
+    for (const n of ['view', 'place_open', 'checkin', 'rate', 'filter', 'share']) must(ev.some((e) => e.name === n), `no ${n} event: ` + JSON.stringify(ev.slice(0, 5)));
+    must(ev.some((e) => e.name === 'place_open' && e.kind === 'food'), 'eatery opens not tagged');
+    must(ev.some((e) => e.name === 'view' && e.detail === 'me'), 'page views missing');
+    must(!JSON.stringify(ev).includes('Rina'), 'events must not carry the name');
+    await page.click('.tab[data-view="home"]');
+    must(await page.locator('#liveStrip').isHidden(), 'small counts must not be shown');
+    await fetch(`${fake.url}/__crowd?live=1482&people=12345`);
+    await page.reload(); await page.waitForSelector('.hero');
+    await page.waitForSelector('#liveStrip .live-now', { timeout: 8000 });
+    await page.waitForTimeout(1500);
+    const strip = await page.locator('#liveStrip').innerText();
+    must(/1,48\d people on Pujo Parikrama right now/.test(strip) && /12,300\+ have planned/.test(strip), 'live strip: ' + strip);
+    await shot('01c-live');
+    await fetch(`${fake.url}/__crowd?live=0&people=0`);
+  }
+
   // Bengali, dark mode, offline reload
-  await page.click('#langBtn');
+  await page.selectOption('#langSelect', 'bn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');
   await page.click('.tab[data-view="home"]');
   await shot('12-home-bn');
-  await page.click('#langBtn');
+  await page.selectOption('#langSelect', 'hi');
+  must((await page.locator('#tab-home span').innerText()) === 'होम', 'tabs not translated to Hindi');
+  await shot('12b-home-hi');
+  await page.selectOption('#langSelect', 'en');
   await page.emulateMedia({ colorScheme: 'dark' });
   await shot('13-home-dark');
   await page.reload(); await page.waitForSelector('.hero');

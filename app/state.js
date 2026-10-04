@@ -20,7 +20,7 @@ export const S = {
   history: store.get('history', {}),     // YYYY-MM-DD -> {m, ms, steps, pandals: [], foods: []}
   car: store.get('car', null),
   plan: store.get('activePlan', null),
-  explore: { seg: 'pandals', region: 'all', area: 'all', sort: 'popular', food: new Set(), mode: 'map' },
+  explore: { seg: 'pandals', region: 'all', area: 'all', sort: 'popular', food: new Set(), mode: 'list' },
   moments: { region: 'all', area: 'all', onSite: false, items: [], done: false, loading: false },
   walk: null,
 };
@@ -56,7 +56,10 @@ export const kcalFor = (walkMin, queueMin = 0, brisk = false) =>
 export const nm = (p) => (bn() && p.name_bn) || p.name;
 export const zn = (z) => (bn() && z.name_bn) || z.name;
 export const zs = (z) => (bn() && z.short_bn) || z.short;
-export const dn = (d) => (bn() && d.name_bn) || d.name;
+const DAY_HI = { mahalaya: 'महालया', panchami: 'पंचमी', shashthi: 'षष्ठी', saptami: 'सप्तमी', ashtami: 'अष्टमी', navami: 'नवमी', dashami: 'दशमी' };
+export const dn = (d) => (bn() && d.name_bn) || (S.prefs.lang === 'hi' && DAY_HI[d.id]) || d.name;
+/** Locale for dates and numbers in the current UI language. */
+export const loc = () => ({ bn: 'bn-IN', hi: 'hi-IN' })[S.prefs.lang] || 'en-IN';
 export const zoneOf = (id) => idx.zone[id];
 export const placeOf = (id) => idx.pandal[id] || idx.food[id] || null;
 export const placeKind = (id) => (idx.pandal[id] ? 'pandal' : idx.food[id] ? 'food' : null);

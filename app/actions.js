@@ -13,7 +13,8 @@ export function dayRec(key = todayKey()) {
   return r;
 }
 export const saveHistory = () => store.set('history', S.history);
-export const daySteps = (r) => (r.steps != null ? Math.round(r.steps) : stepsFor(r.m || 0));
+// Steps the user copied from their phone's Health app or watch (r.health) win when higher than what we tracked.
+export const daySteps = (r) => Math.max(r.steps != null ? Math.round(r.steps) : stepsFor(r.m || 0), r.health || 0);
 export const dayDist = (r) => Math.max(r.m || 0, r.steps != null && !r.m ? r.steps * stride() : 0);
 export const dayWalkMin = (r) => Math.max((r.ms || 0) / 60000, (daySteps(r) * stride()) / ((M().walk_kmh_crowd * 1000) / 60));
 export const visitedToday = (id) => {

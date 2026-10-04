@@ -19,6 +19,7 @@ export function go(view, { keepScroll = false } = {}) {
   if (!keepScroll) window.scrollTo(0, 0);
   views[view]?.render?.();
   views[view]?.onShow?.();
+  dispatchEvent(new CustomEvent('viewchange', { detail: view }));
 }
 export const rerender = () => views[S.view]?.render?.();
 
@@ -91,7 +92,7 @@ export const mapEngine = () => (vector ? 'vector' : 'raster');
 function baseLayer() {
   const c = CONFIG.map;
   if (vector) {
-    return protomapsL.leafletLayer({ url: vector.url, flavor: isDark() ? 'dark' : 'light', lang: S.prefs.lang === 'bn' ? 'bn' : 'en',
+    return protomapsL.leafletLayer({ url: vector.url, flavor: isDark() ? 'dark' : 'light', lang: S.prefs.lang,
       maxDataZoom: vector.maxzoom, maxZoom: c.maxZoom,
       attribution: '<a href="https://protomaps.com">Protomaps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' });
   }

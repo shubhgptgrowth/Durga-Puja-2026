@@ -25,3 +25,7 @@ file_size_limit = "50MiB"
 enabled = true
 site_url = "http://127.0.0.1:8123"
 enable_anonymous_sign_ins = true
+
+# Collects Kolkata Traffic Police puja notices; called by pg_cron, pinned to Mumbai (see the function header).
+[functions.traffic-fetch]
+verify_jwt = false

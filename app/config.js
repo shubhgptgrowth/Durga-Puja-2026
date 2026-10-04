@@ -13,6 +13,8 @@ export const CONFIG = {
     maxVideoSec: 30,
     maxVideoMB: 20,
   },
+  // iCloud link to the "Pujo steps" Shortcut (docs/product/IPHONE_SHORTCUT.md). Empty: My Pujo shows how to build it.
+  healthShortcut: '',
   map: {
     // Vector base map: a Kolkata extract of the Protomaps/OpenStreetMap basemap, built at deploy time
     // into app/tiles/ (scripts/build_tiles.sh). The manifest names the current file. If it's missing
