@@ -4,6 +4,7 @@ set -e
 UA="PujoParikramaBot/1.0 (https://github.com/shubhgptgrowth/Durga-Puja-2026)"
 mkdir -p src out fonts
 for w in ExtraBold Bold SemiBold Medium; do [ -s fonts/Poppins-$w.ttf ] || curl -sfLo fonts/Poppins-$w.ttf https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-$w.ttf; done
+for f in galada/Galada-Regular hindsiliguri/HindSiliguri-Bold; do n=${f#*/}.ttf; [ -s fonts/$n ] || curl -sfLo fonts/$n https://github.com/google/fonts/raw/main/ofl/$f.ttf; done
 [ -s footage3.json ] || python3 commons_meta.py photos3.tsv footage.json > footage3.json
 NEED=$(python3 -c "
 import json,os

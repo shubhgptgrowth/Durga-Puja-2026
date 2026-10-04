@@ -18,6 +18,9 @@ W, H, FPS, XF = 1080, 1920, 30, 0.3
 HANDLE = "@pujoparikrama.guide"
 FONTS = next(d for d in ("fonts", os.path.join(os.path.dirname(__file__), "fonts")) if os.path.isdir(d))
 font = lambda w, s: ImageFont.truetype(os.path.join(FONTS, f"Poppins-{w}.ttf"), s)
+# Bengali needs raqm shaping; Galada for display lines, Hind Siliguri for the rest (fonts/ from run3.sh)
+bnfont = lambda name, s: ImageFont.truetype(os.path.join(FONTS, name), s, layout_engine=ImageFont.Layout.RAQM)
+RED, GOLD, CREAM, MAROON, INK = (179, 18, 46), (232, 176, 75), (255, 244, 224), (122, 16, 32), (58, 34, 22)
 GRADE = "eq=contrast=1.06:saturation=1.12:gamma=0.98,unsharp=5:5:0.4"
 
 
@@ -53,6 +56,75 @@ def wrap(d, text, f, width):
         else:
             lines.append(cur); cur = w
     return lines + [cur] if cur else lines
+
+
+def caption_png_bn(path, bn, en, hook=False):
+    """Bengali-first overlay: পুজো পরিক্রমা mark, a big Bengali line, the English line smaller under it."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    grad = Image.new("L", (1, 900))
+    for y in range(900):
+        grad.putpixel((0, y), int(175 * (1 - y / 900) ** 1.3))
+    im.paste((25, 5, 8, 255), (0, 0, W, 900), grad.resize((W, 900)))
+    d = ImageDraw.Draw(im)
+    d.text((70, 104), "পুজো পরিক্রমা", font=bnfont("Galada-Regular.ttf", 46), fill=CREAM + (240,))
+    d.text((W - 70 - d.textlength(HANDLE, font=font("SemiBold", 26)), 118), HANDLE, font=font("SemiBold", 26), fill=GOLD + (230,))
+    y = 220
+    if bn:
+        f = bnfont("Galada-Regular.ttf", 104) if hook else bnfont("HindSiliguri-Bold.ttf", 76)
+        lines = wrap(d, bn, f, W - 140)
+        shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0)); sd = ImageDraw.Draw(shadow)
+        yy = y
+        for ln in lines:
+            sd.text((72, yy + 4), ln, font=f, fill=(0, 0, 0, 210)); yy += int(f.size * 1.25)
+        im.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(7)))
+        for ln in lines:
+            d.text((70, y), ln, font=f, fill=(255, 255, 255, 255)); y += int(f.size * 1.25)
+        y += 6
+    if en:
+        fe = font("SemiBold", 40 if hook else 36)
+        for ln in wrap(d, en, fe, W - 140):
+            d.text((72, y + 2), ln, font=fe, fill=(0, 0, 0, 160)); d.text((70, y), ln, font=fe, fill=GOLD + (255,)); y += int(fe.size * 1.3)
+    if hook:
+        d.rectangle((70, y + 16, 230, y + 26), fill=RED + (255,))
+    im.save(path)
+
+
+def end_png_bn(path, bn, en, credits):
+    """Laal-paar end card: cream paper, red sari border with a gold line, Bengali first."""
+    im = Image.new("RGB", (W, H), CREAM); d = ImageDraw.Draw(im)
+    for y in range(H):
+        t = y / H
+        d.line((0, y, W, y), fill=tuple(int(a + (b - a) * t) for a, b in zip((255, 246, 228), (240, 220, 186))))
+    d.rectangle((0, 0, W - 1, H - 1), outline=RED, width=30)
+    d.rectangle((36, 36, W - 37, H - 37), outline=GOLD, width=4)
+    import math
+    cx, cy, r = W // 2, 470, 120
+    for k in range(12):
+        a = 2 * math.pi * k / 12; px, py = cx + r * math.cos(a), cy + r * math.sin(a)
+        d.ellipse((px - 34, py - 34, px + 34, py + 34), outline=RED, width=4)
+    d.ellipse((cx - 66, cy - 66, cx + 66, cy + 66), outline=RED, width=4); d.ellipse((cx - 22, cy - 22, cx + 22, cy + 22), fill=RED)
+    d.text((W / 2 - d.textlength("পুজো পরিক্রমা", font=bnfont("Galada-Regular.ttf", 58)) / 2, 150), "পুজো পরিক্রমা",
+           font=bnfont("Galada-Regular.ttf", 58), fill=MAROON)
+    y = 700
+    f = bnfont("Galada-Regular.ttf", 110)
+    for ln in wrap(d, bn, f, W - 180):
+        d.text((W / 2 - d.textlength(ln, font=f) / 2, y), ln, font=f, fill=MAROON); y += 132
+    y += 10
+    fe = font("Medium", 42)
+    for ln in wrap(d, en, fe, W - 200):
+        d.text((W / 2 - d.textlength(ln, font=fe) / 2, y), ln, font=fe, fill=INK); y += 58
+    y += 40
+    fb = font("ExtraBold", 50)
+    tw = d.textlength("Link in bio", font=fb)
+    d.rounded_rectangle((W / 2 - tw / 2 - 60, y, W / 2 + tw / 2 + 60, y + 112), radius=56, fill=RED)
+    d.text((W / 2 - tw / 2, y + 22), "Link in bio", font=fb, fill=CREAM)
+    fh = font("SemiBold", 40)
+    d.text((W / 2 - d.textlength(HANDLE, font=fh) / 2, y + 150), HANDLE, font=fh, fill=MAROON)
+    y = 1560
+    fc = font("Medium", 23)
+    for ln in wrap(d, credits, fc, W - 200)[:8]:
+        d.text((100, y), ln, font=fc, fill=INK); y += 32
+    im.save(path)
 
 
 def caption_png(path, text, hook=False):
@@ -124,7 +196,11 @@ def segment(src_dir, footage, i, seg, reel, tmp):
     path = src_file(src_dir, sid)
     png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
     hook = i == 0 and bool(reel.get("hook"))
-    caption_png(png, reel["hook"] if hook else text, hook=hook)
+    bn = reel.get("bn")
+    if bn:  # Bengali-first look (spec3 reels with a "bn" block)
+        caption_png_bn(png, bn["hook"] if hook else bn["segs"][i], reel["hook"] if hook else text, hook=hook)
+    else:
+        caption_png(png, reel["hook"] if hook else text, hook=hook)
     if path.lower().endswith((".jpg", ".jpeg", ".png")):
         jpg = f"{tmp}/{reel['id']}_{i}_still.jpg"
         mx, my = still(path, jpg, cx, cy)
@@ -174,7 +250,10 @@ def credits_for(reel, footage):
 def build(reel, footage, src_dir, out_dir, tmp):
     parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
     endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
-    end_png(endp, *reel["end"], credits_for(reel, footage))
+    if reel.get("bn"):
+        end_png_bn(endp, reel["bn"]["end"], reel["end"][1], credits_for(reel, footage))
+    else:
+        end_png(endp, *reel["end"], credits_for(reel, footage))
     run("ffmpeg", "-y", "-loop", "1", "-t", "3.2", "-i", endp, "-f", "lavfi", "-t", "3.2", "-i", "anullsrc=r=48000:cl=stereo",
         "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", "-shortest", endv)
     parts.append((endv, 3.2))
