@@ -523,8 +523,12 @@ try {
   }
 
   // Google sign-in: the guest account is linked (same user, same backup); a second browser signing in with the
-  // same Google account gets everything back automatically and keeps its own steps.
-  {
+  // same Google account gets everything back automatically and keeps its own steps. (The fake backend plays
+  // Google; a real local stack has no Google provider, so there the button must stay hidden.)
+  if (!fake) {
+    await page.click('.tab[data-view="me"]'); await page.waitForTimeout(800);
+    must(!(await count('#gSignIn')), 'Continue with Google shown though the project has Google sign-in off');
+  } else {
     await page.click('.tab[data-view="me"]');
     await page.waitForSelector('#gSignIn', { timeout: 8000 });
     const before = await page.evaluate(() => ({ uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id, code: JSON.parse(localStorage.getItem('pp:pujoCode')) }));
