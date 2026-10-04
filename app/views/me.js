@@ -9,7 +9,7 @@ import { openPlace, dirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
 import { shareCard, myCard, appLink, myName, deviceId } from '../growth.js';
-import { pujoCode, restoreLink, claimCode, signOutHere } from '../sync.js';
+import { pujoCode, restoreLink, claimCode, signOutHere, haltSync, startSyncAgain } from '../sync.js';
 
 const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const syncUrl = () => `${location.origin}${location.pathname}?src=ios_shortcut#steps=`;
@@ -178,7 +178,7 @@ function render() {
         <button class="btn block" type="submit">${t('fit.save')}</button>
         <button class="btn ghost block" type="button" id="resetBtn">${t('fit.reset')}</button>
       </form>
-      <p class="fine pad" style="margin-top:10px">${community.enabled ? t('me.privacyOn') : t('me.privacyOff')}</p>
+      <p class="fine pad" style="margin-top:10px">${community.enabled ? t('me.privacyOn') : t('me.privacyOff')} <a href="privacy.html" target="_blank" rel="noopener">${t('del.policy')}</a></p>
     </details>
     ${creditsHtml()}`;
 
@@ -213,7 +213,16 @@ function render() {
     if (e.target.closest('#copySync')) { const i = $('#syncUrl', el); i.select(); navigator.clipboard?.writeText(i.value).then(() => toast(t('share.copied')), () => {}); return; }
     const bd = e.target.closest('[data-badge]')?.dataset.badge; if (bd) return badgeSheet(bd);
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
-    if (e.target.closest('#resetBtn') && confirm(t('fit.confirmReset'))) { store.clear(); location.reload(); }
+    if (e.target.closest('#resetBtn') && confirm(t(community.enabled ? 'del.confirm' : 'fit.confirmReset'))) {
+      const b = e.target.closest('#resetBtn'); b.disabled = true;
+      haltSync();
+      if (community.enabled) {
+        try { await community.deleteMyData(); } catch { b.disabled = false; startSyncAgain(); return toast(t('del.failed'), 4000); }
+      }
+      // Empty the in-memory copies too, so a save while the page unloads can't write them back
+      if (walking()) stopWalk(); S.history = {}; S.checkins = {};
+      store.clear(); location.replace(location.pathname + '#home'); location.reload();
+    }
   };
   const syf = $('#syncForm', el);
   if (syf) syf.onsubmit = async (e) => {

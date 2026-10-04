@@ -164,7 +164,7 @@ export const STR = {
     'fit.badges': 'Badges', 'fit.days': 'Your puja days', 'fit.noDays': 'No walks yet.',
     'fit.dayRow': '{n} pandals', 'fit.dayStats': '{s} steps · {km} km',
     'fit.settings': 'Profile & settings', 'fit.height': 'Height (cm)', 'fit.weight': 'Weight (kg)', 'fit.goal': 'Daily step goal',
-    'fit.lowData': 'Low-data map', 'fit.motion': 'Use motion sensor for steps', 'fit.save': 'Save', 'fit.reset': 'Reset all my data',
+    'fit.lowData': 'Low-data map', 'fit.motion': 'Use motion sensor for steps', 'fit.save': 'Save', 'fit.reset': 'Delete all my data',
     'fit.savedToast': 'Saved', 'fit.confirmReset': 'Delete all walks, check-ins and settings on this device?',
     'badge.toast': '{em} Badge unlocked: {name}',
     'b.first': 'Visit your first pandal', 'b.five': 'Visit 5 pandals', 'b.fifteen': 'Visit 15 pandals', 'b.thirty': 'Visit 30 pandals',
@@ -430,6 +430,9 @@ export const STR = {
     'gs.confirmOut': 'Sign out on this phone? Your pujo stays saved in your Google account and comes back when you sign in again.',
     'gs.welcome': 'Signed in! Your pujo is saved and will follow you to any phone.',
     'gs.failed': 'Google sign-in didn\'t finish. Please try again.',
+    'del.confirm': 'Delete everything? Your steps, check-ins, food stops, ratings, photos, name and number are erased from this phone and from our server, and your account (guest or Google) is removed. This can\'t be undone.',
+    'del.failed': 'Couldn\'t reach the server, so nothing was deleted. Please try again when online.',
+    'del.policy': 'Privacy policy',
   },
   bn: {
 
@@ -845,6 +848,9 @@ export const STR = {
     'gs.confirmOut': 'এই ফোনে সাইন আউট করবে? তোমার পুজো Google অ্যাকাউন্টে সেভ থাকবে, আবার সাইন ইন করলেই ফিরে আসবে।',
     'gs.welcome': 'সাইন ইন হয়েছে! তোমার পুজো সেভ হল, যে কোনো ফোনে পাবে।',
     'gs.failed': 'Google সাইন ইন শেষ হল না। আবার চেষ্টা করো।',
+    'del.confirm': 'সব মুছে দেবে? তোমার স্টেপ, চেক-ইন, খাওয়াদাওয়া, রেটিং, ছবি, নাম আর নম্বর এই ফোন আর আমাদের সার্ভার থেকে মুছে যাবে, অ্যাকাউন্টও (গেস্ট বা Google) মুছে যাবে। এটা আর ফেরানো যাবে না।',
+    'del.failed': 'সার্ভারে পৌঁছনো গেল না, তাই কিছু মোছা হয়নি। নেট এলে আবার চেষ্টা করো।',
+    'del.policy': 'প্রাইভেসি পলিসি',
   },
 };
 STR.hi = HI;

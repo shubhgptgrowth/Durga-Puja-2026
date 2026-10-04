@@ -121,6 +121,18 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       db.offers.push(o);
       return { status: 'pending', id: o.id };
     },
+    delete_my_data(uid) {
+      const code = db.members.get(uid);
+      if (code) { db.progress.delete(code); for (const [u, c] of db.members) if (c === code) db.members.delete(u); }
+      db.profiles.delete(uid);
+      for (const k of [...db.ratings.keys()]) if (k.endsWith('|' + uid)) db.ratings.delete(k);
+      const mine = db.photos.filter((x) => x.user === uid);
+      db.photos = db.photos.filter((x) => x.user !== uid);
+      db.visits = db.visits.filter((x) => x.user !== uid);
+      if (db.google === uid) db.google = null;
+      for (const [tok, u] of db.tokens) if (u === uid) db.tokens.delete(tok);
+      return { status: 'ok', files: mine.flatMap((x) => [x.path, x.thumb_path]) };
+    },
     save_progress(uid, a) {
       if (!a.p_data || typeof a.p_data !== 'object') return { status: 'bad_data' };
       let code = db.members.get(uid);

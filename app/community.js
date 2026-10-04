@@ -108,6 +108,18 @@ export class Community {
     } catch { return { status: 'error', code: 'user' }; }
   }
 
+  /** Erase everything the server holds for this user (and the account), then forget the session here. */
+  async deleteMyData() {
+    if (!this.session) return { status: 'ok' }; // never signed in: nothing on the server
+    const r = await this.rpc('delete_my_data', {});
+    if (r.files?.length) {
+      await fetch(`${this.url}/storage/v1/object/${this.bucket}`, { method: 'DELETE', headers: this._headers(true), body: JSON.stringify({ prefixes: r.files }) }).catch(() => {});
+    }
+    this.session = null;
+    try { localStorage.removeItem(LS + 'sb.session'); } catch { /* ignore */ }
+    return r;
+  }
+
   /** Sign out of Google on this browser; the next action starts a fresh guest account. */
   async signOut() {
     try { if (this.session?.access_token) await fetch(`${this.url}/auth/v1/logout`, { method: 'POST', headers: this._headers(true) }); } catch { /* offline */ }

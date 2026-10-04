@@ -84,9 +84,14 @@ export async function claimCode(code) {
   } catch { toast(t('sy.failed')); }
 }
 
+/** Stop backing up (before this browser's data is erased, so a last save can't bring it back). */
+export function haltSync() { ready = false; clearTimeout(timer); timer = null; }
+export function startSyncAgain() { ready = true; }
+
 /** Sign out of Google here: saves first, then this browser forgets the pujo (it stays in the Google account). */
 export async function signOutHere() {
   await saveNow();
+  haltSync();
   await community.signOut();
   for (const k of ['history', 'checkins', 'pujoCode', 'myMoments', 'community.myRatings', 'walking']) { try { localStorage.removeItem('pp:' + k); } catch { /* ignore */ } }
   Object.assign(S.prefs, { name: '', phone: '', contactOk: false }); store.set('prefs', S.prefs);

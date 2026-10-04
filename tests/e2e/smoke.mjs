@@ -561,6 +561,28 @@ try {
     await ctx3.close();
   }
 
+  // Privacy policy page, and "Delete all my data" erasing the server copy too (in a separate browser)
+  {
+    const ctx4 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx4.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx4.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('pp:history', JSON.stringify({ '2026-10-03': { m: 400, ms: 0, pandals: [], foods: [], steps: 555 } })); } });
+    const p4 = await ctx4.newPage();
+    p4.on('pageerror', (e) => errors.push('pageerror (delete): ' + e.message));
+    await p4.goto(base + 'privacy.html');
+    must(/Privacy policy/.test(await p4.locator('h1').innerText()) && /Delete all my data/.test(await p4.locator('main').innerText()), 'privacy page');
+    await p4.goto(base + '#me');
+    const code = await p4.waitForFunction(() => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null'), null, { timeout: 15000 }).then((h) => h.jsonValue());
+    if (fake) must(code in (await (await fetch(`${fake.url}/__state`)).json()).progress, 'backup should exist before deleting');
+    await p4.click('details.settings summary');
+    p4.once('dialog', (d) => d.accept());
+    await Promise.all([p4.waitForEvent('load', { timeout: 15000 }), p4.click('#resetBtn')]);
+    await p4.waitForSelector('.tab');
+    const left = await p4.evaluate(() => ({ code: localStorage.getItem('pp:pujoCode'), hist: localStorage.getItem('pp:history') }));
+    must(!left.code && (!left.hist || !left.hist.includes('555')), 'local data should be gone: ' + JSON.stringify(left));
+    if (fake) must(!(code in (await (await fetch(`${fake.url}/__state`)).json()).progress), 'server backup should be deleted');
+    await ctx4.close();
+  }
+
   // Back button: closes an open page, then returns to the previous tab, never leaving the site
   await page.click('.tab[data-view="home"]');
   await page.click('.tab[data-view="explore"]');

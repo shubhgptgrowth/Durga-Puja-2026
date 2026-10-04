@@ -158,7 +158,7 @@ function render() {
       <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
-    <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')}</p>
+    <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')} · <a href="privacy.html">${t('del.policy')}</a></p>
 `;
 
   wire(el);
