@@ -4,14 +4,15 @@
 
 spec2.json  {"reels": [{"id", "hook", "music": [fid, start_s], "segments": [[src, start_s, secs, text, cx?], ...], "end": [l1, l2]}]}
             src is a footage.json id ("f05", real) or an AI clip id ("c07"); cx (0..1) picks the horizontal crop centre.
-footage.json  id -> {license, artist, label, ...}; files are src_dir/<id>.mp4|.webm|.ogv|.ogg|.mp3 (any container ffmpeg reads).
+footage.json  id -> {license, artist, label, ...}; files are src_dir/<id>.mp4|.webm|.ogv|.ogg|.mp3 (any container ffmpeg reads),
+            or .jpg/.png for photos, which get a slow pan (cx and an optional cy, 0..1, pick the framing).
 
 Shots are cut to 1080x1920 with a shared colour grade and 0.3 s crossfades. The music bed is mixed over each shot's own
 sound (crowd, dhak) kept low, and loudness-normalised for Instagram. The end card credits every real source.
 Needs ffmpeg and Pillow; fonts/Poppins-*.ttf next to this file or in ./fonts.
 """
 import glob, json, os, subprocess, sys
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 W, H, FPS, XF = 1080, 1920, 30, 0.3
 HANDLE = "@pujoparikrama.guide"
@@ -96,17 +97,41 @@ def end_png(path, l1, l2, credits):
     im.save(path)
 
 
+PAN = 1.12  # photos are cut 12% larger than the frame and drift across it
+
+
+def still(path, out, cx, cy):
+    """Photo → PAN×frame-sized image cropped around (cx, cy), ready for a slow pan."""
+    im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    bw, bh = round(W * PAN) // 2 * 2, round(H * PAN) // 2 * 2
+    k = max(bw / im.width, bh / im.height)
+    im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+    x = min(max(0, round(im.width * cx - bw / 2)), im.width - bw)
+    y = min(max(0, round(im.height * cy - bh / 2)), im.height - bh)
+    im.crop((x, y, x + bw, y + bh)).save(out, quality=95)
+    return bw - W, bh - H
+
+
 def segment(src_dir, footage, i, seg, reel, tmp):
     sid, start, secs, text, *rest = seg
     cx = rest[0] if rest else 0.5
+    cy = rest[1] if len(rest) > 1 else 0.45
     path = src_file(src_dir, sid)
     png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
     hook = i == 0 and bool(reel.get("hook"))
     caption_png(png, reel["hook"] if hook else text, hook=hook)
-    crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
-            f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2'")
+    if path.lower().endswith((".jpg", ".jpeg", ".png")):
+        jpg = f"{tmp}/{reel['id']}_{i}_still.jpg"
+        mx, my = still(path, jpg, cx, cy)
+        x0, x1 = (0.15 * mx, 0.85 * mx) if i % 2 else (0.85 * mx, 0.15 * mx)
+        crop = f"crop={W}:{H}:'{x0:.1f}+({x1 - x0:.1f})*t/{secs}':'{0.7 * my:.1f}-{0.4 * my:.1f}*t/{secs}'"
+        args = ["ffmpeg", "-y", "-loop", "1", "-framerate", str(FPS), "-t", str(secs), "-i", jpg, "-i", png]
+        path = jpg
+    else:
+        crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
+                f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2'")
+        args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
     v = f"[0:v]{crop},fps={FPS},setsar=1,{GRADE}[v];[v][1:v]overlay=0:0,format=yuv420p[vo]"
-    args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
     if has_audio(path):
         a = "[0:a]aresample=48000,aformat=channel_layouts=stereo,apad[ao]"
     else:
@@ -173,6 +198,12 @@ def build(reel, footage, src_dir, out_dir, tmp):
     run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc) + ";" + mix, "-map", lv, "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
+    c = reel.get("caption")
+    if c:  # Instagram caption: English, Bengali, hashtags, then the attribution the CC licences require
+        credit = credits_for(reel, footage).replace("Footage: Wikimedia Commons — ", "🎥 Credits (Wikimedia Commons): ")
+        sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
+        with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
+            f.write(f"{c['en']}\n\n{c['bn']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))
     return total
 
 
