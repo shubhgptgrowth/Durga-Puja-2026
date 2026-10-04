@@ -1020,3 +1020,13 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .sheet-cta .btn { min-height: 48px; }
 .sheet-cta .btn.wa { display: inline-flex; align-items: center; gap: 6px; padding: 0 16px; }
 .wa-ico { width: 20px; height: 20px; flex: none; }
+
+/* My Pujo: Google sign-in */
+.account-box { margin: 4px 16px 10px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 10px; }
+.account-box .ab-txt { display: grid; gap: 2px; }
+.account-box .ab-txt b { font-size: 15.5px; }
+.account-box .ab-txt small { color: var(--ink-2); font-size: 13px; overflow-wrap: anywhere; }
+.account-box.signed { grid-template-columns: auto 1fr auto; align-items: center; }
+.account-box .ab-ic .g-logo { width: 26px; height: 26px; display: block; }
+.btn.g-btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; background: #fff; color: #1f1f1f; border: 1px solid #dadce0; font-weight: 600; }
+.btn.g-btn .g-logo { width: 20px; height: 20px; flex: none; }

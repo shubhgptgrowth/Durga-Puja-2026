@@ -40,21 +40,31 @@ export async function saveNow() {
 }
 const later = () => { if (!ready) return; clearTimeout(timer); timer = setTimeout(saveNow, 8000); };
 
-/** Pull the backup, merge it in, push the merge. Called once at start-up. */
-export async function startSync() {
+/** Pull the backup, merge it in, push the merge. Called once at start-up (after a Google sign-in return, if any). */
+export async function startSync(authP = null) {
   if (!community.enabled) return;
   document.addEventListener('pp:dirty', later);
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && timer) saveNow(); });
-  return boot().finally(bootDone);
+  const a = await authP;
+  if (a?.status === 'redirecting') return; // on to Google again
+  if (a?.status === 'ok') toast(t('gs.welcome', { email: a.email || '' }), 4500);
+  if (a?.status === 'error') toast(t('gs.failed'), 4500);
+  return boot(a?.status === 'ok').finally(bootDone);
 }
-async function boot() {
+async function boot(signedIn = false) {
   try {
-    const r = await community.rpc('load_progress', {});
+    let r = await community.rpc('load_progress', {});
+    // First sign-in with this Google account from a browser that already had a backup: keep that backup.
+    if (!r?.code && signedIn && pujoCode()) {
+      const c = await community.rpc('claim_progress', { p_code: pujoCode() });
+      if (c?.status === 'ok') r = c;
+    }
     if (r?.code) {
       store.set('pujoCode', r.code);
       const merged = mergeProgress(collect(), r.data || {});
-      apply(merged); rerender();
+      apply(merged);
     }
+    if (signedIn || r?.code) rerender();
   } catch { /* offline: work locally */ }
   ready = true;
   await saveNow();
@@ -72,4 +82,13 @@ export async function claimCode(code) {
     ready = true; await saveNow(); rerender();
     toast(t('sy.restored'), 4000);
   } catch { toast(t('sy.failed')); }
+}
+
+/** Sign out of Google here: saves first, then this browser forgets the pujo (it stays in the Google account). */
+export async function signOutHere() {
+  await saveNow();
+  await community.signOut();
+  for (const k of ['history', 'checkins', 'pujoCode', 'myMoments', 'community.myRatings', 'walking']) { try { localStorage.removeItem('pp:' + k); } catch { /* ignore */ } }
+  Object.assign(S.prefs, { name: '', phone: '', contactOk: false }); store.set('prefs', S.prefs);
+  location.replace(location.pathname + '#me'); location.reload();
 }

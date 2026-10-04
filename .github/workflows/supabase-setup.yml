@@ -5,6 +5,8 @@ name: supabase-setup
 #   2. applies supabase/migrations/*.sql, then supabase/seed.sql (both are idempotent, so re-running is safe)
 #   3. verifies the REST API, the seeded places and anonymous sign-in
 #   4. prints the Project URL and anon key for app/config.js (both are public by design)
+#   5. turns on Google sign-in when the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET secrets are set
+#      (docs/product/GOOGLE_SIGNIN.md), with account linking and the app's URL as an allowed redirect
 # Needs the repository secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
 on:
   workflow_dispatch:
@@ -13,6 +15,10 @@ on:
         description: "Project ref (the xxxx in xxxx.supabase.co). Leave empty if the account has only one project."
         required: false
         default: ""
+      site_url:
+        description: "The app's public URL (Google sign-in returns here)"
+        required: false
+        default: "https://shubhgptgrowth.github.io/Durga-Puja-2026/"
 
 permissions:
   contents: write   # commits the public URL and anon key into app/config.js
@@ -47,6 +53,33 @@ jobs:
             -d '{"external_anonymous_users_enabled": true}' "$API/projects/${{ steps.ref.outputs.ref }}/config/auth" \
             | jq '{external_anonymous_users_enabled}'
 
+      - name: Google sign-in
+        env:
+          GID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GSECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          SITE: ${{ inputs.site_url || 'https://shubhgptgrowth.github.io/Durga-Puja-2026/' }}
+        run: |
+          if [ -z "$GID" ] || [ -z "$GSECRET" ]; then
+            echo "Google sign-in: skipped (add the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET secrets to turn it on)"; exit 0
+          fi
+          ref=${{ steps.ref.outputs.ref }}
+          cur=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects/$ref/config/auth")
+          allow=$(echo "$cur" | jq -r --arg s "${SITE%/}/**" '((.uri_allow_list // "") | split(",") | map(select(length > 0))) + [$s] | unique | join(",")')
+          site=$(echo "$cur" | jq -r '.site_url // ""')
+          case "$site" in ""|*localhost*|*127.0.0.1*) site="$SITE";; esac
+          jq -n --arg id "$GID" --arg sec "$GSECRET" --arg allow "$allow" --arg site "$site" \
+            '{external_google_enabled: true, external_google_client_id: $id, external_google_secret: $sec,
+              security_manual_linking_enabled: true, uri_allow_list: $allow, site_url: $site}' > /tmp/g.json
+          curl -fsS -X PATCH -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/g.json \
+            "$API/projects/$ref/config/auth" | jq '{external_google_enabled, security_manual_linking_enabled, site_url, uri_allow_list}'
+          rm -f /tmp/g.json
+          {
+            echo "### Google sign-in is on"
+            echo ""
+            echo "In Google Cloud → Credentials → your OAuth client, the authorised redirect URI must be:"
+            echo "\`https://$ref.supabase.co/auth/v1/callback\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Apply migrations and seed
         run: |
           run_sql() {
@@ -72,6 +105,7 @@ jobs:
           curl -fsS -X POST -H "apikey: $anon" -H "Content-Type: application/json" -d '{"data":{}}' "$url/auth/v1/signup" \
             | jq -e '.access_token and .user.is_anonymous' >/dev/null || { echo "::error::anonymous sign-in failed"; exit 1; }
           echo "anonymous sign-in OK"
+          echo "Google sign-in: $(curl -fsS -H "apikey: $anon" "$url/auth/v1/settings" | jq -r '.external.google')"
           bucket=$(curl -fsS -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" \
             -d '{"query":"select public from storage.buckets where id = '"'"'moments'"'"'"}' "$API/projects/$ref/database/query")
           echo "moments bucket: $bucket"

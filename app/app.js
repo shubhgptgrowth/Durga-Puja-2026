@@ -50,6 +50,8 @@ async function boot() {
   $$('.tab').forEach((b) => (b.onclick = () => go(b.dataset.view)));
   applyStatic();
 
+  // Back from Google sign-in: tokens in the URL are taken (and the URL tidied to #me) before anything routes.
+  const authP = community.enabled ? community.authReturn().catch(() => null) : Promise.resolve(null);
   const hash = location.hash.slice(1);
   if (hash.startsWith('restore=')) { history.replaceState(null, '', location.pathname + location.search + '#me'); go('me'); claimCode(decodeURIComponent(hash.slice(8))); }
   else if (hash.startsWith('steps=')) syncSteps(hash.slice(6));
@@ -58,11 +60,11 @@ async function boot() {
   else if (hash.startsWith('p=') && (idx.pandal[hash.slice(2)] || idx.food[hash.slice(2)] || idx.parking[hash.slice(2)])) { go('home'); openPlace(hash.slice(2)); }
   else go(VIEWS.includes(hash) ? hash : hash === 'fit' ? 'me' : hash === 'food' || hash === 'park' ? 'explore' : 'home');
 
-  setupCommunity();
+  authP.then(() => setupCommunity()); // after a sign-in has settled, so queued visits go to the right account
   trackOpen();
   startAnalytics();
   initCelebrations();
-  startSync();
+  startSync(authP);
   loadOffers();
   // A restore link opened while the app is already open in this tab
   addEventListener('hashchange', () => {

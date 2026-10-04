@@ -522,6 +522,41 @@ try {
     await ctx2.close();
   }
 
+  // Google sign-in: the guest account is linked (same user, same backup); a second browser signing in with the
+  // same Google account gets everything back automatically and keeps its own steps.
+  {
+    await page.click('.tab[data-view="me"]');
+    await page.waitForSelector('#gSignIn', { timeout: 8000 });
+    const before = await page.evaluate(() => ({ uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id, code: JSON.parse(localStorage.getItem('pp:pujoCode')) }));
+    await page.locator('.account-box').scrollIntoViewIfNeeded(); await shot('11s-google-card');
+    await page.click('#gSignIn');
+    await page.waitForSelector('.account-box.signed', { timeout: 10000 });
+    must(/rina@gmail\.com/.test(await page.locator('.account-box.signed').innerText()), 'signed-in email not shown');
+    must(!/access_token/.test(page.url()) && /#me$/.test(page.url()), 'tokens left in the URL: ' + page.url());
+    const after = await page.evaluate(() => ({ uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id, code: JSON.parse(localStorage.getItem('pp:pujoCode')) }));
+    must(after.uid === before.uid && after.code === before.code, 'linking should keep the same account and backup: ' + JSON.stringify({ before, after }));
+    await waitToast(/Signed in/, 'google sign-in');
+    await page.locator('.account-box').scrollIntoViewIfNeeded(); await shot('11t-google-signed');
+    const mine = await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')));
+
+    const ctx3 = await browser.newContext({ ...devices['iPhone 13'] });
+    await ctx3.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+    await ctx3.addInitScript(() => { if (!localStorage.getItem('pp:history')) localStorage.setItem('pp:history', JSON.stringify({ '2026-10-02': { m: 500, ms: 0, pandals: [], foods: [], steps: 777 } })); });
+    const p3 = await ctx3.newPage();
+    p3.on('pageerror', (e) => errors.push('pageerror (google 2nd browser): ' + e.message));
+    await p3.goto(base + '#me');
+    await p3.waitForSelector('#gSignIn', { timeout: 8000 });
+    await p3.click('#gSignIn');
+    await p3.waitForSelector('.account-box.signed', { timeout: 10000 });
+    await p3.waitForFunction((c) => JSON.parse(localStorage.getItem('pp:pujoCode') || 'null') === c, after.code, { timeout: 8000 });
+    const got = await p3.evaluate(() => ({ checkins: Object.keys(JSON.parse(localStorage.getItem('pp:checkins') || '{}')), hist: JSON.parse(localStorage.getItem('pp:history') || '{}'),
+      uid: JSON.parse(localStorage.getItem('pp:sb.session')).user.id }));
+    must(got.uid === after.uid, 'second browser should sign in to the same account');
+    must(mine.every((id) => got.checkins.includes(id)), 'check-ins not restored after Google sign-in: ' + got.checkins.join(','));
+    must(got.hist['2026-10-02']?.steps === 777, 'second browser lost its own steps on sign-in');
+    await ctx3.close();
+  }
+
   // Back button: closes an open page, then returns to the previous tab, never leaving the site
   await page.click('.tab[data-view="home"]');
   await page.click('.tab[data-view="explore"]');

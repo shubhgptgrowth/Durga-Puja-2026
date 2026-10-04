@@ -421,6 +421,15 @@ export const STR = {
     'v.ateShort': 'Logged',
     'v.locatingShort': 'Checking…',
     'g.shareWa': 'Share on WhatsApp',
+    'gs.title': 'Keep your pujo on every phone',
+    'gs.why': 'Sign in once. Your steps, pandals, food stops and badges come back automatically on any phone or browser.',
+    'gs.continue': 'Continue with Google',
+    'gs.signedIn': 'Signed in with Google',
+    'gs.synced': 'your pujo is saved',
+    'gs.signOut': 'Sign out',
+    'gs.confirmOut': 'Sign out on this phone? Your pujo stays saved in your Google account and comes back when you sign in again.',
+    'gs.welcome': 'Signed in! Your pujo is saved and will follow you to any phone.',
+    'gs.failed': 'Google sign-in didn\'t finish. Please try again.',
   },
   bn: {
 
@@ -827,6 +836,15 @@ export const STR = {
     'v.ateShort': 'লেখা হয়েছে',
     'v.locatingShort': 'দেখছি…',
     'g.shareWa': 'হোয়াটসঅ্যাপে শেয়ার',
+    'gs.title': 'তোমার পুজো সব ফোনে থাকুক',
+    'gs.why': 'একবার সাইন ইন করো। স্টেপ, প্যান্ডেল, খাওয়াদাওয়া আর ব্যাজ যে কোনো ফোন বা ব্রাউজারে নিজে থেকেই ফিরে আসবে।',
+    'gs.continue': 'Google দিয়ে চালিয়ে যাও',
+    'gs.signedIn': 'Google-এ সাইন ইন করা',
+    'gs.synced': 'তোমার পুজো সেভ হচ্ছে',
+    'gs.signOut': 'সাইন আউট',
+    'gs.confirmOut': 'এই ফোনে সাইন আউট করবে? তোমার পুজো Google অ্যাকাউন্টে সেভ থাকবে, আবার সাইন ইন করলেই ফিরে আসবে।',
+    'gs.welcome': 'সাইন ইন হয়েছে! তোমার পুজো সেভ হল, যে কোনো ফোনে পাবে।',
+    'gs.failed': 'Google সাইন ইন শেষ হল না। আবার চেষ্টা করো।',
   },
 };
 STR.hi = HI;
