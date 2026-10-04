@@ -1,0 +1,37 @@
+{
+ "east": {
+  "src": "img/tiles/east.jpg",
+  "title": "Durga Puja 2025 at AE Block Salt Lake Durga puja Committee 05.jpg",
+  "author": "Tarunsamanta",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_AE_Block_Salt_Lake_Durga_puja_Committee_05.jpg"
+ },
+ "howrah": {
+  "src": "img/tiles/howrah.jpg",
+  "title": "Durga puja in Howrah.jpg",
+  "author": "रोहित साव27",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_puja_in_Howrah.jpg"
+ },
+ "parking": {
+  "src": "img/tiles/parking.jpg",
+  "title": "Taxi of Kolkata.jpg",
+  "author": "Bernard Gagnon",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taxi_of_Kolkata.jpg"
+ },
+ "pandals": {
+  "src": "img/tiles/pandals.jpg",
+  "title": "Durga puja Festivities 2023 Lights, Pandals, Shopping, food in south Kolkata 58.jpg",
+  "author": "Goutam1962",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Durga_puja_Festivities_2023_Lights,_Pandals,_Shopping,_food_in_south_Kolkata_58.jpg"
+ },
+ "food": {
+  "src": "img/tiles/food.jpg",
+  "title": "Paratha roll.jpg",
+  "author": "Gannu03",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Paratha_roll.jpg"
+ }
+}
