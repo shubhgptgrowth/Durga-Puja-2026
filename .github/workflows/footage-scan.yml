@@ -1,0 +1,38 @@
+name: footage-scan
+
+# Builds the catalogue of real, reusable footage for the reels factory (marketing/footage/catalog.py): Wikimedia
+# Commons always, Pexels and Pixabay when the free PEXELS_API_KEY / PIXABAY_API_KEY secrets are set. Contact sheets
+# with each clip's id are published at /kit/reels/catalog/ so a day's plan can be written by looking at them.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Scan
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          pip install -q pillow
+          mkdir -p fonts && curl -fsSLo fonts/Poppins-SemiBold.ttf https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-SemiBold.ttf
+          python -m marketing.footage.catalog catalog | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: footage-catalog
+          path: catalog/
+          retention-days: 30
+      - name: Publish (deploy pulls the catalogue)
+        run: gh workflow run deploy.yml --ref "${{ github.event.repository.default_branch }}"

@@ -1,16 +1,23 @@
 name: marketing-batch
 
-# Posts a hand-picked batch of reels and carousels to Instagram, spaced out (marketing/publish_batch.py).
-# Uses the same IG_USER_ID / IG_ACCESS_TOKEN secrets as marketing-publish. Scheduled runs post
-# marketing/batches/<today IST>.json if it exists, only when the repository variables IG_AUTOPUBLISH and
-# IG_BATCH_AUTOPUBLISH are both "true" (the second one switches the 11–21 Oct reel schedule on separately).
+# Posts reels, video stories and carousels to Instagram (marketing/publish_batch.py), with the same IG_USER_ID /
+# IG_ACCESS_TOKEN secrets as marketing-publish. Two ways to run it:
+#   date + window: the day's set from the reels factory (/kit/reels/<date>/manifest.json), each item at its IST slot.
+#     A Claude Routine dispatches the am window (slots before 17:00) and the pm window daily; GitHub's own cron was
+#     hours late. It posts only when the date is in marketing/daily/approved.txt.
+#   manifest: a hand-picked batch file from marketing/batches/, spaced by gap.
+# Nothing posts unless the repository variable IG_AUTOPUBLISH is "true" and dry_run is false.
 on:
-  schedule:
-    - cron: "15 13 11-21 10 *"     # 18:45 IST, 11–21 Oct: that day's reel
   workflow_dispatch:
     inputs:
+      date:
+        description: "Daily set to post (YYYY-MM-DD, IST). Empty = use manifest"
+        default: ""
+      window:
+        description: "With date: am (slots before 17:00), pm, or all"
+        default: "all"
       manifest:
-        description: "Batch file"
+        description: "Batch file (when date is empty)"
         default: "marketing/batches/2026-10-04.json"
       start:
         description: "Start at item (1-based; use the number a failed run printed)"
@@ -19,7 +26,7 @@ on:
         description: "How many items (0 = all remaining)"
         default: "0"
       gap:
-        description: "Seconds between posts"
+        description: "Seconds between posts (daily sets: minimum gap after a late post)"
         default: "300"
       dry_run:
         description: "Only check the files and print what would be posted"
@@ -36,25 +43,22 @@ concurrency:
 jobs:
   batch:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Post batch to Instagram
+      - name: Post to Instagram
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: |
           set -o pipefail
-          if [ "${{ github.event_name }}" = schedule ]; then
-            m=marketing/batches/$(TZ=Asia/Kolkata date +%F).json
-            [ -f "$m" ] || { echo "No batch for today ($m)."; exit 0; }
-            args=("$m" --gap 300)
-            [ "${{ vars.IG_AUTOPUBLISH }}" = true ] && [ "${{ vars.IG_BATCH_AUTOPUBLISH }}" = true ] || args+=(--dry-run)
+          if [ -n "${{ inputs.date }}" ]; then
+            args=(--date "${{ inputs.date }}" --window "${{ inputs.window }}" --start "${{ inputs.start }}" --count "${{ inputs.count }}" --gap "${{ inputs.gap }}")
           else
             args=("${{ inputs.manifest }}" --start "${{ inputs.start }}" --count "${{ inputs.count }}" --gap "${{ inputs.gap }}")
-            [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
           fi
+          if [ "${{ vars.IG_AUTOPUBLISH }}" != true ] || [ "${{ inputs.dry_run }}" != false ]; then args+=(--dry-run); fi
           python -m marketing.publish_batch "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
