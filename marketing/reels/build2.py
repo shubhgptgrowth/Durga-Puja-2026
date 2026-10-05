@@ -283,7 +283,7 @@ def build(reel, footage, src_dir, out_dir, tmp):
     else:
         last = "[nat]"
     mix += f";{last}loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
-    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc + [mix]), "-map", lv, "-map", "[aout]", "-t", f"{total:.2f}",
+    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc + [mix]), "-map", lv if fc else "0:v", "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
     c = reel.get("caption")
