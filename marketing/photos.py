@@ -172,7 +172,8 @@ class Library:
             attach(s, "photo", hero, "credit")
             for it in items:
                 if isinstance(it, dict) and it.get("name"):
-                    ph = next((p for p in self.for_name(it["name"]) if key(p) != key(hero or {})), None)
+                    own = self.for_name(it["name"])
+                    ph = next((p for p in own if key(p) != key(hero or {})), own[0] if own else None)
                     if ph:
                         attach(it, "thumb", ph, "thumb_credit")
         return slides

@@ -44,7 +44,7 @@ body{width:${W}px;height:${H}px;position:relative;overflow:hidden;background:#1a
 .sh{position:absolute;inset:0}
 /* light shadow for hero slides, heavier under dense text, never a flat colour block */
 .hero .sh{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 40%,rgba(10,4,2,.72) 62%,rgba(10,4,2,.93) 100%)}
-.dense .sh{background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.08) 14%,rgba(10,4,2,.55) 30%,rgba(10,4,2,.86) 44%,rgba(10,4,2,.93) 100%)}
+.dense .sh{background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 12%,rgba(10,4,2,.18) 20%,rgba(10,4,2,.74) 34%,rgba(10,4,2,.86) 48%,rgba(10,4,2,.9) 100%)}
 .nophoto .sh{background:radial-gradient(120% 80% at 70% 0%,#5b1414 0%,#1a0d0a 60%)}
 .top{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .mark{font-family:Galada,"Hind Siliguri",cursive;font-size:40px;line-height:1;color:#fff}
@@ -136,6 +136,19 @@ li small{display:block;font-size:3rem;opacity:.78;line-height:1.3;margin-top:.5r
 .s-cta .btn{display:inline-block;background:#fff;color:#1a0d0a;font-weight:800;border-radius:999px;padding:2.2rem 5rem;font-size:4.2rem;margin-top:4rem;text-shadow:none}
 .s-cta .hdl{font-size:4.4rem;font-weight:800;margin-top:3rem;color:#FFC857}
 .s-cta .bnl{font-size:4.2rem;margin-top:2rem}
+/* Bengali titles set in Galada */
+.title.bnt,.big.bnt{font-family:Galada,"Hind Siliguri",cursive;letter-spacing:0;line-height:1.15}
+.s-cover .title.bnt{font-size:13rem}
+.two{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#000}
+.two div{position:relative;overflow:hidden}
+.two img{width:100%;height:100%;object-fit:cover}
+.two span{position:absolute;top:150px;left:0;right:0;text-align:center;font-family:Galada,"Hind Siliguri",cursive;font-size:96px;text-shadow:0 3px 18px rgba(0,0,0,.8);z-index:2}
+.s-split .title{font-size:10rem;text-align:center}.s-split .sub{text-align:center;max-width:none}
+.s-cols .vs{margin-top:3.4rem}
+.bnh{font-family:Galada,"Hind Siliguri",cursive!important;font-size:8rem!important;font-weight:400!important}
+ul.cl{list-style:none;margin-top:1.6rem}
+ul.cl li{display:block;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.25);font-size:4rem;line-height:1.25}
+.bingo .bm{display:block;font-size:3.2rem;font-weight:700}.bingo .en{display:block;font-size:2.2rem;opacity:.8;margin-top:.5rem;font-weight:600}
 /* post-only types (Wave 1 posts and stories, marketing/posts.py) */
 .s-word .title,.s-quote .title{font-size:13rem}
 .s-word .bnl,.s-quote .bnl{font-family:Galada,"Hind Siliguri",cursive;font-size:16rem;line-height:1.1;margin:0}
@@ -147,11 +160,12 @@ li small{display:block;font-size:3rem;opacity:.78;line-height:1.3;margin-top:.5r
 .vs div p{font-size:3.6rem;line-height:1.36;margin-top:1.2rem;opacity:.92}
 .bingo{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
 .bingo div{aspect-ratio:1/1;border:1.5px solid rgba(255,255,255,.55);border-radius:1.4rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;font-size:3rem;font-weight:700;line-height:1.2;background:rgba(0,0,0,.28)}
-.bingo div .bn{display:block;font-size:2.6rem;opacity:.85;margin-top:.4rem}
 `;
 
 const bnl = (s, cls = 'bnl') => (s ? `<div class="bn ${cls}">${esc(s)}</div>` : '');
-const head = (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}${s.title ? `<div class="title">${t(s.title)}</div>` : ''}`;
+const BN = /[\u0980-\u09FF]/;
+const ttl = (x, cls = 'title') => `<div class="${cls}${BN.test(x) ? ' bnt' : ''}">${t(x)}</div>`;
+const head = (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}${s.title ? ttl(s.title) : ''}`;
 
 function lead(it, i, s) {
   if (it.thumb) return `<img class="th" src="${dataUri(it.thumb)}">`;
@@ -161,7 +175,7 @@ function lead(it, i, s) {
 }
 
 const T = {
-  cover: (s) => `<div class="kicker">${t(s.kicker)}</div><div class="title">${t(s.title)}</div>
+  cover: (s) => `<div class="kicker">${t(s.kicker)}</div>${ttl(s.title)}
     ${s.accent ? `<div class="accent">${t(s.accent)}</div>` : ''}${bnl(s.bn)}${s.sub ? `<div class="sub">${t(s.sub)}</div>` : ''}`,
   list: (s) => `${head(s)}<ol>${s.items.map((it, i) => `<li class="${it.ride ? 'ride' : ''}">${it.ride ? `<div class="num t">${t(it.badge)}</div>` : lead(it, i, s)}<div class="tx"><b>${t(it.name)}</b>
       ${it.bn ? `<span class="bn lbn">${esc(it.bn)}</span>` : ''}${it.meta ? `<small>${t(it.meta)}</small>` : ''}${it.meta2 ? `<small>${t(it.meta2)}</small>` : ''}</div>
@@ -179,28 +193,30 @@ const T = {
   stations: (s) => `${head(s)}<div class="stations">${s.items.map((it) => `<div class="st"><div class="hd"><span class="chip" style="color:${LINE[it.line] || '#CBD5E1'}">${t(it.chip)}</span><b>${t(it.name)}</b></div>
       <ul>${it.rows.map((r) => `<li>${t(r)}</li>`).join('')}</ul></div>`).join('')}</div>`,
   words: (s) => `${head(s)}<div class="words">${s.items.map((it) => `<div class="word"><div class="w">${t(it.name)}<span class="bn">${esc(it.bn)}</span></div><p>${t(it.meta)}</p></div>`).join('')}</div>`,
-  cta: (s) => `<div class="kicker">${t(s.kicker || 'Pujo Parikrama 2026')}</div><div class="big">${t(s.big || 'Save it. Send it.')}</div>
+  cta: (s) => `<div class="kicker">${t(s.kicker || 'Pujo Parikrama 2026')}</div>${ttl(s.big || 'Save it. Send it.', 'big')}
     <div class="mid">${t(s.mid || 'Plan your pujo free: quiet hours, routes, food and metro for every pandal.')}</div>
     <div class="btn">${t(s.btn || 'Link in bio →')}</div><div class="hdl">${esc(HANDLE)}</div>${bnl(s.bn)}`,
   // Wave 1 post types
   word: (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}${bnl(s.bn)}<div class="title">${t(s.title)}</div>${s.body ? `<div class="body">${t(s.body)}</div>` : ''}`,
   quote: (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}${bnl(s.bn)}<div class="big-q">${t(s.title)}</div>${s.body ? `<div class="body">${t(s.body)}</div>` : ''}`,
-  prompt: (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}<div class="title">${t(s.title)}</div>${bnl(s.bn)}${s.body ? `<div class="body">${t(s.body)}</div>` : ''}${s.foot ? `<div class="tfoot">${t(s.foot)}</div>` : ''}`,
+  prompt: (s) => `${s.kicker ? `<div class="kicker">${t(s.kicker)}</div>` : ''}${ttl(s.title)}${bnl(s.bn)}${s.body ? `<div class="body">${t(s.body)}</div>` : ''}${s.foot ? `<div class="tfoot">${t(s.foot)}</div>` : ''}`,
   versus: (s) => `${head(s)}${bnl(s.bn)}<div class="vs">${s.sides.map((x) => `<div><b>${t(x.title)}</b>${x.bn ? `<div class="bn lbn" style="font-size:3.6rem">${esc(x.bn)}</div>` : ''}<p>${t(x.body)}</p></div>`).join('')}</div>${s.foot ? `<div class="tfoot">${t(s.foot)}</div>` : ''}`,
-  bingo: (s) => `${head(s)}${bnl(s.bn)}<div class="bingo">${s.cells.map((c) => `<div><span>${t(c.en)}${c.bn ? `<span class="bn">${esc(c.bn)}</span>` : ''}</span></div>`).join('')}</div>${s.foot ? `<div class="tfoot">${t(s.foot)}</div>` : ''}`,
+  bingo: (s) => `${head(s)}${bnl(s.bn)}<div class="bingo">${s.cells.map((c) => `<div><span><span class="bn bm">${esc(c.bn)}</span><span class="en">${t(c.en)}</span></span></div>`).join('')}</div>${s.foot ? `<div class="tfoot">${t(s.foot)}</div>` : ''}`,
 };
-const HERO = new Set(['cover', 'tip', 'cta', 'word', 'quote', 'prompt']);
+T.split = (s) => `${ttl(s.title)}${s.sub ? `<div class="sub">${t(s.sub)}</div>` : ''}`;
+T.cols = (s) => `${ttl(s.title)}${s.sub ? `<div class="sub" style="margin-top:1rem">${t(s.sub)}</div>` : ''}<div class="vs">${s.cols.map((c) => `<div><b class="bn bnh">${esc(c.head)}</b><ul class="cl">${c.items.map((x) => `<li class="bn">${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>`;
+const HERO = new Set(['cover', 'tip', 'cta', 'word', 'quote', 'prompt', 'split']);
 
 function slideHtml(s, W, H) {
   const last = s.page === s.pages;
   const dense = !HERO.has(s.t);
-  const cls = [`s-${s.t}`, dense ? 'dense' : 'hero', s.photo ? '' : 'nophoto'].join(' ');
+  const cls = [`s-${s.t}`, dense ? 'dense' : 'hero', s.photo || s.photos ? '' : 'nophoto'].join(' ');
   const src = dataUri(s.photo);
   const story = H > 1500;
   const mt = s.t === 'list' ? (s.items.length > 4 ? 250 : 330) : s.t === 'stats' || s.t === 'bars' ? 420 : 300;
   return `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>${CSS(W, H)}</style></head>
   <body class="${cls}" style="--py:${Math.round((s.py ?? 0.4) * 100)}%;--mt:${story ? mt + 240 : mt}px">
-  ${src ? `<img class="ph" src="${src}">` : ''}<div class="sh"></div>
+  ${s.photos ? `<div class="two">${s.photos.map((p, k) => `<div><img src="${dataUri(p)}"><span class="bn">${esc(s.labels[k])}</span></div>`).join('')}</div>` : src ? `<img class="ph" src="${src}">` : ''}<div class="sh"></div>
   <div class="top"><div class="mark">পুজো পরিক্রমা<small>${esc(HANDLE)}</small></div>${s.pages > 1 ? `<div class="count">${s.page} / ${s.pages}</div>` : ''}</div>
   ${s.t === 'cover' && s.tag ? `<div class="tag">${t(s.tag)}</div>` : ''}
   <div class="main">${T[s.t](s)}</div>

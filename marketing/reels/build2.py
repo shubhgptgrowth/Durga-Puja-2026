@@ -127,6 +127,56 @@ def end_png_bn(path, bn, en, credits):
     im.save(path)
 
 
+def outlined(d, xy, text, f, fill=(255, 255, 255, 255), stroke=6):
+    d.text(xy, text, font=f, fill=fill, stroke_width=stroke, stroke_fill=(0, 0, 0, 235))
+
+
+def subtitle_png(path, bn, en, hook=None, end=None):
+    """Voiceover look: what is being said as a subtitle in the lower third (Bengali, English under it), a big hook on
+    the first shot, a small পুজো পরিক্রমা mark. No bars or boxes: outlined type straight on the footage."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sh = Image.new("RGBA", (W, H), (0, 0, 0, 0)); sd = ImageDraw.Draw(sh)
+    d = ImageDraw.Draw(im)
+    mark = bnfont("Galada-Regular.ttf", 44)
+    outlined(d, (64, 110), "পুজো পরিক্রমা", mark, stroke=3)
+    if end:  # closing question over the last shot, with the call to action
+        for y in range(H // 3, H):  # soft shadow so the closing lines read on any footage
+            sd.line((0, y, W, y), fill=(0, 0, 0, int(170 * ((y - H / 3) / (H * 2 / 3)) ** 0.8)))
+        im = Image.alpha_composite(sh, im); d = ImageDraw.Draw(im)
+        f = bnfont("Galada-Regular.ttf", 104)
+        lines = wrap(d, end[0], f, W - 150)
+        y = 1080 - len(lines) * 62
+        for ln in lines:
+            outlined(d, ((W - d.textlength(ln, font=f)) / 2, y), ln, f, stroke=5); y += 130
+        fe = font("SemiBold", 42)
+        for ln in wrap(d, end[1], fe, W - 180):
+            outlined(d, ((W - d.textlength(ln, font=fe)) / 2, y + 10), ln, fe, fill=GOLD + (255,), stroke=4); y += 58
+        fb = font("ExtraBold", 46); tw = d.textlength("Plan free · link in bio", font=fb)
+        d.rounded_rectangle(((W - tw) / 2 - 50, y + 60, (W + tw) / 2 + 50, y + 162), radius=51, fill=(255, 255, 255, 245))
+        d.text(((W - tw) / 2, y + 82), "Plan free · link in bio", font=fb, fill=(26, 13, 10))
+        fh = font("SemiBold", 36)
+        outlined(d, ((W - d.textlength(HANDLE, font=fh)) / 2, y + 200), HANDLE, fh, stroke=3)
+        im.save(path); return
+    if hook:
+        f = bnfont("Galada-Regular.ttf", 118)
+        y = 300
+        for ln in wrap(d, hook[0], f, W - 140):
+            outlined(d, ((W - d.textlength(ln, font=f)) / 2, y), ln, f, stroke=7); y += 148
+        fe = font("ExtraBold", 50)
+        for ln in wrap(d, hook[1], fe, W - 160):
+            outlined(d, ((W - d.textlength(ln, font=fe)) / 2, y + 8), ln, fe, fill=GOLD + (255,), stroke=5); y += 64
+    y = 1360
+    if bn:
+        f = bnfont("HindSiliguri-Bold.ttf", 66)
+        for ln in wrap(d, bn, f, W - 160)[:3]:
+            outlined(d, ((W - d.textlength(ln, font=f)) / 2, y), ln, f, stroke=6); y += 86
+    if en:
+        fe = font("SemiBold", 36)
+        for ln in wrap(d, en, fe, W - 180)[:2]:
+            outlined(d, ((W - d.textlength(ln, font=fe)) / 2, y + 6), ln, fe, fill=(255, 226, 150, 255), stroke=4); y += 48
+    im.save(path)
+
+
 def caption_png(path, text, hook=False):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     grad = Image.new("L", (1, 760))
@@ -197,7 +247,14 @@ def segment(src_dir, footage, i, seg, reel, tmp):
     png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
     hook = i == 0 and bool(reel.get("hook"))
     bn = reel.get("bn")
-    if bn:  # Bengali-first look (spec3 reels with a "bn" block)
+    if reel.get("vo_files") is not None:  # voiceover reel: subtitles of what is said
+        vo = reel["vo"]
+        if seg is reel.get("_end_seg"):
+            subtitle_png(png, None, None, end=(bn["end"] if bn else reel["end"][0], reel["end"][0] if bn else reel["end"][1]))
+        else:
+            subtitle_png(png, vo["lines"][i], vo.get("en", [""] * len(vo["lines"]))[i] or text,
+                         hook=(bn["hook"], reel["hook"]) if hook and bn else None)
+    elif bn:  # Bengali-first look (spec3 reels with a "bn" block)
         caption_png_bn(png, bn["hook"] if hook else bn["segs"][i], reel["hook"] if hook else text, hook=hook)
     else:
         caption_png(png, reel["hook"] if hook else text, hook=hook)
@@ -210,7 +267,7 @@ def segment(src_dir, footage, i, seg, reel, tmp):
         path = jpg
     else:
         crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
-                f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2'")
+                f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2',tpad=stop_mode=clone:stop_duration=4")
         args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
     v = f"[0:v]{crop},fps={FPS},setsar=1,{GRADE}[v];[v][1:v]overlay=0:0,format=yuv420p[vo]"
     if has_audio(path):
@@ -219,7 +276,7 @@ def segment(src_dir, footage, i, seg, reel, tmp):
         args += ["-f", "lavfi", "-t", str(secs), "-i", "anullsrc=r=48000:cl=stereo"]
         a = "[2:a]anull[ao]"
     run(*args, "-filter_complex", f"{v};{a}", "-map", "[vo]", "-map", "[ao]", "-t", str(secs),
-        "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", "-b:a", "192k", out)
+        "-c:v", "libx264", "-preset", "medium", "-crf", "14", "-c:a", "aac", "-b:a", "192k", out)
     return out, secs
 
 
@@ -239,7 +296,7 @@ def credits_for(reel, footage):
         by_artist.setdefault((f["artist"] or "Unknown", lic), []).append(sid)
     for (artist, lic), _ in by_artist.items():
         parts.append(f"{artist} ({lic})")
-    m = reel.get("music")
+    m = reel.get("music") if not reel.get("vo") else None
     if m:
         f = footage[m[0]]
         parts.append(f"Music: {f['label'].replace(' (audio)', '')}" + (f", {f['artist']}" if f["artist"] else "") + f" ({f['license']})")
@@ -250,7 +307,74 @@ def credits_for(reel, footage):
     return txt
 
 
+def duration(path):
+    return float(run("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path).strip())
+
+
+VO_LEAD, VO_TAIL, END_S = 0.25, 0.45, 3.4
+
+
+def fit_start(footage, sid, start, secs):
+    """Moves a cut earlier when a longer voiceover line would run it past the end of its clip."""
+    dur = (footage.get(sid) or {}).get("dur") or 0
+    return round(max(0.0, min(start, dur - secs - 0.1)), 2) if dur else start
+
+
+def build_vo(reel, footage, src_dir, out_dir, tmp):
+    """Voiceover reel: one spoken Bengali line per shot (reel["vo_files"], aligned with the segments), hard cuts timed
+    to the lines, the shots' own sound low underneath, no music. The last shot runs on under the closing question."""
+    segs, offs, t = [], [], 0.0
+    for i, seg in enumerate(reel["segments"]):
+        f = reel["vo_files"][i] if i < len(reel["vo_files"]) else None
+        d = duration(f) if f else 0
+        secs = round(max(seg[2], VO_LEAD + d + VO_TAIL), 2)
+        segs.append([seg[0], fit_start(footage, seg[0], seg[1], secs), secs, *seg[3:]])
+        offs.append((f, t + VO_LEAD) if f else None)
+        t += secs
+    if reel.get("end"):
+        last = segs[-1]
+        ec = reel.get("end_clip") or [last[0], last[1] + last[2]]  # by default the last shot simply runs on
+        endseg = [ec[0], fit_start(footage, ec[0], ec[1], END_S), END_S, "", *(ec[2:] or last[4:])]
+        segs.append(endseg)
+        reel["_end_seg"] = endseg
+    r2 = dict(reel, segments=segs)
+    parts = [segment(src_dir, footage, i, sg, r2, tmp) for i, sg in enumerate(segs)]
+    total = sum(d for _, d in parts)
+    ins = []
+    for p_, _ in parts:
+        ins += ["-i", p_]
+    n = len(parts)
+    fc = ["".join(f"[{k}:v][{k}:a]" for k in range(n)) + f"concat=n={n}:v=1:a=1[v][nat0]",
+          "[nat0]volume=0.22[nat]"]
+    vo = [x for x in offs if x]
+    for j, (f, at) in enumerate(vo):
+        ins += ["-i", f]
+        ms = int(at * 1000)
+        fc.append(f"[{n + j}:a]aresample=48000,aformat=channel_layouts=stereo,volume=1.0,adelay={ms}|{ms}[vo{j}]")
+    mix = "".join(f"[vo{j}]" for j in range(len(vo)))
+    fc.append(f"[nat]{mix}amix=inputs={len(vo) + 1}:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[aout]")
+    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[aout]", "-t", f"{total:.2f}",
+        "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high", "-pix_fmt", "yuv420p",
+        "-maxrate", "14M", "-bufsize", "28M", "-r", str(FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+        "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
+    write_caption(reel, footage, out_dir)
+    return total
+
+
+def write_caption(reel, footage, out_dir):
+    c = reel.get("caption")
+    if c:  # Instagram caption: Bengali, English, hashtags, then the attribution the CC licences require
+        credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
+        if reel.get("vo"):
+            credit = credit.replace("Some shots AI-generated.", "") + ". Voiceover: AI voice (ElevenLabs)"
+        sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
+        with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
+            f.write(f"{c['bn']}\n\n{c['en']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))  # Bengali first
+
+
 def build(reel, footage, src_dir, out_dir, tmp):
+    if reel.get("vo_files") is not None:
+        return build_vo(reel, footage, src_dir, out_dir, tmp)
     parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
     if reel.get("end"):  # video stories have no end card
         endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
@@ -286,12 +410,7 @@ def build(reel, footage, src_dir, out_dir, tmp):
     run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc + [mix]), "-map", lv if fc else "0:v", "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
-    c = reel.get("caption")
-    if c:  # Instagram caption: English, Bengali, hashtags, then the attribution the CC licences require
-        credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
-        sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
-        with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
-            f.write(f"{c['bn']}\n\n{c['en']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))  # Bengali first
+    write_caption(reel, footage, out_dir)
     return total
 
 
