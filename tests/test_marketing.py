@@ -138,3 +138,26 @@ class BatchTest(unittest.TestCase):
                 self.assertLessEqual(len(p["caption"]), 2200, key)
                 self.assertLessEqual(p["caption"].count("#"), 30, key)
                 self.assertNotIn("github.io", p["caption"], key)
+
+
+class AlreadyPostedTest(unittest.TestCase):
+    """A late or repeated daily run must not post the same kit twice."""
+
+    def run_with(self, media):
+        from unittest import mock
+        from marketing import publish_ig
+        cards = [{"format": "post", "caption_en": "Ma ashchhen! Plan your pujo", "caption_bn": "মা আসছেন"},
+                 {"format": "story"}]
+        with mock.patch.object(publish_ig, "graph", return_value={"data": media}):
+            return publish_ig.already_posted(cards, "1", "IGtoken")
+
+    def ts(self, hours_ago):
+        return (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=hours_ago)).strftime("%Y-%m-%dT%H:%M:%S+0000")
+
+    def test_same_caption_today_is_a_repeat(self):
+        self.assertTrue(self.run_with([{"caption": "Ma ashchhen! Plan your pujo\n\nমা আসছেন", "timestamp": self.ts(2)}]))
+
+    def test_other_or_old_posts_are_not(self):
+        self.assertFalse(self.run_with([{"caption": "Something else", "timestamp": self.ts(1)},
+                                        {"caption": "Ma ashchhen! Plan your pujo\n\nমা আসছেন", "timestamp": self.ts(60)},
+                                        {"timestamp": self.ts(1)}]))
