@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Pujo Parikrama content review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column of groups; each group a responsive grid of review cards, a sticky filter bar on top and a
+   sticky feedback bar at the bottom. Laal-paar palette from the brand: sari red, gold, cream paper, maroon ink. */
+:root {
+  --paper: #fbf3e4; --card: #fffaf1; --ink: #2b1410; --muted: #6e5248; --line: #ead8bd;
+  --red: #b21826; --gold: #c8901f; --maroon: #4a0a14; --ok: #1f7a3a; --warn: #a15c00; --bad: #b21826;
+  --chip: #f3e3c6;
+  --bn: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  --mark: "Galada", "Hind Siliguri", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #170a0c; --card: #22100f; --ink: #f6e9d8; --muted: #c4a99a; --line: #3f2420;
+  --red: #ef4a55; --gold: #e2b048; --maroon: #f6e9d8; --ok: #5ccf83; --warn: #f0a640; --bad: #ff6b72; --chip: #33191a;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #170a0c; --card: #22100f; --ink: #f6e9d8; --muted: #c4a99a; --line: #3f2420;
+  --red: #ef4a55; --gold: #e2b048; --maroon: #f6e9d8; --ok: #5ccf83; --warn: #f0a640; --bad: #ff6b72; --chip: #33191a;
+  color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 var(--bn); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 0 120px; }
+header.top { border-bottom: 6px solid var(--red); box-shadow: 0 3px 0 var(--gold); background: var(--card); }
+header.top .wrap { padding-block: 18px 14px; display: grid; gap: 4px }
+.mark { font: 34px/1.1 var(--mark); color: var(--red); margin: 0 }
+h1 { font-size: 22px; margin: 0; text-wrap: balance }
+.sub { color: var(--muted); margin: 0; max-width: 70ch }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar .wrap { padding-block: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+.chip { border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 999px; padding: 6px 12px;
+  font: 600 13px var(--bn); cursor: pointer }
+.chip[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff }
+.chip:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px }
+.counts { margin-left: auto; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums }
+section.group { margin-top: 28px }
+section.group > h2 { font-size: 19px; margin: 0 0 2px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap }
+section.group > h2 small { font-weight: 500; color: var(--muted); font-size: 13px }
+section.group > p { margin: 0 0 12px; color: var(--muted); max-width: 75ch }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0 }
+.card[data-status="posted"] { opacity: .82 }
+.media { background: #000; display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; aspect-ratio: 9 / 16; max-width: 100% }
+.media.post { aspect-ratio: 4 / 5 }
+.media > * { flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; scroll-snap-align: start; background: #000 }
+.body { padding: 12px; display: grid; gap: 8px; min-width: 0 }
+.title { font-weight: 700; font-size: 15px; margin: 0; overflow-wrap: anywhere }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; color: var(--muted) }
+.pill { border-radius: 999px; padding: 1px 8px; font-weight: 600; font-size: 12px; border: 1px solid currentColor }
+.pill.posted { color: var(--ok) } .pill.pending { color: var(--warn) } .pill.auto { color: var(--red) }
+.idtag { font-family: ui-monospace, Menlo, monospace; font-size: 11px }
+.slides { font-size: 12px; color: var(--muted) }
+details { border-top: 1px dashed var(--line); padding-top: 6px }
+summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--red) }
+pre.cap { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--bn); margin: 6px 0 0; max-height: 280px; overflow: auto }
+.verdict { display: flex; gap: 6px; flex-wrap: wrap }
+.verdict button { flex: 1 1 auto; border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 8px;
+  padding: 6px 8px; font: 600 13px var(--bn); cursor: pointer }
+.verdict button[aria-pressed="true"][data-v="keep"] { background: var(--ok); border-color: var(--ok); color: #fff }
+.verdict button[aria-pressed="true"][data-v="change"] { background: var(--warn); border-color: var(--warn); color: #fff }
+.verdict button[aria-pressed="true"][data-v="drop"] { background: var(--bad); border-color: var(--bad); color: #fff }
+textarea { width: 100%; min-height: 58px; resize: vertical; border: 1px solid var(--line); border-radius: 8px; background: var(--paper);
+  color: var(--ink); font: 14px/1.4 var(--bn); padding: 8px }
+.foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--maroon); color: var(--paper);
+  padding-bottom: env(safe-area-inset-bottom, 0px) }
+:root[data-theme="dark"] .foot { background: #3a0a12 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot { background: #3a0a12 } }
+.foot .wrap { padding-block: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap }
+.foot b { font-variant-numeric: tabular-nums }
+.foot button { border: 0; border-radius: 8px; padding: 9px 14px; font: 700 14px var(--bn); cursor: pointer; background: var(--gold); color: #2b1410 }
+.foot .ghost { background: transparent; color: inherit; border: 1px solid currentColor }
+#copied { font-size: 13px }
+#fallback { width: 100%; min-height: 120px; display: none }
+.empty { color: var(--muted); font-style: italic }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <p class="mark">পুজো পরিক্রমা</p>
+  <h1>Everything built for Instagram and WhatsApp, in one place</h1>
+  <p class="sub">Nothing here posts until you approve it. For each piece, tap Keep, Change or Drop and add a note, then use
+    “Copy feedback” at the bottom and paste it into the chat. Your notes stay in this browser until you copy them.</p>
+</div></header>
+<div class="bar"><div class="wrap" role="toolbar" aria-label="Filter">
+  <button class="chip" data-f="pending" aria-pressed="true">Not posted yet</button>
+  <button class="chip" data-f="posted" aria-pressed="false">Already posted</button>
+  <button class="chip" data-f="all" aria-pressed="false">Everything</button>
+  <span class="counts" id="counts"></span>
+</div></div>
+<main class="wrap" id="main"></main>
+<div class="foot"><div class="wrap">
+  <span><b id="nfb">0</b> notes</span>
+  <button id="copy">Copy feedback</button>
+  <button class="ghost" id="clear">Clear my notes</button>
+  <span id="copied" role="status"></span>
+  <textarea id="fallback" aria-label="Feedback text to copy" readonly></textarea>
+</div></div>
+<script>
+const DATA = __DATA__;
+const GROUPS = [
+  ["daily", "Daily real-footage sets", "The new pipeline: 3 reels and 3 stories a day, each at its time slot. 5 Oct went out tonight; 6 Oct is waiting for you."],
+  ["b2", "Bengali reels for 11–21 Oct", "One per day, Bengali-first text and laal-paar end card."],
+  ["set1", "Reels from 4 Oct (first batch)", "20 of the first-batch pieces were posted on 4 Oct; the rest are unused."],
+  ["carousel", "Carousels", "Info carousels made from the app's data. Five planned ones were not posted after Instagram's block on 4 Oct; the trail carousels were never scheduled."],
+  ["wave1", "Bengali culture posts and stories (Wave 1)", "Kalighat-pat and real-photo posts built to get comments and shares. None posted yet."],
+  ["kit", "Daily kit cards (auto-post, now paused)", "The 08:02 daily feed card and 2 stories. 4 and 5 Oct went out automatically; the rest are paused until you approve them."],
+  ["wa", "WhatsApp how-to videos", "For forwarding on WhatsApp, not Instagram."]
+];
+const store = { get(k) { try { return JSON.parse(localStorage.getItem("pp-review:" + k)) } catch { return null } },
+                set(k, v) { try { localStorage.setItem("pp-review:" + k, JSON.stringify(v)) } catch {} } };
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const items = DATA.items.slice();
+let filter = "pending";
+
+async function getJSON(u) { try { const r = await fetch(u, { cache: "no-store" }); return r.ok ? r.json() : null } catch { return null } }
+async function getText(u) { try { const r = await fetch(u, { cache: "no-store" }); return r.ok ? r.text() : "" } catch { return "" } }
+
+async function loadDynamic() {
+  for (const d of DATA.daily_dates) {
+    const m = await getJSON(`../reels/${d}/manifest.json`);
+    if (!m) continue;
+    const posted = d <= "2026-10-05";
+    for (const it of m.items) items.push({ id: it.id, group: "daily", kind: it.type, title: `${d.slice(8)} Oct · ${it.at} · ${it.type}`,
+      media: [it.video_url], caption: it.caption || "", status: posted ? "posted" : "not posted",
+      when: posted ? `Posted ${d.slice(8)} Oct` : `Planned ${d.slice(8)} Oct ${it.at}` });
+  }
+  const car = await getJSON("../carousels/carousels.json");
+  for (const c of (car && car.carousels) || []) {
+    const posted = DATA.posted_carousels.includes(c.slug);
+    items.push({ id: c.slug, group: "carousel", kind: "carousel", title: c.title || c.slug.replace(/-/g, " "),
+      media: c.slides.map((_, i) => `../carousels/${c.id}/slide-${String(i + 1).padStart(2, "0")}.jpg`),
+      caption: `${c.caption_en || ""}\n\n${c.caption_bn || ""}\n\n${c.hashtags || ""}`.trim(),
+      status: posted ? "posted" : "not posted", when: posted ? "Posted 4 Oct" : "Not scheduled" });
+  }
+  const kit = await getJSON("../assets.json");
+  for (const c of (kit && kit.cards) || []) {
+    if (c.format !== "post" && c.format !== "story") continue;
+    const posted = DATA.kit_posted.includes(c.date);
+    items.push({ id: c.id, group: "kit", kind: c.format === "post" ? "image" : "story", title: `${c.date.slice(8)} Oct · ${c.format}`,
+      media: ["../" + c.file], caption: c.format === "post" ? `${c.caption_en}\n\n${c.caption_bn}` : "",
+      status: posted ? "posted" : "not posted", when: posted ? `Posted ${c.date.slice(8)} Oct` : `Planned ${c.date.slice(8)} Oct 08:02 (paused)` });
+  }
+  for (const it of items) if (it.caption_url && !it.caption) it.caption = (await getText(it.caption_url)).trim();
+}
+
+function mediaHTML(it) {
+  const video = /\.mp4/.test(it.media[0]);
+  const cls = video || it.kind === "story" ? "media" : "media post";  // reels/stories 9:16, feed posts 4:5
+  const inner = it.media.map((u) => /\.mp4/.test(u)
+    ? `<video controls playsinline preload="none" src="${esc(u)}#t=0.5"></video>`
+    : `<img loading="lazy" src="${esc(u)}" alt="">`).join("");
+  return `<div class="${cls}">${inner}</div>`;
+}
+
+function card(it) {
+  const v = store.get(it.id) || {};
+  const st = it.status === "posted" ? `<span class="pill posted">Posted</span>`
+    : it.group === "kit" ? `<span class="pill auto">Paused</span>` : `<span class="pill pending">Not posted</span>`;
+  const n = it.media.length > 1 ? `<span class="slides">${it.media.length} slides, swipe →</span>` : "";
+  return `<article class="card" data-id="${esc(it.id)}" data-status="${it.status === "posted" ? "posted" : "pending"}">
+    ${mediaHTML(it)}
+    <div class="body">
+      <p class="title">${esc(it.title)}</p>
+      <div class="meta">${st}<span>${esc(it.when)}</span><span class="idtag">${esc(it.id)}</span>${n}</div>
+      ${it.caption ? `<details><summary>Caption</summary><pre class="cap">${esc(it.caption)}</pre></details>` : ""}
+      <div class="verdict" role="group" aria-label="Verdict">
+        ${["keep", "change", "drop"].map((k) => `<button data-v="${k}" aria-pressed="${v.v === k}">${{ keep: "Keep", change: "Change", drop: "Drop" }[k]}</button>`).join("")}
+      </div>
+      <textarea id="n-${esc(it.id)}" placeholder="What should change? (optional)">${esc(v.note || "")}</textarea>
+    </div></article>`;
+}
+
+function render() {
+  const main = document.getElementById("main");
+  const show = (it) => filter === "all" || (filter === "posted") === (it.status === "posted");
+  main.innerHTML = GROUPS.map(([g, h, p]) => {
+    const list = items.filter((it) => it.group === g && show(it));
+    if (!list.length) return "";
+    return `<section class="group" id="${g}"><h2>${esc(h)} <small>${list.length}</small></h2><p>${esc(p)}</p>
+      <div class="grid">${list.map(card).join("")}</div></section>`;
+  }).join("") || `<p class="empty">Nothing in this view.</p>`;
+  const pend = items.filter((i) => i.status !== "posted").length;
+  document.getElementById("counts").textContent = `${pend} not posted · ${items.length - pend} posted`;
+  countNotes();
+}
+
+function countNotes() {
+  const n = items.filter((it) => { const v = store.get(it.id); return v && (v.v || v.note); }).length;
+  document.getElementById("nfb").textContent = n;
+}
+
+document.querySelector(".bar").addEventListener("click", (e) => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+  render();
+});
+document.getElementById("main").addEventListener("click", (e) => {
+  const b = e.target.closest(".verdict button"); if (!b) return;
+  const id = b.closest(".card").dataset.id, v = store.get(id) || {};
+  v.v = v.v === b.dataset.v ? null : b.dataset.v; store.set(id, v);
+  b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.v === v.v)));
+  countNotes();
+});
+document.getElementById("main").addEventListener("input", (e) => {
+  if (e.target.tagName !== "TEXTAREA") return;
+  const id = e.target.closest(".card").dataset.id, v = store.get(id) || {};
+  v.note = e.target.value; store.set(id, v); countNotes();
+});
+function feedbackText() {
+  const lines = [];
+  for (const [g, h] of GROUPS) {
+    const rows = items.filter((it) => it.group === g).map((it) => [it, store.get(it.id)]).filter(([, v]) => v && (v.v || v.note));
+    if (!rows.length) continue;
+    lines.push(`## ${h}`);
+    for (const [it, v] of rows) lines.push(`- ${it.id} (${it.title}): ${(v.v || "note").toUpperCase()}${v.note ? " — " + v.note.trim() : ""}`);
+    lines.push("");
+  }
+  return lines.join("\n").trim() || "No notes yet.";
+}
+document.getElementById("copy").addEventListener("click", async () => {
+  const t = feedbackText(), out = document.getElementById("copied"), fb = document.getElementById("fallback");
+  try { await navigator.clipboard.writeText(t); out.textContent = "Copied. Paste it into the chat."; fb.style.display = "none"; }
+  catch { fb.value = t; fb.style.display = "block"; fb.select(); out.textContent = "Select all and copy this text."; }
+});
+document.getElementById("clear").addEventListener("click", () => {
+  const out = document.getElementById("copied");
+  if (out.dataset.armed !== "1") { out.dataset.armed = "1"; out.textContent = "Tap again to clear every note."; return; }
+  out.dataset.armed = ""; items.forEach((it) => store.set(it.id, null)); out.textContent = "Notes cleared."; render();
+});
+render();
+loadDynamic().then(render);
+</script>
+</body>
+</html>

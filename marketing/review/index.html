@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Pujo Parikrama content review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column of groups; each group a responsive grid of review cards, a sticky filter bar on top and a
+   sticky feedback bar at the bottom. Laal-paar palette from the brand: sari red, gold, cream paper, maroon ink. */
+:root {
+  --paper: #fbf3e4; --card: #fffaf1; --ink: #2b1410; --muted: #6e5248; --line: #ead8bd;
+  --red: #b21826; --gold: #c8901f; --maroon: #4a0a14; --ok: #1f7a3a; --warn: #a15c00; --bad: #b21826;
+  --chip: #f3e3c6;
+  --bn: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  --mark: "Galada", "Hind Siliguri", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #170a0c; --card: #22100f; --ink: #f6e9d8; --muted: #c4a99a; --line: #3f2420;
+  --red: #ef4a55; --gold: #e2b048; --maroon: #f6e9d8; --ok: #5ccf83; --warn: #f0a640; --bad: #ff6b72; --chip: #33191a;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #170a0c; --card: #22100f; --ink: #f6e9d8; --muted: #c4a99a; --line: #3f2420;
+  --red: #ef4a55; --gold: #e2b048; --maroon: #f6e9d8; --ok: #5ccf83; --warn: #f0a640; --bad: #ff6b72; --chip: #33191a;
+  color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 var(--bn); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 0 120px; }
+header.top { border-bottom: 6px solid var(--red); box-shadow: 0 3px 0 var(--gold); background: var(--card); }
+header.top .wrap { padding-block: 18px 14px; display: grid; gap: 4px }
+.mark { font: 34px/1.1 var(--mark); color: var(--red); margin: 0 }
+h1 { font-size: 22px; margin: 0; text-wrap: balance }
+.sub { color: var(--muted); margin: 0; max-width: 70ch }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar .wrap { padding-block: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+.chip { border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 999px; padding: 6px 12px;
+  font: 600 13px var(--bn); cursor: pointer }
+.chip[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff }
+.chip:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px }
+.counts { margin-left: auto; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums }
+section.group { margin-top: 28px }
+section.group > h2 { font-size: 19px; margin: 0 0 2px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap }
+section.group > h2 small { font-weight: 500; color: var(--muted); font-size: 13px }
+section.group > p { margin: 0 0 12px; color: var(--muted); max-width: 75ch }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0 }
+.card[data-status="posted"] { opacity: .82 }
+.media { background: #000; display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; aspect-ratio: 9 / 16; max-width: 100% }
+.media.post { aspect-ratio: 4 / 5 }
+.media > * { flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; scroll-snap-align: start; background: #000 }
+.body { padding: 12px; display: grid; gap: 8px; min-width: 0 }
+.title { font-weight: 700; font-size: 15px; margin: 0; overflow-wrap: anywhere }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; color: var(--muted) }
+.pill { border-radius: 999px; padding: 1px 8px; font-weight: 600; font-size: 12px; border: 1px solid currentColor }
+.pill.posted { color: var(--ok) } .pill.pending { color: var(--warn) } .pill.auto { color: var(--red) }
+.idtag { font-family: ui-monospace, Menlo, monospace; font-size: 11px }
+.slides { font-size: 12px; color: var(--muted) }
+details { border-top: 1px dashed var(--line); padding-top: 6px }
+summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--red) }
+pre.cap { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--bn); margin: 6px 0 0; max-height: 280px; overflow: auto }
+.verdict { display: flex; gap: 6px; flex-wrap: wrap }
+.verdict button { flex: 1 1 auto; border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 8px;
+  padding: 6px 8px; font: 600 13px var(--bn); cursor: pointer }
+.verdict button[aria-pressed="true"][data-v="keep"] { background: var(--ok); border-color: var(--ok); color: #fff }
+.verdict button[aria-pressed="true"][data-v="change"] { background: var(--warn); border-color: var(--warn); color: #fff }
+.verdict button[aria-pressed="true"][data-v="drop"] { background: var(--bad); border-color: var(--bad); color: #fff }
+textarea { width: 100%; min-height: 58px; resize: vertical; border: 1px solid var(--line); border-radius: 8px; background: var(--paper);
+  color: var(--ink); font: 14px/1.4 var(--bn); padding: 8px }
+.foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--maroon); color: var(--paper);
+  padding-bottom: env(safe-area-inset-bottom, 0px) }
+:root[data-theme="dark"] .foot { background: #3a0a12 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot { background: #3a0a12 } }
+.foot .wrap { padding-block: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap }
+.foot b { font-variant-numeric: tabular-nums }
+.foot button { border: 0; border-radius: 8px; padding: 9px 14px; font: 700 14px var(--bn); cursor: pointer; background: var(--gold); color: #2b1410 }
+.foot .ghost { background: transparent; color: inherit; border: 1px solid currentColor }
+#copied { font-size: 13px }
+#fallback { width: 100%; min-height: 120px; display: none }
+.empty { color: var(--muted); font-style: italic }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <p class="mark">পুজো পরিক্রমা</p>
+  <h1>Everything built for Instagram and WhatsApp, in one place</h1>
+  <p class="sub">Nothing here posts until you approve it. For each piece, tap Keep, Change or Drop and add a note, then use
+    “Copy feedback” at the bottom and paste it into the chat. Your notes stay in this browser until you copy them.</p>
+</div></header>
+<div class="bar"><div class="wrap" role="toolbar" aria-label="Filter">
+  <button class="chip" data-f="pending" aria-pressed="true">Not posted yet</button>
+  <button class="chip" data-f="posted" aria-pressed="false">Already posted</button>
+  <button class="chip" data-f="all" aria-pressed="false">Everything</button>
+  <span class="counts" id="counts"></span>
+</div></div>
+<main class="wrap" id="main"></main>
+<div class="foot"><div class="wrap">
+  <span><b id="nfb">0</b> notes</span>
+  <button id="copy">Copy feedback</button>
+  <button class="ghost" id="clear">Clear my notes</button>
+  <span id="copied" role="status"></span>
+  <textarea id="fallback" aria-label="Feedback text to copy" readonly></textarea>
+</div></div>
+<script>
+const DATA = {"items": [{"id": "r01", "group": "set1", "kind": "reel", "title": "Pujo is coming", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/874733a8-8ab0-4568-9ba2-27172a07c250.mp4"], "caption": "Shiuli on the grass, kash in the wind, Kumartuli up all night, and that first dhak 🥁\nPujo is almost here. Plan yours (free, no sign-up). Link in bio.\n\nশিউলি, কাশফুল, কুমোরটুলির রাতজাগা আর প্রথম ঢাকের আওয়াজ 🥁\nপুজো এসে গেল। ফ্রি প্ল্যান করুন, বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Latentlife.archive (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 4.0); Biswarup Ganguly (CC BY 3.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Not scheduled"}, {"id": "r02", "group": "set1", "kind": "reel", "title": "POV: October in Kolkata", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/9c8979d7-52f3-4415-983d-544438aef104.mp4"], "caption": "POV: it's October and you're from Kolkata 🪔\nHowrah Bridge lit up, glowing paras, phuchka between pandals and dhunuchi till midnight. Tag the friend you're pandal hopping with 👇\n\nঅক্টোবর মানেই কলকাতা 🪔\nআলোয় মোড়া হাওড়া ব্রিজ আর পাড়া, প্যান্ডেলের ফাঁকে ফুচকা, মাঝরাত অবধি ধুনুচি। যার সঙ্গে ঠাকুর দেখতে যাবেন, তাকে ট্যাগ করুন 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Hridoy Kundu (CC BY-SA 4.0); Biswarup Ganguly (CC BY 3.0); Bhaiyaji Smile 123 (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r03", "group": "set1", "kind": "reel", "title": "Mahalaya", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/cd8f344b-2e7b-418a-957a-1d50093621c2.mp4"], "caption": "Subho Mahalaya 🙏\n4 am, the radio on, the whole house awake. Devi Paksha begins today. Plan all five days of pujo in one free app. Link in bio.\n\nশুভ মহালয়া 🙏\nভোর চারটে, রেডিও, গোটা বাড়ি জেগে। আজ থেকে দেবীপক্ষ। পাঁচ দিনের পুজোর প্ল্যান এক ফ্রি অ্যাপে। বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Latentlife.archive (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 3.0); Music: Raga Bhairava (Public domain). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Not scheduled"}, {"id": "r04", "group": "set1", "kind": "reel", "title": "Pandal-hopping fuel", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/5a757497-8a35-407c-bdcf-11337554ff10.mp4"], "caption": "Pandal hopping fuel, ranked by nobody 😋\nPhuchka, fish kabiraji, biryani (with aloo), rosogolla and mishti doi. What's your no.1? 👇\nFood near every pandal is in the app. Link in bio.\n\nঠাকুর দেখার জ্বালানি 😋\nফুচকা, ফিশ কবিরাজি, আলু দেওয়া বিরিয়ানি, রসগোল্লা আর মিষ্টি দই। আপনার এক নম্বর কোনটা? 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Biswarup Ganguly (CC BY 3.0); Music: Puja dhak, Tito Dutta (CC BY-SA 3.0). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r05", "group": "set1", "kind": "reel", "title": "Dhak & dhunuchi", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/82d984b8-3176-48a2-84f2-8666dc0a63e3.mp4"], "caption": "Turn the sound up 🥁🔥\nDhak, dhunuchi, sandhya aarti. This is pujo. Find where to be, and when, with Pujo Parikrama. Link in bio.\n\nঢাক, ধুনুচি, সন্ধ্যারতি 🥁🔥\nএটাই পুজো। কোথায়, কখন যাবেন, জানুন পুজো পরিক্রমায়। বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Sumita Roy Dutta (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 3.0); Bhaiyaji Smile 123 (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r06", "group": "set1", "kind": "reel", "title": "Same pandal, two experiences", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/a60b5180-c5c8-4232-9ab8-7f40eb76f13b.mp4"], "caption": "Same pandal. Two very different experiences 😮‍💨\nThe app shows the quietest hours for 107 pandals, so you can skip the 2-hour queue. Save this and link in bio.\n\nএকই প্যান্ডেল, দুই রকম অভিজ্ঞতা 😮‍💨\n১০৭টা প্যান্ডেলের কখন ভিড় কম, অ্যাপে দেখে নিন। দু'ঘণ্টার লাইন এড়িয়ে চলুন। বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Biswarup Ganguly (CC BY 3.0); Sumita Roy Dutta (CC BY-SA 4.0); Music: Puja dhak, Tito Dutta (CC BY-SA 3.0). This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r07", "group": "set1", "kind": "reel", "title": "Homecoming", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/1ab68689-8deb-4db5-bafa-3d965a200cdf.mp4"], "caption": "For everyone coming home for pujo 🏠🪔\nThe metro home, the bridge all lit up, the para glowing. Send this to someone who's on their way 💛\n\nযারা পুজোয় বাড়ি ফিরছেন 🏠🪔\nমেট্রোয় বাড়ি ফেরা, আলো ঝলমলে ব্রিজ আর আলোয় সাজানো পাড়া। যে বাড়ি ফিরছে, তাকে পাঠান 💛\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Projjalm (CC0); Hridoy Kundu (CC BY-SA 4.0); Biswarup Ganguly (CC BY 3.0); Sumita Roy Dutta (CC BY-SA 4.0); Music: Raga Durga (Public domain). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r08", "group": "set1", "kind": "reel", "title": "Only in Kolkata", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/bf9352cc-31a8-4756-8bb4-e9fca86402b9.mp4"], "caption": "Things you only see at Kolkata pujo ✨\nKumartuli lanes, yellow taxis under fairy lights, packed midnight metros, pujos inside old North Kolkata houses and pandals the size of palaces. What would you add? 👇\n\nশুধু কলকাতার পুজোতেই দেখা যায় ✨\nকুমোরটুলির গলি, আলোর নিচে হলুদ ট্যাক্সি, মাঝরাতের মেট্রো, উত্তর কলকাতার পুরনো বাড়ির পুজো আর রাজপ্রাসাদের মতো প্যান্ডেল। আর কী যোগ করবেন? 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Latentlife.archive (CC BY-SA 4.0); Projjalm (CC0); Indrajit Das (CC BY-SA 4.0); Biswarup Ganguly (CC BY 3.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). Some shots are AI-generated. This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r09", "group": "set1", "kind": "reel", "title": "Plan vs panic", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/4f5a47de-d1de-461e-b669-a56c9e054a54.mp4"], "caption": "Pandal hopping: plan vs panic 😅\nQuiet hours, nearest metro, food nearby and a ready route, all free. Plan, don't panic. Link in bio.\n\nঠাকুর দেখা: প্ল্যান না প্যানিক? 😅\nকখন ভিড় কম, কাছের মেট্রো, খাবার আর রেডি রুট, সব ফ্রি। বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Biswarup Ganguly (CC BY 3.0); Sumita Roy Dutta (CC BY-SA 4.0); Music: Puja dhak, Tito Dutta (CC BY-SA 3.0). This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r10", "group": "set1", "kind": "reel", "title": "Ashtami morning", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/6f53fd74-7221-43dd-a25c-098b6a2f36c9.mp4"], "caption": "Subho Ashtami 🙏🌸\nAnjali in the morning, bhog at noon, dhunuchi by evening. Find the quietest pandals right now in the app. Link in bio.\n\nশুভ অষ্টমী 🙏🌸\nসকালে অঞ্জলি, দুপুরে ভোগ, সন্ধ্যায় ধুনুচি। এখন কোন প্যান্ডেলে ভিড় কম, অ্যাপে দেখুন। বায়োতে লিংক।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Sumita Roy Dutta (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 3.0); Bhaiyaji Smile 123 (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Not scheduled"}, {"id": "r11", "group": "set1", "kind": "reel", "title": "Kumartuli", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/fb099a0c-f942-4edd-87b6-9df332f5b6f0.mp4"], "caption": "From river clay to Ma Durga 🙏\nKumartuli shapes her by hand, layer by layer, and the eyes come last. Then the pandals light up. Visit them at the right time with Pujo Parikrama.\n\nগঙ্গামাটি থেকে মা দুর্গা 🙏\nকুমোরটুলির হাতে গড়া প্রতিমা, চক্ষুদান সবার শেষে। তারপর আলো জ্বলে ওঠে প্যান্ডেলে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Latentlife.archive (CC BY-SA 4.0); Biswarup Ganguly (CC BY 3.0); Sumita Roy Dutta (CC BY-SA 4.0); Music: Raga Durga (Public domain). This reel: CC BY-SA 4.0.", "status": "posted", "when": "Posted 4 Oct"}, {"id": "r12", "group": "set1", "kind": "reel", "title": "Bijoya", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/5fa6527b-9842-407a-bb69-52acdc133d29.mp4"], "caption": "Asche bochor abar hobe 💛\nSindoor khela, one last dance, and a goodbye at the ghat. Subho Bijoya. Thank you for pandal hopping with us 🙏\n\nআসছে বছর আবার হবে 💛\nসিঁদুর খেলা, শেষ নাচ আর ঘাটে বিদায়। শুভ বিজয়া। আমাদের সঙ্গে ঠাকুর দেখার জন্য ধন্যবাদ 🙏\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Reels #Kolkatadiaries\n\n🎥 Credits (Wikimedia Commons): Sumita Roy Dutta (CC BY-SA 4.0); Indrajit Das (CC BY 3.0); Music: Raga Durga (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Not scheduled"}, {"id": "howto-1-quiet", "group": "set1", "kind": "reel", "title": "How-to: find when a pandal is least crowded", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/9396c80d-e96a-4588-bffd-f56731417ac0.mp4"], "caption": "Which pandal, which hour? 🕰️\nOpen any pandal in Pujo Parikrama and you get its crowd hour by hour for the day you pick, plus the quietest hours and how long it takes inside. Or sort the whole list by \"Shortest queue now\".\nFree · No sign-up · Link in bio 👆 @pujoparikrama.guide\n\nকোন প্যান্ডেলে কখন ভিড় কম? 🕰️\nযে কোনও প্যান্ডেল খুলুন: ঘণ্টা ধরে ভিড়ের হিসেব, সবচেয়ে ফাঁকা সময় আর ভেতরে কতক্ষণ লাগবে। পুরো লিস্ট \"এখন সবচেয়ে ছোট লাইন\" দিয়েও সাজাতে পারেন।\nফ্রি · সাইন-আপ লাগে না · লিংক বায়োতে 👆\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #QueueHacks #SantoshMitraSquare\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "posted", "when": "Posted 4 Oct"}, {"id": "howto-2-route", "group": "set1", "kind": "reel", "title": "How-to: plan your whole night in 3 taps", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/4b03651c-07bf-4b5b-bd54-93b93db7e032.mp4"], "caption": "Plan your whole night in 3 taps 🗺️\n1. Pick the areas\n2. Pick where and when you start (any metro station)\n3. Get a walking route: pandal order, arrival times, food stops, metro legs, steps and kcal.\nShare it to the family group and go. Free · Link in bio @pujoparikrama.guide\n\nতিন ধাপে পুরো রাতের রুট 🗺️\n১. এলাকা বাছুন\n২. কোথা থেকে, কখন শুরু (যে কোনও মেট্রো স্টেশন)\n৩. সময় ধরে হাঁটার রুট: কোন প্যান্ডেলের পর কোনটা, কখন পৌঁছবেন, কোথায় খাবেন।\nফ্রি · লিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #NorthKolkata #PujoPlan\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "posted", "when": "Posted 4 Oct"}, {"id": "howto-3-transport", "group": "set1", "kind": "reel", "title": "How-to: nearest metro, auto & food", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/5a227cb3-1287-4ea0-9537-812119f868a8.mp4"], "caption": "Metro? Auto? Where to eat after? 🚇🛺🍽️\nEvery pandal shows its nearest metro with walking time, shared auto routes that go there, parking nearby and famous food within walking distance. Tap a food spot for must-try dishes, hours and price.\nFree · Link in bio @pujoparikrama.guide\n\nমেট্রো, অটো, তারপর খাওয়া 🚇🛺🍽️\nপ্রতিটা প্যান্ডেলে: কাছের মেট্রো আর হাঁটার সময়, কোন শেয়ার অটো যায়, পার্কিং, আর হাঁটা-দূরত্বে বিখ্যাত খাবার।\nফ্রি · লিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #KolkataMetro #KolkataFood\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "posted", "when": "Posted 4 Oct"}, {"id": "howto-4-live", "group": "set1", "kind": "reel", "title": "How-to: check in & see live crowds", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/ac7d8e5a-5567-428a-b60a-6a8159506e17.mp4"], "caption": "Is it packed right now? 👀\nAt a pandal, tap Check in (GPS confirms you're really there). Everyone's check-ins add up to live counts, so before you go you can see which pandals are busiest this hour.\n(Numbers in this video are demo data.)\nFree · No sign-up · Link in bio @pujoparikrama.guide\n\nএখন কোথায় ভিড়? 👀\nপ্যান্ডেলে পৌঁছে \"চেক-ইন\" করুন (GPS দেখে নেয় আপনি সত্যিই সেখানে)। সবার চেক-ইন মিলে লাইভ হিসেব, বেরোনোর আগেই দেখে নিন কোথায় ভিড় বেশি।\n(ভিডিওর সংখ্যাগুলো ডেমো।)\nফ্রি · লিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #LiveCrowd #Tridhara\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "not posted", "when": "Not scheduled"}, {"id": "howto-5-mypujo", "group": "set1", "kind": "reel", "title": "How-to: your Pujo card", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/aad310fe-a44a-45b8-a118-8dff16ffbfbc.mp4"], "caption": "Your Pujo, in numbers 🏅\nThe My pujo tab counts your steps, km and pandals, unlocks badges (Panch Pandal, Pet Pujo, 10K Pujo…) and makes a story-size Pujo card in one tap. Post it, tag us!\n(Numbers in this video are demo data.)\nLink in bio @pujoparikrama.guide\n\nআপনার পুজো, হিসেব সমেত 🏅\n\"আমার পুজো\"-তে পা, কিমি, দেখা প্যান্ডেল আর ব্যাজ। এক ট্যাপে স্টোরি-সাইজ পুজো কার্ড, পোস্ট করে আমাদের ট্যাগ করুন!\n(ভিডিওর সংখ্যাগুলো ডেমো।)\nলিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #PujoSteps #PujoCard\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "not posted", "when": "Not scheduled"}, {"id": "howto-6-bangla", "group": "set1", "kind": "reel", "title": "How-to: works in Bangla too", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/607c5335-48a1-48bb-8bfe-18efc17a4ed0.mp4"], "caption": "Works in Bengali too 💛\nTap বাংলা at the top and the whole app switches: pandal names, crowd times, routes, everything. Send it to Ma and Baba.\nFree · Link in bio @pujoparikrama.guide\n\nপুরো অ্যাপ বাংলায় 💛\nওপরে \"বাংলা\" ছুঁলেই প্যান্ডেলের নাম, ভিড়ের সময়, রুট, সব বাংলায়। মা-বাবাকে পাঠিয়ে দিন।\nফ্রি · লিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #Mahalaya #BanglaApp\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "posted", "when": "Posted 4 Oct"}, {"id": "howto-7-whatsapp", "group": "set1", "kind": "reel", "title": "How-to: send a pandal to your family group", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/89787f3f-dc91-4599-9109-7f3da7e6cad4.mp4"], "caption": "\"Kothay jabo aaj?\" Settle it in the family group 📲\nOpen a pandal, tap WhatsApp: the message is ready with a link that opens straight on that pandal, with crowd times, food and metro.\nFree · Link in bio @pujoparikrama.guide\n\n\"আজ কোথায় যাব?\" ফ্যামিলি গ্রুপেই ঠিক করুন 📲\nপ্যান্ডেল খুলে হোয়াটসঅ্যাপ ছুঁন: মেসেজ তৈরি, লিংক খুললেই সেই প্যান্ডেল, ভিড়ের সময়, খাবার, মেট্রো।\nফ্রি · লিংক বায়োতে\n\n#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping #PujoParikrama #Kolkata #DurgaPujo #ThakurDekha #Pujo2026 #FamilyGroup #SuruchiSangha\n\n🎵 Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0, Wikimedia Commons).", "status": "not posted", "when": "Not scheduled"}, {"id": "b01-final-touches", "group": "b2", "kind": "reel", "title": "Final touches", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/af86262d-38e1-4d86-a2c8-bc7ea40e5757.mp4"], "caption": "From river clay to the goddess 🙏 This is what Kumartuli's artisans do every year, by hand, in the weeks before pujo. Save this and plan which pandals you'll see her in 👆 Link in bio.\n\nগঙ্গার মাটি থেকে মা দুর্গা 🙏 প্রতি বছর পুজোর আগে কুমোরটুলির শিল্পীরা হাতে করে এই কাজটা করেন। সেভ করে রাখুন, আর কোন কোন প্যান্ডেলে যাবেন প্ল্যান করে ফেলুন 👆 লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #Kumartuli #DurgaIdol\n\n🎥 Credits (Wikimedia Commons): Pinakpani (CC BY-SA 4.0); Music: Raga Durga (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 11 Oct"}, {"id": "b02-pujo-shopping", "group": "b2", "kind": "reel", "title": "Pujo shopping", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/c3f28d0e-68ac-45c3-a032-163767fe0474.mp4"], "caption": "Tag the friend who says \"just one more shop\" 😅 Pujo shopping done? Next: plan which pandals to see, when they're quiet and where to eat. Free, link in bio.\n\nযে বন্ধু বলে \"আর একটা দোকান\", তাকে ট্যাগ করুন 😅 পুজোর শপিং শেষ? এবার প্ল্যান করুন কোন প্যান্ডেল, কখন ভিড় কম, কোথায় খাবেন। ফ্রি, লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #PujoShopping #KolkataDiaries\n\n🎥 Credits (Wikimedia Commons): Goutam1962 (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 12 Oct"}, {"id": "b03-city-lights-up", "group": "b2", "kind": "reel", "title": "City lights up", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/837651ba-57d2-4f8f-b22c-85d89b139899.mp4"], "caption": "Kolkata during pujo is the brightest city in India, and it starts now ✨ Want to see the lights without a two-hour queue? Our free planner shows the quiet hours for every big pandal. Link in bio.\n\nপুজোর কলকাতা আলোয় ঝলমল, আর শুরু হয়ে গেছে এখন থেকেই ✨ দু'ঘণ্টার লাইন ছাড়া আলো দেখতে চান? আমাদের ফ্রি প্ল্যানারে প্রতিটা বড় প্যান্ডেলের ভিড় কম থাকার সময় দেখে নিন। লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #PujoLights #KolkataNights\n\n🎥 Credits (Wikimedia Commons): Goutam1962 (CC BY-SA 4.0); Indrajit Das (CC BY-SA 4.0); Tarunsamanta (CC BY-SA 4.0); Hridoy Kundu (CC BY-SA 4.0); Music: Puja dhak, Tito Dutta (CC BY-SA 3.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 13 Oct"}, {"id": "b04-chaturthi-hack", "group": "b2", "kind": "reel", "title": "Chaturthi hack", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/7750391c-e7f6-4010-8994-acd1f68a269f.mp4"], "caption": "The smartest pandal hoppers go early 😎 Many of the big theme pandals are open days before Saptami, with a fraction of the crowd. Check which ones are open and how busy they are right now: link in bio.\n\nআসল প্যান্ডেল-হপাররা আগেভাগেই বেরিয়ে পড়েন 😎 অনেক বড় থিম পুজো সপ্তমীর আগেই খুলে যায়, ভিড়ও অনেক কম। কোনগুলো খোলা আর এখন কতটা ভিড়, দেখে নিন: লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ThemePuja #PujoHacks\n\n🎥 Credits (Wikimedia Commons): Tarunsamanta (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 14 Oct"}, {"id": "b05-open-air-art", "group": "b2", "kind": "reel", "title": "Open air art", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/e6df52f8-9979-46d4-b467-5fd5390de9cb.mp4"], "caption": "Since 2021, Kolkata's Durga Puja has been on UNESCO's list of the world's intangible cultural heritage 🎨 Thousands of artists, five days, one city. Which pandal are you seeing first? Tell us 👇\n\n২০২১ থেকে কলকাতার দুর্গাপুজো ইউনেস্কোর বিশ্ব ঐতিহ্যের তালিকায় 🎨 হাজার হাজার শিল্পী, পাঁচ দিন, একটাই শহর। প্রথম কোন প্যান্ডেলে যাচ্ছেন? কমেন্টে জানান 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #UNESCO #PujoArt\n\n🎥 Credits (Wikimedia Commons): Goutam1962 (CC BY-SA 4.0); Arghamallick5151 (CC0); Tarunsamanta (CC BY-SA 4.0); Music: Raga Bahar (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 15 Oct"}, {"id": "b06-panchami-dhak", "group": "b2", "kind": "reel", "title": "Panchami dhak", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/59e7e3fc-2a13-4cae-a937-1957f19e41fa.mp4"], "caption": "Shubho Panchami 🥁 The dhak is out, the pandals are lit and pujo starts tonight. Plan your route in two minutes: link in bio.\n\nশুভ পঞ্চমী 🥁 ঢাক বেজে উঠেছে, প্যান্ডেলে আলো জ্বলেছে, আজ রাত থেকেই পুজো। দু'মিনিটে রুট প্ল্যান করে ফেলুন: লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoPanchami #Dhak\n\n🎥 Credits (Wikimedia Commons): Sumita Roy Dutta (CC BY-SA 4.0); Kritzolina (CC BY-SA 4.0); AjayDas (CC BY-SA 4.0); DebanjanDutta 96 (CC BY-SA 4.0); Sourabh.biswas003 (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 16 Oct"}, {"id": "b07-shashthi-bodhon", "group": "b2", "kind": "reel", "title": "Shashthi bodhon", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/202166ae-98d6-4c6e-b2ad-decd46c6ffad.mp4"], "caption": "Shubho Shashthi 🙏 Tonight is Bodhon, when Maa Durga is ritually awakened, and the five days of pujo begin. Plan all five days, with quiet hours and food near every pandal: link in bio.\n\nশুভ ষষ্ঠী 🙏 আজ সন্ধ্যায় বোধন, মায়ের আবাহন, শুরু পুজোর পাঁচ দিন। পাঁচ দিনের প্ল্যান, প্রতিটা প্যান্ডেলের ভিড় কম থাকার সময় আর খাবারের খোঁজ: লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoShashthi #Bodhon\n\n🎥 Credits (Wikimedia Commons): Goutam1962 (CC BY-SA 4.0); M_Sarkar (CC BY-SA 4.0); Music: Raga Durga (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 17 Oct"}, {"id": "b08-kola-bou", "group": "b2", "kind": "reel", "title": "Kola bou", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/08731db0-2a38-420a-9ae5-c99585a69198.mp4"], "caption": "Kola Bou isn't Ganesh's wife 🌿 She's Nabapatrika, nine sacred plants tied together with a banana plant, standing for nine forms of Durga. On Saptami morning she's bathed in the Ganga, dressed in a sari and placed beside Ganesh. Did you know? Tell us 👇\n\nকলা বউ গণেশের বউ নন 🌿 তিনি নবপত্রিকা, কলাগাছের সঙ্গে বাঁধা ন'টি পবিত্র গাছ, দুর্গার ন'টি রূপের প্রতীক। সপ্তমীর ভোরে গঙ্গায় স্নান করিয়ে, শাড়ি পরিয়ে গণেশের পাশে বসানো হয়। জানতেন? কমেন্টে জানান 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoSaptami #KolaBou #Nabapatrika\n\n🎥 Credits (Wikimedia Commons): Nayan j Nath (CC BY 4.0); Arindamgalsi (CC BY-SA 4.0); Goutam1962 (CC BY-SA 4.0); Music: Raga Bhairava (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 18 Oct"}, {"id": "b09-ashtami-bhog", "group": "b2", "kind": "reel", "title": "Ashtami bhog", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/c978e35c-2079-4791-90af-774b8f9f97f3.mp4"], "caption": "Ashtami anjali, then bhog 🍛 Khichuri, labra, beguni, chutney, payesh. Which pandal's bhog is the best? Name it in the comments 👇 And for the rest of the day, find food near any pandal: link in bio.\n\nঅষ্টমীর অঞ্জলি, তারপর ভোগ 🍛 খিচুড়ি, লাবড়া, বেগুনি, চাটনি, পায়েস। কোন পুজোর ভোগ সেরা? কমেন্টে লিখুন 👇 আর সারাদিন যেকোনো প্যান্ডেলের কাছে খাবারের খোঁজ: লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoAshtami #Bhog #Khichuri\n\n🎥 Credits (Wikimedia Commons): AjayDas (CC BY-SA 4.0); Nirobdasjoy (CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 4.0); Oritsu.me (CC BY-SA 4.0); Goutam1962 (CC BY-SA 4.0); Music: Rhythm of Dhak, Sumita Roy Dutta (CC BY-SA 4.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 19 Oct"}, {"id": "b10-navami-night", "group": "b2", "kind": "reel", "title": "Navami night", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/8e288e97-d2c5-45bd-b8f0-c6059bcc0d1b.mp4"], "caption": "Navami night is the last full night of pujo 🌙 Dhunuchi naach, aarti, one more pandal, then one more. Where are you tonight? Find what's open late near you: link in bio.\n\nনবমীর রাত মানে পুজোর শেষ রাত 🌙 ধুনুচি নাচ, আরতি, আর একটা প্যান্ডেল, তারপর আরও একটা। আজ রাতে কোথায় আপনি? কাছেই অনেক রাত অবধি খোলা প্যান্ডেল খুঁজুন: লিঙ্ক বায়োতে।\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoNavami #DhunuchiNaach\n\n🎥 Credits (Wikimedia Commons): Snehangshu36 (CC BY-SA 4.0); Amitbsws (CC0, CC BY-SA 4.0); Sumita Roy Dutta (CC BY-SA 4.0); Sourabh.biswas003 (CC BY-SA 4.0); DebanjanDutta 96 (CC BY-SA 4.0); Music: Puja dhak, Tito Dutta (CC BY-SA 3.0). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 20 Oct"}, {"id": "b11-sindoor-khela", "group": "b2", "kind": "reel", "title": "Sindoor khela", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/50f42ceb-f299-4ee8-b2a9-4ff411ca2c5e.mp4"], "caption": "Shubho Bijoya ❤️ Devi boron, sindoor khela, and the long walk to the ghat. Asche bochor abar hobe 🙏 Share your favourite pujo moment from this year in the comments 👇\n\nশুভ বিজয়া ❤️ দেবীবরণ, সিঁদুর খেলা, তারপর ঘাটের পথে। আসছে বছর আবার হবে 🙏 এ বছরের সেরা পুজোর মুহূর্তটা কমেন্টে শেয়ার করুন 👇\n\n#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #PandalHopping #Kolkata #PujoParikrama #দুর্গাপুজো #পুজো #ShubhoBijoya #SindoorKhela\n\n🎥 Credits (Wikimedia Commons): Goutam1962 (CC BY-SA 4.0); Bhaiyaji Smile 123 (CC BY-SA 4.0); Ramesh Lalwani (CC BY 2.0); Ryan Radtke (CC BY-SA 4.0); Music: Raga Bahar (Public domain). This reel: CC BY-SA 4.0.", "status": "not posted", "when": "Planned 21 Oct"}, {"id": "wa-howto-en", "group": "wa", "kind": "video", "title": "WhatsApp how-to video (captions + dhak)", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/067fadbd-54a4-4856-858d-587ee7ed6c2c.mp4"], "caption": "", "status": "not posted", "when": "For WhatsApp forwards"}, {"id": "wa-howto-bn", "group": "wa", "kind": "video", "title": "WhatsApp how-to video (Bengali voiceover)", "media": ["https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/8d360681-d470-4414-8794-bcd18466d19e.mp4"], "caption": "", "status": "not posted", "when": "For WhatsApp forwards"}, {"id": "w01-bangla-words", "group": "wave1", "kind": "carousel", "title": "৯টা বাংলা শব্দ (9 Bengali words)", "media": ["wave1/w01-bangla-words/slide-01.jpg", "wave1/w01-bangla-words/slide-02.jpg", "wave1/w01-bangla-words/slide-03.jpg", "wave1/w01-bangla-words/slide-04.jpg", "wave1/w01-bangla-words/slide-05.jpg", "wave1/w01-bangla-words/slide-06.jpg", "wave1/w01-bangla-words/slide-07.jpg", "wave1/w01-bangla-words/slide-08.jpg", "wave1/w01-bangla-words/slide-09.jpg", "wave1/w01-bangla-words/slide-10.jpg", "wave1/w01-bangla-words/slide-11.jpg"], "caption_url": "wave1/w01-bangla-words/caption.txt", "status": "not posted", "when": "Planned 5 Oct 19:30 (not posted)"}, {"id": "w02-pujo-mane", "group": "wave1", "kind": "image", "title": "পুজো মানে ____", "media": ["wave1/w02-pujo-mane/slide-01.jpg"], "caption_url": "wave1/w02-pujo-mane/caption.txt", "status": "not posted", "when": "Planned 8 Oct"}, {"id": "w03-uttor-dokkhin", "group": "wave1", "kind": "carousel", "title": "উত্তর না দক্ষিণ?", "media": ["wave1/w03-uttor-dokkhin/slide-01.jpg", "wave1/w03-uttor-dokkhin/slide-02.jpg", "wave1/w03-uttor-dokkhin/slide-03.jpg", "wave1/w03-uttor-dokkhin/slide-04.jpg", "wave1/w03-uttor-dokkhin/slide-05.jpg", "wave1/w03-uttor-dokkhin/slide-06.jpg"], "caption_url": "wave1/w03-uttor-dokkhin/caption.txt", "status": "not posted", "when": "Planned 6 Oct"}, {"id": "w04-chhotobela", "group": "wave1", "kind": "carousel", "title": "নব্বইয়ের পুজো (90s pujo)", "media": ["wave1/w04-chhotobela/slide-01.jpg", "wave1/w04-chhotobela/slide-02.jpg", "wave1/w04-chhotobela/slide-03.jpg", "wave1/w04-chhotobela/slide-04.jpg", "wave1/w04-chhotobela/slide-05.jpg", "wave1/w04-chhotobela/slide-06.jpg", "wave1/w04-chhotobela/slide-07.jpg", "wave1/w04-chhotobela/slide-08.jpg"], "caption_url": "wave1/w04-chhotobela/caption.txt", "status": "not posted", "when": "Planned 7 Oct"}, {"id": "w05-comment-your-pandal", "group": "wave1", "kind": "image", "title": "প্যান্ডেলের নাম লিখুন", "media": ["wave1/w05-comment-your-pandal/slide-01.jpg"], "caption_url": "wave1/w05-comment-your-pandal/caption.txt", "status": "not posted", "when": "Planned 12 Oct"}, {"id": "w06-pujo-bingo", "group": "wave1", "kind": "image", "title": "পুজো বিঙ্গো", "media": ["wave1/w06-pujo-bingo/slide-01.jpg"], "caption_url": "wave1/w06-pujo-bingo/caption.txt", "status": "not posted", "when": "Planned 9 Oct"}, {"id": "w07-mahalaya", "group": "wave1", "kind": "image", "title": "শুভ মহালয়া", "media": ["wave1/w07-mahalaya/slide-01.jpg"], "caption_url": "wave1/w07-mahalaya/caption.txt", "status": "not posted", "when": "Planned 10 Oct 05:30"}, {"id": "s01-sari-panjabi", "group": "wave1", "kind": "story", "title": "Story: sari or panjabi?", "media": ["wave1/s01-sari-panjabi/slide-01.jpg"], "caption_url": null, "status": "not posted", "when": "Planned 5–9 Oct, one a day"}, {"id": "s02-kola-bou-quiz", "group": "wave1", "kind": "story", "title": "Story: Kola Bou quiz", "media": ["wave1/s02-kola-bou-quiz/slide-01.jpg"], "caption_url": null, "status": "not posted", "when": "Planned 5–9 Oct, one a day"}, {"id": "s03-countdown", "group": "wave1", "kind": "story", "title": "Story: countdown", "media": ["wave1/s03-countdown/slide-01.jpg"], "caption_url": null, "status": "not posted", "when": "Planned 5–9 Oct, one a day"}, {"id": "s04-add-yours", "group": "wave1", "kind": "story", "title": "Story: Add Yours", "media": ["wave1/s04-add-yours/slide-01.jpg"], "caption_url": null, "status": "not posted", "when": "Planned 5–9 Oct, one a day"}, {"id": "s05-slider", "group": "wave1", "kind": "story", "title": "Story: slider", "media": ["wave1/s05-slider/slide-01.jpg"], "caption_url": null, "status": "not posted", "when": "Planned 5–9 Oct, one a day"}], "posted_carousels": ["avoid-the-queue", "metro-cheat-sheet", "pujo-dates-2026", "pujo-food-map", "pujo-words", "quiet-hours-top-10", "survival-kit", "types-of-pandal-hoppers"], "daily_dates": ["2026-10-05", "2026-10-06", "2026-10-07"], "kit_posted": ["2026-10-04", "2026-10-05"]};
+const GROUPS = [
+  ["daily", "Daily real-footage sets", "The new pipeline: 3 reels and 3 stories a day, each at its time slot. 5 Oct went out tonight; 6 Oct is waiting for you."],
+  ["b2", "Bengali reels for 11–21 Oct", "One per day, Bengali-first text and laal-paar end card."],
+  ["set1", "Reels from 4 Oct (first batch)", "20 of the first-batch pieces were posted on 4 Oct; the rest are unused."],
+  ["carousel", "Carousels", "Info carousels made from the app's data. Five planned ones were not posted after Instagram's block on 4 Oct; the trail carousels were never scheduled."],
+  ["wave1", "Bengali culture posts and stories (Wave 1)", "Kalighat-pat and real-photo posts built to get comments and shares. None posted yet."],
+  ["kit", "Daily kit cards (auto-post, now paused)", "The 08:02 daily feed card and 2 stories. 4 and 5 Oct went out automatically; the rest are paused until you approve them."],
+  ["wa", "WhatsApp how-to videos", "For forwarding on WhatsApp, not Instagram."]
+];
+const store = { get(k) { try { return JSON.parse(localStorage.getItem("pp-review:" + k)) } catch { return null } },
+                set(k, v) { try { localStorage.setItem("pp-review:" + k, JSON.stringify(v)) } catch {} } };
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const items = DATA.items.slice();
+let filter = "pending";
+
+async function getJSON(u) { try { const r = await fetch(u, { cache: "no-store" }); return r.ok ? r.json() : null } catch { return null } }
+async function getText(u) { try { const r = await fetch(u, { cache: "no-store" }); return r.ok ? r.text() : "" } catch { return "" } }
+
+async function loadDynamic() {
+  for (const d of DATA.daily_dates) {
+    const m = await getJSON(`../reels/${d}/manifest.json`);
+    if (!m) continue;
+    const posted = d <= "2026-10-05";
+    for (const it of m.items) items.push({ id: it.id, group: "daily", kind: it.type, title: `${d.slice(8)} Oct · ${it.at} · ${it.type}`,
+      media: [it.video_url], caption: it.caption || "", status: posted ? "posted" : "not posted",
+      when: posted ? `Posted ${d.slice(8)} Oct` : `Planned ${d.slice(8)} Oct ${it.at}` });
+  }
+  const car = await getJSON("../carousels/carousels.json");
+  for (const c of (car && car.carousels) || []) {
+    const posted = DATA.posted_carousels.includes(c.slug);
+    items.push({ id: c.slug, group: "carousel", kind: "carousel", title: c.title || c.slug.replace(/-/g, " "),
+      media: c.slides.map((_, i) => `../carousels/${c.id}/slide-${String(i + 1).padStart(2, "0")}.jpg`),
+      caption: `${c.caption_en || ""}\n\n${c.caption_bn || ""}\n\n${c.hashtags || ""}`.trim(),
+      status: posted ? "posted" : "not posted", when: posted ? "Posted 4 Oct" : "Not scheduled" });
+  }
+  const kit = await getJSON("../assets.json");
+  for (const c of (kit && kit.cards) || []) {
+    if (c.format !== "post" && c.format !== "story") continue;
+    const posted = DATA.kit_posted.includes(c.date);
+    items.push({ id: c.id, group: "kit", kind: c.format === "post" ? "image" : "story", title: `${c.date.slice(8)} Oct · ${c.format}`,
+      media: ["../" + c.file], caption: c.format === "post" ? `${c.caption_en}\n\n${c.caption_bn}` : "",
+      status: posted ? "posted" : "not posted", when: posted ? `Posted ${c.date.slice(8)} Oct` : `Planned ${c.date.slice(8)} Oct 08:02 (paused)` });
+  }
+  for (const it of items) if (it.caption_url && !it.caption) it.caption = (await getText(it.caption_url)).trim();
+}
+
+function mediaHTML(it) {
+  const video = /\.mp4/.test(it.media[0]);
+  const cls = video || it.kind === "story" ? "media" : "media post";  // reels/stories 9:16, feed posts 4:5
+  const inner = it.media.map((u) => /\.mp4/.test(u)
+    ? `<video controls playsinline preload="none" src="${esc(u)}#t=0.5"></video>`
+    : `<img loading="lazy" src="${esc(u)}" alt="">`).join("");
+  return `<div class="${cls}">${inner}</div>`;
+}
+
+function card(it) {
+  const v = store.get(it.id) || {};
+  const st = it.status === "posted" ? `<span class="pill posted">Posted</span>`
+    : it.group === "kit" ? `<span class="pill auto">Paused</span>` : `<span class="pill pending">Not posted</span>`;
+  const n = it.media.length > 1 ? `<span class="slides">${it.media.length} slides, swipe →</span>` : "";
+  return `<article class="card" data-id="${esc(it.id)}" data-status="${it.status === "posted" ? "posted" : "pending"}">
+    ${mediaHTML(it)}
+    <div class="body">
+      <p class="title">${esc(it.title)}</p>
+      <div class="meta">${st}<span>${esc(it.when)}</span><span class="idtag">${esc(it.id)}</span>${n}</div>
+      ${it.caption ? `<details><summary>Caption</summary><pre class="cap">${esc(it.caption)}</pre></details>` : ""}
+      <div class="verdict" role="group" aria-label="Verdict">
+        ${["keep", "change", "drop"].map((k) => `<button data-v="${k}" aria-pressed="${v.v === k}">${{ keep: "Keep", change: "Change", drop: "Drop" }[k]}</button>`).join("")}
+      </div>
+      <textarea id="n-${esc(it.id)}" placeholder="What should change? (optional)">${esc(v.note || "")}</textarea>
+    </div></article>`;
+}
+
+function render() {
+  const main = document.getElementById("main");
+  const show = (it) => filter === "all" || (filter === "posted") === (it.status === "posted");
+  main.innerHTML = GROUPS.map(([g, h, p]) => {
+    const list = items.filter((it) => it.group === g && show(it));
+    if (!list.length) return "";
+    return `<section class="group" id="${g}"><h2>${esc(h)} <small>${list.length}</small></h2><p>${esc(p)}</p>
+      <div class="grid">${list.map(card).join("")}</div></section>`;
+  }).join("") || `<p class="empty">Nothing in this view.</p>`;
+  const pend = items.filter((i) => i.status !== "posted").length;
+  document.getElementById("counts").textContent = `${pend} not posted · ${items.length - pend} posted`;
+  countNotes();
+}
+
+function countNotes() {
+  const n = items.filter((it) => { const v = store.get(it.id); return v && (v.v || v.note); }).length;
+  document.getElementById("nfb").textContent = n;
+}
+
+document.querySelector(".bar").addEventListener("click", (e) => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+  render();
+});
+document.getElementById("main").addEventListener("click", (e) => {
+  const b = e.target.closest(".verdict button"); if (!b) return;
+  const id = b.closest(".card").dataset.id, v = store.get(id) || {};
+  v.v = v.v === b.dataset.v ? null : b.dataset.v; store.set(id, v);
+  b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.v === v.v)));
+  countNotes();
+});
+document.getElementById("main").addEventListener("input", (e) => {
+  if (e.target.tagName !== "TEXTAREA") return;
+  const id = e.target.closest(".card").dataset.id, v = store.get(id) || {};
+  v.note = e.target.value; store.set(id, v); countNotes();
+});
+function feedbackText() {
+  const lines = [];
+  for (const [g, h] of GROUPS) {
+    const rows = items.filter((it) => it.group === g).map((it) => [it, store.get(it.id)]).filter(([, v]) => v && (v.v || v.note));
+    if (!rows.length) continue;
+    lines.push(`## ${h}`);
+    for (const [it, v] of rows) lines.push(`- ${it.id} (${it.title}): ${(v.v || "note").toUpperCase()}${v.note ? " — " + v.note.trim() : ""}`);
+    lines.push("");
+  }
+  return lines.join("\n").trim() || "No notes yet.";
+}
+document.getElementById("copy").addEventListener("click", async () => {
+  const t = feedbackText(), out = document.getElementById("copied"), fb = document.getElementById("fallback");
+  try { await navigator.clipboard.writeText(t); out.textContent = "Copied. Paste it into the chat."; fb.style.display = "none"; }
+  catch { fb.value = t; fb.style.display = "block"; fb.select(); out.textContent = "Select all and copy this text."; }
+});
+document.getElementById("clear").addEventListener("click", () => {
+  const out = document.getElementById("copied");
+  if (out.dataset.armed !== "1") { out.dataset.armed = "1"; out.textContent = "Tap again to clear every note."; return; }
+  out.dataset.armed = ""; items.forEach((it) => store.set(it.id, null)); out.textContent = "Notes cleared."; render();
+});
+render();
+loadDynamic().then(render);
+</script>
+</body>
+</html>
