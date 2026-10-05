@@ -18,7 +18,7 @@ QUERIES = ["Durga Puja", "Durga Pujo", "Durgapuja", "Durga puja Kolkata", "panda
            "Durga Puja procession", "Durga Puja dance", "Bonedi bari", "Mahalaya", "Durga Visarjan", "Chokkhu daan",
            "Kolkata festival", "Navaratri Kolkata", "Durga Puja Bangladesh", "Sarbojanin"]
 RELEVANT = re.compile(r"durga|pujo|puja|pandal|dhak|dhunuchi|dhunachi|sindoor|sindur|kumartuli|mahalaya|visarjan|bisarjan|"
-                      r"bijoya|sarbojanin|navaratri|kolkata", re.I)
+                      r"bijoya|sarbojanin|tarpan|chokkhu|devi boron|immersion", re.I)  # "Kolkata" alone pulls in car rallies
 
 
 def api(**p):
@@ -42,13 +42,13 @@ def main(out):
         off = 0
         while off < 500:
             r = api(action="query", generator="search", gsrsearch=f"{q} filetype:video", gsrnamespace=6, gsrlimit=50,
-                    gsroffset=off, prop="imageinfo", iiprop="url|size|extmetadata")
+                    gsroffset=off, prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=320)
             for p in ((r.get("query") or {}).get("pages") or {}).values():
                 ii = (p.get("imageinfo") or [{}])[0]
                 m = ii.get("extmetadata", {})
                 seen.setdefault(p["title"], dict(url=ii.get("url"), w=ii.get("width", 0), h=ii.get("height", 0),
                                                  dur=round(ii.get("duration") or 0, 1), license=text(m, "LicenseShortName"),
-                                                 author=text(m, "Artist")[:80], page=ii.get("descriptionurl"), query=q))
+                                                 author=text(m, "Artist")[:80], page=ii.get("descriptionurl"), thumb=ii.get("thumburl"), query=q))
             if "continue" not in r:
                 break
             off = r["continue"].get("gsroffset", off + 50)

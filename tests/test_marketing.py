@@ -161,3 +161,41 @@ class AlreadyPostedTest(unittest.TestCase):
         self.assertFalse(self.run_with([{"caption": "Something else", "timestamp": self.ts(1)},
                                         {"caption": "Ma ashchhen! Plan your pujo\n\nমা আসছেন", "timestamp": self.ts(60)},
                                         {"timestamp": self.ts(1)}]))
+
+
+class DailySetTest(unittest.TestCase):
+    """Daily reels: every plan is renderable, and a day posts only once it is approved."""
+
+    def test_plans_are_valid(self):
+        from marketing.footage import factory
+        idx = factory.footage_index(None)
+        for p in sorted((Path(__file__).resolve().parents[1] / "marketing" / "daily").glob("2*.json")):
+            plan = json.loads(p.read_text(encoding="utf-8"))
+            self.assertEqual(plan["date"], p.stem)
+            ids = [i["id"] for i in plan["items"]]
+            self.assertEqual(len(ids), len(set(ids)), p.name)
+            for it in plan["items"]:
+                self.assertRegex(it["at"], r"^\d\d:\d\d$")
+                self.assertIn(it["type"], ("reel", "story"))
+                if it["type"] == "reel":
+                    cap = it.get("caption")
+                    text = cap if isinstance(cap, str) else f"{cap['bn']} {cap['en']} {cap['tags']}"
+                    self.assertLessEqual(len(text), 1900, it["id"])  # room for the credits line
+                    self.assertLessEqual(text.count("#"), 25, it["id"])
+                    self.assertNotIn("github.io", text)
+            known = {s[0] for it in plan["items"] for s in it.get("segments", [])} - set(idx)
+            if not known:  # catalogue clips are checked by the factory itself, which has the catalogue
+                factory.check(plan, idx)
+
+    def test_unapproved_day_is_a_dry_run(self):
+        from unittest import mock
+        from marketing import publish_batch
+        items = {"items": [{"type": "story", "id": "x", "at": "10:30", "video_url": "https://e/x.mp4"},
+                           {"type": "reel", "id": "y", "at": "18:30", "video_url": "https://e/y.mp4", "caption": "c"}]}
+        with mock.patch.object(publish_batch, "get_json", return_value=items), \
+             mock.patch.object(publish_batch, "approved", return_value=False), \
+             mock.patch.object(publish_batch, "reachable", return_value=True), \
+             mock.patch.object(publish_batch, "publish") as pub, \
+             mock.patch.dict("os.environ", {"IG_USER_ID": "1", "IG_ACCESS_TOKEN": "IGx"}):
+            publish_batch.main(["--date", "2026-10-06", "--window", "pm"])
+        pub.assert_not_called()

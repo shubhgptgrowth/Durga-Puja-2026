@@ -234,14 +234,17 @@ def credits_for(reel, footage):
     by_artist = {}
     for sid in seen:
         f = footage[sid]
-        by_artist.setdefault((f["artist"] or "Unknown", f["license"]), []).append(sid)
+        src = f.get("source", "Wikimedia Commons")
+        lic = f["license"] if src == "Wikimedia Commons" else src  # Pexels / Pixabay licences need no attribution; we credit anyway
+        by_artist.setdefault((f["artist"] or "Unknown", lic), []).append(sid)
     for (artist, lic), _ in by_artist.items():
         parts.append(f"{artist} ({lic})")
     m = reel.get("music")
     if m:
         f = footage[m[0]]
         parts.append(f"Music: {f['label'].replace(' (audio)', '')}" + (f", {f['artist']}" if f["artist"] else "") + f" ({f['license']})")
-    txt = "Footage: Wikimedia Commons — " + "; ".join(parts)
+    srcs = sorted({footage[s].get("source", "Wikimedia Commons") for s in seen}) or ["Wikimedia Commons"]
+    txt = f"Footage: {', '.join(srcs)} — " + "; ".join(parts)
     if ai:
         txt += ". Some shots AI-generated."
     return txt
@@ -249,14 +252,15 @@ def credits_for(reel, footage):
 
 def build(reel, footage, src_dir, out_dir, tmp):
     parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
-    endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
-    if reel.get("bn"):
-        end_png_bn(endp, reel["bn"]["end"], reel["end"][1], credits_for(reel, footage))
-    else:
-        end_png(endp, *reel["end"], credits_for(reel, footage))
-    run("ffmpeg", "-y", "-loop", "1", "-t", "3.2", "-i", endp, "-f", "lavfi", "-t", "3.2", "-i", "anullsrc=r=48000:cl=stereo",
-        "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", "-shortest", endv)
-    parts.append((endv, 3.2))
+    if reel.get("end"):  # video stories have no end card
+        endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
+        if reel.get("bn"):
+            end_png_bn(endp, reel["bn"]["end"], reel["end"][1], credits_for(reel, footage))
+        else:
+            end_png(endp, *reel["end"], credits_for(reel, footage))
+        run("ffmpeg", "-y", "-loop", "1", "-t", "3.2", "-i", endp, "-f", "lavfi", "-t", "3.2", "-i", "anullsrc=r=48000:cl=stereo",
+            "-vf", f"fps={FPS},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", "-shortest", endv)
+        parts.append((endv, 3.2))
     # crossfade chain
     ins, fc, off = [], [], 0.0
     for p, _ in parts:
@@ -279,15 +283,15 @@ def build(reel, footage, src_dir, out_dir, tmp):
     else:
         last = "[nat]"
     mix += f";{last}loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
-    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc) + ";" + mix, "-map", lv, "-map", "[aout]", "-t", f"{total:.2f}",
+    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc + [mix]), "-map", lv, "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
     c = reel.get("caption")
     if c:  # Instagram caption: English, Bengali, hashtags, then the attribution the CC licences require
-        credit = credits_for(reel, footage).replace("Footage: Wikimedia Commons — ", "🎥 Credits (Wikimedia Commons): ")
+        credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
         sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
         with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
-            f.write(f"{c['en']}\n\n{c['bn']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))
+            f.write(f"{c['bn']}\n\n{c['en']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))  # Bengali first
     return total
 
 
