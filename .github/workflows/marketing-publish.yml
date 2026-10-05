@@ -1,11 +1,12 @@
 name: marketing-publish
 
 # Optional Instagram auto-posting of the day's kit cards (docs/marketing/PLAN.md → "Instagram auto-posting").
-# Off by default: scheduled runs only post when the repository variable IG_AUTOPUBLISH is "true" and the
-# IG_USER_ID / IG_ACCESS_TOKEN secrets exist. Otherwise they print what they would post.
+# Off by default: runs only post when the repository variable IG_AUTOPUBLISH is "true" (the kill switch), the
+# IG_USER_ID / IG_ACCESS_TOKEN secrets exist and dry_run is false. Otherwise they print what they would post.
+# No GitHub cron: its scheduled runs started up to 8.5 h late (and some days not at all), so the daily run is
+# dispatched at 08:05 IST by a Claude Routine instead, right after it re-deploys the kit. publish_ig skips a day
+# that is already on the account, so a repeated dispatch never double-posts.
 on:
-  schedule:
-    - cron: "45 2 3-22 10 *"       # 08:15 IST, 3–22 Oct (after the 05:45 kit deploy)
   workflow_dispatch:
     inputs:
       date:
@@ -44,6 +45,5 @@ jobs:
           args=()
           [ -n "${{ inputs.date }}" ] && args+=(--date "${{ inputs.date }}")
           [ -n "${{ inputs.only }}" ] && args+=(--only "${{ inputs.only }}")
-          if [ "${{ github.event_name }}" = schedule ] && [ "${{ vars.IG_AUTOPUBLISH }}" != true ]; then args+=(--dry-run); fi
-          if [ "${{ github.event_name }}" = workflow_dispatch ] && [ "${{ inputs.dry_run }}" = true ]; then args+=(--dry-run); fi
+          if [ "${{ vars.IG_AUTOPUBLISH }}" != true ] || [ "${{ inputs.dry_run }}" != false ]; then args+=(--dry-run); fi
           python -m marketing.publish_ig "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

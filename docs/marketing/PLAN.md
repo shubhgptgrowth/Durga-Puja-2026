@@ -28,7 +28,7 @@ The engine is a loop, so every step feeds the next: **see** a post or a forward 
 | **Daily content kit** | **https://shubhgptgrowth.github.io/Durga-Puja-2026/kit/** | Every day: an Instagram post (1080×1350), stories (1080×1920), captions in English and Bengali, a WhatsApp Channel post and a forward-ready message. Each has Copy and Download buttons and an "Open WhatsApp" button. Rebuilt every morning at 05:45 IST from the live guide. On puja days at 16:00 it adds "Trending now" cards from live check-ins |
 | QR posters | `/kit/posters.pdf` (A4, 69 pages), `/kit/flyer.png` | One poster per top-40 pandal and per eatery: "You are at X. Scan for crowd times, food and the next pandal". The QR is tracked as `qr_<place>` |
 | Reach report | Actions → **marketing-report** (21:00 IST daily, plus 09:00 on puja days) | Devices per day, new devices, which link brought them, check-ins, and the busiest places today |
-| Instagram auto-posting (optional) | Actions → **marketing-publish** | Posts the day's cards through the official API at 08:15 IST. Off until you set it up (§7) |
+| Instagram auto-posting (optional) | Actions → **marketing-publish** | Posts the day's cards through the official API at about 08:10 IST. Off until you set it up (§7) |
 
 The code is in `marketing/`. `kit.py` writes the plan and captions, `render.mjs` makes the images and posters, `report.py` builds the report, and `publish_ig.py` posts to Instagram. The calendar is the `SCHEDULE` dict in `kit.py`. Edit captions there, and the next morning's kit picks them up.
 
@@ -159,7 +159,7 @@ Scheduling in Meta Business Suite is enough. For hands-free posting:
 4. Add the repository **secrets** `IG_USER_ID` and `IG_ACCESS_TOKEN`, and the **variable** `IG_AUTOPUBLISH` = `true`.
 5. Test with Actions → marketing-publish → dry run ✔, then a run with dry run unticked.
 
-After that it posts each day's feed post and stories at 08:15 IST, 3–22 Oct, using the images from `/kit/`. Long-lived tokens last about 60 days, which covers the campaign.
+After that it posts each day's feed post and stories at about 08:10 IST, 6–22 Oct, using the images from `/kit/`. The daily run is started by a Claude Routine ("Daily IG kit post"), not GitHub's cron, which ran up to 8.5 hours late. The Routine re-deploys the kit first, then dispatches marketing-publish. A day already on the account is skipped, so a repeated run never double-posts. To stop posting, set `IG_AUTOPUBLISH` to anything but `true`. Long-lived tokens last about 60 days, which covers the campaign.
 
 **Why WhatsApp isn't automated:**
 * WhatsApp Channels have no posting API.

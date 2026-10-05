@@ -74,6 +74,21 @@ def publish(card, user, token):
     return graph("POST", f"{user}/media_publish", token, creation_id=c["id"])["id"]
 
 
+def already_posted(cards, user, token):
+    """True when the day's feed post is already on the account (same caption opening, last 36 h), so a late or
+    repeated run (GitHub cron delay, a manual re-run) never posts the day twice."""
+    want = [caption(c)[:80] for c in cards if c["format"] == "post"]
+    if not want:
+        return False
+    recent = graph("GET", f"{user}/media", token, fields="caption,timestamp", limit="25").get("data", [])
+    since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=36)
+    for m in recent:
+        ts = dt.datetime.strptime(m.get("timestamp", "1970-01-01T00:00:00+0000"), "%Y-%m-%dT%H:%M:%S%z")
+        if ts >= since and any((m.get("caption") or "").startswith(w) for w in want):
+            return True
+    return False
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--date", help="YYYY-MM-DD (default: today in IST)")
@@ -93,6 +108,9 @@ def main(argv=None):
     dry = a.dry_run or not (user and token)
     if dry and not a.dry_run:
         print("IG_USER_ID / IG_ACCESS_TOKEN not set: dry run.")
+    if not dry and already_posted(cards, user, token):
+        print(f"Already posted the {day} kit; nothing to do.")
+        return
     for c in cards:
         if dry:
             print(f"[dry run] would post {c['format']:5} {SITE}kit/{c['file']}\n{caption(c) if c['format'] == 'post' else '(story, no caption)'}\n")
