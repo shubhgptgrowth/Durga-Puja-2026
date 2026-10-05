@@ -156,7 +156,7 @@ function mediaHTML(it) {
   const video = /\.mp4/.test(it.media[0]);
   const cls = video || it.kind === "story" ? "media" : "media post";  // reels/stories 9:16, feed posts 4:5
   const inner = it.media.map((u) => /\.mp4/.test(u)
-    ? `<video controls playsinline preload="none" src="${esc(u)}#t=0.5"></video>`
+    ? `<video controls playsinline preload="metadata" src="${esc(u)}#t=0.5"></video>`
     : `<img loading="lazy" src="${esc(u)}" alt="">`).join("");
   return `<div class="${cls}">${inner}</div>`;
 }
