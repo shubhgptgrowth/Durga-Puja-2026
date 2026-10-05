@@ -91,11 +91,13 @@ jobs:
             --jq '[.artifacts[] | select((.expired | not) and (.name | startswith("reels-")))] | sort_by(.created_at) | .[] | "\(.workflow_run.id) \(.name)"' |
           while read -r id name; do
             gh run download "$id" -n "$name" -D "/tmp/reels/$name" || continue
-            for d in $keep; do [ -d "/tmp/reels/$name/$d" ] && rm -rf "app/kit/reels/$d" && cp -r "/tmp/reels/$name/$d" "app/kit/reels/$d"; done
+            for d in $keep; do
+              if [ -d "/tmp/reels/$name/$d" ]; then rm -rf "app/kit/reels/$d"; cp -r "/tmp/reels/$name/$d" "app/kit/reels/$d"; fi
+            done
           done
           id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=footage-catalog&per_page=1" --jq '.artifacts[0].workflow_run.id // empty')
-          [ -n "$id" ] && gh run download "$id" -n footage-catalog -D app/kit/reels/catalog
-          ls app/kit/reels
+          if [ -n "$id" ]; then gh run download "$id" -n footage-catalog -D app/kit/reels/catalog; fi
+          ls -R app/kit/reels | head -40
       # Pages must be switched on once by a repo admin (Settings → Pages → Source: GitHub Actions).
       # The workflow token can't create the Pages site itself.
       - uses: actions/configure-pages@v5
