@@ -49,6 +49,7 @@ text = "Offer flowers, perform a short aarti for the children and fold your hand
 
 [[steps]]
 name = "Serve the meal"
+image = "kanya-pujan"
 text = "Serve puri, kala chana and halwa, with fruit if you like, and let the children eat at their own pace. Offer second helpings."
 
 [[steps]]

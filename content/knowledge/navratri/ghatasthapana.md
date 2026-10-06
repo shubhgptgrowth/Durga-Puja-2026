@@ -48,6 +48,7 @@ text = "Arrange five mango leaves in the kalash's mouth with tips pointing outwa
 
 [[steps]]
 name = "Install the kalash"
+image = "ghatasthapana"
 text = "Set the kalash in the centre of the barley tray, or beside it if the tray is small, in front of the Goddess's picture."
 
 [[steps]]
@@ -56,6 +57,7 @@ text = "Light the lamp and incense. Holding water, rice and a flower, state your
 
 [[steps]]
 name = "Offer worship"
+image = "puja-thali"
 text = "Offer roli, rice, flowers, incense, the lamp and fruit or sweets. Chant a name-mantra or read the Durga Saptashati, and perform aarti."
 
 [[steps]]

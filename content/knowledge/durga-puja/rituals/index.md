@@ -38,6 +38,42 @@ url = "https://en.wikipedia.org/wiki/Durga_Puja"
 [[sources]]
 name = "Durga Puja in Kolkata, UNESCO Intangible Cultural Heritage"
 url = "https://ich.unesco.org/en/RL/durga-puja-in-kolkata-01503"
+[[timeline]]
+when = "Sat 10 Oct"
+title = "Mahalaya"
+text = "Tarpan for the ancestors at dawn and Mahishasuramardini on the radio: the fortnight of the goddess begins."
+image = "mahalaya"
+link = "durga-puja/rituals/mahalaya/"
+[[timeline]]
+when = "Sat 17 Oct"
+title = "Shashthi"
+text = "Bodhon, the awakening of the goddess, in the evening; the pandals open."
+image = "bodhon"
+link = "durga-puja/rituals/shashthi/"
+[[timeline]]
+when = "Sun 18 Oct"
+title = "Saptami"
+text = "Kola Bou is bathed at dawn and the goddess is invoked into the image."
+image = "kola-bou"
+link = "durga-puja/rituals/saptami/"
+[[timeline]]
+when = "Mon 19 Oct"
+title = "Maha Ashtami"
+text = "Pushpanjali in the morning, Kumari Puja, and Sandhi Puja at the junction with Navami."
+image = "pushpanjali"
+link = "durga-puja/rituals/ashtami/"
+[[timeline]]
+when = "Tue 20 Oct"
+title = "Maha Navami"
+text = "The last full day of worship: bhog, and dhunuchi dances late into the night."
+image = "dhunuchi"
+link = "durga-puja/rituals/navami/"
+[[timeline]]
+when = "Wed 21 Oct"
+title = "Bijoya Dashami"
+text = "Sindoor khela, then the goddess is carried to the river; Shubho Bijoya to everyone."
+image = "immersion"
+link = "durga-puja/rituals/dashami/"
 +++
 
 Durga Puja's rituals follow a fixed sequence that runs from **Mahalaya**, when Devi Paksha (the fortnight of the goddess) begins, to **Bijoya Dashami**, when she is bid farewell. The main worship takes place over five days, Shashthi to Dashami, and each day has a rite that defines it: the awakening, the arrival of the Kola Bou, the Ashtami anjali and Sandhi Puja, the Navami fire offering, and the Dashami farewell.

@@ -47,6 +47,52 @@ url = "https://www.britannica.com/topic/Durga-Puja"
 [[sources]]
 name = "Durga Puja in Kolkata, UNESCO Intangible Cultural Heritage"
 url = "https://ich.unesco.org/en/RL/durga-puja-in-kolkata-01503"
+[[timeline]]
+when = "Late 1500s"
+title = "An early grand puja"
+text = "By tradition, Raja Kangsanarayan of Taherpur holds one of the first lavish Durga Pujas in Bengal."
+[[timeline]]
+when = "Early 1600s"
+title = "Barisha"
+text = "The Sabarna Roy Choudhury family's puja at Barisha, by family tradition the oldest in the Kolkata area."
+[[timeline]]
+when = "1700s"
+title = "Krishnanagar"
+text = "Raja Krishnachandra Roy of Nadia popularises elaborate Durga and Jagaddhatri pujas."
+[[timeline]]
+when = "1757"
+title = "Sovabazar Rajbari"
+text = "Raja Nabakrishna Deb's puja in north Kolkata, traditionally dated to the year of Plassey."
+image = "bonedi-bari"
+link = "durga-puja/bonedi-bari-pujas/"
+[[timeline]]
+when = "Around 1790"
+title = "Barowari at Guptipara"
+text = "Twelve friends pool their money for a puja of their own: the first puja owned by a group, not a family."
+[[timeline]]
+when = "1910"
+title = "The first sarbojanin"
+text = "A puja in Bhowanipore, often cited as Kolkata's first puja open to everyone."
+[[timeline]]
+when = "1918 or 1919"
+title = "Bagbazar Sarbojanin"
+text = "One of the city's best-known community pujas begins in north Kolkata."
+image = "kumartuli"
+[[timeline]]
+when = "1920s–30s"
+title = "The nationalist era"
+text = "Community pujas become gathering places for the freedom movement."
+[[timeline]]
+when = "1980s–2000s"
+title = "Theme pandals"
+text = "Pandals turn into public art, each built around a single idea."
+image = "pandal-art"
+link = "durga-puja/pandal-art-and-themes/"
+[[timeline]]
+when = "December 2021"
+title = "UNESCO"
+text = "Durga Puja in Kolkata is inscribed on UNESCO's list of the Intangible Cultural Heritage of Humanity."
+link = "durga-puja/unesco-heritage/"
 +++
 
 Durga Puja in Bengal has moved, over roughly three centuries, from the courtyards of a few wealthy houses to the streets of an entire city. The shape of that journey is clear even where individual dates are debated: first household pujas of landowners and kings, then pujas paid for by groups of neighbours (*barowari*), then fully public pujas open to everyone (*sarbojanin*), and finally the theme pandals and global recognition of today. Much of the early history survives as family tradition and later retelling, so the dates below are given as they are traditionally cited.

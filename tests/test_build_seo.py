@@ -51,7 +51,7 @@ class Page(HTMLParser):
             self._ld += d
 
 
-SITE_PAGES = ("about/", "contact/", "terms/", "tools/bijoya-card/")   # indexed; search/ is noindex
+SITE_PAGES = ("about/", "contact/", "terms/", "tools/bijoya-card/", "guides/")   # indexed; search/ is noindex
 
 
 class BuildSeoTest(unittest.TestCase):
@@ -140,6 +140,27 @@ class BuildSeoTest(unittest.TestCase):
         self.assertEqual(main["image"][0]["@type"], "ImageObject")
         self.assertIn("license", main["image"][0])
         self.assertIn("img/guide/pushpanjali.webp", (self.tmp / "sitemap.xml").read_text(encoding="utf-8"))
+
+    def test_directory_timelines_and_step_photos(self):
+        html = (self.tmp / "guides/index.html").read_text(encoding="utf-8")
+        p = Page()
+        p.feed(html)
+        self.assertEqual(p.canonical, self.base + "guides/")
+        coll = next(x for x in p.ld if x.get("@type") == "CollectionPage")
+        self.assertEqual(coll["mainEntity"]["numberOfItems"], len([a for a in self.articles if a.path != "durga-puja/"]))
+        for a in self.articles:   # every guide is in the directory
+            if a.path != "durga-puja/":
+                self.assertIn(f"href='../{a.path}'", html)
+        self.assertIn("The five days, day by day", html)
+        self.assertIn('href="../../../guides/"', (self.tmp / "durga-puja/rituals/ashtami/index.html").read_text(encoding="utf-8"))   # in the menu
+        hist = (self.tmp / "durga-puja/history/index.html").read_text(encoding="utf-8")
+        self.assertIn("class='timeline'", hist)
+        self.assertIn("1757", hist)
+        self.assertIn("## At a glance", (self.tmp / "durga-puja/history/index.md").read_text(encoding="utf-8"))
+        home = (self.tmp / "durga-puja/at-home/index.html").read_text(encoding="utf-8")
+        from seo.photos import DIR
+        if (DIR / "photos.json").exists():
+            self.assertIn("step-photo", home)
 
     def test_articles(self):
         self.assertGreater(len(self.articles), 0)

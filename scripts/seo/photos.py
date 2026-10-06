@@ -20,6 +20,12 @@ class Photos:
         self.base = base
         f = DIR / "photos.json"
         self.items = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        toml = ROOT / "content" / "knowledge" / "photos.toml"   # captions are edited there; no re-fetch needed
+        if toml.exists():
+            import tomllib
+            for k, v in tomllib.loads(toml.read_text(encoding="utf-8")).items():
+                if k in self.items and v.get("caption"):
+                    self.items[k] = {**self.items[k], "caption": v["caption"]}
 
     def __contains__(self, key):
         return key in self.items

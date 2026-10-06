@@ -101,14 +101,14 @@ class Site(KnowledgeMixin, ExtrasMixin):
 </head>
 <body>
 <header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
-<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
+<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
 {body}
 {cta}
 <p class="updated">{note if note is not None else self.place_note()} Cite as: “{NAME}, {esc(canonical)}”.</p>
 </main>
-<footer><a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}search/">Search</a><br><a href="{up}about/">About</a> · <a href="{up}contact/">Contact</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}terms/">Terms</a> · <a href="{up}llms.txt">llms.txt</a></footer>
+<footer><a href="{up}guides/">All guides</a> · <a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}search/">Search</a><br><a href="{up}about/">About</a> · <a href="{up}contact/">Contact</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}terms/">Terms</a> · <a href="{up}llms.txt">llms.txt</a></footer>
 </body>
 </html>
 """
@@ -550,6 +550,8 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.hub_page()
         for a in self.articles:
             self.article_page(a)
+        if self.articles:
+            self.directory_page()
         self.build_extras()   # about, contact, terms, search, calendar, card maker, ads.txt
         bad = self.check_article_links()
         if bad:

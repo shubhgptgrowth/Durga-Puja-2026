@@ -39,6 +39,17 @@ CONTENT = ROOT / "content" / "knowledge"
 SECTIONS = ["Durga Puja", "Rituals", "At home", "Recipes", "Navratri", "Festivals", "Culture", "Visit"]
 DURGA_PUJA = {"@type": "Thing", "name": "Durga Puja", "sameAs": ["https://en.wikipedia.org/wiki/Durga_Puja", "https://www.wikidata.org/wiki/Q1361960"]}
 PUBLISHED = "2026-10-06"
+SECTION_INTRO = {
+    "Durga Puja": "What Durga Puja is, where it came from, the goddess and her stories.",
+    "Rituals": "Every rite from Mahalaya to Bijoya Dashami, with the mantras and what they mean.",
+    "At home": "Step-by-step guides and tick-box checklists for a puja in your own home.",
+    "Recipes": "Khichuri, labra, payesh and the sweets of the puja kitchen, step by step.",
+    "Navratri": "The nine nights across India: the Navadurga, ghatasthapana, fasting, garba and Dussehra.",
+    "Festivals": "From Vishwakarma Puja to Jagaddhatri: the festivals around Durga Puja in Bengal.",
+    "Culture": "The dhak, the songs, pandal art, Kumartuli's image-makers, what to wear and how to photograph it.",
+    "Visit": "Plan your pandal hopping: when to go, how to get around, and pujo with children or elders.",
+}
+FEATURED = ["durga-puja/what-is-durga-puja/", "durga-puja/rituals/", "durga-puja/at-home/"]
 
 
 class Article:
@@ -86,13 +97,69 @@ class KnowledgeMixin:
         """Article cards with their photo, title and a two-line description."""
         def card(x):
             hero, _ = self.pics.for_article(x)
-            return (f"<li><a href='{up}{x.path}'>{self.pics.thumb(hero, up)}<span class='ct'><small>{esc(x.section)}</small>"
+            return (f"<li><a href='{up}{x.path}'>{self.pics.thumb(hero, up)}<span class='ct'><small>{esc(x.section)}{self.badge(x)}</small>"
                     f"<b>{esc(x.label)}</b><span>{esc(x.desc)}</span></span></a></li>")
         return f"<ul class='{cls}'>" + "".join(card(x) for x in items) + "</ul>" if items else ""
 
+    def badge(self, x):
+        steps = x.meta.get("steps", [])
+        if x.type == "Recipe":
+            total = minutes(x.meta.get("prep_time")) + minutes(x.meta.get("cook_time"))
+            return f" · {human(total)}" if total else ""
+        return f" · {len(steps)} steps" if steps else ""
+
+    def directory_page(self):
+        """/guides/: every guide, by section, with photos; the five days as a timeline; step-by-step guides up front."""
+        up, ph = "../", self.pics
+        arts = [a for a in self.articles if a.path != "durga-puja/"]
+        present = [sec for sec in SECTIONS if any(a.section == sec for a in arts)]
+        howtos = sorted((a for a in arts if a.meta.get("steps")), key=lambda a: (a.type != "HowTo", a.order, a.path))
+
+        def feature(a, big=False):
+            hero, _ = ph.for_article(a)
+            img = (f"<img src='{up}img/guide/{hero}{'' if big else '-600'}.webp' alt='' loading='{'eager' if big else 'lazy'}' "
+                   f"width='{ph.items[hero]['w']}' height='{ph.items[hero]['h']}'>") if hero else ""
+            return (f"<li><a class='feat{' big' if big else ''}' href='{up}{a.path}'>{img}<span class='ft'><small>{esc(a.section)}</small>"
+                    f"<b>{esc(a.label)}</b><span>{esc(a.desc)}</span></span></a></li>")
+        featured = [self.by_path[p] for p in FEATURED if p in self.by_path]
+        days = self.by_path.get("durga-puja/rituals/")
+        n_photos = len(ph.items)
+        body = [f"""<article class="post directory">
+<header class="post-head"><span class="kicker">The guide</span>
+<h1>Durga Puja, explained: every ritual, story and recipe</h1>
+<p class="dek">{len(arts)} guides to the festival: the meaning of each day and rite, the mantras with translations, the history, puja at home step by step, bhog recipes, Navratri and Bengal's whole festival season, and how to make the most of Kolkata's pandals.</p>
+<ul class="stats"><li><b>{len(arts)}</b> guides</li><li><b>{len(howtos)}</b> step-by-step</li><li><b>{sum(a.type == 'Recipe' for a in arts)}</b> recipes</li><li><b>{n_photos}</b> photos</li></ul>
+<form class="dir-search" action="{up}search/" role="search"><label class="sr" for="dq">Search the guides</label><input id="dq" name="q" type="search" placeholder="Search: anjali, Ashtami, khichuri…"><button type="submit">Search</button></form>
+</header>
+<nav class="jump" aria-label="Sections">""" + "".join(f"<a href='#{sec.lower().replace(' ', '-')}'>{esc(sec)}</a>" for sec in present) + "</nav>",
+                f"<h2 id='start-here'>Start here</h2><ul class='feats'>{''.join(feature(a, i == 0) for i, a in enumerate(featured))}</ul>"]
+        if days and days.meta.get("timeline"):
+            body.append(self.timeline(days.meta["timeline"], up, "The five days, day by day", "five-days"))
+        if howtos:
+            body.append("<h2 id='step-by-step'>Step by step</h2><p class='sec-intro'>Guides you can follow along with, with tick-box lists that remember your ticks on this phone.</p>"
+                        + self.cards(howtos, up, "cards pics strip"))
+        for sec in present:
+            items = sorted((a for a in arts if a.section == sec), key=lambda a: (not a.is_hub, a.order, a.path))
+            body.append(f"<section class='dir-sec'><h2 id='{sec.lower().replace(' ', '-')}'>{esc(sec)} <small>{len(items)}</small></h2>"
+                        f"<p class='sec-intro'>{esc(SECTION_INTRO.get(sec, ''))}</p>{self.cards(items, up)}</section>")
+        body.append("</article>")
+        url = self.url("guides/")
+        ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "@id": url + "#main", "name": "Durga Puja guides", "url": url,
+               "description": f"{len(arts)} guides to Durga Puja: rituals day by day, mantras, history, puja at home, recipes, Navratri and Kolkata.",
+               "inLanguage": "en", "about": DURGA_PUJA, "isPartOf": {"@id": self.base + "#website"},
+               "mainEntity": {"@type": "ItemList", "numberOfItems": len(arts), "itemListElement": [
+                   {"@type": "ListItem", "position": i + 1, "url": self.url(a.path), "name": a.h1} for i, a in enumerate(
+                       sorted(arts, key=lambda a: (SECTIONS.index(a.section) if a.section in SECTIONS else 99, a.order, a.path)))]}}]
+        hero = ph.for_article(featured[0])[0] if featured else None
+        self.page("guides/", "Durga Puja Guides: Rituals, Mantras, History, Recipes & Navratri | Pujo Parikrama",
+                  f"Every Durga Puja guide in one place: {len(arts)} illustrated guides to the rituals day by day, mantras, history, puja at home, bhog recipes, Navratri and Kolkata.",
+                  "\n".join(body), ld=ld, crumbs=(("All guides", "guides/"),), priority=0.95, app_link=None, note="",
+                  images=[ph.url(k) for k in dict.fromkeys(ph.for_article(a)[0] for a in featured) if k],
+                  og_image=ph.url(hero) if hero else None)
+
     def hub_listing(self, a, up):
         if a.path == "durga-puja/":   # the main hub: everything, by section
-            return "".join(f"<h2 id='{s.lower().replace(' ', '-')}'>{esc(s)}</h2>{self.section_list(s, up)}" for s in SECTIONS if self.section_list(s, up))
+            return f"<a class='also' href='{up}guides/'>{self.pics.thumb('family', up)}<span><small>Browse</small><b>All {len(self.articles) - 1} guides, with photos, by section</b></span></a>" + "".join(f"<h2 id='{s.lower().replace(' ', '-')}'>{esc(s)}</h2>{self.section_list(s, up)}" for s in SECTIONS if self.section_list(s, up))
         return f"<h2 id='in-this-section'>In this section</h2>{self.section_list(a.section, up, exclude=a)}"
 
     def article_page(self, a):
@@ -104,13 +171,16 @@ class KnowledgeMixin:
         r = render(a.body, up, figure=lambda k, c: (placed.add(k) or ph.figure(k, up, c or None)) if k in ph else "")
         self.article_links[a.path] = list(r.links) + [p for p in a.meta.get("related", [])]
         faq = a.meta.get("faq", [])
+        timeline = a.meta.get("timeline", [])
         toc = ("<details class='toc'><summary>In this article <span>" + f"{len(r.toc)} sections</span></summary><ol>"
+               + ("<li><a href='#at-a-glance'>At a glance</a></li>" if timeline else "")
                + "".join(f"<li><a href='#{i}'>{esc(t)}</a></li>" for i, t in r.toc)
                + ("<li><a href='#faq'>Questions people ask</a></li>" if faq else "") + "</ol></details>") if len(r.toc) >= 3 else ""
         howto = ""
         steps = a.meta.get("steps", [])
         recipe = a.type == "Recipe"
-        step_list = "<ol class='steps'>" + "".join(f"<li><b>{esc(st['name'])}</b><p>{esc(st['text'])}</p></li>" for st in steps) + "</ol>"
+        step_list = "<ol class='steps'>" + "".join(
+            f"<li><b>{esc(st['name'])}</b><p>{esc(st['text'])}</p>{ph.figure(st['image'], up, cls='step-photo') if st.get('image') in ph else ''}</li>" for st in steps) + "</ol>"
         if recipe:
             g = a.meta.get
             prep, cook = minutes(g("prep_time")), minutes(g("cook_time"))
@@ -170,6 +240,7 @@ class KnowledgeMixin:
                 breaks.setdefault(mid, f"<a class='also' href='{up}{x.path}'>{ph.thumb(xh, up)}<span><small>Also read</small><b>{esc(x.label)}</b></span></a>")
             prose = "".join((breaks.get(i, "") + c) for i, c in enumerate(chunks))
         hero_html = ph.figure(hero, up, cls="hero", eager=True) if hero else ""
+        timeline_html = self.timeline(timeline, up) if timeline else ""
         about = (f"<aside class='about-box'><b>About this guide</b><p>{NAME} is an independent, free guide to Durga Puja. "
                  f"Articles are checked against the sources listed above, say where traditions differ, and are corrected quickly: "
                  f"<a href='{up}contact/'>tell us</a> if you spot one. <a href='{up}about/'>More about us</a>.</p></aside>")
@@ -184,6 +255,7 @@ class KnowledgeMixin:
 <section class="tldr"><b>In short</b><p>{esc(a.summary)}</p></section>
 {share_bar(text)}
 {toc}
+{timeline_html}
 {howto}
 <div class="prose">{prose}</div>
 {glossary}
@@ -242,12 +314,27 @@ class KnowledgeMixin:
                 f"{i + 1}. **{st['name']}**: {st['text']}" for i, st in enumerate(steps)) + "\n"
         elif steps:
             md += "\n## Steps\n\n" + "\n".join(f"{i + 1}. **{st['name']}**: {st['text']}" for i, st in enumerate(steps)) + "\n"
+        if timeline:
+            md += "\n## At a glance\n\n" + "\n".join(f"- **{t['when']}**: {t['title']}. {t['text']}" for t in timeline) + "\n"
         if faq:
             md += "\n## Frequently asked questions\n\n" + "\n\n".join(f"**{f['q']}**\n{f['a']}" for f in faq) + "\n"
         if terms:
             md += "\n## Terms\n\n" + "\n".join(f"- **{t['term']}**{(' (' + t['alt'] + ')') if t.get('alt') else ''}: {t['definition']}" for t in terms) + "\n"
         (self.out / a.path / "index.md").write_text(md, encoding="utf-8")
         self.full.append(f"## {a.h1}\n{a.summary}\nPage: {url}\n")
+
+    def timeline(self, items, up, title="At a glance", hid="at-a-glance"):
+        """A vertical timeline: date, title, a line of text, and optionally a photo and a link."""
+        ph = self.pics
+        lis = []
+        for t in items:
+            img = ph.thumb(t["image"], up) if t.get("image") in ph else ""
+            head = f"<b>{esc(t['title'])}</b>"
+            if t.get("link"):   # checked with the article links after the build
+                self.article_links.setdefault("timelines", []).append(t["link"])
+                head = f"<a href='{up}{t['link']}'>{head}</a>"
+            lis.append(f"<li{' class=has-pic' if img else ''}><span class='tl-when'>{esc(t['when'])}</span><div class='tl-body'>{img}{head}<p>{esc(t['text'])}</p></div></li>")
+        return f"<section class='timeline-box'><h2 id='{hid}'>{esc(title)}</h2><ol class='timeline'>{''.join(lis)}</ol></section>"
 
     def article_crumbs(self, a):
         crumbs, parts = [], a.path.strip("/").split("/")

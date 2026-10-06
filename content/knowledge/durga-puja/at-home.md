@@ -33,6 +33,7 @@ text = "Decide whether you will worship on the five Bengali days (Shashthi to Da
 
 [[steps]]
 name = "Clean and prepare the puja space"
+image = "alpana"
 text = "Clean the corner or room the evening before. Place a low stool or clean platform facing east or north if you can, spread a red or yellow cloth, and draw a simple alpana (rice-paste design) or swastika in front if that is your custom."
 
 [[steps]]
@@ -41,6 +42,7 @@ text = "Bathe, wear clean clothes, and keep everything you need within reach so 
 
 [[steps]]
 name = "Set up the ghat (ghat sthapana)"
+image = "ghatasthapana"
 text = "Place a small heap of rice or earth on the cloth, set the water-filled ghat on it, draw a swastika on it with sindoor, put five mango leaves in its mouth and rest a coconut or fruit on top. Place the picture or image of Ma Durga behind or beside it."
 
 [[steps]]
@@ -53,22 +55,27 @@ text = "Close your eyes and picture Ma Durga as you know her: ten-armed, on her 
 
 [[steps]]
 name = "Offer the five upacharas (panchopachar)"
+image = "puja-thali"
 text = "Offer in order: gandha (sandalwood paste or sindoor), pushpa (flowers and bel leaves), dhoop (incense), deep (lamp) and naivedya (fruit, sweets or cooked bhog). Ring the bell softly as you offer each one."
 
 [[steps]]
 name = "Read or listen to the Chandi Path"
+image = "manuscript"
 text = "Read a chapter or more of the Chandi Path (Durga Saptashati), or listen to a recording with attention. Some families read a set portion each day so that the text is completed by Navami."
 
 [[steps]]
 name = "Perform aarti"
+image = "conch"
 text = "Wave the lit lamp, then incense, a conch of water, a cloth and flowers in circles before the Goddess while the family sings or claps. Sprinkle a little of the aarti water on everyone present."
 
 [[steps]]
 name = "Offer pushpanjali on Ashtami"
+image = "pushpanjali"
 text = "On Maha Ashtami morning, hold flowers and bel leaves in folded hands, recite the pushpanjali mantra three times (or follow a recording) and offer the flowers at the Goddess's feet."
 
 [[steps]]
 name = "Share prasad"
+image = "bhog"
 text = "Distribute the offered fruit, sweets or bhog to family and neighbours as prasad."
 
 [[steps]]
