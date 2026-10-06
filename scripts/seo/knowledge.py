@@ -135,6 +135,9 @@ class KnowledgeMixin:
                 f"<h2 id='start-here'>Start here</h2><ul class='feats'>{''.join(feature(a, i == 0) for i, a in enumerate(featured))}</ul>"]
         if days and days.meta.get("timeline"):
             body.append(self.timeline(days.meta["timeline"], up, "The five days, day by day", "five-days"))
+        if any(st.get("built") for st in self.stories):
+            body.append("<h2 id='photo-stories'>Photo stories</h2><p class='sec-intro'>Tap-through stories in full-screen photos, about a minute each.</p>"
+                        + self.story_cards(up).replace("class='story-cards'", "class='story-cards strip'"))
         if howtos:
             body.append("<h2 id='step-by-step'>Step by step</h2><p class='sec-intro'>Guides you can follow along with, with tick-box lists that remember your ticks on this phone.</p>"
                         + self.cards(howtos, up, "cards pics strip"))
@@ -254,6 +257,7 @@ class KnowledgeMixin:
 {hero_html}
 <section class="tldr"><b>In short</b><p>{esc(a.summary)}</p></section>
 {share_bar(text)}
+{self.story_link(a.path, up)}
 {toc}
 {timeline_html}
 {howto}

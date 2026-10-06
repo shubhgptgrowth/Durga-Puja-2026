@@ -43,6 +43,8 @@ jobs:
         run: |
           pip install -q pillow   # share cards (og/…/card.jpg): each article's photo with its title
           python scripts/build_seo.py --out app
+          # Photo stories are AMP Web Stories; Google ignores invalid ones, so flag problems (scripts/story_check.mjs)
+          npx -y amphtml-validator app/stories/*/index.html || echo "::warning::A photo story is not valid AMP; run the story-check workflow"
           # Pages that changed since the live build (by content hash), for IndexNow after the deploy
           site=$(python -c "import json;print(json.load(open('site.json'))['url'])")
           curl -fsS "${site}seo-manifest.json?cb=$RANDOM" -o /tmp/live-manifest.json || echo '{}' > /tmp/live-manifest.json

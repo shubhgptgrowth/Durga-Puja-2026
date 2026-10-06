@@ -1,0 +1,467 @@
+# Photo stories (Google Web Stories) at /stories/<slug>/, built by scripts/seo/stories.py.
+# Each story retells one guide in 6–10 full-screen photos. Keep text short (about 25 words a page),
+# and only say what the guide itself says. Photos are keys from photos.toml; `link` is an article path.
+
+[[story]]
+slug = "durga-puja-day-by-day"
+title = "Durga Puja 2026, day by day"
+dek = "From Mahalaya to Bijoya Dashami: what happens on each day, in photos."
+article = "durga-puja/rituals/"
+cover = "pushpanjali"
+  [[story.pages]]
+  image = "mahalaya"
+  kicker = "Saturday 10 October"
+  heading = "Mahalaya"
+  text = "At dawn, families offer tarpan to their ancestors at the river and the radio plays Mahishasuramardini. The fortnight of the goddess begins."
+  link = "durga-puja/rituals/mahalaya/"
+  [[story.pages]]
+  image = "bodhon"
+  kicker = "Saturday 17 October"
+  heading = "Shashthi: the awakening"
+  text = "In the evening the goddess is awakened in the bodhon rite, and the pandals open."
+  link = "durga-puja/rituals/shashthi/"
+  [[story.pages]]
+  image = "kola-bou"
+  kicker = "Sunday 18 October"
+  heading = "Saptami: Kola Bou"
+  text = "At dawn the Kola Bou, nine plants tied together as the goddess, is bathed and dressed in a sari. Then the goddess is invoked into the image."
+  link = "durga-puja/rituals/kola-bou/"
+  [[story.pages]]
+  image = "pushpanjali"
+  kicker = "Monday 19 October"
+  heading = "Maha Ashtami"
+  text = "The pandals fill for pushpanjali, flowers offered with mantras. Many pujas hold Kumari Puja, and Sandhi Puja marks the junction with Navami."
+  link = "durga-puja/rituals/ashtami/"
+  [[story.pages]]
+  image = "sandhi-puja"
+  kicker = "Ashtami into Navami"
+  heading = "Sandhi Puja"
+  text = "In the 48 minutes where Ashtami ends and Navami begins, the goddess is worshipped as Chamunda with 108 lotuses and 108 lamps."
+  link = "durga-puja/rituals/sandhi-puja/"
+  [[story.pages]]
+  image = "dhunuchi"
+  kicker = "Tuesday 20 October"
+  heading = "Maha Navami"
+  text = "The last full day of worship: the homa fire offering, khichuri bhog, and dhunuchi dances to the dhak late into the night."
+  link = "durga-puja/rituals/navami/"
+  [[story.pages]]
+  image = "sindoor-khela"
+  kicker = "Wednesday 21 October"
+  heading = "Bijoya Dashami"
+  text = "Women offer sindoor to the goddess and smear it on each other's faces: sindoor khela, the vermilion farewell."
+  link = "durga-puja/rituals/sindoor-khela/"
+  [[story.pages]]
+  image = "immersion"
+  heading = "Until next year"
+  text = "The goddess is carried to the river and immersed. Then everyone embraces, touches elders' feet and says Shubho Bijoya."
+  link = "durga-puja/rituals/dashami/"
+
+[[story]]
+slug = "maha-ashtami"
+title = "Maha Ashtami: the heart of Durga Puja"
+dek = "Anjali, Kumari Puja and Sandhi Puja: the biggest day of the puja, in photos."
+article = "durga-puja/rituals/ashtami/"
+cover = "sandhi-puja"
+  [[story.pages]]
+  image = "pushpanjali"
+  kicker = "Morning"
+  heading = "Pushpanjali"
+  text = "People stand in rows with flowers and bel leaves, repeat the Sanskrit mantras after the priest, usually in three rounds, and offer the flowers at the goddess's feet."
+  link = "durga-puja/rituals/pushpanjali-mantra/"
+  [[story.pages]]
+  image = "kumari-puja"
+  kicker = "Kumari Puja"
+  heading = "A girl worshipped as the goddess"
+  text = "In many pujas a young girl is bathed, dressed in a red sari and worshipped as a living form of Durga. The best known is at Belur Math."
+  link = "durga-puja/rituals/kumari-puja/"
+  [[story.pages]]
+  image = "sandhi-puja"
+  kicker = "The junction"
+  heading = "Sandhi Puja"
+  text = "Where Ashtami meets Navami: 108 lotuses, 108 lamps and the dhak at its most intense. It can fall at any hour, so check your panjika."
+  link = "durga-puja/rituals/sandhi-puja/"
+  [[story.pages]]
+  image = "saree"
+  kicker = "What people wear"
+  heading = "The best new clothes"
+  text = "Ashtami is the day for the finest outfit of the puja: a silk or handloom sari, a dhoti or panjabi, and shoes you can slip off at the altar."
+  link = "durga-puja/what-to-wear/"
+  [[story.pages]]
+  image = "dhunuchi"
+  kicker = "Evening"
+  heading = "Aarti and dhunuchi"
+  text = "After the evening aarti, many pujas break into dhunuchi naach, the dance with smoking clay incense burners."
+  link = "durga-puja/rituals/dhunuchi-naach/"
+  [[story.pages]]
+  image = "crowd"
+  kicker = "Plan ahead"
+  heading = "The most crowded day"
+  text = "Ashtami and Navami bring the biggest crowds: long anjali queues in the morning and packed pandals until well past midnight."
+  link = "durga-puja/pandal-hopping-tips/"
+
+[[story]]
+slug = "bijoya-dashami"
+title = "Bijoya Dashami: the farewell"
+dek = "Sindoor khela, the last dhak and the journey to the river."
+article = "durga-puja/rituals/dashami/"
+cover = "sindoor-khela"
+  [[story.pages]]
+  image = "sindoor-khela"
+  heading = "Sindoor khela"
+  text = "Women first offer sindoor and sweets to the goddess, then smear vermilion on each other's faces and wish each other well."
+  link = "durga-puja/rituals/sindoor-khela/"
+  [[story.pages]]
+  image = "camera"
+  heading = "A day of red"
+  text = "Vermilion, red-bordered saris and laughter: sindoor khela is one of the most photographed moments of the festival."
+  link = "durga-puja/photography-tips/"
+  [[story.pages]]
+  image = "dhaki"
+  heading = "The last beat"
+  text = "Dhakis play the images out of the pandal and all the way to the river."
+  link = "durga-puja/dhak-and-dhaki/"
+  [[story.pages]]
+  image = "immersion"
+  heading = "To the river"
+  text = "The images are carried to the ghats and immersed. Some old family pujas take the goddess out by boat."
+  link = "durga-puja/rituals/dashami/"
+  [[story.pages]]
+  image = "family"
+  heading = "Shubho Bijoya"
+  text = "Back home, people embrace, touch the feet of elders, share sweets and send Bijoya greetings to everyone they love."
+  link = "durga-puja/bijoya-dashami-wishes/"
+
+[[story]]
+slug = "history-of-durga-puja"
+title = "Three centuries of Durga Puja in Bengal"
+dek = "From the courtyards of rajas to the streets of a whole city."
+article = "durga-puja/history/"
+cover = "history"
+  [[story.pages]]
+  image = "durga-painting"
+  kicker = "1500s–1700s"
+  heading = "The pujas of rajas"
+  text = "The grand autumn puja took shape among landholders and kings, among them Raja Krishnachandra Roy of Nadia. Many early dates come from family tradition."
+  [[story.pages]]
+  image = "bonedi-bari"
+  kicker = "1757"
+  heading = "Sovabazar Rajbari"
+  text = "Raja Nabakrishna Deb's puja in north Kolkata, traditionally dated to the year of Plassey. Its thakurdalan still holds the puja."
+  link = "durga-puja/bonedi-bari-pujas/"
+  [[story.pages]]
+  image = "history"
+  kicker = "Colonial Calcutta"
+  heading = "The babus' pujas"
+  text = "Merchant families competed in splendour, inviting Company officials and hiring famous singers. These houses are today's bonedi bari."
+  [[story.pages]]
+  image = "crowd"
+  kicker = "Around 1790"
+  heading = "Barowari: twelve friends"
+  text = "At Guptipara, by tradition, twelve friends pooled money for a puja of their own: the first puja owned by a group, not a family."
+  [[story.pages]]
+  image = "family"
+  kicker = "1910 onward"
+  heading = "Sarbojanin: for everyone"
+  text = "Neighbourhood committees began pujas open to all, regardless of caste or means. Bagbazar Sarbojanin dates to 1918 or 1919."
+  [[story.pages]]
+  image = "kumartuli"
+  kicker = "Mid-1900s"
+  heading = "A city of pujas"
+  text = "New neighbourhoods built their own pujas after independence, and Kumartuli's potters made images for all of them."
+  link = "durga-puja/kumartuli-idol-making/"
+  [[story.pages]]
+  image = "pandal-art"
+  kicker = "1980s–2000s"
+  heading = "The theme pandal"
+  text = "Pandals became public art, each built around one idea: a village craft, a social issue or an imagined world."
+  link = "durga-puja/pandal-art-and-themes/"
+  [[story.pages]]
+  image = "unesco"
+  kicker = "December 2021"
+  heading = "World heritage"
+  text = "UNESCO inscribed Durga Puja in Kolkata on its list of the Intangible Cultural Heritage of Humanity."
+  link = "durga-puja/unesco-heritage/"
+
+[[story]]
+slug = "kumartuli-idol-making"
+title = "How Kumartuli makes the goddess"
+dek = "Bamboo, straw, river clay and paint: the making of a Durga image."
+article = "durga-puja/kumartuli-idol-making/"
+cover = "kumartuli"
+  [[story.pages]]
+  image = "kumartuli"
+  heading = "The potters' quarter"
+  text = "On the bank of the Hooghly in north Kolkata, hundreds of artisans make the images for the city's pujas and for pujas abroad."
+  [[story.pages]]
+  image = "kumartuli-2"
+  heading = "Layer by layer"
+  text = "Each image is built on a bamboo and wood frame, shaped in straw, covered in layers of river clay, dried, then painted and dressed."
+  [[story.pages]]
+  image = "family"
+  heading = "The eyes, last"
+  text = "Chokkhu daan, painting the goddess's eyes, is the final step, traditionally done around Mahalaya."
+  [[story.pages]]
+  image = "eco-idol"
+  heading = "Greener pujas"
+  text = "Unbaked clay and natural colours, and immersion in artificial ponds, keep rivers cleaner."
+  link = "durga-puja/eco-friendly-puja/"
+  [[story.pages]]
+  image = "kumartuli"
+  heading = "Visit"
+  text = "The month before the puja is the best time to go. Mornings are calmer; these are workplaces, so ask before you photograph."
+
+[[story]]
+slug = "bhog-recipes"
+title = "The Durga Puja bhog plate"
+dek = "Khichuri, labra, beguni, chutney and payesh: the puja's festive food, with recipes."
+article = "durga-puja/recipes/"
+cover = "bhog"
+  [[story.pages]]
+  image = "khichuri"
+  heading = "Bhoger khichuri"
+  text = "Gobindobhog rice and roasted moong dal with ghee and ginger, cooked without onion or garlic: the heart of the bhog."
+  link = "durga-puja/recipes/bhoger-khichuri/"
+  [[story.pages]]
+  image = "labra"
+  heading = "Labra"
+  text = "A mixed vegetable dish cooked soft, served alongside the khichuri."
+  link = "durga-puja/recipes/labra/"
+  [[story.pages]]
+  image = "beguni"
+  heading = "Beguni"
+  text = "Thin slices of brinjal in a spiced gram-flour batter, fried crisp and eaten hot."
+  link = "durga-puja/recipes/beguni/"
+  [[story.pages]]
+  image = "chutney"
+  heading = "Tomato and dates chutney"
+  text = "Sweet and sour, it is served near the end of the meal."
+  link = "durga-puja/recipes/tomato-khejur-chutney/"
+  [[story.pages]]
+  image = "payesh"
+  heading = "Payesh"
+  text = "Rice slow-cooked in milk until creamy: the sweet that closes the bhog."
+  link = "durga-puja/recipes/payesh/"
+  [[story.pages]]
+  image = "narkel-naru"
+  heading = "Narkel naru"
+  text = "Coconut and jaggery rolled into small balls, made for the puja and for Bijoya visits."
+  link = "durga-puja/recipes/narkel-naru/"
+  [[story.pages]]
+  image = "luchi"
+  heading = "Luchi and alur dom"
+  text = "Puffed fried bread with a ginger-spiced potato curry: the Ashtami breakfast in many homes."
+  link = "durga-puja/recipes/luchi-alur-dom/"
+
+[[story]]
+slug = "durga-puja-at-home"
+title = "Durga Puja at home, step by step"
+dek = "A simple, respectful puja in your own home, in photos."
+article = "durga-puja/at-home/"
+cover = "puja-thali"
+  [[story.pages]]
+  image = "alpana"
+  kicker = "Step 1"
+  heading = "Prepare the space"
+  text = "Clean a quiet corner, spread a fresh cloth, and draw an alpana if you like."
+  [[story.pages]]
+  image = "ghatasthapana"
+  kicker = "Step 2"
+  heading = "Set up the ghat"
+  text = "Place a water-filled pot on a little rice or earth, with five mango leaves in its mouth and a coconut on top, and the goddess's picture beside it."
+  [[story.pages]]
+  image = "puja-thali"
+  kicker = "Step 3"
+  heading = "Five offerings"
+  text = "Offer sandal paste, flowers, incense, a lamp and food, in that order, ringing the bell softly as you go."
+  [[story.pages]]
+  image = "manuscript"
+  kicker = "Step 4"
+  heading = "Read the Chandi"
+  text = "Read or listen to the Chandi Path, the Devi Mahatmya's story of the goddess."
+  link = "durga-puja/chandi-path/"
+  [[story.pages]]
+  image = "conch"
+  kicker = "Step 5"
+  heading = "Aarti"
+  text = "Wave the lit lamp, incense and a conch of water before the goddess while the family sings or claps."
+  [[story.pages]]
+  image = "pushpanjali"
+  kicker = "Ashtami"
+  heading = "Pushpanjali"
+  text = "On Ashtami morning, offer flowers with the anjali mantras, three times."
+  link = "durga-puja/rituals/pushpanjali-mantra/"
+  [[story.pages]]
+  image = "bhog"
+  kicker = "Last step"
+  heading = "Share prasad"
+  text = "Share the offered food with your family and neighbours."
+  link = "durga-puja/samagri-list/"
+
+[[story]]
+slug = "sounds-of-durga-puja"
+title = "The sounds of Durga Puja"
+dek = "The radio at dawn, the dhak, the conch: how Pujo sounds."
+article = "durga-puja/dhak-and-dhaki/"
+cover = "dhaki"
+  [[story.pages]]
+  image = "radio"
+  kicker = "Mahalaya dawn"
+  heading = "Mahishasuramardini"
+  text = "First broadcast from Calcutta in the early 1930s, the dawn radio programme is, for millions of Bengalis, the moment Pujo begins."
+  link = "durga-puja/mahishasuramardini-radio/"
+  [[story.pages]]
+  image = "mahalaya"
+  kicker = "Mahalaya"
+  heading = "Before sunrise"
+  text = "Families wake before dawn to listen, then go to the river for tarpan."
+  link = "durga-puja/rituals/mahalaya/"
+  [[story.pages]]
+  image = "dhaki"
+  heading = "The dhak"
+  text = "A large barrel drum topped with white plumes. Many dhakis travel from rural Bengal to Kolkata to be hired for the pujas."
+  [[story.pages]]
+  image = "conch"
+  heading = "Conch and ululation"
+  text = "With the kashor gong, the conch and ulu, the dhak makes the sound most Bengalis call Pujo."
+  [[story.pages]]
+  image = "dhunuchi"
+  heading = "Dhunuchi to the beat"
+  text = "At evening aarti, dancers sway with smoking clay burners to the beat of the dhak."
+  link = "durga-puja/rituals/dhunuchi-naach/"
+
+[[story]]
+slug = "pandal-hopping-kolkata"
+title = "Pandal hopping in Kolkata: how to do it right"
+dek = "When to go, how to get around and what to eat, in photos."
+article = "durga-puja/pandal-hopping-tips/"
+cover = "pandal-lights"
+  [[story.pages]]
+  image = "crowd"
+  heading = "Go early, or very late"
+  text = "Queues are shortest early in the morning and after 1 am. Ashtami and Navami nights are the busiest."
+  [[story.pages]]
+  image = "kolkata-tram"
+  heading = "Leave the car"
+  text = "Use the Metro and walk between neighbouring pandals. Plan one or two areas per outing."
+  link = "guide/parking/"
+  [[story.pages]]
+  image = "pandal-art"
+  heading = "See the art"
+  text = "Theme pandals turn crafts and ideas into whole buildings. Ready-made trails link the best of each area."
+  link = "guide/"
+  [[story.pages]]
+  image = "street-food"
+  heading = "Eat on the way"
+  text = "Phuchka, rolls and sweets along the pandal routes. Carry cash and UPI."
+  link = "durga-puja/food-and-bhog/"
+  [[story.pages]]
+  image = "pandal-lights"
+  heading = "Be ready"
+  text = "Comfortable shoes, water and a charged power bank. Give children a contact card, and use police help desks if anyone gets lost."
+  link = "durga-puja/with-kids-and-elderly/"
+  [[story.pages]]
+  image = "kolkata"
+  heading = "Coming to Kolkata?"
+  text = "The main days run from Shashthi, Saturday 17 October, to Bijoya Dashami, Wednesday 21 October 2026."
+  link = "durga-puja/visit-kolkata/"
+
+[[story]]
+slug = "navratri-nine-nights"
+title = "Navratri: the nine nights of the Goddess"
+dek = "Kalash, nine forms, fasting, garba and Dussehra, in photos."
+article = "navratri/"
+cover = "garba"
+  [[story.pages]]
+  image = "ghatasthapana"
+  kicker = "Day 1"
+  heading = "Ghatasthapana"
+  text = "A water-filled kalash is installed as the seat of the Goddess, often over soil sown with barley that sprouts through the nine days."
+  link = "navratri/ghatasthapana/"
+  [[story.pages]]
+  image = "navadurga"
+  kicker = "Nine days"
+  heading = "The Navadurga"
+  text = "One form of the Goddess each day, from Shailaputri, daughter of the mountain, to Siddhidatri, giver of fulfilment."
+  link = "navratri/navadurga/"
+  [[story.pages]]
+  image = "vrat-food"
+  heading = "Fasting"
+  text = "Many give up grains, onion and garlic, and eat fruit, dairy, potatoes and flours like kuttu and singhara. Rules differ by family."
+  link = "navratri/fasting-rules/"
+  [[story.pages]]
+  image = "garba"
+  kicker = "Every night"
+  heading = "Garba"
+  text = "Gujarat's circle dance, around a clay lamp that stands for life and the Goddess."
+  link = "navratri/garba-dandiya/"
+  [[story.pages]]
+  image = "dandiya"
+  heading = "Dandiya Raas"
+  text = "Danced in pairs with decorated sticks, and linked to Krishna's raas."
+  link = "navratri/garba-dandiya/"
+  [[story.pages]]
+  image = "kanya-pujan"
+  kicker = "Ashtami or Navami"
+  heading = "Kanya pujan"
+  text = "Young girls are honoured as the Goddess, their feet washed, and fed puri, chana and halwa."
+  link = "navratri/kanya-pujan/"
+  [[story.pages]]
+  image = "dussehra"
+  kicker = "The tenth day"
+  heading = "Dussehra"
+  text = "Good over evil: Ravana's effigies burn in north India, and Bengal bids Durga farewell on Bijoya Dashami."
+  link = "navratri/dussehra-vijayadashami/"
+
+[[story]]
+slug = "bengal-festival-season"
+title = "Bengal's festival season, from Vishwakarma to Jagaddhatri"
+dek = "The pujas that surround Durga Puja, from September to November."
+article = "festivals/"
+cover = "diwali"
+  [[story.pages]]
+  image = "vishwakarma"
+  kicker = "Usually 17 September"
+  heading = "Vishwakarma Puja"
+  text = "Workers garland their tools and machines for the divine craftsman, and Kolkata's skies fill with kites. Durga Puja is near."
+  link = "festivals/vishwakarma-puja/"
+  [[story.pages]]
+  image = "unesco"
+  kicker = "17–21 October 2026"
+  heading = "Durga Puja"
+  text = "The biggest festival of all: five days of worship, art, food and family."
+  link = "durga-puja/"
+  [[story.pages]]
+  image = "lakshmi-puja"
+  kicker = "Full moon after Dashami"
+  heading = "Kojagari Lakshmi Puja"
+  text = "Homes draw alpana and Lakshmi's footprints and offer khichuri and coconut naru. 'Who is awake?' she asks."
+  link = "festivals/kojagari-lakshmi-puja/"
+  [[story.pages]]
+  image = "kali-puja"
+  kicker = "New moon of Kartik"
+  heading = "Kali Puja"
+  text = "Kali is worshipped through the night, the same night much of India celebrates Diwali."
+  link = "festivals/kali-puja-diwali/"
+  [[story.pages]]
+  image = "diwali"
+  heading = "Lamps and lights"
+  text = "Houses glow with diyas, and the sky with fireworks."
+  link = "festivals/kali-puja-diwali/"
+  [[story.pages]]
+  image = "bhai-phonta"
+  kicker = "Two days after Kali Puja"
+  heading = "Bhai Phonta"
+  text = "Sisters put a phonta on their brothers' foreheads, pray that death stay from their door, and feed them a feast."
+  link = "festivals/bhai-phonta/"
+  [[story.pages]]
+  image = "jagaddhatri"
+  kicker = "Navami of Kartik"
+  heading = "Jagaddhatri Puja"
+  text = "Chandannagar lights up for the goddess who holds the world, with light art and an immersion procession."
+  link = "festivals/jagaddhatri-puja-chandannagar/"
+  [[story.pages]]
+  image = "basanti"
+  kicker = "And in spring"
+  heading = "Basanti Puja"
+  text = "Durga's spring worship in Chaitra, by Puranic tradition the original season of her puja."
+  link = "festivals/basanti-puja/"

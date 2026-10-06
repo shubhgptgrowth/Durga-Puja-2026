@@ -74,7 +74,9 @@ class BuildSeoTest(unittest.TestCase):
     def test_one_page_per_place_area_and_trail(self):
         g = self.g
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 3 + len(self.articles)  # + hub, dates, parking
-        self.assertEqual(self.n, want + len(SITE_PAGES))
+        import tomllib
+        stories = len(tomllib.loads((CONTENT / "stories.toml").read_text(encoding="utf-8"))["story"]) if (self.tmp / "stories").exists() else 0
+        self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0))   # + the stories index
         self.assertEqual(len(self.pages), want)
 
     def test_every_page_is_complete(self):
@@ -161,6 +163,28 @@ class BuildSeoTest(unittest.TestCase):
         from seo.photos import DIR
         if (DIR / "photos.json").exists():
             self.assertIn("step-photo", home)
+
+    def test_photo_stories(self):
+        d = self.tmp / "stories"
+        if not d.exists():
+            self.skipTest("no photos fetched yet")
+        sitemap = (self.tmp / "sitemap.xml").read_text(encoding="utf-8")
+        for f in sorted(d.glob("*/index.html")):
+            with self.subTest(story=f.parent.name):
+                html = f.read_text(encoding="utf-8")
+                for must in ('<html ⚡ lang="en">', "<style amp-boilerplate>", "https://cdn.ampproject.org/v0/amp-story-1.0.js", "<amp-story standalone",
+                             'publisher-logo-src="https://', 'poster-portrait-src="https://', f'<link rel="canonical" href="{self.base}stories/{f.parent.name}/">'):
+                    self.assertIn(must, html)
+                self.assertNotRegex(html, r"<img |<script>| style=")   # AMP: amp-img only, no inline script or style attributes
+                self.assertGreaterEqual(html.count("<amp-story-page "), 6)
+                self.assertIn("Wikimedia Commons", html)
+                self.assertLess(len(re.search(r"<style amp-custom>(.*?)</style>", html, re.S).group(1).encode()), 75000)
+                for href in re.findall(r'href="(\.\./[^"]*)"', html):   # links back to the guides resolve
+                    if not href.endswith((".svg", ".png")):
+                        self.assertTrue((f.parent / href / "index.html").resolve().exists(), href)
+                self.assertIn(f"{self.base}stories/{f.parent.name}/", sitemap)
+        self.assertIn("class='story-link'", (self.tmp / "durga-puja/rituals/ashtami/index.html").read_text(encoding="utf-8"))
+        self.assertIn("story-cards", (self.tmp / "stories/index.html").read_text(encoding="utf-8"))
 
     def test_articles(self):
         self.assertGreater(len(self.articles), 0)

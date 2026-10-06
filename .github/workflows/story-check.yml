@@ -1,0 +1,23 @@
+name: story-check
+# Builds the guide pages, validates every photo story (Web Story / AMP) and commits phone screenshots to
+# data/story_screens for review. Delete that folder after reviewing.
+on: workflow_dispatch
+permissions: { contents: write }
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci && npx playwright install --with-deps chromium
+      - run: pip install -q pillow && python scripts/build_seo.py --out app
+      - run: node scripts/story_check.mjs app data/story_screens
+      - name: Commit screenshots
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d data/story_screens ] && git add -A data/story_screens
+          git diff --cached --quiet || { git commit -qm "Photo story screenshots"; git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}; }

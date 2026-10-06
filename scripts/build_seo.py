@@ -33,10 +33,11 @@ from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock
                         jsonld, km, nice_date, rupees)
 from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
+from seo.stories import StoriesMixin
 
 ROOT = Path(__file__).resolve().parent.parent
 
-class Site(KnowledgeMixin, ExtrasMixin):
+class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
@@ -101,14 +102,14 @@ class Site(KnowledgeMixin, ExtrasMixin):
 </head>
 <body>
 <header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
-<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
+<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}stories/">Photo stories</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
 {body}
 {cta}
 <p class="updated">{note if note is not None else self.place_note()} Cite as: “{NAME}, {esc(canonical)}”.</p>
 </main>
-<footer><a href="{up}guides/">All guides</a> · <a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}search/">Search</a><br><a href="{up}about/">About</a> · <a href="{up}contact/">Contact</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}terms/">Terms</a> · <a href="{up}llms.txt">llms.txt</a></footer>
+<footer><a href="{up}guides/">All guides</a> · <a href="{up}stories/">Photo stories</a> · <a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}search/">Search</a><br><a href="{up}about/">About</a> · <a href="{up}contact/">Contact</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}terms/">Terms</a> · <a href="{up}llms.txt">llms.txt</a></footer>
 </body>
 </html>
 """
@@ -537,6 +538,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
 
     def build(self):
         self.load_articles()   # first, so place pages can link to the ritual articles
+        self.load_stories()
         for p in self.g["pandals"]:
             self.pandal_page(p)
         for f in self.g["food"]:
@@ -548,10 +550,12 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.dates_page()
         self.parking_page()
         self.hub_page()
+        self.story_pages()   # before the articles, which link to their stories
         for a in self.articles:
             self.article_page(a)
         if self.articles:
             self.directory_page()
+        self.stories_index()
         self.build_extras()   # about, contact, terms, search, calendar, card maker, ads.txt
         bad = self.check_article_links()
         if bad:

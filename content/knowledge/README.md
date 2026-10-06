@@ -112,3 +112,11 @@ credited under each photo. `photos.toml` lists them. To add one:
 Mahalaya: Saturday 10 October 2026. Panchami: Friday 16 October. Shashthi: Saturday 17 October.
 Saptami: Sunday 18 October. Maha Ashtami: Monday 19 October. Maha Navami: Tuesday 20 October.
 Bijoya Dashami: Wednesday 21 October 2026.
+
+## Photo stories
+
+`stories.toml` holds the photo stories: Google Web Stories (AMP) published at `/stories/<slug>/` and listed at `/stories/`,
+in the sitemap and on the guide they retell. Each `[[story]]` has a `slug`, `title`, `dek`, the `article` it links to, a `cover`
+photo and 5–9 `[[story.pages]]` (`image`, optional `kicker`, `heading`, about 25 words of `text`, optional `link`). Only say
+what the guide itself says. **Actions → story-check** validates every story as AMP and commits phone screenshots to
+`data/story_screens/` for review.
