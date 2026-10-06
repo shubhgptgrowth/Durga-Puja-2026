@@ -250,6 +250,23 @@ class RedesignTest(unittest.TestCase):
         self.assertEqual(build2.fit_start(fx, "c", 2, 4), 2)
         self.assertEqual(build2.fit_start({}, "x", 7, 4), 7)
 
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL") and __import__("shutil").which("ffmpeg"),
+                         "needs Pillow and ffmpeg")
+    def test_photo_move_is_smooth_and_full_length(self):
+        import subprocess, tempfile
+        from PIL import Image
+        from marketing.reels import build2
+        with tempfile.TemporaryDirectory() as d:
+            Image.new("RGB", (1300, 2300), (120, 40, 30)).save(f"{d}/p.jpg")
+            build2.still(f"{d}/p.jpg", f"{d}/s.jpg", 0.5, 0.45)
+            out = build2.still_motion(f"{d}/s.jpg", f"{d}/m.mp4", 1.0, 0)
+            n = subprocess.run(["ffprobe", "-v", "error", "-count_frames", "-select_streams", "v", "-show_entries",
+                                "stream=nb_read_frames,width,height", "-of", "csv=p=0", out], capture_output=True, text=True).stdout
+            self.assertEqual(n.strip(), f"{build2.W},{build2.H},{build2.FPS}")
+        self.assertGreaterEqual(build2.MIN_SHOT, 5.0)
+        self.assertGreater(build2.ease(0.5), build2.ease(0.1))
+        self.assertEqual((build2.ease(0), build2.ease(1)), (0, 1))
+
     def test_creator_clip_needs_permission(self):
         from marketing.footage import factory
         idx = factory.footage_index(None)

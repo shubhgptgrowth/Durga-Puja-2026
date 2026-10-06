@@ -7,7 +7,8 @@ spec2.json  {"reels": [{"id", "hook", "music": [fid, start_s], "segments": [[src
 footage.json  id -> {license, artist, label, ...}; files are src_dir/<id>.mp4|.webm|.ogv|.ogg|.mp3 (any container ffmpeg reads),
             or .jpg/.png for photos, which get a slow pan (cx and an optional cy, 0..1, pick the framing).
 
-Shots are cut to 1080x1920 with a shared colour grade and 0.3 s crossfades. The music bed is mixed over each shot's own
+Shots are cut to 1080x1920 with a shared colour grade and 0.3 s crossfades. Handheld footage is stabilised (vidstab),
+photos get a slow sub-pixel push-in, and voiceover shots hold at least MIN_SHOT seconds. The music bed is mixed over each shot's own
 sound (crowd, dhak) kept low, and loudness-normalised for Instagram. The end card credits every real source.
 Needs ffmpeg and Pillow; fonts/Poppins-*.ttf next to this file or in ./fonts.
 """
@@ -16,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 W, H, FPS, XF = 1080, 1920, 30, 0.3
 HANDLE = "@pujoparikrama.guide"
-FONTS = next(d for d in ("fonts", os.path.join(os.path.dirname(__file__), "fonts")) if os.path.isdir(d))
+FONTS = next((d for d in ("fonts", os.path.join(os.path.dirname(__file__), "fonts")) if os.path.isdir(d)), "fonts")
 font = lambda w, s: ImageFont.truetype(os.path.join(FONTS, f"Poppins-{w}.ttf"), s)
 # Bengali needs raqm shaping; Galada for display lines, Hind Siliguri for the rest (fonts/ from run3.sh)
 bnfont = lambda name, s: ImageFont.truetype(os.path.join(FONTS, name), s, layout_engine=ImageFont.Layout.RAQM)
@@ -241,6 +242,56 @@ def still(path, out, cx, cy):
     return bw - W, bh - H
 
 
+def ease(u):
+    return u * u * (3 - 2 * u)  # smoothstep: the move starts and ends at rest
+
+
+def still_motion(jpg, out, secs, i):
+    """A slow, sub-pixel push-in on a photo, drawn frame by frame (ffmpeg's crop/zoompan move in whole pixels, which
+    reads as a judder at this speed). Alternate shots drift left or right a little as they push in."""
+    im = Image.open(jpg).convert("RGB")
+    n = max(1, round(secs * FPS))
+    s0, s1 = min(im.width / W, im.height / H, 1.10), 1.0  # window scale, source px per frame px
+    d = 1 if i % 2 else -1
+    p = subprocess.Popen(["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+                          "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "fast", "-crf", "12",
+                          "-pix_fmt", "yuv420p", out], stdin=subprocess.PIPE)
+    for k in range(n):
+        u = ease(k / max(1, n - 1))
+        sc = s0 + (s1 - s0) * u
+        cx = im.width / 2 + d * 0.25 * (im.width - W * sc) * (u - 0.5)
+        cy = im.height / 2 - 0.15 * (im.height - H * sc) * (u - 0.5)
+        x0, y0 = cx - W * sc / 2, cy - H * sc / 2
+        fr = im.transform((W, H), Image.AFFINE, (sc, 0, x0, 0, sc, y0), resample=Image.BICUBIC)
+        p.stdin.write(fr.tobytes())
+    p.stdin.close()
+    if p.wait():
+        raise SystemExit(f"ffmpeg failed writing {out}")
+    return out
+
+
+def has_filter(name, _cache={}):
+    if name not in _cache:
+        r = subprocess.run(["ffmpeg", "-hide_banner", "-filters"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        _cache[name] = f" {name} " in r.stdout
+    return _cache[name]
+
+
+def steady(path, start, secs, out, trf):
+    """Handheld phone footage → the same shot on a calm, gliding camera: vidstab finds the shake in a first pass, the
+    second pass removes it (2 s of smoothing each way, so a short shot is close to a tripod shot) and zooms in just
+    enough to hide the moving edges."""
+    cut = ["-ss", str(start), "-t", f"{secs + 0.2:.2f}", "-i", path]
+    if has_filter("vidstabdetect"):
+        run("ffmpeg", "-y", "-v", "error", *cut, "-vf", f"vidstabdetect=shakiness=10:accuracy=15:stepsize=4:result={trf}", "-f", "null", "-")
+        vf = f"vidstabtransform=input={trf}:smoothing=60:optzoom=1:interpol=bicubic,unsharp=5:5:0.5"
+    else:
+        vf = "deshake=rx=48:ry=48"
+    aud = ["-c:a", "aac", "-b:a", "192k"] if has_audio(path) else ["-an"]
+    run("ffmpeg", "-y", "-v", "error", *cut, "-vf", vf, *aud, "-c:v", "libx264", "-preset", "fast", "-crf", "12", "-pix_fmt", "yuv420p", out)
+    return out
+
+
 def segment(src_dir, footage, i, seg, reel, tmp):
     sid, start, secs, text, *rest = seg
     cx = rest[0] if rest else 0.5
@@ -262,12 +313,14 @@ def segment(src_dir, footage, i, seg, reel, tmp):
         caption_png(png, reel["hook"] if hook else text, hook=hook)
     if path.lower().endswith((".jpg", ".jpeg", ".png")):
         jpg = f"{tmp}/{reel['id']}_{i}_still.jpg"
-        mx, my = still(path, jpg, cx, cy)
-        x0, x1 = (0.15 * mx, 0.85 * mx) if i % 2 else (0.85 * mx, 0.15 * mx)
-        crop = f"crop={W}:{H}:'{x0:.1f}+({x1 - x0:.1f})*t/{secs}':'{0.7 * my:.1f}-{0.4 * my:.1f}*t/{secs}'"
-        args = ["ffmpeg", "-y", "-loop", "1", "-framerate", str(FPS), "-t", str(secs), "-i", jpg, "-i", png]
-        path = jpg
+        still(path, jpg, cx, cy)
+        path = still_motion(jpg, f"{tmp}/{reel['id']}_{i}_move.mp4", secs, i)
+        crop = "null"
+        args = ["ffmpeg", "-y", "-t", str(secs), "-i", path, "-i", png]
     else:
+        if (footage.get(sid) or {}).get("source") != "AI":  # real handheld footage gets steadied; AI clips are smooth
+            path = steady(path, start, secs, f"{tmp}/{reel['id']}_{i}_steady.mp4", f"{tmp}/{reel['id']}_{i}.trf")
+            start = 0
         crop = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
                 f"crop={W}:{H}:'max(0,min(iw-{W},iw*{cx}-{W}/2))':'(ih-{H})/2',tpad=stop_mode=clone:stop_duration=4")
         args = ["ffmpeg", "-y", "-ss", str(start), "-t", str(secs), "-i", path, "-i", png]
@@ -313,7 +366,8 @@ def duration(path):
     return float(run("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path).strip())
 
 
-VO_LEAD, VO_TAIL, END_S = 0.25, 0.45, 3.4
+VO_LEAD, VO_TAIL, END_S = 0.35, 0.9, 3.6
+MIN_SHOT, HOOK_SHOT = 5.0, 5.5  # every shot holds long enough to be taken in; the first one a little longer
 
 
 def fit_start(footage, sid, start, secs):
@@ -329,7 +383,7 @@ def build_vo(reel, footage, src_dir, out_dir, tmp):
     for i, seg in enumerate(reel["segments"]):
         f = reel["vo_files"][i] if i < len(reel["vo_files"]) else None
         d = duration(f) if f else 0
-        secs = round(max(seg[2], VO_LEAD + d + VO_TAIL), 2)
+        secs = round(max(seg[2], HOOK_SHOT if i == 0 else MIN_SHOT, VO_LEAD + d + VO_TAIL), 2)
         segs.append([seg[0], fit_start(footage, seg[0], seg[1], secs), secs, *seg[3:]])
         offs.append((f, t + VO_LEAD) if f else None)
         t += secs
