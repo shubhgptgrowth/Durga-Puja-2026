@@ -84,15 +84,16 @@ The own Instagram account can't get there alone. The plan borrows audiences that
 |---|---|---|---|
 | **Press and news portals** | One story: "A free app that tells you when Kolkata's pandals are empty". Telegraph, TOI Kolkata, Anandabazar/ABP Ananda digital, Sangbad Pratidin, Ei Samay, Get Bengal, Kolkata24x7, Indulge, plus Kolkata newsletters | 2–4 pieces with a link. Pujo-utility stories get shared widely | 15–30k |
 | **Creators (unpaid Collab posts)** | 15 Kolkata food, travel, meme and pujo creators. A Collab Reel plus a story link sticker with their own `creator_<handle>` code | About 150k average views, 0.5–1 % click through | 15–30k |
-| **Google and Bing search** | Pandal-name pages (Bagbazar ~2.4k/month, Ekdalia ~2.4k, Deshapriya ~1.3k, Sreebhumi ~720, peaking in October), "pandal near me", dates, rituals, the themes page | Semrush (India) puts "durga puja 2026" at 165k/month and "pandal near me" at 18k/month (mostly in October). On a new domain we take 1–2 % before Shashthi, more during the pujas | 10–20k |
-| **WhatsApp groups** | Team + 30 friends each forward to 10 groups. RWA, office and alumni groups. The Channel | 300+ groups × ~100 members × 15 % open, plus forwards (k ≈ 0.3) | 8–15k |
+| **Google, Bing and AI answers** | Pandal-name pages plus 2026 themes, the themes list, dates, rituals. Bing/ChatGPT/Copilot through IndexNow | Demand is real (Semrush, India: "durga puja 2026" 165k/month, Bagbazar 2.4k, Ekdalia 2.4k, Deshapriya 1.3k, mostly in October), but a week-old domain with no backlinks won't rank for head terms. The SEO audit expects 300–2,000 Google clicks, mostly 17–21 Oct. Press backlinks (§4.1) are what lift this | 1–3k |
+| **WhatsApp groups** | Team + 50 "para captains" each forward to 10 groups. RWA, office and alumni groups. The Channel | 500+ groups × ~100 members × 15 % open, plus forwards (k ≈ 0.3) | 10–20k |
 | **Communities** | r/kolkata, r/bengali, Kolkata Facebook groups (food, puja, neighbourhood), Quora answers on "best pandals" / "pandal hopping tips" | Usefulness-first posts, not ads | 5–10k |
 | **Own Instagram** | 1–2 Reels a day, a Collab on every one we can, comment-to-DM | Grows with the Collabs | 3–8k |
 | **Committees, RWAs, colleges, eateries (QR)** | Help-desk posters, notice boards, NSS teams | Mostly during the pujas | 2–5k |
-| **Total** | | | **≈ 58k–118k** |
+| **Total** | | | **≈ 51k–116k** |
 
-**The honest call:** 1 lakh before Shashthi is reachable only if **press and creators both land in the next 5 days.**
-The central forecast is about 70k by Panchami and 1 lakh crossed on Saptami. Section 6 says what we change if a
+**The honest call:** 1 lakh before Shashthi is reachable only if **press, creators and WhatsApp all land in the next 5 days.**
+Search can't carry it on a new domain: treat it as a bonus, and as the place press and forwards land. The central
+forecast is about 65k by Panchami and 1 lakh crossed on Saptami. Section 6 says what we change if a
 weekly gate is missed.
 
 ### 4.1 Press (the biggest single lever, owner needed today)
