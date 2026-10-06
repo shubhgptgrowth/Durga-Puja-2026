@@ -64,6 +64,11 @@ def build(root):
         nav.append(f'<a href="#d{d}">Reels {d[8:]}/{d[5:7]}</a>')
         parts.append(f'<h2 id="d{d}">Reels &amp; stories · {d}</h2><p>Voiceover on every reel, hard cuts, subtitles. In posting order (IST).</p>')
         for it in man["items"]:
+            if it["type"] == "photo":
+                row = "".join(f'<img loading="lazy" src="reels/{d}/{u.rsplit("/", 1)[-1]}">' for u in it["image_urls"])
+                parts.append(f'<div class="item"><h3>{html.escape(it["at"])} · photo · {html.escape(it["id"])}</h3>'
+                             f'<div class="row">{row}</div><div class="cap">{html.escape(it.get("caption") or "")}</div>{fb(it["id"])}</div>')
+                continue
             src = f"reels/{d}/{it['id']}.mp4"
             parts.append(f'<div class="item"><h3>{html.escape(it["at"])} · {it["type"]} · {html.escape(it["id"])}</h3><div class="vid">'
                          f'<video src="{src}" controls playsinline preload="metadata"></video>'

@@ -12,7 +12,8 @@ failed run, so nothing is posted twice. Same token and account as marketing.publ
 
 Daily sets (marketing/footage/factory.py) are read from the live site with --date: items carry "at" (HH:MM IST) and
 the run waits for each slot; --window am|pm posts only the slots before / from 17:00, so each half fits in one job.
-Video stories ({"type": "story", "video_url"}) are posted as Stories. A daily set posts only once its date is listed
+Video stories ({"type": "story", "video_url"}) are posted as Stories; photo posts ({"type": "photo", "image_urls"}) as
+a single image or, with several, a carousel. A daily set posts only once its date is listed
 in marketing/daily/approved.txt (the owner approves each day's set the evening before).
 """
 import datetime as dt
@@ -49,6 +50,9 @@ def carousel_caption(c):
 
 def resolve(item, spec):
     """Turns a manifest item into what gets posted: kind, media URLs and caption."""
+    if item["type"] == "photo":  # pure photography: one image, or a carousel of up to 10
+        return {"label": item["id"], "kind": "photo", "urls": item["image_urls"], "caption": item.get("caption") or "",
+                "at": item.get("at")}
     if item["type"] in ("reel", "story"):
         return {"label": item["id"], "kind": item["type"], "urls": [item["video_url"]], "caption": item.get("caption") or "",
                 "at": item.get("at")}
@@ -67,6 +71,8 @@ def publish(p, user, token):
                     caption=p["caption"], share_to_feed="true")["id"]
     elif p["kind"] == "story":
         cid = graph("POST", f"{user}/media", token, media_type="STORIES", video_url=p["urls"][0])["id"]
+    elif p["kind"] == "photo" and len(p["urls"]) == 1:
+        cid = graph("POST", f"{user}/media", token, image_url=p["urls"][0], caption=p["caption"])["id"]
     else:
         kids = [graph("POST", f"{user}/media", token, image_url=u, is_carousel_item="true")["id"] for u in p["urls"]]
         for k in kids:
