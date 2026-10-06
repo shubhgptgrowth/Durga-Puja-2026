@@ -1,0 +1,64 @@
+name: preview
+
+# Renders redesigned content from a branch for review at /kit/preview/ (marketing/preview.sh): carousels and Wave 1
+# posts on real photos, and the daily reels for the dates given. Run it on the branch to preview, e.g.
+#   gh workflow run preview.yml --ref claude/video-creation -f dates="2026-10-06 2026-10-07"
+# Nothing is posted; deploy (on the default branch) publishes the newest preview-site artifact.
+on:
+  workflow_dispatch:
+    inputs:
+      dates:
+        description: "Reel plan dates to render (space separated), blank for none"
+        default: ""
+
+permissions:
+  contents: read
+  actions: write   # download the footage catalogue and start deploy
+
+concurrency:
+  group: preview
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Tools and fonts
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libfribidi0 libraqm0 fonts-noto-core >/dev/null
+          pip install -q pillow
+          python -c "from PIL import features; assert features.check('raqm'), 'Pillow without raqm: Bengali would not shape'"
+          mkdir -p fonts
+          for w in ExtraBold Bold SemiBold Medium; do curl -fsSLo fonts/Poppins-$w.ttf https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-$w.ttf; done
+          for f in galada/Galada-Regular hindsiliguri/HindSiliguri-Bold; do curl -fsSLo fonts/${f#*/}.ttf https://github.com/google/fonts/raw/main/ofl/$f.ttf; done
+      - name: Footage catalogue
+        run: |
+          id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=footage-catalog&per_page=1" --jq '.artifacts[0].workflow_run.id // empty')
+          if [ -n "$id" ]; then gh run download "$id" -n footage-catalog -D catalog; else echo "::warning::No footage catalogue"; fi
+      - uses: actions/cache@v4
+        with:
+          path: src
+          key: reels-src-preview-${{ github.run_id }}
+          restore-keys: reels-src-
+      - name: Render
+        run: bash marketing/preview.sh "${{ inputs.dates }}" 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preview-site
+          path: preview/
+          retention-days: 14
+      - name: Publish (deploy pulls the newest preview-site artifact)
+        run: gh workflow run deploy.yml --ref "${{ github.event.repository.default_branch }}"
