@@ -100,6 +100,9 @@ class ValidationTests(unittest.TestCase):
         enriched = enrich(ok)["pandals"][0]["theme"]
         self.assertEqual((enriched["theme"], enriched["source_url"]), ("Clay and light", "https://example.com/x"))
         self.assertNotIn("theme_bn", enriched)   # empty fields are left out
+        undated = copy.deepcopy(ok)
+        undated["themes"][0]["source_date"] = ""   # some reports give only the year
+        validate(undated)
         for field, value, msg in (("id", "atlantis", "no pandal"), ("source_url", "", "source_url"), ("source_url", "http://x", "https://"),
                                   ("theme", "x" * 101, "longer than"), ("source_date", "5 Oct", "YYYY-MM-DD")):
             bad = copy.deepcopy(ok)

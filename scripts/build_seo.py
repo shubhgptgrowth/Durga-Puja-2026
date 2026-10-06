@@ -177,7 +177,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         quiet_ash = hrange(quiet["ashtami"])
         th = p.get("theme")
         theme_txt = (f"{esc(th['theme'])}" + (f" ({esc(th['theme_bn'])})" if th.get("theme_bn") else "") + (f", by {esc(th['artist'])}" if th.get("artist") else "")) if th else ""
-        theme_src = f"<a href='{esc(th['source_url'])}' rel='noopener'>{esc(th['source_name'])}</a>, {nice_date(th['source_date'], True)}" if th else ""
+        theme_src = (f"<a href='{esc(th['source_url'])}' rel='noopener'>{esc(th['source_name'])}</a>" + (f", {nice_date(th['source_date'], True)}" if th.get("source_date") else "")) if th else ""
         lead = ((f"{esc(p['name'])}'s theme for Durga Puja {self.year} is <b>{theme_txt}</b> (announced by {theme_src}). " if th else "") +
                 f"<b>{esc(p['name'])}</b> ({esc(p.get('name_bn', ''))}) is a Durga Puja pandal in {esc(z['name'])}, Kolkata{est}. "
                 f"{esc(p['highlight'])} In {self.year} the puja runs from Panchami, {nice_date(self.start)}, to Dashami, {nice_date(self.end)}. "
@@ -414,7 +414,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         path = f"guide/themes-{self.year}/"
         withs = [p for p in self.g["pandals"] if p.get("theme")]
         waiting = sorted((p for p in self.g["pandals"] if not p.get("theme") and p["popularity"] >= 4), key=lambda p: (-p["popularity"], p["name"]))
-        latest = max((p["theme"]["source_date"] for p in withs), default=self.updated[:10])
+        latest = self.updated[:10]   # the list is rebuilt with every deploy that adds a theme
         lead = (f"Themes of Kolkata's Durga Puja {self.year} pandals, one line each, with where each theme was announced. "
                 f"{len(withs)} {'theme has' if len(withs) == 1 else 'themes have'} been announced so far; committees usually reveal theirs in the weeks around Mahalaya "
                 f"({nice_date(self.days['mahalaya']['date'], True)}), and this list is updated as they do. The puja runs from Panchami, {nice_date(self.start, True)}, "
@@ -428,7 +428,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
             sections.append(f"<h2>{esc(r['name'])} Kolkata</h2><table class='days'><thead><tr><th>Pandal</th><th>Theme {self.year}</th><th>Source</th></tr></thead><tbody>" + "".join(
                 f"<tr><td>{self.link_pandal(p['id'], up)}<br><small>{esc(self.zone[p['zone']]['name'])}</small></td>"
                 f"<td>{esc(p['theme']['theme'])}{(' · ' + esc(p['theme']['theme_bn'])) if p['theme'].get('theme_bn') else ''}{(' <small>(' + esc(p['theme']['artist']) + ')</small>') if p['theme'].get('artist') else ''}</td>"
-                f"<td><a href='{esc(p['theme']['source_url'])}' rel='noopener'>{esc(p['theme']['source_name'])}</a><br><small>{nice_date(p['theme']['source_date'])}</small></td></tr>"
+                f"<td><a href='{esc(p['theme']['source_url'])}' rel='noopener'>{esc(p['theme']['source_name'])}</a>{('<br><small>' + nice_date(p['theme']['source_date']) + '</small>') if p['theme'].get('source_date') else ''}</td></tr>"
                 for p in rows) + "</tbody></table>")
         body = f"""<article>
 <h1>Kolkata Durga Puja {self.year} themes: the full list</h1>

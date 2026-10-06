@@ -142,15 +142,37 @@ async function flyerHtml(f) {
   </div>`);
 }
 
+// The link preview for the app (WhatsApp, Instagram DMs): a real protima on the left, the promise on the right.
+// The photo is the app's first banner slide (Wikimedia Commons, credited on the image as its licence asks).
+const OG_PHOTO = { file: '../app/img/hero-1.jpg', pos: '50% 14%', credit: 'Photo: Tarunsamanta, Wikimedia Commons, CC BY-SA 4.0' };
 function ogHtml() {
   const [w, h] = SIZE.og;
-  return shell(w, h, `<div class="bg"></div><div class="rings" style="right:-360px;top:-420px"></div>
-  <div style="position:absolute;inset:0;padding:64px 72px;display:flex;flex-direction:column;justify-content:center">
-    <div class="brand" style="font-size:34px">🪔 Durga Puja 2026 · Kolkata</div>
-    <div style="font-size:92px;font-weight:800;line-height:1.02;margin-top:14px">Pujo Parikrama</div>
-    <div style="font-size:38px;margin-top:18px;opacity:.95">Pandals by area · quiet hours · food · parking · metro, bus &amp; auto</div>
-    <div style="font-family:'Hind Siliguri';font-size:34px;margin-top:12px;opacity:.9">ঠাকুর দেখার ফ্রি গাইড · বাংলা ও ইংরেজিতে</div>
-  </div>`);
+  const here = path.dirname(new URL(import.meta.url).pathname);
+  const photo = `data:image/jpeg;base64,${readFileSync(path.resolve(here, OG_PHOTO.file)).toString('base64')}`;
+  const pandals = (() => { try { return JSON.parse(readFileSync(path.resolve(here, '../app/data/guide.json'), 'utf8')).pandals.length; } catch { return 100; } })();
+  const fonts = '<link href="https://fonts.googleapis.com/css2?family=Galada&family=Baloo+Da+2:wght@600;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">';
+  return `<!doctype html><html><head><meta charset="utf-8">${fonts}<style>${BASE_CSS}
+    .og-photo{position:absolute;left:0;top:0;bottom:0;width:520px;background:url(${photo}) ${OG_PHOTO.pos}/cover}
+    .og-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 55%,#7A0C1A 100%)}
+    .og-credit{position:absolute;left:16px;bottom:12px;font-size:15px;opacity:.85;text-shadow:0 1px 3px #000}
+    .og-panel{position:absolute;left:520px;right:0;top:0;bottom:0;background:linear-gradient(160deg,#7A0C1A 0%,#9F1239 60%,#7C2D12 100%);
+      padding:48px 56px 40px 40px;display:flex;flex-direction:column;border-left:6px solid #F6C343}
+    .og-bn{font-family:Galada,"Baloo Da 2",cursive;color:#F6C343;font-size:88px;line-height:1.05}
+    .og-en{font-weight:800;font-size:40px;letter-spacing:.5px;margin-top:2px}
+    .og-promise{font-family:"Baloo Da 2",Poppins,sans-serif;font-weight:800;font-size:44px;line-height:1.15;margin-top:26px}
+    .og-promise small{display:block;font-family:Poppins,sans-serif;font-weight:700;font-size:30px;opacity:.95;margin-top:6px}
+    .og-facts{font-size:24px;opacity:.92;margin-top:auto;line-height:1.45}
+    .og-url{font-weight:700;color:#FDE68A;font-size:26px;margin-top:8px}</style></head>
+  <body style="width:${w}px;height:${h}px;position:relative">
+    <div class="og-photo"><div class="og-credit">${esc(OG_PHOTO.credit)}</div></div>
+    <div class="og-panel">
+      <div class="og-bn">পুজো পরিক্রমা</div>
+      <div class="og-en">Pujo Parikrama 2026</div>
+      <div class="og-promise">ভিড় এড়িয়ে ঠাকুর দেখুন<small>See every pandal. Skip the queue.</small></div>
+      <div class="og-facts">${pandals} Kolkata pandals · when each is quiet · metro &amp; auto · food nearby · free</div>
+      <div class="og-url">${esc(SITE_DISPLAY)}</div>
+    </div>
+  </body></html>`;
 }
 
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });

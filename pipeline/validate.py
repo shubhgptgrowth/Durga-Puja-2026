@@ -11,7 +11,7 @@ REQUIRED = {
     "food": ["id", "name", "zone", "lat", "lng", "type", "dishes", "veg", "price"],
     "parking": ["id", "name", "zone", "lat", "lng", "kind"],
     "transit": ["id", "name", "line", "lat", "lng"],
-    "themes": ["id", "theme", "source_url", "source_name", "source_date"],
+    "themes": ["id", "theme", "source_url", "source_name"],   # source_date when the report has one
 }
 THEME_MAX = 100   # one line on a pandal sheet
 VEG_VALUES = {"veg", "nonveg", "both"}
@@ -67,8 +67,8 @@ def validate(data):
             errors.append(f"{where}: source_url must be an https:// link")
         if len(th.get("theme") or "") > THEME_MAX:
             errors.append(f"{where}: theme is longer than {THEME_MAX} characters")
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", th.get("source_date") or ""):
-            errors.append(f"{where}: source_date must be YYYY-MM-DD")
+        if th.get("source_date") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", th["source_date"]):
+            errors.append(f"{where}: source_date must be YYYY-MM-DD (or empty when the report gives no date)")
 
     for p in data["pandals"]:
         if p.get("best_slot") not in config.SLOTS:
