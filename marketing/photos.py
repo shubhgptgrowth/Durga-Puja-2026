@@ -28,6 +28,19 @@ COVERS = {"pujo-dates-2026": "ai-01", "types-of-pandal-hoppers": "ai-28", "north
           "salt-lake-east-howrah": "ai-13", "pujo-food-map": "ai-11", "heritage-vs-theme": "ai-26", "survival-kit": "ai-23",
           "trail-east-hop": "ai-28", "trail-behala-trail": "ai-06", "trail-central-blockbusters": "ai-34",
           "trail-north-heritage": "ai-09", "trail-all-nighter": "ai-24", "trail-south-classic": "ai-35"}
+# Slide-by-slide picks from the user's 6 Oct review (1-based slide numbers)
+SLIDES = {
+    "pujo-dates-2026": {5: "ai-37", 6: "ai-38", 7: "ai-05"},                      # kola bou, couple anjali, dhunuchi
+    "types-of-pandal-hoppers": {1: "ai-39", 2: "ai-38", 6: "ai-50", 7: "ai-40", 8: "ai-41", 9: "ai-42", 10: "ai-53"},
+    "quiet-hours-top-10": {1: "ai-43"},
+    "metro-cheat-sheet": {7: "ai-44", 8: "ai-45"},
+    "salt-lake-east-howrah": {8: "ai-46"},
+    "survival-kit": {1: "ai-48", 2: "ai-47", 3: "ai-28", 4: "ai-35", 5: "ai-24", 6: "ai-10", 7: "ai-02"},
+    "trail-behala-trail": {1: "ai-49", 2: "ai-50", 3: "ai-03", 4: "ai-34", 5: "ai-06", 6: "ai-24", 7: "ai-11", 8: "ai-01"},
+    "trail-north-heritage": {1: "ai-51", 8: "ai-53"},
+    "trail-all-nighter": {7: "ai-43"},
+    "trail-south-classic": {9: "ai-53"},
+}
 FOOD_ICONS = ("🍬", "🍽️", "🍛", "🥟", "🥤", "🍴")
 
 # general photos by topic: a slide whose text matches the left side prefers photos whose label matches the right
@@ -84,10 +97,12 @@ class Library:
                 if len(parts) >= 3:
                     self.general.append({"file": parts[1], "label": parts[2]})
         self.heroes = [ph for p in guide["pandals"] for ph in (p.get("photos") or [])[:1]]
-        self.ai = json.loads(AI_JSON.read_text())["images"] if AI_JSON.exists() else []
-        for a in self.ai:
+        ai_all = json.loads(AI_JSON.read_text())["images"] if AI_JSON.exists() else []
+        for a in ai_all:
             a.setdefault("credit_text", AI_CREDIT)
-        self.ai_by_id = {a["id"]: a for a in self.ai}
+        self.ai_by_id = {a["id"]: a for a in ai_all}
+        # images made for one slide (pick_only) appear only where SLIDES/COVERS place them, so approved posts keep theirs
+        self.ai = [a for a in ai_all if not a.get("pick_only")]
         self._meta = {}
         self._search = {}
 
@@ -190,7 +205,7 @@ class Library:
         return f"_photos/{name}", credit
 
     # ------------------------------------------------------------ dressing slides
-    def dress(self, slides, out_dir, seed=0, fetch=True, cover=None, ai=True):
+    def dress(self, slides, out_dir, seed=0, fetch=True, cover=None, ai=True, picks=None):
         """Every slide gets a striking background and every venue row a photo; no background repeats in a post.
 
         Backgrounds come from the hi-res AI library (cover: the hand-picked one, then the best tag match for each slide's
@@ -199,6 +214,7 @@ class Library:
         if not ai or not self.ai:
             return self.dress_commons(slides, out_dir, seed, fetch)
         used, k = set(), seed
+        reserved = set((picks or {}).values()) | ({cover} if cover else set())
 
         def put(target, field, ph, field_credit):
             if fetch:
@@ -213,11 +229,12 @@ class Library:
         for i, s in enumerate(slides):
             text = " ".join(str(s.get(x, "")) for x in ("kicker", "title", "body", "sub", "bn", "accent", "t"))
             text += " " + " ".join(str(it.get("name", "")) + " " + str(it.get("meta", "")) for it in s.get("items") or [] if isinstance(it, dict))
-            first = [self.ai_by_id[cover]] if i == 0 and cover in self.ai_by_id else []
+            pick = (picks or {}).get(i + 1) or (cover if i == 0 else None)
+            first = [self.ai_by_id[pick]] if pick in self.ai_by_id else []
             k += 1
             rot = self.ai[k % len(self.ai):] + self.ai[:k % len(self.ai)]
-            for a in first + self.ai_topical(text, rot):
-                if a["id"] not in used:
+            for a in first + [a for a in self.ai_topical(text, rot) if a["id"] not in reserved]:
+                if a["id"] not in used or a in first:
                     used.add(a["id"])
                     put(s, "photo", a, "credit")
                     break

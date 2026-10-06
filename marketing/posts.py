@@ -17,6 +17,9 @@ from .photos import ROOT, UA, Library
 SPEC = ROOT / "marketing" / "posts4" / "spec4.json"
 HANDLE = "@pujoparikrama.guide"
 DEFAULT = {"cta": "p186", "list": "p088", "bingo": "p087", "versus": "p107"}
+# Hi-res picks per slide (1-based) from the 6 Oct review: "make it more culturally fit and hi-res"
+PICKS = {"w01-bangla-words": {1: "ai-53", 2: "ai-52", 3: "ai-39", 4: "ai-41", 5: "ai-54", 6: "ai-09", 7: "ai-14",
+                              8: "ai-05", 9: "ai-07", 10: "ai-19", 11: "ai-32"}}
 
 
 def convert(post):
@@ -74,6 +77,8 @@ def build(out, spec_path=SPEC):
     out.mkdir(parents=True, exist_ok=True)
 
     def photo(ref):
+        if ref.startswith("ai-") and ref in lib.ai_by_id:
+            return lib.fetch(lib.ai_by_id[ref], out) or (None, None)
         if ref.startswith("k"):
             return fetch_art(spec["art"][ref], out)
         return lib.fetch({"file": pool[ref]}, out) or (None, None)
@@ -81,6 +86,9 @@ def build(out, spec_path=SPEC):
     posts = []
     for p in spec["posts"]:
         slides = convert(p)
+        for n, ref in PICKS.get(p["id"], {}).items():
+            if n <= len(slides) and "img" in slides[n - 1]:
+                slides[n - 1]["img"], slides[n - 1]["py"] = ref, 0.45
         credits = []
         for s in slides:
             refs = s.pop("sides", None) or [s.pop("img")]
@@ -90,6 +98,8 @@ def build(out, spec_path=SPEC):
                 s["credit"] = " | ".join(x[1] for x in got if x[1])
             else:
                 s["photo"], s["credit"] = got[0]
+                if s["credit"] in ("AI-generated image",):  # said in the caption, not on the photo
+                    s["credit"] = ""
             for x in got:
                 c = (x[1] or "").replace(" · Wikimedia Commons", "")
                 if c and c not in credits:

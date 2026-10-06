@@ -98,7 +98,7 @@ class Kit:
     def ai_hero(self, slug, d):
         key = next((k for k in self.AI_HERO if slug.startswith(k)), None)
         a = self.ai_lib().get(self.AI_HERO.get(key, "")) if key else None
-        return {"src": a["src"], "credit": "AI-generated image"} if a else None
+        return {"src": a["src"], "credit": "", "ai": True} if a else None
 
     def thumb(self, name, j):
         """The venue's own Commons photo, else a fitting library image (food or pandal)."""
@@ -154,6 +154,8 @@ class Kit:
             data = dict(data, photo=self.photo(heroes[(d.toordinal() + len(slug)) % len(heroes)]) if heroes else None)
         if data.get("items"):  # a photo beside every venue, never a bare number
             data = dict(data, items=[dict(it, thumb=self.thumb(it["name"], j)) for j, it in enumerate(data["items"])])
+        if (data.get("photo") or {}).get("ai"):  # said in the caption, not printed on the photo
+            en, bn = en + "\n\n🤖 Background image AI-generated.", bn + "\n\n🤖 ছবিটি AI-তৈরি।"
         cap_en = f"{en}\n\n{TAGS} {tags}".strip()
         cap_bn = f"{bn}\n\n{TAGS} {tags}".strip()
         return {"id": cid, "date": d.isoformat(), "format": fmt, "template": tpl, "data": data,

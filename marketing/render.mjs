@@ -67,7 +67,7 @@ function igShell(w, h, d, body, dense = false, extra = '') {
   const img = d.photo ? `<img class="ph" src="${esc(src)}" data-alt="${esc(d.photo.src)}" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt}else{document.body.classList.add('nophoto')}" referrerpolicy="no-referrer">` : '';
   return `<!doctype html><html><head><meta charset="utf-8">${IG_FONTS}<style>${BASE_CSS}${IG_CSS}${extra}</style></head>
   <body class="${d.photo ? '' : 'nophoto'}" style="width:${w}px;height:${h}px;position:relative">${img}<div class="sh${dense ? ' dense' : ''}"></div>${body}
-  ${d.photo ? `<div class="cred">Photo: ${esc(String(d.photo.credit).replace(/^Photo:\s*/, ''))}</div>` : ''}</body></html>`;
+  ${d.photo && d.photo.credit ? `<div class="cred">Photo: ${esc(String(d.photo.credit).replace(/^Photo:\s*/, ''))}</div>` : ''}</body></html>`;
 }
 
 function hero(c, [w, h]) {

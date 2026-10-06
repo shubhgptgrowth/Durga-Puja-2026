@@ -622,13 +622,16 @@ def caption(c):
 
 def add_photos(cs, out, g):
     """Real photos on every slide (marketing/photos.py), credited in the caption."""
-    from .photos import AI_CREDIT, COVERS, Library
+    from .photos import AI_CREDIT, COVERS, SLIDES, Library
     lib = Library(g)
     keep = {"avoid-the-queue"}  # approved as it is in the 6 Oct review
     for i, c in enumerate(cs):
-        lib.dress(c["slides"], out, seed=i * 7, cover=COVERS.get(c["slug"]), ai=c["slug"] not in keep)
+        lib.dress(c["slides"], out, seed=i * 7, cover=COVERS.get(c["slug"]), ai=c["slug"] not in keep,
+                  picks=SLIDES.get(c["slug"]))
         cr, ai = [], False
         for s in c["slides"]:
+            if s.get("credit") == AI_CREDIT:  # said once in the caption, not printed on the photo (6 Oct review)
+                s["credit"], ai = "", True
             for x in [s.get("credit")] + [it.get("thumb_credit") for it in s.get("items") or [] if isinstance(it, dict)]:
                 if x == AI_CREDIT:
                     ai = True
