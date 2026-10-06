@@ -99,6 +99,20 @@ def voice_file(url, src_dir):
     return str(dest)
 
 
+def speak(text, engine, src_dir):
+    """A line with no pre-made file, voiced at render time: engine "edge:<voice>" is Microsoft's neural TTS through
+    edge-tts (free; e.g. edge:bn-IN-TanishaaNeural). Used when the house voice has no credits left."""
+    kind, voice = engine.split(":", 1)
+    if kind != "edge":
+        raise SystemExit(f"unknown voice engine {engine}")
+    dest = Path(src_dir) / ("vo-" + hashlib.sha1(f"{engine}|{text}".encode()).hexdigest()[:12] + ".mp3")
+    if not dest.exists():
+        import asyncio
+        import edge_tts
+        asyncio.run(edge_tts.Communicate(text, voice, rate="-6%", pitch="+2Hz").save(str(dest)))
+    return str(dest)
+
+
 def check(plan, idx):
     """Every clip exists and every cut fits inside its clip, before anything is downloaded."""
     errs = []
@@ -117,8 +131,10 @@ def check(plan, idx):
             elif e.get("dur") and s[1] + s[2] > e["dur"] + 0.05:
                 errs.append(f"{it['id']}: {s[0]} is {e['dur']}s, cut ends at {s[1] + s[2]}s")
         vo = it.get("vo")
-        if vo and not (len(vo.get("lines", [])) == len(vo.get("urls", [])) == len(it["segments"])):
+        if vo and not (len(vo.get("lines", [])) == len(vo.get("urls") or vo["lines"]) == len(it["segments"])):
             errs.append(f"{it['id']}: voiceover needs one line and one audio url per shot")
+        if vo and not vo.get("engine") and not all(vo.get("urls") or []):
+            errs.append(f"{it['id']}: a voiceover line has no audio url and no engine to voice it")
         segs = (it.get("bn") or {}).get("segs", [])
         if it.get("bn") and not vo and len(segs) != len(it["segments"]):
             errs.append(f"{it['id']}: {len(it['segments'])} shots but {len(segs)} Bengali lines")
@@ -190,7 +206,10 @@ def main(argv=None):
                 fetch(s[0], idx[s[0]], a.src)
             reel = dict(it, id=fid)
             if it.get("vo"):  # voiceover lines, one per shot (generated ahead, see marketing/footage/voice.py)
-                reel["vo_files"] = [voice_file(u, a.src) if u else None for u in it["vo"]["urls"]]
+                vo = it["vo"]
+                urls = vo.get("urls") or [None] * len(vo["lines"])
+                reel["vo_files"] = [voice_file(u, a.src) if u else speak(t, vo["engine"], a.src) if vo.get("engine") else None
+                                    for u, t in zip(urls, vo["lines"])]
             if it["type"] == "story":
                 reel.pop("end", None)
                 reel.pop("caption", None)

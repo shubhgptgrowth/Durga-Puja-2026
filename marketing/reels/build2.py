@@ -422,7 +422,7 @@ def write_caption(reel, footage, out_dir):
     if c:  # Instagram caption: Bengali, English, hashtags, then the attribution the CC licences require
         credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
         if reel.get("vo"):
-            credit = credit + ". Voiceover: AI voice (ElevenLabs)"
+            credit = credit + ". Voiceover: " + reel["vo"].get("credit", "AI voice (ElevenLabs)")
         sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
         handles = sorted({footage[x[0]]["artist"] for x in reel["segments"]
                           if footage.get(x[0], {}).get("license") == "used with permission"})
