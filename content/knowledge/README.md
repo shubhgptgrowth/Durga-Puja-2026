@@ -17,8 +17,8 @@ description = "What happens on Maha Ashtami of Durga Puja: …"                 
 h1 = "Maha Ashtami: the heart of Durga Puja"
 summary = """Two to four plain sentences that answer the page's main question on their own: an AI answer
 engine should be able to quote this paragraph and be right. Name the thing, say what it is, when, and why."""
-type = "Article"            # "Article", or "HowTo" for step-by-step pages (then add [[steps]] below)
-section = "Rituals"         # the hub it's listed under: "Durga Puja", "Rituals", "At home", "Navratri", "Culture"
+type = "Article"            # "Article"; "HowTo" for step-by-step pages (add [[steps]]); "Recipe" for recipes (see below)
+section = "Rituals"         # the hub it's listed under: "Durga Puja", "Rituals", "At home", "Recipes", "Navratri", "Festivals", "Culture", "Visit"
 order = 40                  # sort order inside its section
 keywords = ["Maha Ashtami", "Durga Ashtami", "Sandhi Puja", "Kumari Puja"]
 related = ["durga-puja/rituals/sandhi-puja/", "durga-puja/rituals/kumari-puja/"]   # other article paths
@@ -43,6 +43,23 @@ text = "…"
 Markdown body…
 ```
 
+## Recipes
+
+`type = "Recipe"` pages also need the following. The method goes in `[[steps]]`; the body holds the story, tips and variations.
+
+```
+recipe_yield = "4 servings"
+prep_time = "PT15M"
+cook_time = "PT45M"
+recipe_category = "Bhog"          # or "Sweet", "Snack", "Main course"
+recipe_cuisine = "Bengali"
+diet = "Vegetarian"               # "Vegetarian", "Vegan" or "" (only if true for the recipe as written)
+ingredients = ["1 cup gobindobhog rice", "½ cup yellow moong dal, dry-roasted", "…"]
+[[steps]]
+name = "Roast the dal"
+text = "…"
+```
+
 ## Markdown that the builder understands
 
 - `## Heading` and `### Subheading`. The page's h1 comes from front matter; never use `#` in the body.
@@ -51,6 +68,7 @@ Markdown body…
   anything elsewhere.
 - Tables made of `| a | b |` rows; the second row is `|---|---|`.
 - `> quote` lines, for mantras and verses. Give the original (Sanskrit or Bengali), then a transliteration, then a meaning.
+- `- [ ] item` makes a tick-box checklist; readers' ticks are saved on their own phone (use it for packing and samagri lists).
 - No raw HTML, no images, no `#` headings.
 
 ## Writing rules

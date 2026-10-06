@@ -30,13 +30,14 @@ from xml.sax.saxutils import escape as xml_escape
 
 from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock, cost2, crowd_word, esc, hrange,  # noqa: F401
                         jsonld, km, nice_date, rupees)
+from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
 
 ROOT = Path(__file__).resolve().parent.parent
 
-class Site(KnowledgeMixin):
-    def __init__(self, g, base, out, verify="", strict=True):
-        self.g, self.base, self.out, self.strict = g, base.rstrip("/") + "/", Path(out), strict
+class Site(KnowledgeMixin, ExtrasMixin):
+    def __init__(self, g, base, out, verify="", strict=True, adsense=""):
+        self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
         self.meta = g["meta"]
         self.year = self.meta["year"]
@@ -62,7 +63,7 @@ class Site(KnowledgeMixin):
         return min(100, round(p["crowd_base"] * 20 * self.days[day]["factor"] * hf[h]))
 
     def page(self, path, title, desc, body, *, ld=(), crumbs=(), priority=0.6, summary=None, app_link="", note=None, modified=None,
-             head_extra="", images=()):
+             head_extra="", images=(), ads=True, index=True):
         """Write one page; `path` like 'guide/pandals/bagbazar/' (always a folder with index.html)."""
         depth = path.count("/")
         up = "../" * depth
@@ -79,7 +80,7 @@ class Site(KnowledgeMixin):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{esc(canonical)}">{self.verify}
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="robots" content="{'index, follow, max-image-preview:large, max-snippet:-1' if index else 'noindex, follow'}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="{NAME} {self.year}">
 <meta property="og:title" content="{esc(title)}">
@@ -90,26 +91,28 @@ class Site(KnowledgeMixin):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{up}icons/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{up}guide/guide.css">{head_extra}
+<script src="{up}guide/guide.js" defer></script>{self.ads_head() if ads else ""}
 {jsonld(crumb_ld)}
 {''.join(jsonld(x) for x in ld)}
 </head>
 <body>
 <header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
-<nav class="sections" aria-label="Sections"><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/at-home/">At home</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a></nav>
+<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
 {body}
 {cta}
-<p class="updated">{note or self.place_note()} Cite as: “{NAME}, {esc(canonical)}”.</p>
+<p class="updated">{note if note is not None else self.place_note()} Cite as: “{NAME}, {esc(canonical)}”.</p>
 </main>
-<footer><a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}llms.txt">llms.txt</a></footer>
+<footer><a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}search/">Search</a><br><a href="{up}about/">About</a> · <a href="{up}contact/">Contact</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}terms/">Terms</a> · <a href="{up}llms.txt">llms.txt</a></footer>
 </body>
 </html>
 """
         f = self.out / path / "index.html"
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(doc, encoding="utf-8")
-        self.pages.append((path, title, summary or desc, priority))
+        if index:
+            self.pages.append((path, title, summary or desc, priority))
         self.page_images[path] = list(images)
         self.page_modified[path] = modified or self.updated
 
@@ -357,7 +360,9 @@ class Site(KnowledgeMixin):
         body = f"""<article>
 <h1>Durga Puja {self.year} dates in Kolkata: Mahalaya to Dashami</h1>
 <p class="lead">{lead}</p>
+<p class="countdown"><span data-countdown="{self.days['shashthi']['date']}" data-label="Shashthi" hidden></span></p>
 <table class="days"><thead><tr><th>Day</th><th>Date</th><th>Crowds</th></tr></thead><tbody>{rows}</tbody></table>
+{self.calendar_html('../../')}
 {faq_html}
 </article>"""
         self.page("guide/dates/", f"Durga Puja {self.year} dates: Mahalaya, Saptami, Ashtami, Navami, Dashami | {NAME}",
@@ -512,7 +517,8 @@ Articles are written by the {NAME} team from the sources each one lists; practic
                  f'<h2>Learn about Durga Puja</h2><p>{learn}</p>'
                  f'<h2>Areas</h2><p>{areas}</p><h2>Popular pandals</h2><p>{top}</p></section>{jsonld(self.site_ld())}{b}')
         s = s[:s.index(a)] + block + s[s.index(b) + len(b):]
-        s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{self.base}">' + self.verify, s, count=1)
+        ads_meta = f'<meta name="google-adsense-account" content="{esc(self.adsense)}">' if self.adsense else ""   # verification only; no ads in the app
+        s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{self.base}">' + self.verify + ads_meta, s, count=1)
         idx.write_text(s, encoding="utf-8")
 
     def site_ld(self):
@@ -540,14 +546,15 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.hub_page()
         for a in self.articles:
             self.article_page(a)
+        self.build_extras()   # about, contact, terms, search, calendar, card maker, ads.txt
         bad = self.check_article_links()
         if bad:
             msg = "Broken links in content/knowledge:\n  " + "\n  ".join(bad)
             if self.strict:
                 raise SystemExit(msg)
             print("warning: " + msg)
-        css = ROOT / "scripts" / "seo" / "guide.css"
-        (self.out / "guide" / "guide.css").write_text(css.read_text(encoding="utf-8"), encoding="utf-8")
+        for asset in ("guide.css", "guide.js"):
+            (self.out / "guide" / asset).write_text((ROOT / "scripts" / "seo" / asset).read_text(encoding="utf-8"), encoding="utf-8")
         self.write_root_files()
         self.write_index_block()
         self.write_404()
@@ -563,7 +570,7 @@ def main():
     a = ap.parse_args()
     g = json.loads(Path(a.guide).read_text(encoding="utf-8"))
     site = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
-    n = Site(g, site["url"], a.out, site.get("google_site_verification", ""), strict=not a.preview).build()
+    n = Site(g, site["url"], a.out, site.get("google_site_verification", ""), strict=not a.preview, adsense=site.get("adsense_client", "")).build()
     print(f"{n} pages + sitemap.xml, robots.txt, llms.txt, llms-full.txt → {a.out}")
 
 

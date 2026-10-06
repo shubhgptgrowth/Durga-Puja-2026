@@ -80,9 +80,16 @@ def render(md, up=""):
                 while i < len(lines) and lines[i].startswith("  ") and lines[i].strip() and not re.match(r"^\s*([-*]|\d+\.)\s+", lines[i]):
                     item += " " + lines[i].strip()
                     i += 1
-                items.append(f"<li>{inline(item)}</li>")
+                items.append(item)
             tag = "ol" if ordered else "ul"
-            parts.append(f"<{tag}>" + "".join(items) + f"</{tag}>")
+            if items and all(re.match(r"^\[[ xX]\]\s", x) for x in items):   # "- [ ] item": a tick-box checklist
+                lis = []
+                for n, x in enumerate(items):
+                    text = x[3:].strip()
+                    lis.append(f'<li><label><input type="checkbox" data-k="{n}-{slug(text)[:30]}"> {inline(text)}</label></li>')
+                parts.append('<ul class="checklist">' + "".join(lis) + "</ul>")
+            else:
+                parts.append(f"<{tag}>" + "".join(f"<li>{inline(x)}</li>" for x in items) + f"</{tag}>")
             continue
         para = [line.strip()]
         i += 1

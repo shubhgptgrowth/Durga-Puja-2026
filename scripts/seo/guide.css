@@ -49,3 +49,34 @@ blockquote p { margin: 4px 0; }
 .steps { padding-left: 22px; } .steps li { margin: 10px 0; } .steps p { margin: 2px 0 0; }
 .glossary dt { font-weight: 800; margin-top: 12px; } .glossary dt span { font-weight: 500; color: var(--ink-2); } .glossary dd { margin: 2px 0 0; }
 .sources { font-size: 14px; }
+/* Byline, share bar, about box */
+.byline { font-size: 14px; color: var(--ink-2); margin: -4px 0 10px; }
+.share { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.sb { font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; }
+.sb.wa { background: #25D366; border-color: #25D366; color: #fff; }
+.about-box { margin: 28px 0 8px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px dashed var(--line); font-size: 14.5px; }
+.about-box p { margin: 4px 0 0; }
+/* Recipes and checklists */
+.recipe-facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.recipe-facts div { padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
+.recipe-facts dt { font-size: 12px; color: var(--ink-2); } .recipe-facts dd { margin: 0; font-weight: 700; }
+.checklist { list-style: none; padding-left: 0; }
+.checklist li { margin: 6px 0; } .checklist label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.checklist input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--brand); flex: none; }
+.checklist input:checked + * , .checklist label:has(input:checked) { color: var(--ink-2); text-decoration: line-through; }
+/* Calendar, countdown, search, card maker */
+.countdown span { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #FEF3C7; color: #92400E; font-weight: 700; }
+.calendar { margin: 14px 0; } .calendar details { margin-top: 8px; }
+.cta.small { display: inline-block; padding: 10px 16px; margin: 0; }
+.search input { width: 100%; font: inherit; font-size: 18px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.results { padding-left: 20px; } .results li { margin: 12px 0; } .results a { font-weight: 700; } .results span { display: block; font-size: 14px; color: var(--ink-2); }
+.sr { position: absolute; left: -9999px; }
+.card-form { display: grid; gap: 10px; margin: 12px 0; } .card-form label { display: grid; gap: 4px; font-weight: 600; font-size: 14px; }
+.card-form select, .card-form input { font: inherit; padding: 9px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+#card { width: 100%; max-width: 420px; height: auto; display: block; margin: 12px auto; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+/* Print: just the article (mantras, recipes and checklists print cleanly) */
+@media print {
+  .top, .sections, .crumbs, .share, .toc, .cta, footer, .about-box, .cards, #related, #see-it-in-kolkata, .calendar { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12pt; } a { color: #000; text-decoration: none; }
+  .lead, blockquote { border-color: #999; background: #fff; }
+}

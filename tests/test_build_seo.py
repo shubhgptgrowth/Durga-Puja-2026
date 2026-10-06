@@ -139,6 +139,39 @@ class BuildSeoTest(unittest.TestCase):
         sm = (self.tmp / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn("<image:loc>", sm)
 
+    def test_site_pages_and_tools(self):
+        for p in ("about/", "contact/", "terms/", "search/", "tools/bijoya-card/"):
+            self.assertTrue((self.tmp / p / "index.html").exists(), p)
+        self.assertIn("noindex", (self.tmp / "search" / "index.html").read_text(encoding="utf-8"))
+        idx = json.loads((self.tmp / "guide" / "search-index.json").read_text(encoding="utf-8"))
+        self.assertGreater(len(idx), 300)
+        self.assertNotIn("&amp;", json.dumps(idx, ensure_ascii=False))
+        ics = (self.tmp / f"durga-puja-{self.g['meta']['year']}.ics").read_bytes().decode("utf-8")
+        self.assertEqual(ics.count("BEGIN:VEVENT"), len(self.g["meta"]["days"]))
+        self.assertTrue(all(len(line.encode()) <= 75 for line in ics.split("\r\n")))
+        # No AdSense unless site.json says so
+        self.assertFalse((self.tmp / "ads.txt").exists())
+        self.assertNotIn("adsbygoogle", (self.tmp / "guide" / "index.html").read_text(encoding="utf-8"))
+        for a in self.articles:
+            if a.type == "Recipe":
+                html = (self.tmp / a.path / "index.html").read_text(encoding="utf-8")
+                self.assertIn('"@type":"Recipe"', html)
+                self.assertIn('"recipeIngredient"', html)
+
+    def test_adsense_switch(self):
+        tmp = Path(tempfile.mkdtemp())
+        try:
+            shutil.copy(ROOT / "app" / "index.html", tmp / "index.html")
+            build_seo.Site(self.g, self.base, tmp, adsense="ca-pub-1234567890123456").build()
+            self.assertEqual((tmp / "ads.txt").read_text(), "google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0\n")
+            self.assertIn("adsbygoogle.js?client=ca-pub-1234567890123456", (tmp / "durga-puja" / "index.html").read_text(encoding="utf-8"))
+            self.assertNotIn("adsbygoogle", (tmp / "about" / "index.html").read_text(encoding="utf-8"))   # no ads on site pages
+            home = (tmp / "index.html").read_text(encoding="utf-8")
+            self.assertIn('name="google-adsense-account"', home)
+            self.assertNotIn("adsbygoogle", home)   # the app stays ad-free
+        finally:
+            shutil.rmtree(tmp)
+
     def test_markdown_renderer(self):
         r = render("Intro with **bold**, *it* and [a link](/durga-puja/history/).\n\n## First part\n\n- one\n- two\n\n| A | B |\n|---|---|\n| 1 | 2 |\n\n> ॐ line one\n> line two\n\n1. step\n2. step", up="../../")
         self.assertIn('<a href="../../durga-puja/history/">a link</a>', r.html)
@@ -152,6 +185,9 @@ class BuildSeoTest(unittest.TestCase):
         self.assertEqual(r.links, ["durga-puja/history/"])
         self.assertEqual(r.toc, [("first-part", "First part")])
         self.assertNotIn("<script", render("<script>alert(1)</script>").html)
+        c = render("- [ ] Water\n- [x] Shoes").html
+        self.assertIn('<ul class="checklist">', c)
+        self.assertEqual(c.count('type="checkbox"'), 2)
 
     def test_sitemap_and_crawler_files(self):
         sm = (self.tmp / "sitemap.xml").read_text(encoding="utf-8")
