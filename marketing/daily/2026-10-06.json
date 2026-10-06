@@ -1,55 +1,325 @@
 {
  "date": "2026-10-06",
- "note": "11 days to go. Commons footage (Pexels/Pixabay keys pending). 08:02 kit post + 2 kit stories also go out.",
+ "note": "v3 (video-creation): Bengali voiceover on every reel and story instead of music, 4 longer shots per reel with hard cuts, subtitles, closing question over the last shot. Kit post + 2 kit stories at 08:02 unchanged.",
  "items": [
-  {"id": "s1", "type": "story", "at": "10:30",
-   "bn": {"segs": ["কুমোরটুলিতে শেষ তুলির টান", "আর মাত্র ১১ দিন"]},
-   "segments": [["f27", 14, 4.5, "Final brushstrokes at Kumartuli"], ["f28", 6, 4.0, "11 days to go"]],
-   "music": ["f19", 10]},
-  {"id": "r1", "type": "reel", "at": "12:30",
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "bn": {
+    "segs": [
+     "কুমোরটুলির গলিতে এখন মাটির গন্ধ... তুলির শেষ টানে মায়ের চোখ ফুটে উঠছে।",
+     "আর মাত্র এগারোটা দিন... তারপর ঢাকে কাঠি, আর মা আসছেন ঘরে।"
+    ]
+   },
+   "segments": [
+    [
+     "f27",
+     14,
+     4.0,
+     "Final brushstrokes at Kumartuli"
+    ],
+    [
+     "f28",
+     6,
+     3.0,
+     "11 days to go"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "কুমোরটুলির গলিতে এখন মাটির গন্ধ... তুলির শেষ টানে মায়ের চোখ ফুটে উঠছে।",
+     "আর মাত্র এগারোটা দিন... তারপর ঢাকে কাঠি, আর মা আসছেন ঘরে।"
+    ],
+    "en": [
+     "In Kumartuli's lanes, the smell of clay... the last brushstrokes bring Maa's eyes alive.",
+     "Just eleven days... then the dhak, and Maa comes home."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_054010_94af486b-97a2-4403-8c25-1a9008815544.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_054009_6f5a90f3-6642-4daf-8f53-1edc4ae5f530.mp3"
+    ],
+    "voice": "ElevenLabs · Gia (softer, poetic; user feedback 6 Oct)"
+   }
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "12:30",
    "hook": "Ever seen a rajbari pujo?",
-   "bn": {"hook": "রাজবাড়ির পুজো দেখেছেন কখনও?",
-          "segs": ["", "বনেদি বাড়ির ঢাক", "সাবেকি সাজে মা", "হোমের আগুন", "শতাব্দী পুরনো ঐতিহ্য"],
-          "end": "বনেদি বাড়ি না থিম প্যান্ডেল?"},
-   "segments": [["cm-3bbea1", 10, 3.2, ""], ["cm-f2ce50", 0, 2.8, "The dhak at a bonedi bari"],
-                ["cm-f2ce50", 22, 3.0, "Ma, dressed the old way"], ["cm-a75b3d", 3, 2.8, "The yajna fire"],
-                ["cm-3bbea1", 32, 3.0, "A tradition centuries old"]],
-   "end": ["Bonedi bari or theme pandal?", "Tell us in the comments"],
-   "music": ["f22", 20],
-   "caption": {"bn": "বনেদি বাড়ির পুজো না থিম প্যান্ডেল, আপনি কোন দলে? কমেন্টে লিখুন 👇",
-               "en": "Bonedi bari pujo or theme pandal: which side are you on? 👇 Shot at the Sovabazar Rajbari courtyard and a Howrah bonedi bari. Plan your pujo route free, link in bio.",
-               "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #BonediBari #SovabazarRajbari #Kolkata #PujoParikrama #দুর্গাপুজো #বনেদিবাড়ি #PujoVibes"}},
-  {"id": "s2", "type": "story", "at": "15:30",
-   "bn": {"segs": ["উত্তর না দক্ষিণ? রিপ্লাই করুন: উ বা দ"]},
-   "segments": [["cm-2bd3e2", 30, 6.0, "North or South Kolkata? Reply N or S"]]},
-  {"id": "r2", "type": "reel", "at": "18:30",
+   "bn": {
+    "hook": "রাজবাড়ির পুজো দেখেছেন কখনও?",
+    "segs": [
+     "",
+     "বনেদি বাড়ির ঢাক",
+     "সাবেকি সাজে মা",
+     "হোমের আগুন",
+     "শতাব্দী পুরনো ঐতিহ্য"
+    ],
+    "end": "বনেদি বাড়ি না থিম প্যান্ডেল?"
+   },
+   "segments": [
+    [
+     "cm-3bbea1",
+     10,
+     3.5,
+     ""
+    ],
+    [
+     "cm-f2ce50",
+     0,
+     3.5,
+     "The dhak at a bonedi bari"
+    ],
+    [
+     "cm-a75b3d",
+     3,
+     3.5,
+     "The yajna fire"
+    ],
+    [
+     "cm-3bbea1",
+     32,
+     3.5,
+     "A tradition centuries old"
+    ]
+   ],
+   "end": [
+    "Bonedi bari or theme pandal?",
+    "Tell us in the comments"
+   ],
+   "caption": {
+    "bn": "বনেদি বাড়ির পুজো না থিম প্যান্ডেল, আপনি কোন দলে? কমেন্টে লিখুন 👇",
+    "en": "Bonedi bari pujo or theme pandal: which side are you on? 👇 Shot at the Sovabazar Rajbari courtyard and a Howrah bonedi bari. Plan your pujo route free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #BonediBari #SovabazarRajbari #Kolkata #PujoParikrama #দুর্গাপুজো #বনেদিবাড়ি #PujoVibes"
+   },
+   "vo": {
+    "lines": [
+     "রাজবাড়ির পুজো দেখেছেন কখনও? চলুন, একবার ঘুরে আসি!",
+     "ঠাকুরদালানে ঢাকের বোল, ঠিক যেমন বাজত দুশো বছর আগে।",
+     "হোমের আগুন, মন্ত্র আর ধুনোর গন্ধ। সময় যেন এখানে থেমে আছে।",
+     "বনেদি বাড়ি না থিম প্যান্ডেল? কমেন্টে লিখুন, আপনি কোন দলে!"
+    ],
+    "en": [
+     "Ever seen a rajbari pujo? Come along.",
+     "The dhak in the thakurdalan, just as it played 200 years ago.",
+     "The yajna fire, the mantras, the smell of dhuno. Time stands still here.",
+     "Bonedi bari or theme pandal? Tell us which side you're on!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_c1cc9f01-d465-4ceb-a290-c4ce8ab8a2d0.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_a8bb21ae-5a30-45fa-ad16-2d74e6a971c8.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_04a1ab14-a0a0-46af-8c15-83af23e24221.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_945f00fe-38bb-4ef0-8fcb-52567af591e5.mp3"
+    ],
+    "voice": "ElevenLabs · Raina"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "story",
+   "at": "15:30",
+   "bn": {
+    "segs": [
+     "উত্তর না দক্ষিণ? রিপ্লাই করুন: উ বা দ"
+    ]
+   },
+   "segments": [
+    [
+     "cm-2bd3e2",
+     30,
+     4.0,
+     "North or South Kolkata? Reply N or S"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "উত্তর না দক্ষিণ? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "North or South? Reply and tell us!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_041424_34a717d4-4a43-4804-9466-05e2367f992b.mp3"
+    ],
+    "voice": "ElevenLabs · Raina"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "18:30",
    "hook": "Ashtami aarti, seen from above",
-   "bn": {"hook": "উপর থেকে অষ্টমীর আরতি",
-          "segs": ["", "সন্ধিপুজোর ১০৮ প্রদীপ", "একটা একটা করে জ্বলে ওঠে", "আর গোটা পাড়া দেখে", "আর মাত্র ১১ দিন"],
-          "end": "কোন প্যান্ডেলের আরতিতে গায়ে কাঁটা দেয়?"},
-   "segments": [["cm-4b937f", 16, 3.4, ""], ["cm-e3b8d1", 0, 3.0, "The 108 lamps of Sandhi puja"],
-                ["cm-e3b8d1", 9, 2.8, "Lit one by one"], ["cm-4b937f", 25, 3.2, "And the whole para watches"],
-                ["cm-2bd3e2", 12, 3.0, "11 days to go"]],
-   "end": ["Which pandal's aarti gives you goosebumps?", "Tell us below"],
-   "music": ["f23", 60],
-   "caption": {"bn": "কোন প্যান্ডেলের আরতি দেখলে আপনার গায়ে কাঁটা দেয়? কমেন্টে লিখুন 👇",
-               "en": "Which pandal's aarti gives you goosebumps? Tell us below 👇 Drone shot of the Mahashtami aarti at Mudiali Club. 11 days to go. Plan your route free, link in bio.",
-               "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Aarti #SandhiPuja #Kolkata #PujoParikrama #দুর্গাপুজো #আরতি #PujoVibes"}},
-  {"id": "s3", "type": "story", "at": "20:00",
-   "bn": {"segs": ["সন্ধ্যা নামল, প্রদীপ জ্বলল"]},
-   "segments": [["cm-e3b8d1", 20, 6.0, "Dusk falls, the lamps are lit"]],
-   "music": ["f23", 100]},
-  {"id": "r3", "type": "reel", "at": "21:00",
+   "bn": {
+    "hook": "উপর থেকে অষ্টমীর আরতি",
+    "segs": [
+     "",
+     "সন্ধিপুজোর ১০৮ প্রদীপ",
+     "একটা একটা করে জ্বলে ওঠে",
+     "আর গোটা পাড়া দেখে",
+     "আর মাত্র ১১ দিন"
+    ],
+    "end": "কোন প্যান্ডেলের আরতিতে গায়ে কাঁটা দেয়?"
+   },
+   "segments": [
+    [
+     "cm-4b937f",
+     16,
+     4.0,
+     ""
+    ],
+    [
+     "cm-e3b8d1",
+     0,
+     4.0,
+     "The 108 lamps of Sandhi puja"
+    ],
+    [
+     "cm-2bd3e2",
+     12,
+     3.5,
+     "11 days to go"
+    ],
+    [
+     "cm-4b937f",
+     25,
+     3.5,
+     "Which aarti gives you goosebumps?"
+    ]
+   ],
+   "end": [
+    "Which pandal's aarti gives you goosebumps?",
+    "Tell us below"
+   ],
+   "caption": {
+    "bn": "কোন প্যান্ডেলের আরতি দেখলে আপনার গায়ে কাঁটা দেয়? কমেন্টে লিখুন 👇",
+    "en": "Which pandal's aarti gives you goosebumps? Tell us below 👇 Drone shot of the Mahashtami aarti at Mudiali Club. 11 days to go. Plan your route free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Aarti #SandhiPuja #Kolkata #PujoParikrama #দুর্গাপুজো #আরতি #PujoVibes"
+   },
+   "vo": {
+    "lines": [
+     "উপর থেকে দেখুন! অষ্টমীর সন্ধ্যায় গোটা পাড়া এক জায়গায়।",
+     "সন্ধিপুজোর একশো আটটা প্রদীপ, একটা একটা করে জ্বলে ওঠে।",
+     "ঢাক বাজছে, শাঁখ বাজছে, আর মাত্র এগারো দিন!",
+     "কোন প্যান্ডেলের আরতি দেখলে আপনার গায়ে কাঁটা দেয়? কমেন্টে বলুন!"
+    ],
+    "en": [
+     "Look from above: on Ashtami evening the whole para comes together.",
+     "The 108 lamps of Sandhi puja, lit one by one.",
+     "The dhak, the conch, and just 11 days to go!",
+     "Which pandal's aarti gives you goosebumps? Tell us!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034740_4afd33a0-a3a1-4664-a7ac-0b921a68130c.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_b34d5c64-b68e-4f4a-829c-6d9d29e1f0b3.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_66eb7cbd-e873-492c-a373-ac2c37283ccf.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_0171d448-5788-417d-86fb-2b4634bad978.mp3"
+    ],
+    "voice": "ElevenLabs · Raina"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "20:00",
+   "bn": {
+    "segs": [
+     "সন্ধ্যা নামল, প্রদীপ জ্বলল"
+    ]
+   },
+   "segments": [
+    [
+     "cm-e3b8d1",
+     20,
+     4.5,
+     "Dusk falls, the lamps are lit"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "সন্ধ্যা নামল, প্রদীপ জ্বলল। শুভ সন্ধ্যা, কলকাতা!"
+    ],
+    "en": [
+     "Dusk falls, the lamps are lit. Good evening, Kolkata!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_041425_91161504-25d9-4a5d-813c-69fc4b286ab5.mp3"
+    ],
+    "voice": "ElevenLabs · Raina"
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
    "hook": "One beat and you know pujo is here",
-   "bn": {"hook": "ঢাকে কাঠি পড়লেই মন নাচে",
-          "segs": ["", "দুই কাঠি, এক তাল", "ঘাটে, পাড়ায়, রাজবাড়িতে", "ঢাকির হাতে জাদু", "পুজো আসছে"],
-          "end": "আপনার পাড়ার ঢাকি কোথা থেকে আসেন?"},
-   "segments": [["cm-f2ce50", 1, 3.2, ""], ["f15", 0, 3.0, "Two sticks, one rhythm"],
-                ["cm-107c88", 2, 3.0, "At the ghat, in the para, at the rajbari"], ["f15", 9, 3.0, "Magic in a dhaki's hands"],
-                ["cm-3bbea1", 40, 3.0, "Pujo is coming"]],
-   "end": ["Where does your para's dhaki come from?", "Tell us below"],
-   "caption": {"bn": "আপনার পাড়ার ঢাকি কোথা থেকে আসেন? কমেন্টে লিখুন 👇 🥁",
-               "en": "Where does your para's dhaki come from? Tell us below 👇 Turn the sound up for this one. Plan your pandal route free, link in bio.",
-               "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Dhak #Dhaki #Kolkata #PujoParikrama #দুর্গাপুজো #ঢাক #PujoVibes"}}
+   "bn": {
+    "hook": "ঢাকে কাঠি পড়লেই মন নাচে",
+    "segs": [
+     "",
+     "দুই কাঠি, এক তাল",
+     "ঘাটে, পাড়ায়, রাজবাড়িতে",
+     "ঢাকির হাতে জাদু",
+     "পুজো আসছে"
+    ],
+    "end": "আপনার পাড়ার ঢাকি কোথা থেকে আসেন?"
+   },
+   "segments": [
+    [
+     "cm-f2ce50",
+     1,
+     3.5,
+     ""
+    ],
+    [
+     "f15",
+     0,
+     3.5,
+     "Two sticks, one rhythm"
+    ],
+    [
+     "cm-107c88",
+     2,
+     3.5,
+     "At the ghat, in the para, at the rajbari"
+    ],
+    [
+     "cm-3bbea1",
+     40,
+     3.5,
+     "Where is your dhaki from?"
+    ]
+   ],
+   "end": [
+    "Where does your para's dhaki come from?",
+    "Tell us below"
+   ],
+   "caption": {
+    "bn": "আপনার পাড়ার ঢাকি কোথা থেকে আসেন? কমেন্টে লিখুন 👇 🥁",
+    "en": "Where does your para's dhaki come from? Tell us below 👇 Sound on 🔊 Plan your pandal route free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Dhak #Dhaki #Kolkata #PujoParikrama #দুর্গাপুজো #ঢাক #PujoVibes"
+   },
+   "vo": {
+    "lines": [
+     "ঢাকে কাঠি পড়লেই বুঝে যাই, পুজো এসে গেছে!",
+     "দুটো কাঠি, একটা তাল, আর গোটা শহর নাচে।",
+     "ঘাটে, পাড়ায়, রাজবাড়িতে, ঢাকির হাতে জাদু।",
+     "আপনার পাড়ার ঢাকি কোথা থেকে আসেন? কমেন্টে লিখুন!"
+    ],
+    "en": [
+     "One beat of the dhak and we know: pujo is here!",
+     "Two sticks, one rhythm, and the whole city dances.",
+     "At the ghat, in the para, at the rajbari: magic in a dhaki's hands.",
+     "Where does your para's dhaki come from? Tell us below!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_9ae02a08-2ae6-4ba8-90e4-dc2d1b230040.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034740_f7811f56-cd55-42fe-a694-224eb66373e8.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_dfee96f3-f8e0-424c-8576-2d14ba6dd47f.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_034739_e68a559d-98e9-4d6e-bbb2-772720a35443.mp3"
+    ],
+    "voice": "ElevenLabs · Raina"
+   }
+  }
  ]
 }

@@ -14,6 +14,7 @@ Clip ids come from the footage catalogue (cm-/px-/pb-), from marketing/reels/foo
 own audio (au-dhak, au-shankh, au-dhakhit). Output goes to the live site at /kit/reels/<date>/ (deploy pulls it in).
 """
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -38,6 +39,13 @@ def footage_index(catalog_path):
         idx[k] = dict(v, source=v.get("source", "Wikimedia Commons"))
     if catalog_path and os.path.exists(catalog_path):
         idx.update(json.load(open(catalog_path, encoding="utf-8")))
+    cr = json.load(open(ROOT / "marketing/creators/clips.json", encoding="utf-8"))["clips"]
+    for k, v in cr.items():  # other creators' clips, usable only with their recorded permission (check() enforces it)
+        if k != "cr-example":
+            idx[k] = dict(source="Instagram" if "instagram.com" in v.get("page", "") else "Creator", url=v["url"],
+                          w=v.get("w", 1080), h=v.get("h", 1920), dur=v.get("dur", 0), label=v.get("label", ""),
+                          artist=v["handle"], license="used with permission", page=v.get("page"),
+                          permission=v.get("permission", ""), collab=v.get("collab", False))
     credits = json.load(open(ROOT / "app/audio/credits.json", encoding="utf-8"))
     for k, name in AUDIO.items():
         c = credits[name]
@@ -81,6 +89,13 @@ def fetch(cid, e, src_dir):
     return dest
 
 
+def voice_file(url, src_dir):
+    dest = Path(src_dir) / ("vo-" + hashlib.sha1(url.encode()).hexdigest()[:12] + Path(url.split("?")[0]).suffix)
+    if not dest.exists():
+        download(url, dest)
+    return str(dest)
+
+
 def check(plan, idx):
     """Every clip exists and every cut fits inside its clip, before anything is downloaded."""
     errs = []
@@ -91,10 +106,15 @@ def check(plan, idx):
             e = idx.get(s[0])
             if not e:
                 errs.append(f"{it['id']}: unknown clip {s[0]}")
+            elif e.get("license") == "used with permission" and not (e.get("permission") and e.get("url")):
+                errs.append(f"{it['id']}: {s[0]} ({e['artist']}) has no recorded permission or file yet")
             elif e.get("dur") and s[1] + s[2] > e["dur"] + 0.05:
                 errs.append(f"{it['id']}: {s[0]} is {e['dur']}s, cut ends at {s[1] + s[2]}s")
+        vo = it.get("vo")
+        if vo and not (len(vo.get("lines", [])) == len(vo.get("urls", [])) == len(it["segments"])):
+            errs.append(f"{it['id']}: voiceover needs one line and one audio url per shot")
         segs = (it.get("bn") or {}).get("segs", [])
-        if it.get("bn") and len(segs) != len(it["segments"]):
+        if it.get("bn") and not vo and len(segs) != len(it["segments"]):
             errs.append(f"{it['id']}: {len(it['segments'])} shots but {len(segs)} Bengali lines")
     if errs:
         raise SystemExit("plan problems:\n" + "\n".join(errs))
@@ -130,6 +150,7 @@ def main(argv=None):
     ap.add_argument("--catalog", default="catalog/catalog.json")
     ap.add_argument("--out", required=True)
     ap.add_argument("--src", default="src")
+    ap.add_argument("--base-url", help="where the videos will be served (default: the live /kit/reels/<date>/)")
     a = ap.parse_args(argv)
     from ..reels import build2  # needs Pillow and fonts/, so only when rendering
     plan = json.load(open(ROOT / f"marketing/daily/{a.date}.json", encoding="utf-8"))
@@ -138,7 +159,7 @@ def main(argv=None):
     out, tmp = Path(a.out), Path(a.out) / "_tmp"
     tmp.mkdir(parents=True, exist_ok=True)
     os.makedirs(a.src, exist_ok=True)
-    base = f"{SITE}kit/reels/{a.date}/"
+    base = a.base_url or f"{SITE}kit/reels/{a.date}/"
     pfx = a.date[5:7] + a.date[8:10]
     items = []
     for it in sorted(plan["items"], key=lambda x: x["at"]):
@@ -147,9 +168,12 @@ def main(argv=None):
         if it.get("video_url"):
             entry.update(video_url=it["video_url"], caption=it.get("caption"))
         else:
-            for s in it["segments"] + ([it["music"]] if it.get("music") else []):
+            music = [it["music"]] if it.get("music") and not it.get("vo") else []
+            for s in it["segments"] + music + ([it["end_clip"]] if it.get("end_clip") else []):
                 fetch(s[0], idx[s[0]], a.src)
             reel = dict(it, id=fid)
+            if it.get("vo"):  # voiceover lines, one per shot (generated ahead, see marketing/footage/voice.py)
+                reel["vo_files"] = [voice_file(u, a.src) if u else None for u in it["vo"]["urls"]]
             if it["type"] == "story":
                 reel.pop("end", None)
                 reel.pop("caption", None)

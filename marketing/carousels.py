@@ -612,14 +612,34 @@ Comment your team 👇 Save it 📌 Plan free → link in bio.""",
 
 
 def caption(c):
-    return f"{c['caption_en']}\n\n{c['caption_bn']}\n\n{c['hashtags']}\n"
+    cap = f"{c['caption_en']}\n\n{c['caption_bn']}\n\n{c['hashtags']}\n"
+    if c.get("credits"):  # the CC licences of the photos ask for this
+        cap += f"\n📷 Photos: {'; '.join(c['credits'])} (Wikimedia Commons)\n"
+    return cap
 
 
-def build(out, g=None):
+def add_photos(cs, out, g):
+    """Real photos on every slide (marketing/photos.py), credited in the caption."""
+    from .photos import Library
+    lib = Library(g)
+    for i, c in enumerate(cs):
+        lib.dress(c["slides"], out, seed=i * 7)
+        cr = []
+        for s in c["slides"]:
+            for x in [s.get("credit")] + [it.get("thumb_credit") for it in s.get("items") or [] if isinstance(it, dict)]:
+                x = (x or "").replace(" · Wikimedia Commons", "")
+                if x and x not in cr:
+                    cr.append(x)
+        c["credits"] = cr
+
+
+def build(out, g=None, photos=False):
     g = g or json.loads((ROOT / "app" / "data" / "guide.json").read_text(encoding="utf-8"))
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     cs = Carousels(g).all()
+    if photos:
+        add_photos(cs, out, g)
     spec = {"handle": HANDLE, "size": [1080, 1350], "carousels": cs}
     (out / "carousels.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1), encoding="utf-8")
     lines = ["# Pujo Parikrama 2026: Instagram carousels", "",
@@ -643,8 +663,9 @@ def build(out, g=None):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--out", required=True, help="output folder")
+    ap.add_argument("--photos", action="store_true", help="put a real Commons photo on every slide (needs network)")
     a = ap.parse_args(argv)
-    spec = build(a.out)
+    spec = build(a.out, photos=a.photos)
     print(f"{len(spec['carousels'])} carousels, {sum(len(c['slides']) for c in spec['carousels'])} slides → {a.out}")
 
 
