@@ -209,7 +209,8 @@ class StoriesMixin:
             mc = credits.get(music, {})
             music_credit = (f'<p class="credit">Music: {esc(mc.get("title", "").replace("File:", "").rsplit(".", 1)[0])}, '
                             f'{esc(mc.get("author", ""))}, {esc(mc.get("license", ""))}, Wikimedia Commons.</p>') if music else ""
-            more = [x for x in self.stories if x is not s][:2]
+            built = [x for x in self.stories if x["cover"] in ph]
+            more = [built[(built.index(s) + 1) % len(built)]] if s in built and len(built) > 1 else []
             html.append(f"""<amp-story-page id="end">
 <amp-story-grid-layer template="vertical" class="end"><h2>Read the full guide</h2>
 <p>{esc(article.desc if article else s["dek"])}</p>
