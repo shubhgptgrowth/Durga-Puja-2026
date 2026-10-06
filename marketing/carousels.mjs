@@ -158,8 +158,8 @@ ul.cl li{display:block;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.2
 .vs{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
 .vs div b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:6.4rem;line-height:1.05;color:#FFC857}
 .vs div p{font-size:3.6rem;line-height:1.36;margin-top:1.2rem;opacity:.92}
-.bingo{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
-.bingo div{aspect-ratio:1/1;border:1.5px solid rgba(255,255,255,.55);border-radius:1.4rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;font-size:3rem;font-weight:700;line-height:1.2;background:rgba(0,0,0,.28)}
+.bingo{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.bingo div{min-height:19rem;border:1.5px solid rgba(255,255,255,.55);border-radius:1.4rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;font-size:3rem;font-weight:700;line-height:1.2;background:rgba(0,0,0,.38)}
 `;
 
 const bnl = (s, cls = 'bnl') => (s ? `<div class="bn ${cls}">${esc(s)}</div>` : '');

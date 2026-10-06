@@ -141,6 +141,7 @@ def main(argv=None):
     ap.add_argument("--catalog", default="catalog/catalog.json")
     ap.add_argument("--out", required=True)
     ap.add_argument("--src", default="src")
+    ap.add_argument("--base-url", help="where the videos will be served (default: the live /kit/reels/<date>/)")
     a = ap.parse_args(argv)
     from ..reels import build2  # needs Pillow and fonts/, so only when rendering
     plan = json.load(open(ROOT / f"marketing/daily/{a.date}.json", encoding="utf-8"))
@@ -149,7 +150,7 @@ def main(argv=None):
     out, tmp = Path(a.out), Path(a.out) / "_tmp"
     tmp.mkdir(parents=True, exist_ok=True)
     os.makedirs(a.src, exist_ok=True)
-    base = f"{SITE}kit/reels/{a.date}/"
+    base = a.base_url or f"{SITE}kit/reels/{a.date}/"
     pfx = a.date[5:7] + a.date[8:10]
     items = []
     for it in sorted(plan["items"], key=lambda x: x["at"]):
