@@ -46,8 +46,12 @@ def info(pg):
     lic = text(md, "LicenseShortName")
     if not ii.get("thumburl") or text(md, "NonFree").lower() == "true" or not FREE.match(lic or "-"):
         return None
+    author = text(md, "Artist")
+    half = len(author) // 2
+    if author and len(author) % 2 == 0 and author[:half] == author[half:]:   # Commons sometimes repeats it ("Unknown authorUnknown author")
+        author = author[:half]
     return {"title": pg["title"], "url": ii["thumburl"], "w": ii.get("width", 0), "h": ii.get("height", 0),
-            "author": text(md, "Artist")[:90] or "Unknown", "license": lic, "license_url": text(md, "LicenseUrl"),
+            "author": author[:90] or "Unknown", "license": lic, "license_url": text(md, "LicenseUrl"),
             "page": ii.get("descriptionurl")}
 
 

@@ -24,6 +24,7 @@ numbers are estimates. Stdlib only.
 import argparse
 import json
 import re
+import shutil
 from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
@@ -63,7 +64,7 @@ class Site(KnowledgeMixin, ExtrasMixin):
         return min(100, round(p["crowd_base"] * 20 * self.days[day]["factor"] * hf[h]))
 
     def page(self, path, title, desc, body, *, ld=(), crumbs=(), priority=0.6, summary=None, app_link="", note=None, modified=None,
-             head_extra="", images=(), ads=True, index=True):
+             head_extra="", images=(), ads=True, index=True, og_image=None, og_alt=""):
         """Write one page; `path` like 'guide/pandals/bagbazar/' (always a folder with index.html)."""
         depth = path.count("/")
         up = "../" * depth
@@ -86,10 +87,13 @@ class Site(KnowledgeMixin, ExtrasMixin):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
-<meta property="og:image" content="{esc(self.url('icons/og.png'))}">
+<meta property="og:image" content="{esc(og_image or self.url('icons/og.png'))}">{'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if og_image and og_image.endswith(".jpg") else ""}{f'<meta property="og:image:alt" content="{esc(og_alt)}">' if og_alt else ""}
+<meta name="twitter:image" content="{esc(og_image or self.url('icons/og.png'))}">
 <meta property="article:modified_time" content="{modified or self.updated}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{up}icons/icon.svg" type="image/svg+xml">
+<link rel="preload" href="{up}guide/fonts/literata-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{up}guide/fonts/baloo-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{up}guide/guide.css">{head_extra}
 <script src="{up}guide/guide.js" defer></script>{self.ads_head() if ads else ""}
 {jsonld(crumb_ld)}
@@ -555,6 +559,9 @@ Articles are written by the {NAME} team from the sources each one lists; practic
             print("warning: " + msg)
         for asset in ("guide.css", "guide.js"):
             (self.out / "guide" / asset).write_text((ROOT / "scripts" / "seo" / asset).read_text(encoding="utf-8"), encoding="utf-8")
+        (self.out / "guide" / "fonts").mkdir(parents=True, exist_ok=True)
+        for font in (ROOT / "scripts" / "seo" / "fonts").iterdir():   # self-hosted, OFL (licences alongside)
+            shutil.copyfile(font, self.out / "guide" / "fonts" / font.name)
         self.write_root_files()
         self.write_index_block()
         self.write_404()

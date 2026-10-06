@@ -6,6 +6,7 @@ summary = """Vishwakarma Puja is the worship of Vishwakarma, the divine architec
 type = "Article"
 section = "Festivals"
 order = 5
+image = "vishwakarma"
 keywords = ["Vishwakarma Puja", "Biswakarma Puja", "Vishwakarma Puja date", "Vishwakarma Puja kite flying", "Kanya Sankranti", "tools puja"]
 related = ["festivals/", "durga-puja/", "durga-puja/rituals/mahalaya/", "guide/dates/"]
 

@@ -41,6 +41,7 @@ jobs:
       - name: Guide pages for search and AI crawlers
         id: seo
         run: |
+          pip install -q pillow   # share cards (og/…/card.jpg): each article's photo with its title
           python scripts/build_seo.py --out app
           # Pages that changed since the live build (by content hash), for IndexNow after the deploy
           site=$(python -c "import json;print(json.load(open('site.json'))['url'])")

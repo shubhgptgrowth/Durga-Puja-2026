@@ -6,6 +6,8 @@ summary = """To enjoy pandal hopping in Kolkata, go early in the morning or afte
 type = "Article"
 section = "Culture"
 order = 30
+image = "crowd"
+images = ["pandal-lights", "street-food"]
 keywords = ["pandal hopping tips", "Kolkata pandal hopping", "Durga Puja Kolkata tips", "best time to visit pandals", "pandal hopping by metro", "Durga Puja 2026 Kolkata guide", "thakur dekha"]
 related = ["durga-puja/food-and-bhog/", "durga-puja/bonedi-bari-pujas/", "durga-puja/glossary/", "durga-puja/rituals/", "durga-puja/what-is-durga-puja/"]
 

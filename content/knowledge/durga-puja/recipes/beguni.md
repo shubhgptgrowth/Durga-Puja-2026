@@ -6,6 +6,7 @@ summary = """Beguni is a Bengali fritter of thin aubergine (begun) slices dipped
 type = "Recipe"
 section = "Recipes"
 order = 40
+image = "beguni"
 keywords = ["beguni recipe", "Bengali beguni", "brinjal fritters", "begun bhaja besan", "Durga Puja beguni", "khichuri beguni", "aubergine pakora"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/bhoger-khichuri/", "durga-puja/recipes/labra/", "durga-puja/recipes/tomato-khejur-chutney/", "durga-puja/food-and-bhog/", "durga-puja/rituals/ashtami/"]
 recipe_yield = "4 servings (about 20 slices)"

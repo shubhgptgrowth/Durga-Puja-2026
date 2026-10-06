@@ -6,6 +6,8 @@ summary = """Durga Puja food has two halves: bhog, the vegetarian meal first off
 type = "Article"
 section = "Culture"
 order = 10
+image = "bhog"
+images = ["khichuri", "street-food"]
 keywords = ["Durga Puja food", "Durga Puja bhog", "khichuri bhog", "Pujo food Kolkata", "bhog recipe", "labra", "Kolkata street food Durga Puja", "Bengali sweets Durga Puja"]
 related = ["durga-puja/rituals/ashtami/", "durga-puja/rituals/navami/", "durga-puja/pandal-hopping-tips/", "durga-puja/bijoya-dashami-wishes/", "durga-puja/samagri-list/"]
 

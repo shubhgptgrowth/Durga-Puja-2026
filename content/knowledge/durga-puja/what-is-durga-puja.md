@@ -6,6 +6,8 @@ summary = """Durga Puja is the Hindu festival that worships the goddess Durga, t
 type = "Article"
 section = "Durga Puja"
 order = 10
+image = "family"
+images = ["pushpanjali", "sindoor-khela"]
 keywords = ["what is Durga Puja", "meaning of Durga Puja", "Durga Puja story", "Mahishasura", "Devi Mahatmya", "Akal Bodhon", "Sharadiya"]
 related = ["durga-puja/history/", "durga-puja/goddess-durga/", "durga-puja/rituals/", "durga-puja/rituals/mahalaya/", "navratri/"]
 

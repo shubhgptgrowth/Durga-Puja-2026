@@ -6,6 +6,7 @@ summary = """Basanti Puja is the worship of Durga in spring, during the bright f
 type = "Article"
 section = "Festivals"
 order = 50
+image = "basanti"
 keywords = ["Basanti Puja", "Basanti Durga Puja", "spring Durga Puja", "Chaitra Navratri", "King Suratha", "Annapurna Puja"]
 related = ["festivals/", "durga-puja/akal-bodhon/", "durga-puja/history/", "navratri/", "durga-puja/what-is-durga-puja/"]
 

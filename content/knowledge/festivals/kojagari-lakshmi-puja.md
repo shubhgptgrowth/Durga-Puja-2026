@@ -6,6 +6,8 @@ summary = """Kojagari Lakshmi Puja is the worship of Lakshmi, goddess of wealth 
 type = "Article"
 section = "Festivals"
 order = 10
+image = "lakshmi-puja"
+images = ["alpana"]
 keywords = ["Kojagari Lakshmi Puja", "Lakshmi Puja after Durga Puja", "Sharad Purnima", "ko jagarti meaning", "Lakshmi alpana", "Lakshmi footprints", "Lakshmi Puja bhog"]
 related = ["festivals/", "festivals/kali-puja-diwali/", "durga-puja/rituals/dashami/", "durga-puja/food-and-bhog/", "durga-puja/recipes/"]
 

@@ -6,6 +6,8 @@ summary = """For Durga Puja, Bengalis traditionally wear new clothes (*pujor jam
 type = "Article"
 section = "Visit"
 order = 20
+image = "saree"
+images = ["sindoor-khela"]
 keywords = ["what to wear for Durga Puja", "Durga Puja outfit ideas", "pujor jama", "Ashtami anjali sari", "sindoor khela sari", "dhuti panjabi Durga Puja", "Durga Puja saree", "garad sari"]
 related = ["durga-puja/rituals/ashtami/", "durga-puja/rituals/sindoor-khela/", "durga-puja/pandal-hopping-tips/", "durga-puja/visit-kolkata/", "durga-puja/glossary/"]
 

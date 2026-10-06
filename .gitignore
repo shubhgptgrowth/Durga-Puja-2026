@@ -9,6 +9,7 @@ app/kit/
 app/tiles/*.pmtiles
 # Built at deploy by scripts/build_seo.py
 app/guide/
+app/og/
 app/sitemap.xml
 app/robots.txt
 app/llms.txt

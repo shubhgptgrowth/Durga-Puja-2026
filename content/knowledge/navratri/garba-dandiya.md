@@ -6,6 +6,8 @@ summary = """Garba and Dandiya Raas are the circle dances of Navratri from Gujar
 type = "Article"
 section = "Navratri"
 order = 60
+image = "garba"
+images = ["dandiya"]
 keywords = ["garba", "dandiya raas", "garba steps", "garba dress", "chaniya choli", "kediyu", "Navratri dance"]
 related = ["navratri/", "navratri/navadurga/", "navratri/dussehra-vijayadashami/", "navratri/fasting-rules/"]
 

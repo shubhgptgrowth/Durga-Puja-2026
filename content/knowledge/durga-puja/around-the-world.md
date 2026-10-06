@@ -6,6 +6,8 @@ summary = """Durga Puja is celebrated wherever Bengalis and other devotees of th
 type = "Article"
 section = "Durga Puja"
 order = 60
+image = "pandal-art"
+images = ["dhaki"]
 keywords = ["Durga Puja around the world", "Durga Puja outside Kolkata", "CR Park Durga Puja", "Durga Puja Bangladesh", "Durga Puja USA", "Durga Puja London", "Durga Puja Assam", "Durga Puja Odisha"]
 related = ["durga-puja/kumartuli-idol-making/", "navratri/", "durga-puja/at-home/", "durga-puja/what-is-durga-puja/"]
 

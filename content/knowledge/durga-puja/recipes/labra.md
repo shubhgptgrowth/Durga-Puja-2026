@@ -6,6 +6,7 @@ summary = """Labra, or labra torkari, is a soft Bengali mixed vegetable dish ser
 type = "Recipe"
 section = "Recipes"
 order = 20
+image = "labra"
 keywords = ["labra recipe", "labra torkari", "Bengali labra", "Durga Puja labra", "bhoger labra", "mixed vegetable panch phoron", "Ashtami bhog recipe"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/bhoger-khichuri/", "durga-puja/recipes/beguni/", "durga-puja/recipes/tomato-khejur-chutney/", "durga-puja/food-and-bhog/", "durga-puja/rituals/ashtami/"]
 recipe_yield = "4–6 servings"

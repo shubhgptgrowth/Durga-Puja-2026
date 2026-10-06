@@ -6,6 +6,7 @@ summary = """Maha Saptami is the first day of the main Durga Puja worship. At da
 type = "Article"
 section = "Rituals"
 order = 30
+image = "kola-bou"
 keywords = ["Saptami 2026", "Maha Saptami", "Nabapatrika snan", "Kola Bou", "Navapatrika", "prana pratishtha", "Durga Puja Saptami"]
 related = ["durga-puja/rituals/kola-bou/", "durga-puja/rituals/shashthi/", "durga-puja/rituals/ashtami/", "durga-puja/rituals/"]
 places = ["bagbazar", "sovabazar_rajbari", "ahiritola"]

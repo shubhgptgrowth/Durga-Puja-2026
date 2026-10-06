@@ -6,6 +6,8 @@ summary = """Mahishasuramardini is the Bengali radio programme broadcast at dawn
 type = "Article"
 section = "Culture"
 order = 50
+image = "radio"
+images = ["mahalaya"]
 keywords = ["Mahishasuramardini", "Mahalaya radio programme", "Birendra Krishna Bhadra", "Mahalaya 2026 radio", "All India Radio Mahalaya", "Pankaj Kumar Mullick", "Mahishasura Mardini Bengali", "Mahalaya Chandi path"]
 related = ["durga-puja/rituals/mahalaya/", "durga-puja/goddess-durga/", "durga-puja/history/", "durga-puja/glossary/", "durga-puja/dhak-and-dhaki/"]
 

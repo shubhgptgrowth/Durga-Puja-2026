@@ -1,5 +1,6 @@
 """The small Markdown subset used by content/knowledge (see its README): ## / ### headings, paragraphs, bold,
-italic, links, bullet and numbered lists, pipe tables and > quotes. Internal links ("/path/") become relative,
+italic, links, bullet and numbered lists, pipe tables, > quotes (verses in Bengali or Devanagari become mantra blocks;
+"> **Tip:** …" and friends become callout boxes) and ![caption](photo:key) photos. Internal links ("/path/") become relative,
 so the pages work under any base URL, and every one is recorded so the build can check it exists."""
 import html
 import re
@@ -10,13 +11,23 @@ def slug(text):
     return re.sub(r"[\s_]+", "-", s).strip("-")[:60] or "section"
 
 
+def esc_t(s):
+    return html.escape(s, quote=False)
+
+
 class Rendered:
     def __init__(self):
         self.html, self.toc, self.links, self.text = "", [], [], ""
 
 
-def render(md, up=""):
-    """Markdown → Rendered(html, toc [(id, title)], links [internal paths], text). `up` is '../' * depth."""
+CALLOUT = re.compile(r"^\*\*(Tip|Note|Did you know\?|Good to know|Remember|Etiquette|Safety)[:.]?\*\*:?\s*", re.I)
+ICONS = {"tip": "💡", "note": "📝", "did-you-know": "✨", "good-to-know": "✨", "remember": "📌", "etiquette": "🙏", "safety": "⚠️"}
+INDIC = re.compile(r"[\u0900-\u09FF]")
+
+
+def render(md, up="", figure=None):
+    """Markdown → Rendered(html, toc [(id, title)], links [internal paths], text). `up` is '../' * depth;
+    `figure(key, caption)` returns the HTML for a ![caption](photo:key) line (no figure: the line is dropped)."""
     out = Rendered()
 
     def inline(s):
@@ -62,13 +73,27 @@ def render(md, up=""):
             parts.append('<div class="table"><table><thead><tr>' + "".join(f"<th>{inline(c)}</th>" for c in head) + "</tr></thead><tbody>"
                          + "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in body) + "</tbody></table></div>")
             continue
+        m = re.match(r"^!\[([^\]]*)\]\(photo:([\w-]+)\)\s*$", line.strip())
+        if m:
+            parts.append(figure(m.group(2), m.group(1)) if figure else "")
+            i += 1
+            continue
         if line.startswith(">"):
             q = []
             while i < len(lines) and lines[i].startswith(">"):
                 q.append(lines[i][1:].strip())
                 i += 1
-            paras = "\n".join(q).split("\n\n")
-            parts.append("<blockquote>" + "".join("<p>" + "<br>".join(inline(x) for x in p.split("\n") if x) + "</p>" for p in paras if p.strip()) + "</blockquote>")
+            text = "\n".join(q)
+            c = CALLOUT.match(text)
+            if c:   # > **Tip:** … → a callout box
+                kind = re.sub(r"[^a-z]+", "-", c.group(1).lower()).strip("-")
+                paras = text[c.end():].split("\n\n")
+                parts.append(f'<aside class="callout {kind}"><b class="callout-t"><span aria-hidden="true">{ICONS.get(kind, "💡")}</span> {esc_t(c.group(1))}</b>'
+                             + "".join("<p>" + inline(" ".join(x for x in p.split("\n") if x)) + "</p>" for p in paras if p.strip()) + "</aside>")
+                continue
+            paras = text.split("\n\n")
+            cls = ' class="verse"' if INDIC.search(text) else ""
+            parts.append(f"<blockquote{cls}>" + "".join("<p>" + "<br>".join(inline(x) for x in p.split("\n") if x) + "</p>" for p in paras if p.strip()) + "</blockquote>")
             continue
         m = re.match(r"^(\s*)([-*]|\d+\.)\s+", line)
         if m:

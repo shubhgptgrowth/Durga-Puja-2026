@@ -6,6 +6,7 @@ summary = """Durga Puja is the autumn festival in which Hindus, above all Bengal
 type = "Article"
 section = "Durga Puja"
 order = 0
+image = "unesco"
 keywords = ["Durga Puja", "Durga Puja 2026", "Durga Puja guide", "Kolkata Durga Puja", "Sharadiya Durgotsav", "Pujo"]
 related = ["durga-puja/what-is-durga-puja/", "durga-puja/history/", "durga-puja/rituals/", "durga-puja/pandal-hopping-tips/"]
 

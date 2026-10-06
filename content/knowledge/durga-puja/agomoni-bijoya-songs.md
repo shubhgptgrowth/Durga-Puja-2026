@@ -6,6 +6,8 @@ summary = """Agomoni (arrival) and Bijoya (farewell) songs are Bengali devotiona
 type = "Article"
 section = "Culture"
 order = 55
+image = "family"
+images = ["immersion"]
 keywords = ["Agomoni songs", "Agomoni gaan", "Bijoya songs", "Uma sangeet", "Shakta padavali", "Ramprasad Sen", "Kamalakanta Bhattacharya", "Uma Menaka"]
 related = ["durga-puja/what-is-durga-puja/", "durga-puja/mahishasuramardini-radio/", "durga-puja/rituals/dashami/", "durga-puja/bijoya-dashami-wishes/", "durga-puja/dhak-and-dhaki/"]
 

@@ -6,6 +6,7 @@ summary = """Durga Puja is the Hindu festival honouring the goddess Durga's vict
 type = "Article"
 section = "Durga Puja"
 order = 90
+image = "unesco"
 keywords = ["Durga Puja FAQ", "Durga Puja questions", "Durga Puja 2026 dates", "Durga Puja vs Navratri", "Durga Puja meaning", "Durga Puja rituals explained", "Kolkata Durga Puja guide"]
 related = ["durga-puja/what-is-durga-puja/", "durga-puja/rituals/", "durga-puja/visit-kolkata/", "durga-puja/pandal-hopping-tips/", "durga-puja/glossary/", "navratri/"]
 

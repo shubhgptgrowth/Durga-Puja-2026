@@ -6,6 +6,7 @@ summary = """Luchi and alur dom is a festive Bengali breakfast of puffed, deep-f
 type = "Recipe"
 section = "Recipes"
 order = 70
+image = "luchi"
 keywords = ["luchi alur dom", "luchi recipe", "alur dom no onion no garlic", "niramish alur dom", "Ashtami breakfast", "Bengali luchi", "Durga Puja breakfast"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/labra/", "durga-puja/recipes/beguni/", "durga-puja/recipes/tomato-khejur-chutney/", "durga-puja/rituals/ashtami/", "durga-puja/food-and-bhog/"]
 recipe_yield = "4 servings (about 20 luchi)"

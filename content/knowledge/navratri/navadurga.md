@@ -6,6 +6,7 @@ summary = """The Navadurga are the nine forms of the Goddess Durga worshipped on
 type = "Article"
 section = "Navratri"
 order = 10
+image = "navadurga"
 keywords = ["Navadurga", "nine forms of Durga", "Navratri nine days goddess", "Shailaputri", "Kalaratri", "Siddhidatri"]
 related = ["navratri/", "navratri/ghatasthapana/", "navratri/kanya-pujan/", "durga-puja/goddess-durga/"]
 

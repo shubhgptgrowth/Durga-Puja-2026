@@ -13,174 +13,286 @@
 
 [mahalaya]
 q = ["Mahalaya tarpan", "Tarpan Ganga Mahalaya Kolkata", "Mahalaya Babughat"]
+file = "File:Mahalaya, an auspicious day to perform Tarpan 02.jpg"
+caption = "Tarpan on Mahalaya: offering water, til and kusha grass to the ancestors at the Ganga."
 
 [bodhon]
 q = ["Bodhon Durga Puja", "Durga Puja Shashthi bodhon", "Durga Puja eyes chokkhu daan"]
+file = "File:Bodhon The Awakening.jpg"
+caption = "Bodhon, the awakening of the goddess, on the evening of Shashthi."
 
 [kola-bou]
 q = ["Kola Bou", "Nabapatrika", "Nabapatrika snan Durga Puja"]
+file = "File:Kola Bou Snan Durga Puja 2024 04.jpg"
+caption = "Kola Bou, the banana plant bride, is carried to the pond for her bath on Saptami morning."
 
 [pushpanjali]
 q = ["Pushpanjali Durga Puja", "Anjali Durga Puja", "Ashtami anjali Kolkata"]
+file = "File:Pushpanjali - Maha Ashtami - Durga Puja - Biswamilani Club - Padmapukur Water Treatment Plant Road - Howrah 2015-10-21 6082.JPG"
+caption = "Devotees raise flowers for pushpanjali on Maha Ashtami at a Kolkata pandal."
 
 [sandhi-puja]
 q = ["Sandhi Puja", "Sandhi puja lamps", "108 lamps Durga Puja"]
+file = "File:Lake Terace Dakshin Sangh Durga puja Sandhi puja 10.jpg"
+caption = "Tiers of lamps are lit for Sandhi Puja at a Kolkata community puja."
 
 [kumari-puja]
 q = ["Kumari Puja", "Kumari Puja Belur Math", "Kumari puja girl"]
+file = "File:Kumari Puja of Durga Puja (West Bengal).jpg"
+caption = "A young girl is worshipped as the goddess in Kumari Puja."
 
-[homa]
-q = ["Durga Puja hom yajna", "Durga Puja Navami yajna", "Hawan Durga Puja"]
 
 [sindoor-khela]
 q = ["Sindoor Khela", "Sindur khela", "Sindur Khela Durga Puja Bijoya Dashami"]
+file = "File:Bijoya Dashami.jpg"
+caption = "Women smear sindoor on each other on Bijoya Dashami."
 
 [immersion]
 q = ["Durga Puja immersion Kolkata", "Durga idol immersion Babughat", "Durga visarjan Hooghly"]
+file = "File:Sovabazar Royal Durga Idol Immersion Arrangement - River Hooghly - Baghbazar Ghat - Kolkata 2014-10-03 9208.jpg"
+caption = "Sovabazar Rajbari's Durga is readied on boats at Baghbazar Ghat for immersion in the Hooghly."
 
 [dhunuchi]
 q = ["Dhunuchi dance", "Dhunuchi Naach", "Dhunuchi Durga Puja"]
+file = "File:Traditional Dhunuchi Dance.jpg"
+caption = "Dhunuchi dance: clay burners of smoking coconut husk and incense, held aloft to the dhak."
 
 [dhaki]
 q = ["Dhaki Durga Puja", "Dhaki playing dhak", "Dhak drum Durga Puja"]
+file = "File:Dhaki at Durga puja 2024 at Shantipara, Dibrugarh 12.jpg"
+caption = "Dhakis playing the dhak at a Durga Puja."
 
 [kumartuli]
 q = ["Kumortuli idol making", "Kumartuli artisan Durga idol", "Kumortuli clay idols"]
+file = "File:Idol making at Kumortuli, Kolkata4.jpg"
+caption = "Idols take shape in a workshop lane at Kumartuli, north Kolkata."
 
 [kumartuli-2]
 q = ["Kumortuli Durga idol unpainted", "Kumartuli straw clay idol", "Kumartuli idol painting"]
+file = "File:Creation of Durga Idol at kumartuli.jpg"
+caption = "An artisan paints a Durga idol at Kumartuli."
 
 [bhog]
 q = ["Durga Puja bhog", "Bhog Durga Puja khichuri", "Durga Puja bhog distribution"]
+file = "File:Khichiri bhog of Durga puja.jpg"
+caption = "Khichuri bhog served in leaf bowls at a Durga Puja."
 
 [khichuri]
 q = ["Khichuri Bengali", "Bhuna khichuri", "Khichdi bhog"]
+file = "File:Khichuri With Fried Vegitables - Kojagari Lakshmi Puja Offering - Bengali Brahman Family - Howrah 20171005173513.jpg"
+caption = "Khichuri with fried vegetables, offered as bhog in a Bengali home."
 
 [labra]
 q = ["Labra Bengali dish", "Labra mixed vegetable", "Bengali mixed vegetable curry"]
+file = "File:Labra tarkari-MA17.jpg"
+caption = "Labra, the mixed vegetable dish of the puja bhog."
 
 [payesh]
 q = ["Payesh", "Bengali payesh rice pudding", "Kheer rice pudding"]
+file = "File:Kheer(Payasam).jpg"
+caption = "Payesh, rice slow-cooked in milk, in a clay bowl."
 
 [beguni]
 q = ["Beguni", "Beguni fritter", "Brinjal fritters Bengali"]
+file = "File:Bharer cha and beguni.jpg"
+caption = "Beguni, brinjal in a crisp gram-flour batter, with a cup of tea."
 
 [chutney]
 q = ["Tomato chutney Bengali", "Tomato khejur chutney", "Bengali chutney"]
+file = "File:Amsatta Khejur & Tomato Chutney - Kolkata 2011-09-19 5233.JPG"
+caption = "Tomato chutney with dates and amsatta (dried mango), sold in Kolkata."
 
 [narkel-naru]
 q = ["Narkel naru", "Narkel nadu", "Coconut ladoo"]
+file = "File:Narkel naru.made up of coconut and jaggery.jpg"
+caption = "Narkel naru: coconut and jaggery sweets on a banana leaf."
 
 [luchi]
 q = ["Luchi alur dom", "Luchi Bengali", "Luchi"]
+file = "File:Alur dom & luchi.jpg"
+caption = "Luchi with alur dom."
 
 [pandal-art]
 q = ["Durga Puja theme pandal Kolkata", "Durga Puja pandal art", "Durga Puja pandal interior decoration"]
+file = "File:Maa Durga Pandal Bengal Culture Theme.jpg"
+caption = "A theme pandal built around Bengal's folk culture."
 
 [pandal-lights]
 q = ["Durga Puja lighting Kolkata", "Chandannagar lighting", "Durga Puja night lights pandal"]
+file = "File:Lighting Idol People during Durga Puja Festival 2023 in Behala Kolkata 44.jpg"
+caption = "Lanterns and lights over a Behala street during the pujas."
 
 [crowd]
 q = ["Durga Puja crowd Kolkata", "Durga Puja pandal queue night", "Durga Puja Kolkata people"]
+file = "File:Insane Durga Puja crowd in Behala, Kolkata.jpg"
+caption = "Night crowds on the pandal trail in Behala."
 
 [bonedi-bari]
 q = ["Sovabazar Rajbari Durga Puja", "Bonedi bari Durga Puja", "Thakur dalan Durga Puja"]
+file = "File:Durga Idol in Temple - Sovabazar Royal Palace - Kolkata 2012-10-20 0991.JPG"
+caption = "Durga in the thakurdalan of Sovabazar Rajbari, an old family puja."
 
 [mahishasuramardini]
 q = ["Mahishasuramardini sculpture", "Durga slaying Mahishasura", "Mahishasuramardini Mahabalipuram"]
+file = "File:Chlorite sculpture of Mahishasuramardini, 12th century, Mandabhum. Pala School of Art. Indian Museum, Kolkata.jpg"
+caption = "Mahishasuramardini, Durga slaying the buffalo demon: a 12th-century chlorite sculpture of the Pala school."
 
 [durga-painting]
 q = ["Kalighat painting Durga", "Durga painting Bengal 19th century", "Durga patachitra"]
+file = "File:Kalighat pictures Indian gods f.12.jpg"
+caption = "Durga on her lion fights Mahishasura: a 19th-century Kalighat painting."
 
 [history]
 q = ["Durga Puja Calcutta 19th century", "Durga Puja old photograph Calcutta", "Durga Puja 1890"]
+file = "File:Plate 3. Festival of the Goddess Durga at Calcutta.jpg"
+caption = "Festival of the Goddess Durga at Calcutta, a 19th-century print."
 
-[abroad]
-q = ["Durga Puja London", "Durga Puja New York", "Durga Puja Germany"]
 
 [garba]
 q = ["Garba dance Navratri", "Garba Gujarat", "Navratri garba"]
+file = "File:Vibrant Navratri Garba.jpg"
+caption = "Garba on a Navratri night."
 
 [dandiya]
 q = ["Dandiya raas", "Dandiya Navratri", "Dandiya sticks"]
+file = "File:Artist performing Dandia.jpg"
+caption = "Dandiya raas, danced with pairs of sticks."
 
 [ghatasthapana]
 q = ["Ghatasthapana", "Navratri kalash", "Kalash sthapana"]
+file = "File:Navratri Kalash Puja.jpg"
+caption = "A kalash with a lamp and flowers, installed for Navratri."
 
 [kanya-pujan]
 q = ["Kanya Pujan", "Kanjak Navratri", "Kanya puja Navratri girls"]
+file = "File:Kanya Pujan Durga puja.jpg"
+caption = "Girls are fed and honoured as the goddess in Kanya Pujan."
 
 [dussehra]
 q = ["Ravan Dahan Dussehra", "Dussehra Ravana effigy", "Dussehra effigy burning"]
+file = "File:Ravan Dahan - Triumph of Good Over Evil.jpg"
+caption = "Effigies of Ravana and his brothers before Ravan Dahan on Dussehra."
 
 [navadurga]
 q = ["Navadurga", "Nine forms of Durga", "Navadurga painting"]
+file = "File:Idol of Navadurga during Durga Puja 2024 at Paltan Bazar Durga Mandir, Dibrrugarh 01.jpg"
+caption = "The nine forms of Durga, the Navadurga, at a Durga Puja pandal."
 
 [vrat-food]
 q = ["Sabudana khichdi", "Navratri vrat food", "Navratri fasting food"]
+file = "File:Alu Sabudana Khichdi.jpg"
+caption = "Sabudana khichdi, a common Navratri fasting food."
 
 [vishwakarma]
 q = ["Vishwakarma Puja", "Vishwakarma Puja Kolkata", "Vishwakarma Puja kite"]
+file = "File:Vishwakarma Puja Celebrations 2024 at Oil India Limited, Human Resources Office, Duliajan 07.jpg"
+caption = "An idol of Vishwakarma, the divine architect, at a Vishwakarma Puja."
 
 [lakshmi-puja]
 q = ["Kojagari Lakshmi Puja", "Lakshmi Puja Bengal", "Lakshmi Puja alpana"]
+file = "File:Kojagari Lakshmi Puja Arrangement - Bengali Brahman Family - Howrah 20171005173553.jpg"
+caption = "Offerings laid out for Kojagari Lakshmi Puja in a Bengali home."
 
 [kali-puja]
 q = ["Kali Puja Kolkata", "Kali Puja pandal", "Kali Puja idol Kolkata"]
+file = "File:Kolkata City Kali puja in 2025 38.jpg"
+caption = "A Kali Puja pandal in Kolkata."
 
 [diwali]
 q = ["Diwali diyas", "Diwali lamps", "Diya oil lamps Diwali"]
+file = "File:Diwali Diyas 1.jpg"
+caption = "Clay diyas lit for Diwali."
 
 [bhai-phonta]
 q = ["Bhai Phonta", "Bhai Phota", "Bhai Dooj tilak"]
+file = "File:Rituals of Bhai dooj or Bhai phonta P1370492 01.jpg"
+caption = "A sister puts the phonta on her brother's forehead for Bhai Phonta."
 
 [jagaddhatri]
 q = ["Jagaddhatri Puja Chandannagar", "Jagadhatri Puja", "Jagaddhatri idol"]
+file = "File:PXL 20241013 153455619 Jagaddhatri Puja at Chandannagar West Bengal 02.jpg"
+caption = "A lit pandal at Chandannagar during Jagaddhatri Puja."
 
 [basanti]
 q = ["Basanti Puja", "Basanti Durga Puja", "Annapurna Basanti Puja"]
+file = "File:Basanti puja pratima @ Netaji sangha play ground ,Ghola Sodepure.jpg"
+caption = "A Durga image for Basanti Puja, the spring worship of the goddess."
 
 [alpana]
 q = ["Alpana Bengali", "Alpana floor art", "Alpona"]
+file = "File:Alpona or drawings made right at the doorstep with chalk water is mandatory during marriage in any Bengali household in India.This is regarded as auspicious.jpg"
+caption = "Alpana drawn at the doorstep in rice paste and chalk water."
 
 [puja-thali]
 q = ["Puja thali", "Puja samagri", "Puja items flowers lamp"]
+file = "File:Arcana Plate for Worship.jpg"
+caption = "A worship plate with a conch, lamp and offerings."
 
 [manuscript]
 q = ["Devi Mahatmya manuscript", "Devi Mahatmya palm leaf", "Durga Saptashati manuscript"]
+file = "File:Illustrated leaf of Devi Mahatamya, 20th century CE, provenance unknown Museum of Kangra Art, Dharamshala.jpg"
+caption = "An illustrated leaf of the Devi Mahatmya."
 
 [mahavidya]
 q = ["Mahavidya painting", "Dasa Mahavidya", "Ten Mahavidyas"]
+file = "File:Painting of the Dasa-Mahavidyas and Bhairavas, Kangra school, 1880.jpg"
+caption = "The ten Mahavidyas with Bhairavas, Kangra school, 1880."
 
 [saree]
 q = ["Lal paar saree", "Bengali saree Durga Puja", "Garad saree"]
+file = "File:Durga Puja,Kolkata,West Bengal,2024 (3).jpg"
+caption = "A woman in a red-bordered white sari walks past a giant Durga face in Kolkata."
 
 [radio]
 q = ["Akashvani Kolkata", "Old radio India valve", "All India Radio Kolkata"]
+file = "File:Akashvani Bhavan, Kolkata.jpg"
+caption = "Akashvani Bhavan, All India Radio's Kolkata station."
 
 [kolkata]
 q = ["Howrah Bridge", "Howrah Bridge sunset", "Victoria Memorial Kolkata"]
+file = "File:Howrah Bridge-Rabindra Setu.jpg"
+caption = "Howrah Bridge (Rabindra Setu) over the Hooghly."
 
 [kolkata-tram]
 q = ["Kolkata tram", "Calcutta tram street", "Kolkata yellow taxi street"]
+file = "File:Tram in Kolkata (9448992166).jpg"
+caption = "A Kolkata tram among yellow taxis."
 
 [street-food]
 q = ["Phuchka Kolkata", "Kolkata street food stall", "Kathi roll Kolkata"]
+file = "File:Phuchka, Kolkata - West Bengal - DSC 0058.jpg"
+caption = "Phuchka, Kolkata's favourite street snack."
 
 [eco-idol]
 q = ["Eco friendly Durga idol", "Clay idol natural colours", "Artificial pond idol immersion"]
+file = "File:Artificial temporary pond on Old Prabhadevi beach.jpg"
+caption = "An artificial pond built for idol immersion, keeping the sea clean."
 
 [family]
 q = ["Durga Puja family Kolkata", "Durga Puja children", "Durga Puja celebration family"]
+file = "File:Durga with Her Family - Ballygunge Durga Puja Samiti - Maddox Square - Kolkata 2016 10-08 9693.JPG"
+caption = "Durga with her family, Lakshmi, Saraswati, Ganesha and Kartik, at Maddox Square, Kolkata."
 
 [camera]
 q = ["Durga Puja photography", "Photographer Durga Puja pandal", "Durga Puja night Kolkata long exposure"]
+file = "File:Durga Puja (30143799285).jpg"
+caption = "Sindoor khela in black and white."
 
 [conch]
 q = ["Shankha conch blowing", "Conch shell puja", "Shankh"]
+file = "File:Divine Echo – The Sacred Call of the Conch.jpg"
+caption = "Blowing the shankha, the conch, during worship."
 
-[lotus]
-q = ["Lotus flowers puja", "Lotus offering temple", "Pink lotus India"]
 
 [unesco]
 q = ["Durga Puja Kolkata UNESCO", "Durga Puja Kolkata 2022", "Durga Puja Kolkata 2023 pandal"]
+file = "File:Durga Puja Festival - Kolkata October 2025.jpg"
+caption = "Durga at a Kolkata pandal, 2025."
+
+[jagaddhatri-2]
+file = "File:PXL 20241013 153455619 Jagaddhatri Puja at Chandannagar West Bengal 23.jpg"
+caption = "Jagaddhatri, seated on her lion, at Chandannagar."
+
+[print]
+file = "File:Popular print, album (BM 2003,1022,0.25).jpg"
+caption = "Durga slaying Mahishasura: a popular print from Bengal."

@@ -6,6 +6,8 @@ summary = """Jagaddhatri Puja is the worship of Jagaddhatri, "the holder of the 
 type = "Article"
 section = "Festivals"
 order = 40
+image = "jagaddhatri"
+images = ["jagaddhatri-2"]
 keywords = ["Jagaddhatri Puja", "Chandannagar Jagaddhatri Puja", "Krishnanagar Jagaddhatri Puja", "Jagaddhatri", "Chandannagar lighting", "Raja Krishnachandra"]
 related = ["festivals/", "festivals/kali-puja-diwali/", "festivals/bhai-phonta/", "durga-puja/what-is-durga-puja/", "durga-puja/history/"]
 

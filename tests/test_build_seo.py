@@ -187,7 +187,7 @@ class BuildSeoTest(unittest.TestCase):
         self.assertIn('<h2 id="first-part">', r.html)
         self.assertIn("<ul><li>one</li><li>two</li></ul>", r.html)
         self.assertIn("<td>1</td>", r.html)
-        self.assertIn("<blockquote><p>ॐ line one<br>line two</p></blockquote>", r.html)
+        self.assertIn('<blockquote class="verse"><p>ॐ line one<br>line two</p></blockquote>', r.html)   # a mantra block
         self.assertIn("<ol><li>step</li><li>step</li></ol>", r.html)
         self.assertEqual(r.links, ["durga-puja/history/"])
         self.assertEqual(r.toc, [("first-part", "First part")])
@@ -195,6 +195,13 @@ class BuildSeoTest(unittest.TestCase):
         c = render("- [ ] Water\n- [x] Shoes").html
         self.assertIn('<ul class="checklist">', c)
         self.assertEqual(c.count('type="checkbox"'), 2)
+        t = render("> **Tip:** Go *early*.\n\n> Plain words").html
+        self.assertIn('<aside class="callout tip">', t)
+        self.assertIn("<em>early</em>", t)
+        self.assertIn("<blockquote><p>Plain words</p></blockquote>", t)
+        f = render("![A dhaki](photo:dhaki)\n\n![Gone](photo:missing)", figure=lambda k, c: f"<figure>{k}:{c}</figure>" if k == "dhaki" else "").html
+        self.assertIn("<figure>dhaki:A dhaki</figure>", f)
+        self.assertNotIn("missing", f)
 
     def test_sitemap_and_crawler_files(self):
         sm = (self.tmp / "sitemap.xml").read_text(encoding="utf-8")

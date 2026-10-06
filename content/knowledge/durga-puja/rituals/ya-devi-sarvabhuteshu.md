@@ -6,6 +6,8 @@ summary = """"Ya Devi Sarvabhuteshu" is the refrain of a hymn in chapter 5 of th
 type = "Article"
 section = "Rituals"
 order = 75
+image = "manuscript"
+images = ["navadurga"]
 keywords = ["Ya Devi Sarvabhuteshu", "Ya Devi Sarvabhuteshu lyrics", "Ya Devi Sarvabhuteshu meaning", "Shakti rupena samsthita", "Aparajita Stuti", "Devi Mahatmya chapter 5", "namastasyai namastasyai"]
 related = ["durga-puja/chandi-path/", "durga-puja/rituals/pushpanjali-mantra/", "durga-puja/mahishasuramardini-radio/", "durga-puja/rituals/mahalaya/"]
 

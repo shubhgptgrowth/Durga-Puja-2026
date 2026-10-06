@@ -6,6 +6,7 @@ summary = """Durga Puja bhog is the vegetarian meal offered to the goddess and t
 type = "Article"
 section = "Recipes"
 order = 0
+image = "bhog"
 keywords = ["Durga Puja bhog recipes", "bhog recipe", "Ashtami bhog thali", "khichuri bhog", "Bengali puja recipes", "no onion no garlic bhog"]
 related = ["durga-puja/food-and-bhog/", "durga-puja/rituals/ashtami/", "durga-puja/rituals/navami/", "durga-puja/at-home/", "durga-puja/recipes/bhoger-khichuri/", "durga-puja/recipes/payesh/"]
 

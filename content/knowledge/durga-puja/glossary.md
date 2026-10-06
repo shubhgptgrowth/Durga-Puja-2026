@@ -6,6 +6,7 @@ summary = """This Durga Puja glossary explains the Bengali and Sanskrit words yo
 type = "Glossary"
 section = "Culture"
 order = 40
+image = "alpana"
 keywords = ["Durga Puja glossary", "Durga Puja terms", "Bengali puja words", "what is bodhon", "what is anjali", "Durga Puja meaning of words", "pujo vs puja", "thakur meaning"]
 related = ["durga-puja/rituals/", "durga-puja/what-is-durga-puja/", "durga-puja/dhak-and-dhaki/", "durga-puja/bonedi-bari-pujas/", "durga-puja/pandal-hopping-tips/"]
 

@@ -6,6 +6,7 @@ summary = """The Kola Bou ("banana bride"), properly the Nabapatrika, is a bundl
 type = "Article"
 section = "Rituals"
 order = 120
+image = "kola-bou"
 keywords = ["Kola Bou", "Nabapatrika", "Navapatrika", "nine plants of Durga Puja", "Kola Bou Ganesh", "Nabapatrika snan"]
 related = ["durga-puja/rituals/saptami/", "durga-puja/rituals/shashthi/", "durga-puja/goddess-durga/", "durga-puja/rituals/"]
 places = ["bagbazar", "sovabazar_rajbari", "ahiritola"]

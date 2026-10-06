@@ -6,6 +6,7 @@ summary = """Sandhi Puja is the worship of Goddess Durga in her fierce Chamunda 
 type = "Article"
 section = "Rituals"
 order = 100
+image = "sandhi-puja"
 keywords = ["Sandhi Puja", "Sandhi Puja 2026", "Sandhi Puja time", "108 lotus", "Chamunda", "Ashtami Navami sandhi"]
 related = ["durga-puja/rituals/ashtami/", "durga-puja/rituals/navami/", "durga-puja/goddess-durga/", "durga-puja/rituals/"]
 places = ["sovabazar_rajbari", "bagbazar"]

@@ -6,6 +6,7 @@ summary = """Navratri fasting (vrat) usually means giving up grains, pulses, oni
 type = "Article"
 section = "Navratri"
 order = 30
+image = "vrat-food"
 keywords = ["Navratri fasting rules", "Navratri vrat food", "what to eat in Navratri fast", "Navratri fasting food list", "sendha namak", "kuttu atta"]
 related = ["navratri/", "navratri/ghatasthapana/", "navratri/kanya-pujan/", "durga-puja/food-and-bhog/"]
 

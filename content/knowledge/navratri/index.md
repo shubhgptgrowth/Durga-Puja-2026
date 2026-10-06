@@ -6,6 +6,7 @@ summary = """Navratri ("nine nights") is a Hindu festival honouring the Goddess 
 type = "Article"
 section = "Navratri"
 order = 0
+image = "garba"
 keywords = ["Navratri 2026", "Sharad Navratri 2026", "Navratri dates", "Navratri meaning", "Navratri vs Durga Puja", "Chaitra Navratri"]
 related = ["navratri/navadurga/", "navratri/ghatasthapana/", "navratri/fasting-rules/", "navratri/kanya-pujan/", "navratri/dussehra-vijayadashami/", "navratri/garba-dandiya/", "durga-puja/what-is-durga-puja/"]
 

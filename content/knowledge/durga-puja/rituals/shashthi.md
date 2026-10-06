@@ -6,6 +6,7 @@ summary = """Shashthi, the sixth day of the bright fortnight, is when Durga Puja
 type = "Article"
 section = "Rituals"
 order = 20
+image = "bodhon"
 keywords = ["Shashthi 2026", "Durga Puja Shashthi", "bodhon", "akal bodhon", "Kalparambha", "adhivas", "amantran", "Panchami"]
 related = ["durga-puja/rituals/mahalaya/", "durga-puja/rituals/saptami/", "durga-puja/rituals/", "durga-puja/goddess-durga/"]
 places = ["bagbazar", "college_square", "md_ali_park"]

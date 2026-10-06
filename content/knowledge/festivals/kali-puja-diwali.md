@@ -6,6 +6,8 @@ summary = """Kali Puja is Bengal's worship of the goddess Kali on the new moon n
 type = "Article"
 section = "Festivals"
 order = 20
+image = "kali-puja"
+images = ["diwali"]
 keywords = ["Kali Puja", "Kali Puja Diwali", "Shyama Puja", "Dipanwita Amavasya", "Bhoot Chaturdashi", "choddo shaak", "Dakshineswar Kali Puja", "Kalighat"]
 related = ["festivals/", "festivals/bhai-phonta/", "festivals/kojagari-lakshmi-puja/", "durga-puja/dashamahavidya/", "durga-puja/rituals/dashami/"]
 

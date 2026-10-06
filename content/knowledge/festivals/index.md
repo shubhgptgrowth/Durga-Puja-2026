@@ -6,6 +6,7 @@ summary = """In Bengal, Durga Puja sits inside a longer run of festivals. Vishwa
 type = "Article"
 section = "Festivals"
 order = 0
+image = "diwali"
 keywords = ["Bengal festival season", "festivals after Durga Puja", "Kojagari Lakshmi Puja", "Kali Puja", "Bhai Phonta", "Jagaddhatri Puja", "Basanti Puja", "Vishwakarma Puja"]
 related = ["festivals/vishwakarma-puja/", "festivals/kojagari-lakshmi-puja/", "festivals/kali-puja-diwali/", "festivals/bhai-phonta/", "festivals/jagaddhatri-puja-chandannagar/", "festivals/basanti-puja/", "durga-puja/"]
 

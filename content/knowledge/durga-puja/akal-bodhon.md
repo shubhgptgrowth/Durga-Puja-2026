@@ -6,6 +6,8 @@ summary = """Akal Bodhon means untimely (akal) awakening (bodhon): the story tha
 type = "Article"
 section = "Durga Puja"
 order = 16
+image = "bodhon"
+images = ["print"]
 keywords = ["Akal Bodhon", "akal bodhan", "Rama Durga Puja", "108 blue lotus", "Krittivasi Ramayana", "why Durga Puja in autumn", "Basanti Puja"]
 related = ["durga-puja/what-is-durga-puja/", "durga-puja/rituals/shashthi/", "festivals/basanti-puja/", "durga-puja/mahishasura-story/", "durga-puja/history/"]
 

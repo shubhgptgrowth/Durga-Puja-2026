@@ -6,6 +6,7 @@ summary = """Durga Puja's rituals unfold over about ten days: Mahalaya opens Dev
 type = "Article"
 section = "Rituals"
 order = 0
+image = "pushpanjali"
 keywords = ["Durga Puja rituals", "Durga Puja day by day", "Durga Puja 2026 rituals", "Shashthi Saptami Ashtami Navami Dashami", "Durga Puja schedule"]
 related = ["durga-puja/rituals/mahalaya/", "durga-puja/rituals/ashtami/", "durga-puja/rituals/dashami/", "durga-puja/what-is-durga-puja/", "durga-puja/glossary/"]
 places = ["bagbazar", "sovabazar_rajbari"]

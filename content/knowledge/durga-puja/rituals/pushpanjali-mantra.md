@@ -6,6 +6,7 @@ summary = """Pushpanjali, or anjali, is the offering of flowers and bel leaves t
 type = "Article"
 section = "Rituals"
 order = 70
+image = "pushpanjali"
 keywords = ["pushpanjali mantra", "Durga Puja anjali mantra", "anjali mantra in Bengali", "Jayanti Mangala Kali", "Sarva Mangala Mangalye", "Ashtami anjali", "pushpanjali meaning"]
 related = ["durga-puja/rituals/ashtami/", "durga-puja/at-home/", "durga-puja/goddess-durga/", "durga-puja/samagri-list/"]
 places = ["bagbazar", "sovabazar_rajbari"]

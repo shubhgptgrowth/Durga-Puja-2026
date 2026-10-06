@@ -6,6 +6,7 @@ summary = """Kanya pujan (also called kanjak or kanjika puja) is a Navratri ritu
 type = "HowTo"
 section = "Navratri"
 order = 40
+image = "kanya-pujan"
 keywords = ["kanya pujan", "kanjak", "kanya puja Ashtami", "kanjak puja vidhi", "kanya pujan Navami", "langur Navratri"]
 related = ["navratri/", "durga-puja/rituals/kumari-puja/", "navratri/fasting-rules/", "navratri/navadurga/", "durga-puja/rituals/ashtami/"]
 total_time = "PT1H30M"

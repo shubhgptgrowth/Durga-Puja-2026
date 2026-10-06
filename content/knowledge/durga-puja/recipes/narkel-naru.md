@@ -6,6 +6,7 @@ summary = """Narkel naru are small Bengali sweets made by cooking freshly grated
 type = "Recipe"
 section = "Recipes"
 order = 60
+image = "narkel-naru"
 keywords = ["narkel naru", "narkel naru recipe", "narkeler naru", "coconut ladoo jaggery", "Bijoya sweets", "Lakshmi Puja naru", "Bengali coconut sweet"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/payesh/", "festivals/kojagari-lakshmi-puja/", "durga-puja/rituals/dashami/", "durga-puja/food-and-bhog/", "durga-puja/at-home/"]
 recipe_yield = "About 16 naru"

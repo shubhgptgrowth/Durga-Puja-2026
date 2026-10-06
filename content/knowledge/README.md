@@ -23,6 +23,8 @@ order = 40                  # sort order inside its section
 keywords = ["Maha Ashtami", "Durga Ashtami", "Sandhi Puja", "Kumari Puja"]
 related = ["durga-puja/rituals/sandhi-puja/", "durga-puja/rituals/kumari-puja/"]   # other article paths
 places = ["bagbazar", "sovabazar_rajbari"]   # optional: Kolkata pandal ids (app/data/guide.json) worth visiting for this
+image = "pushpanjali"       # the photo at the top, and the article's share picture (a key in photos.toml)
+images = ["kumari-puja", "sandhi-puja"]   # optional: photos placed between sections as the article goes on
 
 [[faq]]                     # 4–6 real questions people search; answers 1–3 sentences, plain text
 q = "What time is Sandhi Puja on Ashtami 2026?"
@@ -69,7 +71,23 @@ text = "…"
 - Tables made of `| a | b |` rows; the second row is `|---|---|`.
 - `> quote` lines, for mantras and verses. Give the original (Sanskrit or Bengali), then a transliteration, then a meaning.
 - `- [ ] item` makes a tick-box checklist; readers' ticks are saved on their own phone (use it for packing and samagri lists).
-- No raw HTML, no images, no `#` headings.
+- A `>` quote containing Bengali or Devanagari becomes a mantra block, with Copy and WhatsApp buttons.
+- `> **Tip:** …` makes a callout box. Also `**Note:**`, `**Did you know?**`, `**Good to know:**`, `**Remember:**`, `**Etiquette:**`
+  and `**Safety:**`.
+- `![Caption](photo:key)` on its own line places a photo from `photos.toml` exactly there. Usually `images` in the front
+  matter is enough: those photos are spread between the sections automatically.
+- No raw HTML and no `#` headings.
+
+## Photos
+
+Photos come from Wikimedia Commons, under free licences only (CC0, public domain, CC BY, CC BY-SA; never NC or ND), and are
+credited under each photo. `photos.toml` lists them. To add one:
+
+1. Add a `[key]` with `q = ["search words", …]`, then run **Actions → article-photos** with `mode=candidates`. A numbered
+   contact sheet appears in `data/photo_candidates/<key>.jpg`.
+2. Copy the chosen file's title from `<key>.json` into `file = "File:…"`, and write a `caption` that says what the photo shows.
+3. Run the workflow with `mode=fetch`. It saves `app/img/guide/<key>.webp` (1,200 px) and `<key>-600.webp`, records the
+   credit in `photos.json`, and clears the contact sheets.
 
 ## Writing rules
 

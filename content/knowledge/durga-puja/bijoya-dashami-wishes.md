@@ -6,6 +6,8 @@ summary = """Subho Bijoya (শুভ বিজয়া) is the greeting Bengali
 type = "Article"
 section = "Culture"
 order = 20
+image = "sindoor-khela"
+images = ["immersion"]
 keywords = ["Subho Bijoya wishes", "Bijoya Dashami wishes", "Durga Puja wishes", "Subho Bijoya in Bengali", "Sharodiya shubhechha", "Bijoya Dashami quotes", "Durga Puja Instagram captions", "Happy Durga Puja messages"]
 related = ["durga-puja/rituals/dashami/", "durga-puja/rituals/sindoor-khela/", "navratri/dussehra-vijayadashami/", "durga-puja/food-and-bhog/", "durga-puja/glossary/"]
 

@@ -6,6 +6,8 @@ summary = """Chandi Path is the ritual recitation of the Devi Mahatmya, also cal
 type = "Article"
 section = "Rituals"
 order = 76
+image = "manuscript"
+images = ["mahishasuramardini"]
 keywords = ["Chandi Path", "Durga Saptashati", "Devi Mahatmya", "Chandi path at home", "Durga Saptashati chapters", "Argala Stotram", "Devi Kavacham", "Kilakam"]
 related = ["durga-puja/rituals/ya-devi-sarvabhuteshu/", "durga-puja/mahishasura-story/", "durga-puja/at-home/", "navratri/", "durga-puja/rituals/pushpanjali-mantra/"]
 

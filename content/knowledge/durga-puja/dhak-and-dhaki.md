@@ -6,6 +6,8 @@ summary = """The dhak is the large barrel-shaped drum of Bengal, played with two
 type = "Article"
 section = "Culture"
 order = 60
+image = "dhaki"
+images = ["dhunuchi"]
 keywords = ["dhak", "dhaki", "Durga Puja drum", "dhak Durga Puja", "dhaki Sealdah", "kashor ghonta", "sound of Durga Puja", "dhunuchi naach dhak"]
 related = ["durga-puja/rituals/dhunuchi-naach/", "durga-puja/rituals/sandhi-puja/", "durga-puja/rituals/dashami/", "durga-puja/glossary/", "durga-puja/mahishasuramardini-radio/"]
 

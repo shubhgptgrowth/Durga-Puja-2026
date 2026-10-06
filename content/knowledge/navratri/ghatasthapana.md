@@ -6,6 +6,7 @@ summary = """Ghatasthapana (kalash sthapana) is the first-day Navratri ritual of
 type = "HowTo"
 section = "Navratri"
 order = 20
+image = "ghatasthapana"
 keywords = ["ghatasthapana", "kalash sthapana", "Navratri kalash", "jau sowing Navratri", "ghatasthapana vidhi", "ghatasthapana 2026"]
 related = ["navratri/", "navratri/navadurga/", "durga-puja/samagri-list/", "durga-puja/at-home/", "navratri/dussehra-vijayadashami/"]
 total_time = "PT45M"

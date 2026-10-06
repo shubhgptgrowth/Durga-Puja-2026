@@ -6,6 +6,7 @@ summary = """Kumari Puja is the worship of a young girl, usually before puberty,
 type = "Article"
 section = "Rituals"
 order = 110
+image = "kumari-puja"
 keywords = ["Kumari Puja", "Kumari Puja Belur Math", "Kumari Puja 2026", "Durga Puja Kumari", "Swami Vivekananda Kumari Puja", "kanya pujan"]
 related = ["durga-puja/rituals/ashtami/", "navratri/kanya-pujan/", "durga-puja/goddess-durga/", "durga-puja/rituals/"]
 

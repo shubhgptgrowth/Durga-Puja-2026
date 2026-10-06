@@ -6,6 +6,7 @@ summary = """Payesh is Bengal's rice pudding, made by slowly simmering fragrant 
 type = "Recipe"
 section = "Recipes"
 order = 30
+image = "payesh"
 keywords = ["payesh recipe", "gobindobhog payesh", "Bengali payesh", "Durga Puja payesh", "rice kheer bhog", "nolen gurer payesh", "bhoger payesh"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/bhoger-khichuri/", "durga-puja/recipes/narkel-naru/", "durga-puja/food-and-bhog/", "durga-puja/rituals/ashtami/", "durga-puja/rituals/navami/"]
 recipe_yield = "4 servings"

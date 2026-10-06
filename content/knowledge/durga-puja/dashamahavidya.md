@@ -6,6 +6,7 @@ summary = """The Dasha Mahavidya are ten forms of the great goddess in Hindu Sha
 type = "Article"
 section = "Durga Puja"
 order = 35
+image = "mahavidya"
 keywords = ["Dasha Mahavidya", "ten Mahavidyas", "Dashamahavidya names", "Mahavidya Kali Tara", "Chhinnamasta", "Tarapith", "Sati Shiva Mahavidya"]
 related = ["durga-puja/goddess-durga/", "festivals/kali-puja-diwali/", "durga-puja/chandi-path/", "navratri/navadurga/", "durga-puja/what-is-durga-puja/"]
 

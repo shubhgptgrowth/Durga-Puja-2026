@@ -6,6 +6,8 @@ summary = """Durga Puja samagri (puja items) for home worship centres on a ghat 
 type = "Article"
 section = "At home"
 order = 20
+image = "puja-thali"
+images = ["ghatasthapana"]
 keywords = ["Durga Puja samagri list", "puja items list", "Durga Puja items", "Navratri puja samagri", "puja samagri checklist"]
 related = ["durga-puja/at-home/", "navratri/ghatasthapana/", "durga-puja/rituals/pushpanjali-mantra/", "durga-puja/rituals/dashami/"]
 

@@ -6,6 +6,8 @@ summary = """The story of Durga and Mahishasura is told in chapters 2 to 4 of th
 type = "Article"
 section = "Durga Puja"
 order = 15
+image = "durga-painting"
+images = ["mahishasuramardini"]
 keywords = ["Durga Mahishasura story", "Mahishasura", "Mahishasuramardini", "Devi Mahatmya", "who killed Mahishasura", "Durga weapons story", "Markandeya Purana"]
 related = ["durga-puja/what-is-durga-puja/", "durga-puja/goddess-durga/", "durga-puja/chandi-path/", "durga-puja/rituals/ya-devi-sarvabhuteshu/", "durga-puja/mahishasuramardini-radio/"]
 

@@ -6,6 +6,7 @@ summary = """Vijayadashami, also called Dussehra or Dasara, is the tenth day aft
 type = "Article"
 section = "Navratri"
 order = 50
+image = "dussehra"
 keywords = ["Dussehra 2026", "Vijayadashami 2026", "Dasara", "Ravan dahan", "Mysuru Dasara", "Bijoya Dashami", "Shami puja"]
 related = ["navratri/", "durga-puja/rituals/dashami/", "durga-puja/bijoya-dashami-wishes/", "durga-puja/rituals/sindoor-khela/", "navratri/ghatasthapana/"]
 

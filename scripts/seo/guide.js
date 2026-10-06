@@ -20,6 +20,45 @@
   });
   if (!navigator.share) document.querySelectorAll('[data-share="native"]').forEach(function (b) { b.hidden = true; });
 
+  var post = document.querySelector('.post');
+  if (post) {
+    // Reading progress along the top
+    var bar = document.createElement('div'); bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true'); bar.innerHTML = '<span></span>';
+    document.body.appendChild(bar);
+    var fill = bar.firstChild, ticking = false;
+    var wa = post.querySelector('[data-wa]'), fab = null, first = post.querySelector('.share'), last = post.querySelector('.share-end');
+    if (wa) {   // a WhatsApp button that follows the reader once the top share buttons scroll away
+      fab = document.createElement('a'); fab.className = 'fab'; fab.href = wa.href; fab.rel = 'noopener';
+      fab.innerHTML = wa.querySelector('svg').outerHTML + ' Share'; fab.setAttribute('aria-label', 'Share on WhatsApp');
+      document.body.appendChild(fab);
+    }
+    var onScroll = function () {
+      ticking = false;
+      var r = post.getBoundingClientRect(), total = r.height - innerHeight;
+      fill.style.width = Math.max(0, Math.min(1, -r.top / (total > 0 ? total : 1))) * 100 + '%';
+      if (fab) {
+        var past = first && first.getBoundingClientRect().bottom < 0, atEnd = last && last.getBoundingClientRect().top < innerHeight;
+        fab.classList.toggle('on', !!past && !atEnd);
+      }
+    };
+    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    onScroll();
+    // "In this article" starts open on wide screens
+    var toc = post.querySelector('details.toc'); if (toc && matchMedia('(min-width: 900px)').matches) toc.open = true;
+    // Mantras: copy, or send on WhatsApp with the link
+    post.querySelectorAll('blockquote.verse').forEach(function (q) {
+      var text = q.innerText.trim(), tools = document.createElement('div'); tools.className = 'verse-tools';
+      var page = location.href.split('#')[0];
+      tools.innerHTML = '<button type="button">Copy</button><a rel="noopener">Send on WhatsApp</a>';
+      tools.lastChild.href = 'https://wa.me/?text=' + encodeURIComponent(text + '\n\n— ' + document.title.split(' | ')[0] + '\n' + page);
+      tools.firstChild.addEventListener('click', function () {
+        var b = tools.firstChild;
+        (navigator.clipboard ? navigator.clipboard.writeText(text + '\n' + page) : Promise.reject()).then(function () { b.textContent = '✓ Copied'; }, function () { prompt('Copy', text); });
+      });
+      q.appendChild(tools);
+    });
+  }
+
   // Checklists: ticks are remembered on this device, per page
   var boxes = document.querySelectorAll('.checklist input[type=checkbox]');
   if (boxes.length) {

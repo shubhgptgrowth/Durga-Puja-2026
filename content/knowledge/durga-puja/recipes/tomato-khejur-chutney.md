@@ -6,6 +6,7 @@ summary = """Tomato khejur aamsotto chutney is the sweet-and-sour Bengali chutne
 type = "Recipe"
 section = "Recipes"
 order = 50
+image = "chutney"
 keywords = ["tomato khejur aamsotto chutney", "Bengali tomato chutney", "tomato chutney recipe", "khejur chutney", "bhoger chutney", "Durga Puja chutney", "plastic chutney"]
 related = ["durga-puja/recipes/", "durga-puja/recipes/bhoger-khichuri/", "durga-puja/recipes/labra/", "durga-puja/recipes/beguni/", "durga-puja/recipes/payesh/", "durga-puja/food-and-bhog/"]
 recipe_yield = "About 2 cups (6–8 servings)"

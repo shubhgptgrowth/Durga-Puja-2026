@@ -6,6 +6,7 @@ summary = """Bhai Phonta is the Bengali form of Bhai Dooj, held on the second lu
 type = "Article"
 section = "Festivals"
 order = 30
+image = "bhai-phonta"
 keywords = ["Bhai Phonta", "Bhai Dooj", "Bhai Phota", "Bhratri Dwitiya", "Bhai Phonta mantra", "Yama Yamuna story"]
 related = ["festivals/", "festivals/kali-puja-diwali/", "festivals/jagaddhatri-puja-chandannagar/", "durga-puja/food-and-bhog/"]
 
