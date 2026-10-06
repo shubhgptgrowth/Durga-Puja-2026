@@ -1,0 +1,7 @@
+{
+ "_readme": "Clips from other creators (Instagram, YouTube, photographers). Each needs the creator's OK before use: fill 'permission' with when and how they agreed (e.g. '2026-10-07, Instagram DM'). 'url' is a direct download link to the file they sent or shared. Reels credit them as '@handle (used with permission)' on screen and in the caption. Ids start with cr-.",
+ "clips": {
+  "cr-example": {"handle": "@creator_handle", "page": "https://www.instagram.com/reel/XXXX/", "url": "", "dur": 0, "w": 1080, "h": 1920,
+                 "label": "What the clip shows", "permission": "", "collab": true}
+ }
+}

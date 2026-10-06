@@ -368,6 +368,10 @@ def write_caption(reel, footage, out_dir):
         if reel.get("vo"):
             credit = credit.replace("Some shots AI-generated.", "") + ". Voiceover: AI voice (ElevenLabs)"
         sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
+        handles = sorted({footage[x[0]]["artist"] for x in reel["segments"]
+                          if footage.get(x[0], {}).get("license") == "used with permission"})
+        if handles:  # creators who shared their clips: thank them by handle, first thing after the hook
+            c = dict(c, bn=c["bn"] + "\n\n🎥 " + " ".join(handles) + "-কে অনেক ধন্যবাদ!")
         with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
             f.write(f"{c['bn']}\n\n{c['en']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))  # Bengali first
 

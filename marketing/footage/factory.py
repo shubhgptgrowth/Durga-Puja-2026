@@ -39,6 +39,13 @@ def footage_index(catalog_path):
         idx[k] = dict(v, source=v.get("source", "Wikimedia Commons"))
     if catalog_path and os.path.exists(catalog_path):
         idx.update(json.load(open(catalog_path, encoding="utf-8")))
+    cr = json.load(open(ROOT / "marketing/creators/clips.json", encoding="utf-8"))["clips"]
+    for k, v in cr.items():  # other creators' clips, usable only with their recorded permission (check() enforces it)
+        if k != "cr-example":
+            idx[k] = dict(source="Instagram" if "instagram.com" in v.get("page", "") else "Creator", url=v["url"],
+                          w=v.get("w", 1080), h=v.get("h", 1920), dur=v.get("dur", 0), label=v.get("label", ""),
+                          artist=v["handle"], license="used with permission", page=v.get("page"),
+                          permission=v.get("permission", ""), collab=v.get("collab", False))
     credits = json.load(open(ROOT / "app/audio/credits.json", encoding="utf-8"))
     for k, name in AUDIO.items():
         c = credits[name]
@@ -99,6 +106,8 @@ def check(plan, idx):
             e = idx.get(s[0])
             if not e:
                 errs.append(f"{it['id']}: unknown clip {s[0]}")
+            elif e.get("license") == "used with permission" and not (e.get("permission") and e.get("url")):
+                errs.append(f"{it['id']}: {s[0]} ({e['artist']}) has no recorded permission or file yet")
             elif e.get("dur") and s[1] + s[2] > e["dur"] + 0.05:
                 errs.append(f"{it['id']}: {s[0]} is {e['dur']}s, cut ends at {s[1] + s[2]}s")
         vo = it.get("vo")

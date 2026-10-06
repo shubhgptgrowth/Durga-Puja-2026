@@ -249,3 +249,13 @@ class RedesignTest(unittest.TestCase):
         self.assertEqual(build2.fit_start(fx, "c", 8, 4), 5.9)
         self.assertEqual(build2.fit_start(fx, "c", 2, 4), 2)
         self.assertEqual(build2.fit_start({}, "x", 7, 4), 7)
+
+    def test_creator_clip_needs_permission(self):
+        from marketing.footage import factory
+        idx = factory.footage_index(None)
+        idx["cr-x"] = dict(source="Instagram", url="https://e/x.mp4", dur=20, artist="@x", license="used with permission", permission="")
+        plan = {"items": [{"id": "r1", "type": "reel", "segments": [["cr-x", 0, 3, ""]]}]}
+        with self.assertRaises(SystemExit):
+            factory.check(plan, idx)
+        idx["cr-x"]["permission"] = "2026-10-07, Instagram DM"
+        factory.check(plan, idx)
