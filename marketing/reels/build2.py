@@ -286,7 +286,7 @@ def credits_for(reel, footage):
     seen, parts, ai = [], [], False
     for seg in reel["segments"]:
         sid = seg[0]
-        if sid.startswith("c"):
+        if sid.startswith("c") and sid not in footage or footage.get(sid, {}).get("source") == "AI":
             ai = True
         elif sid not in seen:
             seen.append(sid)
@@ -303,9 +303,9 @@ def credits_for(reel, footage):
         f = footage[m[0]]
         parts.append(f"Music: {f['label'].replace(' (audio)', '')}" + (f", {f['artist']}" if f["artist"] else "") + f" ({f['license']})")
     srcs = sorted({footage[s].get("source", "Wikimedia Commons") for s in seen}) or ["Wikimedia Commons"]
-    txt = f"Footage: {', '.join(srcs)} — " + "; ".join(parts)
+    txt = f"Footage: {', '.join(srcs)} — " + "; ".join(parts) if parts else "Footage: Wikimedia Commons"
     if ai:
-        txt += ". Some shots AI-generated."
+        txt += ". Some scenes are AI-generated recreations."
     return txt
 
 
@@ -368,7 +368,7 @@ def write_caption(reel, footage, out_dir):
     if c:  # Instagram caption: Bengali, English, hashtags, then the attribution the CC licences require
         credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
         if reel.get("vo"):
-            credit = credit.replace("Some shots AI-generated.", "") + ". Voiceover: AI voice (ElevenLabs)"
+            credit = credit + ". Voiceover: AI voice (ElevenLabs)"
         sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
         handles = sorted({footage[x[0]]["artist"] for x in reel["segments"]
                           if footage.get(x[0], {}).get("license") == "used with permission"})

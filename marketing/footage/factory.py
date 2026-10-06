@@ -155,6 +155,9 @@ def main(argv=None):
     from ..reels import build2  # needs Pillow and fonts/, so only when rendering
     plan = json.load(open(ROOT / f"marketing/daily/{a.date}.json", encoding="utf-8"))
     idx = footage_index(a.catalog)
+    for k, v in (plan.get("clips") or {}).items():  # the day's own clips: AI scenes, stills (source "AI" = not credited by name)
+        idx[k] = dict(v, source=v.get("source", "AI"), license=v.get("license", "AI-generated"), artist=v.get("artist", ""),
+                      label=v.get("label", k))
     check(plan, idx)
     out, tmp = Path(a.out), Path(a.out) / "_tmp"
     tmp.mkdir(parents=True, exist_ok=True)
