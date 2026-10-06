@@ -16,16 +16,16 @@ The button only appears once Google sign-in is on in Supabase. It costs nothing.
 2. **Consent screen.** Go to **APIs & Services → OAuth consent screen**, shown as *Google Auth Platform* in newer consoles, and click **Get started**.
    - App name: `Pujo Parikrama`. User support email: your email.
    - Audience: **External**. Contact email: your email. Agree, then **Create**.
-   - **Branding → Authorized domains:** add `wmvzakyqnwfekyhjkprp.supabase.co` and `shubhgptgrowth.github.io`. Save.
-   - **App home page:** `https://shubhgptgrowth.github.io/Durga-Puja-2026/`
-   - **App privacy policy link:** `https://shubhgptgrowth.github.io/Durga-Puja-2026/privacy.html`
+   - **Branding → Authorized domains:** add `wmvzakyqnwfekyhjkprp.supabase.co` and `pujoparikramaguide.in`. Save.
+   - **App home page:** `https://pujoparikramaguide.in/`
+   - **App privacy policy link:** `https://pujoparikramaguide.in/privacy.html`
    - Logo is optional, and leaving it out avoids Google's brand review. If the console insists, use
      `pujo-parikrama-logo-120.png` (in this folder, 120×120).
    - **Audience → Publish app**, then confirm. Without this, only "test users" you list can sign in.
      The app only asks for name and email (`openid`, `email`, `profile`), so Google doesn't need to review it.
 3. **The key (OAuth client).** Go to **Clients**, or **Credentials → Create credentials → OAuth client ID**.
    - Application type: **Web application**. Name: `Pujo Parikrama web`.
-   - Authorised JavaScript origins: `https://shubhgptgrowth.github.io`
+   - Authorised JavaScript origins: `https://pujoparikramaguide.in` (optional: sign-in goes through Supabase)
    - Authorised redirect URIs: `https://wmvzakyqnwfekyhjkprp.supabase.co/auth/v1/callback`
    - Click **Create**, then copy the **Client ID** and **Client secret**.
 4. **Give them to the repo.** In GitHub, go to the repo's **Settings → Secrets and variables → Actions → New repository secret**:
@@ -41,8 +41,8 @@ The button only appears once Google sign-in is on in Supabase. It costs nothing.
 
 - Google's screen says "to continue to wmvzakyqnwfekyhjkprp.supabase.co". Showing the app's own name there needs a custom
   domain on Supabase, which is a paid add-on. Sign-in works either way.
-- If the app moves to a custom domain (HOSTING.md), re-run supabase-setup with `site_url` set to the new address. Also add
-  that origin in step 3.
+- The app's address comes from `site.json`. After it changes, re-run **supabase-setup**: it allows the new
+  address (and the old github.io one) as return addresses for Google sign-in. Also update Branding in step 2.
 - Under the hood: `community.signInWithGoogle()` links the guest account (`/auth/v1/user/identities/authorize`). If that
   Google account is already linked to someone, it falls back to a plain sign-in (`/auth/v1/authorize`).
   `community.authReturn()` reads the tokens on return and tidies the URL. `sync.js` then pulls the account's backup and merges it in.

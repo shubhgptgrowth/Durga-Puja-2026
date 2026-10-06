@@ -16,9 +16,9 @@ on:
         required: false
         default: ""
       site_url:
-        description: "The app's public URL (Google sign-in returns here)"
+        description: "The app's public URL, where Google sign-in returns (empty: the url in site.json)"
         required: false
-        default: "https://shubhgptgrowth.github.io/Durga-Puja-2026/"
+        default: ""
 
 permissions:
   contents: write   # commits the public URL and anon key into app/config.js
@@ -57,16 +57,18 @@ jobs:
         env:
           GID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GSECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          SITE: ${{ inputs.site_url || 'https://shubhgptgrowth.github.io/Durga-Puja-2026/' }}
+          SITE_IN: ${{ inputs.site_url }}
         run: |
+          SITE=${SITE_IN:-$(jq -r .url site.json)}; PAGES=$(jq -r '.pages_url // empty' site.json)
           if [ -z "$GID" ] || [ -z "$GSECRET" ]; then
             echo "Google sign-in: skipped (add the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET secrets to turn it on)"; exit 0
           fi
           ref=${{ steps.ref.outputs.ref }}
           cur=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects/$ref/config/auth")
-          allow=$(echo "$cur" | jq -r --arg s "${SITE%/}/**" '((.uri_allow_list // "") | split(",") | map(select(length > 0))) + [$s] | unique | join(",")')
-          site=$(echo "$cur" | jq -r '.site_url // ""')
-          case "$site" in ""|*localhost*|*127.0.0.1*) site="$SITE";; esac
+          # The public address, plus the old github.io one (it redirects, but returns from Google may still land there)
+          allow=$(echo "$cur" | jq -r --arg s "${SITE%/}/**" --arg p "${PAGES:+${PAGES%/}/**}" \
+            '((.uri_allow_list // "") | split(",") | map(select(length > 0))) + [$s] + (if $p == "" then [] else [$p] end) | unique | join(",")')
+          site="$SITE"
           jq -n --arg id "$GID" --arg sec "$GSECRET" --arg allow "$allow" --arg site "$site" \
             '{external_google_enabled: true, external_google_client_id: $id, external_google_secret: $sec,
               security_manual_linking_enabled: true, uri_allow_list: $allow, site_url: $site}' > /tmp/g.json
