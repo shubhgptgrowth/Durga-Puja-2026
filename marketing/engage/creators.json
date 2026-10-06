@@ -1,0 +1,8 @@
+{
+ "note": "Public creator/business accounts whose new pujo posts go into the daily engagement brief (marketing/engage.py scan). Add handles freely; personal accounts can't be read and are reported. Each scan suggests more from the @handles these creators tag.",
+ "creators": [
+  {"handle": "sourav_boundless", "why": "Baruipur/Kolkata blogger; 'Festival of Aura' idol reel the owner flagged as high-reach (Oct 2026)"},
+  {"handle": "durgapujakolkata", "why": "Durga Puja Kolkata page, idol and pandal photography"},
+  {"handle": "kolkata_photography_", "why": "Kolkata photography page, city and pujo frames"}
+ ]
+}
