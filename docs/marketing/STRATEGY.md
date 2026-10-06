@@ -1,8 +1,8 @@
 # Brand strategy and growth roadmap: 6 → 22 October 2026
 
-> **Status: draft for owner approval (6 Oct).** Written by the brand strategist (Claude) after reviewing the app, the
-> guide pages, the Instagram pipeline, the reach reports and the backlog. Once approved, this file sets the
-> priorities. [PLAN.md](PLAN.md) stays the how-to, [TRACKER.md](TRACKER.md) the who and when.
+> **Status: approved by the owner on 6 Oct.** Written by the brand strategist (Claude) after reviewing the app, the
+> guide pages, the Instagram pipeline, the reach reports and the backlog. It sets the priorities. [PLAN.md](PLAN.md)
+> stays the how-to, [TRACKER.md](TRACKER.md) the who and when, [PRESS.md](PRESS.md) the press kit and outreach scripts.
 
 **Goal:** 1,00,000 people reach Pujo Parikrama **before Shashthi (17 Oct)**, without paid ads. People who
 reach it through the app and through the guide pages both count, once each (see §7).
