@@ -1,6 +1,6 @@
 +++
 title = "Dhunuchi Naach: Durga Puja's Incense Dance Explained | Pujo Parikrama"
-description = "Dhunuchi naach is the Durga Puja dance with smoking clay incense burners to the beat of the dhak, held at evening arati from Saptami to Navami. Meaning and safety tips."
+description = "Dhunuchi naach is Durga Puja's dance with smoking clay incense burners to the dhak, held at evening arati from Saptami to Navami. Its meaning and safety tips."
 h1 = "Dhunuchi naach: the incense dance of Durga Puja"
 summary = """Dhunuchi naach is a devotional dance performed during Durga Puja with a dhunuchi, a clay incense burner filled with burning coconut husk and dhuno (a fragrant resin), to the rhythm of the dhak drum. It is usually performed at the evening arati on Saptami, Ashtami and Navami, and reaches its peak on Navami night. Anyone may join, but burning embers mean care is essential."""
 type = "Article"

@@ -125,6 +125,16 @@ Bengal has its own form of this idea: **[Kumari Puja](/durga-puja/rituals/kumari
 
 The two practices share a belief and differ in form: Kumari Puja is a formal temple or pandal ritual for one girl, while kanya pujan is a home ritual for several children with a shared meal. Read about the other rituals of Bengal's eighth day on our [Maha Ashtami](/durga-puja/rituals/ashtami/) page.
 
+## Variations you may see
+
+- **Day:** families who follow Ashtami as their main day hold it then; others wait for Navami, sometimes after a *havan* (fire offering).
+- **Number:** some invite nine girls, others an odd number, others every girl in the lane who comes by.
+- **Food:** puri, chana and halwa is the north Indian classic; some homes add kheer, coconut or sabzi, and in some regions the meal is entirely different.
+- **Who performs it:** often the women of the house lead it, but the whole family usually takes part, washing feet and serving food together.
+- **If you can't host:** some families donate food, books or clothes to girls in need, or contribute to a temple or community kanjak, in the same spirit.
+
+None of these is more correct than another. If your family has a custom, follow it; if you are starting fresh, keep it simple, warm and respectful of the children and their parents.
+
 ## Tips for a happy kanjak
 
 - Keep the timing predictable; children may be visiting several homes.

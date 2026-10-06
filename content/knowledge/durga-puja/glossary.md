@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja Glossary: Bengali Puja Words Explained | Pujo Parikrama"
-description = "A Durga Puja glossary: 58 Bengali and Sanskrit puja words explained, from anjali, bodhon and dhunuchi to sindoor khela, daker saaj, bonedi bari and thakur dekha"
+description = "A Durga Puja glossary: 58 Bengali and Sanskrit words explained, from anjali, bodhon and dhunuchi to sindoor khela, daker saaj, bonedi bari and thakur dekha."
 h1 = "Durga Puja glossary: Bengali puja words explained"
 summary = """This Durga Puja glossary explains the Bengali and Sanskrit words you will hear during the festival in Kolkata and Bengal, from rituals such as bodhon, anjali and sandhi puja to objects like the dhak and dhunuchi, and everyday puja slang like pujo and thakur dekha. Each term has its Bengali spelling and a short plain-English definition. Practices behind many words vary by family, region and almanac."""
 type = "Glossary"

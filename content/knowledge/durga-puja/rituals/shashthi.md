@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja Shashthi 2026: Bodhon, Amantran and Adhivas | Pujo Parikrama"
-description = "Shashthi 2026 is Saturday 17 October: Kalparambha, the bodhon awakening of Durga under a bel tree, amantran and adhivas, the unveiling of faces and Shashthi fasts."
+description = "Shashthi 2026 is Saturday 17 October: Kalparambha, the bodhon awakening of Durga by a bel tree, amantran and adhivas, unveiling of faces and Shashthi fasts."
 h1 = "Shashthi: the awakening of the goddess"
 summary = """Shashthi, the sixth day of the bright fortnight, is when Durga Puja formally begins in Bengal. The goddess is awakened in the bodhon rite, traditionally beside a bel tree, then invited (amantran) and consecrated (adhivas), and in many pandals her face is unveiled that evening. In 2026 Shashthi falls on Saturday 17 October."""
 type = "Article"

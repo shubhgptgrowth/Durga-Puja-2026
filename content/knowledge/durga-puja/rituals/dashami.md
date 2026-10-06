@@ -1,6 +1,6 @@
 +++
 title = "Bijoya Dashami 2026: Sindoor Khela, Bisarjan and Greetings | Pujo Parikrama"
-description = "Bijoya Dashami 2026 is Wednesday 21 October: darpan bisarjan, boron and sindoor khela, immersion processions, shanti jal and Bijoya greetings as Uma returns home."
+description = "Bijoya Dashami 2026 is Wednesday 21 October: darpan bisarjan, boron and sindoor khela, immersion processions, shanti jal and Bijoya greetings explained."
 h1 = "Bijoya Dashami: the farewell to the goddess"
 summary = """Bijoya Dashami is the tenth and final day of Durga Puja, when the goddess is bid farewell. After the Dashami puja the priest immerses her reflection in a mirror (darpan bisarjan), married women offer boron and play sindoor khela, and the idols are carried in procession to the river for bisarjan (immersion); then people exchange Bijoya greetings. In 2026 Bijoya Dashami falls on Wednesday 21 October."""
 type = "Article"

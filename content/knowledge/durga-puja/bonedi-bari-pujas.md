@@ -1,6 +1,6 @@
 +++
 title = "Bonedi Bari Pujas of Kolkata: Old Family Durga Pujas | Pujo Parikrama"
-description = "Bonedi bari pujas are Kolkata's old family Durga Pujas, held in thakur dalans with ekchala idols and age-old rites. What sets them apart, where to go, etiquette."
+description = "Bonedi bari pujas are Kolkata's old family Durga Pujas, held in thakur dalans with ekchala idols and old rites. What sets them apart, where to go, etiquette."
 h1 = "Bonedi bari pujas: Kolkata's old family Durga Pujas"
 summary = """Bonedi bari pujas are the Durga Pujas of Kolkata's old established families, held in the pillared worship hall (thakur dalan) of the family house rather than in a street pandal. They are known for traditional ekchala idols, rituals followed the same way for generations, and an intimate courtyard atmosphere; well-known examples include Sovabazar Rajbari, the family house of Rani Rashmoni at Janbazar, and the houses of the Laha, Mallick, Dawn and Dey families. Many welcome respectful visitors during the day, especially in north Kolkata."""
 type = "Article"

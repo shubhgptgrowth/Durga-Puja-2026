@@ -1,5 +1,5 @@
 +++
-title = "Navratri 2026: Meaning, Dates, Rituals and Durga Puja Link | Pujo Parikrama"
+title = "Navratri 2026: Meaning, Dates, Rituals and vs Durga Puja | Pujo Parikrama"
 description = "What Navratri means, when Sharad Navratri 2026 falls, its rituals (ghatasthapana, Navadurga, fasting, garba) and how it differs from Bengal's Durga Puja."
 h1 = "Navratri 2026: meaning, dates, rituals and how it differs from Durga Puja"
 summary = """Navratri ("nine nights") is a Hindu festival honouring the Goddess in her nine forms, the Navadurga, with ghatasthapana, fasting, daily worship and, in western India, garba and dandiya. Sharad Navratri 2026 begins after Mahalaya (Saturday 10 October 2026); per the Bengal calendar Maha Ashtami is Monday 19 October, Maha Navami Tuesday 20 October and Vijayadashami Wednesday 21 October. Bengal's Durga Puja falls in the same season but centres on the last five days, with an idol of Durga and her children in pandals; confirm the first day and ghatasthapana muhurta in your local panchang."""

@@ -1,6 +1,6 @@
 +++
 title = "Sindoor Khela: Durga Puja's Dashami Vermilion Ritual | Pujo Parikrama"
-description = "Sindoor khela is the Bijoya Dashami ritual in which women offer vermilion to Goddess Durga and smear it on each other. Who takes part, how it is done and what to wear."
+description = "Sindoor khela is the Bijoya Dashami ritual where women offer vermilion to Durga and smear it on each other: who takes part, how it is done, what to wear."
 h1 = "Sindoor khela: the vermilion farewell of Bijoya Dashami"
 summary = """Sindoor khela ("vermilion play") is the Bijoya Dashami ritual in which women first offer sindoor (vermilion) and sweets to Goddess Durga in farewell, then smear it on each other's foreheads, cheeks and bangles, wishing one another a long and happy married life. Traditionally it is performed by married women; today some pujas welcome a wider group of women. In 2026 Bijoya Dashami, and so sindoor khela, falls on Wednesday 21 October."""
 type = "Article"

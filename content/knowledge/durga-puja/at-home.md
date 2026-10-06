@@ -115,7 +115,7 @@ A home puja is simpler: it is personal worship, called *upasana*, done with devo
 ## When to worship
 
 - **Bengal tradition:** Shashthi to Dashami. In 2026 that is Saturday 17 October to Wednesday 21 October, with Saptami on Sunday 18, Maha Ashtami on Monday 19 and Maha Navami on Tuesday 20 October. See [Durga Puja 2026 dates](/guide/dates/).
-- **Navratri tradition:** nine nights from Pratipada, the day after the new moon of Mahalaya (Saturday 10 October 2026). Confirm the first day and the [ghatasthapana](/navratri/ghatasthapana/) timing in your local panchang.
+- **Navratri tradition:** nine nights from Pratipada, the lunar day that follows the new moon of Mahalaya (Saturday 10 October 2026). Confirm the first day and the [ghatasthapana](/navratri/ghatasthapana/) timing in your local panchang.
 
 Morning puja after a bath is most common. Many families also do a short evening aarti.
 

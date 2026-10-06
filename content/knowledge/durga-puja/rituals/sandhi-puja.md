@@ -1,6 +1,6 @@
 +++
 title = "Sandhi Puja: the Ashtami-Navami Juncture of Durga Puja | Pujo Parikrama"
-description = "Sandhi Puja is the worship of Durga as Chamunda in the 48 minutes where Ashtami ends and Navami begins, with 108 lotuses and 108 lamps. Meaning, timing and the legend."
+description = "Sandhi Puja is the worship of Durga as Chamunda in the 48 minutes where Ashtami ends and Navami begins, with 108 lotuses and 108 lamps. Timing and legend."
 h1 = "Sandhi Puja: the juncture of Ashtami and Navami"
 summary = """Sandhi Puja is the worship of Goddess Durga in her fierce Chamunda form during the junction (sandhi) of the Ashtami and Navami lunar days, traditionally the last 24 minutes of Ashtami and the first 24 minutes of Navami, 48 minutes in all. It is marked by offerings of 108 lotuses and 108 lamps. Its clock time changes every year with the tithi, so it must be checked in the panjika; in 2026 Maha Ashtami is Monday 19 October and Maha Navami Tuesday 20 October."""
 type = "Article"

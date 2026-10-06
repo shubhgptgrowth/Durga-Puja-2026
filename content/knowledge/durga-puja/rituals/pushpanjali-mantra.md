@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja Pushpanjali Mantra: Anjali Text and Meaning | Pujo Parikrama"
-description = "The Durga Puja pushpanjali (anjali) mantras in Bengali and Devanagari script with transliteration and meaning: Jayanti Mangala Kali, Sarva Mangala and how anjali is done."
+description = "Durga Puja pushpanjali (anjali) mantras in Bengali and Devanagari with transliteration and meaning: Jayanti Mangala Kali, Sarva Mangala and how to offer."
 h1 = "Durga Puja pushpanjali mantra, with meaning"
 summary = """Pushpanjali, or anjali, is the offering of flowers and bel leaves to Goddess Durga while repeating Sanskrit mantras after the priest, most famously on Maha Ashtami morning. The verses most often recited in Bengal include "Om jayanti mangala kali bhadrakali kapalini" from the Argala Stotram and "Sarva mangala mangalye" from the Devi Mahatmya, followed by the offering formula "esha sachandana pushpa bilwa patranjali". It is usually done in three rounds, after which the flowers are offered at the goddess's feet."""
 type = "Article"

@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja Rituals Day by Day, Mahalaya to Dashami | Pujo Parikrama"
-description = "Durga Puja rituals day by day: Mahalaya, Shashthi bodhon, Saptami Kola Bou, Ashtami anjali and Sandhi Puja, Navami homa and Dashami sindoor khela, with 2026 dates."
+description = "Durga Puja rituals day by day: Mahalaya, Shashthi bodhon, Saptami Kola Bou, Ashtami anjali and Sandhi Puja, Navami homa, Dashami sindoor khela, 2026 dates."
 h1 = "Durga Puja rituals day by day"
 summary = """Durga Puja's rituals unfold over about ten days: Mahalaya opens Devi Paksha, Shashthi awakens the goddess (bodhon), Saptami brings the Nabapatrika or Kola Bou, Ashtami has the morning pushpanjali, Kumari Puja and Sandhi Puja, Navami has the homa and bhog, and Bijoya Dashami ends with sindoor khela and immersion. In 2026 Mahalaya falls on Saturday 10 October and Bijoya Dashami on Wednesday 21 October."""
 type = "Article"

@@ -2,7 +2,7 @@
 title = "Ghatasthapana: How to Do Navratri Kalash Sthapana at Home | Pujo Parikrama"
 description = "Step-by-step Navratri ghatasthapana (kalash sthapana) at home: sowing barley in soil, setting the kalash, coconut and mango leaves, muhurta tips and supplies."
 h1 = "Ghatasthapana: how to do kalash sthapana for Navratri"
-summary = """Ghatasthapana (kalash sthapana) is the first-day Navratri ritual of installing a water-filled pot as the seat of the Goddess, usually over a tray of soil sown with barley (jau) that sprouts during the nine days. It is done on Pratipada, the first day after the Mahalaya new moon (Saturday 10 October 2026), in an auspicious window that you should take from your local panchang because it depends on place and tradition. The kalash stays in place until the festival ends, when the sprouts are distributed and the water is respectfully returned to the earth."""
+summary = """Ghatasthapana (kalash sthapana) is the first-day Navratri ritual of installing a water-filled pot as the seat of the Goddess, usually over a tray of soil sown with barley (jau) that sprouts during the nine days. It is done on Pratipada, the lunar day that follows the Mahalaya new moon (Saturday 10 October 2026), in an auspicious window that you should take from your local panchang because it depends on place and tradition. The kalash stays in place until the festival ends, when the sprouts are distributed and the water is respectfully returned to the earth."""
 type = "HowTo"
 section = "Navratri"
 order = 20

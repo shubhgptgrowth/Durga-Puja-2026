@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja Saptami 2026: Nabapatrika Snan and Kola Bou | Pujo Parikrama"
-description = "Saptami 2026 is Sunday 18 October: the dawn bath of the Nabapatrika (Kola Bou), its procession from the ghat, prana pratishtha and the start of the main Durga Puja."
+description = "Saptami 2026 is Sunday 18 October: the dawn bath of the Nabapatrika (Kola Bou), its procession from the ghat, prana pratishtha and the start of the main puja."
 h1 = "Saptami: the Kola Bou and the start of the main puja"
 summary = """Maha Saptami is the first day of the main Durga Puja worship. At dawn the Nabapatrika, a bundle of nine plants known in Bengal as the Kola Bou, is bathed in a river or at a ghat, dressed in a sari and installed beside Ganesha; the priest then invokes life into the idol (prana pratishtha) and the full puja begins. In 2026 Saptami falls on Sunday 18 October."""
 type = "Article"

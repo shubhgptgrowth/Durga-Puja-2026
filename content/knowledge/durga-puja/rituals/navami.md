@@ -1,6 +1,6 @@
 +++
 title = "Maha Navami 2026: Navami Puja, Homa, Bhog and the Last Night | Pujo Parikrama"
-description = "Maha Navami 2026 is Tuesday 20 October: the Navami puja, the homa fire offering, khichuri bhog, symbolic offerings in place of sacrifice, and dhunuchi naach at night."
+description = "Maha Navami 2026 is Tuesday 20 October: the Navami puja, the homa fire offering, khichuri bhog, symbolic offerings in place of sacrifice and dhunuchi naach."
 h1 = "Maha Navami: homa, bhog and the last night of the puja"
 summary = """Maha Navami, the ninth day of the bright fortnight, is the final full day of Durga Puja worship. It has its own puja, a homa or yajna (fire offering) that completes the worship, and a large bhog of dishes such as khichuri that is offered to the goddess and shared, and in the evening the last night of arati and dhunuchi naach. In 2026 Maha Navami falls on Tuesday 20 October."""
 type = "Article"

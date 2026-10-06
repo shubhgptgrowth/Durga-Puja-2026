@@ -1,6 +1,6 @@
 +++
 title = "Kumari Puja: Worshipping a Young Girl as Goddess Durga | Pujo Parikrama"
-description = "Kumari Puja is the Durga Puja rite in which a young girl is worshipped as the goddess, best known at Belur Math on Maha Ashtami. Its meaning, history and what happens."
+description = "Kumari Puja is the Durga Puja rite in which a young girl is worshipped as the goddess, best known at Belur Math on Maha Ashtami. Its meaning, history and steps."
 h1 = "Kumari Puja: the goddess in a young girl"
 summary = """Kumari Puja is the worship of a young girl, usually before puberty, as a living form of the goddess Durga. In Bengal it is held during Durga Puja, most often on Maha Ashtami morning, and the best-known public Kumari Puja is at Belur Math near Kolkata, where Swami Vivekananda is widely credited with reviving it in 1901. In 2026 Maha Ashtami falls on Monday 19 October."""
 type = "Article"
