@@ -1,7 +1,10 @@
 name: story-check
 # Builds the guide pages, validates every photo story (Web Story / AMP) and commits phone screenshots to
 # data/story_screens for review. Delete that folder after reviewing.
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      shots: { description: 'stories to screenshot, comma-separated slugs (empty = none)', default: '' }
 permissions: { contents: write }
 jobs:
   check:
@@ -14,7 +17,7 @@ jobs:
         with: { node-version: 20 }
       - run: npm ci && npx playwright install --with-deps chromium
       - run: pip install -q pillow && python scripts/build_seo.py --out app
-      - run: node scripts/story_check.mjs app data/story_screens
+      - run: node scripts/story_check.mjs app ${{ inputs.shots && 'data/story_screens' || '' }} "${{ inputs.shots }}"
       - name: Commit screenshots
         if: always()
         run: |

@@ -74,8 +74,9 @@ class BuildSeoTest(unittest.TestCase):
     def test_one_page_per_place_area_and_trail(self):
         g = self.g
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 3 + len(self.articles)  # + hub, dates, parking
-        import tomllib
-        stories = len(tomllib.loads((CONTENT / "stories.toml").read_text(encoding="utf-8"))["story"]) if (self.tmp / "stories").exists() else 0
+        stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
+        if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
+            self.assertEqual(stories, len(self.articles))
         self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0))   # + the stories index
         self.assertEqual(len(self.pages), want)
 

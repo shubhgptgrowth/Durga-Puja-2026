@@ -1,12 +1,12 @@
 // Validates the Web Stories (AMP) and takes phone screenshots of a few pages of each: CI only (needs cdn.ampproject.org).
-//   node scripts/story_check.mjs <built site dir> [screenshot dir]
+//   node scripts/story_check.mjs <built site dir> [screenshot dir] [slug,slug…: only these get screenshots]
 import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 
-const root = process.argv[2] || 'app', shots = process.argv[3];
+const root = process.argv[2] || 'app', shots = process.argv[3], only = (process.argv[4] || '').split(',').filter(Boolean);
 const dirs = fs.readdirSync(path.join(root, 'stories'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
 let bad = 0;
 for (const d of dirs) {
@@ -23,7 +23,7 @@ if (shots) {
   fs.mkdirSync(shots, { recursive: true });
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 390, height: 780 }, deviceScaleFactor: 1 });
-  for (const d of dirs) {
+  for (const d of dirs.filter((x) => !only.length || only.includes(x))) {
     await p.goto(`http://localhost:8099/stories/${d}/`, { waitUntil: 'networkidle' });
     await p.waitForTimeout(2500);
     for (const id of ['cover', 'p1', 'p3', 'end']) {

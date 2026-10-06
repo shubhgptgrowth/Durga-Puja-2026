@@ -118,5 +118,7 @@ Bijoya Dashami: Wednesday 21 October 2026.
 `stories.toml` holds the photo stories: Google Web Stories (AMP) published at `/stories/<slug>/` and listed at `/stories/`,
 in the sitemap and on the guide they retell. Each `[[story]]` has a `slug`, `title`, `dek`, the `article` it links to, a `cover`
 photo and 5–9 `[[story.pages]]` (`image`, optional `kicker`, `heading`, about 25 words of `text`, optional `link`). Only say
-what the guide itself says. **Actions → story-check** validates every story as AMP and commits phone screenshots to
+what the guide itself says. Every other guide gets a story made automatically from its own text (each step, or each
+section's heading and opening sentence), with photos matched to the topic and music by section; write one in
+`stories.toml` to replace it. **Actions → story-check** validates every story as AMP and commits phone screenshots to
 `data/story_screens/` for review.

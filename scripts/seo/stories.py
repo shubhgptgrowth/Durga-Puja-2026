@@ -4,6 +4,7 @@ Each page is a full-screen photo from photos.toml with a heading, a line of text
 link to the guide it comes from. Google indexes Web Stories like any page and can show them in Search and Discover;
 they are listed in the sitemap. Spec: https://amp.dev/documentation/components/amp-story/"""
 import json
+import re
 import tomllib
 from pathlib import Path
 
@@ -39,12 +40,115 @@ p{font-size:18px;line-height:1.5;margin:0 0 10px;text-shadow:0 1px 8px rgba(0,0,
 .end a.more{color:#fff;font:400 15px/1.4 system-ui,sans-serif;margin-top:16px}"""
 
 
+SECTION_MUSIC = {"Rituals": "story_dhak", "Durga Puja": "story_sitar", "At home": "story_flute", "Recipes": "story_flute",
+                 "Navratri": "story_garba", "Festivals": "story_baul", "Culture": "story_sitar", "Visit": "story_dhak"}
+# Words in a page's heading or text → the photo that shows it (keys from photos.toml)
+TOPICS = [(r"sindoor|vermilion", "sindoor-khela"), (r"dhunuchi", "dhunuchi"), (r"\bdhak|drum", "dhaki"), (r"kola bou|nabapatrika", "kola-bou"),
+          (r"kumari", "kumari-puja"), (r"sandhi", "sandhi-puja"), (r"immers|visarjan|bisarjan|river", "immersion"), (r"mahalaya|tarpan", "mahalaya"),
+          (r"bodhon|awaken", "bodhon"), (r"anjali|pushpanjali", "pushpanjali"), (r"khichuri|khichdi", "khichuri"), (r"bhog|prasad", "bhog"),
+          (r"payesh|kheer", "payesh"), (r"luchi", "luchi"), (r"naru|coconut", "narkel-naru"), (r"chutney", "chutney"), (r"beguni|fritter", "beguni"),
+          (r"labra|vegetable", "labra"), (r"kumartuli|clay|idol mak|artisan|potter", "kumartuli"), (r"alpana|alpona", "alpana"),
+          (r"conch|shankh", "conch"), (r"\blamp|diya|aarti|arati", "diwali"), (r"kalash|ghat sthapana|ghatasthapana|\bghat\b", "ghatasthapana"),
+          (r"garba", "garba"), (r"dandiya", "dandiya"), (r"fast|vrat|sabudana", "vrat-food"), (r"kanya|kanjak", "kanya-pujan"),
+          (r"ravana|dussehra|ramlila", "dussehra"), (r"navadurga|nine forms", "navadurga"), (r"chandi|mahatmya|verse|mantra|scripture|text", "manuscript"),
+          (r"mahavidya", "mahavidya"), (r"mahishasura|buffalo demon", "mahishasuramardini"), (r"radio|broadcast", "radio"),
+          (r"sari|saree|wear|dress|cloth", "saree"), (r"photo|camera", "camera"), (r"metro|tram|taxi|transport|travel|bus\b", "kolkata-tram"),
+          (r"crowd|queue", "crowd"), (r"\blights\b|lighting|illuminat", "pandal-lights"), (r"theme|pandal art|installation", "pandal-art"),
+          (r"street food|phuchka|kathi roll|\beat\b|\bfood\b", "street-food"), (r"rajbari|bonedi|family puja|zamindar", "bonedi-bari"),
+          (r"calcutta|colonial|century|history", "history"), (r"unesco|heritage", "unesco"), (r"lakshmi", "lakshmi-puja"), (r"\bkali\b", "kali-puja"),
+          (r"jagaddhatri|chandannagar", "jagaddhatri"), (r"vishwakarma|kite", "vishwakarma"), (r"phonta|phota|brother", "bhai-phonta"),
+          (r"basanti|spring", "basanti"), (r"plastic|\beco|pollut", "eco-idol"), (r"howrah|kolkata\b", "kolkata"), (r"thali|samagri|offering", "puja-thali"),
+          (r"children|family|elder", "family")]
+
+
+def plain(md):
+    md = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", md)
+    md = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", md)
+    return re.sub(r"\s+", " ", re.sub(r"[*_`]", "", md)).strip()
+
+
+def first_sentence(text, limit=210):
+    """The opening sentence (two if the first is very short), in full: never cut mid-sentence."""
+    t = plain(text)
+    parts = re.findall(r".+?[.!?](?:[\"”’)]*)(?=\s+[A-Z“\"(]|\s*$)", t) or [t]
+    parts = [x.strip() for x in parts]
+    out = parts[0]
+    if len(out) < 70 and len(parts) > 1 and len(out) + len(parts[1]) < limit + 60:
+        out += " " + parts[1]
+    return out.strip() if len(out) <= limit + 60 else ""
+
+
+def sections(body):
+    """(heading, first paragraph) for each ## section of a guide's Markdown."""
+    out = []
+    for block in re.split(r"(?m)^## ", "\n" + body)[1:]:
+        head, _, rest = block.partition("\n")
+        rest = rest.strip()
+        if rest.startswith("### "):   # a question-and-answer section: the question is the heading
+            head, _, rest = rest[4:].partition("\n")
+        paras = [x.strip() for x in re.split(r"\n\s*\n", rest)]
+        para = next((x for x in paras if x and not re.match(r"^([-*]\s|[|>#]|!\[|\d+\.\s)", x)
+                     and not re.match(r"^(For more|See |Read |Our |More on)", plain(x))), "")
+        out.append((plain(head), para))
+    return out
+
+
+def pick_photo(text, ph, avoid, fallback):
+    for pat, key in TOPICS:
+        if key in ph and key != avoid and re.search(pat, text, re.I):
+            return key
+    return fallback
+
+
 class StoriesMixin:
     """Mixed into build_seo.Site (needs page(), url(), pics, by_path, out, pages, page_images)."""
 
     def load_stories(self):
+        """Hand-written stories from stories.toml, then one made from every other guide's own text (auto_story)."""
         self.stories = tomllib.loads(STORIES.read_text(encoding="utf-8")).get("story", []) if STORIES.exists() else []
+        done = {s["article"] for s in self.stories}
+        for a in self.articles:
+            if a.path not in done:
+                st = self.auto_story(a)
+                if st:
+                    self.stories.append(st)
         self.story_for = {s["article"]: s for s in self.stories}
+
+    def auto_story(self, a):
+        """A story retelling a guide in its own words: each step (how-tos and recipes) or each section's heading
+        and opening sentence, with photos matched to what the page is about. Nothing is added that the guide
+        doesn't say."""
+        ph = self.pics
+        hero, inline = ph.for_article(a)
+        if not hero:
+            return None
+        items = []   # (heading, text, step image or None)
+        if a.meta.get("steps"):
+            items = [(st["name"], first_sentence(st["text"]), st.get("image"), f"Step {i + 1}") for i, st in enumerate(a.meta["steps"])]
+        elif a.meta.get("terms"):
+            items = [(t["term"], first_sentence(t["definition"]), None, t.get("alt")) for t in a.meta["terms"]]
+        else:
+            for head, para in sections(a.body):
+                if para:
+                    items.append((head, first_sentence(para), None, None))
+            if len(items) < 4 and a.meta.get("faq"):
+                items += [(f["q"], first_sentence(f["a"]), None, "Question") for f in a.meta["faq"]]
+        items = [x for x in items if x[1]]
+        if len(items) < 4:
+            return None
+        if len(items) > 8:   # long guides: the first and last, and an even spread between
+            items = [items[i] for i in sorted({round(i * (len(items) - 1) / 7) for i in range(8)})]
+        pool = list(dict.fromkeys([k for k in inline if k in ph] + [hero]))
+        pages, last = [], hero
+        for n, (head, text, img, kicker) in enumerate(items):
+            key = img if img in ph else pick_photo(head + " " + text, ph, avoid=last, fallback=pool[n % len(pool)])
+            last = key
+            pages.append({"image": key, "heading": head, "text": text, "kicker": kicker})
+        slug = a.path.strip("/").split("/")[-1] or "guide"
+        if any(s.get("slug") == slug for s in self.stories):
+            slug = a.path.strip("/").replace("/", "-")
+        return {"slug": slug, "title": a.h1, "dek": a.desc, "article": a.path, "cover": hero, "pages": pages,
+                "music": SECTION_MUSIC.get(a.section), "auto": True}
 
     def story_poster(self, s):
         """640×853 (3:4) poster, the image Google shows for the story; Pillow at build time, else the 600 px photo."""
@@ -174,9 +278,14 @@ class StoriesMixin:
         if not built:
             return
         url = self.url("stories/")
+        featured = [s for s in built if not s.get("auto")]
+        rest = "".join(f"<h2 id='{sec.lower().replace(' ', '-')}'>{esc(sec)}</h2>"
+                       + self.story_cards("../", [s for s in built if s.get("auto") and self.by_path[s["article"]].section == sec])
+                       for sec in dict.fromkeys(self.by_path[s["article"]].section for s in built if s.get("auto")))
         body = (f"<article class='post'><header class='post-head'><span class='kicker'>Photo stories</span><h1>Durga Puja in photos</h1>"
-                f"<p class='dek'>{len(built)} tap-through stories: the five days, the rituals, the food, the history and the festivals around Durga Puja. "
-                f"Each one takes about a minute and links to the full guide.</p></header>{self.story_cards('../')}</article>")
+                f"<p class='dek'>{len(built)} tap-through stories, one for every guide: the five days, the rituals, the food, the history and the festivals "
+                f"around Durga Puja. Each takes about a minute and links to the full guide.</p></header>"
+                f"<h2 id='featured'>Start with these</h2>{self.story_cards('../', featured)}{rest}</article>")
         ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Durga Puja photo stories", "url": url, "inLanguage": "en",
                "mainEntity": {"@type": "ItemList", "numberOfItems": len(built), "itemListElement": [
                    {"@type": "ListItem", "position": i + 1, "url": self.url(f"stories/{s['slug']}/"), "name": s["title"]} for i, s in enumerate(built)]}}]

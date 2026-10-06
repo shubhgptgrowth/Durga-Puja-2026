@@ -136,8 +136,10 @@ class KnowledgeMixin:
         if days and days.meta.get("timeline"):
             body.append(self.timeline(days.meta["timeline"], up, "The five days, day by day", "five-days"))
         if any(st.get("built") for st in self.stories):
-            body.append("<h2 id='photo-stories'>Photo stories</h2><p class='sec-intro'>Tap-through stories in full-screen photos, about a minute each.</p>"
-                        + self.story_cards(up).replace("class='story-cards'", "class='story-cards strip'"))
+            n_st = sum(1 for st in self.stories if st.get("built"))
+            body.append(f"<h2 id='photo-stories'>Photo stories <small>{n_st}</small></h2><p class='sec-intro'>Every guide as a tap-through story in full-screen photos, "
+                        f"about a minute each. <a href='{up}stories/'>See all {n_st} →</a></p>"
+                        + self.story_cards(up, [st for st in self.stories if not st.get("auto")]).replace("class='story-cards'", "class='story-cards strip'"))
         if howtos:
             body.append("<h2 id='step-by-step'>Step by step</h2><p class='sec-intro'>Guides you can follow along with, with tick-box lists that remember your ticks on this phone.</p>"
                         + self.cards(howtos, up, "cards pics strip"))
