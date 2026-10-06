@@ -73,7 +73,7 @@ If you have only three days, take Saptami to Navami. If you can come a day or tw
 
 - **By air.** Kolkata's airport is Netaji Subhas Chandra Bose International Airport, in the north-east of the city near Dum Dum. It has domestic and international flights. From the airport, app cabs, prepaid taxis and the Metro network serve the city; check current Metro connections and the traffic situation before you leave, as roads near pandals can be slow in the evenings.
 - **By train.** Long-distance trains arrive at **Howrah** (across the Hooghly river, the city's biggest station) and **Sealdah** (on the Kolkata side, nearer north and central Kolkata). Some trains also use Kolkata station at Chitpur, and Santragachi in Howrah. Puja-week trains sell out early; book as soon as reservations open.
-- **By road.** Long-distance buses and cars come in from the rest of West Bengal and neighbouring states. Driving into the city during the pujas is possible, but parking near pandals is hard; see our [parking guide](/guide/parking/).
+- **By road.** Buses and cars arrive from across West Bengal and neighbouring states; parking near pandals is hard, so see our [parking guide](/guide/parking/).
 
 ## Where to stay
 
@@ -143,4 +143,4 @@ This plan uses the ready-made trails in our free [Kolkata guide](/guide/); each 
 
 ## Before you go
 
-Skim the [glossary](/durga-puja/glossary/) so you recognise *protima*, *bhog* and *anjali* when you hear them, read the [food and bhog guide](/durga-puja/food-and-bhog/) for what to eat, and keep our [Durga Puja FAQ](/durga-puja/faq/) handy for quick answers. Then let the dhak guide you.
+Skim the [glossary](/durga-puja/glossary/) so you recognise *protima*, *bhog* and *anjali*, and keep our [Durga Puja FAQ](/durga-puja/faq/) handy. Then let the dhak guide you.

@@ -51,6 +51,9 @@ class Page(HTMLParser):
             self._ld += d
 
 
+SITE_PAGES = ("about/", "contact/", "terms/", "tools/bijoya-card/")   # indexed; search/ is noindex
+
+
 class BuildSeoTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -71,7 +74,7 @@ class BuildSeoTest(unittest.TestCase):
     def test_one_page_per_place_area_and_trail(self):
         g = self.g
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 3 + len(self.articles)  # + hub, dates, parking
-        self.assertEqual(self.n, want)
+        self.assertEqual(self.n, want + len(SITE_PAGES))
         self.assertEqual(len(self.pages), want)
 
     def test_every_page_is_complete(self):
@@ -91,7 +94,7 @@ class BuildSeoTest(unittest.TestCase):
                 if "/food/" in rel:
                     self.assertTrue(types & {"Restaurant", "FoodEstablishment"}, types)
                 if not rel.startswith("guide/"):   # knowledge articles
-                    self.assertTrue(types & {"Article", "HowTo"}, types)
+                    self.assertTrue(types & {"Article", "HowTo", "Recipe"}, types)
 
     def test_internal_links_resolve(self):
         for f in self.pages:
@@ -103,7 +106,7 @@ class BuildSeoTest(unittest.TestCase):
                 target = (f.parent / href.split("#")[0]).resolve()
                 if href.split("#")[0] in ("", "./") or str(target) == str(self.tmp.resolve()):
                     continue   # the app itself
-                if target.suffix in (".txt", ".html", ".json", ".xml"):
+                if target.suffix in (".txt", ".html", ".json", ".xml", ".ics"):
                     if target.name in ("privacy.html",) or target.parent.name == "data":
                         continue   # shipped with the app, not built here
                     self.assertTrue(target.exists(), f"{f}: {href}")
@@ -121,7 +124,11 @@ class BuildSeoTest(unittest.TestCase):
                 self.assertTrue(md.startswith(f"# {a.h1}"))
                 html = (self.tmp / a.path / "index.html").read_text(encoding="utf-8")
                 self.assertIn('rel="alternate" type="text/markdown"', html)
-                if a.meta.get("steps"):
+                if a.meta.get("type") == "Recipe":
+                    self.assertIn('"@type":"Recipe"', html)
+                    self.assertIn('"recipeIngredient"', html)
+                    self.assertIn('"recipeInstructions"', html)
+                elif a.meta.get("steps"):
                     self.assertIn('"@type":"HowTo"', html)
                 if a.meta.get("terms"):
                     self.assertIn('"@type":"DefinedTermSet"', html)

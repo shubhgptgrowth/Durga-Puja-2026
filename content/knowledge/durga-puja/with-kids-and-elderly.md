@@ -1,6 +1,6 @@
 +++
 title = "Durga Puja with Kids, Elderly and Disabled Visitors: a guide | Pujo Parikrama"
-description = "Plan Durga Puja in Kolkata with children, elderly parents or a disability: best hours, lost-child plans, strollers vs carriers, seating, access and medical needs."
+description = "Plan Durga Puja in Kolkata with children, elderly parents or a disability: best hours, lost-child plans, strollers vs carriers, seating, access and medicine."
 h1 = "Durga Puja with children, elderly and disabled visitors"
 summary = """To enjoy Durga Puja with children, elderly relatives or someone with a disability, go in the early morning or afternoon rather than the peak evening hours, see a few nearby pandals instead of crossing the city, and plan rests, water and toilets in advance. Give every child a name tag or card with your phone number and agree a meeting point at each pandal, prefer a baby carrier to a stroller in crowds, and ask volunteers about separate entrances, which some committees provide. Many pandals have steps, uneven ground and narrow paths, so wider-road areas like Salt Lake and traditional pujas at quieter hours are often easier."""
 type = "Article"

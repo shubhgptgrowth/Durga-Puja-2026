@@ -1,6 +1,6 @@
 +++
 title = "Eco-Friendly Durga Puja: clay idols, clean immersion, less waste | Pujo Parikrama"
-description = "How to celebrate an eco-friendly Durga Puja: clay vs plaster of Paris idols, natural colours, immersion rules and artificial ponds, less plastic and noise at home."
+description = "How to celebrate an eco-friendly Durga Puja: clay vs plaster of Paris idols, natural colours, immersion rules, artificial ponds, and less plastic and noise."
 h1 = "Eco-friendly Durga Puja: celebrating greener"
 summary = """An eco-friendly Durga Puja uses idols made of unbaked clay, straw and bamboo with natural or non-toxic colours instead of plaster of Paris and heavy-metal paints, immerses them in a way that keeps waste out of rivers and ponds (often in artificial immersion tanks or by removing decorations first), and cuts down on single-use plastic, thermocol and loud noise. Pollution control boards and courts in India have issued guidelines on idol materials and immersion over the years; these vary by state and change, so check current local rules. Families can do the same at home with a small clay idol, natural flowers, steel or leaf plates and a home or community immersion."""
 type = "Article"
