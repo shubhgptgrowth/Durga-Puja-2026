@@ -202,6 +202,21 @@ function gettingThereHtml(p, parks = []) {
     ${auto ? `<p class="fine" style="margin-top:6px">${t('tr.autoNote')}</p>` : ''}`;
 }
 
+/* This year's theme, with the report it came from (data/raw/themes_2026.csv). */
+export const themeTitle = (th) => (S.prefs.lang === 'bn' && th.title_bn) || th.title;
+const host = (u) => { try { return new URL(u).hostname.replace(/^(www|m)\./, ''); } catch { return ''; } };
+function themeHtml(th) {
+  if (!th) return '';
+  const bn = S.prefs.lang !== 'bn' && th.title_bn ? `<p class="tb-bn" lang="bn">${esc(th.title_bn)}</p>` : '';
+  return `<section class="theme-box" aria-label="${t('p.theme2026')}">
+    <div class="tb-k">${t('p.theme2026')}</div>
+    <p class="tb-t">${esc(themeTitle(th))}</p>${bn}
+    ${th.about ? `<p class="tb-by" style="margin-top:6px">${esc(th.about)}</p>` : ''}
+    ${th.artist ? `<p class="tb-by">${t('p.themeArtist')}: <b>${esc(th.artist)}</b></p>` : ''}
+    <p class="tb-src">${t('p.themeSrc')} <a href="${esc(th.source)}" target="_blank" rel="noopener">${esc(host(th.source))}</a> · ${t('p.themeCheck')}</p>
+  </section>`;
+}
+
 /* ---------------- pandal ---------------- */
 export function pandalSheet(id) {
   placeOpened(id, 'pandal');
@@ -214,7 +229,8 @@ export function pandalSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
-    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
+    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
+    ${themeHtml(p.theme_2026)}
     ${galleryHtml(p.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}

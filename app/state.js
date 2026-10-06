@@ -81,5 +81,7 @@ export function ampm(h) {
 }
 export const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 export const btn = (attrs = '') => `role="button" tabindex="0" ${attrs}`;
+// Headings are set in type, not emoji: strip any emoji a translation carries.
+export const plain = (s) => String(s).replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}]\uFE0F?/gu, '').replace(/\s{2,}/g, ' ').trim();
 export const icon = (name, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 export const bnDigits = (s) => (bn() ? String(s).replace(/\d/g, (c) => '০১২৩৪৫৬৭৮৯'[c]) : String(s));

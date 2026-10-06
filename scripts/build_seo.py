@@ -166,6 +166,14 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                 f"Our crowd model suggests visiting {esc(p['best_slot_label'])}; on Ashtami, the busiest day, the quietest window is {quiet_ash}. "
                 f"The nearest metro station is {esc(m['name'])} on the {LINE.get(m['line'], m['line'] + ' line')}, about {m['walk_min']} minutes' walk ({km(m['distance_m'])}). "
                 f"Plan about {p['visit_min']} minutes inside.")
+        th = p.get("theme_2026")
+        theme_html = ""
+        if th:
+            host = re.sub(r"^(www|m)\.", "", re.sub(r"^https?://([^/]+).*", r"\1", th["source"]))
+            theme_html = (f"<h2>{self.year} theme: {esc(th['title'])}</h2><p>"
+                          + (f"<span lang='bn'>{esc(th['title_bn'])}</span>. " if th.get("title_bn") else "")
+                          + esc(th.get("about", "")) + (f" Artist: {esc(th['artist'])}." if th.get("artist") else "")
+                          + f" <small>As reported by <a href='{esc(th['source'])}' rel='noopener'>{esc(host)}</a>; themes can change before the puja.</small></p>")
         foods = [x for x in p["food"] if x["id"] in self.food]
         parks = [x for x in p["parking"] if x["id"] in self.park]
         same = [q for q in z["pandal_ids"] if q != p["id"] and q in self.pandal][:8]
@@ -192,12 +200,14 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
             (f"How do I reach {p['name']} by metro?", f"Get off at {esc(m['name'])} ({LINE.get(m['line'], m['line'])}). It is about {km(m['distance_m'])} away, roughly {m['walk_min']} minutes on foot."),
             (f"Where can I park near {p['name']}?", (f"The nearest listed parking is {esc(self.park[parks[0]['id']]['name'])}, {km(parks[0]['distance_m'])} away. " if parks else "There is no listed parking nearby. ") + esc(CAR.get(z.get("car_advisory"), ""))),
             (f"What can I eat near {p['name']}?", ("Within walking distance: " + "; ".join(f"{esc(self.food[x['id']]['name'])} ({esc(', '.join(self.food[x['id']]['dishes'][:2]))})" for x in foods[:3]) + ".") if foods else "No eateries are listed within walking distance."),
+            *([(f"What is the {self.year} theme at {p['name']}?", f"{esc(th['title'])}" + (f" ({esc(th['title_bn'])})" if th.get("title_bn") else "") + f". {esc(th.get('about', ''))} This is as reported in the press; themes can change before the puja.")] if th else []),
             (f"When is Durga Puja {self.year} at {p['name']}?", f"From Panchami, {nice_date(self.start, True)}, to Dashami (Bijoya Dashami), {nice_date(self.end, True)}. Ashtami, the busiest day, is {nice_date(self.days['ashtami']['date'], True)}."),
         ]
         faq_html, faq_ld = self.faq(qa)
         body = f"""<article>
 <h1>{esc(p['name'])} Durga Puja {self.year}: best time, how to reach, food nearby</h1>
 <p class="lead">{lead}</p>
+{theme_html}
 {gallery}
 <h2>Key facts</h2>
 {facts}
@@ -223,7 +233,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                  "address": place["address"], "geo": place["geo"]}}
         if imgs:
             event["image"] = imgs
-        desc = f"{p['name']}, {z['name']}: best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}."
+        desc = (f"{p['name']} {self.year} theme: {th['title']}. " if th else "") + f"{p['name']}, {z['name']}: best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}."
         self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: timings, best time, how to reach | {NAME}", desc, body,
                   ld=(place, event, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (p["name"], f"guide/pandals/{p['id']}/")),
                   priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs)

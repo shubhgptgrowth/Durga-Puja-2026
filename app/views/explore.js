@@ -5,7 +5,7 @@ import {
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { offerChip } from '../offers.js';
-import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
+import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
 import { carCardHtml, carClick } from '../car.js';
@@ -58,7 +58,8 @@ function pandalItem(p) {
   return `<li class="item ${visitedToday(p.id) ? 'visited' : ''}" data-place="${p.id}" ${btn(`aria-label="${esc(nm(p))}"`)}>
     <h3 class="nm">${esc(nm(p))}</h3>
     <div class="side"><span class="score">${icon('star', 'sm fill')}${p.popularity}</span>${statsHtml(p.id, { compact: true })}</div>
-    <div class="meta">${esc(zs(z))}${S.me ? ` · ${dist(hav(S.me, ll(p)))}` : ''} · 🚇 ${esc(p.nearest_metro.name)}</div>
+    <div class="meta">${esc(zs(z))}${S.me ? ` · ${dist(hav(S.me, ll(p)))}` : ''} · ${icon('metro', 'sm')} ${esc(p.nearest_metro.name)}</div>
+    ${p.theme_2026 ? `<div class="theme-line"><b>${t('p.theme2026')}</b>${esc(themeTitle(p.theme_2026))}</div>` : ''}
     <div class="status">${crowdPill(c)}<span class="pill" title="${t('card.bestHint')}">${icon('clock', 'sm')} ${t('card.best', { slot: t('slot.' + p.best_slot) })}</span></div>
   </li>`;
 }
