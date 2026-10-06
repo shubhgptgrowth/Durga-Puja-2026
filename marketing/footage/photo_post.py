@@ -54,7 +54,8 @@ def caption(it):
                 real.append(cr)
     parts = [c.get("bn", ""), c.get("en", ""), c.get("tags", "")]
     if real:
-        parts.append(("📷 Photo: " if len(real) == 1 else "📷 Photos: ") + "; ".join(real) + " · Wikimedia Commons")
+        many = sum(p.get("license") != "AI" for p in it["photos"]) > 1
+        parts.append(("📷 Photos: " if many else "📷 Photo: ") + "; ".join(real) + " · Wikimedia Commons")
     if any(p.get("license") == "AI" for p in it["photos"]):
         parts.append("🤖 AI-generated image.")
     return "\n\n".join(x.strip() for x in parts if x and x.strip())
