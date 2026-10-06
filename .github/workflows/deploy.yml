@@ -241,6 +241,11 @@ jobs:
           print(json.dumps({"host": urllib.parse.urlparse(site).netloc, "key": sys.argv[1], "keyLocation": f"{site}{sys.argv[1]}.txt", "urlList": urls}))
           PY
           n=$(python -c "import json;print(len(json.load(open('/tmp/indexnow.json'))['urlList']))")
-          code=$(curl -s -o /tmp/indexnow.out -w '%{http_code}' -X POST -H 'Content-Type: application/json; charset=utf-8' --data @/tmp/indexnow.json https://api.indexnow.org/indexnow)
-          echo "IndexNow: $n changed URLs → HTTP $code"; cat /tmp/indexnow.out; echo
+          # A new key file is verified a little after it goes live (403 SiteVerificationNotCompleted): retry for a few minutes
+          for wait in 0 30 60 120; do
+            sleep $wait
+            code=$(curl -s -o /tmp/indexnow.out -w '%{http_code}' -X POST -H 'Content-Type: application/json; charset=utf-8' --data @/tmp/indexnow.json https://api.indexnow.org/indexnow)
+            echo "IndexNow: $n changed URLs → HTTP $code"; cat /tmp/indexnow.out; echo
+            [ "$code" = 403 ] || break
+          done
           case "$code" in 200|202) echo "::notice::IndexNow told about $n changed pages";; *) echo "::warning::IndexNow returned $code";; esac

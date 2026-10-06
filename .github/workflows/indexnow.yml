@@ -1,0 +1,36 @@
+name: indexnow
+
+# Announce every page in the live sitemap to IndexNow (Bing, which feeds ChatGPT search and Copilot, plus Yandex,
+# Seznam, Naver…). The deploy already announces changed pages; run this by hand after a big change or if that
+# announcement failed. Needs site.json "indexnow_key" and app/<key>.txt live (docs/product/SEO.md).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Announce the sitemap
+        run: |
+          site=$(python -c "import json;print(json.load(open('site.json'))['url'])")
+          key=$(python -c "import json;print(json.load(open('site.json'))['indexnow_key'])")
+          curl -fsS "${site}${key}.txt" | grep -qx "$key" || { echo "::error::${site}${key}.txt is not live"; exit 1; }
+          curl -fsS "${site}sitemap.xml" | python -c "
+          import json, re, sys, urllib.parse
+          site, key = sys.argv[1], sys.argv[2]
+          urls = re.findall(r'<loc>([^<]+)</loc>', sys.stdin.read())[:10000]
+          print(json.dumps({'host': urllib.parse.urlparse(site).netloc, 'key': key, 'keyLocation': f'{site}{key}.txt', 'urlList': urls}))
+          " "$site" "$key" > /tmp/indexnow.json
+          n=$(python -c "import json;print(len(json.load(open('/tmp/indexnow.json'))['urlList']))")
+          for wait in 0 30 60 120; do
+            sleep $wait
+            code=$(curl -s -o /tmp/out -w '%{http_code}' -X POST -H 'Content-Type: application/json; charset=utf-8' --data @/tmp/indexnow.json https://api.indexnow.org/indexnow)
+            echo "IndexNow: $n URLs → HTTP $code $(cat /tmp/out)"
+            [ "$code" = 403 ] || break
+          done
+          case "$code" in 200|202) echo "### IndexNow: announced $n pages" >> "$GITHUB_STEP_SUMMARY";; *) exit 1;; esac
