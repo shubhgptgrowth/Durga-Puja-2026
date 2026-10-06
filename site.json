@@ -2,5 +2,6 @@
   "url": "https://pujoparikramaguide.in/",
   "pages_url": "https://shubhgptgrowth.github.io/Durga-Puja-2026/",
   "footer": "@pujoparikrama.guide",
-  "note": "The public address of the app. Change it with: python scripts/site.py set https://your-domain/ (see docs/product/HOSTING.md). 'footer' is the text printed at the bottom of kit cards, posters and the flyer instead of the address; remove it to print the address."
+  "note": "The public address of the app. Change it with: python scripts/site.py set https://your-domain/ (see docs/product/HOSTING.md). 'footer' is the text printed at the bottom of kit cards, posters and the flyer instead of the address; remove it to print the address. 'indexnow_key' names app/<key>.txt, which proves to Bing's IndexNow that the deploy may announce changed pages (docs/product/SEO.md).",
+  "indexnow_key": "8f7d6fac509de48d86fa768c5368f6ad"
 }

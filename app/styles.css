@@ -1033,3 +1033,9 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 
 /* Plain-HTML summary for crawlers (scripts/build_seo.py); the app removes it on boot */
 .seo-static { max-width: 760px; margin: 0 auto; padding: 16px; }
+
+/* Home: "Know your pujo" links to the guide's articles */
+.learn { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 0 16px; }
+.learn-card { display: flex; align-items: center; gap: 8px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14.5px; min-height: 56px; }
+.learn-card span { font-size: 22px; line-height: 1; }
+.learn-card:hover { border-color: var(--brand); }

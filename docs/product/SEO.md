@@ -6,17 +6,28 @@ HTML pages from `app/data/guide.json` (`scripts/build_seo.py`, run in `deploy.ym
 
 | URL | What it answers |
 |---|---|
-| `/guide/` | Hub: what the guide covers, areas, most-visited pandals, trails, FAQ |
+| `/durga-puja/` | **Knowledge hub**: what Durga Puja is, history, the goddess, rituals, at home, culture (`content/knowledge/`) |
+| `/durga-puja/rituals/…` | Each day (Mahalaya → Dashami) and each ritual: anjali mantra, Sandhi Puja, Kumari Puja, Kola Bou, sindoor khela, dhunuchi |
+| `/durga-puja/at-home/`, `/durga-puja/samagri-list/` | How to do the puja at home (HowTo), the items checklist |
+| `/navratri/…` | Navratri: Navadurga, ghatasthapana, fasting, kanya pujan, Dussehra, garba |
+| `/durga-puja/glossary/` | 45+ terms (DefinedTermSet) |
+| `/guide/` | Kolkata hub: areas, most-visited pandals, trails, FAQ |
 | `/guide/dates/` | "When is Durga Puja 2026?" Mahalaya to Dashami, with crowd levels |
-| `/guide/areas/<zone>/` | "Best pandals in Gariahat / North Kolkata / …", food and parking there |
-| `/guide/pandals/<id>/` | One per pandal (107): best time, quiet hours per day, metro, buses, parking, food, FAQ |
-| `/guide/food/<id>/` | One per eatery (175): dishes, cost for two, veg/non-veg, hours, nearby pandals |
-| `/guide/trails/<id>/` | The six ready-made walking routes, stop by stop |
-| `/guide/parking/` | Park & ride and pay parking |
-| `/sitemap.xml`, `/robots.txt` | Every page above; all crawlers, AI included, allowed |
-| `/llms.txt`, `/llms-full.txt` | The [llms.txt](https://llmstxt.org) index, and the whole guide as one text file |
+| `/guide/areas/<zone>/`, `/guide/pandals/<id>/`, `/guide/food/<id>/`, `/guide/trails/<id>/`, `/guide/parking/` | Every area, pandal (107), eatery (175), trail, parking |
+| `/sitemap.xml` (with images), `/robots.txt` | Every page; all crawlers, AI included, allowed |
+| `/llms.txt`, `/llms-full.txt`, `…/index.md` | The [llms.txt](https://llmstxt.org) index, the whole guide as text, and a Markdown copy of every article |
+| `/404.html` | Missing pages point back to the hubs |
 
-The home page also carries a plain-HTML summary with links, which the app removes as it starts.
+## Adding or editing an article
+
+Write Markdown with a short TOML header in `content/knowledge/` (format and writing rules: `content/knowledge/README.md`),
+push, and the deploy publishes it.
+
+- **Broken links stop the deploy.** Every link to another page must point at a page the build creates, so a
+  broken link fails the build. `python scripts/build_seo.py --out /tmp/x --preview` only warns, for drafting.
+- **Changed pages are announced to IndexNow.** After each deploy, every page whose content changed is sent to
+  IndexNow (Bing, which feeds ChatGPT search and Copilot, plus Yandex and others). It works by comparing the
+  page fingerprints in `seo-manifest.json` with the live site; the key file is `app/<indexnow_key>.txt`.
 
 ## Built to be quoted (GEO / AEO)
 

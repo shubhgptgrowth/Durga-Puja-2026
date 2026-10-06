@@ -1,0 +1,95 @@
+"""The small Markdown subset used by content/knowledge (see its README): ## / ### headings, paragraphs, bold,
+italic, links, bullet and numbered lists, pipe tables and > quotes. Internal links ("/path/") become relative,
+so the pages work under any base URL, and every one is recorded so the build can check it exists."""
+import html
+import re
+
+
+def slug(text):
+    s = re.sub(r"[^\w\s-]", "", text.lower(), flags=re.UNICODE)
+    return re.sub(r"[\s_]+", "-", s).strip("-")[:60] or "section"
+
+
+class Rendered:
+    def __init__(self):
+        self.html, self.toc, self.links, self.text = "", [], [], ""
+
+
+def render(md, up=""):
+    """Markdown → Rendered(html, toc [(id, title)], links [internal paths], text). `up` is '../' * depth."""
+    out = Rendered()
+
+    def inline(s):
+        s = html.escape(s, quote=False)
+
+        def link(m):
+            label, href = m.group(1), html.unescape(m.group(2)).strip()
+            if href.startswith("/"):
+                path = href.lstrip("/")
+                out.links.append(path.split("#")[0])
+                return f'<a href="{up}{html.escape(path, quote=True)}">{label}</a>'
+            return f'<a href="{html.escape(href, quote=True)}" rel="noopener">{label}</a>'
+        s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, s)
+        s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+        s = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r"<em>\1</em>", s)
+        return s
+
+    lines = md.strip("\n").split("\n")
+    parts, i, used = [], 0, set()
+    while i < len(lines):
+        line = lines[i].rstrip()
+        if not line.strip():
+            i += 1
+            continue
+        m = re.match(r"^(#{2,3})\s+(.*)$", line)
+        if m:
+            level, title = len(m.group(1)), m.group(2).strip()
+            hid = slug(re.sub(r"[*_\[\]()]", "", title))
+            while hid in used:
+                hid += "-2"
+            used.add(hid)
+            if level == 2:
+                out.toc.append((hid, re.sub(r"\*+", "", title)))
+            parts.append(f'<h{level} id="{hid}">{inline(title)}</h{level}>')
+            i += 1
+            continue
+        if line.lstrip().startswith("|"):
+            rows = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")])
+                i += 1
+            head, body = rows[0], [r for r in rows[1:] if not all(re.fullmatch(r":?-{2,}:?", c) for c in r)]
+            parts.append('<div class="table"><table><thead><tr>' + "".join(f"<th>{inline(c)}</th>" for c in head) + "</tr></thead><tbody>"
+                         + "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in body) + "</tbody></table></div>")
+            continue
+        if line.startswith(">"):
+            q = []
+            while i < len(lines) and lines[i].startswith(">"):
+                q.append(lines[i][1:].strip())
+                i += 1
+            paras = "\n".join(q).split("\n\n")
+            parts.append("<blockquote>" + "".join("<p>" + "<br>".join(inline(x) for x in p.split("\n") if x) + "</p>" for p in paras if p.strip()) + "</blockquote>")
+            continue
+        m = re.match(r"^(\s*)([-*]|\d+\.)\s+", line)
+        if m:
+            ordered = m.group(2)[0].isdigit()
+            items = []
+            while i < len(lines) and re.match(r"^\s*([-*]|\d+\.)\s+", lines[i]):
+                item = re.sub(r"^\s*([-*]|\d+\.)\s+", "", lines[i]).strip()
+                i += 1
+                while i < len(lines) and lines[i].startswith("  ") and lines[i].strip() and not re.match(r"^\s*([-*]|\d+\.)\s+", lines[i]):
+                    item += " " + lines[i].strip()
+                    i += 1
+                items.append(f"<li>{inline(item)}</li>")
+            tag = "ol" if ordered else "ul"
+            parts.append(f"<{tag}>" + "".join(items) + f"</{tag}>")
+            continue
+        para = [line.strip()]
+        i += 1
+        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{2,3}\s|>|\||\s*([-*]|\d+\.)\s)", lines[i]):
+            para.append(lines[i].strip())
+            i += 1
+        parts.append("<p>" + inline(" ".join(para)) + "</p>")
+    out.html = "\n".join(parts)
+    out.text = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", out.html))).strip()
+    return out

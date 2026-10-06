@@ -18,7 +18,6 @@ import urllib.request
 
 from . import config
 from .audit import UA, search as nominatim, similarity
-from .geo import haversine_m
 from .ingest import ingest
 
 OUT = config.ROOT / "data" / "discovered"

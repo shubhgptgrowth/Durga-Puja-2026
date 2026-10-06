@@ -433,6 +433,16 @@ export const STR = {
     'del.confirm': 'Delete everything? Your steps, check-ins, food stops, ratings, photos, name and number are erased from this phone and from our server, and your account (guest or Google) is removed. This can\'t be undone.',
     'del.failed': 'Couldn\'t reach the server, so nothing was deleted. Please try again when online.',
     'del.policy': 'Privacy policy',
+    'kn.title': 'Know your pujo',
+    'kn.sub': 'Rituals, mantras and stories, day by day',
+    'kn.rituals': 'Rituals day by day',
+    'kn.anjali': 'Anjali mantra',
+    'kn.meaning': 'What Durga Puja means',
+    'kn.history': 'History in Bengal',
+    'kn.home': 'Puja at home',
+    'kn.navratri': 'Navratri',
+    'kn.bhog': 'Bhog and pujo food',
+    'kn.wishes': 'Bijoya wishes',
   },
   bn: {
 
@@ -851,6 +861,16 @@ export const STR = {
     'del.confirm': 'সব মুছে দেবে? তোমার স্টেপ, চেক-ইন, খাওয়াদাওয়া, রেটিং, ছবি, নাম আর নম্বর এই ফোন আর আমাদের সার্ভার থেকে মুছে যাবে, অ্যাকাউন্টও (গেস্ট বা Google) মুছে যাবে। এটা আর ফেরানো যাবে না।',
     'del.failed': 'সার্ভারে পৌঁছনো গেল না, তাই কিছু মোছা হয়নি। নেট এলে আবার চেষ্টা করো।',
     'del.policy': 'প্রাইভেসি পলিসি',
+    'kn.title': 'পুজোকে জানো',
+    'kn.sub': 'আচার, মন্ত্র আর গল্প, দিনে দিনে',
+    'kn.rituals': 'দিনে দিনে পুজোর আচার',
+    'kn.anjali': 'অঞ্জলির মন্ত্র',
+    'kn.meaning': 'দুর্গাপুজোর তাৎপর্য',
+    'kn.history': 'বাংলায় পুজোর ইতিহাস',
+    'kn.home': 'বাড়িতে পুজো',
+    'kn.navratri': 'নবরাত্রি',
+    'kn.bhog': 'ভোগ আর পুজোর খাওয়া',
+    'kn.wishes': 'বিজয়ার শুভেচ্ছা',
   },
 };
 STR.hi = HI;

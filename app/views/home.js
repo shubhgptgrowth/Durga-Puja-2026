@@ -158,11 +158,20 @@ function render() {
       <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
+    <section class="section"><div class="section-head"><div><h2>${t('kn.title')}</h2><p class="sub">${t('kn.sub')}</p></div><a class="link-btn" href="durga-puja/">${t('h.seeAll')}</a></div>
+      <div class="learn">${LEARN.map(([path, key, em]) => `<a class="learn-card" href="${path}"><span aria-hidden="true">${em}</span><b>${t('kn.' + key)}</b></a>`).join('')}</div></section>
     <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')} · <a href="privacy.html">${t('del.policy')}</a></p>
 `;
 
   wire(el);
 }
+
+/* "Know your pujo": links to the guide's articles (static pages, also what search engines index). */
+const LEARN = [
+  ['durga-puja/rituals/', 'rituals', '🪔'], ['durga-puja/rituals/pushpanjali-mantra/', 'anjali', '🌺'], ['durga-puja/what-is-durga-puja/', 'meaning', '🔱'],
+  ['durga-puja/history/', 'history', '📜'], ['durga-puja/at-home/', 'home', '🏠'], ['navratri/', 'navratri', '✨'],
+  ['durga-puja/food-and-bhog/', 'bhog', '🍛'], ['durga-puja/bijoya-dashami-wishes/', 'wishes', '💌'],
+];
 
 function wire(el) {
   el.onclick = (e) => {

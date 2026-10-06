@@ -25,6 +25,8 @@ jobs:
   build:
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.seo.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,7 +39,23 @@ jobs:
           python scripts/site.py check
       # Crawlable guide pages, sitemap, robots.txt and llms.txt for search and AI answer engines (docs/product/SEO.md)
       - name: Guide pages for search and AI crawlers
-        run: python scripts/build_seo.py --out app
+        id: seo
+        run: |
+          python scripts/build_seo.py --out app
+          # Pages that changed since the live build (by content hash), for IndexNow after the deploy
+          site=$(python -c "import json;print(json.load(open('site.json'))['url'])")
+          curl -fsS "${site}seo-manifest.json?cb=$RANDOM" -o /tmp/live-manifest.json || echo '{}' > /tmp/live-manifest.json
+          python - <<'PY' > /tmp/changed.txt
+          import json
+          try:
+              old = json.load(open("/tmp/live-manifest.json"))
+          except ValueError:
+              old = {}
+          new = json.load(open("app/seo-manifest.json"))
+          print("\n".join(u for u, h in new.items() if old.get(u) != h))
+          PY
+          echo "changed pages: $(grep -c . /tmp/changed.txt || true)"
+          { echo 'changed<<EOF_URLS'; cat /tmp/changed.txt; echo 'EOF_URLS'; } >> "$GITHUB_OUTPUT"
       # The marketing content kit (docs/marketing/PLAN.md) is published at /kit/. It never blocks the app deploy.
       - uses: actions/setup-node@v4
         with:
@@ -149,7 +167,7 @@ jobs:
   verify:
     # Smoke-check the live site: shell, data, service worker and manifest are served,
     # and the published guide.json is the version that was just built.
-    needs: deploy
+    needs: [build, deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -174,7 +192,7 @@ jobs:
             code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${p}")
             echo "$code /${p}"; [ "$code" = 200 ] || exit 1
           done
-          curl -fsS "$SITE" | grep -q '<title>Pujo Parikrama 2026</title>'
+          curl -fsS "$SITE" | grep -q '<title>[^<]*Pujo Parikrama</title>'
           echo "Live: $SITE (data v$expected)"
           file=$(curl -fsS "${SITE}tiles/kolkata.json?cb=$RANDOM" | python -c "import json,sys;print(json.load(sys.stdin).get('file') or '')" || true)
           if [ -n "$file" ]; then
@@ -185,7 +203,8 @@ jobs:
             echo "::warning::No vector tiles published; the map is on raster tiles."
           fi
           # Crawlable guide: sitemap, robots, llms.txt, the hub and one pandal page, with its structured data
-          for p in sitemap.xml robots.txt llms.txt llms-full.txt guide/ guide/dates/ "guide/pandals/$(python -c "import json;print(json.load(open('app/data/guide.json'))['pandals'][0]['id'])")/"; do
+          key=$(python -c "import json;print(json.load(open('site.json')).get('indexnow_key',''))")
+          for p in sitemap.xml robots.txt llms.txt llms-full.txt durga-puja/ durga-puja/index.md durga-puja/rituals/ navratri/ ${key:+$key.txt} guide/ guide/dates/ "guide/pandals/$(python -c "import json;print(json.load(open('app/data/guide.json'))['pandals'][0]['id'])")/"; do
             code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${p}?cb=$RANDOM")
             echo "$code /${p}"; [ "$code" = 200 ] || { echo "::error::/${p} not served"; exit 1; }
           done
@@ -208,3 +227,20 @@ jobs:
           code=$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS -H "Origin: $(python -c "import json,urllib.parse as u;p=u.urlparse(json.load(open('site.json'))['url']);print(p.scheme+'://'+p.netloc)")" \
             -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: apikey,authorization,content-type" "$url/rest/v1/rpc/record_visit")
           echo "CORS preflight from the site origin: $code"; [ "${code:0:1}" = 2 ] || exit 1
+      - name: Tell IndexNow (Bing, ChatGPT search, Copilot, Yandex…) which pages changed
+        continue-on-error: true
+        env:
+          CHANGED: ${{ needs.build.outputs.changed }}
+        run: |
+          key=$(python -c "import json;print(json.load(open('site.json')).get('indexnow_key',''))")
+          [ -n "$key" ] && [ -n "$CHANGED" ] || { echo "Nothing to announce."; exit 0; }
+          python - "$key" <<'PY' > /tmp/indexnow.json
+          import json, os, sys, urllib.parse
+          site = json.load(open("site.json"))["url"]
+          urls = [u for u in os.environ["CHANGED"].split() if u.startswith(site)][:10000]
+          print(json.dumps({"host": urllib.parse.urlparse(site).netloc, "key": sys.argv[1], "keyLocation": f"{site}{sys.argv[1]}.txt", "urlList": urls}))
+          PY
+          n=$(python -c "import json;print(len(json.load(open('/tmp/indexnow.json'))['urlList']))")
+          code=$(curl -s -o /tmp/indexnow.out -w '%{http_code}' -X POST -H 'Content-Type: application/json; charset=utf-8' --data @/tmp/indexnow.json https://api.indexnow.org/indexnow)
+          echo "IndexNow: $n changed URLs → HTTP $code"; cat /tmp/indexnow.out; echo
+          case "$code" in 200|202) echo "::notice::IndexNow told about $n changed pages";; *) echo "::warning::IndexNow returned $code";; esac

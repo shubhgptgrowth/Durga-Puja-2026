@@ -22,93 +22,21 @@ numbers are estimates. Stdlib only.
     python scripts/build_seo.py --out /tmp/seo   # anywhere else, for a look
 """
 import argparse
-import html
 import json
 import re
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
+from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock, cost2, crowd_word, esc, hrange,  # noqa: F401
+                        jsonld, km, nice_date, rupees)
+from seo.knowledge import SECTIONS, KnowledgeMixin
+
 ROOT = Path(__file__).resolve().parent.parent
-NAME = "Pujo Parikrama"
 
-TAGS = {
-    "heritage": "heritage puja", "state-art": "state-of-the-art pandal", "neighbourhood": "neighbourhood puja",
-    "artisan": "artisan work", "lake": "lakeside setting", "blockbuster": "blockbuster crowd-puller", "bonedi": "bonedi bari (aristocratic family) puja",
-    "traditional": "traditional idol", "lights": "light work", "theme": "theme pandal", "grand": "grand scale", "eco": "eco-friendly theme",
-    "art": "art installation", "replica": "replica pandal", "fair": "puja fair (mela)", "adda": "adda spot",
-}
-FOOD_TYPE = {"street": "street food stall", "sweets": "sweet shop", "drinks": "drinks and snacks stop", "cabin": "old Kolkata cabin", "restaurant": "restaurant"}
-FOR_TWO = {"street": [150, 250, 400], "sweets": [150, 300, 500], "drinks": [120, 250, 400], "cabin": [300, 500, 800], "restaurant": [500, 1000, 1800]}
-LINE = {"blue": "Blue Line", "green": "Green Line (East–West Metro)", "purple": "Purple Line", "orange": "Orange Line"}
-CAR = {"avoid": "Avoid driving: the lanes are closed to cars most evenings.", "limited": "Driving is possible but parking is scarce; come by metro if you can.", "ok": "Driving is manageable; use the parking listed below."}
-CROWD = [(85, "extremely crowded"), (65, "very crowded"), (45, "busy"), (25, "moderate"), (0, "quiet")]
-MAIN_DAYS = ["panchami", "shashthi", "saptami", "ashtami", "navami", "dashami"]
-
-
-def esc(s):
-    return html.escape(str(s if s is not None else ""), quote=True)
-
-
-def ampm(h):
-    h = int(h) % 24
-    return "12 am" if h == 0 else "12 pm" if h == 12 else f"{h} am" if h < 12 else f"{h - 12} pm"
-
-
-def hrange(hours):
-    """[5, 6] -> '5–7 am'; [23, 0] -> '11 pm–1 am'; separate runs joined with commas."""
-    hs, runs = list(hours), []
-    for h in hs:
-        if runs and (runs[-1][1] + 1) % 24 == h:
-            runs[-1][1] = h
-        else:
-            runs.append([h, h])
-    out = []
-    for a, b in runs:
-        x, y = ampm(a), ampm(b + 1)
-        out.append(f"{x.split()[0]}–{y}" if x.split()[1] == y.split()[1] else f"{x}–{y}")
-    return ", ".join(out)
-
-
-def clock(t):
-    h, m = map(int, t.split(":"))
-    s = ampm(h)
-    return s if m == 0 else s.replace(" ", f":{m:02d} ")
-
-
-def crowd_word(c):
-    return next(w for lim, w in CROWD if c >= lim)
-
-
-def nice_date(d, year=False):
-    x = date.fromisoformat(d)
-    return f"{x.day} {x.strftime('%B')}" + (f" {x.year}" if year else "") + f" ({x.strftime('%A')})"
-
-
-def cost2(f):
-    return f.get("cost2") or (FOR_TWO.get(f["type"]) or FOR_TWO["restaurant"])[min(max(f.get("price") or 2, 1), 3) - 1]
-
-
-def rupees(n):
-    s = str(int(n))
-    if len(s) > 3:
-        head, tail = s[:-3], s[-3:]
-        head = re.sub(r"(\d)(?=(\d\d)+$)", r"\1,", head)
-        s = head + "," + tail
-    return "₹" + s
-
-
-def km(m):
-    return f"{m / 1000:.1f} km" if m >= 1000 else f"{int(m)} m"
-
-
-def jsonld(obj):
-    return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
-
-
-class Site:
-    def __init__(self, g, base, out, verify=""):
-        self.g, self.base, self.out = g, base.rstrip("/") + "/", Path(out)
+class Site(KnowledgeMixin):
+    def __init__(self, g, base, out, verify="", strict=True):
+        self.g, self.base, self.out, self.strict = g, base.rstrip("/") + "/", Path(out), strict
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
         self.meta = g["meta"]
         self.year = self.meta["year"]
@@ -121,6 +49,7 @@ class Site:
         self.park = {p["id"]: p for p in g["parking"]}
         self.trail = {t["id"]: t for t in g["itineraries"]}
         self.pages = []   # (path, title, summary, priority)
+        self.page_images, self.page_modified = {}, {}
         self.full = []    # markdown blocks for llms-full.txt
         self.start, self.end = self.days["panchami"]["date"], self.days["dashami"]["date"]
 
@@ -132,7 +61,8 @@ class Site:
         hf = self.meta["model"]["hour_factors"]
         return min(100, round(p["crowd_base"] * 20 * self.days[day]["factor"] * hf[h]))
 
-    def page(self, path, title, desc, body, *, ld=(), crumbs=(), priority=0.6, summary=None, app_link=""):
+    def page(self, path, title, desc, body, *, ld=(), crumbs=(), priority=0.6, summary=None, app_link="", note=None, modified=None,
+             head_extra="", images=()):
         """Write one page; `path` like 'guide/pandals/bagbazar/' (always a folder with index.html)."""
         depth = path.count("/")
         up = "../" * depth
@@ -156,22 +86,23 @@ class Site:
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
 <meta property="og:image" content="{esc(self.url('icons/og.png'))}">
-<meta property="article:modified_time" content="{self.updated}">
+<meta property="article:modified_time" content="{modified or self.updated}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{up}icons/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{up}guide/guide.css">
+<link rel="stylesheet" href="{up}guide/guide.css">{head_extra}
 {jsonld(crumb_ld)}
 {''.join(jsonld(x) for x in ld)}
 </head>
 <body>
-<header class="top"><a class="brand" href="{up}guide/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME} {self.year}</a><a class="open" href="{up}">Open app</a></header>
+<header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
+<nav class="sections" aria-label="Sections"><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/at-home/">At home</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
 {body}
 {cta}
-<p class="updated">Last updated <time datetime="{self.updated}">{nice_date(self.updated, True)}</time>. {esc(self.meta['disclaimer'])} Crowd levels and best times are estimates from {NAME}'s crowd model (popularity, day and hour), not live counts. Cite as: “{NAME} {self.year}, {esc(canonical)}”.</p>
+<p class="updated">{note or self.place_note()} Cite as: “{NAME}, {esc(canonical)}”.</p>
 </main>
-<footer><a href="{up}guide/">Durga Puja {self.year} guide</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}llms.txt">llms.txt</a></footer>
+<footer><a href="{up}durga-puja/">Durga Puja guide</a> · <a href="{up}durga-puja/rituals/">Rituals day by day</a> · <a href="{up}navratri/">Navratri</a> · <a href="{up}durga-puja/glossary/">Glossary</a> · <a href="{up}guide/">Kolkata pandals {self.year}</a> · <a href="{up}guide/dates/">Dates</a> · <a href="{up}privacy.html">Privacy</a> · <a href="{up}llms.txt">llms.txt</a></footer>
 </body>
 </html>
 """
@@ -179,6 +110,18 @@ class Site:
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(doc, encoding="utf-8")
         self.pages.append((path, title, summary or desc, priority))
+        self.page_images[path] = list(images)
+        self.page_modified[path] = modified or self.updated
+
+    def day_link(self, d, up):
+        """A puja day's name, linked to its rituals article when there is one."""
+        path = f"durga-puja/rituals/{d}/"
+        name = esc(self.days[d]["name"])
+        return f'<a href="{up}{path}">{name}</a>' if path in getattr(self, "by_path", {}) else name
+
+    def place_note(self):
+        return (f"Last updated <time datetime='{self.updated}'>{nice_date(self.updated, True)}</time>. {esc(self.meta['disclaimer'])} "
+                f"Crowd levels and best times are estimates from {NAME}'s crowd model (popularity, day and hour), not live counts.")
 
     def faq(self, qa):
         ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -231,7 +174,7 @@ class Site:
                 ("Driving", esc(CAR.get(z.get("car_advisory"), ""))) if z.get("car_advisory") else None]
         facts = "<dl class='facts'>" + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in filter(None, rows)) + "</dl>"
         days_tbl = "<table class='days'><thead><tr><th>Day</th><th>Date</th><th>Quietest hours</th><th>At 8 pm</th></tr></thead><tbody>" + "".join(
-            f"<tr><td>{esc(self.days[d]['name'])}</td><td>{nice_date(self.days[d]['date'])}</td><td>{hrange(quiet[d])}</td><td>{crowd_word(self.hour_crowd(p, d, 20))}</td></tr>" for d in MAIN_DAYS) + "</tbody></table>"
+            f"<tr><td>{self.day_link(d, up)}</td><td>{nice_date(self.days[d]['date'])}</td><td>{hrange(quiet[d])}</td><td>{crowd_word(self.hour_crowd(p, d, 20))}</td></tr>" for d in MAIN_DAYS) + "</tbody></table>"
         food_html = "<ul>" + "".join(f"<li>{self.link_food(x['id'], up)}: {esc(', '.join(self.food[x['id']]['dishes'][:3]))} · {x['walk_min']} min walk</li>" for x in foods) + "</ul>" if foods else "<p>No eateries listed within walking distance.</p>"
         park_html = "<ul>" + "".join(f"<li>{esc(self.park[x['id']]['name'])} · {km(x['distance_m'])}, {x['walk_min']} min walk{(' · ' + esc(self.park[x['id']].get('rate_hint'))) if self.park[x['id']].get('rate_hint') else ''}</li>" for x in parks) + "</ul>" if parks else "<p>No parking listed nearby; come by metro.</p>"
         near_html = ", ".join(self.link_pandal(q, up) for q in same)
@@ -275,7 +218,7 @@ class Site:
         desc = f"{p['name']}, {z['name']}: best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}."
         self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: timings, best time, how to reach | {NAME}", desc, body,
                   ld=(place, event, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (p["name"], f"guide/pandals/{p['id']}/")),
-                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}")
+                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs)
         self.full.append(f"### {p['name']} ({z['name']})\n{re.sub(r'<[^>]+>', '', lead)}\nKnown for: {known}. Food nearby: {', '.join(self.food[x['id']]['name'] for x in foods) or 'none listed'}. Page: {self.url('guide/pandals/' + p['id'] + '/')}\n")
 
     # ------------------------------------------------------------------ food
@@ -332,7 +275,7 @@ class Site:
         desc = f"{f['name']} ({z['name']}, Kolkata): {', '.join(f['dishes'][:3])}. About {rupees(c2)} for two; pandals nearby for Durga Puja {self.year}."
         self.page(f"guide/food/{f['id']}/", f"{f['name']}, Kolkata: menu highlights, cost for two, timings | {NAME}", desc, body,
                   ld=(rest, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (f["name"], f"guide/food/{f['id']}/")),
-                  priority=0.5, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={f['id']}")
+                  priority=0.5, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={f['id']}", images=imgs)
         self.full.append(f"### {f['name']} ({z['name']}): eatery\n{re.sub(r'<[^>]+>', '', lead)}\nPage: {self.url('guide/food/' + f['id'] + '/')}\n")
 
     # ------------------------------------------------------------------ area
@@ -397,7 +340,7 @@ class Site:
 
     # ------------------------------------------------------------------ dates, parking, hub
     def dates_page(self):
-        rows = "".join(f"<tr><td>{esc(d['name'])} ({esc(d['name_bn'])})</td><td>{nice_date(d['date'], True)}</td><td>{'' if d['id'] == 'mahalaya' else crowd_word(d['factor'] * 70)}</td></tr>" for d in self.meta["days"])
+        rows = "".join(f"<tr><td>{self.day_link(d['id'], '../../')} ({esc(d['name_bn'])})</td><td>{nice_date(d['date'], True)}</td><td>{'' if d['id'] == 'mahalaya' else crowd_word(d['factor'] * 70)}</td></tr>" for d in self.meta["days"])
         a = self.days["ashtami"]
         lead = (f"Durga Puja {self.year} in Kolkata runs from <b>Panchami, {nice_date(self.start, True)}</b>, to <b>Bijoya Dashami, {nice_date(self.end, True)}</b>. "
                 f"Mahalaya, which opens Debi Paksha, falls on {nice_date(self.days['mahalaya']['date'], True)}. The main days are Saptami ({nice_date(self.days['saptami']['date'])}), "
@@ -461,7 +404,7 @@ class Site:
 {tops}
 <h2>Ready-made trails</h2>
 {trails}
-<p><a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a></p>
+<p><a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -473,8 +416,11 @@ class Site:
     def write_root_files(self):
         o = self.out
         urls = [("", 1.0)] + [(p, pr) for p, _, _, pr in self.pages]
-        sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-        sm += [f"<url><loc>{xml_escape(self.url(p))}</loc><lastmod>{self.updated}</lastmod><priority>{pr:.1f}</priority></url>" for p, pr in urls]
+        sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+        sm += [f"<url><loc>{xml_escape(self.url(p))}</loc><lastmod>{self.page_modified.get(p, self.updated)}</lastmod><priority>{pr:.1f}</priority>"
+               + "".join(f"<image:image><image:loc>{xml_escape(i)}</image:loc></image:image>" for i in self.page_images.get(p, []))
+               + "</url>" for p, pr in urls]
         sm.append("</urlset>")
         (o / "sitemap.xml").write_text("\n".join(sm) + "\n", encoding="utf-8")
         (o / "robots.txt").write_text(
@@ -486,13 +432,16 @@ class Site:
             f"Sitemap: {self.url('sitemap.xml')}\n", encoding="utf-8")
         pandal_links = "\n".join(f"- [{p['name']}]({self.url('guide/pandals/' + p['id'] + '/')}): {self.zone[p['zone']]['name']}. {p['highlight']}"
                                  for p in sorted(self.g["pandals"], key=lambda p: -p["popularity"]))
-        llms = f"""# {NAME}: Kolkata Durga Puja {self.year} guide
+        llms = f"""# {NAME}: the Durga Puja guide
 
-> {self.hub_lead}
+> {self.site_summary}
 
-Facts here come from a curated dataset updated {self.updated}. Crowd levels and best times are model estimates (popularity × day × hour), not live counts. Cite as "{NAME} {self.year}" with the page link.
+Articles are written by the {NAME} team from the sources each one lists; practices vary by family, region and panjika. Kolkata facts come from a curated dataset updated {self.updated}; crowd levels and best times there are model estimates, not live counts. Cite as "{NAME}" with the page link. Every article has a plain Markdown copy (the .md links below).
 
-## Key pages
+## Durga Puja and Navratri: rituals, meaning, history, how-to
+{self.llms_articles()}
+
+## Kolkata {self.year}: key pages
 - [Kolkata Durga Puja {self.year} guide]({self.url('guide/')}): areas, most-visited pandals, trails, FAQ
 - [Durga Puja {self.year} dates]({self.url('guide/dates/')}): Mahalaya {nice_date(self.days['mahalaya']['date'], True)}; Panchami {nice_date(self.start, True)} to Dashami {nice_date(self.end, True)}
 - [Parking and park & ride]({self.url('guide/parking/')})
@@ -513,8 +462,37 @@ Facts here come from a curated dataset updated {self.updated}. Crowd levels and 
 - [Privacy policy]({self.url('privacy.html')})
 """
         (o / "llms.txt").write_text(llms, encoding="utf-8")
-        full = f"# {NAME}: Kolkata Durga Puja {self.year}, full guide\n\n{self.hub_lead}\n\nUpdated {self.updated}. {self.meta['disclaimer']} Crowd levels are model estimates.\n\n" + "\n".join(self.full)
+        full = f"# {NAME}: the Durga Puja guide, full text\n\n{self.site_summary}\n\nUpdated {self.updated}. {self.meta['disclaimer']} Crowd levels are model estimates.\n\n" + "\n".join(self.full)
         (o / "llms-full.txt").write_text(full, encoding="utf-8")
+
+    @property
+    def site_summary(self):
+        return (f"{NAME} is a free guide to Durga Puja: what it means, its history in Bengal, the rituals of each day from Mahalaya "
+                f"to Bijoya Dashami, mantras, how to do the puja at home, Navratri, food and greetings, and a live Kolkata {self.year} guide "
+                f"to {len(self.g['pandals'])} pandals with the best time to visit, metro routes, food and parking. Durga Puja {self.year} runs from "
+                f"Panchami, {nice_date(self.start, True)}, to Bijoya Dashami, {nice_date(self.end, True)}.")
+
+    def llms_articles(self):
+        rank = {s: i for i, s in enumerate(SECTIONS)}
+        arts = sorted(self.articles, key=lambda a: (rank.get(a.section, len(rank)), a.order, a.path))
+        return "\n".join(f"- [{a.label}]({self.url(a.path + 'index.md')}): {a.desc}" for a in arts)
+
+    def write_404(self):
+        """GitHub Pages serves 404.html for any missing path; give lost visitors (and crawlers) somewhere to go."""
+        links = "".join(f'<li><a href="{self.url(p)}">{esc(n)}</a></li>' for n, p in (("Durga Puja: the complete guide", "durga-puja/"), ("Rituals day by day", "durga-puja/rituals/"),
+                        ("Navratri", "navratri/"), ("Kolkata pandals " + str(self.year), "guide/"), ("Durga Puja dates", "guide/dates/"), ("Open the app", "")))
+        doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | {NAME}</title><meta name="robots" content="noindex"><link rel="stylesheet" href="{self.url('guide/guide.css')}"></head>
+<body><header class="top"><a class="brand" href="{self.url('durga-puja/')}"><img src="{self.url('icons/icon-192.png')}" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{self.base}">Open app</a></header>
+<main><h1>This page has gone pandal hopping</h1><p class="lead">We couldn't find that page. Try one of these:</p><ul>{links}</ul></main></body></html>
+"""
+        (self.out / "404.html").write_text(doc, encoding="utf-8")
+
+    def write_manifest(self):
+        """Content hash of every page, published at seo-manifest.json; the deploy diffs it to tell IndexNow what changed."""
+        import hashlib
+        pages = {self.url(p): hashlib.sha1((self.out / p / "index.html").read_bytes()).hexdigest()[:16] for p, *_ in self.pages}
+        (self.out / "seo-manifest.json").write_text(json.dumps(pages, indent=0, sort_keys=True), encoding="utf-8")
 
     def write_index_block(self):
         """A plain-HTML summary in app/index.html, for crawlers that don't run JavaScript. The app removes it on boot."""
@@ -527,8 +505,11 @@ Facts here come from a curated dataset updated {self.updated}. Crowd levels and 
             return
         areas = " · ".join(f'<a href="guide/areas/{z["id"]}/">{esc(z["name"])}</a>' for z in self.g["zones"])
         top = " · ".join(f'<a href="guide/pandals/{p["id"]}/">{esc(p["name"])}</a>' for p in sorted(self.g["pandals"], key=lambda p: -p["popularity"])[:16])
-        block = (f'{a}<section id="seo-static" class="seo-static"><h1>Kolkata Durga Puja {self.year} guide</h1><p>{esc(self.hub_lead)}</p>'
-                 f'<p><a href="guide/">Read the full guide</a> · <a href="guide/dates/">Durga Puja {self.year} dates</a> · <a href="guide/parking/">Parking</a></p>'
+        learn = " · ".join(f'<a href="{a.path}">{esc(a.label)}</a>' for a in sorted(self.articles, key=lambda a: (a.section != "Rituals", a.order))[:14])
+        block = (f'{a}<section id="seo-static" class="seo-static"><h1>Durga Puja {self.year}: the complete guide</h1><p>{esc(self.site_summary)}</p>'
+                 f'<p><a href="durga-puja/">Durga Puja: rituals, meaning and history</a> · <a href="guide/">Kolkata pandal guide</a> · '
+                 f'<a href="guide/dates/">Durga Puja {self.year} dates</a> · <a href="navratri/">Navratri</a> · <a href="guide/parking/">Parking</a></p>'
+                 f'<h2>Learn about Durga Puja</h2><p>{learn}</p>'
                  f'<h2>Areas</h2><p>{areas}</p><h2>Popular pandals</h2><p>{top}</p></section>{jsonld(self.site_ld())}{b}')
         s = s[:s.index(a)] + block + s[s.index(b) + len(b):]
         s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{self.base}">' + self.verify, s, count=1)
@@ -536,13 +517,16 @@ Facts here come from a curated dataset updated {self.updated}. Crowd levels and 
 
     def site_ld(self):
         return {"@context": "https://schema.org", "@graph": [
-            {"@type": "WebSite", "@id": self.base + "#site", "name": NAME, "url": self.base, "inLanguage": ["en", "bn", "hi"],
-             "description": f"Kolkata Durga Puja {self.year} pandal-hopping guide."},
+            {"@type": "WebSite", "@id": self.base + "#site", "name": NAME, "alternateName": "Pujo Parikrama Durga Puja guide", "url": self.base,
+             "inLanguage": ["en", "bn", "hi"], "description": self.site_summary, "publisher": {"@id": self.base + "#org"}},
+            {"@type": "Organization", "@id": self.base + "#org", "name": NAME, "url": self.base, "logo": self.url("icons/icon-512.png"),
+             "email": "workdesk94@gmail.com"},
             {"@type": "WebApplication", "name": f"{NAME} {self.year}", "url": self.base, "applicationCategory": "TravelApplication",
              "operatingSystem": "Any (web browser)", "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"},
-             "inLanguage": ["en", "bn", "hi"], "description": self.hub_lead}]}
+             "inLanguage": ["en", "bn", "hi"], "description": self.site_summary}]}
 
     def build(self):
+        self.load_articles()   # first, so place pages can link to the ritual articles
         for p in self.g["pandals"]:
             self.pandal_page(p)
         for f in self.g["food"]:
@@ -554,10 +538,20 @@ Facts here come from a curated dataset updated {self.updated}. Crowd levels and 
         self.dates_page()
         self.parking_page()
         self.hub_page()
+        for a in self.articles:
+            self.article_page(a)
+        bad = self.check_article_links()
+        if bad:
+            msg = "Broken links in content/knowledge:\n  " + "\n  ".join(bad)
+            if self.strict:
+                raise SystemExit(msg)
+            print("warning: " + msg)
         css = ROOT / "scripts" / "seo" / "guide.css"
         (self.out / "guide" / "guide.css").write_text(css.read_text(encoding="utf-8"), encoding="utf-8")
         self.write_root_files()
         self.write_index_block()
+        self.write_404()
+        self.write_manifest()
         return len(self.pages)
 
 
@@ -565,10 +559,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT / "app"))
     ap.add_argument("--guide", default=str(ROOT / "app" / "data" / "guide.json"))
+    ap.add_argument("--preview", action="store_true", help="warn about broken article links instead of failing (drafting only)")
     a = ap.parse_args()
     g = json.loads(Path(a.guide).read_text(encoding="utf-8"))
     site = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
-    n = Site(g, site["url"], a.out, site.get("google_site_verification", "")).build()
+    n = Site(g, site["url"], a.out, site.get("google_site_verification", ""), strict=not a.preview).build()
     print(f"{n} pages + sitemap.xml, robots.txt, llms.txt, llms-full.txt → {a.out}")
 
 
