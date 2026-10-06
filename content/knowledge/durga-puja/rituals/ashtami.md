@@ -65,6 +65,12 @@ In many pujas, a young girl, usually before puberty, is worshipped as a living f
 
 Because it follows the lunar calendar, Sandhi Puja can fall at any hour, including late night or early morning, and on either calendar day. It depends on the tithi junction in the panjika for that year, so ask your puja committee or check a reliable local almanac rather than relying on a general time. The full story, including the Ramayana legend of the 108th lotus, is on our [Sandhi Puja page](/durga-puja/rituals/sandhi-puja/).
 
+## Ashtami evening
+
+After the morning rites, the day turns into the festival's biggest social occasion. Families eat together, visit relatives and set out in the late afternoon to see pandals. The evening **sandhya arati** is followed in many pujas by [dhunuchi naach](/durga-puja/rituals/dhunuchi-naach/), the dance with smoking incense burners, and cultural programmes. If Sandhi Puja falls at night that year, many people return to their neighbourhood puja for it.
+
+In family pujas, Ashtami may include other rites by custom, such as a *bhog* offering of special dishes or the worship of weapons and household instruments. These vary from family to family; the [bonedi bari pujas](/durga-puja/bonedi-bari-pujas/) page describes some of them.
+
 ## What people wear
 
 Ashtami is the day for the best new clothes of the puja. Many women wear a sari, often a silk or a traditional handloom, and many men wear a dhoti or a panjabi (kurta). Choose shoes you can slip off quickly at the altar and carry a small bag for flowers and prasad.

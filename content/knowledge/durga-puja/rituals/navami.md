@@ -63,6 +63,15 @@ The food is first offered to the goddess, after which it becomes prasad and is s
 
 Historically, *bali* (sacrifice), including animal sacrifice, was part of Durga Puja in some Bengali households and temples, most often at Sandhi Puja and on Navami. Over the last century most pujas have stopped the practice. Many now offer symbolic substitutes such as an **ash gourd** (*chalkumro*), **sugarcane** or **banana**, cut ritually in its place. The Ramakrishna Mission's pujas, for example, do not include animal sacrifice. A small number of older traditions still continue it where the law permits. Practices differ, and this page describes them without endorsing or judging any.
 
+## Joining the bhog queue
+
+If you would like to receive bhog at a community puja, a few things help:
+
+- Ask a volunteer when bhog will be served; it usually follows the midday puja, and the time depends on how long the rites take.
+- Some pujas give bhog only to residents or coupon holders, others to anyone in the queue. Respect whichever system is in use.
+- Bhog is often served on sal-leaf plates or in earthen cups. Eat it where indicated and dispose of the plate in the bins provided.
+- Take only what you will eat; bhog is prasad, and wasting it is frowned on.
+
 ## The last night
 
 Navami evening's **sandhya arati** is often the most charged of the festival. Dhakis play with full force, and men and women dance with smoking clay incense burners in the [dhunuchi naach](/durga-puja/rituals/dhunuchi-naach/). Many pujas hold cultural programmes, and the streets stay full until very late, because tomorrow the goddess leaves. Bengalis often speak of a particular sadness on Navami night, the sense that the festival is ending.
