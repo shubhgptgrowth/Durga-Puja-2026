@@ -94,7 +94,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{up}icons/icon.svg" type="image/svg+xml">
 <link rel="preload" href="{up}guide/fonts/literata-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{up}guide/fonts/baloo-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{up}guide/fonts/fraunces-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{up}guide/guide.css">{head_extra}
 <script src="{up}guide/guide.js" defer></script>{self.ads_head() if ads else ""}
 {jsonld(crumb_ld)}
