@@ -165,6 +165,8 @@ def subtitle_png(path, bn, en, hook=None, end=None):
         fe = font("ExtraBold", 50)
         for ln in wrap(d, hook[1], fe, W - 160):
             outlined(d, ((W - d.textlength(ln, font=fe)) / 2, y + 8), ln, fe, fill=GOLD + (255,), stroke=5); y += 64
+    if hook:  # the hook already says it; a subtitle repeating it would crowd the first frame
+        bn = en = None
     y = 1360
     if bn:
         f = bnfont("HindSiliguri-Bold.ttf", 66)

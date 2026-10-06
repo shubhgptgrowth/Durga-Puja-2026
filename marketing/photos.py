@@ -170,10 +170,13 @@ class Library:
             rot = self.heroes[k % len(self.heroes):] + self.heroes[:k % len(self.heroes)] if self.heroes else []
             hero = take(cands + rot + self.general)
             attach(s, "photo", hero, "credit")
+            has_thumbs = sum(1 for it in items if isinstance(it, dict) and self.for_name(it.get("name", ""))) >= len(items) / 2
             for it in items:
                 if isinstance(it, dict) and it.get("name"):
                     own = self.for_name(it["name"])
                     ph = next((p for p in own if key(p) != key(hero or {})), own[0] if own else None)
+                    if not ph and has_thumbs:  # keep the rows consistent: a fitting pujo photo for a place we lack
+                        ph = take(self.topical(it["name"] + " " + str(it.get("meta", ""))) + rot[1:] + self.general)
                     if ph:
                         attach(it, "thumb", ph, "thumb_credit")
         return slides
