@@ -59,6 +59,107 @@
     });
   }
 
+
+  // Listen: reads the guide aloud with the phone's own voice (Web Speech API; nothing is recorded or sent anywhere)
+  var listenBtn = document.querySelector('[data-listen]');
+  if (listenBtn && post && 'speechSynthesis' in window && window.SpeechSynthesisUtterance) {
+    var synth = window.speechSynthesis, INDIC = /[ऀ-৿]/;
+    var voices = [], pickVoice = function (lang) {
+      var v = voices.filter(function (x) { return x.lang && x.lang.replace('_', '-').toLowerCase().indexOf(lang) === 0; });
+      return v.filter(function (x) { return /google|natural|enhanced|premium/i.test(x.name); })[0] || v[0] || null;
+    };
+    var loadVoices = function () { voices = synth.getVoices() || []; };
+    loadVoices(); if (synth.addEventListener) synth.addEventListener('voiceschanged', loadVoices);
+    listenBtn.hidden = false;
+
+    // What to read, in order: title, the short answer, then the body (skipping captions, credits, buttons and cards).
+    // Built on the first tap, once the phone's voices have loaded.
+    var blocks = [], build = function () {
+    var add = function (el, text, lang) { text = (text || '').replace(/\s+/g, ' ').trim(); if (text) blocks.push({ el: el, text: text, lang: lang }); };
+    var sentences = function (el, text, lang) {   // long paragraphs in sentence-sized pieces (some browsers stop after ~15 s)
+      var parts = text.match(/[^.!?]+[.!?]+["”’)]*\s*|[^.!?]+$/g) || [text], buf = '';
+      parts.forEach(function (x) { if ((buf + x).length > 220 && buf) { add(el, buf, lang); buf = ''; } buf += x; });
+      add(el, buf, lang);
+    };
+    add(post.querySelector('h1'), post.querySelector('h1').textContent);
+    var tl = post.querySelector('.tldr p'); if (tl) sentences(tl, tl.textContent);
+    var scope = post.querySelectorAll('.timeline li, .recipe-facts, .ingredients h2, .ingredients li, .box h2, .box li, #method, #steps, .steps li, .prose > h2, .prose > h3, .prose > p, .prose > ul > li, .prose > ol > li, .prose > blockquote, .prose > .callout, .prose .table, .glossary dt, .glossary dd, .faq h2, .faq details');
+    scope.forEach(function (el) {
+      if (el.matches('blockquote.verse')) {   // mantras: each line in its own script's voice, if the phone has one
+        el.querySelectorAll('p').forEach(function (pp) {
+          pp.innerHTML.split(/<br\s*\/?>/i).forEach(function (line) {
+            var t = line.replace(/<[^>]+>/g, '').trim();
+            if (!t) return;
+            if (INDIC.test(t)) { var bn = /[ঀ-৿]/.test(t) ? 'bn' : 'hi'; if (pickVoice(bn) || pickVoice('hi')) add(pp, t, pickVoice(bn) ? bn : 'hi'); }
+            else add(pp, t);
+          });
+        });
+        return;
+      }
+      if (el.matches('.faq details')) { add(el, el.querySelector('summary').textContent); var a = el.querySelector('p'); if (a) sentences(el, a.textContent); return; }
+      if (el.matches('.table')) { add(el, 'There is a table here; it is easier to read on screen.'); return; }
+      if (el.matches('.recipe-facts')) { add(el, Array.prototype.map.call(el.querySelectorAll('div'), function (d) { return d.querySelector('dt').textContent.replace(/[^\w\s]/g, '').trim() + ': ' + d.querySelector('dd').textContent; }).join('. ')); return; }
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('figure, .verse-tools, .thumb, small.hint').forEach(function (x) { x.remove(); });
+      sentences(el, clone.textContent);
+    });
+    };
+
+    // The player
+    var bar = document.createElement('div'); bar.className = 'player'; bar.hidden = true; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Listen');
+    bar.innerHTML = '<button type="button" data-a="prev" aria-label="Back">⏮</button><button type="button" data-a="play" class="pp" aria-label="Pause">⏸</button>' +
+      '<button type="button" data-a="next" aria-label="Forward">⏭</button><span class="pl-t"><b>Listening</b><span class="pl-n"></span></span>' +
+      '<button type="button" data-a="rate" class="rate" aria-label="Speed">1×</button><button type="button" data-a="close" aria-label="Stop">✕</button>' +
+      '<span class="pl-bar"><span></span></span>';
+    document.body.appendChild(bar);
+    var RATES = [1, 1.25, 1.5, 0.85], rate = store.get('listen:rate') || 1, i = 0, playing = false, current = null, fails = 0;
+    var ppBtn = bar.querySelector('.pp'), nEl = bar.querySelector('.pl-n'), fillEl = bar.querySelector('.pl-bar span'), rateBtn = bar.querySelector('.rate');
+    rateBtn.textContent = rate + '×';
+    var mark = function () {
+      document.querySelectorAll('.speaking').forEach(function (x) { x.classList.remove('speaking'); });
+      var b = blocks[i]; if (!b || !b.el) return;
+      b.el.classList.add('speaking');
+      var r = b.el.getBoundingClientRect();
+      if (r.top < 60 || r.bottom > innerHeight - 90) b.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      nEl.textContent = (i + 1) + ' of ' + blocks.length;
+      fillEl.style.width = ((i + 1) / blocks.length * 100) + '%';
+    };
+    var speak = function () {
+      synth.cancel();
+      if (i >= blocks.length) { stop(); return; }
+      var b = blocks[i], u = new SpeechSynthesisUtterance(b.text), v = pickVoice(b.lang || 'en-in') || pickVoice('en-gb') || pickVoice('en');
+      u.lang = v ? v.lang : (b.lang ? b.lang + '-IN' : 'en-IN'); try { if (v) u.voice = v; } catch (e) { /* lang alone picks a voice */ }
+      u.rate = rate; current = u;
+      u.onstart = function () { fails = 0; };
+      u.onend = function () { if (current === u && playing) { i++; speak(); } };
+      u.onerror = function (e) {
+        if (current !== u || !playing || e.error === 'interrupted' || e.error === 'canceled') return;
+        if (++fails >= 3) { stop(); listenBtn.innerHTML = 'Your browser can\u2019t read aloud here. Try Chrome or Safari, or install a text-to-speech voice.'; listenBtn.disabled = true; return; }
+        i++; speak();
+      };
+      mark(); synth.speak(u);
+    };
+    var play = function () { playing = true; bar.hidden = false; document.body.classList.add('listening'); ppBtn.textContent = '⏸'; ppBtn.setAttribute('aria-label', 'Pause'); speak(); };
+    var pause = function () { playing = false; current = null; synth.cancel(); ppBtn.textContent = '▶'; ppBtn.setAttribute('aria-label', 'Play'); };
+    var stop = function () { pause(); bar.hidden = true; document.body.classList.remove('listening'); document.querySelectorAll('.speaking').forEach(function (x) { x.classList.remove('speaking'); }); i = 0; };
+    listenBtn.addEventListener('click', function () { loadVoices(); if (!blocks.length) build(); if (!playing) { if (bar.hidden) i = 0; play(); } });
+    bar.addEventListener('click', function (e) {
+      var a = e.target.closest('button'); if (!a) return;
+      var act = a.dataset.a;
+      if (act === 'play') { playing ? pause() : play(); }
+      else if (act === 'prev') { i = Math.max(0, i - 1); if (playing) speak(); else mark(); }
+      else if (act === 'next') { i = Math.min(blocks.length - 1, i + 1); if (playing) speak(); else mark(); }
+      else if (act === 'rate') { rate = RATES[(RATES.indexOf(rate) + 1) % RATES.length]; a.textContent = rate + '×'; store.set('listen:rate', rate); if (playing) speak(); }
+      else if (act === 'close') stop();
+    });
+    // Tap a paragraph while listening to jump there
+    post.addEventListener('click', function (e) {
+      if (bar.hidden || e.target.closest('a, button, summary, input, label')) return;
+      for (var k = 0; k < blocks.length; k++) if (blocks[k].el && blocks[k].el.contains(e.target)) { i = k; if (playing) speak(); else mark(); return; }
+    });
+    addEventListener('pagehide', function () { synth.cancel(); });
+  }
+
   // Checklists: ticks are remembered on this device, per page
   var boxes = document.querySelectorAll('.checklist input[type=checkbox]');
   if (boxes.length) {

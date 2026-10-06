@@ -12,6 +12,7 @@ from .photos import DIR
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 STORIES = ROOT / "content" / "knowledge" / "stories.toml"
+AUDIO = ROOT / "app" / "audio"   # story music: <key>.mp3, credited in credits.json
 BOILERPLATE = ("<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;"
                "-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}"
                "@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}"
@@ -97,13 +98,20 @@ class StoriesMixin:
 <amp-story-grid-layer template="fill" class="shade"></amp-story-grid-layer>
 <amp-story-grid-layer template="vertical" class="txt">{kicker}<h2>{esc(p["heading"])}</h2><p>{esc(p["text"])}</p>{credit(p["image"])}</amp-story-grid-layer>
 {out}</amp-story-page>""")
+            music = s.get("music")
+            credits = json.loads((AUDIO / "credits.json").read_text(encoding="utf-8")) if (AUDIO / "credits.json").exists() else {}
+            if music and not ((AUDIO / f"{music}.mp3").exists() and music in credits):
+                music = None
+            mc = credits.get(music, {})
+            music_credit = (f'<p class="credit">Music: {esc(mc.get("title", "").replace("File:", "").rsplit(".", 1)[0])}, '
+                            f'{esc(mc.get("author", ""))}, {esc(mc.get("license", ""))}, Wikimedia Commons.</p>') if music else ""
             more = [x for x in self.stories if x is not s][:2]
             html.append(f"""<amp-story-page id="end">
 <amp-story-grid-layer template="vertical" class="end"><h2>Read the full guide</h2>
 <p>{esc(article.desc if article else s["dek"])}</p>
 <a class="btn" href="../../{s["article"]}">{esc(article.label if article else "Read more")} →</a>
 {"".join(f'<a class="more" href="../{x["slug"]}/">Next story: {esc(x["title"])}</a>' for x in more[:1])}
-<a class="more" href="../">All photo stories</a></amp-story-grid-layer>
+<a class="more" href="../">All photo stories</a>{music_credit}</amp-story-grid-layer>
 </amp-story-page>""")
             self.article_links.setdefault("stories", []).append(s["article"])
             images = [ph.url(k) for k in dict.fromkeys([s["cover"], *(p["image"] for p in pages)])]
@@ -132,7 +140,7 @@ class StoriesMixin:
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>
 </head>
 <body>
-<amp-story standalone title="{esc(s["title"])}" publisher="{NAME}" publisher-logo-src="{esc(self.url('icons/icon-192.png'))}"
+<amp-story standalone title="{esc(s["title"])}" publisher="{NAME}" publisher-logo-src="{esc(self.url('icons/icon-192.png'))}"{f' background-audio="../../audio/{music}.mp3"' if music else ""}
  poster-portrait-src="{esc(poster)}">
 {chr(10).join(html)}
 </amp-story>

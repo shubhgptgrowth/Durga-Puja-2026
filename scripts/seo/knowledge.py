@@ -218,7 +218,8 @@ class KnowledgeMixin:
         hub_path = next((x.path for x in self.articles if x.is_hub and x.section == a.section and x is not a), None)
         kicker = (f"<a class='kicker' href='{up}{hub_path}'>{esc(a.section)}</a>" if hub_path else f"<span class='kicker'>{esc(a.section)}</span>")
         byline = (f"<p class='byline'><img src='{up}icons/icon-192.png' alt='' width='28' height='28'><span><b>{NAME} team</b>"
-                  f"<span>{mins} min read · Updated <time datetime='{a.modified}'>{nice_date(a.modified, True).split(' (')[0]}</time></span></span></p>")
+                  f"<span>{mins} min read · Updated <time datetime='{a.modified}'>{nice_date(a.modified, True).split(' (')[0]}</time></span></span></p>"
+                  f"<button class='listen' type='button' data-listen hidden><span aria-hidden='true'>🎧</span> Listen to this guide <small>about {max(1, round(words / 150))} min</small></button>")
         text = share_text(a.h1, a.summary, url)
 
         # Photos and a "keep reading" card between sections, so long pages read in stages

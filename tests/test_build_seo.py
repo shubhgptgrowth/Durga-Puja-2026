@@ -183,7 +183,16 @@ class BuildSeoTest(unittest.TestCase):
                     if not href.endswith((".svg", ".png")):
                         self.assertTrue((f.parent / href / "index.html").resolve().exists(), href)
                 self.assertIn(f"{self.base}stories/{f.parent.name}/", sitemap)
-        self.assertIn("class='story-link'", (self.tmp / "durga-puja/rituals/ashtami/index.html").read_text(encoding="utf-8"))
+        import tomllib
+        credits = json.loads((Path(build_seo.ROOT) / "app/audio/credits.json").read_text(encoding="utf-8"))
+        for st in tomllib.loads((CONTENT / "stories.toml").read_text(encoding="utf-8"))["story"]:   # music, when chosen, plays and is credited
+            if st.get("music"):
+                html = (d / st["slug"] / "index.html").read_text(encoding="utf-8")
+                self.assertIn(f'background-audio="../../audio/{st["music"]}.mp3"', html)
+                self.assertIn(credits[st["music"]]["author"], html)
+        ashtami = (self.tmp / "durga-puja/rituals/ashtami/index.html").read_text(encoding="utf-8")
+        self.assertIn("class='story-link'", ashtami)
+        self.assertIn("data-listen hidden", ashtami)   # the read-aloud button (shown by guide.js where the browser can speak)
         self.assertIn("story-cards", (self.tmp / "stories/index.html").read_text(encoding="utf-8"))
 
     def test_articles(self):

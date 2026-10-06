@@ -300,6 +300,28 @@ blockquote p { margin: 4px 0; }
 .story-cards.strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
 .story-cards.strip li { flex: 0 0 150px; scroll-snap-align: start; }
 
+
+/* Listen: read-aloud player */
+.listen { display: inline-flex; align-items: center; gap: 8px; margin: 12px 0 0; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--brand);
+  background: var(--surface); color: var(--brand); font: 700 15px/1 var(--sans); cursor: pointer; }
+.listen small { font-weight: 500; color: var(--ink-3); }
+.listen:hover { background: var(--tint); }
+.player { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 30; display: flex; align-items: center; gap: 4px; padding: 8px 8px 12px;
+  max-width: 640px; margin: 0 auto; border-radius: 18px; background: #2A0712; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35); font-family: var(--sans); }
+.player[hidden] { display: none; }
+.player button { flex: none; width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 17px; cursor: pointer; }
+.player button:hover { background: rgba(255,255,255,.12); }
+.player .pp { width: 46px; height: 46px; background: var(--saffron); color: #2A0712; font-size: 18px; }
+.player .rate { width: auto; padding: 0 10px; border-radius: 999px; font: 700 13px var(--sans); border: 1px solid rgba(255,255,255,.3); height: 32px; }
+.pl-t { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.2; padding: 0 4px; }
+.pl-t b { font: 800 15px var(--display); color: #FDE68A; } .pl-n { font-size: 12px; opacity: .8; }
+.pl-bar { position: absolute; left: 18px; right: 18px; bottom: 5px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.18); overflow: hidden; }
+.pl-bar span { display: block; height: 100%; width: 0; background: var(--saffron); transition: width .3s; }
+.speaking { background: linear-gradient(transparent 0, rgba(251, 191, 36, .28) 0); border-radius: 6px; box-shadow: 0 0 0 6px rgba(251, 191, 36, .28); transition: background .2s; }
+body.listening .fab { display: none; }
+body.listening footer { padding-bottom: 120px; }
+@media print { .listen, .player { display: none !important; } }
+
 @media (min-width: 761px) {
   .prose { font-size: 19px; }
   .post h1 { margin-top: 10px; }
