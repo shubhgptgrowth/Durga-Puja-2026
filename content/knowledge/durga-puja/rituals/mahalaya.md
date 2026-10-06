@@ -73,6 +73,12 @@ From Mahalaya, the bright fortnight of the goddess runs through the puja days to
 
 Outside Bengal, the same new moon is followed by the start of [Navratri](/navratri/) with [ghatasthapana](/navratri/ghatasthapana/) in many regions.
 
+## How families spend the day
+
+Mahalaya is not a day of grand public ritual in most homes. A typical Bengali household might wake before dawn for the radio programme, send the men (and increasingly the women) of the family to the ghat or perform tarpan at home, and then spend the rest of the day quietly. Some families keep a vegetarian diet on Mahalaya out of respect for the ancestors; others cook a special meal. Many people buy their first puja clothes, or finish their shopping, in the days around it.
+
+The word *Mahalaya* is often explained as "great abode" or "great dwelling", referring to the goddess's coming, or to the ancestors' presence; interpretations differ. In everyday Bengali the word simply means the start of the pujo season, and "Mahalaya hoye gechhe" (Mahalaya has happened) is shorthand for "the festival is almost here".
+
 ## Planning for Mahalaya 2026
 
 - Tarpan starts early; reach the ghats around sunrise if you want to watch.

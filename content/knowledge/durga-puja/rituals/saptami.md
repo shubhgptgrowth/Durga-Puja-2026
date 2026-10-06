@@ -63,6 +63,12 @@ The Saptami puja follows, with offerings to Durga and to every deity of the imag
 
 The order of these rites, and whether some are done the evening before, varies by family tradition and the panjika followed.
 
+## Saptami at home and in family pujas
+
+In households that hold their own puja, Saptami morning is the busiest of the year in the kitchen and the thakur ghar (prayer room). Women of the family often prepare the offerings: fruit cut and arranged on brass plates, sweets, *naibedya* (uncooked offerings of rice, fruit and sweets) and the cooked bhog. Many families eat vegetarian food on the puja days until Dashami, though customs vary widely. If you are planning a puja at home, see [Durga Puja at home](/durga-puja/at-home/) and the [samagri list](/durga-puja/samagri-list/).
+
+Saptami is also when many Bengalis wear the first of their new puja clothes and begin visiting relatives and pandals in earnest.
+
 ## What to expect as a visitor
 
 - **Early morning:** the ghats and the procession routes in North Kolkata are lively from first light. Dress modestly, keep a respectful distance from the rites and ask before close-up photography.

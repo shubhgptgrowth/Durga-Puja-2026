@@ -61,6 +61,12 @@ For visitors, the moment many remember is the **unveiling**. In a number of Kolk
 
 In many Bengali families, mothers keep a fast or a restricted diet on this day for their children's wellbeing, connected with the goddess Shashthi, a guardian of children. Some eat no rice that day, some break the fast after worship with fruit and sweets. Customs differ, so follow your own family's practice.
 
+## What you will see and hear
+
+If you visit a pandal on Shashthi evening, look for the bel branch set up in a pot or on a small platform, often tied with red thread and surrounded by lamps, flowers and a kalash. The dhakis (drummers), who usually arrive from the districts of Bengal in the days before the puja, play for the bodhon, and the sound of the dhak becomes the soundtrack of the next five days. Read more on our [dhak and dhaki](/durga-puja/dhak-and-dhaki/) page.
+
+In old family pujas (*bonedi bari*) the rites often take place in the *thakur dalan*, the family's worship hall, and the household gathers to watch. In big community pujas the rites are usually quieter than the crowds outside suggest, and you may need to arrive early to see them. Check the [bonedi bari pujas](/durga-puja/bonedi-bari-pujas/) page for family pujas that welcome visitors.
+
 ## Panchami, the day before
 
 **Panchami** (Friday 16 October 2026) has no major rite of the main puja in most traditions, but in Kolkata it is the unofficial first night of the festival: many pandals are already lit and open, and those who want to avoid the heaviest crowds often go pandal hopping then.

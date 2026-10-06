@@ -73,7 +73,7 @@ Through the nineteenth century, barowari pujas spread across Bengal's towns. Sub
 
 In the early twentieth century, Kolkata saw the rise of the **sarbojanin** (for everyone) puja, organised by a neighbourhood committee and open to all regardless of caste, class or means. A puja in Bhowanipore in 1910 is frequently cited as the first sarbojanin puja in the city, and many famous committees trace their origins to the 1910s and 1920s.
 
-Among them is **[Bagbazar Sarbojanin](/guide/pandals/bagbazar/)** in north Kolkata, which traces its beginnings to 1919 and is still known for a traditional image and a large fair. Nearby, the potters' quarter of **Kumartuli** supplied images for the growing number of pujas; see [Kumartuli and idol making](/durga-puja/kumartuli-idol-making/) and visit [Kumartuli Park](/guide/pandals/kumartuli_park/).
+Among them is **[Bagbazar Sarbojanin](/guide/pandals/bagbazar/)** in north Kolkata, whose beginnings are usually dated to 1918 or 1919 (accounts differ) and which is still known for a traditional image and a large fair. Nearby, the potters' quarter of **Kumartuli** supplied images for the growing number of pujas; see [Kumartuli and idol making](/durga-puja/kumartuli-idol-making/) and visit [Kumartuli Park](/guide/pandals/kumartuli_park/).
 
 ## The nationalist era
 
