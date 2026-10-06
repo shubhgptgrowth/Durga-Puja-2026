@@ -615,22 +615,28 @@ def caption(c):
     cap = f"{c['caption_en']}\n\n{c['caption_bn']}\n\n{c['hashtags']}\n"
     if c.get("credits"):  # the CC licences of the photos ask for this
         cap += f"\n📷 Photos: {'; '.join(c['credits'])} (Wikimedia Commons)\n"
+    if c.get("ai_images"):
+        cap += "🤖 Some images are AI-generated.\n"
     return cap
 
 
 def add_photos(cs, out, g):
     """Real photos on every slide (marketing/photos.py), credited in the caption."""
-    from .photos import Library
+    from .photos import AI_CREDIT, COVERS, Library
     lib = Library(g)
+    keep = {"avoid-the-queue"}  # approved as it is in the 6 Oct review
     for i, c in enumerate(cs):
-        lib.dress(c["slides"], out, seed=i * 7)
-        cr = []
+        lib.dress(c["slides"], out, seed=i * 7, cover=COVERS.get(c["slug"]), ai=c["slug"] not in keep)
+        cr, ai = [], False
         for s in c["slides"]:
             for x in [s.get("credit")] + [it.get("thumb_credit") for it in s.get("items") or [] if isinstance(it, dict)]:
+                if x == AI_CREDIT:
+                    ai = True
+                    continue
                 x = (x or "").replace(" · Wikimedia Commons", "")
                 if x and x not in cr:
                     cr.append(x)
-        c["credits"] = cr
+        c["credits"], c["ai_images"] = cr, ai
 
 
 def build(out, g=None, photos=False):
