@@ -1,0 +1,186 @@
+# Photos for the knowledge articles, from Wikimedia Commons (free licences only: CC0, public domain, CC BY, CC BY-SA).
+#
+# Each [key] is one photo. `q` are Commons searches used to find candidates; `file` is the chosen Commons file;
+# `caption` is shown under the photo (and is its alt text). Articles use photos by key:
+#   image = "key"              (front matter) the photo at the top of the article, and its share preview
+#   images = ["key", "key"]    (front matter) photos placed between sections as the article goes on
+#
+# Workflow (Actions → article-photos):
+#   mode=candidates   numbered contact sheets for keys with no `file` yet → data/photo_candidates/<key>.jpg (+ .json)
+#   mode=pandals      contact sheets of the guide's own pandal photos (app/data/guide.json)
+#   mode=fetch        downloads every chosen `file` → app/img/guide/<key>.webp (1200 px) and <key>-600.webp,
+#                     credits → app/img/guide/photos.json; removes data/photo_candidates
+
+[mahalaya]
+q = ["Mahalaya tarpan", "Tarpan Ganga Mahalaya Kolkata", "Mahalaya Babughat"]
+
+[bodhon]
+q = ["Bodhon Durga Puja", "Durga Puja Shashthi bodhon", "Durga Puja eyes chokkhu daan"]
+
+[kola-bou]
+q = ["Kola Bou", "Nabapatrika", "Nabapatrika snan Durga Puja"]
+
+[pushpanjali]
+q = ["Pushpanjali Durga Puja", "Anjali Durga Puja", "Ashtami anjali Kolkata"]
+
+[sandhi-puja]
+q = ["Sandhi Puja", "Sandhi puja lamps", "108 lamps Durga Puja"]
+
+[kumari-puja]
+q = ["Kumari Puja", "Kumari Puja Belur Math", "Kumari puja girl"]
+
+[homa]
+q = ["Durga Puja hom yajna", "Durga Puja Navami yajna", "Hawan Durga Puja"]
+
+[sindoor-khela]
+q = ["Sindoor Khela", "Sindur khela", "Sindur Khela Durga Puja Bijoya Dashami"]
+
+[immersion]
+q = ["Durga Puja immersion Kolkata", "Durga idol immersion Babughat", "Durga visarjan Hooghly"]
+
+[dhunuchi]
+q = ["Dhunuchi dance", "Dhunuchi Naach", "Dhunuchi Durga Puja"]
+
+[dhaki]
+q = ["Dhaki Durga Puja", "Dhaki playing dhak", "Dhak drum Durga Puja"]
+
+[kumartuli]
+q = ["Kumortuli idol making", "Kumartuli artisan Durga idol", "Kumortuli clay idols"]
+
+[kumartuli-2]
+q = ["Kumortuli Durga idol unpainted", "Kumartuli straw clay idol", "Kumartuli idol painting"]
+
+[bhog]
+q = ["Durga Puja bhog", "Bhog Durga Puja khichuri", "Durga Puja bhog distribution"]
+
+[khichuri]
+q = ["Khichuri Bengali", "Bhuna khichuri", "Khichdi bhog"]
+
+[labra]
+q = ["Labra Bengali dish", "Labra mixed vegetable", "Bengali mixed vegetable curry"]
+
+[payesh]
+q = ["Payesh", "Bengali payesh rice pudding", "Kheer rice pudding"]
+
+[beguni]
+q = ["Beguni", "Beguni fritter", "Brinjal fritters Bengali"]
+
+[chutney]
+q = ["Tomato chutney Bengali", "Tomato khejur chutney", "Bengali chutney"]
+
+[narkel-naru]
+q = ["Narkel naru", "Narkel nadu", "Coconut ladoo"]
+
+[luchi]
+q = ["Luchi alur dom", "Luchi Bengali", "Luchi"]
+
+[pandal-art]
+q = ["Durga Puja theme pandal Kolkata", "Durga Puja pandal art", "Durga Puja pandal interior decoration"]
+
+[pandal-lights]
+q = ["Durga Puja lighting Kolkata", "Chandannagar lighting", "Durga Puja night lights pandal"]
+
+[crowd]
+q = ["Durga Puja crowd Kolkata", "Durga Puja pandal queue night", "Durga Puja Kolkata people"]
+
+[bonedi-bari]
+q = ["Sovabazar Rajbari Durga Puja", "Bonedi bari Durga Puja", "Thakur dalan Durga Puja"]
+
+[mahishasuramardini]
+q = ["Mahishasuramardini sculpture", "Durga slaying Mahishasura", "Mahishasuramardini Mahabalipuram"]
+
+[durga-painting]
+q = ["Kalighat painting Durga", "Durga painting Bengal 19th century", "Durga patachitra"]
+
+[history]
+q = ["Durga Puja Calcutta 19th century", "Durga Puja old photograph Calcutta", "Durga Puja 1890"]
+
+[abroad]
+q = ["Durga Puja London", "Durga Puja New York", "Durga Puja Germany"]
+
+[garba]
+q = ["Garba dance Navratri", "Garba Gujarat", "Navratri garba"]
+
+[dandiya]
+q = ["Dandiya raas", "Dandiya Navratri", "Dandiya sticks"]
+
+[ghatasthapana]
+q = ["Ghatasthapana", "Navratri kalash", "Kalash sthapana"]
+
+[kanya-pujan]
+q = ["Kanya Pujan", "Kanjak Navratri", "Kanya puja Navratri girls"]
+
+[dussehra]
+q = ["Ravan Dahan Dussehra", "Dussehra Ravana effigy", "Dussehra effigy burning"]
+
+[navadurga]
+q = ["Navadurga", "Nine forms of Durga", "Navadurga painting"]
+
+[vrat-food]
+q = ["Sabudana khichdi", "Navratri vrat food", "Navratri fasting food"]
+
+[vishwakarma]
+q = ["Vishwakarma Puja", "Vishwakarma Puja Kolkata", "Vishwakarma Puja kite"]
+
+[lakshmi-puja]
+q = ["Kojagari Lakshmi Puja", "Lakshmi Puja Bengal", "Lakshmi Puja alpana"]
+
+[kali-puja]
+q = ["Kali Puja Kolkata", "Kali Puja pandal", "Kali Puja idol Kolkata"]
+
+[diwali]
+q = ["Diwali diyas", "Diwali lamps", "Diya oil lamps Diwali"]
+
+[bhai-phonta]
+q = ["Bhai Phonta", "Bhai Phota", "Bhai Dooj tilak"]
+
+[jagaddhatri]
+q = ["Jagaddhatri Puja Chandannagar", "Jagadhatri Puja", "Jagaddhatri idol"]
+
+[basanti]
+q = ["Basanti Puja", "Basanti Durga Puja", "Annapurna Basanti Puja"]
+
+[alpana]
+q = ["Alpana Bengali", "Alpana floor art", "Alpona"]
+
+[puja-thali]
+q = ["Puja thali", "Puja samagri", "Puja items flowers lamp"]
+
+[manuscript]
+q = ["Devi Mahatmya manuscript", "Devi Mahatmya palm leaf", "Durga Saptashati manuscript"]
+
+[mahavidya]
+q = ["Mahavidya painting", "Dasa Mahavidya", "Ten Mahavidyas"]
+
+[saree]
+q = ["Lal paar saree", "Bengali saree Durga Puja", "Garad saree"]
+
+[radio]
+q = ["Akashvani Kolkata", "Old radio India valve", "All India Radio Kolkata"]
+
+[kolkata]
+q = ["Howrah Bridge", "Howrah Bridge sunset", "Victoria Memorial Kolkata"]
+
+[kolkata-tram]
+q = ["Kolkata tram", "Calcutta tram street", "Kolkata yellow taxi street"]
+
+[street-food]
+q = ["Phuchka Kolkata", "Kolkata street food stall", "Kathi roll Kolkata"]
+
+[eco-idol]
+q = ["Eco friendly Durga idol", "Clay idol natural colours", "Artificial pond idol immersion"]
+
+[family]
+q = ["Durga Puja family Kolkata", "Durga Puja children", "Durga Puja celebration family"]
+
+[camera]
+q = ["Durga Puja photography", "Photographer Durga Puja pandal", "Durga Puja night Kolkata long exposure"]
+
+[conch]
+q = ["Shankha conch blowing", "Conch shell puja", "Shankh"]
+
+[lotus]
+q = ["Lotus flowers puja", "Lotus offering temple", "Pink lotus India"]
+
+[unesco]
+q = ["Durga Puja Kolkata UNESCO", "Durga Puja Kolkata 2022", "Durga Puja Kolkata 2023 pandal"]

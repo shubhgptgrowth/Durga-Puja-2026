@@ -1,0 +1,24 @@
+name: article-photos
+# Photos for the knowledge articles from Wikimedia Commons (content/knowledge/photos.toml). Commits the result to this branch.
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'candidates, pandals or fetch', default: 'candidates' }
+      keys: { description: 'candidates only: comma-separated keys (empty = every key without a file)', default: '' }
+permissions: { contents: write }
+concurrency: { group: article-photos, cancel-in-progress: false }
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -q pillow
+      - run: python scripts/article_photos.py "${{ inputs.mode }}" "${{ inputs.keys }}"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${{ inputs.mode }}" = fetch ]; then git rm -rq --ignore-unmatch data/photo_candidates; fi
+          for d in data/photo_candidates app/img/guide; do [ -e "$d" ] && git add -A -- "$d"; done; true
+          git diff --cached --quiet || { git commit -qm "Article photos: ${{ inputs.mode }} ${{ inputs.keys }}"; git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}; }
