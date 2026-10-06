@@ -7,3 +7,9 @@ screenshots-real/
 kit-preview/
 app/kit/
 app/tiles/*.pmtiles
+# Built at deploy by scripts/build_seo.py
+app/guide/
+app/sitemap.xml
+app/robots.txt
+app/llms.txt
+app/llms-full.txt
