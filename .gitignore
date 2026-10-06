@@ -18,3 +18,6 @@ app/404.html
 app/seo-manifest.json
 app/durga-puja/
 app/navratri/
+app/audio/guides/
+narration/
+narration-blocks.json

@@ -1,0 +1,48 @@
+name: narrate
+# Recorded narration for the guides' Listen player, in an open-source neural voice (Kokoro, Apache-2.0; scripts/narrate.py).
+# Recordings go to the Actions cache (one per shard), which every deploy copies into app/audio/guides/. Pages whose text
+# is unchanged are kept; run again after editing guides, or with `only` for particular pages.
+on:
+  workflow_dispatch:
+    inputs:
+      voice: { description: 'af_heart, af_bella, bf_emma or bf_isabella', default: 'af_heart' }
+      only: { description: 'optional: comma-separated pages to (re)record, e.g. durga-puja/rituals/ashtami/', default: '' }
+concurrency: { group: narrate, cancel-in-progress: false }
+jobs:
+  blocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci && npx playwright install --with-deps chromium
+      - run: python scripts/build_seo.py --out app
+      - run: node scripts/narration_blocks.mjs app narration-blocks.json
+      - uses: actions/upload-artifact@v4
+        with: { name: narration-blocks, path: narration-blocks.json, retention-days: 3 }
+  record:
+    needs: blocks
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/download-artifact@v4
+        with: { name: narration-blocks }
+      - uses: actions/cache/restore@v4
+        with: { path: narration, key: 'narration-s${{ matrix.shard }}-${{ github.run_id }}', restore-keys: 'narration-s${{ matrix.shard }}-' }
+      - name: Install Kokoro (CPU)
+        run: |
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -q kokoro soundfile imageio-ffmpeg
+      - name: Record
+        run: python scripts/narrate.py narration-blocks.json narration --voice "${{ inputs.voice }}" --shard ${{ matrix.shard }}/4 --only "${{ inputs.only }}"
+      - uses: actions/cache/save@v4
+        if: always()
+        with: { path: narration, key: 'narration-s${{ matrix.shard }}-${{ github.run_id }}' }

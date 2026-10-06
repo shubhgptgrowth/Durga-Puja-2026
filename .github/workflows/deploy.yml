@@ -37,6 +37,21 @@ jobs:
           python -m unittest discover -s tests
           python -m pipeline --check
           python scripts/site.py check
+      - name: Guide narration, shard 0 (recorded by the narrate workflow)
+        uses: actions/cache/restore@v4
+        with: { path: narration, key: 'narration-s0-none', restore-keys: 'narration-s0-' }
+      - name: Guide narration, shard 1 (recorded by the narrate workflow)
+        uses: actions/cache/restore@v4
+        with: { path: narration, key: 'narration-s1-none', restore-keys: 'narration-s1-' }
+      - name: Guide narration, shard 2 (recorded by the narrate workflow)
+        uses: actions/cache/restore@v4
+        with: { path: narration, key: 'narration-s2-none', restore-keys: 'narration-s2-' }
+      - name: Guide narration, shard 3 (recorded by the narrate workflow)
+        uses: actions/cache/restore@v4
+        with: { path: narration, key: 'narration-s3-none', restore-keys: 'narration-s3-' }
+      - name: Copy guide narration into the site
+        run: |
+          if [ -d narration ]; then mkdir -p app/audio/guides && cp -r narration/. app/audio/guides/ && echo "narration: $(find narration -name narration.mp3 | wc -l) pages, $(du -sh narration | cut -f1)"; else echo "no narration cached yet: run the narrate workflow"; fi
       # Crawlable guide pages, sitemap, robots.txt and llms.txt for search and AI answer engines (docs/product/SEO.md)
       - name: Guide pages for search and AI crawlers
         id: seo
