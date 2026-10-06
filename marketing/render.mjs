@@ -86,7 +86,7 @@ function hero(c, [w, h]) {
 
 function list(c, [w, h]) {
   const d = c.data, story = c.format === 'story';
-  const items = d.items.map((it, i) => `<li><span class="n">${i + 1}</span><div><b>${plainTxt(it.name)}${it.name_bn ? ` <span class="bn">${esc(it.name_bn)}</span>` : ''}</b><small>${plainTxt(it.meta)}</small></div></li>`).join('');
+  const items = d.items.map((it, i) => `<li>${it.thumb ? `<img class="th" src="${esc(it.thumb)}" referrerpolicy="no-referrer">` : `<span class="n">${i + 1}</span>`}<div><b>${plainTxt(it.name)}${it.name_bn ? ` <span class="bn">${esc(it.name_bn)}</span>` : ''}</b><small>${plainTxt(it.meta)}</small></div></li>`).join('');
   return igShell(w, h, d, `<div class="wrap" style="padding:${story ? 100 : 52}px 72px ${story ? 120 : 76}px">
     <div class="mark">পুজো পরিক্রমা<small>${esc(FOOTER)}</small></div>
     <div style="height:${story ? 380 : 230}px;flex:0 0 auto"></div>
@@ -103,6 +103,7 @@ function list(c, [w, h]) {
   `ol{list-style:none;padding:0;margin-top:${story ? 36 : 24}px;display:flex;flex-direction:column}
    li{display:flex;gap:24px;align-items:center;padding:${story ? 22 : 15}px 0;border-top:1px solid rgba(255,255,255,.24)}
    li:last-child{border-bottom:1px solid rgba(255,255,255,.24)}
+   li .th{flex:0 0 auto;width:${story ? 120 : 96}px;height:${story ? 120 : 96}px;border-radius:14px;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.45)}
    li .n{flex:0 0 56px;font-family:"DM Serif Display",serif;font-size:${story ? 60 : 52}px;color:#FFC857;line-height:1}
    li b{font-size:${story ? 40 : 33}px;font-weight:800;display:block;line-height:1.15} li .bn{font-family:'Hind Siliguri';font-weight:600;font-size:${story ? 32 : 27}px;opacity:.88}
    li small{display:block;font-size:${story ? 28 : 23}px;opacity:.8;margin-top:4px}`);

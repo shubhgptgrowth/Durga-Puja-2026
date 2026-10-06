@@ -85,6 +85,31 @@ class Kit:
         p = ph[0]
         return {"src": p["src"], "credit": f"Photo: {p.get('author') or 'Wikimedia Commons'} · {p.get('license', '')} · Wikimedia Commons"}
 
+    AI_HERO = {"region-north": "ai-04", "region-south": "ai-03", "region-central": "ai-24", "region-east": "ai-13",
+               "food": "ai-11", "getting-there": "ai-10", "mahalaya": "ai-20", "countdown": "ai-12", "launch": "ai-01",
+               "recap": "ai-07", "mycard": "ai-35", "trail": "ai-28", "quiet": "ai-20", "live": "ai-34"}
+
+    def ai_lib(self):
+        if not hasattr(self, "_ai"):
+            f = ROOT / "marketing" / "photos_ai.json"
+            self._ai = {a["id"]: a for a in json.loads(f.read_text())["images"]} if f.exists() else {}
+        return self._ai
+
+    def ai_hero(self, slug, d):
+        key = next((k for k in self.AI_HERO if slug.startswith(k)), None)
+        a = self.ai_lib().get(self.AI_HERO.get(key, "")) if key else None
+        return {"src": a["src"], "credit": "AI-generated image"} if a else None
+
+    def thumb(self, name, j):
+        """The venue's own Commons photo, else a fitting library image (food or pandal)."""
+        n = name.split(" (")[0].lower()
+        for p in self.g["pandals"] + self.g["food"]:
+            if p["name"].split(" (")[0].lower() == n and p.get("photos"):
+                return p["photos"][0]["src"]
+        food = any(f["name"].split(" (")[0].lower() == n for f in self.g["food"])
+        pool = [a for a in self.ai_lib().values() if set(a["tags"].split()) & ({"food", "sweets", "cabin", "roll"} if food else {"idol", "pandal", "rajbari", "aarti"})]
+        return pool[j % len(pool)]["src"] if pool else ""
+
     def region_pandals(self, rid, n=6):
         zs = set(self.region[rid]["zone_ids"])
         ps = [p for p in self.g["pandals"] if p["zone"] in zs]
@@ -121,9 +146,14 @@ class Kit:
 
     def card(self, d, slug, fmt, tpl, data, en, bn, src, tags=""):
         cid = f"{d.strftime('%m%d')}-{slug}-{fmt}"
-        if not data.get("photo"):  # every Instagram card is a real photo: fall back to a top pandal's, by date
+        hero = self.ai_hero(slug, d)
+        if hero:  # hi-res, on-topic background (6 Oct review: the Commons snapshots looked dull)
+            data = dict(data, photo=hero)
+        elif not data.get("photo"):  # every Instagram card is a real photo: fall back to a top pandal's, by date
             heroes = [p["id"] for p in sorted(self.g["pandals"], key=lambda p: -p["popularity"]) if p.get("photos")]
             data = dict(data, photo=self.photo(heroes[(d.toordinal() + len(slug)) % len(heroes)]) if heroes else None)
+        if data.get("items"):  # a photo beside every venue, never a bare number
+            data = dict(data, items=[dict(it, thumb=self.thumb(it["name"], j)) for j, it in enumerate(data["items"])])
         cap_en = f"{en}\n\n{TAGS} {tags}".strip()
         cap_bn = f"{bn}\n\n{TAGS} {tags}".strip()
         return {"id": cid, "date": d.isoformat(), "format": fmt, "template": tpl, "data": data,
