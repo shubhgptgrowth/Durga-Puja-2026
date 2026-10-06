@@ -37,6 +37,18 @@ from seo.stories import StoriesMixin
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Link codes (?src=) for links from guide pages into the app, by section. The same codes are what guide.js reports
+# as the source when a guide page is someone's first visit, so the reach report shows search per page type.
+SRC_BY_PREFIX = (("guide/pandals/", "seo_pandal"), ("guide/food/", "seo_food"), ("guide/trails/", "seo_trail"),
+                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/", "seo_guide"),
+                 ("durga-puja/rituals/", "seo_ritual"), ("durga-puja/recipes/", "seo_recipe"), ("durga-puja/", "seo_article"),
+                 ("navratri/", "seo_navratri"), ("festivals/", "seo_festival"), ("stories/", "seo_story"), ("guides/", "seo_article"))
+
+
+def src_code(path):
+    return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
+
+
 class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
@@ -73,7 +85,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         crumb_ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": n, "item": self.url(p)} for i, (n, p) in enumerate((("Pujo Parikrama", ""),) + tuple(crumbs))]}
         nav = " › ".join(f'<a href="{up}{p}">{esc(n)}</a>' for n, p in (("Home", ""),) + tuple(crumbs[:-1])) + (f" › <span>{esc(crumbs[-1][0])}</span>" if crumbs else "")
-        cta = f'<a class="cta" href="{up}{app_link}">Open in the {NAME} app →</a>' if app_link is not None else ""
+        src = src_code(path)   # ?src= tells the reach report which kind of page brought someone into the app
+        cta_text = "Going pandal hopping? See when each pandal is quiet →" if app_link == "" else f"Open in the {NAME} app →"
+        cta = f'<a class="cta" href="{up}?src={src}{app_link}">{cta_text}</a>' if app_link is not None else ""
         doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -101,7 +115,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 {''.join(jsonld(x) for x in ld)}
 </head>
 <body>
-<header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
+<header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}?src={src}">Open app</a></header>
 <nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}stories/">Photo stories</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
@@ -493,7 +507,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
                         ("Navratri", "navratri/"), ("Kolkata pandals " + str(self.year), "guide/"), ("Durga Puja dates", "guide/dates/"), ("Open the app", "")))
         doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | {NAME}</title><meta name="robots" content="noindex"><link rel="stylesheet" href="{self.url('guide/guide.css')}"></head>
-<body><header class="top"><a class="brand" href="{self.url('durga-puja/')}"><img src="{self.url('icons/icon-192.png')}" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{self.base}">Open app</a></header>
+<body><header class="top"><a class="brand" href="{self.url('durga-puja/')}"><img src="{self.url('icons/icon-192.png')}" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{self.base}?src=seo_404">Open app</a></header>
 <main><h1>This page has gone pandal hopping</h1><p class="lead">We couldn't find that page. Try one of these:</p><ul>{links}</ul></main></body></html>
 """
         (self.out / "404.html").write_text(doc, encoding="utf-8")

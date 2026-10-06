@@ -7,7 +7,7 @@ import { openPlace } from '../sheets.js';
 import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
-import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioCard.js';
+import { radioCard, watchCard } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
 import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
@@ -96,6 +96,21 @@ function taskImg(k) {
 const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
 
+/* Right under the banner, for someone arriving from a post or a forward: what this is, in one line, the one thing
+ * to do next, and search (most people come looking for one pandal and when it's quiet). */
+function promiseHtml() {
+  return `<section class="promise">
+    <p class="promise-t">${t('promise.title')}</p>
+    <p class="promise-s">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>
+    <button type="button" class="btn primary block promise-cta" data-q="myplan">${t('promise.cta')}</button>
+    <div class="search" role="search">
+      ${icon('search')}
+      <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
+      <ul class="results" id="homeResults" role="listbox"></ul>
+    </div>
+  </section>`;
+}
+
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
 
@@ -114,7 +129,7 @@ function render() {
   startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
-    ${musicStripHtml()}
+    ${promiseHtml()}
     ${liveHtml()}
     <section class="how-wrap" aria-label="${t('h.introTitle')}">
       <p class="how-lingo">${t('how.lingo')}</p>
@@ -126,13 +141,7 @@ function render() {
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
 
-    <div id="homeCar">${carCardHtml()}</div>
-
-    <div class="search" role="search">
-      ${icon('search')}
-      <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
-      <ul class="results" id="homeResults" role="listbox"></ul>
-    </div>`;
+    <div id="homeCar">${carCardHtml()}</div>`;
   $('#homeRest', el).innerHTML = `
 
 
@@ -151,7 +160,7 @@ function render() {
         ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>`
         : `<span class="pill">${icon('people', 'sm')} ${t('c.todayN', { n: fmtCount(s.today) })}</span>`); }).join('')}</div></section>` : ''}
 
-    <section class="section"><div class="section-head"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
+    <section class="section" id="dayPlans"><div class="section-head"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
       ${dayPlanHtml()}</section>
 
     <section class="section"><div class="section-head"><div><h2>${t('h.trails')}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
@@ -176,11 +185,11 @@ const LEARN = [
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
-    if (musicStripClick(e)) return;
     if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
+    if (q === 'myplan') return $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
     if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }
     if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }

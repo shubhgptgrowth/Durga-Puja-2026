@@ -6,7 +6,7 @@
  * (no ads, no channel intro) is cued at load and starts on the first tap anywhere. Pausing is remembered, so
  * people who don't want it aren't greeted by it again. Skipped in low-data mode.
  * The sticky cluster works from any tab: 🥁 plays a dhak stroke, 🐚 the shankh, the badge plays/pauses music. */
-import { S, t, esc, store } from './state.js';
+import { t, esc, store } from './state.js';
 import { $, toast, go } from './ui.js';
 import * as radio from './radio.js';
 import * as sfx from './sfx.js';
@@ -35,8 +35,8 @@ export function radioCard() {
       <div class="np-info"></div>
       <div class="np-ctrl"></div>
       <div class="pads">
-        <button type="button" class="pad" data-sfx="dhak"><span aria-hidden="true">🥁</span><b></b></button>
-        <button type="button" class="pad" data-sfx="shankh"><span aria-hidden="true">🐚</span><b></b></button>
+        <button type="button" class="tap-pad" data-sfx="dhak"><span aria-hidden="true">🥁</span><b></b></button>
+        <button type="button" class="tap-pad" data-sfx="shankh"><span aria-hidden="true">🐚</span><b></b></button>
       </div>
     </div>
     <div class="st-tiles" role="radiogroup"></div>
@@ -85,8 +85,6 @@ function refresh() {
 }
 
 // A pause is remembered for this visit only: the next visit greets you with the dhak again.
-const wantAuto = (v) => { try { sessionStorage.setItem('pp:radioAuto', v ? '1' : '0'); } catch { /* private mode */ } };
-const autoOn = () => { try { return sessionStorage.getItem('pp:radioAuto') !== '0'; } catch { return true; } };
 function guard(fn) {
   if (!navigator.onLine && !radio.isAudio()) return toast(t('r.offline'));
   Promise.resolve(fn()).then((ok) => { if (ok === false) toast(t('r.failed')); });
@@ -97,21 +95,22 @@ function onClick(e) {
   if (fx) { sfx.play(fx.dataset.sfx); navigator.vibrate?.(fx.dataset.sfx === 'dhak' ? 15 : 30); return thump(fx); }
   if (e.target.closest('.np-art') && !radio.status().track?.yt) { sfx.play('dhak'); return thump($('.np-art', card)); }
   const st = e.target.closest('[data-station]')?.dataset.station;
-  if (st) { wantAuto(true); return guard(() => radio.play(st, 0)); }
+  if (st) { return guard(() => radio.play(st, 0)); }
   const tr = e.target.closest('[data-track]')?.dataset.track;
-  if (tr != null) { wantAuto(true); return guard(() => radio.play(radio.status().station || 'dhak', +tr)); }
-  if (e.target.closest('#radioPlay')) { const on = radio.playing(); wantAuto(!on); return guard(() => (on ? radio.pause() : radio.toggle())); }
+  if (tr != null) { return guard(() => radio.play(radio.status().station || 'dhak', +tr)); }
+  if (e.target.closest('#radioPlay')) { const on = radio.playing(); return guard(() => (on ? radio.pause() : radio.toggle())); }
   if (e.target.closest('#radioNext')) return guard(() => radio.next());
   if (e.target.closest('#radioPrev')) return guard(() => radio.prev());
 }
 
-/* Sticky cluster: 🥁 a dhak stroke, 🐚 the shankh, badge = play/pause music. Hidden while the radio card is on screen. */
+/* Sticky cluster: 🥁 a dhak stroke, 🐚 the shankh, badge = play/pause music. Shown only while music plays (so it can be
+ * paused from any tab), and hidden while the radio card is on screen. It used to sit over content on every tab. */
 let fab = null, cardVisible = false;
 function syncFab() {
   if (!fab) return;
   const tr = radio.status().track, on = radio.playing();
   fab.classList.toggle('on', on);
-  fab.hidden = cardVisible;
+  fab.hidden = cardVisible || !on;
   const pb = $('#radioFabPlay', fab);
   pb.setAttribute('aria-pressed', String(on));
   pb.setAttribute('aria-label', on ? `${t('r.pause')}: ${tr?.title || ''}` : `${t('r.play')}: ${t('r.title')}`);
@@ -131,8 +130,7 @@ export function initMini() {
     if (e.target.closest('#radioFabShankh')) { sfx.play('shankh'); return thump($('#radioFabShankh', fab)); }
     if (e.target.closest('#radioFab')) { sfx.play('dhak'); navigator.vibrate?.(15); return thump($('#radioFab', fab)); }
     if (!e.target.closest('#radioFabPlay')) return;
-    if (radio.playing()) { wantAuto(false); radio.pause(); return; }
-    wantAuto(true);
+    if (radio.playing()) { radio.pause(); return; }
     if (radio.status().state !== 'idle') return guard(() => radio.playNow());
     guard(() => radio.play(AUTO.station, AUTO.track));
   };
@@ -140,7 +138,6 @@ export function initMini() {
   document.getElementById('dhakBtn')?.addEventListener('click', (e) => { e.stopPropagation(); toggleMusic(); });
   addEventListener('viewchange', viewChanged);
   syncFab();
-  armAutoplay();
 }
 
 /* Home's music strip, right under the banner: play/pause, what's playing, and one-tap stations. */
@@ -158,14 +155,13 @@ function syncStrip() { const el = document.getElementById('musicStrip'); if (el)
 export function musicStripClick(e) {
   const k = e.target.closest('[data-ms]')?.dataset.ms; if (!k) return false;
   if (k === 'toggle') { toggleMusic(); return true; }
-  wantAuto(true); guard(() => radio.play(k, 0));
+  guard(() => radio.play(k, 0));
   return true;
 }
 
 /** The header's dhaki photo: play or pause the music, and show which. */
 export function toggleMusic() {
-  if (radio.playing()) { wantAuto(false); radio.pause(); return; }
-  wantAuto(true);
+  if (radio.playing()) { radio.pause(); return; }
   if (radio.status().state !== 'idle') return guard(() => radio.playNow());
   guard(() => radio.play(AUTO.station, AUTO.track));
 }
@@ -175,32 +171,6 @@ function syncHeader() {
   b.classList.toggle('on', on);
   b.querySelector('.dhak-state').textContent = on ? '❚❚' : '▶';
   b.setAttribute('aria-label', on ? t('r.pause') : t('r.play') + ': ' + t('r.title'));
-}
-
-/* Dhak on arrival: cue now, play on the first tap anywhere (unless paused earlier in this visit).
- * Browsers only allow sound from a real tap: iPhone Safari counts click/touchend but not pointerup, so those are
- * what we listen to. If the browser still refuses, we try again on the next tap. */
-function armAutoplay() {
-  const first = () => { sfx.preload(); removeEventListener('click', first, true); };
-  addEventListener('click', first, true);
-  if (!autoOn() || S.prefs.lowData) return;
-  radio.cue(AUTO.station, AUTO.track);
-  const evs = ['click', 'touchend', 'keydown'];
-  const disarm = () => evs.forEach((ev) => removeEventListener(ev, start, true));
-  function start(e) {
-    if (e.target.closest?.('.radio-card, .radio-fab-wrap, #dhakBtn, .music-strip')) return disarm(); // they're using the radio themselves
-    if (!autoOn()) return disarm();
-    const st = radio.status().state;
-    if (st === 'playing' || st === 'loading') return disarm();
-    if (st !== 'cued' && st !== 'paused') return;
-    disarm();
-    radio.playNow();
-    setTimeout(() => {
-      if (radio.playing()) toast(t('r.autoToast'), 4200);
-      else evs.forEach((ev) => addEventListener(ev, start, true)); // refused: try on the next tap
-    }, 600);
-  }
-  evs.forEach((ev) => addEventListener(ev, start, true));
 }
 
 let io = null;

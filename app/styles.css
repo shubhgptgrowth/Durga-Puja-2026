@@ -471,6 +471,13 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .hero-copy { position: absolute; left: 0; right: 0; bottom: 16px; padding: 0 16px; pointer-events: none; }
 .sharad-greet { font-family: "Galada", "Noto Serif Bengali", serif; font-size: 34px; line-height: 1.05; color: #F6C343; text-shadow: 0 2px 10px rgba(0,0,0,.55); }
 .sharad-sub { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; opacity: .92; margin-top: 4px; }
+/* Spacing pulls Bengali conjuncts and the matra line apart */
+:lang(bn) .sharad-sub, .sharad-sub:lang(bn) { letter-spacing: 0; font-size: 12.5px; }
+.promise { margin: 14px 16px 0; padding: 16px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+.promise-t { margin: 0; font-size: 21px; line-height: 1.25; font-weight: 800; color: var(--brand); }
+.promise-s { margin: 6px 0 12px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.promise-cta { font-size: 16px; font-weight: 700; min-height: 50px; }
+.promise .search { margin: 10px 0 0; }
 .sharad-when { margin-top: 9px; display: inline-flex; flex-wrap: wrap; gap: 6px; font-weight: 700; font-size: 13.5px; padding: 5px 12px; border-radius: 999px; background: rgba(0,0,0,.35); border: 1px solid rgba(246,195,67,.55); backdrop-filter: blur(4px); }
 .sharad-when .sep { opacity: .6; }
 .hero-meta { position: absolute; left: 10px; right: 10px; top: 10px; display: flex; justify-content: space-between; gap: 8px; align-items: center; pointer-events: none; }
@@ -557,8 +564,8 @@ body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--saf
 .radio-links a { color: #F6C343; font-weight: 700; }
 /* Tap pads */
 .pads { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 320px; }
-.pad { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 10px; border-radius: 14px; border: 1px solid rgba(246,195,67,.5); background: rgba(255,255,255,.07); color: #FFF4E0; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; touch-action: manipulation; }
-.pad span { font-size: 24px; }
+.tap-pad { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 10px; border-radius: 14px; border: 1px solid rgba(246,195,67,.5); background: rgba(255,255,255,.07); color: #FFF4E0; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; touch-action: manipulation; }
+.tap-pad span { font-size: 24px; }
 .hit { animation: hit .22s ease-out; }
 @keyframes hit { 40% { transform: scale(1.08) rotate(-3deg); } }
 /* Sticky cluster: 🐚 / 🥁 / ▶ */

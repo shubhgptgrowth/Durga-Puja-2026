@@ -106,8 +106,9 @@ class BuildSeoTest(unittest.TestCase):
             for href in p.links:
                 if re.match(r"^(https?:|mailto:|#)", href):
                     continue
-                target = (f.parent / href.split("#")[0]).resolve()
-                if href.split("#")[0] in ("", "./") or str(target) == str(self.tmp.resolve()):
+                href = href.split("#")[0].split("?")[0]
+                target = (f.parent / href).resolve()
+                if href in ("", "./") or str(target) == str(self.tmp.resolve()):
                     continue   # the app itself
                 if target.suffix in (".txt", ".html", ".json", ".xml", ".ics"):
                     if target.name in ("privacy.html",) or target.parent.name == "data":

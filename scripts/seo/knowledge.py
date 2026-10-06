@@ -158,7 +158,7 @@ class KnowledgeMixin:
         hero = ph.for_article(featured[0])[0] if featured else None
         self.page("guides/", "Durga Puja Guides: Rituals, Mantras, History, Recipes & Navratri | Pujo Parikrama",
                   f"Every Durga Puja guide in one place: {len(arts)} illustrated guides to the rituals day by day, mantras, history, puja at home, bhog recipes, Navratri and Kolkata.",
-                  "\n".join(body), ld=ld, crumbs=(("All guides", "guides/"),), priority=0.95, app_link=None, note="",
+                  "\n".join(body), ld=ld, crumbs=(("All guides", "guides/"),), priority=0.95, app_link="", note="",
                   images=[ph.url(k) for k in dict.fromkeys(ph.for_article(a)[0] for a in featured) if k],
                   og_image=ph.url(hero) if hero else None)
 
@@ -309,7 +309,7 @@ class KnowledgeMixin:
                        "hasDefinedTerm": [{"@type": "DefinedTerm", "name": t["term"], **({"alternateName": t["alt"]} if t.get("alt") else {}),
                                            "description": t["definition"], "inDefinedTermSet": url + "#terms"} for t in terms]})
         crumbs = self.article_crumbs(a)
-        self.page(a.path, a.title, a.desc, body, ld=ld, crumbs=crumbs, priority=0.9 if a.is_hub else 0.8, summary=a.summary, app_link=None,
+        self.page(a.path, a.title, a.desc, body, ld=ld, crumbs=crumbs, priority=0.9 if a.is_hub else 0.8, summary=a.summary, app_link="",
                   note=f"Published {nice_date(a.published, True)}, last updated <time datetime='{a.modified}'>{nice_date(a.modified, True)}</time>, by the {NAME} team. "
                        "Practices vary by family, region and panjika; check with your purohit or local almanac for exact timings.",
                   modified=a.modified, head_extra='<link rel="alternate" type="text/markdown" href="index.md" title="Markdown">',
