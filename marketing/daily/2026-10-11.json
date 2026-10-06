@@ -1,0 +1,39 @@
+{
+ "date": "2026-10-11",
+ "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0937.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/8/82/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0936.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.4
+    }
+   ],
+   "caption": {
+    "bn": "রাজবাড়ির দুর্গা। ঝাড়বাতি নেই, থিম নেই, আছে শুধু শতাব্দীর পুরোনো নিয়ম। ✨\n\nআন্দুল রাজবাড়ি আর সুশীল ধর এস্টেট, হাওড়া। বনেদি বাড়ির পুজো মানে ঠাকুরদালান, ডাকের সাজ, আর পরিবারের সবাই একসঙ্গে।\n\nআপনার চেনা কোনো বনেদি বাড়ির পুজো আছে? কমেন্টে নাম লিখুন, পরের পোস্টে আমরা সেটা নিয়ে লিখব।",
+    "en": "Durga Puja the old way: inside Howrah's bonedi bari (old family homes).\n\nSwipe: Andul Royal Palace (1–2) and Sushil Dhar Estate (3), Howrah. No theme and no crowds, just a thakurdalan, a protima in daaker saaj, and rituals a family has kept for generations.\n\nKnow a bonedi bari pujo we should feature? Drop the name in the comments 👇 and we may tell its story next.\nCrossing the river this pujo? Our free Durga Puja 2026 guide covers Howrah too. Link in bio.",
+    "tags": "#BonediBari #Howrah #DurgaPuja2026 #BengaliCulture #RajbariPujo"
+   }
+  }
+ ]
+}

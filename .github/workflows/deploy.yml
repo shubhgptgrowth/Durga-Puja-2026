@@ -103,7 +103,7 @@ jobs:
           pip install -q pillow && python -m marketing.carousels --out app/kit/carousels --photos && node marketing/carousels.mjs app/kit/carousels \
             || echo "::warning::Carousels not rendered"
       - name: Daily reels and footage catalogue (/kit/reels/)
-        # Rendered by reels-factory / footage-scan (marketing/footage/). Yesterday to 2 days ahead are kept; a newer
+        # Rendered by reels-factory / footage-scan (marketing/footage/). Yesterday to 6 days ahead are kept (review ahead); a newer
         # render of a date replaces the older one. Never blocks the app deploy.
         continue-on-error: true
         env:
@@ -114,7 +114,7 @@ jobs:
           cp marketing/review/index.html app/kit/review/index.html
           curl -fsSL -o /tmp/wave1.zip https://d2ol7oe51mr4n9.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/467c1e0f-c609-44b3-bc42-8c60a8e81f80.zip \
             && unzip -qo /tmp/wave1.zip -d app/kit/review/wave1 || echo "::warning::Wave 1 slides not downloaded"
-          keep=$(for k in -1 0 1 2; do TZ=Asia/Kolkata date -d "$k day" +%F; done)
+          keep=$(for k in -1 0 1 2 3 4 5 6; do TZ=Asia/Kolkata date -d "$k day" +%F; done)
           gh api "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
             --jq '[.artifacts[] | select((.expired | not) and (.name | startswith("reels-")))] | sort_by(.created_at) | .[] | "\(.workflow_run.id) \(.name)"' |
           while read -r id name; do

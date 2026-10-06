@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-09",
+ "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Making_of_Durga_idol_in_Kumartuli_05.jpg",
+     "artist": "Pinakpani",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Making_of_Durga_idol_in_Kumartuli_03.jpg",
+     "artist": "Pinakpani",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.4
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/2/24/Making_of_Durga_idol_in_Kumartuli_02.jpg",
+     "artist": "Pinakpani",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.4
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/a/af/Making_of_Durga_idol_in_Kumartuli_07.jpg",
+     "artist": "Pinakpani",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Face_sculpture_of_Hindu_Goddess_Ma_Durga_in_kumortuli%2C_West_Bengal_India.jpg",
+     "artist": "Salmali Chattopadhyay",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.45
+    }
+   ],
+   "caption": {
+    "bn": "চোখ আঁকার আগে মা কেমন দেখতে? 🤍\n\nকুমোরটুলি, উত্তর কলকাতা। খড়, বাঁশ আর গঙ্গার মাটি দিয়ে তৈরি হয় প্রতিমা, তারপর রং, তারপর সাজ। আর সবার শেষে চক্ষুদান, চোখ আঁকা। তখনই মা যেন জেগে ওঠেন।\n\nকুমোরটুলির গলিতে কখনো হেঁটেছেন?",
+    "en": "This is what Maa looks like before her eyes are painted.\n\nKumartuli, North Kolkata: the artisans' quarter by the Hooghly where many of the city's Durga idols are made. Straw and bamboo first, then layers of river clay, then colour and dress. The eyes come last. It's called chokkhu daan, and it is the moment the protima comes alive.\n\nSwipe to watch her take shape, from bare clay to the finished face.\n\nHave you walked the Kumartuli lanes before pujo? Save this for your visit: it's a short walk from Sovabazar metro, and our free Durga Puja 2026 guide has the route. Link in bio.",
+    "tags": "#Kumartuli #DurgaPuja2026 #KolkataHeritage #IdolMaking #BengaliCulture"
+   }
+  }
+ ]
+}

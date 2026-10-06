@@ -1,0 +1,25 @@
+{
+ "date": "2026-10-10",
+ "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "cx": 0.5,
+     "cy": 0.5
+    }
+   ],
+   "caption": {
+    "bn": "এক চালায় মা, পাশে লক্ষ্মী-সরস্বতী, কার্তিক-গণেশ। একেবারে সাবেকি। 🙏\n\nবাগবাজার সর্বজনীন দুর্গোৎসব, কলকাতার সবচেয়ে পুরোনো সর্বজনীন পুজোগুলোর একটা, একশো বছরেরও বেশি পুরোনো। থিমের যুগেও এখানে মা আসেন ঠিক আগের মতো।\n\nআপনি সাবেকি না থিম?",
+    "en": "One frame, the whole family: Maa Durga with Lakshmi, Saraswati, Kartik and Ganesh, in the traditional ek-chala style.\n\nBagbazar Sarbojanin Durgotsav is one of Kolkata's oldest community pujos, now more than a hundred years old. The city has moved on to giant theme pandals, but Bagbazar still brings Maa home the way it always has.\n\nSabeki or theme, which side are you on? 👇\nPlanning North Kolkata this year? Bagbazar, Kumartuli and Sovabazar are all close together. The free route planner is linked in our bio.",
+    "tags": "#Bagbazar #DurgaPuja2026 #SabekiPujo #NorthKolkata #DurgaPujaKolkata"
+   }
+  }
+ ]
+}

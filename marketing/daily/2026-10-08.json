@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-08",
+ "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Durga_Face_-_Kolkata_2015-10-22_6600.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.38
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Durga_Face_-_Biswamilani_Club_-_Padmapukur_Water_Treatment_Plant_Road_-_Howrah_2015-10-20_6047.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.33
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/8/84/Durga_Idol_-_Sanjar_Aatchala_-_Sibpur_-_Howrah_2012-10-20_0845.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "cx": 0.5,
+     "cy": 0.33
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/f/f9/2017_Close_up_of_Durga_Idol_Sandhi_puja_at_Manikanchan_02.jpg",
+     "artist": "Goutam1962",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.45,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Face_of_Goddess_Durga%281%29.JPG",
+     "artist": "Aryan paswan",
+     "license": "CC BY-SA 3.0",
+     "cx": 0.5,
+     "cy": 0.45
+    }
+   ],
+   "caption": {
+    "bn": "পাঁচটা পুজো, মায়ের পাঁচটা মুখ। কোনটা আপনার মনে থেকে যাবে? ✨\n\nকোথাও শান্ত, কোথাও তেজস্বিনী, কোথাও মায়ের চোখে মেয়ের মতো মায়া। প্রতিটা প্রতিমা আলাদা, কারণ প্রতিটা শিল্পীর হাত আলাদা।\n\nকমেন্টে নম্বর লিখুন: ১, ২, ৩, ৪ না ৫?",
+    "en": "Five pujos. Five faces of Maa Durga. Swipe through and pick the one that stays with you.\n\n1 · Kolkata\n2 · Biswamilani Club, Padmapukur, Howrah\n3 · Sanjar Aatchala, Sibpur, Howrah\n4 · Sandhi Puja, 2017\n5 · A neighbourhood pujo in Bengal\n\nSerene, fierce, or tender like a daughter coming home: every protima is different because every artist's hand is different.\n\nComment your number 👇 and send this to the friend who goes pandal hopping with you. Free Durga Puja 2026 route planner for Kolkata, link in bio.",
+    "tags": "#DurgaPuja2026 #MaaDurga #DurgaPujaKolkata #KolkataDiaries #BengaliCulture"
+   }
+  }
+ ]
+}

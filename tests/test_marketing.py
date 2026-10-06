@@ -176,7 +176,12 @@ class DailySetTest(unittest.TestCase):
             self.assertEqual(len(ids), len(set(ids)), p.name)
             for it in plan["items"]:
                 self.assertRegex(it["at"], r"^\d\d:\d\d$")
-                self.assertIn(it["type"], ("reel", "story"))
+                self.assertIn(it["type"], ("reel", "story", "photo"))
+                if it["type"] == "photo":  # words over hashtags: a real caption, a handful of tags
+                    cap = it["caption"]
+                    self.assertGreater(len(cap["en"]), 200, it["id"])
+                    self.assertLessEqual(cap["tags"].count("#"), 5, it["id"])
+                    self.assertNotIn("github.io", cap["bn"] + cap["en"])
                 if it["type"] == "reel":
                     cap = it.get("caption")
                     text = cap if isinstance(cap, str) else f"{cap['bn']} {cap['en']} {cap['tags']}"
@@ -266,6 +271,25 @@ class RedesignTest(unittest.TestCase):
         self.assertGreaterEqual(build2.MIN_SHOT, 5.0)
         self.assertGreater(build2.ease(0.5), build2.ease(0.1))
         self.assertEqual((build2.ease(0), build2.ease(1)), (0, 1))
+
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
+    def test_photo_post_is_4x5_and_credits_every_photographer(self):
+        import tempfile
+        from PIL import Image
+        from marketing.footage import photo_post
+        it = {"id": "p1", "type": "photo", "caption": {"bn": "মা", "en": "Maa", "tags": "#DurgaPuja2026"},
+              "photos": [{"src": "https://e/a.jpg", "artist": "A", "license": "CC BY 3.0"},
+                         {"src": "https://e/b.jpg", "artist": "B", "license": "CC BY-SA 4.0"},
+                         {"src": "https://e/c.jpg", "license": "AI"}]}
+        self.assertEqual(photo_post.check(it), [])
+        self.assertTrue(photo_post.check(dict(it, photos=[{"src": "https://e/x.jpg"}])))
+        cap = photo_post.caption(it)
+        self.assertIn("A (CC BY 3.0); B (CC BY-SA 4.0)", cap)
+        self.assertIn("AI-generated", cap)
+        with tempfile.TemporaryDirectory() as d:
+            Image.new("RGB", (3000, 2000), (200, 30, 40)).save(f"{d}/l.jpg")
+            photo_post.crop(f"{d}/l.jpg", f"{d}/o.jpg", 0.9, 0.5)
+            self.assertEqual(Image.open(f"{d}/o.jpg").size, (photo_post.PW, photo_post.PH))
 
     def test_creator_clip_needs_permission(self):
         from marketing.footage import factory
