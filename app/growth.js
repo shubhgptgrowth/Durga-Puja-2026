@@ -39,7 +39,12 @@ export function trackOpen() {
 }
 
 /* ---------------- links and share buttons ---------------- */
-export const placeLink = (id, src) => `${BASE()}?src=${src}#p=${id}`;
+/* Shared places link to their guide page (guide/pandals/<id>/), not to the app's #p= route: a link preview can't see
+ * past the #, so every app link looked the same in WhatsApp. The guide page has the pandal's own title, theme and
+ * photo in its preview, loads fast on a crowded network, and opens the place in the app from its first screen. */
+const ROOT = () => new URL('./', location.href).href;
+export const placeLink = (id, src) => (idx.pandal[id] ? `${ROOT()}guide/pandals/${id}/?src=${src}`
+  : idx.food[id] ? `${ROOT()}guide/food/${id}/?src=${src}` : `${BASE()}?src=${src}#p=${id}`);
 export const appLink = (src) => `${BASE()}?src=${src}`;
 export const waUrl = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
 

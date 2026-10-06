@@ -102,7 +102,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
-<meta property="og:image" content="{esc(og_image or self.url('icons/og.png'))}">{'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if og_image and og_image.endswith(".jpg") else ""}{f'<meta property="og:image:alt" content="{esc(og_alt)}">' if og_alt else ""}
+<meta property="og:image" content="{esc(og_image or self.url('icons/og.png'))}">{'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if og_image and og_image.startswith(self.base) and og_image.endswith(".jpg") else ""}{f'<meta property="og:image:alt" content="{esc(og_alt)}">' if og_alt else ""}
 <meta name="twitter:image" content="{esc(og_image or self.url('icons/og.png'))}">
 <meta property="article:modified_time" content="{modified or self.updated}">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,6 +219,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         body = f"""<article>
 <h1>{esc(p['name'])} Durga Puja {self.year}: theme, best time, how to reach</h1>
 <p class="lead">{lead}</p>
+<p><a class="cta" href="{up}?src={src_code('guide/pandals/')}#p={p['id']}">Open in the app: crowd by the hour, directions, check in →</a></p>
 {gallery}
 <h2>Key facts</h2>
 {facts}
@@ -248,7 +249,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                 f"Best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}.")
         self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: Theme, Best Time, Metro", desc, body,
                   ld=(place, event, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (p["name"], f"guide/pandals/{p['id']}/")),
-                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs)
+                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs,
+                  og_image=imgs[0] if imgs else None, og_alt=f"{p['name']} Durga Puja" if imgs else "")
         self.full.append(f"### {p['name']} ({z['name']})\n{re.sub(r'<[^>]+>', '', lead)}\nKnown for: {known}. Food nearby: {', '.join(self.food[x['id']]['name'] for x in foods) or 'none listed'}. Page: {self.url('guide/pandals/' + p['id'] + '/')}\n")
 
     # ------------------------------------------------------------------ food

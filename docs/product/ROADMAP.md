@@ -101,5 +101,5 @@ Don't break these without telling the marketing track:
 | Direct links: `#p=<place id>` | `app/app.js` | QR posters, WhatsApp shares, comment replies. **Renaming a place id breaks printed posters** |
 | Place ids and names | `app/data/guide.json` | `marketing/kit.py` builds every card from it |
 | Reach counting | `track_open()`, `growth_report()` in `supabase/migrations/*_growth.sql` | The `marketing-report` workflow |
-| Share UI | WhatsApp, Story card and Link buttons on sheets; My Pujo card on the Me tab | The viral loop in the marketing plan |
+| Share UI | WhatsApp, Story card and Link buttons on sheets; My Pujo card on the Me tab. Place shares link to the place's guide page (`guide/pandals/<id>/?src=…`), which has its own link preview and opens the place in the app | The viral loop in the marketing plan |
 | Public address | `site.json` (change it with `python scripts/site.py set …`) | All links, the kit, QR posters and link previews. Printed posters keep working through GitHub's redirect (see [HOSTING.md](HOSTING.md)) |

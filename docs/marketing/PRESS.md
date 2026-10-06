@@ -23,6 +23,16 @@
 | How the quiet hours work | An estimate from a crowd model (day of the puja × hour × how popular the pandal is). From Shashthi, real check-ins show the live picture next to it. The app labels the estimate as an estimate |
 | Also | A free guide to the rituals (anjali mantra, Sandhi Puja, sindoor khela), recipes for bhog, and the 2026 dates, at pujoparikramaguide.in/durga-puja/ |
 
+**Know the neighbour:** Kolkata Police's *Puja Bandhu* app (launched September 2025) shows live crowd counts and the
+nearest metro. Journalists will ask. Our answer: we're complementary. Puja Bandhu tells you how crowded a pandal is
+*now*; Pujo Parikrama helps you *plan ahead*: the usually-quiet hours for each day, a walking route across an area,
+food on the way, in Bengali, with no install. Never knock it; it's the police's crowd-safety tool.
+
+**Angles that fit what these desks ran last year:** (1) *beat the queue*: quiet hours at the famous pandals (every
+outlet ran crowd and record-Metro-ridership stories in 2025); (2) *Metro-first pandal hopping*: pandals by station,
+plus autos (Curly Tales ran "metro stations closest to iconic pandals" in 2025); (3) *Bengali-first, Kolkata-made and
+free*, for Bengali dailies and TV, with food near each pandal for lifestyle desks.
+
 **Claims we never make:** "empty", "no queue", "real-time crowd" before Shashthi, or user numbers we haven't
 reached. Say "usually quiet" and "estimated".
 
