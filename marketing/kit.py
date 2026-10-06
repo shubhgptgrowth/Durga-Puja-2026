@@ -86,7 +86,7 @@ class Kit:
         return {"src": p["src"], "credit": f"Photo: {p.get('author') or 'Wikimedia Commons'} · {p.get('license', '')} · Wikimedia Commons"}
 
     AI_HERO = {"region-north": "ai-04", "region-south": "ai-03", "region-central": "ai-24", "region-east": "ai-13",
-               "food": "ai-11", "getting-there": "ai-10", "mahalaya": "ai-20", "countdown": "ai-12", "launch": "ai-01",
+               "food": "ai-11", "getting-there": "ai-10", "mahalaya": "ai-20", "countdown": "ai-01", "launch": "ai-01",
                "recap": "ai-07", "mycard": "ai-35", "trail": "ai-28", "quiet": "ai-20", "live": "ai-34"}
 
     def ai_lib(self):

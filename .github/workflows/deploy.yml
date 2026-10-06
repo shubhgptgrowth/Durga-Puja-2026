@@ -79,7 +79,7 @@ jobs:
           node marketing/render.mjs app/kit
           node marketing/render.mjs --og app/icons
           # Instagram carousels at /kit/carousels/ (marketing/carousels.py), which marketing-batch posts from.
-          python -m marketing.carousels --out app/kit/carousels && node marketing/carousels.mjs app/kit/carousels \
+          pip install -q pillow && python -m marketing.carousels --out app/kit/carousels --photos && node marketing/carousels.mjs app/kit/carousels \
             || echo "::warning::Carousels not rendered"
       - name: Daily reels and footage catalogue (/kit/reels/)
         # Rendered by reels-factory / footage-scan (marketing/footage/). Yesterday to 2 days ahead are kept; a newer
