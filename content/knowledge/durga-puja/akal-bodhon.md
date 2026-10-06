@@ -1,6 +1,6 @@
 +++
 title = "Akal Bodhon: Rama's Untimely Worship of Goddess Durga | Pujo Parikrama"
-description = "Akal Bodhon explained: Rama's autumn invocation of Durga in Krittibas Ojha's Bengali Ramayana, the 108 blue lotuses, his offered eye and why the puja is autumnal."
+description = "Akal Bodhon explained: Rama's autumn worship of Durga in Krittibas Ojha's Bengali Ramayana, the 108 blue lotuses, his offered eye and why the puja is in autumn."
 h1 = "Akal Bodhon: why Durga is worshipped in autumn"
 summary = """Akal Bodhon means untimely (akal) awakening (bodhon): the story that Rama invoked the goddess Durga in autumn, out of her proper season, to win her blessing before his final battle with Ravana. It is told in the Ramayana of Krittibas Ojha, the Bengali retelling of the epic, and not in Valmiki's Sanskrit Ramayana. Bengali tradition holds that the autumn (Sharadiya) Durga Puja follows Rama's example, while the scripturally older spring worship survives as Basanti Puja."""
 type = "Article"
