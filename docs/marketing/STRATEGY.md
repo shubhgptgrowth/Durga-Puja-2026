@@ -145,13 +145,14 @@ badges and new reels tooling wait until after Bijoya.
 |---|---|---|---|
 | G1 | **Measure the guide pages:** a tiny beacon (same anonymous device id and `track_open`) on every guide page, and `?src=seo_<type>` on every "Open app" link | Without it, search is invisible and the 1-lakh count is wrong | 7 Oct |
 | G2 | **2026 themes:** a `theme_2026` column, a theme line on each pandal sheet and page, the `/guide/themes-2026/` list page, and a daily theme carousel from the same data | H1. The biggest search and share opportunity | Page 8 Oct, filled daily from 10 Oct |
-| G3 | **First screen for a newcomer:** one line with the promise, a "Plan my pujo" button, and "When is it quiet?" search. Hide empty states (0 check-ins, an empty Moments feed) until there's data | People who arrive from Instagram or WhatsApp decide in 3 seconds | 8 Oct |
-| G4 | **"Send this plan" image:** a route or trail as a 1080×1350 image plus a link, made for the family group | H3. Each plan becomes a forward | 10 Oct |
-| G5 | **Speed:** lazy-load the map, slim `guide.json`, defer anything not needed on first paint | Pandal-side 4G is slow, and a slow first open loses people | 12 Oct |
-| G6 | **Add to home screen** after a saved plan or a first check-in | Repeat use over the 5 days | 14 Oct |
+| G3 | **First screen for a newcomer:** no dhak autoplay, fix the `.pad` clash (both on day 1), then one promise line and a "Plan my pujo" button above the fold, radio and floating sound buttons out of the way, empty counters hidden (§8.1 items 1–4, 6, 7, 10) | People who arrive from Instagram or WhatsApp decide in 3 seconds | 7–8 Oct |
+| G4 | **Shares that look good in WhatsApp:** share guide-page links with a per-pandal preview image, a new `og.png`, and "Share this plan" on Plan and the 6-day plan, as an image plus a link (§8.1 items 5, 8) | H3. Each plan becomes a forward | 10 Oct |
+| G5 | **Speed:** WebP heroes at about 60 KB each, slides 2–5 after first paint, the map and Hindi loaded only when needed. Target: the hero under 4 s on slow 4G | It's about 8.5 s today, and a slow first open loses people | 12 Oct |
+| G6 | **Add to home screen** after a saved plan or a first check-in, and an "Open in Chrome/Safari" nudge inside Instagram's browser | Repeat use over the 5 days | 14 Oct |
 | G7 | **Capacity:** Supabase Pro (US$25) and Cloudflare proxied in front of Pages | 1 lakh devices break the free plan. P0-1 has waited since 3 Oct | **Before 10 Oct** |
+| G8 | **Search fixes S1–S10** (§8.2), in that order. S1 is the owner's job today | The long tail and a landing place for press | S2–S4 by 9 Oct, the rest by 13 Oct |
 
-The UX and SEO audits (6 Oct) add specifics to G3, G5 and the search items. See §8.
+The UX and SEO audits (6 Oct) are behind G3–G6 and G8. See §8.
 
 ---
 
@@ -184,13 +185,75 @@ Shashthi. Then the target moves to 1 lakh by Dashami, and the puja-day QR and li
 
 ## 8. Audit notes (6 Oct)
 
-*Filled in from the UX and SEO audits.*
+Both audits ran on a local build at iPhone 13 size (the live site isn't reachable from the audit machine).
+The screenshots are kept with the session, not in the repo.
+
+### 8.1 App UX: what costs us first-time visitors and shares
+
+| # | Finding | Fix | Goes into |
+|---|---|---|---|
+| 1 | **The first tap anywhere starts the dhak** (`radioCard.js` `armAutoplay`), and a toast covers the list. A visitor from Instagram on a bus gets drums | No autoplay. Sound only when the radio is tapped. Don't preload `dhak.mp3` (1.75 MB) | G3, **day 1** |
+| 2 | **Text that can't be seen:** `.pad` is defined twice in `styles.css` (lines 87 and 560). The radio's button style overrides the page-padding class used about 18 times, so some empty states and hints are cream on cream | Rename the radio class (e.g. `.tap-pad`) | G3, **day 1** |
+| 3 | **The first screen doesn't say what the app does.** Above the fold: a greeting, "Ma ashchhen!", the Pujo Radio card. "Plan your route" is a list row low on the screen | One promise line in the hero ("107 pandals · when each is quiet · metro & auto routes · free"), one solid "Plan my pujo →" button, the radio card below the fold | G3 |
+| 4 | **The best planning content is buried:** the 6-day plan and the trails are about 3,200 px down Home. Plan opens on a wizard whose Next button stays disabled | Plan opens with "Pick your day → here's your route" (day plans and trails first, custom route second) | G3 / G4 |
+| 5 | **Shared links all look the same in WhatsApp.** Shares are `?src=…#p=<id>`. The `#p=` part is invisible to link previews, so every forward shows the generic text-on-red `og.png` | Share `/guide/pandals/<id>/` links (they open the app), a per-pandal preview image (photo, name, quiet hours), and a new `og.png` with a protima photo | G4 |
+| 6 | **The floating dhak and shankh buttons cover content** on every tab (step 3 on Home, the hint on Plan, Me, Explore cards) | Remove them. The header dhak already exists | G3 |
+| 7 | **Empty states before the pujas:** a wall of zeros on Me, "0 visits / 0 today" on sheets, a "Live" pill with no number | Hide counters under a threshold. Before Shashthi, Me becomes "Your pujo starts in N days: pick your days". Hide the pill until it has a number | G3 |
+| 8 | **The share loop is hard to find.** "Share my Pujo card" is low on Me, under a phone-number field that reads like data collection | Make the phone field optional and collapsed. "Share this plan" on Plan results and the 6-day plan. "Send to your pujo gang" on Home | G4 |
+| 9 | **No install prompt**, and Instagram's in-app browser can't install anyway | Detect the Instagram/Facebook in-app browser and suggest "Open in Chrome/Safari". Offer install after a saved plan or first check-in ("works offline in the crowd") | G6 |
+| 10 | **Bengali polish:** letter-spacing breaks the joined letters in the hero subtitle; digits are mixed (৫ next to 5); descriptions stay English | `letter-spacing: 0` under `:lang(bn)`, one digit style, then translate the top-40 highlights | G3 |
+
+**Speed (cold load on a slow 4G, CPU slowed 4×):**
+* The hero appears at about 8.5 s, and the largest image at about 15 s. On GitHub Pages with compression, the hero should come in at about 4–5 s.
+* The cause is images. All 5 hero slides load at once (about 980 KB).
+* Hindi strings (58 KB) and the map libraries (270 KB) load on Home for everyone.
+* **Fix (G5):** WebP heroes at about 60 KB each. Load slides 2–5 after the first paint. Load the map and Hindi only when they're needed.
+
+**Genuinely good:**
+* The pandal sheet (sticky Directions + WhatsApp Share, crowd by hour, honest "≈ estimate" labels, metro walk times, food nearby).
+* The Explore list.
+* The visual identity.
+* The Bengali fonts.
+* The Moments empty state ("be the first", plus the archive).
+
+### 8.2 Search: what the guide pages need
+
+**Inventory:** 439 URLs:
+* 107 pandal pages
+* 175 eatery pages
+* 13 area pages and 6 trails
+* 50 knowledge articles (rituals, recipes)
+* 14 Navratri and festival pages
+* 64 Web Stories
+
+**Done right:**
+* Clean canonicals on the domain, nothing wrongly noindexed, valid JSON-LD everywhere, light pages.
+* robots.txt welcomes crawlers, including AI ones. IndexNow is wired in.
+
+| # | Fix | Why |
+|---|---|---|
+| S1 | **Verify Google Search Console and Bing today**, submit the sitemap and request indexing for about 10 key pages | Nothing below matters until Google knows the site exists. `site.json` has no verification tag, and nothing records a DNS verification |
+| S2 | **2026 themes:** a `theme_2026` column flowing into each pandal page's title, H1, lead and an FAQ, plus the `/guide/themes-2026/` list page (H1 in §3) | "<pandal> theme 2026" is the long tail a new domain can win |
+| S3 | **Shorter titles aimed at what people type:** 390 of 440 titles are over 65 characters. Pandal titles become "<Name> Durga Puja 2026: Theme, Best Time, Metro" | Click-through and relevance |
+| S4 | **Measure:** a beacon on guide pages, `?src=seo_<type>` on every "Open app" link, and a CTA on knowledge articles (they have none) | G1. Search is invisible today |
+| S5 | **List pages:** "Best pandals in Kolkata 2026" (top 25 with themes) and one page per region (North, South…). Retitle /guide/ to "Kolkata Durga Puja Pandal List 2026" | They match the list-style searches |
+| S6 | **A real dates page:** tithi start and end times, Sandhi Puja and anjali times from one named panjika, plus Metro puja timings (a new page, updated the moment Metro Railway announces) | "date and time" and "metro timing" spike every puja night |
+| S7 | **Bengali pages** for dates and the anjali mantra, with hreflang | Bengali results are less crowded with strong pages |
+| S8 | **Eatery pages:** take the 175 template-heavy pages out of the sitemap until after the pujas, and fold the best eateries into the area pages | Thin pages drag down a new domain |
+| S9 | **Timely Web Stories:** "Theme reveals 2026", "Top pandals 2026", one per puja day, with the year in each title | The 64 existing stories are evergreen |
+| S10 | One H1 on the app home page (it has two) | Hygiene |
+
+**Expectation, so nobody is surprised:**
+* On a new domain, Google brings roughly **300–2,000 clicks before Dashami**, almost all long tail, mostly 17–21 Oct.
+* Head terms belong to the big news sites, Drik Panchang and travel portals.
+* Bing, ChatGPT and Copilot (through IndexNow) are worth tens to low hundreds.
+* Search is worth doing because it is cheap, and because press and forwards will land on these pages. It won't carry the goal.
 
 ---
 
 ## 9. Decisions needed from the owner
 
-1. **Approve the plan** and the feature freeze (only G1–G7 until Bijoya).
+1. **Approve the plan** and the feature freeze (only G1–G8 until Bijoya).
 2. **Owners and hours:** who sends press emails, who sends creator DMs from @pujoparikrama.guide, who runs WhatsApp. I can draft everything, track it and steer daily, but the messages have to come from a person or the brand account.
 3. **Capacity:** Supabase Pro (US$25 for October) and Cloudflare in front of the site, before 10 Oct.
 4. **Search Console / Bing:** are they verified? If not, I'll walk you through it (10 minutes).
