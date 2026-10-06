@@ -17,7 +17,9 @@ permissions:
   actions: write   # download the footage catalogue artifact and start deploy
 
 concurrency:
-  group: reels-factory
+  # one queue per branch: a plan pushed on a work branch (whose run is skipped) must not bump a pending render
+  # on the default branch out of the queue
+  group: reels-factory-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
