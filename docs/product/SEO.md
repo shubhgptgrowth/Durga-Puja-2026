@@ -42,24 +42,25 @@ the live sitemap, `robots.txt`, `llms.txt` and guide pages.
 
 ## One-time: tell the search engines (about 10 minutes)
 
+The site's address is **https://pujoparikramaguide.in/** (`site.json`). Every canonical URL, the sitemap and
+`llms.txt` use it, and the old github.io address redirects there.
+
 1. **Google Search Console** (<https://search.google.com/search-console>):
-   - Add a property → **URL prefix** → `https://shubhgptgrowth.github.io/Durga-Puja-2026/`.
-   - Choose **HTML tag** verification, and copy the `content="…"` value only.
-   - Put that value in `site.json` as `"google_site_verification": "…"`, then push. The deploy adds the tag to every
-     page. Click **Verify**.
-   - **Sitemaps** → submit `sitemap.xml`.
-   - Optional: **URL inspection** → `guide/` → **Request indexing**, to speed up the first crawl.
-2. **Bing Webmaster Tools** (<https://www.bing.com/webmasters>):
-   - **Import from Google Search Console**, one click. Bing's index feeds ChatGPT search and Microsoft Copilot,
-     so this matters for AI answers too.
+   - Choose **Add property → Domain** and enter `pujoparikramaguide.in`. A Domain property covers `https`, `http` and `www` in one go.
+   - Google shows a **TXT record** (`google-site-verification=…`). Add it in your domain registrar's DNS settings
+     as a TXT record on the root (`@`), then click **Verify**. DNS can take a few minutes to an hour.
+   - **Sitemaps** → submit `https://pujoparikramaguide.in/sitemap.xml`.
+   - Optional: **URL inspection** → `https://pujoparikramaguide.in/guide/` → **Request indexing**, to speed up the first crawl.
+   - If you can't edit DNS, use a **URL prefix** property instead, with **HTML tag** verification.
+     Put the tag's `content` value in `site.json` as `"google_site_verification"`. The deploy adds it to every page.
+2. **Bing Webmaster Tools** (<https://www.bing.com/webmasters>): **Import from Google Search Console**, one click.
+   Bing's index feeds ChatGPT search and Microsoft Copilot.
 
 ## Limits to know
 
-- **robots.txt and llms.txt only count at the root of a domain.** The app lives under a path
-  (`shubhgptgrowth.github.io/Durga-Puja-2026/`), so crawlers look for `shubhgptgrowth.github.io/robots.txt`
-  instead. No such file exists, which means everything is allowed anyway. The sitemap still needs submitting by
-  hand (step 1). A custom domain (HOSTING.md) puts both files where crawlers expect them; run
-  `python scripts/site.py set https://your-domain/` and every canonical URL follows.
+- **Crawler files sit at the root.** On the domain, `robots.txt`, `sitemap.xml` and `llms.txt` are at
+  `https://pujoparikramaguide.in/…`, where crawlers look for them. If the domain ever changes, run
+  `python scripts/site.py set https://new-domain/` and every canonical URL follows.
 - **Pages are English.** Bengali names appear alongside, and the app itself is in English, Bengali and Hindi.
 - **Indexing takes days to weeks.** Pandal pages have the best chance of ranking for long-tail searches like
   "<pandal> best time to visit" or "<pandal> nearest metro".
