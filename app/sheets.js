@@ -204,6 +204,14 @@ function gettingThereHtml(p, parks = []) {
 }
 
 /* ---------------- pandal ---------------- */
+/** This year's theme with where it was announced (data/raw/themes_2026.csv). Big pujas without one yet say so. */
+export function themeHtml(p, compact = false) {
+  const th = p.theme;
+  if (compact) return th ? `<div class="theme-mini">🎨 ${esc((S.prefs.lang === 'bn' && th.theme_bn) || th.theme)}</div>` : '';
+  if (!th) return p.popularity >= 4 ? `<p class="theme-line muted">🎨 <b>${t('th.label')}:</b> ${t('th.soon')}</p>` : '';
+  return `<p class="theme-line">🎨 <b>${t('th.label')}:</b> ${esc((S.prefs.lang === 'bn' && th.theme_bn) || th.theme)}${th.artist ? ` · ${esc(th.artist)}` : ''}
+    <a class="theme-src" href="${esc(th.source_url)}" target="_blank" rel="noopener">${t('th.via', { src: esc(th.source_name) })}</a></p>`;
+}
 export function pandalSheet(id) {
   placeOpened(id, 'pandal');
   const p = idx.pandal[id], z = zoneOf(p.zone), df = dayFactor();
@@ -216,6 +224,7 @@ export function pandalSheet(id) {
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
     <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">📍 ${t('p.approx')}</span>` : ''}</div>
+    ${themeHtml(p)}
     ${galleryHtml(p.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}

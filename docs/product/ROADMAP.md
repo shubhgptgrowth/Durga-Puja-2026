@@ -59,7 +59,7 @@ Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 
 | # | Item | Why | Status |
 |---|---|---|---|
-| [P1-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/9) | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | ⬜ |
+| [P1-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/9) | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | 🟡 plumbing done: add a row to `data/raw/themes_2026.csv` (`id,theme,theme_bn,artist,source_url,source_name,source_date`; every theme needs its https source) and rebuild. It shows on the pandal sheet and list, the pandal page (title, lead, FAQ) and `/guide/themes-2026/` |
 | [P1-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/10) | **Bengali names** for the 31 OSM-discovered pandals | The Bengali UI shows English names for them | ⬜ |
 | [P1-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/11) | **"Add to home screen" prompt** after a first check-in or a saved plan | Repeat use during the 5 days, and fewer cold loads | ⬜ |
 | [P1-4](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/12) | **Crowd report button**: "How's the queue here? Short / Medium / Long" next to check-in | Turns the crowd curve from a guess into a live signal (Phase 6 in [SCOPE.md](SCOPE.md)) | ⬜ |

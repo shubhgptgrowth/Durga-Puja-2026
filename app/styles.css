@@ -315,6 +315,10 @@ main { padding-top: calc(var(--top-h) + var(--safe-t)); padding-bottom: calc(var
 .sheet .eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; }
 .sheet h2.title { margin: 4px 40px 2px 0; font-size: 22px; line-height: 1.2; }
 .sheet .lead { color: var(--ink-2); margin: 10px 0 0; }
+.theme-line { margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); line-height: 1.45; }
+.theme-line.muted { color: var(--ink-3); background: transparent; padding: 0; }
+.theme-src { display: block; font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+.theme-mini { grid-column: 1 / -1; font-size: 13px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sheet h3.sh { font-size: 14px; margin: 20px 0 8px; color: var(--ink); }
 .sheet .kv { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 14px; margin: 0; }
 .sheet .kv dt { color: var(--ink-3); }

@@ -5,7 +5,7 @@ import {
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { offerChip } from '../offers.js';
-import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks } from '../sheets.js';
+import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeHtml } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
 import { carCardHtml, carClick } from '../car.js';
@@ -59,6 +59,7 @@ function pandalItem(p) {
     <h3 class="nm">${esc(nm(p))}</h3>
     <div class="side"><span class="score">${icon('star', 'sm fill')}${p.popularity}</span>${statsHtml(p.id, { compact: true })}</div>
     <div class="meta">${esc(zs(z))}${S.me ? ` · ${dist(hav(S.me, ll(p)))}` : ''} · 🚇 ${esc(p.nearest_metro.name)}</div>
+    ${themeHtml(p, true)}
     <div class="status">${crowdPill(c)}<span class="pill" title="${t('card.bestHint')}">${icon('clock', 'sm')} ${t('card.best', { slot: t('slot.' + p.best_slot) })}</span></div>
   </li>`;
 }

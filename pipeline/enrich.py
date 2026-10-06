@@ -40,9 +40,13 @@ def enrich(data):
     transit, parking, food = data["transit"], data["parking"], data["food"]
     pandals = []
 
+    themes = {th["id"]: th for th in data.get("themes", [])}
     for p in data["pandals"]:
         pt = (p["lat"], p["lng"])
         e = dict(p)
+        if p["id"] in themes:   # this year's theme, with where it was announced
+            th = themes[p["id"]]
+            e["theme"] = {k: th[k] for k in ("theme", "theme_bn", "artist", "source_url", "source_name", "source_date") if th.get(k)}
 
         (metro_d, metro), = _nearest(pt, transit)
         e["nearest_metro"] = {"id": metro["id"], "name": metro["name"], "line": metro["line"],

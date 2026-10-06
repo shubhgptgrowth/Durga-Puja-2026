@@ -251,11 +251,13 @@ The screenshots are kept with the session, not in the repo.
 
 ---
 
-## 9. Decisions needed from the owner
+## 9. Owner decisions (6 Oct)
 
-1. **Approve the plan** and the feature freeze (only G1–G8 until Bijoya).
-2. **Owners and hours:** who sends press emails, who sends creator DMs from @pujoparikrama.guide, who runs WhatsApp. I can draft everything, track it and steer daily, but the messages have to come from a person or the brand account.
-3. **Capacity:** Supabase Pro (US$25 for October) and Cloudflare in front of the site, before 10 Oct.
-4. **Search Console / Bing:** are they verified? If not, I'll walk you through it (10 minutes).
-5. **Founder story for press:** are you OK being named and quoted, with a photo?
-6. **"Organic" boundaries:** unpaid creator Collabs and barter (credit, a named trail) count as organic. Boosting posts doesn't. Confirm that.
+| # | Decision | Answer |
+|---|---|---|
+| 1 | The plan and the feature freeze (G1–G8 only until Bijoya) | **Approved.** Fixes started the same day |
+| 2 | Owners for press, creator DMs and WhatsApp | Open. Claude drafts and tracks; a person or the brand account sends |
+| 3 | Supabase Pro and Cloudflare before 10 Oct | **Later**, the owner's call. Watch the free-plan limits in the daily report until then |
+| 4 | Google Search Console and Bing | Owner says it was set up on 6 Oct. Not visible from Claude's side (no verification tag in `site.json`, so it's a DNS TXT record). Confirm with a screenshot of the Sitemaps page showing `sitemap.xml` as "Success" |
+| 5 | Naming and quoting the founder in press | **Not yet.** Press material stays brand-only until the owner approves |
+| 6 | Unpaid creator Collabs and barter (credit, a named trail) count as organic | **Yes.** No boosting |

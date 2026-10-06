@@ -30,7 +30,11 @@ def read_csv(path):
 
 
 def ingest(raw_dir=config.RAW_DIR):
-    return {
+    data = {
         name: read_csv(raw_dir / f"{name}.csv")
         for name in ("regions", "zones", "pandals", "food", "parking", "transit")
     }
+    # This year's themes, one row per pandal with its source; filled in as committees announce them (from Mahalaya).
+    themes = raw_dir / f"themes_{config.YEAR}.csv"
+    data["themes"] = read_csv(themes) if themes.exists() else []
+    return data

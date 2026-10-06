@@ -91,6 +91,23 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             validate(bad)
 
+    def test_themes_need_a_known_pandal_and_a_source(self):
+        theme = {"id": self.data["pandals"][0]["id"], "theme": "Clay and light", "theme_bn": "", "artist": "",
+                 "source_url": "https://example.com/x", "source_name": "Example", "source_date": "2026-10-05"}
+        ok = copy.deepcopy(self.data)
+        ok["themes"] = [theme]
+        validate(ok)
+        enriched = enrich(ok)["pandals"][0]["theme"]
+        self.assertEqual((enriched["theme"], enriched["source_url"]), ("Clay and light", "https://example.com/x"))
+        self.assertNotIn("theme_bn", enriched)   # empty fields are left out
+        for field, value, msg in (("id", "atlantis", "no pandal"), ("source_url", "", "source_url"), ("source_url", "http://x", "https://"),
+                                  ("theme", "x" * 101, "longer than"), ("source_date", "5 Oct", "YYYY-MM-DD")):
+            bad = copy.deepcopy(ok)
+            bad["themes"][0][field] = value
+            with self.assertRaises(ValidationError) as cm:
+                validate(bad)
+            self.assertTrue(any(msg in e for e in cm.exception.errors), (field, cm.exception.errors))
+
 
 class EnrichPlanTests(unittest.TestCase):
     @classmethod
