@@ -199,3 +199,53 @@ class DailySetTest(unittest.TestCase):
              mock.patch.dict("os.environ", {"IG_USER_ID": "1", "IG_ACCESS_TOKEN": "IGx"}):
             publish_batch.main(["--date", "2026-10-06", "--window", "pm"])
         pub.assert_not_called()
+
+
+class RedesignTest(unittest.TestCase):
+    """Real-photo redesign: every slide finds a photo, Wave 1 keeps its words, voiceover reels line up."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.g = json.loads((Path(__file__).resolve().parents[1] / "app" / "data" / "guide.json").read_text(encoding="utf-8"))
+
+    def test_every_carousel_slide_gets_a_photo(self):
+        from marketing import carousels, photos
+        lib = photos.Library(self.g)
+        for i, c in enumerate(carousels.Carousels(self.g).all()):
+            lib.dress(c["slides"], "unused", seed=i, fetch=False)
+            heroes = [s.get("photo") for s in c["slides"]]
+            self.assertTrue(all(heroes), c["id"])
+            self.assertEqual(len(heroes), len(set(heroes)), f"{c['id']} repeats a photo")
+
+    def test_topics_match_whole_words(self):
+        from marketing import photos
+        lib = photos.Library(self.g)
+        self.assertEqual(lib.topical("Metro cheat sheet"), [])          # "eat" inside "cheat" is not food
+        self.assertRegex(lib.topical("Sindoor khela on Dashami")[0]["label"].lower(), "sindoor|boron|bijoya|dashami")
+
+    def test_wave1_keeps_every_line(self):
+        from marketing import posts
+        spec = json.loads(posts.SPEC.read_text(encoding="utf-8"))
+        for p in spec["posts"]:
+            new = json.dumps(posts.convert(p), ensure_ascii=False)
+            for s in p["slides"]:
+                for k in ("bn", "en", "tr"):
+                    if s.get(k):
+                        self.assertIn(json.dumps(s[k], ensure_ascii=False)[1:-1], new, f"{p['id']} lost {k}")
+
+    def test_voiceover_needs_a_line_per_shot(self):
+        from marketing.footage import factory
+        plan = {"items": [{"id": "r1", "type": "reel", "segments": [["f15", 0, 3, ""], ["f15", 4, 3, ""]],
+                           "vo": {"lines": ["এক"], "urls": ["https://e/1.mp3"]}}]}
+        with self.assertRaises(SystemExit):
+            factory.check(plan, factory.footage_index(None))
+        plan["items"][0]["vo"] = {"lines": ["এক", "দুই"], "urls": ["https://e/1.mp3", "https://e/2.mp3"]}
+        factory.check(plan, factory.footage_index(None))
+
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "the reel builder needs Pillow")
+    def test_fit_start_keeps_cuts_inside_the_clip(self):
+        from marketing.reels import build2
+        fx = {"c": {"dur": 10.0}}
+        self.assertEqual(build2.fit_start(fx, "c", 8, 4), 5.9)
+        self.assertEqual(build2.fit_start(fx, "c", 2, 4), 2)
+        self.assertEqual(build2.fit_start({}, "x", 7, 4), 7)
