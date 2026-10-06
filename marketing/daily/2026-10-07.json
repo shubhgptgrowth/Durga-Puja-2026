@@ -17,10 +17,6 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105115_426cf1fe-f70d-423a-9cd5-bbf08949a342.png",
    "label": "A Company officer's coat (AI recreation)"
   },
-  "x-rajbari-idol": {
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053931_95a971be-997d-49c3-993d-d83167f67088.png",
-   "label": "Bonedi bari idol (AI)"
-  },
   "x-metro": {
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053932_89512d60-91e8-40ab-8689-4cb8339bfe65.png",
    "label": "Kolkata Metro (AI)"
@@ -100,12 +96,10 @@
      ""
     ],
     [
-     "x-rajbari-idol",
+     "cm-a75b3d",
      0,
      4.0,
-     "",
-     0.5,
-     0.4
+     ""
     ],
     [
      "x-metro",
