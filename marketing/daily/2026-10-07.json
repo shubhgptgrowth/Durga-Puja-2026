@@ -1,0 +1,354 @@
+{
+ "date": "2026-10-07",
+ "note": "10 days to go. r1 is the first storytelling reel (Sovabazar Rajbari and Robert Clive, from the site's guide); all voiceovers in the house voice (Nadine). Kit post + 2 kit stories also go out.",
+ "clips": {
+  "x-plassey": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_104738_6fc2f93e-c326-450c-960a-f9102ac17156.mp4",
+   "w": 1080,
+   "h": 1920,
+   "dur": 5,
+   "label": "Plassey 1757 (AI recreation)"
+  },
+  "x-hall1757": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105115_344edc20-73d6-497a-8459-21a2af79c1b8.png",
+   "label": "Rajbari thakurdalan, 1757 (AI recreation)"
+  },
+  "x-redcoat": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105115_426cf1fe-f70d-423a-9cd5-bbf08949a342.png",
+   "label": "A Company officer's coat (AI recreation)"
+  },
+  "x-rajbari-idol": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053931_95a971be-997d-49c3-993d-d83167f67088.png",
+   "label": "Bonedi bari idol (AI)"
+  },
+  "x-metro": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053932_89512d60-91e8-40ab-8689-4cb8339bfe65.png",
+   "label": "Kolkata Metro (AI)"
+  },
+  "x-idol-face": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053933_510600e1-e3f5-4b3d-a946-6654b829d95e.png",
+   "label": "Durga idol (AI)"
+  },
+  "x-chokkhudan": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_053933_4bcf6e70-2a99-4f5e-8a87-7e046d56a046.png",
+   "label": "Chokkhu daan at Kumartuli (AI)"
+  }
+ },
+ "items": [
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "f28",
+     0,
+     4.0,
+     "10 days to go"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "আর মাত্র দশ দিন! কাউন্টডাউন শুরু হয়ে গেছে..."
+    ],
+    "en": [
+     "Just 10 days! The countdown has begun..."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_fa03bbf9-2104-4048-8c5b-f6339db8a105.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "12:30",
+   "format": "story",
+   "hook": "Robert Clive came to this pujo",
+   "bn": {
+    "hook": "এই পুজোয় এসেছিলেন রবার্ট ক্লাইভ",
+    "end": "এরপর কোন পুজোর গল্প শুনতে চান?"
+   },
+   "segments": [
+    [
+     "x-plassey",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "x-hall1757",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-redcoat",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.45
+    ],
+    [
+     "cm-3bbea1",
+     10,
+     4.0,
+     ""
+    ],
+    [
+     "x-rajbari-idol",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.4
+    ],
+    [
+     "x-metro",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-idol-face",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.4
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "১৭৫৭ সাল। পলাশীর যুদ্ধ সবে শেষ হয়েছে...",
+     "আর কলকাতার শোভাবাজারে, রাজা নবকৃষ্ণ দেব শুরু করলেন এক দুর্গাপুজো।",
+     "শোনা যায়, সেই রাতে অতিথি হয়ে এসেছিলেন স্বয়ং রবার্ট ক্লাইভ!",
+     "তারপর কেটে গেছে দুশো ঊনসত্তর বছর...",
+     "কিন্তু আজও, সেই একই ঠাকুরদালানে, একই নিয়মে, মা আসেন।",
+     "শোভাবাজার মেট্রো থেকে মাত্র ছ'মিনিট হাঁটা... দুপুরে গেলে ভিড় সবচেয়ে কম।",
+     "এই গল্পটা সেভ করে রাখুন... আর সেই বন্ধুকে পাঠান, যে ইতিহাস ভালোবাসে!"
+    ],
+    "en": [
+     "1757. The Battle of Plassey has just ended...",
+     "...and at Sovabazar in Kolkata, Raja Nabakrishna Deb begins a Durga Puja.",
+     "It's said that night, Robert Clive himself came as a guest!",
+     "Since then, 269 years have passed...",
+     "But even today, in the same thakurdalan, by the same rituals, Maa comes.",
+     "6 minutes' walk from Sovabazar metro. Go in the afternoon for the smallest crowd.",
+     "Save this story, and send it to the friend who loves history!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103519_599b4842-0028-4dd3-8670-60ff6b7a8091.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103519_842c5b71-0bc5-4b2b-acf4-02b885a2fd37.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103519_84b04a32-182b-47ff-8ddd-51dbf5b5d3fa.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103520_74e911fc-227a-41e1-b39c-93def4cd1f3e.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103520_b48f44ee-b1e6-4b53-b47b-f917952fe762.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103520_7192b8fa-3a94-444a-aeac-599e256daf86.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_103519_1e743aa7-1010-449d-b8b4-6d948d1735e7.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   },
+   "end": [
+    "Which pujo's story should we tell next?",
+    "Comment below"
+   ],
+   "caption": {
+    "bn": "১৭৫৭ সালের এক পুজো, যেখানে অতিথি ছিলেন রবার্ট ক্লাইভ। আজও চলছে, একই ঠাকুরদালানে 🪔 এরপর কোন পুজোর গল্প শুনতে চান? কমেন্টে লিখুন 👇",
+    "en": "In 1757, right after Plassey, Raja Nabakrishna Deb held his first Durga Puja at Sovabazar, and it's said Robert Clive was a guest. 269 years on, Maa still comes to the same thakurdalan. Save this, send it to your history-buff friend 📌 Which pujo's story should we tell next? 👇 Full guide and route free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Kolkata #PujoParikrama #দুর্গাপুজো #PujoVibes #SovabazarRajbari #BonediBari #KolkataHistory #Heritage"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "story",
+   "at": "15:30",
+   "segments": [
+    [
+     "f29",
+     2,
+     4.0,
+     "First pandal this year? Reply"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "এবার পুজোয় প্রথম কোন প্যান্ডেলে যাচ্ছেন? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "Which pandal are you visiting first this year? Reply and tell us!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_ffcbdec5-f805-4043-921f-edca58c94b75.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "18:30",
+   "hook": "Only Kolkata does this at pujo",
+   "bn": {
+    "hook": "শুধু কলকাতাতেই হয়",
+    "end": "আপনার প্রিয় কোনটা?"
+   },
+   "segments": [
+    [
+     "f30",
+     0,
+     3.5,
+     ""
+    ],
+    [
+     "f05",
+     3,
+     3.5,
+     ""
+    ],
+    [
+     "f17",
+     5,
+     3.5,
+     ""
+    ],
+    [
+     "f26",
+     1,
+     3.5,
+     ""
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "পুজোয় কলকাতা যা করে, পৃথিবীর আর কোথাও হয় না...",
+     "ধুনুচি নাচ... ঢাকের তালে আগুন আর ধোঁয়ার খেলা।",
+     "অষ্টমীর অঞ্জলি... নতুন জামা, খালি পেট, আর এক মুঠো ফুল।",
+     "আর দশমীর সিঁদুর খেলা... লাল রঙে মাকে বিদায়।"
+    ],
+    "en": [
+     "What Kolkata does at pujo, nowhere else in the world does...",
+     "Dhunuchi naach: fire and smoke to the beat of the dhak.",
+     "Ashtami anjali: new clothes, an empty stomach and a handful of flowers.",
+     "And Dashami's sindoor khela: a farewell to Maa in red."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_e4460d26-9182-484d-b5fe-14d6cbd9fe0b.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_6cb993a2-caf1-46ce-b211-3d318bb4f6a9.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_11c7a76e-456b-40ce-b76a-e4e0f94a6648.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_ffd652b4-b85f-4778-94a1-985e5e6e2391.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   },
+   "end": [
+    "Which one is your favourite?",
+    "Comment below"
+   ],
+   "caption": {
+    "bn": "ধুনুচি নাচ, অষ্টমীর অঞ্জলি না সিঁদুর খেলা, আপনার প্রিয় কোনটা? কমেন্টে লিখুন 👇",
+    "en": "Dhunuchi naach, Ashtami anjali or sindoor khela: which one is your favourite? Tell us below 👇 Plan your pujo free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Kolkata #PujoParikrama #দুর্গাপুজো #PujoVibes #Dhunuchi #SindoorKhela #Anjali"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "20:00",
+   "segments": [
+    [
+     "f16",
+     5,
+     4.0,
+     "Good evening, Kolkata"
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "শুভ সন্ধ্যা, কলকাতা... আর দশটা রাত, তারপর আলোয় ভাসবে শহর।"
+    ],
+    "en": [
+     "Good evening, Kolkata... ten more nights, then the city floats in light."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_1a00959d-ed77-43a7-b75d-4e3ec9a1264a.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "hook": "Where is Maa 10 days before pujo?",
+   "bn": {
+    "hook": "পুজোর দশ দিন আগে মা কোথায়?",
+    "end": "কুমোরটুলি গেছেন কখনো?"
+   },
+   "segments": [
+    [
+     "f27",
+     0,
+     3.5,
+     ""
+    ],
+    [
+     "f27",
+     12,
+     3.5,
+     ""
+    ],
+    [
+     "x-chokkhudan",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.45
+    ],
+    [
+     "x-idol-face",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.4
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "পুজোর দশ দিন আগে মা কোথায় থাকেন, জানেন?",
+     "উত্তর কলকাতার কুমোরটুলিতে... গঙ্গার মাটি, খড় আর বাঁশে তৈরি হন মা।",
+     "শিল্পীর হাতে একটু একটু করে প্রাণ পান...",
+     "আর সবশেষে চক্ষুদান... তখনই মা সত্যিই জেগে ওঠেন।"
+    ],
+    "en": [
+     "Do you know where Maa is, ten days before pujo?",
+     "In Kumartuli, north Kolkata: shaped from Ganga clay, straw and bamboo.",
+     "Little by little, she comes alive in the artisan's hands...",
+     "And last of all, chokkhu daan: the moment Maa truly wakes."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_a78cac6b-dd64-4e66-8f5d-a2be336a1684.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_a88860f6-93aa-42ff-b25b-fe2b98f23f76.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105237_a2ce097e-1d48-4459-ab4a-3adbda903a64.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_105238_9bad40fe-5905-4b9b-b514-6692b32d9fe7.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   },
+   "end": [
+    "Have you ever been to Kumartuli?",
+    "Tell us below"
+   ],
+   "caption": {
+    "bn": "পুজোর আগে কুমোরটুলি গেছেন কখনো? কমেন্টে লিখুন 👇 চক্ষুদানের মুহূর্তটা দেখার মতো 🪔",
+    "en": "Ten days before pujo, Maa is still in Kumartuli, taking shape in Ganga clay. Have you ever been? Tell us below 👇 Plan your Kumartuli walk free, link in bio.",
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #DurgaPujo #Kolkata #PujoParikrama #দুর্গাপুজো #PujoVibes #Kumartuli #ChokkhuDaan #NorthKolkata"
+   }
+  }
+ ]
+}
