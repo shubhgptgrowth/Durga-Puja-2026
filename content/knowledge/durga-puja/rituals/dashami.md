@@ -71,6 +71,12 @@ Once the goddess has left, Bengalis exchange **Bijoya** greetings, saying *Shubh
 
 Visits to relatives and neighbours continue for days, sometimes until Kojagari Lakshmi Puja. For messages and wishes see [Bijoya Dashami wishes](/durga-puja/bijoya-dashami-wishes/).
 
+## After the immersion
+
+When the family or committee returns from the ghat, the empty pandal or thakur dalan has a particular stillness. In many homes a lamp is lit where the goddess stood, and the evening is spent receiving visitors and going on Bijoya rounds. In many families people write the goddess's name, often as "Sri Sri Durga Sahay", on paper on Dashami evening. Such customs vary greatly from home to home.
+
+The festival season does not end entirely: Kojagari Lakshmi Puja follows on the full moon, and Kali Puja, with Diwali, comes about three weeks after Dashami. Many Bengalis say the sadness of Dashami lasts until the first sweets of Bijoya arrive.
+
 ## Where to see Dashami rites
 
 [Bagbazar Sarbojanin](/guide/pandals/bagbazar/) is known for a large, lively sindoor khela, and old family pujas such as [Sovabazar Rajbari](/guide/pandals/sovabazar_rajbari/) keep traditional farewell rites; see also [bonedi bari pujas](/durga-puja/bonedi-bari-pujas/). Arrive early, as the crowds are heavy.
