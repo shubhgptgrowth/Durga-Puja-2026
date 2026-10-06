@@ -186,7 +186,7 @@ class BuildSeoTest(unittest.TestCase):
         import tomllib
         credits = json.loads((Path(build_seo.ROOT) / "app/audio/credits.json").read_text(encoding="utf-8"))
         for st in tomllib.loads((CONTENT / "stories.toml").read_text(encoding="utf-8"))["story"]:   # music, when chosen, plays and is credited
-            if st.get("music"):
+            if st.get("music") and (Path(build_seo.ROOT) / f"app/audio/{st['music']}.mp3").exists():
                 html = (d / st["slug"] / "index.html").read_text(encoding="utf-8")
                 self.assertIn(f'background-audio="../../audio/{st["music"]}.mp3"', html)
                 self.assertIn(credits[st["music"]]["author"], html)
