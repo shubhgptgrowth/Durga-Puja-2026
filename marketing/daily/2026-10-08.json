@@ -1,6 +1,6 @@
 {
  "date": "2026-10-08",
- "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "note": "9 days to go, Mahalaya in 2 days. r1 storytelling (the 1976 Mahishasuramardini story, from the site's Mahalaya radio guide), photo series 'five faces', pandal hopping rules, pujo food. Nadine voices s1-s3 and r1; r2 and r3 use Microsoft's Bengali voice because Higgsfield credits ran out.",
  "items": [
   {
    "id": "p1",
@@ -48,6 +48,455 @@
     "en": "Five pujos. Five faces of Maa Durga. Swipe through and pick the one that stays with you.\n\n1 · Kolkata\n2 · Biswamilani Club, Padmapukur, Howrah\n3 · Sanjar Aatchala, Sibpur, Howrah\n4 · Sandhi Puja, 2017\n5 · A neighbourhood pujo in Bengal\n\nSerene, fierce, or tender like a daughter coming home: every protima is different because every artist's hand is different.\n\nComment your number 👇 and send this to the friend who goes pandal hopping with you. Free Durga Puja 2026 route planner for Kolkata, link in bio.",
     "tags": "#DurgaPuja2026 #MaaDurga #DurgaPujaKolkata #KolkataDiaries #BengaliCulture"
    }
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "x-dawn",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "আর মাত্র ন'দিন! আর পরশু ভোরেই মহালয়া… মা আসছেন।"
+    ],
+    "en": [
+     "Just 9 days! And the day after tomorrow, at dawn, it's Mahalaya... Maa is coming."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_7c36cefa-47cd-49fb-a48a-2817048814af.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "12:30",
+   "format": "story",
+   "hook": "In 1976, Bengal switched on the radio and got a shock",
+   "bn": {
+    "hook": "১৯৭৬-এর মহালয়ায় রেডিও খুলে চমকে গিয়েছিল বাংলা",
+    "end": "মহালয়া শনিবার, ১০ অক্টোবর। অ্যালার্ম দিয়েছেন?"
+   },
+   "end": [
+    "Mahalaya is on Saturday, 10 October. Alarm set?",
+    ""
+   ],
+   "segments": [
+    [
+     "x-radio",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.55
+    ],
+    [
+     "x-radiocrowd",
+     0,
+     4.0,
+     "",
+     0.45,
+     0.5
+    ],
+    [
+     "x-mullard",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-tarpan1",
+     2,
+     4.0,
+     ""
+    ],
+    [
+     "x-tarpan2",
+     2,
+     4.0,
+     ""
+    ],
+    [
+     "x-face31",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.35
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "মহালয়ার ভোর চারটে। ঘরে ঘরে রেডিও চালু… সবাই অপেক্ষা করছে সেই একটা কণ্ঠের জন্য।",
+     "উনিশশো তিরিশের দশক থেকে, বীরেন্দ্রকৃষ্ণ ভদ্রর মহিষাসুরমর্দিনী শুনেই বাংলায় পুজো শুরু হয়।",
+     "কিন্তু উনিশশো ছিয়াত্তরে, আকাশবাণী সেটা বদলে দিল… এল নতুন অনুষ্ঠান, স্বয়ং মহানায়ক উত্তম কুমারকে নিয়ে!",
+     "শোনা যায়, মানুষ সেটা মেনে নেয়নি। চারদিকে প্রতিবাদের ঝড় উঠেছিল।",
+     "শেষমেশ ফিরিয়ে আনা হল পুরোনো মহিষাসুরমর্দিনী। আর সেই থেকে আজও, একই কণ্ঠ।",
+     "গল্পটা সেভ করে রাখুন… আর পাঠিয়ে দিন তাকে, যার সঙ্গে প্রতি বছর মহালয়া শোনেন।"
+    ],
+    "en": [
+     "4 am on Mahalaya. Radios switched on in every home... everyone waiting for one voice.",
+     "Since the 1930s, Bengal's pujo has begun with Birendra Krishna Bhadra's Mahishasuramardini.",
+     "But in 1976, All India Radio replaced it... with a new programme starring Uttam Kumar himself!",
+     "It's said people refused to accept it. A storm of protest followed.",
+     "In the end, the old Mahishasuramardini was brought back. And to this day, it's the same voice.",
+     "Save this story... and send it to the person you listen to Mahalaya with every year."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_532c2f76-6033-419f-bafc-7865afe42ab9.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194410_aca940db-0cc1-4ea6-b144-a3be5d0cbd03.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_e3a937bb-b0a9-4ddb-829a-8ed97d4e8753.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_c34f41cb-5488-4562-80bc-92c49aba8cf6.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_0e3a7c6f-5762-43b0-870d-40c018a6012f.mp3",
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_7dffbfae-5788-4c58-a1ef-1cc40cacad4f.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   },
+   "caption": {
+    "bn": "মহালয়ার ভোরে বীরেন্দ্রকৃষ্ণ ভদ্রর কণ্ঠ ছাড়া পুজো শুরু হয়? 📻\n\n১৯৭৬ সালে আকাশবাণী একবার মহিষাসুরমর্দিনী বদলে উত্তম কুমারকে নিয়ে নতুন অনুষ্ঠান করেছিল। শোনা যায়, প্রতিবাদের ঝড়ে ফিরিয়ে আনতে হয় পুরোনোটাই। সেই থেকে আজও একই কণ্ঠ, একই ভোর।\n\nএবার মহালয়া শনিবার, ১০ অক্টোবর। আপনি রেডিওতে শোনেন না ফোনে? কমেন্টে লিখুন 👇",
+    "en": "The Mahalaya radio story every Bengali family knows: the year they changed Mahishasuramardini.\n\nSince the early 1930s, Birendra Krishna Bhadra's voice reciting the Chandi at 4 am on Mahalaya has been the sound that starts Durga Puja in Bengal. In 1976, All India Radio replaced it with a new programme featuring Uttam Kumar. By most accounts listeners protested so strongly that the original came back, and it has stayed ever since.\n\nMahalaya 2026 is on Saturday, 10 October. Set your alarm before dawn, and after the broadcast the ghats along the Hooghly fill up for tarpan.\n\nRadio or phone: how do you listen? 👇 Save this and send it to the person you listen with every year.\nFree Durga Puja 2026 guide, link in bio.",
+    "tags": "#Mahalaya #Mahishasuramardini #DurgaPuja2026 #BengaliCulture #Kolkata"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "story",
+   "at": "15:30",
+   "segments": [
+    [
+     "x-offering",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.45
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "মহালয়ার ভোরে আপনি উঠবেন তো? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "Will you wake up at dawn for Mahalaya? Reply and tell us!"
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194412_846ebf26-cfed-4f90-a207-6c99a276c74c.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "18:30",
+   "format": "story",
+   "hook": "5 rules for pandal hopping like a local",
+   "bn": {
+    "hook": "ঠাকুর দেখার ৫টা নিয়ম",
+    "end": "আপনার সেরা পুজো-হ্যাক কী?"
+   },
+   "end": [
+    "What's your best pujo hack?",
+    ""
+   ],
+   "segments": [
+    [
+     "f28",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "f29",
+     2,
+     4.0,
+     ""
+    ],
+    [
+     "f03",
+     2,
+     4.0,
+     ""
+    ],
+    [
+     "f30",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "f06",
+     3,
+     4.0,
+     ""
+    ],
+    [
+     "f10",
+     10,
+     4.0,
+     ""
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "কলকাতার মানুষের মতো ঠাকুর দেখতে চান? পাঁচটা নিয়ম মনে রাখুন।",
+     "এক, ভোরবেলা বা রাত একটার পরে বেরোন। ভিড় সবচেয়ে কম।",
+     "দুই, গাড়ি নয়, মেট্রো। শোভাবাজার থেকে কালীঘাট, স্টেশনের কাছেই বড় বড় পুজো।",
+     "তিন, নতুন জুতো বাড়িতে রাখুন! এক রাতে দশ কিলোমিটার হাঁটা হতেই পারে।",
+     "চার, জল আর পাওয়ার ব্যাঙ্ক সঙ্গে রাখুন। ভিড়ে নেটওয়ার্কও উধাও হয়ে যায়।",
+     "আর পাঁচ, এক রাতে এক-দুটো এলাকা। কোথায় কখন ভিড় কম, সব আছে আমাদের ফ্রি গাইডে।"
+    ],
+    "en": [
+     "Want to see the pandals like a Kolkatan? Remember five rules.",
+     "One: go at dawn or after 1 am. That's when crowds are thinnest.",
+     "Two: Metro, not car. From Sovabazar to Kalighat, big pujos sit near the stations.",
+     "Three: leave the new shoes at home! You can easily walk 10 km in a night.",
+     "Four: carry water and a power bank. In the crowds, even the network disappears.",
+     "And five: one or two areas a night. Where it's quiet and when, it's all in our free guide."
+    ],
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)"
+   },
+   "caption": {
+    "bn": "প্রথমবার কলকাতার পুজোয়? এই ৫টা নিয়ম জানলে ভিড়েও আরামে ঠাকুর দেখবেন। 🚇👟\n\nভোরে বা রাত একটার পরে বেরোন, গাড়ি ছেড়ে মেট্রো ধরুন, নতুন জুতো বাড়িতে রাখুন, জল আর পাওয়ার ব্যাঙ্ক সঙ্গে নিন, আর এক রাতে এক-দুটো এলাকা।\n\nআপনার সেরা পুজো-হ্যাক কী? কমেন্টে লিখুন 👇",
+    "en": "Pandal hopping in Kolkata for Durga Puja 2026? Five rules locals swear by.\n\n1. Go at dawn or after 1 am, when the queues are shortest.\n2. Take the Metro. Sovabazar, Shyambazar, MG Road, Kalighat and Rabindra Sarobar stations are all within walking distance of big pujos.\n3. Wear shoes you have already broken in. 10 km in a night is normal.\n4. Carry water and a power bank, and keep some cash: UPI slows down in dense crowds.\n5. Plan one or two neighbouring areas per night, not the whole city.\n\nWhat's your best pujo hack? 👇 Send this to your pandal hopping group.\nOur free guide shows quiet hours, nearest Metro and walking routes for every area. Link in bio.",
+    "tags": "#PandalHopping #DurgaPuja2026 #KolkataDurgaPuja #KolkataMetro #PujoTips"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "20:00",
+   "segments": [
+    [
+     "f15",
+     2,
+     4.0,
+     ""
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "শুভ সন্ধ্যা… আর ন'দিন পরেই এমন সন্ধে আসছে।"
+    ],
+    "en": [
+     "Good evening... in nine days, evenings like this are coming."
+    ],
+    "urls": [
+     "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194341_c177691e-eef7-4724-b4bf-52551eb589b1.mp3"
+    ],
+    "voice": "ElevenLabs · Nadine (house voice)"
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "format": "story",
+   "hook": "Pujo food you can't skip",
+   "bn": {
+    "hook": "এগুলো না খেলে পুজো অসম্পূর্ণ",
+    "end": "কোনটা ছাড়া আপনার পুজো অসম্পূর্ণ?"
+   },
+   "end": [
+    "Which one completes your pujo?",
+    ""
+   ],
+   "segments": [
+    [
+     "x-thali",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-phuchka",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-roll",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-moghlai",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-kosha",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ],
+    [
+     "x-rosogolla",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.5
+    ]
+   ],
+   "vo": {
+    "lines": [
+     "পুজোয় ঠাকুর দেখা যতটা জরুরি, খাওয়াটাও ঠিক ততটাই!",
+     "ফুচকা। টক জল আর আলুর পুর… লাইনে দাঁড়ানোটাই অর্ধেক মজা।",
+     "এগ রোল। কলকাতার রাস্তার আসল হিরো।",
+     "মোগলাই পরোটা, সঙ্গে আলুর তরকারি… আহা!",
+     "আর নবমীর দুপুর মানেই, লুচি আর কষা মাংস।",
+     "শেষ পাতে রসগোল্লা না মিষ্টি দই? কোনটা ছাড়া আপনার পুজো অসম্পূর্ণ?"
+    ],
+    "en": [
+     "At pujo, eating matters just as much as pandal hopping!",
+     "Phuchka. Tangy water, spiced potato... standing in the queue is half the fun.",
+     "Egg roll. The real hero of Kolkata's streets.",
+     "Mughlai paratha with potato curry... aah!",
+     "And Navami lunch means luchi and kosha mangsho.",
+     "To finish: rosogolla or mishti doi? Which one completes your pujo?"
+    ],
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)"
+   },
+   "caption": {
+    "bn": "পুজো মানে শুধু ঠাকুর দেখা নয়, পেটপুজোও! 😋\n\nফুচকা, এগ রোল, মোগলাই পরোটা, নবমীর কষা মাংস আর শেষে রসগোল্লা। এই লিস্টে কী বাদ গেল? কমেন্টে লিখুন 👇",
+    "en": "Kolkata Durga Puja food you can't skip, from street stalls to Navami lunch.\n\nPhuchka with tangy tamarind water. The egg roll, Kolkata's own street food. Mughlai paratha with alur torkari. Luchi and kosha mangsho on Navami afternoon. And rosogolla or mishti doi to finish.\n\nWhat's missing from this list? 👇 Tag the friend who eats more than they pandal-hop.\nOur free pujo guide marks food stops near every pandal area. Link in bio.",
+    "tags": "#KolkataFood #DurgaPuja2026 #Phuchka #BengaliFood #PujoFood"
+   }
   }
- ]
+ ],
+ "clips": {
+  "x-radio": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194338_a7450c52-80c7-4867-a353-5259fb1f2983.png",
+   "label": "Radio before dawn (AI)"
+  },
+  "x-radiocrowd": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Educational_radio%2C_Mumbai_-_UNESCO_-_PHOTO0000000155_0001.tiff/lossy-page1-2560px-Educational_radio%2C_Mumbai_-_UNESCO_-_PHOTO0000000155_0001.tiff.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 3.0 IGO",
+   "artist": "Jehangir S. Bhownagary / UNESCO",
+   "label": "Listening to the radio together (archive photo)"
+  },
+  "x-mullard": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Mullard_radio.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 2.0",
+   "artist": "electromechanic812291",
+   "label": "Valve radio"
+  },
+  "x-tarpan1": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Tarpan_-_Jagannath_Ghat_-_Kolkata_2012-10-15_0641.ogv",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Tarpan at Jagannath Ghat on Mahalaya",
+   "w": 1920,
+   "h": 1080
+  },
+  "x-tarpan2": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Tarpan_-_Jagannath_Ghat_-_Kolkata_2012-10-15_0707.ogv",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Tarpan at Jagannath Ghat on Mahalaya",
+   "w": 1920,
+   "h": 1080
+  },
+  "x-dawn": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Pitri_Tarpan_on_the_dawn_of_Mahalaya_at_Raichak%2C_West_Bengal%2C_India.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kingshuk Mondal",
+   "label": "Tarpan at dawn on Mahalaya, Raichak"
+  },
+  "x-offering": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Mahalaya%2C_an_auspicious_day_to_perform_Tarpan_04.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Tarpan offering on Mahalaya"
+  },
+  "x-face31": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Durga_Face_-_Biswamilani_Club_-_Padmapukur_Water_Treatment_Plant_Road_-_Howrah_2013-10-14_3467.JPG",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga, Biswamilani Club, Howrah"
+  },
+  "x-thali": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Bengali_veg_thali.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 3.0",
+   "artist": "Rajeeb Dutta",
+   "label": "Bengali veg thali",
+   "page": "https://commons.wikimedia.org/wiki/File:Bengali_veg_thali.jpg"
+  },
+  "x-phuchka": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Phuchka_-_Bengali_Style_Panipuri.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Arzina Hossain",
+   "label": "Phuchka - Bengali Style Panipuri",
+   "page": "https://commons.wikimedia.org/wiki/File:Phuchka_-_Bengali_Style_Panipuri.jpg"
+  },
+  "x-roll": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Egg_Chicken_Roll.JPG",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Deboli Dutta",
+   "label": "Egg Chicken Roll",
+   "page": "https://commons.wikimedia.org/wiki/File:Egg_Chicken_Roll.JPG"
+  },
+  "x-moghlai": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Double-Egg_Moghlai_Pawrota_with_Potato-Salad_%26_Dal.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Love's Labour Lost",
+   "label": "Double-Egg Moghlai Pawrota with Potato-Salad & Dal",
+   "page": "https://commons.wikimedia.org/wiki/File:Double-Egg_Moghlai_Pawrota_with_Potato-Salad_%26_Dal.jpg"
+  },
+  "x-kosha": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Kosha_Mangsho.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 3.0",
+   "artist": "Sumit Surai",
+   "label": "Kosha Mangsho",
+   "page": "https://commons.wikimedia.org/wiki/File:Kosha_Mangsho.jpg"
+  },
+  "x-rosogolla": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Rosogolla_Bengali.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Snthakur",
+   "label": "Rosogolla Bengali",
+   "page": "https://commons.wikimedia.org/wiki/File:Rosogolla_Bengali.jpg"
+  }
+ }
 }
