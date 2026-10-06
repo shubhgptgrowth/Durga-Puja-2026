@@ -1203,8 +1203,8 @@
    "locality": "",
    "match": {
     "name": "Beleghata 33 Pally",
-    "lat": 22.5685699,
-    "lng": 88.3912469,
+    "lat": 22.568632,
+    "lng": 88.3913559,
     "class": "highway:bus_stop",
     "src": "nominatim"
    },
@@ -1297,8 +1297,8 @@
    "locality": "",
    "match": {
     "name": "Hindustan Club",
-    "lat": 22.5195091,
-    "lng": 88.3605935,
+    "lat": 22.503988,
+    "lng": 88.3370609,
     "class": "amenity:place_of_worship",
     "src": "nominatim"
    },
@@ -1418,10 +1418,10 @@
    },
    "similarity": 0.72,
    "locality_match": {
-    "name": "Purbachal Main Road",
-    "lat": 22.502355,
-    "lng": 88.3967382,
-    "class": "highway:residential",
+    "name": "Purbachal Road",
+    "lat": 22.5079064,
+    "lng": 88.3876669,
+    "class": "highway:tertiary",
     "query": "Purbachal, Kolkata"
    }
   },
@@ -1623,6 +1623,273 @@
     "src": "overpass"
    },
    "similarity": 0.57
+  },
+  {
+   "id": "shyam_square",
+   "name": "Shyam Square Sarbojanin",
+   "name_bn": "শ্যাম স্কোয়ার সার্বজনীন",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Shyam Square Durga Puja",
+   "locality": "Shyam Square, Kolkata|Shyampukur, Kolkata",
+   "match": {
+    "osm": "node/10084831369",
+    "name": "Sahapur Sarbojanin",
+    "name_bn": "",
+    "lat": 22.51163,
+    "lng": 88.328018,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.53,
+   "locality_match": {
+    "name": "Shyam Square",
+    "lat": 22.6008277,
+    "lng": 88.3683323,
+    "class": "highway:residential",
+    "query": "Shyam Square, Kolkata"
+   }
+  },
+  {
+   "id": "young_boys_club",
+   "name": "Young Boys Club",
+   "name_bn": "ইয়ং বয়েজ ক্লাব",
+   "area_hint": "central",
+   "popularity": "4",
+   "query": "Young Boys Club Durga Puja",
+   "locality": "Tara Chand Dutta Street, Kolkata",
+   "match": {
+    "name": "Young Boys Club",
+    "lat": 22.5788831,
+    "lng": 88.3569652,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "baguiati_rail_pukur",
+   "name": "Baguiati Rail Pukur United Club",
+   "name_bn": "বাগুইআটি রেলপুকুর ইউনাইটেড ক্লাব",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Rail Pukur United Club Baguiati",
+   "locality": "Baguiati, Kolkata",
+   "match": {
+    "osm": "node/10083307836",
+    "name": "Sanghati Puja Samiti",
+    "name_bn": "",
+    "lat": 22.502811,
+    "lng": 88.359434,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.48,
+   "locality_match": {
+    "name": "Baguiati",
+    "lat": 22.609668,
+    "lng": 88.4276832,
+    "class": "place:suburb",
+    "query": "Baguiati, Kolkata"
+   }
+  },
+  {
+   "id": "allen_park",
+   "name": "Park Street Allen Park Puja",
+   "name_bn": "পার্ক স্ট্রিট অ্যালেন পার্ক",
+   "area_hint": "central",
+   "popularity": "3",
+   "query": "Allen Park Park Street",
+   "locality": "Allen Park, Kolkata|Park Street, Kolkata",
+   "match": {
+    "name": "Allen Park",
+    "lat": 22.5503797,
+    "lng": 88.354378,
+    "class": "leisure:park",
+    "src": "nominatim"
+   },
+   "similarity": 0.54,
+   "locality_match": {
+    "name": "Park Street",
+    "lat": 22.5471151,
+    "lng": 88.3605028,
+    "class": "highway:secondary",
+    "query": "Park Street, Kolkata"
+   }
+  },
+  {
+   "id": "barisha_sarbojanin",
+   "name": "Barisha Sarbojanin",
+   "name_bn": "বড়িশা সর্বজনীন",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Barisha Sarbojanin Durgotsab",
+   "locality": "Sabarna Para, Barisha, Kolkata|Barisha, Kolkata",
+   "match": {
+    "name": "Barisha Sarbojanin",
+    "lat": 22.4799885,
+    "lng": 88.3080783,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "behala_11_pally",
+   "name": "Behala 11 Pally Club",
+   "name_bn": "বেহালা ১১ পল্লী",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "11 Pally Behala",
+   "locality": "Behala, Kolkata",
+   "match": {
+    "name": "Behalla 11 Pally",
+    "lat": 22.4999169,
+    "lng": 88.3221504,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 0.97
+  },
+  {
+   "id": "behala_yma",
+   "name": "Behala Young Men's Association",
+   "name_bn": "বেহালা ইয়ং মেনস অ্যাসোসিয়েশন",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Behala Young Mens Association",
+   "locality": "Behala, Kolkata",
+   "match": {
+    "osm": "way/1093618347",
+    "name": "Sabuj Chakra Club & Durgabari Samiti",
+    "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+    "lat": 22.692889,
+    "lng": 88.444008,
+    "class": "building:",
+    "src": "overpass"
+   },
+   "similarity": 0.39,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "71_pally_baishakhi",
+   "name": "71 Pally Baishakhi Sarbojanin",
+   "name_bn": "৭১ পল্লী বৈশাখী সর্বজনীন",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "71 Pally Ballygunge",
+   "locality": "Ballygunge, Kolkata",
+   "match": {
+    "osm": "node/10083540461",
+    "name": "Pallishree Sarbojanin",
+    "name_bn": "",
+    "lat": 22.485342,
+    "lng": 88.36539,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "Ballygunge",
+    "lat": 22.5280337,
+    "lng": 88.3659084,
+    "class": "place:suburb",
+    "query": "Ballygunge, Kolkata"
+   }
+  },
+  {
+   "id": "obosor_sarbojanin",
+   "name": "Obosor Sarbojanin",
+   "name_bn": "অবসর সর্বজনীন",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Abasar Sarbojanin Bhowanipore",
+   "locality": "Bhowanipore, Kolkata",
+   "match": {
+    "osm": "node/10081941251",
+    "name": "Gouribari Sarbojanin",
+    "name_bn": "",
+    "lat": 22.594579,
+    "lng": 88.379144,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.4,
+   "locality_match": {
+    "name": "Bhowanipore",
+    "lat": 22.5325844,
+    "lng": 88.3454429,
+    "class": "place:suburb",
+    "query": "Bhowanipore, Kolkata"
+   }
+  },
+  {
+   "id": "kendua_shanti_sangha",
+   "name": "Kendua Shanti Sangha",
+   "name_bn": "কেন্দুয়া শান্তি সংঘ",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Kendua Shanti Sangha",
+   "locality": "Kendua, Garia, Kolkata",
+   "match": {
+    "osm": "way/191145359",
+    "name": "Durga Bari",
+    "name_bn": "",
+    "lat": 22.525392,
+    "lng": 88.369556,
+    "class": "amenity:theatre",
+    "src": "overpass"
+   },
+   "similarity": 0.52
+  },
+  {
+   "id": "lake_gardens_peoples",
+   "name": "Lake Gardens Peoples Association",
+   "name_bn": "লেক গার্ডেন্স পিপলস অ্যাসোসিয়েশন",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Lake Gardens Peoples Association",
+   "locality": "Lake Gardens, Kolkata",
+   "match": {
+    "name": "Lake Gardens Peoples Association",
+    "lat": 22.5059678,
+    "lng": 88.356109,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "tollygunge_santi_pally",
+   "name": "Tollygunge Santi Pally",
+   "name_bn": "টালিগঞ্জ শান্তিপল্লী",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Santi Pally Tollygunge",
+   "locality": "Tollygunge, Kolkata",
+   "match": {
+    "osm": "node/10082383698",
+    "name": "Adi Ballygunge Sarbojanin",
+    "name_bn": "",
+    "lat": 22.531728,
+    "lng": 88.372075,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.44,
+   "locality_match": {
+    "name": "Tollygunge",
+    "lat": 22.498636,
+    "lng": 88.3453908,
+    "class": "place:suburb",
+    "query": "Tollygunge, Kolkata"
+   }
   }
  ]
 }
