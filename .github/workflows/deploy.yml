@@ -35,6 +35,9 @@ jobs:
           python -m unittest discover -s tests
           python -m pipeline --check
           python scripts/site.py check
+      # Crawlable guide pages, sitemap, robots.txt and llms.txt for search and AI answer engines (docs/product/SEO.md)
+      - name: Guide pages for search and AI crawlers
+        run: python scripts/build_seo.py --out app
       # The marketing content kit (docs/marketing/PLAN.md) is published at /kit/. It never blocks the app deploy.
       - uses: actions/setup-node@v4
         with:
@@ -181,6 +184,14 @@ jobs:
           else
             echo "::warning::No vector tiles published; the map is on raster tiles."
           fi
+          # Crawlable guide: sitemap, robots, llms.txt, the hub and one pandal page, with its structured data
+          for p in sitemap.xml robots.txt llms.txt llms-full.txt guide/ guide/dates/ "guide/pandals/$(python -c "import json;print(json.load(open('app/data/guide.json'))['pandals'][0]['id'])")/"; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${p}?cb=$RANDOM")
+            echo "$code /${p}"; [ "$code" = 200 ] || { echo "::error::/${p} not served"; exit 1; }
+          done
+          curl -fsS "${SITE}guide/" | grep -q 'application/ld+json' || { echo "::error::guide hub has no structured data"; exit 1; }
+          curl -fsS "$SITE" | grep -q 'id="seo-static"' || { echo "::error::home page has no static summary for crawlers"; exit 1; }
+          echo "::notice::Guide for crawlers: ${SITE}guide/ · sitemap ${SITE}sitemap.xml"
           kit=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}kit/index.html?cb=$RANDOM")
           if [ "$kit" = 200 ]; then echo "::notice::Content kit: ${SITE}kit/"; else echo "::warning::Content kit not published ($kit)"; fi
       - name: Live site reaches the community backend (read-only)

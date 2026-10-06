@@ -29,6 +29,7 @@ function syncSteps(s) {
 }
 
 async function boot() {
+  document.getElementById('seo-static')?.remove(); // plain-HTML summary for crawlers without JavaScript (scripts/build_seo.py)
   let g;
   try { g = await (await fetch('data/guide.json', { cache: 'no-cache' })).json(); }
   catch { $('#main').innerHTML = `<p class="empty">${t('load.fail')}</p>`; return; }

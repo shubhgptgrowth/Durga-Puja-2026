@@ -1030,3 +1030,6 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
 .account-box .ab-ic .g-logo { width: 26px; height: 26px; display: block; }
 .btn.g-btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; background: #fff; color: #1f1f1f; border: 1px solid #dadce0; font-weight: 600; }
 .btn.g-btn .g-logo { width: 20px; height: 20px; flex: none; }
+
+/* Plain-HTML summary for crawlers (scripts/build_seo.py); the app removes it on boot */
+.seo-static { max-width: 760px; margin: 0 auto; padding: 16px; }
