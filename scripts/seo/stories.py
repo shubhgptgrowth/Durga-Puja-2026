@@ -23,8 +23,8 @@ CSS = """@font-face{font-family:"Baloo 2";src:url(../../guide/fonts/baloo-2-lati
 amp-story{font-family:"Literata",Georgia,serif;color:#fff}
 .shade{background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(28,4,12,.55) 58%,rgba(28,4,12,.92) 100%)}
 .cover-shade{background:linear-gradient(180deg,rgba(28,4,12,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(28,4,12,.94) 100%)}
-.txt{align-content:end;padding:0 24px 64px}
-.kicker{display:inline-block;justify-self:start;font:800 13px/1 "Baloo 2",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7A0E2B;background:#FBBF24;padding:7px 10px 5px;border-radius:999px;margin:0 0 10px}
+.txt{align-content:end;padding:0 24px 92px}
+.kicker{display:block;width:fit-content;justify-self:start;font:800 13px/1 "Baloo 2",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7A0E2B;background:#FBBF24;padding:7px 10px 5px;border-radius:999px;margin:0 0 10px}
 h1,h2{font-family:"Baloo 2",system-ui,sans-serif;font-weight:800;margin:0 0 8px;line-height:1.08;text-shadow:0 2px 12px rgba(0,0,0,.4)}
 h1{font-size:38px}h2{font-size:30px}
 p{font-size:18px;line-height:1.5;margin:0 0 10px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
