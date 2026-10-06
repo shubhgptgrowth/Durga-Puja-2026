@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode: { description: 'scout or get', default: 'scout' }
-      spec: { description: '"File:X|start|secs|out;…" for get', default: '' }
+      spec: { description: 'get: "File:X|start|secs|out;…"; scout: optional "query;query…"', default: '' }
 permissions: { contents: write }
 jobs:
   audio:

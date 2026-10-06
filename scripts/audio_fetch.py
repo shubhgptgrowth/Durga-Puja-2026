@@ -1,6 +1,6 @@
 """Freely licensed pujo sounds from Wikimedia Commons, self-hosted so they play without ads or branding.
 
-  python scripts/audio_fetch.py scout                         # list Commons audio/video for dhak, conch, ulu, kansor
+  python scripts/audio_fetch.py scout ["query;query…"]        # list Commons audio/video (default: dhak, conch, ulu, kansor)
   python scripts/audio_fetch.py get "File:X.ogg|start|secs|out"  # cut + encode -> app/audio/<out>.mp3 (+ credits.json)
 
 Runs in CI (needs ffmpeg; the dev sandbox can't reach Commons)."""
@@ -27,9 +27,9 @@ def info(titles):
                     "license": g("LicenseShortName"), "author": g("Artist"), "page": ii.get("descriptionurl")})
     return out
 
-def scout():
+def scout(queries=""):
     seen = set()
-    for q in QUERIES:
+    for q in ([x.strip() for x in queries.split(";") if x.strip()] or QUERIES):
         d = api(action="query", list="search", srnamespace=6, srlimit=25, srsearch=f"{q} filetype:audio|video")
         titles = [x["title"] for x in d["query"]["search"] if x["title"] not in seen]
         seen.update(titles)
@@ -95,4 +95,5 @@ def get(specs):
     cred_p.write_text(json.dumps(credits, ensure_ascii=False, indent=1))
 
 if __name__ == "__main__":
-    scout() if sys.argv[1] == "scout" else get(sys.argv[2])
+    arg = sys.argv[2] if len(sys.argv) > 2 else ""
+    scout(arg) if sys.argv[1] == "scout" else get(arg)
