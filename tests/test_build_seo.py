@@ -113,6 +113,34 @@ class BuildSeoTest(unittest.TestCase):
                 else:
                     self.assertTrue((target / "index.html").exists(), f"{f}: {href}")
 
+    def test_article_photos(self):
+        import tomllib
+        from seo.photos import DIR
+        chosen = {k for k, v in tomllib.loads((CONTENT / "photos.toml").read_text(encoding="utf-8")).items() if v.get("file")}
+        for a in self.articles:   # every photo an article names is chosen in photos.toml
+            with self.subTest(article=a.path):
+                for k in [a.meta.get("image"), *a.meta.get("images", [])]:
+                    if k:
+                        self.assertIn(k, chosen)
+        if not (DIR / "photos.json").exists():
+            self.skipTest("no photos fetched yet (article-photos workflow, mode=fetch)")
+        credits = json.loads((DIR / "photos.json").read_text(encoding="utf-8"))
+        for k, c in credits.items():   # credited, freely licensed, and on disk
+            with self.subTest(photo=k):
+                self.assertTrue(c["author"] and c["page"].startswith("https://commons.wikimedia.org/"))
+                self.assertNotRegex(c["license"], r"NC|ND")
+                self.assertTrue((DIR / f"{k}.webp").exists() and (DIR / f"{k}-600.webp").exists())
+        html = (self.tmp / "durga-puja/rituals/ashtami/index.html").read_text(encoding="utf-8")
+        self.assertIn('class="photo hero"', html)
+        self.assertIn("via Wikimedia Commons", html)
+        self.assertGreaterEqual(html.count('<figure class="photo'), 3)   # hero + two between sections
+        p = Page()
+        p.feed(html)
+        main = next(x for x in p.ld if x.get("@type") == "Article")
+        self.assertEqual(main["image"][0]["@type"], "ImageObject")
+        self.assertIn("license", main["image"][0])
+        self.assertIn("img/guide/pushpanjali.webp", (self.tmp / "sitemap.xml").read_text(encoding="utf-8"))
+
     def test_articles(self):
         self.assertGreater(len(self.articles), 0)
         for a in self.articles:

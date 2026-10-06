@@ -198,7 +198,7 @@ class KnowledgeMixin:
         org = {"@type": "Organization", "name": NAME, "url": self.base, "logo": {"@type": "ImageObject", "url": self.url("icons/icon-512.png")}}
         images = list(dict.fromkeys(k for k in [hero, *inline, *sorted(placed)] if k))
         card = None
-        if hero and ph.share_card(hero, a.label, a.section, self.out / "og" / (a.path.strip("/").replace("/", "--") or "home") / "card.jpg"):
+        if hero and ph.share_card(hero, a.h1, a.section, self.out / "og" / (a.path.strip("/").replace("/", "--") or "home") / "card.jpg"):
             card = self.url("og/" + (a.path.strip("/").replace("/", "--") or "home") + "/card.jpg")
         self.og_image = card or (ph.url(hero) if hero else None)
         main = {"@context": "https://schema.org", "@type": "Recipe" if recipe else "HowTo" if steps else "Article", "@id": url + "#main", "headline": a.h1[:110], "name": a.h1,

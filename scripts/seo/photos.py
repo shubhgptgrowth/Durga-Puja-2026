@@ -71,7 +71,7 @@ class Photos:
         im = ImageOps.fit(Image.open(src).convert("RGB"), (1200, 630), centering=(0.5, 0.4))
         shade = Image.new("L", (1, 630))
         for y in range(630):
-            shade.putpixel((0, y), int(235 * max(0, (y - 170) / 460) ** 1.3))
+            shade.putpixel((0, y), int(245 * min(1.0, max(0.0, (y - 150) / 380) ** 1.1)))
         im.paste(Image.new("RGB", (1200, 630), (40, 6, 18)), (0, 0), shade.resize((1200, 630)))
         d = ImageDraw.Draw(im)
         big = ImageFont.truetype(str(FONTS / "baloo-2-latin-800-normal.woff2"), 66)
