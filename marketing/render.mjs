@@ -43,45 +43,69 @@ function photoBlock(ph, h) {
   return `<div class="photo" style="height:${h}px"><img src="${esc(ph.src)}" referrerpolicy="no-referrer" onerror="document.body.classList.add('nophoto')"></div><div class="credit">${esc(ph.credit)}</div>`;
 }
 
+// Instagram cards: a full-bleed real photo with magazine type on it (same look as marketing/carousels.mjs).
+const IG_FONTS = `<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Galada&family=Hind+Siliguri:wght@500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">`;
+const IG_CSS = `body{background:#1a0d0a;font-family:Inter,"Hind Siliguri",system-ui,sans-serif}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 36%,rgba(10,4,2,.75) 60%,rgba(10,4,2,.94) 100%)}
+.sh.dense{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 12%,rgba(10,4,2,.2) 20%,rgba(10,4,2,.76) 34%,rgba(10,4,2,.9) 50%)}
+.nophoto .ph{display:none}.nophoto .sh{background:radial-gradient(120% 80% at 70% 0%,#5b1414 0%,#1a0d0a 60%)}
+.mark{font-family:Galada,"Hind Siliguri",cursive;font-size:42px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.mark small{font-family:Inter,sans-serif;font-size:22px;font-weight:600;opacity:.85;margin-left:14px}
+.kick{font-size:26px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFC857;display:flex;align-items:center;gap:16px}
+.kick:before{content:"";width:50px;height:4px;background:#FFC857}
+.ttl{font-family:"DM Serif Display",Georgia,serif;line-height:1.02;margin-top:14px}
+.big{font-family:"DM Serif Display",serif;color:#FFC857;line-height:1}
+.bnl{font-family:"Hind Siliguri",sans-serif;font-weight:600}
+.btn{display:inline-block;background:#fff;color:#1a0d0a;font-weight:800;border-radius:999px}
+.cred{position:absolute;left:72px;right:72px;bottom:30px;font-size:19px;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wrap{text-shadow:0 2px 14px rgba(0,0,0,.45)}`;
+const plainTxt = (s = '') => esc(String(s).replace(/[\u{1F000}-\u{1FFFF}☀-➿️‍]/gu, '').trim());
+
+function igShell(w, h, d, body, dense = false, extra = '') {
+  const src = d.photo ? String(d.photo.src).split('?')[0].replace(/\/960px-/, '/1280px-') : '';
+  const img = d.photo ? `<img class="ph" src="${esc(src)}" data-alt="${esc(d.photo.src)}" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt}else{document.body.classList.add('nophoto')}" referrerpolicy="no-referrer">` : '';
+  return `<!doctype html><html><head><meta charset="utf-8">${IG_FONTS}<style>${BASE_CSS}${IG_CSS}${extra}</style></head>
+  <body class="${d.photo ? '' : 'nophoto'}" style="width:${w}px;height:${h}px;position:relative">${img}<div class="sh${dense ? ' dense' : ''}"></div>${body}
+  ${d.photo ? `<div class="cred">Photo: ${esc(String(d.photo.credit).replace(/^Photo:\s*/, ''))}</div>` : ''}</body></html>`;
+}
+
 function hero(c, [w, h]) {
-  const d = c.data, story = c.format === 'story', ph = story ? 820 : 560;
-  return shell(w, h, `<div class="bg"></div><div class="rings"></div>${photoBlock(d.photo, ph)}
-  <div class="wrap" style="padding:${story ? 110 : 80}px 80px">
-    <div class="brand">🪔 Pujo Parikrama 2026</div>
+  const d = c.data, story = c.format === 'story';
+  return igShell(w, h, d, `<div class="wrap" style="padding:${story ? 110 : 56}px 72px ${story ? 130 : 84}px">
+    <div class="mark">পুজো পরিক্রমা<small>${esc(FOOTER)}</small></div>
     <div style="margin-top:auto">
-      <div class="kicker">${esc(d.kicker)}</div>
-      <div style="font-size:${d.big?.length > 3 ? 120 : 220}px;font-weight:800;line-height:1;margin:18px 0 6px;color:#FDE68A">${esc(d.big)}</div>
-      <div style="font-size:${story ? 84 : 76}px;font-weight:800;line-height:1.08">${esc(d.title)}</div>
-      <p style="font-size:${story ? 40 : 34}px;margin-top:26px;line-height:1.35;opacity:.95">${esc(d.subtitle)}</p>
-      ${d.subtitle_bn ? `<p style="font-family:'Hind Siliguri';font-size:${story ? 38 : 32}px;margin-top:16px;line-height:1.4;opacity:.9">${esc(d.subtitle_bn)}</p>` : ''}
-      <div style="margin-top:${story ? 60 : 40}px;display:flex;align-items:center;justify-content:space-between"><span class="cta">${esc(d.cta || 'Link in bio')}</span></div>
-      <div class="url" style="margin-top:28px">${esc(FOOTER)}</div>
+      <div class="kick">${plainTxt(d.kicker)}</div>
+      ${d.big ? `<div class="big" style="font-size:${d.big.length > 3 ? 130 : 230}px;margin-top:10px">${plainTxt(d.big)}</div>` : ''}
+      <div class="ttl" style="font-size:${story ? 104 : 92}px">${plainTxt(d.title)}</div>
+      ${d.subtitle_bn ? `<p class="bnl" style="font-size:${story ? 44 : 38}px;margin-top:18px;line-height:1.35">${esc(d.subtitle_bn)}</p>` : ''}
+      <p style="font-size:${story ? 38 : 32}px;margin-top:14px;line-height:1.38;opacity:.92">${plainTxt(d.subtitle)}</p>
+      <span class="btn" style="margin-top:${story ? 54 : 34}px;font-size:${story ? 42 : 34}px;padding:${story ? '24px 54px' : '18px 42px'}">${plainTxt(d.cta || 'Link in bio')}</span>
     </div></div>`);
 }
 
 function list(c, [w, h]) {
-  const d = c.data, story = c.format === 'story', ph = d.photo ? (story ? 560 : 380) : 0;
-  const items = d.items.map((it, i) => `<li><span class="n">${i + 1}</span><div><b>${esc(it.name)}${it.name_bn ? ` <span class="bn">${esc(it.name_bn)}</span>` : ''}</b><small>${esc(it.meta)}</small></div></li>`).join('');
-  return shell(w, h, `<div class="bg"></div><div class="rings"></div>${photoBlock(d.photo, ph)}
-  <div class="wrap" style="padding:${story ? 100 : 64}px 72px">
-    <div class="brand">🪔 Pujo Parikrama 2026</div>
-    <div class="spacer" style="height:${ph ? ph - (story ? 330 : 230) : 24}px;flex:0 0 auto"></div>
+  const d = c.data, story = c.format === 'story';
+  const items = d.items.map((it, i) => `<li><span class="n">${i + 1}</span><div><b>${plainTxt(it.name)}${it.name_bn ? ` <span class="bn">${esc(it.name_bn)}</span>` : ''}</b><small>${plainTxt(it.meta)}</small></div></li>`).join('');
+  return igShell(w, h, d, `<div class="wrap" style="padding:${story ? 100 : 52}px 72px ${story ? 120 : 76}px">
+    <div class="mark">পুজো পরিক্রমা<small>${esc(FOOTER)}</small></div>
+    <div style="height:${story ? 380 : 230}px;flex:0 0 auto"></div>
     <div>
-      <div class="kicker">${esc(d.kicker)}</div>
-      <div style="font-size:${story ? 76 : 64}px;font-weight:800;line-height:1.08;margin-top:10px">${esc(d.title)}</div>
-      ${d.subtitle ? `<p style="font-size:${story ? 34 : 30}px;margin-top:12px;opacity:.9;line-height:1.35">${esc(d.subtitle)}</p>` : ''}
+      <div class="kick">${plainTxt(d.kicker)}</div>
+      <div class="ttl" style="font-size:${story ? 86 : 72}px">${plainTxt(d.title)}</div>
+      ${d.subtitle ? `<p style="font-size:${story ? 32 : 28}px;margin-top:10px;opacity:.88;line-height:1.35">${plainTxt(d.subtitle)}</p>` : ''}
     </div>
     <ol>${items}</ol>
-    <div class="foot" style="margin-top:auto;padding-top:20px">
-      <p style="font-size:${story ? 34 : 30}px;opacity:.95;margin-bottom:${story ? 34 : 24}px">${esc(d.foot || '')}</p>
-      <span class="cta" style="font-size:${story ? 42 : 36}px;padding:${story ? '26px 56px' : '20px 44px'}">${esc(d.cta || 'Link in bio')}</span>
-      <div class="url" style="margin-top:22px">${esc(FOOTER)}</div>
-    </div></div>`,
-  `ol{list-style:none;padding:0;margin-top:${story ? 44 : 30}px;display:flex;flex-direction:column;gap:${story ? 22 : 16}px}
-   li{display:flex;gap:22px;align-items:center;background:rgba(255,255,255,.12);border-radius:26px;padding:${story ? 24 : 18}px 26px}
-   li .n{flex:0 0 62px;height:62px;border-radius:50%;background:#FDE68A;color:#7F1D1D;font-weight:800;font-size:32px;display:flex;align-items:center;justify-content:center}
-   li b{font-size:${story ? 40 : 34}px;font-weight:700;display:block;line-height:1.15} li .bn{font-family:'Hind Siliguri';font-size:${story ? 32 : 28}px;opacity:.85}
-   li small{display:block;font-size:${story ? 28 : 24}px;opacity:.85;margin-top:4px}`);
+    <div style="margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <p style="font-size:${story ? 32 : 26}px;opacity:.9;line-height:1.3">${plainTxt(d.foot || '')}</p>
+      <span class="btn" style="flex:0 0 auto;font-size:${story ? 38 : 30}px;padding:${story ? '22px 48px' : '16px 36px'}">${plainTxt(d.cta || 'Link in bio')}</span>
+    </div></div>`, true,
+  `ol{list-style:none;padding:0;margin-top:${story ? 36 : 24}px;display:flex;flex-direction:column}
+   li{display:flex;gap:24px;align-items:center;padding:${story ? 22 : 15}px 0;border-top:1px solid rgba(255,255,255,.24)}
+   li:last-child{border-bottom:1px solid rgba(255,255,255,.24)}
+   li .n{flex:0 0 56px;font-family:"DM Serif Display",serif;font-size:${story ? 60 : 52}px;color:#FFC857;line-height:1}
+   li b{font-size:${story ? 40 : 33}px;font-weight:800;display:block;line-height:1.15} li .bn{font-family:'Hind Siliguri';font-weight:600;font-size:${story ? 32 : 27}px;opacity:.88}
+   li small{display:block;font-size:${story ? 28 : 23}px;opacity:.8;margin-top:4px}`);
 }
 
 async function qr(url, px = 600) {

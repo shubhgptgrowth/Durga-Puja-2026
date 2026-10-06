@@ -78,6 +78,16 @@ def build(root):
         nav.append('<a href="#posts">Posts &amp; stories</a>')
         parts.append('<h2 id="posts">Wave 1 posts &amp; stories</h2><p>Same words, new layouts: real photos, and photoreal AI images only where no real photo of the moment exists.</p>')
         parts += [slides_block(root / "posts", "posts", p, story=p.get("kind") == "story") for p in spec["posts"]]
+    if (root / "kit" / "assets.json").exists():
+        kit = json.loads((root / "kit" / "assets.json").read_text(encoding="utf-8"))
+        days = sorted({c["date"] for c in kit["cards"] if c["date"] >= kit.get("today", "")})[:5]
+        nav.append('<a href="#kit">Daily kit</a>')
+        parts.append('<h2 id="kit">Daily kit cards · next 5 days</h2><p>The 08:02 post and the two stories, now on real photos.</p>')
+        for day in days:
+            cs = [c for c in kit["cards"] if c["date"] == day]
+            row = "".join(f'<img loading="lazy" src="kit/{c["file"]}">' for c in cs)
+            cap = "\n\n— — —\n\n".join(c["caption_en"] for c in cs if c["format"] == "post")
+            parts.append(f'<div class="item"><h3>{day}</h3><div class="row story">{row}</div><div class="cap">{html.escape(cap)}</div>{fb("kit-" + day)}</div>')
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Content preview</title><style>{CSS}</style></head><body>
 <header><h1>পুজো পরিক্রমা · new look preview</h1><nav>{''.join(nav)}</nav><button id="copy">Copy feedback</button></header>

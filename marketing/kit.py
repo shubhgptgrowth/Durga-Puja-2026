@@ -121,6 +121,9 @@ class Kit:
 
     def card(self, d, slug, fmt, tpl, data, en, bn, src, tags=""):
         cid = f"{d.strftime('%m%d')}-{slug}-{fmt}"
+        if not data.get("photo"):  # every Instagram card is a real photo: fall back to a top pandal's, by date
+            heroes = [p["id"] for p in sorted(self.g["pandals"], key=lambda p: -p["popularity"]) if p.get("photos")]
+            data = dict(data, photo=self.photo(heroes[(d.toordinal() + len(slug)) % len(heroes)]) if heroes else None)
         cap_en = f"{en}\n\n{TAGS} {tags}".strip()
         cap_bn = f"{bn}\n\n{TAGS} {tags}".strip()
         return {"id": cid, "date": d.isoformat(), "format": fmt, "template": tpl, "data": data,
