@@ -1,0 +1,46 @@
+{
+ "date": "2026-10-12",
+ "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nalin_Sarkar_street_Sarbajaneen_durga_puja_2025_04.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+     "artist": "Pramanikshreya",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.4
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Idol_of_Goddess_Durga_in_a_Panadal_at_Kolkata_25.jpg",
+     "artist": "M_Sarkar",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.4
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/2/2d/2019_Durga_Idol_and_decoration_of_Puja_at_Kolkata_03.jpg",
+     "artist": "Goutam1962",
+     "license": "CC BY-SA 4.0",
+     "cx": 0.5,
+     "cy": 0.35
+    }
+   ],
+   "caption": {
+    "bn": "গত বছরের পুজো, ফ্রেমে ফ্রেমে। এ বছরের পুজো শুরু আর পাঁচ দিনে! 🥁\n\nনলিন সরকার স্ট্রিট থেকে শহরের নানা মণ্ডপ, প্রতিটা প্রতিমা একেকটা শিল্পকর্ম। এ বছর কোন কোন মণ্ডপ আপনার লিস্টে?",
+    "en": "Kolkata's Durga Puja, frame by frame. Shashthi is 5 days away.\n\nSwipe: Nalin Sarkar Street Sarbajaneen (2025), a Kolkata pandal in October 2025, and two more city protimas. Every one is a piece of art that lives for five days.\n\nWhich pandals are on your list this year? Tell us 👇 and tag the friend who's coming with you.\nBuild your own pandal hopping route for Durga Puja 2026 (with metro stops and crowd times), free, link in bio.",
+    "tags": "#DurgaPuja2026 #DurgaPujaKolkata #PandalHopping #KolkataPujo #MaaDurga"
+   }
+  }
+ ]
+}
