@@ -3,7 +3,7 @@
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v39';
+const VERSION = 'pp-2026-v40';
 const SHELL = ['./', 'index.html', 'styles.css', 'fonts/inter-latin-wght.woff2', 'fonts/fraunces-latin-wght.woff2', 'fonts/tiro-bangla-bengali-400.woff2', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
   'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'radio.js', 'radioCard.js', 'i18n_hi.js', 'data/music.json', 'img/hero-1.jpg', 'footfall.js', 'foodinfo.js', 'analytics.js', 'livecount.js', 'photos.js', 'celebrate.js', 'badges.js', 'car.js', 'credits.js', 'sync.js', 'offers.js', 'sfx.js', 'audio/dhak_hit.mp3', 'audio/shankh.mp3', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
@@ -13,7 +13,8 @@ const isTile = (u) => /\/\d+\/\d+\/\d+(@2x)?\.(png|jpg|jpeg|webp|pbf)$/.test(u.p
 const isMedia = (u) => u.pathname.includes('/storage/v1/object/public/') || /fonts\.(googleapis|gstatic)\.com$/.test(u.hostname);
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache: 'reload' skips the browser's HTTP cache, so a new build never caches the previous build's files.
+  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => ![VERSION, TILE_CACHE, MEDIA_CACHE].includes(k)).map((k) => caches.delete(k))))
@@ -75,6 +76,17 @@ self.addEventListener('fetch', (e) => {
         if (res.ok) c.put('data/guide.json', res.clone());
         return res;
       } catch { return (await c.match('data/guide.json')) || new Response('{}', { status: 503 }); }
+    }));
+    return;
+  }
+  // Pages: network first (with a short timeout), so a new build shows on the next open; the cache is the offline fallback.
+  if (req.mode === 'navigate') {
+    e.respondWith(caches.open(VERSION).then(async (c) => {
+      try {
+        const res = await Promise.race([fetch(req), new Promise((_, rej) => setTimeout(() => rej(new Error('slow')), 3500))]);
+        if (res.ok && url.pathname.match(/\/(index\.html)?$/)) c.put('index.html', res.clone());
+        return res;
+      } catch { return (await c.match(req, { ignoreSearch: true })) || (await c.match('index.html')) || fetch(req); }
     }));
     return;
   }

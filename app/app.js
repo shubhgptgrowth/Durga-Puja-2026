@@ -76,7 +76,16 @@ async function boot() {
   onCounts(() => applyStatic(false));
   initMini();
   if (!S.prefs.lowData) initVectorTiles();
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) {
+    // A new build takes over as soon as it is installed: reload once so people see it now, not on their next visit.
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadController && !reloaded) { reloaded = true; location.reload(); } });
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((reg) => {
+      reg.update().catch(() => {});
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update().catch(() => {}); });
+    }).catch(() => {});
+  }
   addEventListener('offline', () => toast(t('net.off')));
   addEventListener('online', () => { toast(t('net.on')); community.sync(); });
   if (!navigator.onLine) setTimeout(() => toast(t('net.off')), 600);

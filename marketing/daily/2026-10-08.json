@@ -1,6 +1,6 @@
 {
  "date": "2026-10-08",
- "note": "9 days to go, Mahalaya in 2 days. r1 storytelling (the 1976 Mahishasuramardini story, from the site's Mahalaya radio guide), photo series 'five faces', pandal hopping rules, pujo food. Nadine voices s1-s3 and r1; r2 and r3 use Microsoft's Bengali voice because Higgsfield credits ran out.",
+ "note": "9 days to go, Mahalaya in 2 days. r1 storytelling (the 1976 Mahishasuramardini story, from the site's Mahalaya radio guide), photo series 'five faces', pandal hopping rules, pujo food. Nadine voices s1-s3 and r1; r2 and r3 use Microsoft's Bengali voice because Higgsfield credits ran out. 18:30 is now the area-wise route carousel (comment PUJO for the DM), replacing the pandal-rules reel.",
  "items": [
   {
    "id": "p1",
@@ -197,85 +197,6 @@
    }
   },
   {
-   "id": "r2",
-   "type": "reel",
-   "at": "18:30",
-   "format": "story",
-   "hook": "5 rules for pandal hopping like a local",
-   "bn": {
-    "hook": "ঠাকুর দেখার ৫টা নিয়ম",
-    "end": "আপনার সেরা পুজো-হ্যাক কী?"
-   },
-   "end": [
-    "What's your best pujo hack?",
-    ""
-   ],
-   "segments": [
-    [
-     "f28",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "f29",
-     2,
-     4.0,
-     ""
-    ],
-    [
-     "f03",
-     2,
-     4.0,
-     ""
-    ],
-    [
-     "f30",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "f06",
-     3,
-     4.0,
-     ""
-    ],
-    [
-     "f10",
-     10,
-     4.0,
-     ""
-    ]
-   ],
-   "vo": {
-    "lines": [
-     "কলকাতার মানুষের মতো ঠাকুর দেখতে চান? পাঁচটা নিয়ম মনে রাখুন।",
-     "এক, ভোরবেলা বা রাত একটার পরে বেরোন। ভিড় সবচেয়ে কম।",
-     "দুই, গাড়ি নয়, মেট্রো। শোভাবাজার থেকে কালীঘাট, স্টেশনের কাছেই বড় বড় পুজো।",
-     "তিন, নতুন জুতো বাড়িতে রাখুন! এক রাতে দশ কিলোমিটার হাঁটা হতেই পারে।",
-     "চার, জল আর পাওয়ার ব্যাঙ্ক সঙ্গে রাখুন। ভিড়ে নেটওয়ার্কও উধাও হয়ে যায়।",
-     "আর পাঁচ, এক রাতে এক-দুটো এলাকা। কোথায় কখন ভিড় কম, সব আছে আমাদের ফ্রি গাইডে।"
-    ],
-    "en": [
-     "Want to see the pandals like a Kolkatan? Remember five rules.",
-     "One: go at dawn or after 1 am. That's when crowds are thinnest.",
-     "Two: Metro, not car. From Sovabazar to Kalighat, big pujos sit near the stations.",
-     "Three: leave the new shoes at home! You can easily walk 10 km in a night.",
-     "Four: carry water and a power bank. In the crowds, even the network disappears.",
-     "And five: one or two areas a night. Where it's quiet and when, it's all in our free guide."
-    ],
-    "engine": "edge:bn-IN-TanishaaNeural",
-    "credit": "AI voice (Microsoft Azure neural TTS)",
-    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)"
-   },
-   "caption": {
-    "bn": "প্রথমবার কলকাতার পুজোয়? এই ৫টা নিয়ম জানলে ভিড়েও আরামে ঠাকুর দেখবেন। 🚇👟\n\nভোরে বা রাত একটার পরে বেরোন, গাড়ি ছেড়ে মেট্রো ধরুন, নতুন জুতো বাড়িতে রাখুন, জল আর পাওয়ার ব্যাঙ্ক সঙ্গে নিন, আর এক রাতে এক-দুটো এলাকা।\n\nআপনার সেরা পুজো-হ্যাক কী? কমেন্টে লিখুন 👇",
-    "en": "Pandal hopping in Kolkata for Durga Puja 2026? Five rules locals swear by.\n\n1. Go at dawn or after 1 am, when the queues are shortest.\n2. Take the Metro. Sovabazar, Shyambazar, MG Road, Kalighat and Rabindra Sarobar stations are all within walking distance of big pujos.\n3. Wear shoes you have already broken in. 10 km in a night is normal.\n4. Carry water and a power bank, and keep some cash: UPI slows down in dense crowds.\n5. Plan one or two neighbouring areas per night, not the whole city.\n\nWhat's your best pujo hack? 👇 Send this to your pandal hopping group.\nOur free guide shows quiet hours, nearest Metro and walking routes for every area. Link in bio.",
-    "tags": "#PandalHopping #DurgaPuja2026 #KolkataDurgaPuja #KolkataMetro #PujoTips"
-   }
-  },
-  {
    "id": "s3",
    "type": "story",
    "at": "20:00",
@@ -389,6 +310,28 @@
     "bn": "পুজো মানে শুধু ঠাকুর দেখা নয়, পেটপুজোও! 😋\n\nফুচকা, এগ রোল, মোগলাই পরোটা, নবমীর কষা মাংস আর শেষে রসগোল্লা। এই লিস্টে কী বাদ গেল? কমেন্টে লিখুন 👇",
     "en": "Kolkata Durga Puja food you can't skip, from street stalls to Navami lunch.\n\nPhuchka with tangy tamarind water. The egg roll, Kolkata's own street food. Mughlai paratha with alur torkari. Luchi and kosha mangsho on Navami afternoon. And rosogolla or mishti doi to finish.\n\nWhat's missing from this list? 👇 Tag the friend who eats more than they pandal-hop.\nOur free pujo guide marks food stops near every pandal area. Link in bio.",
     "tags": "#KolkataFood #DurgaPuja2026 #Phuchka #BengaliFood #PujoFood"
+   }
+  },
+  {
+   "id": "p2",
+   "type": "photo",
+   "at": "18:30",
+   "render": "routes",
+   "zones": [
+    "north",
+    "central",
+    "south_lakemarket",
+    "south_gariahat",
+    "bhowanipore",
+    "kasba",
+    "salt_lake",
+    "lake_town_dumdum",
+    "southwest"
+   ],
+   "caption": {
+    "bn": "এই পুজোয় এলোমেলো ঘুরে রাত নষ্ট করবেন না! 🙏\n\nএক রাতে একটা এলাকা, মেট্রো স্টেশন থেকে শুরু, তারপর নম্বর ধরে হাঁটা। কলকাতার ৯টা এলাকার আসল হাঁটার রুট, কোন স্টেশনে নামবেন, কত কিলোমিটার, কত পা, সব এক জায়গায়।\n\nকমেন্টে লিখুন \"PUJO\", পুরো রুট আর কখন ভিড় কম, DM-এ পাঠিয়ে দেব! 💛",
+    "en": "The biggest Durga Puja mistake in Kolkata? Trying to see the whole city in one night.\n\nPick one zone, start at its Metro station and follow the numbers. These are the real walking routes for 9 areas, from Bagbazar and Hatibagan in the north to Behala in the south, with distance, steps and what each area is best for.\n\nComment \"PUJO\" and we'll DM you every route with live quiet hours. Save this for 17 to 21 October and send it to your pujo gang 🫶\n\n(durga puja 2026, kolkata durga puja, pandal hopping route, kolkata pandals, kolkata metro, puja guide, north kolkata pandals, south kolkata pandals, salt lake pujo)",
+    "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja #KolkataMetro #DurgaPuja"
    }
   }
  ],

@@ -17,6 +17,8 @@ PW, PH = 1440, 1800
 
 def check(it):
     errs = []
+    if it.get("render") == "routes":
+        return [] if (it.get("caption") or {}).get("en") else [f"{it['id']}: a route carousel needs a caption"]
     ps = it.get("photos") or []
     if not 1 <= len(ps) <= 10:
         errs.append(f"{it['id']}: a photo post needs 1 to 10 photos")
@@ -61,8 +63,30 @@ def caption(it):
     return "\n\n".join(x.strip() for x in parts if x and x.strip())
 
 
+def build_routes(it, fid, src_dir, out):
+    """{"render": "routes", "zones": [...]}: the area-wise route carousel drawn from the guide (marketing/routes.py)."""
+    import shutil
+    from .. import routes
+    tmp = Path(out) / "_routes"
+    n, credits = routes.build(tmp, it.get("zones"), cache=str(Path(src_dir) / "routes"))
+    names = []
+    for k in range(1, n + 1):
+        name = f"{fid}-{k}.jpg"
+        shutil.copy(tmp / f"slide-{k:02d}.jpg", Path(out) / name)
+        names.append(name)
+    shutil.rmtree(tmp, ignore_errors=True)
+    c = it["caption"]
+    parts = [c.get("bn", ""), c.get("en", ""), c.get("tags", ""),
+             "📷 Photos: " + "; ".join(credits) + " · Wikimedia Commons. Routes: Pujo Parikrama guide data."]
+    cap = "\n\n".join(x.strip() for x in parts if x and x.strip())
+    (Path(out) / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+    return names, cap
+
+
 def build(it, fid, src_dir, out, download):
     """Writes out/<fid>-<n>.jpg and out/<fid>.caption.txt; returns (file names, caption)."""
+    if it.get("render") == "routes":
+        return build_routes(it, fid, src_dir, out)
     names = []
     for n, p in enumerate(it["photos"], 1):
         ext = Path(p["src"].split("?")[0]).suffix.lower() or ".jpg"
