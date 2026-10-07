@@ -34,6 +34,7 @@ from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock
 from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
 from seo.metro import MetroMixin
+from seo.quiz import QuizMixin
 from seo.stories import StoriesMixin
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,7 +42,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # Link codes (?src=) for links from guide pages into the app, by section. The same codes are what guide.js reports
 # as the source when a guide page is someone's first visit, so the reach report shows search per page type.
 SRC_BY_PREFIX = (("guide/pandals/", "seo_pandal"), ("guide/food/", "seo_food"), ("guide/trails/", "seo_trail"),
-                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/metro/", "seo_metro"), ("guide/", "seo_guide"),
+                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/metro/", "seo_metro"), ("guide/", "seo_guide"), ("quiz/", "seo_quiz"),
                  ("durga-puja/rituals/", "seo_ritual"), ("durga-puja/recipes/", "seo_recipe"), ("durga-puja/", "seo_article"),
                  ("navratri/", "seo_navratri"), ("festivals/", "seo_festival"), ("stories/", "seo_story"), ("guides/", "seo_article"))
 
@@ -59,7 +60,7 @@ def src_code(path):
     return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
 
 
-class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin):
+class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
@@ -560,7 +561,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin):
 <h2>Ready-made trails</h2>
 {trails}
 <p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
-<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/late-night-pandal-hopping/">Late-night pandal hopping</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/late-night-pandal-hopping/">Late-night pandal hopping</a> · <a href="{up}quiz/which-pandal/">Quiz: which pandal are you?</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -712,6 +713,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         if self.articles:
             self.directory_page()
         self.stories_index()
+        self.quiz_pages()
         self.build_extras()   # about, contact, terms, search, calendar, card maker, ads.txt
         bad = self.check_article_links()
         if bad:
