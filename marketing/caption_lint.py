@@ -8,6 +8,7 @@ before the "hook is concrete" check, and the hook score is run on the English on
 """
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -15,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".claude" / "skills"
 SEARCH = ["durga puja", "kolkata"]  # the phrases every caption should carry; a plan item adds its own with "search"
 BN_DIGITS = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
+COMMENT_ASK = re.compile(r"(?i)\btell us\b|\bin the comments\b|কমেন্টে|\?\s*👇")  # asks the skill's English patterns miss
 
 
 def _load(name, rel):
@@ -36,7 +38,8 @@ def caption_notes(text, search=None):
     if not (_caption and text):
         return []
     a = _caption.analyse(text.translate(BN_DIGITS), keywords=SEARCH + list(search or []))
-    notes = [f"{c['status']} {c['check'].lower()}: {c['detail']}" for c in a["checks"] if c["status"] != "PASS"]
+    notes = [f"{c['status']} {c['check'].lower()}: {c['detail']}" for c in a["checks"] if c["status"] != "PASS"
+             and not (c["check"] == "ONE ASK" and not a["asks"] and COMMENT_ASK.search(text))]
     if not any(k.lower() in a["visible"].lower() for k in SEARCH + list(search or [])):
         notes.append("NOTE search: no search phrase in the first 125 characters (the part the feed shows)")
     return notes
