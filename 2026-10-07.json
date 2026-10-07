@@ -1,0 +1,15 @@
+{
+ "scanned_at": "2026-10-07T18:25:13+00:00",
+ "account": "pujoparikrama.guide",
+ "unanswered": [],
+ "creator_posts": [],
+ "suggested_creators": [],
+ "errors": {
+  "comments": null,
+  "creators": {
+   "sourav_boundless": "Graph API 17841459473802570 failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"AHXiOJh8fqPi2tXPPanZ_V8\"}}",
+   "durgapujakolkata": "Graph API 17841459473802570 failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"Aa1HIQ0ramwKu5e38giKjfU\"}}",
+   "kolkata_photography_": "Graph API 17841459473802570 failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"AlmTRS__5gBV7lzBHXBn_IK\"}}"
+  }
+ }
+}
