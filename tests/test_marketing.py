@@ -339,6 +339,7 @@ class RedesignTest(unittest.TestCase):
         self.assertRegex(caption_lint.hook_note("In 1976, Bengal switched on the radio and got a shock"), r"^hook \d+ (STRONG|OK|WEAK)")
         self.assertEqual(caption_lint.caption_notes(""), [])
 
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "the route reel needs Pillow")
     def test_route_reel_draws_the_guide_route(self):
         from marketing import route_reel
         pl = route_reel.plan("south_lakemarket")
