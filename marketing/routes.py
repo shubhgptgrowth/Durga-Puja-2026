@@ -215,7 +215,9 @@ def zone_slide(z, g, cache):
             if len(photos) < 3:
                 try:
                     photos.append(fetch(big(ph["src"]), cache))
-                    credits.append(f"{ph.get('author', 'Unknown')} ({ph.get('license', '')})")
+                    c = f"{ph.get('author', 'Unknown')} ({ph.get('license', '')})"
+                    if c not in credits:  # one photographer, named once
+                        credits.append(c)
                 except Exception:
                     pass
                 break
