@@ -43,6 +43,7 @@ jobs:
           python -c "from PIL import features; assert features.check('raqm'), 'Pillow without raqm: Bengali would not shape'"
           mkdir -p fonts
           for w in ExtraBold Bold SemiBold Medium; do curl -fsSLo fonts/Poppins-$w.ttf https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-$w.ttf; done
+          curl -fsSLo fonts/Anton-Regular.ttf https://github.com/google/fonts/raw/main/ofl/anton/Anton-Regular.ttf
           for f in galada/Galada-Regular hindsiliguri/HindSiliguri-Bold; do curl -fsSLo fonts/${f#*/}.ttf https://github.com/google/fonts/raw/main/ofl/$f.ttf; done
       - name: Which dates
         id: dates
