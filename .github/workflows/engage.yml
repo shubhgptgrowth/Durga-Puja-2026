@@ -5,7 +5,12 @@ name: engage
 #   mode=scan   read-only: unanswered comments on our posts + new posts from marketing/engage/creators.json,
 #               committed to the engage-data branch as <date>.json (no deploy is triggered)
 #   mode=reply  posts the approved replies in marketing/engage/replies/<date>.json (skips any already answered)
+#   mode=dm     comment-to-DM: whoever comments "PUJO" on a recent post gets the guide in a private reply, once
+#               (ledger: dm.json on engage-data). Also every 15 min on a schedule, only while
+#               marketing/engage/config.json has "dm": true.
 on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -23,7 +28,8 @@ permissions:
   contents: write   # scan results go to the engage-data branch
 
 concurrency:
-  group: marketing-publish   # never at the same moment as a post
+  # a DM run must not wait behind marketing-batch (which holds marketing-publish for hours between slots)
+  group: engage-${{ inputs.mode || 'dm' }}
   cancel-in-progress: false
 
 jobs:
@@ -39,21 +45,31 @@ jobs:
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_PAGE_ID: ${{ secrets.IG_PAGE_ID }}   # only for a Facebook-Login token: DMs go out through the Page
         run: |
           set -o pipefail
           d="${{ inputs.date }}"; [ -n "$d" ] || d=$(TZ=Asia/Kolkata date +%F)
           echo "DAY=$d" >> "$GITHUB_ENV"
-          if [ "${{ inputs.mode }}" = reply ]; then
+          mode="${{ inputs.mode }}"; [ -n "$mode" ] || mode=dm
+          echo "MODE=$mode" >> "$GITHUB_ENV"
+          if [ "$mode" = dm ]; then
+            if [ "${{ github.event_name }}" = schedule ] && ! python -c "import json,sys; sys.exit(0 if json.load(open('marketing/engage/config.json'))['dm'] else 1)"; then
+              echo "comment-to-DM is off (marketing/engage/config.json)"; echo "MODE=off" >> "$GITHUB_ENV"; exit 0
+            fi
+            git fetch -q origin engage-data 2>/dev/null && git show origin/engage-data:dm.json > /tmp/dm.json 2>/dev/null || echo '{"sent": []}' > /tmp/dm.json
+            args=(); [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
+            python -m marketing.engage dm --ledger /tmp/dm.json "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
+          elif [ "$mode" = reply ]; then
             args=(); [ "${{ inputs.dry_run }}" != false ] && args+=(--dry-run)
             python -m marketing.engage reply "marketing/engage/replies/$d.json" "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
           else
             python -m marketing.engage scan --out "/tmp/engage/$d.json" | tee -a "$GITHUB_STEP_SUMMARY"
           fi
-      - name: Save the scan (engage-data branch)
-        if: inputs.mode != 'reply'
+      - name: Save the scan or the DM ledger (engage-data branch)
+        if: env.MODE == 'scan' || env.MODE == 'dm'
         run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin engage-data && git checkout engage-data || git checkout --orphan engage-data
           git rm -rq --cached . 2>/dev/null || true
-          cp "/tmp/engage/$DAY.json" "$DAY.json"
-          git add "$DAY.json" && git commit -qm "engage scan $DAY" && git push -q origin HEAD:engage-data
+          if [ "$MODE" = dm ]; then f=dm.json; cp /tmp/dm.json dm.json; else f="$DAY.json"; cp "/tmp/engage/$DAY.json" "$f"; fi
+          git add "$f" && { git diff --cached --quiet || { git commit -qm "engage $MODE $DAY" && git push -q origin HEAD:engage-data; }; }
