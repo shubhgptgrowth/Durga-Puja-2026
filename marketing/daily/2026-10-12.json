@@ -1,6 +1,6 @@
 {
  "date": "2026-10-12",
- "note": "Metro cheat sheet for the 8 biggest pandals (09:30), pandal hopping checklist (15:30), Bhowanipore route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
+ "note": "Metro cheat sheet for the 8 biggest pandals (09:30), pandal hopping checklist (15:30), Bhowanipore route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
  "items": [
   {
    "id": "p1",
@@ -114,6 +114,30 @@
    }
   },
   {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "f03",
+     1,
+     5.0,
+     "Skip the cab: 8 big pandals near a Metro. New post"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "পুজোয় ক্যাব নয়, মেট্রো! কোন প্যান্ডেল কোন স্টেশনের পাশে, নতুন পোস্টে দেখুন।"
+    ],
+    "en": [
+     "Not a cab, the Metro! Which pandal is next to which station: see our new post."
+    ]
+   }
+  },
+  {
    "id": "p3",
    "type": "photo",
    "at": "15:30",
@@ -202,6 +226,30 @@
    }
   },
   {
+   "id": "s2",
+   "type": "story",
+   "at": "15:35",
+   "segments": [
+    [
+     "f29",
+     2,
+     5.0,
+     "Pujo checklist: 7 things to sort before Shashthi. New post"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "ষষ্ঠীর আগে এই সাতটা জিনিস গুছিয়ে নিন… নতুন পোস্টে!"
+    ],
+    "en": [
+     "Sort these seven things before Shashthi... in our new post!"
+    ]
+   }
+  },
+  {
    "id": "r1",
    "type": "reel",
    "at": "18:30",
@@ -220,6 +268,36 @@
      "durga puja 2026"
     ],
     "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "18:35",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-12/1012-r1.mp4"
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "20:30",
+   "segments": [
+    [
+     "f16",
+     8,
+     5.0,
+     "5 nights to Shashthi. Who's your pujo partner? Reply"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "আর পাঁচ রাত! এবার পুজোয় কার সঙ্গে ঘুরছেন? রিপ্লাই করুন!"
+    ],
+    "en": [
+     "Five more nights! Who are you going pandal hopping with? Reply!"
+    ]
    }
   }
  ]

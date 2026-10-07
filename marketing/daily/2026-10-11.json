@@ -1,6 +1,6 @@
 {
  "date": "2026-10-11",
- "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
+ "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
  "items": [
   {
    "id": "p1",
@@ -66,6 +66,30 @@
      "pill": "Comment the name 👇"
     }
    ]
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "f06",
+     2,
+     5.0,
+     "6 days to Shashthi"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "আর মাত্র ছ'দিন… তারপরই ঠাকুর দেখা!"
+    ],
+    "en": [
+     "Just six more days... then pandal hopping!"
+    ]
+   }
   },
   {
    "id": "p3",
@@ -179,6 +203,30 @@
    }
   },
   {
+   "id": "s2",
+   "type": "story",
+   "at": "15:35",
+   "segments": [
+    [
+     "f11",
+     1,
+     5.0,
+     "2026 themes, South Kolkata: new post on our page"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "দক্ষিণ কলকাতার এবারের থিম, এক পোস্টে!"
+    ],
+    "en": [
+     "South Kolkata's themes this year, in one post!"
+    ]
+   }
+  },
+  {
    "id": "r1",
    "type": "reel",
    "at": "18:30",
@@ -198,6 +246,36 @@
      "durga puja 2026"
     ],
     "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "18:35",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-11/1011-r1.mp4"
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "20:30",
+   "segments": [
+    [
+     "f05",
+     3,
+     5.0,
+     "Saptami, Ashtami or Navami: which night is yours? Reply"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "আপনার প্রিয় রাত কোনটা? সপ্তমী, অষ্টমী না নবমী? রিপ্লাই করুন!"
+    ],
+    "en": [
+     "Which night is your favourite: Saptami, Ashtami or Navami? Reply!"
+    ]
    }
   }
  ]
