@@ -1,6 +1,6 @@
 {
  "date": "2026-10-07",
- "note": "10 days to go. r1 is the first storytelling reel (Sovabazar Rajbari and Robert Clive, from the site's guide); all voiceovers in the house voice (Nadine). Kit post + 2 kit stories also go out.",
+ "note": "10 days to go. r1 is the first storytelling reel (Sovabazar Rajbari and Robert Clive, from the site's guide); all voiceovers in the house voice (Nadine). Kit post + 2 kit stories also go out. Added at the owner's request on the day: r4, a College Street route reel at 21:30, and s4, the same video as a story.",
  "clips": {
   "x-plassey": {
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_104738_6fc2f93e-c326-450c-960a-f9102ac17156.mp4",
@@ -362,6 +362,25 @@
     "en": "This is the face we can't stop looking at.\n\nMaa Durga at Chinsurah Sarbojonin Durgotsab Samity, Kamarpara, in Hooghly, West Bengal. Look closely at the eyes: the long sweep of kohl, the third eye, the nose ring catching the light. Every line is painted by hand.\n\nWhose protima do you wait for every year? Tell us in the comments 👇",
     "tags": "#DurgaPuja2026 #MaaDurga #DurgaPuja #BengaliCulture #WestBengal"
    }
+  },
+  {
+   "id": "r4",
+   "type": "reel",
+   "at": "21:30",
+   "render": "route",
+   "zone": "central",
+   "hook": "10 pandals. 9.6 km. One night.",
+   "caption": {
+    "bn": "কলেজ স্কোয়্যার থেকে সন্তোষ মিত্র স্কোয়্যার, থিমের বড় পুজো এক রাতে। 🔥\nCentral Kolkata Durga Puja route: College Street to Park Street.\n\nমহাত্মা গান্ধী রোড মেট্রোয় নামুন, তারপর শুধু নম্বর ধরে হাঁটুন। ১০টা পুজো, সাড়ে ৯ কিলোমিটার।",
+    "en": "Start at Mahatma Gandhi Road Metro and follow the numbers. Chaltabagan, Simla Byayam Samity, College Square, Mohammad Ali Park, Santosh Mitra Square (Lebutala), then down to Taltala and Park Street: 10 of the city's biggest theme pandals, about 9.6 km and 14,100 steps, in the order you'd actually walk them.\n\nThese draw the biggest crowds in Kolkata, so the hour you go matters more than anywhere else.\n\nComment \"PUJO\" and we'll DM you every route with live quiet hours.",
+    "tags": "#DurgaPuja2026 #CollegeSquare #PandalHopping #KolkataDurgaPuja #SantoshMitraSquare"
+   }
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "21:35",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-07/1007-r4.mp4"
   }
  ]
 }
