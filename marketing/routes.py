@@ -276,6 +276,9 @@ def zone_slide(z, g, cache):
     best = BEST.get(z["id"], z.get("vibe", ""))
     text(d, (110, H - 160), f"Best for: {best}", F("med", 36))
     text(d, (110, H - 108), "Quiet hours and live crowd for every stop: link in bio", F("med", 30), fill=(230, 230, 230))
+    if credits:  # the CC licences' credit, on the slide that uses the photos
+        line = "Photos: " + "; ".join(credits) + " · Wikimedia Commons"
+        text(d, (W // 2, H - 36), line, fit(d, line, "med", 20, W - 140, minsize=14), fill=(200, 200, 200), anchor="mm")
     return im, credits
 
 

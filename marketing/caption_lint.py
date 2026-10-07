@@ -16,7 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".claude" / "skills"
 SEARCH = ["durga puja", "kolkata"]  # the phrases every caption should carry; a plan item adds its own with "search"
 BN_DIGITS = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
-COMMENT_ASK = re.compile(r"(?i)\btell us\b|\bin the comments\b|কমেন্টে|\?\s*👇")  # asks the skill's English patterns miss
+BENGALI = re.compile(r"[ঀ-৿]")
+KEYWORD_LINE = re.compile(r"^\([^()\n]{8,}\)\s*$", re.M)
+CREDIT = re.compile(r"(?i)📷|🎥 credits|🎵|\bCC BY|wikimedia commons")
+COMMENT_ASK = re.compile(r"(?i)\btell us\b|\bin the comments\b|কমেন্টে|\?\s*👇|\bsend (this|it) to\b|\bshare (this|it) with\b"
+                         r"|\btag (a|the|your|someone)\b")  # asks (comment, send, tag) the skill's English patterns miss
 
 
 def _load(name, rel):
@@ -42,7 +46,23 @@ def caption_notes(text, search=None):
              and not (c["check"] == "ONE ASK" and not a["asks"] and COMMENT_ASK.search(text))]
     if not any(k.lower() in a["visible"].lower() for k in SEARCH + list(search or [])):
         notes.append("NOTE search: no search phrase in the first 125 characters (the part the feed shows)")
+    notes += house_notes(text)
     return notes
+
+
+def house_notes(text):
+    """The house layout (marketing/captions.py): English first, keywords in brackets, three tags, no credits."""
+    out = []
+    first = text.strip().split("\n", 1)[0]
+    if BENGALI.search(first):
+        out.append("WARN layout: the first line is Bengali; open in English, where search reads it")
+    if not KEYWORD_LINE.search(text):
+        out.append("NOTE layout: no keyword line in brackets, e.g. (durga puja 2026, kolkata pandal hopping)")
+    if len(re.findall(r"(?<!\w)#\w", text)) > 3:
+        out.append("WARN layout: more than 3 hashtags; keywords in brackets carry search now")
+    if CREDIT.search(text):
+        out.append("WARN layout: a credit line in the caption; credits go on the photo or the end card")
+    return out
 
 
 def hook_note(hook):
@@ -53,10 +73,8 @@ def hook_note(hook):
 
 
 def plan_caption(it):
-    c = it.get("caption")
-    if isinstance(c, dict):
-        return "\n\n".join(x for x in (c.get("bn", ""), c.get("en", ""), c.get("tags", "")) if x)
-    return c or ""
+    from .captions import compose
+    return compose(it.get("caption"))
 
 
 def main(argv=None):

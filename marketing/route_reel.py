@@ -182,6 +182,7 @@ def end_frame(pl, t):
         d.text((W // 2 - 70, 930 + k * 60), s, font=F("semi", 44), fill=INK + (int(255 * a),), anchor="mm")
     d.text((W // 2 - 70, 1080), "কমেন্টে লিখুন “পুজো”, রুট পাঠিয়ে দেব!", font=F("bnb", 50), fill=RED + (int(255 * a),), anchor="mm")
     d.text((W // 2 - 70, 1250), "@pujoparikrama.guide", font=F("semi", 40), fill=MUTE + (int(255 * a),), anchor="mm")
+    d.text((W // 2 - 70, 1700), AUDIO_CREDIT, font=F("med", 24), fill=MUTE + (int(200 * a),), anchor="mm")
     return im
 
 
@@ -209,9 +210,9 @@ def render(zone_id, out, end_secs=3.0, g=None):
 
 
 def caption(c):
-    """Plan caption (bn, en, tags) plus the audio credit the CC BY-SA licence asks for."""
-    parts = [c.get("bn", ""), c.get("en", ""), c.get("tags", ""), f"🎵 {AUDIO_CREDIT}. Routes: Pujo Parikrama guide data."]
-    return "\n\n".join(x.strip() for x in parts if x and x.strip())
+    """The plan caption (marketing/captions.py); the dhak's CC BY-SA credit is on the end frame."""
+    from .captions import compose
+    return compose(c)
 
 
 def main(argv=None):
