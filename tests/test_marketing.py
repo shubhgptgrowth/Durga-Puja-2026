@@ -307,6 +307,17 @@ class RedesignTest(unittest.TestCase):
         self.assertIn("reply to 1", out.getvalue())
         self.assertNotIn("reply to 2", out.getvalue())
 
+    def test_comment_keyword_for_the_dm(self):
+        from marketing import engage
+        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?"):
+            self.assertTrue(engage.wants_guide(t), t)
+        for t in ("beautiful", "", None, "Durga maa 🙏"):
+            self.assertFalse(engage.wants_guide(t), t)
+        self.assertIn("pujoparikramaguide.in", engage.GUIDE)
+        self.assertNotIn("github.io", engage.DM_EN + engage.GUIDE)
+        cfg = json.loads((Path(__file__).resolve().parents[1] / "marketing/engage/config.json").read_text(encoding="utf-8"))
+        self.assertIn("dm", cfg)
+
     def test_creator_clip_needs_permission(self):
         from marketing.footage import factory
         idx = factory.footage_index(None)

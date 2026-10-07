@@ -2,6 +2,7 @@
 
     python -m marketing.engage scan --out engage/2026-10-07.json      # read-only: our comments + creators' new posts
     python -m marketing.engage reply marketing/engage/replies/2026-10-07.json [--dry-run]   # post approved replies
+    python -m marketing.engage dm --ledger dm.json [--dry-run]          # comment "PUJO" -> the guide in a private reply
 
 scan collects, for the daily engagement brief:
   - comments on our recent posts that we have not answered yet (needs instagram_manage_comments, or
@@ -134,16 +135,72 @@ def reply(path, dry):
     print(f"{len(todo)} approved replies")
 
 
+KEYWORDS = ("pujo", "পুজো", "পূজো", "route", "রুট")
+DM_BN = ("নমস্কার! 🙏 এই নিন আপনার পুজোর রুট গাইড: এলাকা ধরে হাঁটার রুট, কোন মেট্রো স্টেশনে নামবেন, "
+         "আর কোন ঠাকুর কখন ফাঁকা থাকে, সব এক জায়গায়, একদম ফ্রি।")
+DM_EN = ("Here's your Durga Puja 2026 route guide: area-wise walking routes, the Metro stop for each, and live "
+         "quiet hours for every pandal. Free, no sign-up:")
+GUIDE = "https://pujoparikramaguide.in/?src=ig_dm"
+
+
+def wants_guide(text):
+    t = (text or "").lower()
+    return any(k in t for k in KEYWORDS)
+
+
+def dm(ledger_path, dry, days=7):
+    """Comment-to-DM (the owner asked for it, 7 Oct): whoever comments the keyword ("PUJO") on one of our recent posts
+    gets one private reply with the guide (Instagram's Private Replies API: one message per comment, within 7 days of
+    it) and a short public reply. The ledger of answered comment ids lives on the engage-data branch, so nobody is
+    messaged twice; only people who asked by commenting are ever messaged."""
+    user, token = creds()
+    me = graph("GET", user, token, fields="username").get("username")
+    ledger = json.loads(Path(ledger_path).read_text(encoding="utf-8")) if Path(ledger_path).exists() else {"sent": []}
+    sent = set(ledger["sent"])
+    comments, err = own_comments(user, token, days=days, me=me)
+    if err:
+        raise SystemExit(f"cannot read comments: {err}")
+    todo = [c for c in comments if wants_guide(c["text"]) and c["comment_id"] not in sent]
+    page = os.environ.get("IG_PAGE_ID")  # Facebook-Login tokens send through the Page; Instagram-Login through the account
+    done = 0
+    for c in todo[:40]:  # at most 40 a run, spaced out
+        if dry:
+            print(f"[dry run] DM @{c['from']} (comment {c['comment_id']}: {c['text'][:40]!r})")
+            continue
+        msg = json.dumps({"text": f"{DM_BN}\n\n{DM_EN}\n{GUIDE}"}, ensure_ascii=False)
+        r, e = safe(graph, "POST", f"{page or user}/messages", token,
+                    recipient=json.dumps({"comment_id": c["comment_id"]}), message=msg)
+        if e:
+            print(f"DM to @{c['from']} failed: {e}", flush=True)
+            continue
+        safe(graph, "POST", f"{c['comment_id']}/replies", token, message="DM-এ পাঠিয়ে দিলাম 💛 Sent to your DMs!")
+        sent.add(c["comment_id"])
+        done += 1
+        print(f"DM sent to @{c['from']}", flush=True)
+        time.sleep(8)
+    ledger["sent"] = sorted(sent)
+    Path(ledger_path).write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+    print(f"{done} DMs sent, {len(todo) - done} pending, {len(sent)} in ledger")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("scan")
     s.add_argument("--out", required=True)
+    m = sub.add_parser("dm")
+    m.add_argument("--ledger", required=True)
+    m.add_argument("--dry-run", action="store_true")
     r = sub.add_parser("reply")
     r.add_argument("file")
     r.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
-    scan(a.out) if a.cmd == "scan" else reply(a.file, a.dry_run)
+    if a.cmd == "scan":
+        scan(a.out)
+    elif a.cmd == "dm":
+        dm(a.ledger, a.dry_run)
+    else:
+        reply(a.file, a.dry_run)
 
 
 if __name__ == "__main__":
