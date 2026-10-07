@@ -560,7 +560,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin):
 <h2>Ready-made trails</h2>
 {trails}
 <p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
-<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/late-night-pandal-hopping/">Late-night pandal hopping</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -701,6 +701,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         for r in self.g["regions"]:
             self.region_page(r)
         self.metro_pages()
+        self.late_night_page()
         self.parking_page()
         self.hub_page()
         self.story_pages()   # before the articles, which link to their stories

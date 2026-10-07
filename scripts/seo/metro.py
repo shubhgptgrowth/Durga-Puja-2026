@@ -7,7 +7,7 @@ from datetime import date
 from math import asin, cos, radians, sin, sqrt
 from pathlib import Path
 
-from .common import LINE, esc, hrange, km, nice_date
+from .common import LINE, crowd_word, esc, hrange, km, nice_date
 
 ROOT = Path(__file__).resolve().parents[2]
 NOTICES = ROOT / "data" / "raw" / "metro_2026.toml"
@@ -199,3 +199,73 @@ class MetroMixin:
                   body, ld=(items, faq_ld), crumbs=(("Durga Puja guide", "guide/"), ("By metro", path)), priority=0.95,
                   summary=re.sub(r"<[^>]+>", "", lead), app_link="#plan")
         self.full.append(f"## Durga Puja by metro\n{re.sub(r'<[^>]+>', '', lead)}\n{re.sub(r'<[^>]+>', '', self.nights_answer())}\nPage: {self.url(path)}\n")
+
+    # ------------------------------------------------------------------ late night
+    def late_night_page(self):
+        """/guide/late-night-pandal-hopping/: how the night thins out (crowd model), the all-nighter route, food open
+        past midnight and getting home by metro, for 'late night pandal hopping kolkata' and 'is metro open all night'."""
+        up = "../../"
+        path = "guide/late-night-pandal-hopping/"
+        hf = self.meta["model"]["hour_factors"]
+        pct = lambda h: round(hf[h] / max(hf) * 100)   # noqa: E731  share of the evening peak
+        hours = [22, 0, 1, 2, 3, 4, 5]
+        lead = (f"On the big nights of Durga Puja {self.year}, Saptami to Navami ({nice_date(self.days['saptami']['date'])} to "
+                f"{nice_date(self.days['navami']['date'])}), many Kolkata pandals stay open late and the streets stay full past midnight. "
+                f"Our crowd model puts the crowd at midnight at about {pct(0)}% of the 8 pm peak, {pct(2)}% by 2 am and {pct(4)}% by 4 am; "
+                f"4 to 7 am is the quietest window of the whole day. These are estimates, not live counts. Below: the hours, the "
+                f"all-night route, food that's open late and how to get home.")
+        tbl = ("<table class='days'><thead><tr><th>Time</th><th>Crowd (share of the 8 pm peak)</th></tr></thead><tbody>"
+               + "".join(f"<tr><td>{'midnight' if h == 0 else (str(h - 12) + ' pm' if h > 12 else str(h) + ' am')}</td><td>about {pct(h)}%</td></tr>" for h in hours)
+               + "</tbody></table>")
+        trail = next((t for t in self.g["itineraries"] if t["id"] == "all_nighter"), None)
+        trail_html = ""
+        if trail:
+            stops = [s for seg in trail["segments"] for s in seg.get("stops", []) if s.get("pandal") in self.pandal]
+            trail_html = (f"<h2>The all-night route</h2><p><a href='{up}guide/trails/{trail['id']}/'>{esc(trail['name'])}</a>: {esc(trail['blurb'])} "
+                          f"It assumes the metro runs through the night; until Metro confirms that, plan a cab or auto between clusters.</p><ol class='list'>"
+                          + "".join(f"<li><b>{esc(s.get('arrive', ''))}</b> {self.link_pandal(s['pandal'], up)}</li>" for s in stops) + "</ol>")
+        top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"], p["name"]))[:12]
+        groups = {}
+        for p in top:   # pandals with the same night pattern share one line
+            key = tuple(crowd_word(self.hour_crowd(p, "ashtami", h)) for h in (20, 2, 5))
+            groups.setdefault(key, []).append(p)
+        big = ("<h2>Big pandals to save for after 2 am</h2><p>The famous queues shrink most in the small hours. On Ashtami, by our model's estimate:</p><ul>"
+               + "".join(f"<li>{', '.join(self.link_pandal(p['id'], up) for p in ps)}: {k[0]} at 8 pm, {k[1]} at 2 am, {k[2]} by 5 am.</li>" for k, ps in groups.items())
+               + "</ul>")
+
+        def closes_late(hrs):   # '16:00-01:00' closes after midnight; '12:00-00:00' closes at midnight
+            m = re.fullmatch(r"\d\d:\d\d-(\d\d):(\d\d)", hrs or "")
+            return bool(m) and 0 <= int(m.group(1)) < 6 and (m.group(1), m.group(2)) != ("00", "00")
+
+        late = sorted((f for f in self.g["food"] if closes_late(f.get("hours"))), key=lambda f: (f["zone"], f["name"]))
+        food_html = ("<h2>Food open past midnight</h2><p>Usual hours; many places stay open later on puja nights, but check before you go.</p><ul>"
+                     + "".join(f"<li>{self.link_food(f['id'], up)} <small>({esc(self.zone[f['zone']]['name'] if f['zone'] in self.zone else f['zone'])})</small>: "
+                               f"open {esc(f['hours'].replace('-', ' to '))}"
+                               + (f" · near {esc(short_name(self.station[f['nearest_metro']['id']]))} {'station' if f['nearest_metro']['line'] == 'suburban' else 'metro'}" if f.get("nearest_metro") and f["nearest_metro"]["walk_min"] <= FAR_MIN and f["nearest_metro"]["id"] in self.station else "")
+                               + "</li>" for f in late) + "</ul>") if late else ""
+        safety = ("<h2>Staying together at night</h2><ul><li>Fix a meeting point at each pandal before you go in; phones can lose signal in the crowd.</li>"
+                  "<li>Carry water, a charged phone and some cash; UPI can fail when the network is jammed.</li>"
+                  "<li>Kolkata Police run help booths at the big pandals, and their Puja Bandhu app shows live crowd counts.</li>"
+                  "<li>Wear shoes you can walk 10 km in. The all-night route is about that.</li></ul>")
+        qa = [("Are Kolkata pandals open all night during Durga Puja?", f"Many of the big pandals stay open late into the night from Saptami to Navami, and the streets stay busy past midnight. Timings are set by each committee, so check the pandal's own notice."),
+              ("What is the least crowded time to visit pandals at night?", f"After 2 am the crowd falls fast: our model estimates about {pct(2)}% of the evening peak at 2 am and {pct(4)}% at 4 am. 4 to 7 am is the quietest window of the day."),
+              (f"Does Kolkata Metro run all night during Durga Puja {self.year}?", self.nights_answer(up))]
+        faq_html, faq_ld = self.faq(qa)
+        body = f"""<article>
+<h1>Late-night pandal hopping in Kolkata: Durga Puja {self.year}</h1>
+<p class="lead">{lead}</p>
+<h2>How the night thins out</h2>
+{tbl}
+{self.notices_html(up)}
+{trail_html}
+{big}
+{food_html}
+{safety}
+<p><a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
+{faq_html}
+</article>"""
+        self.page(path, f"Late-Night Pandal Hopping in Kolkata: Durga Puja {self.year}",
+                  f"Late-night pandal hopping, Durga Puja {self.year}: when the crowds thin after midnight, the all-night route, food open late and the metro at night.",
+                  body, ld=(faq_ld,), crumbs=(("Durga Puja guide", "guide/"), ("Late night", path)), priority=0.9,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="#trail=all_nighter")
+        self.full.append(f"## Late-night pandal hopping\n{re.sub(r'<[^>]+>', '', lead)}\nPage: {self.url(path)}\n")
