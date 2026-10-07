@@ -34,7 +34,8 @@ for (let i = 0; i < 50; i++) { try { await fetch(base); break; } catch { await n
 const at = (id) => ({ latitude: P[id].lat, longitude: P[id].lng, accuracy: 10 });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });
 const ctx = await browser.newContext({ ...devices['iPhone 13'], geolocation: at('tridhara'), permissions: ['geolocation'] });
-await ctx.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg }; }, { url: backend.url, anonKey: backend.anonKey });
+// The paid featured option ships switched off (priceInr 0); switch it on here so its flow stays tested.
+await ctx.addInitScript((cfg) => { window.PP_CONFIG = { community: cfg, featured: { priceInr: 1999 } }; }, { url: backend.url, anonKey: backend.anonKey });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));

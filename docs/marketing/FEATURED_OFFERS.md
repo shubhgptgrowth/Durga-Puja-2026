@@ -2,7 +2,10 @@
 
 > Phase 0 of [../product/BUSINESS_ROADMAP.md](../product/BUSINESS_ROADMAP.md): the first money, before Shashthi.
 > How the feature works in the app and the backend: [../product/OFFERS.md](../product/OFFERS.md).
-> **Pass mark: 10 paying eateries by 16 Oct.**
+> **On hold (7 Oct).** At about 170 devices, no eatery will pay for reach yet. The paid option is switched off in the app
+> (`featured.priceInr: 0`). Featuring still works from the team side, so a partner eatery can be featured for free in
+> exchange for a QR standee at its counter, if the owner approves that plan. Switch pricing back on once weekly
+> visitors justify it (about 10,000 a week).
 
 ## What the eatery gets
 

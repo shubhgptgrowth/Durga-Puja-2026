@@ -17,8 +17,9 @@ export const CONFIG = {
   healthShortcut: '',
   // Featured (paid) eatery offers, docs/marketing/FEATURED_OFFERS.md. priceInr is shown on the offer form; with a
   // UPI id (e.g. 'pujoparikrama@okicici') the owner also gets a UPI pay button after sending. Empty upiId: we
-  // take payment on the call. Set priceInr to 0 to hide the featured option.
-  featured: { priceInr: 1999, upiId: '', payeeName: 'Pujo Parikrama' },
+  // take payment on the call. priceInr 0 hides the paid option: off until traffic can justify a price (owner, 7 Oct);
+  // the team can still feature a partner eatery for free (docs/marketing/FEATURED_OFFERS.md).
+  featured: { priceInr: 0, upiId: '', payeeName: 'Pujo Parikrama' },
   map: {
     // Vector base map: a Kolkata extract of the Protomaps/OpenStreetMap basemap, built at deploy time
     // into app/tiles/ (scripts/build_tiles.sh). The manifest names the current file. If it's missing
