@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T18:47:38+00:00
+# Build report — 2026-10-07T18:52:00+00:00
 
-Bundle version `4c68d87533c7`
+Bundle version `352a7feaef99`
 
 | Entity | Count |
 |---|---|
@@ -30,7 +30,7 @@ Bundle version `4c68d87533c7`
 | Tollygunge & Naktala | 4 | 1 | 5.6 km | 8,155 | 453 |
 | Beleghata & Phoolbagan | 1 | 0 | 2.1 km | 3,119 | 151 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
-| Howrah: Shibpur & Salkia | 2 | 0 | 6.2 km | 9,053 | 421 |
+| Howrah: Shibpur, Salkia & Liluah | 2 | 0 | 6.2 km | 9,053 | 421 |
 
 ## Curated itineraries
 
