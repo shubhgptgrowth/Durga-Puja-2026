@@ -97,14 +97,6 @@
    "class": ":"
   },
   {
-   "osm": "node/10080206710",
-   "name": "Sinthee Sarbajanin",
-   "name_bn": "",
-   "lat": 22.630647,
-   "lng": 88.381182,
-   "class": "amenity:place_of_worship"
-  },
-  {
    "osm": "node/10081941244",
    "name": "Bagbazar Sarbojanin Durgotsav",
    "name_bn": "",
@@ -1203,8 +1195,8 @@
    "locality": "",
    "match": {
     "name": "Beleghata 33 Pally",
-    "lat": 22.568632,
-    "lng": 88.3913559,
+    "lat": 22.5685699,
+    "lng": 88.3912469,
     "class": "highway:bus_stop",
     "src": "nominatim"
    },
@@ -1711,8 +1703,8 @@
    "similarity": 0.54,
    "locality_match": {
     "name": "Park Street",
-    "lat": 22.5471151,
-    "lng": 88.3605028,
+    "lat": 22.5493489,
+    "lng": 88.3566862,
     "class": "highway:secondary",
     "query": "Park Street, Kolkata"
    }
@@ -1835,8 +1827,8 @@
    "name_bn": "কেন্দুয়া শান্তি সংঘ",
    "area_hint": "south",
    "popularity": "3",
-   "query": "Kendua Shanti Sangha",
-   "locality": "Kendua, Garia, Kolkata",
+   "query": "Kendua Shanti Sangha Durga Puja",
+   "locality": "Kendua Main Road, Kolkata|Kendua, Kolkata|Garia, Kolkata",
    "match": {
     "osm": "way/191145359",
     "name": "Durga Bari",
@@ -1890,6 +1882,243 @@
     "class": "place:suburb",
     "query": "Tollygunge, Kolkata"
    }
+  },
+  {
+   "id": "belur_math",
+   "name": "Belur Math Durga Puja",
+   "name_bn": "বেলুড় মঠের দুর্গাপুজো",
+   "area_hint": "howrah",
+   "popularity": "5",
+   "query": "Belur Math",
+   "locality": "Belur Math, Howrah",
+   "match": {
+    "osm": "node/10083344095",
+    "name": "Golmath Durga Puja Samiti",
+    "name_bn": "",
+    "lat": 22.526931,
+    "lng": 88.349544,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.7
+  },
+  {
+   "id": "ihe_housing_puja",
+   "name": "IHE Housing Complex Puja (Botanical Garden)",
+   "name_bn": "আইএইচই আবাসনের পুজো",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "IHE Housing Complex Shibpur",
+   "locality": "Botanical Garden, Howrah|Shibpur, Howrah",
+   "match": {
+    "osm": "way/1367274136",
+    "name": "Durga Pujo groud",
+    "name_bn": "",
+    "lat": 22.584193,
+    "lng": 88.404134,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.39,
+   "locality_match": {
+    "name": "Botanical Garden (B.Garden)",
+    "lat": 22.5638942,
+    "lng": 88.2886063,
+    "class": "highway:bus_stop",
+    "query": "Botanical Garden, Howrah"
+   }
+  },
+  {
+   "id": "salkia_61_pally",
+   "name": "Salkia 61 Pally Sarbojanin",
+   "name_bn": "সালকিয়া ৬১ পল্লী সর্বজনীন",
+   "area_hint": "howrah",
+   "popularity": "4",
+   "query": "61 Pally Salkia",
+   "locality": "Salkia, Howrah",
+   "match": {
+    "osm": "node/10081941249",
+    "name": "Sovabazar 9 Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.595794,
+    "lng": 88.369361,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.62
+  },
+  {
+   "id": "salkia_barowari",
+   "name": "Salkia Durgotsav Barowari",
+   "name_bn": "সালকিয়া দুর্গোৎসব বারোয়ারি",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Salkia Barowari Durga Puja",
+   "locality": "Salkia, Howrah",
+   "match": {
+    "osm": "node/6395309585",
+    "name": "Gariahat Sarbojanin Durgotsab",
+    "name_bn": "",
+    "lat": 22.517351,
+    "lng": 88.366752,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.6
+  },
+  {
+   "id": "howrah_saraswat_club",
+   "name": "Howrah Saraswat Club",
+   "name_bn": "হাওড়া সারস্বত ক্লাব",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Saraswat Club Howrah",
+   "locality": "Kailash Banerjee Lane, Howrah|Kadamtala, Howrah",
+   "match": {
+    "osm": "node/10084831387",
+    "name": "Bhola Maheshwartala Sarbojanin",
+    "name_bn": "",
+    "lat": 22.480845,
+    "lng": 88.308844,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.53
+  },
+  {
+   "id": "chittaranjan_smriti_mandir",
+   "name": "Chittaranjan Smriti Mandir",
+   "name_bn": "চিত্তরঞ্জন স্মৃতি মন্দির",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Chittaranjan Smriti Mandir Howrah",
+   "locality": "Kadamtala, Howrah",
+   "match": {
+    "osm": "way/636399668",
+    "name": "Dakshinpara Durga Mandir",
+    "name_bn": "",
+    "lat": 22.56498,
+    "lng": 88.313219,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.52
+  },
+  {
+   "id": "ghasbagan_sporting",
+   "name": "Ghasbagan Sporting Club",
+   "name_bn": "ঘাসবাগান স্পোর্টিং ক্লাব",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Ghasbagan Sporting Club Howrah",
+   "locality": "Ghasbagan, Howrah|Shibpur, Howrah",
+   "match": {
+    "osm": "node/10082038827",
+    "name": "Chorbagan Sarbojanin",
+    "name_bn": "",
+    "lat": 22.583511,
+    "lng": 88.363163,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.44,
+   "locality_match": {
+    "name": "Shibpur",
+    "lat": 22.5685792,
+    "lng": 88.2942109,
+    "class": "place:suburb",
+    "query": "Shibpur, Howrah"
+   }
+  },
+  {
+   "id": "bally_deshbandhu",
+   "name": "Bally Deshbandhu Club",
+   "name_bn": "বালি দেশবন্ধু ক্লাব",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Deshbandhu Club Bally",
+   "locality": "Bally, Howrah",
+   "match": {
+    "osm": "node/10082383693",
+    "name": "Bakulbagan Sarbojanin",
+    "name_bn": "",
+    "lat": 22.526819,
+    "lng": 88.347954,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.46,
+   "locality_match": {
+    "name": "Bally",
+    "lat": 22.6469581,
+    "lng": 88.343612,
+    "class": "place:city",
+    "query": "Bally, Howrah"
+   }
+  },
+  {
+   "id": "bally_pal_para",
+   "name": "Bally Pal Para Puja",
+   "name_bn": "বালি পাল পাড়ার পুজো",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Pal Para Bally Durga Puja",
+   "locality": "Pal Para, Bally|Bally, Howrah",
+   "match": {
+    "osm": "node/10082383709",
+    "name": "64 Pally Durga Pujo",
+    "name_bn": "",
+    "lat": 22.520603,
+    "lng": 88.347451,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.58,
+   "locality_match": {
+    "name": "Bally",
+    "lat": 22.6469581,
+    "lng": 88.343612,
+    "class": "place:city",
+    "query": "Bally, Howrah"
+   }
+  },
+  {
+   "id": "liluah_siy",
+   "name": "Liluah Social Institution of Youth",
+   "name_bn": "লিলুয়া সোশ্যাল ইনস্টিটিউশন অব ইয়ুথ",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Social Institution of Youth Liluah",
+   "locality": "Liluah, Howrah",
+   "match": {
+    "osm": "node/11271732101",
+    "name": "Nalin Sarkar Street Durgotsav",
+    "name_bn": "",
+    "lat": 22.595346,
+    "lng": 88.373396,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.37
+  },
+  {
+   "id": "bhattanagar_rk_sangha",
+   "name": "Bhattanagar Ramkrishna Sangha",
+   "name_bn": "ভট্টনগর রামকৃষ্ণ সংঘ",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Bhattanagar Ramkrishna Sangha",
+   "locality": "Bhattanagar, Howrah|Liluah, Howrah",
+   "match": {
+    "osm": "way/612041735",
+    "name": "Basunagar Durga Mandap",
+    "name_bn": "",
+    "lat": 22.697104,
+    "lng": 88.4626,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.59
   }
  ]
 }
