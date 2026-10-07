@@ -187,10 +187,12 @@ class MetroMixin:
               *[(f"Which metro station is nearest to {p['name']}?", f"{esc(short_name(self.station[p['nearest_metro']['id']]))} ({esc(LINES.get(p['nearest_metro']['line'], ''))}), "
                  f"about {km(p['nearest_metro']['distance_m'])} away, roughly {p['nearest_metro']['walk_min']} minutes on foot.") for p in top]]
         faq_html, faq_ld = self.faq(qa)
+        wa = (f"Durga Puja {self.year} by metro: which pandals are walkable from each Kolkata metro station, nearest first, "
+              f"with the quiet hours.\n{self.url(path)}?src=wa_metro")
         body = f"""<article>
 <h1>Kolkata Durga Puja {self.year} by metro: pandals near every station</h1>
 <p class="lead">{lead}</p>
-{share_bar(f"Durga Puja {self.year} by metro: which pandals are walkable from each Kolkata metro station, nearest first, with the quiet hours.\n{self.url(path)}?src=wa_metro")}
+{share_bar(wa)}
 {self.notices_html(up)}
 <p><b>Station guides:</b> {stations_html}</p>
 {''.join(sections)}
@@ -257,10 +259,12 @@ class MetroMixin:
               ("What is the least crowded time to visit pandals at night?", f"After 2 am the crowd falls fast: our model estimates about {pct(2)}% of the evening peak at 2 am and {pct(4)}% at 4 am. 4 to 7 am is the quietest window of the day."),
               (f"Does Kolkata Metro run all night during Durga Puja {self.year}?", self.nights_answer(up))]
         faq_html, faq_ld = self.faq(qa)
+        wa = (f"Late-night pandal hopping, Durga Puja {self.year}: when the crowds thin after midnight, the all-night route "
+              f"and food open late.\n{self.url(path)}?src=wa_night")
         body = f"""<article>
 <h1>Late-night pandal hopping in Kolkata: Durga Puja {self.year}</h1>
 <p class="lead">{lead}</p>
-{share_bar(f"Late-night pandal hopping, Durga Puja {self.year}: when the crowds thin after midnight, the all-night route and food open late.\n{self.url(path)}?src=wa_night")}
+{share_bar(wa)}
 <h2>How the night thins out</h2>
 {tbl}
 {self.notices_html(up)}
