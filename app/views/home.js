@@ -47,7 +47,7 @@ function heroHtml() {
   const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
   return `<div class="hero slides" role="group" aria-roledescription="carousel" aria-label="${t('h.heroAlt', { place: '' })}">
     ${SLIDES.map((x, k) => `<button type="button" class="slide ${k === slide ? 'on' : ''}" data-slide="${k}" data-place="${x.pandal}" aria-label="${esc(nm(idx.pandal[x.pandal]))}">
-      <img src="${x.src}" alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></button>`).join('')}
+      <img ${k === slide ? `src="${x.src}" fetchpriority="high"` : `data-src="${x.src}"`} alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" decoding="async"></button>`).join('')}
     <div class="hero-shade"></div>
     <div class="hero-copy">
       <div class="sharad-greet">${plain(t(today ? 'lingo.heroToday' : diff > 0 ? 'lingo.hero' : 'lingo.after'))}</div>
@@ -61,14 +61,22 @@ function heroHtml() {
   </div>`;
 }
 
+/* Only the slide on screen loads with the page; each next one loads while the current one shows. Stacked slides all
+ * count as "in view", so loading="lazy" fetched all five (about 1 MB) on the first visit. */
+function warm(hero, k) {
+  const img = hero?.querySelectorAll('.slide img')[k];
+  if (img && !img.getAttribute('src') && img.dataset.src) img.src = img.dataset.src;
+}
 function startSlides(el) {
   const SLIDES = slides();
   clearInterval(slideTimer);
+  if (SLIDES.length > 1) setTimeout(() => warm($('.hero.slides', el), (slide + 1) % SLIDES.length), 2500);
   if (SLIDES.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   slideTimer = setInterval(() => {
     if (S.view !== 'home' || document.hidden) return;
     const hero = $('.hero.slides', el); if (!hero) return;
     slide = (slide + 1) % SLIDES.length;
+    warm(hero, slide); warm(hero, (slide + 1) % SLIDES.length);
     hero.querySelectorAll('.slide').forEach((b, k) => b.classList.toggle('on', k === slide));
     hero.querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === slide));
     const x = SLIDES[slide];
@@ -93,8 +101,9 @@ function miniPandal(p, extra) {
 function taskImg(k) {
   return '';  // the shortcuts are plain icon tiles; photos are kept for areas, days and trails
   if (!photosOn()) return '';
-  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
-    park: tilePhoto('parking'), photos: 'img/hero-2.jpg' })[k] || '';
+  // Small copies of the banner photos (480 px): the full ones are for the banner only
+  return ({ near: 'img/hero-3-sm.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1-sm.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
+    park: tilePhoto('parking'), photos: 'img/hero-2-sm.jpg' })[k] || '';
 }
 const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
