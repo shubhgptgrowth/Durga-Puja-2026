@@ -1,20 +1,11 @@
 {
  "date": "2026-10-10",
- "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
  "items": [
   {
    "id": "p1",
    "type": "photo",
    "at": "09:30",
-   "photos": [
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg",
-     "artist": "Indrajit Das",
-     "license": "CC BY-SA 3.0",
-     "cx": 0.5,
-     "cy": 0.5
-    }
-   ],
    "caption": {
     "en": "Bagbazar Durga Puja, North Kolkata. One frame, the whole family: Maa Durga with Lakshmi, Saraswati, Kartik and Ganesh, in the traditional ek-chala style.\n\nBagbazar Sarbojanin Durgotsav is one of Kolkata's oldest community pujos, now more than a hundred years old. The city has moved on to giant theme pandals, but Bagbazar still brings Maa home the way it always has.\n\nSabeki or theme, which side are you on? 👇",
     "keywords": [
@@ -27,6 +18,141 @@
      "durga puja 2026"
     ],
     "tags": "#Bagbazar #DurgaPuja2026 #KolkataDurgaPuja"
+   },
+   "render": "cards",
+   "slides": [
+    {
+     "t": "photo",
+     "kicker": "Bagbazar Sarbojanin · since 1918",
+     "title": "Maa with her whole family",
+     "body": "Ek-chala: Durga, Lakshmi, Saraswati, Kartik and Ganesh in one frame, the way North Kolkata has always done it.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/DurgaPuja2017_-_Durga_Idol_of_Bagbazar_Sarbajanin_Durgotsav_01.jpg",
+      "artist": "Indrajit Das",
+      "license": "CC BY-SA 3.0",
+      "cy": 0.5
+     }
+    },
+    {
+     "t": "end",
+     "title": [
+      "SABEKI",
+      "OR THEME?"
+     ],
+     "sub": "Bagbazar keeps its traditional protima and the riverside fair in 2026. Which side are you on?",
+     "pill": "Tell us in the comments"
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "type": "photo",
+   "at": "15:30",
+   "render": "cards",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · Central Kolkata and the north-east",
+     "title": [
+      "2026 THEMES",
+      "PANDAL BY PANDAL"
+     ],
+     "sub": "What each big pujo is building this year",
+     "pill": "Save it for pujo nights",
+     "photo": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Chaltabagan_Durga_puja_2023_02.jpg/1280px-Chaltabagan_Durga_puja_2023_02.jpg",
+      "artist": "Tarunsamanta (2023)",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "1/8 · Central Kolkata",
+     "name": "Santosh Mitra Square (Lebutala)",
+     "title": "Vande Mataram",
+     "body": "150 years of the national song and its part in the freedom struggle.",
+     "foot": "Nearest station: Sealdah · 15 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "2/8 · Central Kolkata",
+     "name": "Chaltabagan Lohapatty",
+     "title": "Nishan",
+     "body": "'The Mark': Chhattisgarh's Ramnami Samaj, who write Ram's name on their bodies.",
+     "foot": "Nearest station: Girish Park · 13 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "3/8 · Central Kolkata",
+     "name": "Taltala Sarbojanin",
+     "title": "Bangadarshan",
+     "body": "19th-century Bengal and 150 years of Vande Mataram.",
+     "foot": "Nearest station: Esplanade · 37 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "4/8 · Central Kolkata",
+     "name": "Young Boys Club",
+     "title": "Ram Rajya",
+     "body": "An ideal, just society, in a pandal of natural materials (the 57th puja).",
+     "foot": "Nearest station: Mahatma Gandhi Road · 12 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "5/8 · Central Kolkata",
+     "name": "Chorbagan Sarbojanin",
+     "title": "Beyond Sound",
+     "body": "The puja's 91st year.",
+     "foot": "Nearest station: Mahatma Gandhi Road · 8 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "6/8 · Central Kolkata",
+     "name": "Park Street Allen Park Puja",
+     "title": "Tandav",
+     "body": "Park Street's first-ever puja: Shiva's tandav and Parvati.",
+     "foot": "Nearest station: Rabindra Sadan · 36 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "7/8 · Lake Town",
+     "name": "Sreebhumi Sporting Club",
+     "title": "Hawa Mahal",
+     "body": "A replica of Jaipur's Hawa Mahal.",
+     "foot": "Nearest station: City Centre · 38 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "8/8 · Salt Lake",
+     "name": "FD Block Salt Lake",
+     "title": "Gond art",
+     "body": "A walk through the world of Gond tribal art, as a large 3D installation.",
+     "foot": "Nearest station: City Centre · 6 min walk"
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR PUJO GROUP"
+     ],
+     "sub": "Walking routes, Metro stops and live quiet hours for every pandal: link in bio",
+     "pill": "Comment PUJO for the routes"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 themes: Santosh Mitra Square, Chaltabagan, Sreebhumi and more, pandal by pandal 🎨\n\nSantosh Mitra Square marks 150 years of Vande Mataram. Chaltabagan's Nishan is about Chhattisgarh's Ramnami Samaj. Sreebhumi builds Jaipur's Hawa Mahal, Park Street gets its first-ever puja, and FD Block goes 3D with Gond art. Eight themes, each with the nearest station and the walk.\n\nSend this to the friend who's planning your pujo nights.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "santosh mitra square 2026",
+     "chaltabagan 2026 theme",
+     "sreebhumi 2026 theme",
+     "sreebhumi hawa mahal",
+     "fd block durga puja 2026",
+     "central kolkata pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #Sreebhumi"
    }
   },
   {

@@ -1,34 +1,11 @@
 {
  "date": "2026-10-11",
- "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
  "items": [
   {
    "id": "p1",
    "type": "photo",
    "at": "09:30",
-   "photos": [
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0937.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "cx": 0.5,
-     "cy": 0.35
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/8/82/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0936.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "cx": 0.5,
-     "cy": 0.4
-    }
-   ],
    "caption": {
     "en": "Durga Puja the old way, near Kolkata: inside Howrah's bonedi bari (old family homes).\n\nSwipe: Andul Royal Palace (1–2) and Sushil Dhar Estate (3), Howrah. No theme and no crowds, just a thakurdalan, a protima in daaker saaj, and rituals a family has kept for generations.\n\nKnow a bonedi bari pujo we should feature? Drop the name in the comments 👇 and we may tell its story next.",
     "keywords": [
@@ -40,6 +17,165 @@
      "bengali heritage"
     ],
     "tags": "#BonediBari #DurgaPuja2026 #BengaliCulture"
+   },
+   "render": "cards",
+   "slides": [
+    {
+     "t": "photo",
+     "kicker": "Bonedi bari · Andul, Howrah",
+     "title": "No theme, no queue",
+     "body": "A thakurdalan, a protima in daaker saaj, and rituals one family has kept for generations.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0937.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cy": 0.35
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Andul Royal Palace",
+     "title": "The old way",
+     "body": "Bonedi bari pujos began in Bengal's old family homes, long before community pandals.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/8/82/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0936.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Sushil Dhar Estate, Howrah",
+     "title": "Worth the detour",
+     "body": "Across the river from Kolkata, quieter than any pandal you'll see this pujo.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "end",
+     "title": [
+      "KNOW A",
+      "BONEDI BARI PUJO?"
+     ],
+     "sub": "Drop the name in the comments and we may tell its story next.",
+     "pill": "Comment the name 👇"
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "type": "photo",
+   "at": "15:30",
+   "render": "cards",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · South Kolkata",
+     "title": [
+      "2026 THEMES",
+      "PANDAL BY PANDAL"
+     ],
+     "sub": "What each big pujo is building this year",
+     "pill": "Save it for pujo nights",
+     "photo": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4109.JPG/1280px-Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4109.JPG",
+      "artist": "Biswarup Ganguly (2017)",
+      "license": "CC BY 3.0",
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "1/8 · Gariahat",
+     "name": "Ekdalia Evergreen",
+     "title": "Somnath",
+     "body": "The pandal is a replica of Gujarat's Somnath Temple, in the club's 84th year.",
+     "foot": "Nearest station: Ballygunge Junction (local train) · 16 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "2/8 · Gariahat",
+     "name": "Singhi Park",
+     "title": "Bastar",
+     "body": "Inspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year.",
+     "foot": "Nearest station: Ballygunge Junction (local train) · 23 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "3/8 · Lake Market",
+     "name": "Samaj Sebi Sangha",
+     "title": "Mahapujoy Mahanayak",
+     "body": "Uttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films.",
+     "foot": "Nearest station: Kalighat · 26 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "4/8 · Lake Market",
+     "name": "Ballygunge Cultural Association",
+     "title": "Jojon",
+     "body": "'Connection': between people, generations and nature. A zero-waste puja with a traditional protima.",
+     "foot": "Nearest station: Kalighat · 25 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "5/8 · Behala",
+     "name": "Suruchi Sangha",
+     "title": "Utso",
+     "body": "'The Source': the life and times of Syama Prasad Mookerjee, 125 years after his birth.",
+     "foot": "Nearest station: Rabindra Sarobar · 29 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "6/8 · Behala",
+     "name": "Behala Notun Dal",
+     "title": "Ay Aaro Bendhe Bendhe Thaki",
+     "body": "Holding together while life pulls people apart; the title is a Shankha Ghosh poem.",
+     "foot": "Nearest station: Behala Bazar · 2 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "7/8 · Behala",
+     "name": "Behala Club",
+     "title": "Tel",
+     "body": "'Oil': leaders' tussles over oil, and people's endless struggle for it.",
+     "foot": "Nearest station: Taratala · 17 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "8/8 · Behala",
+     "name": "Thakurpukur SB Park Sarbojanin",
+     "title": "Colliery",
+     "body": "A Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners.",
+     "foot": "Nearest station: Behala Chowrasta · 67 min walk"
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR PUJO GROUP"
+     ],
+     "sub": "Walking routes, Metro stops and live quiet hours for every pandal: link in bio",
+     "pill": "Comment PUJO for the routes"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 themes in South Kolkata, from Ekdalia to Behala 🎨\n\nEkdalia Evergreen builds Gujarat's Somnath Temple. Singhi Park turns to Bastar's art, Samaj Sebi wraps its pandal in posters from all 208 Uttam Kumar films, and Thakurpukur SB Park takes you 20 feet down a Raniganj coal mine. Eight themes, each with the nearest station and the walk.\n\nSend this to your South Kolkata pujo gang 👇",
+    "keywords": [
+     "durga puja 2026 theme",
+     "south kolkata pandals 2026",
+     "ekdalia evergreen 2026",
+     "singhi park 2026 theme",
+     "samaj sebi 2026",
+     "suruchi sangha 2026",
+     "behala durga puja 2026",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #SouthKolkata #KolkataDurgaPuja"
    }
   },
   {

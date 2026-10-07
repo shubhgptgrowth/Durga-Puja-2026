@@ -1,51 +1,204 @@
 {
  "date": "2026-10-12",
- "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "note": "Metro cheat sheet for the 8 biggest pandals (09:30), pandal hopping checklist (15:30), Bhowanipore route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
  "items": [
   {
    "id": "p1",
    "type": "photo",
    "at": "09:30",
-   "photos": [
+   "render": "cards",
+   "slides": [
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nalin_Sarkar_street_Sarbajaneen_durga_puja_2025_04.jpg",
-     "artist": "Tarunsamanta",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.35
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · Metro cheat sheet",
+     "title": [
+      "SKIP THE CAB",
+      "TAKE THE METRO"
+     ],
+     "sub": "8 big pandals, all within a 20-minute walk of a station",
+     "pill": "Save this for pujo nights",
+     "photo": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg/1280px-DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg",
+      "artist": "Indrajit Das (2017)",
+      "license": "CC BY-SA 3.0",
+      "cy": 0.42
+     }
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
-     "artist": "Pramanikshreya",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.4
+     "t": "item",
+     "kicker": "1/8 · Central Kolkata",
+     "name": "Chaltabagan Lohapatty",
+     "title": "Girish Park Metro",
+     "body": "13 minutes on foot from the station. Best time to go: 5–9 pm.",
+     "foot": "Walking route and live crowd: link in bio"
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Idol_of_Goddess_Durga_in_a_Panadal_at_Kolkata_25.jpg",
-     "artist": "M_Sarkar",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.4
+     "t": "item",
+     "kicker": "2/8 · North Kolkata",
+     "name": "Tala Prattoy",
+     "title": "Belgachia Metro",
+     "body": "13 minutes on foot from the station. Best time to go: 5–9 am.",
+     "foot": "Walking route and live crowd: link in bio"
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/2/2d/2019_Durga_Idol_and_decoration_of_Puja_at_Kolkata_03.jpg",
-     "artist": "Goutam1962",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.35
+     "t": "item",
+     "kicker": "3/8 · Central Kolkata",
+     "name": "Santosh Mitra Square (Lebutala)",
+     "title": "Sealdah Metro",
+     "body": "15 minutes on foot from the station. Best time to go: 5–9 am.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "item",
+     "kicker": "4/8 · North Kolkata",
+     "name": "Kumartuli Park Sarbojanin",
+     "title": "Sovabazar Metro",
+     "body": "17 minutes on foot from the station. Best time to go: 5–9 am.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "item",
+     "kicker": "5/8 · Central Kolkata",
+     "name": "Mohammad Ali Park",
+     "title": "Mahatma Gandhi Road Metro",
+     "body": "10 minutes on foot from the station. Best time to go: 5–9 am.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "item",
+     "kicker": "6/8 · North Kolkata",
+     "name": "Shyam Square Sarbojanin",
+     "title": "Shyambazar Metro",
+     "body": "11 minutes on foot from the station. Best time to go: 5–9 pm.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "item",
+     "kicker": "7/8 · Salt Lake",
+     "name": "FD Block Salt Lake",
+     "title": "City Centre Metro",
+     "body": "6 minutes on foot from the station. Best time to go: 5–9 pm.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "item",
+     "kicker": "8/8 · Behala",
+     "name": "Behala Notun Dal",
+     "title": "Behala Bazar Metro",
+     "body": "2 minutes on foot from the station. Best time to go: 5–9 pm.",
+     "foot": "Walking route and live crowd: link in bio"
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR PUJO GROUP"
+     ],
+     "sub": "Every pandal's nearest station and walking route: link in bio",
+     "pill": "Comment PUJO for the routes"
     }
    ],
    "caption": {
-    "en": "Kolkata's Durga Puja, frame by frame. Shashthi is 5 days away.\n\nSwipe: Nalin Sarkar Street Sarbajaneen (2025), a Kolkata pandal in October 2025, and two more city protimas. Every one is a piece of art that lives for five days.\n\nWhich pandals are on your list this year? Tell us 👇",
+    "en": "Kolkata Metro guide for Durga Puja 2026: 8 big pandals within a 20-minute walk of a station 🚇\n\nChaltabagan, Tala Prattoy, Santosh Mitra Square, Kumartuli Park, Mohammad Ali Park, Shyam Square, FD Block and Behala Notun Dal, each with its station, the walk in minutes and the best time to go. Cabs crawl on Saptami night. The Metro doesn't.\n\nSend this to the friend who always says \"let's take an Uber\".",
+    "keywords": [
+     "kolkata metro durga puja",
+     "durga puja 2026 metro",
+     "nearest metro to pandals",
+     "kolkata pandal hopping",
+     "santosh mitra square metro",
+     "chaltabagan nearest metro",
+     "best pandals in kolkata 2026",
+     "durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataMetro #PandalHopping"
+   }
+  },
+  {
+   "id": "p3",
+   "type": "photo",
+   "at": "15:30",
+   "render": "cards",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · 17 to 21 October",
+     "title": [
+      "PANDAL HOPPING",
+      "CHECKLIST"
+     ],
+     "sub": "7 things to sort before Shashthi",
+     "pill": "Save this before Saptami",
+     "photo": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Chaltabagan_Durga_puja_2023_03.jpg/1280px-Chaltabagan_Durga_puja_2023_03.jpg",
+      "artist": "Tarunsamanta (2023)",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "1/7",
+     "title": "Pick one area a night",
+     "body": "Kolkata is too big for one night. Choose North, South or Central and walk it end to end."
+    },
+    {
+     "t": "item",
+     "kicker": "2/7",
+     "title": "Start at the Metro",
+     "body": "Get off at the area's station and walk. Cabs and autos crawl after 7 pm on Saptami and Ashtami."
+    },
+    {
+     "t": "item",
+     "kicker": "3/7",
+     "title": "Go early or very late",
+     "body": "The big pandals are quietest from about 5 to 9 am. Queues peak from 8 pm to midnight."
+    },
+    {
+     "t": "item",
+     "kicker": "4/7",
+     "title": "Comfortable shoes, not new ones",
+     "body": "A North Kolkata night is 11 km and 16,000 steps."
+    },
+    {
+     "t": "item",
+     "kicker": "5/7",
+     "title": "Power bank and some cash",
+     "body": "Phones die on pujo nights and some stalls only take cash."
+    },
+    {
+     "t": "item",
+     "kicker": "6/7",
+     "title": "Fix a meeting point",
+     "body": "Networks jam in the crowds. Agree where to meet if you get separated."
+    },
+    {
+     "t": "item",
+     "kicker": "7/7",
+     "title": "Leave room for food",
+     "body": "Phuchka, egg roll, Mughlai paratha: plan the stops, not just the pandals."
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR PUJO GROUP"
+     ],
+     "sub": "Routes, Metro stops and live quiet hours for every pandal: link in bio",
+     "pill": "Comment PUJO for the routes"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 pandal hopping checklist: 7 things to sort before Shashthi ✅\n\nPick one area a night, start at the Metro, go early or very late, wear shoes you've already walked in, carry a power bank and some cash, fix a meeting point, and plan the food stops. Pujo runs 17 to 21 October.\n\nSend this to the one friend who plans nothing.",
     "keywords": [
      "durga puja 2026",
-     "kolkata durga puja",
-     "kolkata pandals",
-     "maa durga idol",
-     "best pandals in kolkata 2026"
+     "pandal hopping tips",
+     "durga puja checklist",
+     "kolkata pandal hopping",
+     "durga puja 2026 dates",
+     "saptami ashtami navami 2026",
+     "kolkata durga puja guide"
     ],
-    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #MaaDurga"
+    "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
    }
   },
   {
