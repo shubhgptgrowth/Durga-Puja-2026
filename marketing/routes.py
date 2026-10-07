@@ -173,6 +173,38 @@ def dotted(d, a, b, gap=22, r=5):
         d.ellipse((x - r, y - r, x + r, y + r), fill=WHITE)
 
 
+def overlap(a, b):
+    """Area shared by two (x0, y0, x1, y1) boxes."""
+    return max(0, min(a[2], b[2]) - max(a[0], b[0])) * max(0, min(a[3], b[3]) - max(a[1], b[1]))
+
+
+def place_label(anchor, size, obstacles, bounds, gap=48):
+    """The box for a label of size (w, h) next to anchor (x, y): right, left, above or below, whichever hits the
+    fewest obstacles (and never leaves bounds)."""
+    (x, y), (w, h) = anchor, size
+    bx0, by0, bx1, by1 = bounds
+    best = None
+    for cx, cy in ((x + gap, y - h / 2), (x - gap - w, y - h / 2), (x - w / 2, y - gap - h), (x - w / 2, y + gap),
+                   (x + gap, y - gap - h), (x + gap, y + gap), (x - gap - w, y - gap - h), (x - gap - w, y + gap)):
+        cx, cy = min(max(bx0, cx), bx1 - w), min(max(by0, cy), by1 - h)
+        r = (cx, cy, cx + w, cy + h)
+        cost = sum(overlap(r, o) for o in obstacles) + 4 * overlap(r, (x - 40, y - 40, x + 40, y + 40))
+        if best is None or cost < best[0]:
+            best = (cost, r)
+    return best[1]
+
+
+def clear_of(xy, rect, box, pad=36, fixed=1):
+    """Moves stops whose circle touches rect to just above or below it (whichever is nearer), inside box."""
+    out = []
+    for k, (x, y) in enumerate(xy):
+        if k >= fixed and rect[0] - pad < x < rect[2] + pad and rect[1] - pad < y < rect[3] + pad:
+            up, down = rect[1] - pad, rect[3] + pad
+            y = up if (y - up < down - y and up >= box[1]) or down > box[3] else down
+        out.append((x, y))
+    return out
+
+
 def zone_slide(z, g, cache):
     P = {p["id"]: p for p in g["pandals"]}
     T = {t["id"]: t for t in g["transit"]}
@@ -197,19 +229,27 @@ def zone_slide(z, g, cache):
     row = 64 if len(order) > 14 else 70 if len(order) > 10 else 84
     list_h = row * math.ceil(len(order) / 2) + 30
     box = (170, y + 50, W - 170, H - 330 - list_h)
-    xy = spread(project(pts, box), box, gap=76 if len(order) <= 12 else 66)
+    gap = 80 if len(order) <= 12 else 70
+    xy = spread(project(pts, box), box, gap=gap)
+    lab_box = None
+    if st:  # the start label goes where it covers the fewest stops, then any stop still under it moves off
+        lab = f"Start: {st['name'].replace(' Sutanuti', '')} Metro"
+        fl = F("semi", 34)
+        size = (d.textlength(lab, font=fl) + 28, 56)
+        for _ in range(3):
+            stops = [(x - 34, y - 34, x + 34, y + 34) for x, y in xy[1:]]
+            lab_box = place_label(xy[0], size, stops, (40, box[1] - 40, W - 40, box[3] + 40))
+            if not any(overlap(lab_box, o) for o in stops):
+                break
+            xy = spread(clear_of(xy, lab_box, (box[0], box[1] - 40, box[2], box[3] + 40)), box, gap=gap, fixed=1)
     for a, b in zip(xy, xy[1:]):
         dotted(d, a, b)
     if st:
         x, yy = xy[0]
         d.rounded_rectangle((x - 34, yy - 34, x + 34, yy + 34), 14, fill=(30, 110, 230, 255), outline=WHITE, width=4)
         text(d, (x, yy + 2), "M", F("bold", 40), anchor="mm")
-        lab = f"Start: {st['name'].replace(' Sutanuti', '')} Metro"
-        fl = F("semi", 34)
-        tw = d.textlength(lab, font=fl)
-        lx = x - 48 - tw if x + 48 + tw > W - 40 else x + 48
-        d.rounded_rectangle((lx - 14, yy - 28, lx + tw + 14, yy + 28), 14, fill=(10, 30, 70, 225))
-        text(d, (lx, yy), lab, fl, anchor="lm")
+        d.rounded_rectangle(lab_box, 14, fill=(10, 30, 70, 235))
+        text(d, (lab_box[0] + 14, (lab_box[1] + lab_box[3]) / 2), lab, fl, anchor="lm")
         xy = xy[1:]
     for n, (x, yy) in enumerate(xy, 1):
         d.ellipse((x - 30, yy - 30, x + 30, yy + 30), fill=YEL, outline=INK, width=3)
@@ -249,7 +289,7 @@ def cover(g, cache, hero_url):
         y += 160
     text(d, (W // 2, y + 20), "এলোমেলো ঘুরে রাত নষ্ট নয়!", F("bn", 70), anchor="mm", stroke=3)
     d.rounded_rectangle((W // 2 - 420, y + 95, W // 2 + 420, y + 185), 45, fill=YEL)
-    text(d, (W // 2, y + 140), "Save these area-wise routes  →", F("bold", 44), fill=INK, anchor="mm")
+    text(d, (W // 2, y + 140), "Save these area-wise routes", F("bold", 44), fill=INK, anchor="mm")
     text(d, (W // 2, 90), "@pujoparikrama.guide", F("semi", 38), anchor="mm", stroke=2)
     return im
 
@@ -268,9 +308,13 @@ def overview(g, zones):
     bl = xy[len(pts):]
     for a, b in zip(bl, bl[1:]):
         d.line((a, b), fill=(60, 130, 255, 230), width=10)
+    taken = [(x - 30, yy - 30, x + 30, yy + 30) for x, yy in xy[:len(pts)]]
+    fl = F("semi", 38)
     for i, (x, yy) in zip(zones, xy[:len(pts)]):
         d.ellipse((x - 26, yy - 26, x + 26, yy + 26), fill=YEL, outline=INK, width=3)
-        text(d, (x + 40, yy), Z[i]["short"], F("semi", 38), anchor="lm", stroke=3)
+        r = place_label((x, yy), (d.textlength(Z[i]["short"], font=fl), 46), taken, (40, box[1] - 30, W - 40, box[3] + 30), gap=36)
+        taken.append(r)
+        text(d, (r[0], (r[1] + r[3]) / 2), Z[i]["short"], fl, anchor="lm", stroke=3)
     d.rounded_rectangle((70, H - 300, W - 70, H - 70), 34, fill=(0, 0, 0, 170))
     for k, s in enumerate(["Pick one zone a night. Start at its metro station.",
                            "Follow the numbers: the route is the real walking order.",
