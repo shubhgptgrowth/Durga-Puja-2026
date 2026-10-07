@@ -163,7 +163,7 @@ def frame(base, pl, t):
         if st and t > 1.0:
             card(d, f"Start: {st_name}", "Get off here and follow the numbers", ease((t - 1.0) / 0.5))
     elif t < pl["t_hold"]:
-        k = min(len(order), max(1, math.ceil(prog)))
+        k = min(len(order), max(1, int(prog + 0.15)))  # the stop whose pin has popped
         card(d, f"{k} · {order[k - 1]['name']}", f"{pl['km'][k]:.1f} km walked  ·  stop {k} of {len(order)}")
     else:
         r = pl["route"]
