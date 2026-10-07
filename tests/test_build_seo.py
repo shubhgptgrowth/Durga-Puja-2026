@@ -81,7 +81,8 @@ class BuildSeoTest(unittest.TestCase):
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
             self.assertEqual(stories, len(self.articles) + len(self.site.data_stories_list))   # + the data stories (themes, metro)
-        self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0))   # + the stories index
+        quiz = len(list((self.tmp / "quiz").glob("**/index.html"))) - 1   # the quiz and a page per result (/quiz/ itself is a redirect)
+        self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0) + quiz)   # + the stories index
         self.assertEqual(len(self.pages), want)
 
     def test_every_page_is_complete(self):
@@ -353,6 +354,20 @@ class BuildSeoTest(unittest.TestCase):
         self.assertIn("estimates", night)   # crowd shares come from the model and say so
         a, b = (22.587145, 88.362942), (22.5854, 88.3610)   # the walk model matches pipeline/enrich.py
         self.assertEqual(walk(a, b)[1], round(walk(a, b)[0] * 1.3 / (3.2 * 1000 / 60)))
+
+    def test_quiz(self):
+        from seo.quiz import QUESTIONS, TYPES
+        ids = {t["id"] for t in TYPES}
+        for en, bn, opts in QUESTIONS:   # every question offers each type exactly once
+            self.assertEqual(sorted(o[0] for o in opts), sorted(ids), en)
+        html = (self.tmp / "quiz" / "which-pandal" / "index.html").read_text(encoding="utf-8")
+        for t in TYPES:
+            self.assertIn(f"id='r-{t['id']}'", html)
+            page = (self.tmp / "quiz" / "which-pandal" / t["id"] / "index.html").read_text(encoding="utf-8")
+            self.assertIn(f"guide/pandals/{t['pandals'][0]}/?src=quiz", page)   # points at a real pandal page
+            target = self.tmp / t["more"][0] / "index.html"
+            self.assertTrue(target.exists(), t["more"][0])
+        self.assertIn('url=which-pandal/', (self.tmp / "quiz" / "index.html").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
