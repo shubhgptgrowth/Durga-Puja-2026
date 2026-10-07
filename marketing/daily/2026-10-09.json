@@ -1,50 +1,13 @@
 {
  "date": "2026-10-09",
- "note": "Photo series (pure photography, Durga idols in high resolution). Reels for the day are added when the set is prepared.",
+ "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
  "items": [
   {
    "id": "p1",
    "type": "photo",
    "at": "09:30",
-   "photos": [
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Making_of_Durga_idol_in_Kumartuli_05.jpg",
-     "artist": "Pinakpani",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.35
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Making_of_Durga_idol_in_Kumartuli_03.jpg",
-     "artist": "Pinakpani",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.4
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/2/24/Making_of_Durga_idol_in_Kumartuli_02.jpg",
-     "artist": "Pinakpani",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.4
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/a/af/Making_of_Durga_idol_in_Kumartuli_07.jpg",
-     "artist": "Pinakpani",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Face_sculpture_of_Hindu_Goddess_Ma_Durga_in_kumortuli%2C_West_Bengal_India.jpg",
-     "artist": "Salmali Chattopadhyay",
-     "license": "CC BY-SA 4.0",
-     "cx": 0.5,
-     "cy": 0.45
-    }
-   ],
    "caption": {
-    "en": "This is what Maa looks like before her eyes are painted.\n\nKumartuli, North Kolkata: the artisans' quarter by the Hooghly where many of the city's Durga idols are made. Straw and bamboo first, then layers of river clay, then colour and dress. The eyes come last. It's called chokkhu daan, and it is the moment the protima comes alive.\n\nFrom bare clay to the finished face, in five frames.\n\nKumartuli is a short walk from Sovabazar Metro. Save this for your visit 📌",
+    "en": "This is what Maa looks like before her eyes are painted.\n\nKumartuli, North Kolkata: the artisans' quarter by the Hooghly where many of the city's Durga idols are made. Straw and bamboo first, then layers of river clay, then colour and dress. The eyes come last. It's called chokkhu daan, and it is the moment the protima comes alive.\n\nFrom river clay to the finished face, in five frames.\n\nKumartuli is a short walk from Sovabazar Metro. Save this for your visit 📌",
     "keywords": [
      "kumartuli",
      "kumartuli idol making",
@@ -55,6 +18,189 @@
      "north kolkata"
     ],
     "tags": "#Kumartuli #DurgaPuja2026 #Kolkata"
+   },
+   "render": "cards",
+   "slides": [
+    {
+     "t": "photo",
+     "kicker": "Kumartuli, North Kolkata",
+     "title": "It starts as river clay",
+     "body": "Straw and bamboo frames, then layer on layer of Ganga clay, shaped by hand.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/a/af/Making_of_Durga_idol_in_Kumartuli_07.jpg",
+      "artist": "Pinakpani",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Step 2",
+     "title": "Then the colour",
+     "body": "The base coat goes on first; the fine details come later.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/2/24/Making_of_Durga_idol_in_Kumartuli_02.jpg",
+      "artist": "Pinakpani",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Step 3",
+     "title": "Sari and jewellery",
+     "body": "Weeks of work come together in the last few days before pujo.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Making_of_Durga_idol_in_Kumartuli_03.jpg",
+      "artist": "Pinakpani",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Step 4",
+     "title": "Ready to leave",
+     "body": "Finished protimas wait in the workshops for their pandals.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Making_of_Durga_idol_in_Kumartuli_05.jpg",
+      "artist": "Pinakpani",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.35
+     }
+    },
+    {
+     "t": "photo",
+     "kicker": "Step 5",
+     "title": "The eyes come last",
+     "body": "Chokkhu daan: the moment the protima comes alive.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Face_sculpture_of_Hindu_Goddess_Ma_Durga_in_kumortuli%2C_West_Bengal_India.jpg",
+      "artist": "Salmali Chattopadhyay",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "end",
+     "title": [
+      "VISIT KUMARTULI",
+      "BEFORE SHASHTHI"
+     ],
+     "sub": "Sovabazar Metro, then a short walk to the river. Go in the morning, ask before you photograph.",
+     "pill": "Save this for your visit"
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "type": "photo",
+   "at": "15:30",
+   "render": "cards",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · North Kolkata",
+     "title": [
+      "2026 THEMES",
+      "PANDAL BY PANDAL"
+     ],
+     "sub": "What each big pujo is building this year",
+     "pill": "Save it for pujo nights",
+     "photo": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/The_Divine_Aura%2C_The_Luminous_Manifestation_of_Devi.jpg/1280px-The_Divine_Aura%2C_The_Luminous_Manifestation_of_Devi.jpg",
+      "artist": "Sampuron",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "1/8 · North Kolkata",
+     "name": "Kumartuli Park Sarbojanin",
+     "title": "Ganga Tumi Boichho Keno",
+     "body": "Bhupen Hazarika's song brought to life: the Ganga's journey from its source to the delta.",
+     "foot": "Nearest station: Sovabazar · 17 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "2/8 · North Kolkata",
+     "name": "Ahiritola Sarbojanin",
+     "title": "Madhuri Maitrir Anweshane",
+     "body": "Bengal's sweets as carriers of harmony: the history and making of traditional mishti, in the puja's 87th year.",
+     "foot": "Nearest station: Sovabazar · 20 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "3/8 · North Kolkata",
+     "name": "Tala Prattoy",
+     "title": "Biyojon",
+     "body": "'Separation': letting go of worldly attachment, in the puja's 101st year.",
+     "foot": "Nearest station: Belgachia · 13 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "4/8 · North Kolkata",
+     "name": "Shyam Square Sarbojanin",
+     "title": "P C Sorcar",
+     "body": "A magic-themed tribute to the magician P C Sorcar.",
+     "foot": "Nearest station: Shyambazar · 11 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "5/8 · North Kolkata",
+     "name": "Jagat Mukherjee Park",
+     "title": "Uday Shankar",
+     "body": "A tribute to the dancer Uday Shankar.",
+     "foot": "Nearest station: Shyambazar · 15 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "6/8 · North Kolkata",
+     "name": "Nalin Sarkar Street",
+     "title": "Jalalipi",
+     "body": "Rivers as the script of civilisation: the Ganga's flow, its pollution and eroding banks.",
+     "foot": "Nearest station: Shyambazar · 16 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "7/8 · North Kolkata",
+     "name": "Hatibagan Sarbojanin",
+     "title": "Chhannachhara",
+     "body": "'Unruly': chaos explored through abstract, asymmetrical design.",
+     "foot": "Nearest station: Shyambazar · 18 min walk"
+    },
+    {
+     "t": "item",
+     "kicker": "8/8 · North Kolkata",
+     "name": "Kashi Bose Lane",
+     "title": "Warli",
+     "body": "The Warli folk art of Maharashtra.",
+     "foot": "Nearest station: Sovabazar · 16 min walk"
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR PUJO GROUP"
+     ],
+     "sub": "Walking routes, Metro stops and live quiet hours for every pandal: link in bio",
+     "pill": "Comment PUJO for the routes"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 themes in North Kolkata, pandal by pandal 🎨\n\nKumartuli Park brings Bhupen Hazarika's Ganga Tumi Boichho Keno to life. Tala Prattoy's 101st year is about letting go. Shyam Square turns magician P C Sorcar into a pandal, and Ahiritola tells the story of Bengal's mishti. Eight themes, each with the nearest station and the walk.\n\nSend this to your pujo group so nobody misses the good ones.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "kolkata durga puja 2026 themes",
+     "north kolkata pandals 2026",
+     "kumartuli park 2026 theme",
+     "tala prattoy 2026",
+     "ahiritola 2026",
+     "shyam square 2026",
+     "best pandals in kolkata 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #NorthKolkata"
    }
   },
   {

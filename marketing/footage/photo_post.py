@@ -19,6 +19,9 @@ PW, PH = 1440, 1800
 
 def check(it):
     errs = []
+    if it.get("render") == "cards":
+        from .. import cards
+        return cards.check(it)
     if it.get("render") == "routes":
         return [] if (it.get("caption") or {}).get("en") else [f"{it['id']}: a route carousel needs a caption"]
     ps = it.get("photos") or []
@@ -91,6 +94,12 @@ def build(it, fid, src_dir, out, download):
     """Writes out/<fid>-<n>.jpg and out/<fid>.caption.txt; returns (file names, caption)."""
     if it.get("render") == "routes":
         return build_routes(it, fid, src_dir, out)
+    if it.get("render") == "cards":  # our own words and data on every slide (marketing/cards.py)
+        from .. import cards
+        names = cards.build(it, fid, src_dir, out, download)
+        cap = compose(it["caption"])
+        (Path(out) / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+        return names, cap
     names = []
     for n, p in enumerate(it["photos"], 1):
         ext = Path(p["src"].split("?")[0]).suffix.lower() or ".jpg"

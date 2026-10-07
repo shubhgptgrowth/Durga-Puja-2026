@@ -329,6 +329,24 @@ class RedesignTest(unittest.TestCase):
         idx["cr-x"]["permission"] = "2026-10-07, Instagram DM"
         factory.check(plan, idx)
 
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
+    def test_card_carousel_has_our_words_on_every_slide(self):
+        import tempfile
+        from PIL import Image
+        from marketing import cards
+        it = {"id": "p3", "type": "photo", "render": "cards", "caption": {"en": "Durga Puja 2026 themes"},
+              "slides": [{"t": "cover", "title": ["2026 THEMES"], "photo": {"src": "https://e/a.jpg", "artist": "A", "license": "CC BY 3.0"}},
+                         {"t": "item", "kicker": "1/1", "name": "Behala Notun Dal", "title": "Ay Aaro Bendhe Bendhe Thaki",
+                          "body": "A Shankha Ghosh poem.", "foot": "Nearest station: Behala Bazar · 2 min walk"},
+                         {"t": "end", "title": ["SEND THIS", "TO YOUR PUJO GROUP"]}]}
+        self.assertEqual(cards.check(it), [])
+        self.assertTrue(cards.check(dict(it, slides=it["slides"][:1])))  # one slide is not a carousel
+        self.assertTrue(cards.check(dict(it, slides=[{"t": "photo", "title": "x"}, it["slides"][2]])))  # photo slide, no photo
+        with tempfile.TemporaryDirectory() as d:
+            names = cards.build(it, "x", d, d, lambda src, dest: Image.new("RGB", (900, 700)).save(dest))
+            self.assertEqual(len(names), 3)
+            self.assertEqual(Image.open(f"{d}/{names[1]}").size, (1440, 1800))
+
     def test_caption_layout_is_english_first_keywords_then_three_tags(self):
         from marketing.captions import compose
         c = {"en": "Durga Puja 2026 in Kolkata: one route a night.", "bn": "এক রাতে এক এলাকা",
