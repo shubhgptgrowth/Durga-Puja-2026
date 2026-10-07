@@ -333,7 +333,7 @@ def closing(hero_path):
         text(d, (W // 2, 1080 + k * 70), s, F("semi", 52), anchor="mm", stroke=3)
     text(d, (W // 2, 1290), "কমেন্টে লিখুন “পুজো”, রুট পাঠিয়ে দেব!", F("bn", 64), anchor="mm", stroke=3)
     d.rounded_rectangle((W // 2 - 430, 1440, W // 2 + 430, 1540), 50, fill=YEL)
-    text(d, (W // 2, 1490), "Save it · send it to your pujo gang", F("bold", 44), fill=INK, anchor="mm")
+    text(d, (W // 2, 1490), "Free · no sign-up · all 9 areas", F("bold", 44), fill=INK, anchor="mm")
     return im
 
 
