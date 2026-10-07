@@ -5,6 +5,7 @@ name: engage
 #   mode=scan   read-only: unanswered comments on our posts + new posts from marketing/engage/creators.json,
 #               committed to the engage-data branch as <date>.json (no deploy is triggered)
 #   mode=reply  posts the approved replies in marketing/engage/replies/<date>.json (skips any already answered)
+#   mode=check  read-only token check (account, comments, Page link, messages, Business Discovery); sends nothing
 #   mode=dm     comment-to-DM: whoever comments "PUJO" on a recent post gets the guide in a private reply, once
 #               (ledger: dm.json on engage-data). Also every 15 min on a schedule, only while
 #               marketing/engage/config.json has "dm": true.
@@ -14,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "scan or reply"
+        description: "scan, reply, dm or check"
         default: scan
       date:
         description: "YYYY-MM-DD (default: today, IST)"
@@ -59,6 +60,8 @@ jobs:
             git fetch -q origin engage-data 2>/dev/null && git show origin/engage-data:dm.json > /tmp/dm.json 2>/dev/null || echo '{"sent": []}' > /tmp/dm.json
             args=(); [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
             python -m marketing.engage dm --ledger /tmp/dm.json "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
+          elif [ "$mode" = check ]; then
+            python -m marketing.engage check | tee -a "$GITHUB_STEP_SUMMARY"
           elif [ "$mode" = reply ]; then
             args=(); [ "${{ inputs.dry_run }}" != false ] && args+=(--dry-run)
             python -m marketing.engage reply "marketing/engage/replies/$d.json" "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
