@@ -281,4 +281,47 @@
     });
     q.addEventListener('input', function () { if (index) run(); });
   }
+  /* Reach: count this visit the way the app counts an open (Supabase track_open). It uses the same anonymous device id
+   * as the app on this origin and makes at most one row per device per day: no name, no location, no cookies. The source
+   * is ?src= when the link carried one, otherwise where the reader came from (a search engine, an AI answer, another
+   * site), so search and press show up in the daily reach report (docs/marketing/STRATEGY.md §7). */
+  (function reach() {
+    var me = document.querySelector('script[src$="guide/guide.js"]');
+    if (!me || !window.fetch || !window.URLSearchParams) return;
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl) return;   // as the privacy page promises
+    var root = new URL(me.getAttribute('src'), location.href).href.replace(/guide\/guide\.js.*$/, '');
+    var app = {   // the app's own storage keys (app/state.js store), so app and guide count one person once
+      get: function (k) { try { return JSON.parse(localStorage.getItem('pp:' + k)); } catch (e) { return null; } },
+      set: function (k, v) { try { localStorage.setItem('pp:' + k, JSON.stringify(v)); } catch (e) { /* private mode */ } },
+    };
+    var q = new URLSearchParams(location.search), src = (q.get('src') || q.get('utm_source') || '').trim().toLowerCase();
+    if (src && !/^[a-z0-9_]{1,40}$/.test(src)) src = 'other';
+    if (!src) {
+      var ref = ''; try { ref = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : ''; } catch (e) { /* bad referrer */ }
+      if (ref === location.hostname) return;   // a click inside the guide: its first page already counted the visit
+      src = !ref ? 'guide_direct'
+        : /chatgpt\.com|openai\.com|perplexity\.ai|copilot\.microsoft\.com|claude\.ai|gemini\.google\.com/.test(ref) ? 'ai_answer'
+        : /(^|\.)google\./.test(ref) ? 'seo_google'
+        : /(^|\.)bing\.com$/.test(ref) ? 'seo_bing'
+        : /duckduckgo|yahoo|yandex|ecosia|brave\.com/.test(ref) ? 'seo_other'
+        : ('ref_' + ref.replace(/^(www|m|l|lm|mobile)\./, '').split('.')[0].replace(/[^a-z0-9]/g, '')).slice(0, 40);
+    }
+    var d = new Date(), today = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    if (app.get('lastOpen') === today) return;   // already counted today, by the app or another guide page
+    var device = app.get('device');
+    if (!device) {
+      device = window.crypto && crypto.randomUUID ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx'.replace(/x/g, function () { return ((Math.random() * 16) | 0).toString(16); });
+      app.set('device', device);
+    }
+    if (!app.get('firstSrc')) app.set('firstSrc', src);
+    import(root + 'config.js').then(function (m) {
+      var c = m.CONFIG && m.CONFIG.community;
+      if (!c || !c.url || !c.anonKey) return;
+      return fetch(c.url + '/rest/v1/rpc/track_open', { method: 'POST', keepalive: true,
+        headers: { apikey: c.anonKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_device: device, p_src: src, p_first_src: app.get('firstSrc') || src }) })
+        .then(function (r) { if (r.ok) app.set('lastOpen', today); });
+    }).catch(function () { /* offline or blocked: the visit just isn't counted */ });
+  })();
 })();

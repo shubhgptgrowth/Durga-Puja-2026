@@ -19,16 +19,26 @@ API = "https://api.supabase.com/v1"
 
 LABELS = {"direct": "Direct / typed / home screen", "ig_bio": "Instagram bio link", "ig_story": "Instagram story link",
           "ig_mycard": "My Pujo card shares", "wa_channel": "WhatsApp Channel", "wa_fwd": "WhatsApp forwards",
-          "wa_place": "WhatsApp place shares", "share": "Share button", "plan_share": "Shared routes", "qr_flyer": "QR flyer", "other": "Other"}
+          "wa_place": "WhatsApp place shares", "share": "Share button", "plan_share": "Shared routes", "qr_flyer": "QR flyer", "other": "Other",
+          "seo_google": "Google search → guide page", "seo_bing": "Bing search → guide page", "seo_other": "Other search → guide page",
+          "ai_answer": "AI answer (ChatGPT, Perplexity, Copilot…) → guide page", "guide_direct": "Guide page, no referrer"}
 
 
 def label(src):
+    if src in LABELS:
+        return LABELS[src]
     if src.startswith("qr_") and src != "qr_flyer":
         return f"QR poster · {src[3:]}"
     if src.startswith("creator_"):
         return f"Creator · {src[8:]}"
     if src.startswith("committee_"):
         return f"Puja committee · {src[10:]}"
+    if src.startswith("press_"):
+        return f"Press · {src[6:]}"
+    if src.startswith("ref_"):
+        return f"Link from another site · {src[4:]}"
+    if src.startswith("seo_"):
+        return f"Guide page → app · {src[4:]}"
     return LABELS.get(src, src)
 
 

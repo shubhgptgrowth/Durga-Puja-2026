@@ -47,26 +47,36 @@ function heroHtml() {
   const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
   return `<div class="hero slides" role="group" aria-roledescription="carousel" aria-label="${t('h.heroAlt', { place: '' })}">
     ${SLIDES.map((x, k) => `<button type="button" class="slide ${k === slide ? 'on' : ''}" data-slide="${k}" data-place="${x.pandal}" aria-label="${esc(nm(idx.pandal[x.pandal]))}">
-      <img src="${x.src}" alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></button>`).join('')}
+      <img ${k === slide ? `src="${x.src}" fetchpriority="high"` : `data-src="${x.src}"`} alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" decoding="async"></button>`).join('')}
     <div class="hero-shade"></div>
     <div class="hero-copy">
       <div class="sharad-greet">${plain(t(today ? 'lingo.heroToday' : diff > 0 ? 'lingo.hero' : 'lingo.after'))}</div>
       <div class="sharad-sub">${t('h.greetSub')}</div>
       <div class="sharad-when"><span>${when}</span><span class="sep" aria-hidden="true">·</span><span>${span()}</span></div>
+      <p class="hero-promise">${t('promise.title')}</p>
+      <button type="button" class="hero-cta" data-q="myplan">${t('promise.cta')}</button>
     </div>
     <div class="hero-meta"><span class="hero-place"><span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span></div>
     <div class="dots" aria-hidden="true">${SLIDES.map((_, k) => `<i class="${k === slide ? 'on' : ''}"></i>`).join('')}</div>
   </div>`;
 }
 
+/* Only the slide on screen loads with the page; each next one loads while the current one shows. Stacked slides all
+ * count as "in view", so loading="lazy" fetched all five (about 1 MB) on the first visit. */
+function warm(hero, k) {
+  const img = hero?.querySelectorAll('.slide img')[k];
+  if (img && !img.getAttribute('src') && img.dataset.src) img.src = img.dataset.src;
+}
 function startSlides(el) {
   const SLIDES = slides();
   clearInterval(slideTimer);
+  if (SLIDES.length > 1) setTimeout(() => warm($('.hero.slides', el), (slide + 1) % SLIDES.length), 2500);
   if (SLIDES.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   slideTimer = setInterval(() => {
     if (S.view !== 'home' || document.hidden) return;
     const hero = $('.hero.slides', el); if (!hero) return;
     slide = (slide + 1) % SLIDES.length;
+    warm(hero, slide); warm(hero, (slide + 1) % SLIDES.length);
     hero.querySelectorAll('.slide').forEach((b, k) => b.classList.toggle('on', k === slide));
     hero.querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === slide));
     const x = SLIDES[slide];
@@ -91,11 +101,23 @@ function miniPandal(p, extra) {
 function taskImg(k) {
   return '';  // the shortcuts are plain icon tiles; photos are kept for areas, days and trails
   if (!photosOn()) return '';
-  return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
-    park: tilePhoto('parking'), photos: 'img/hero-2.jpg' })[k] || '';
+  // Small copies of the banner photos (480 px): the full ones are for the banner only
+  return ({ near: 'img/hero-3-sm.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1-sm.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
+    park: tilePhoto('parking'), photos: 'img/hero-2-sm.jpg' })[k] || '';
 }
 const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
+
+/* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
+ * pandal and when it's quiet, and the facts behind the promise in one line. */
+function promiseHtml() {
+  return `<div class="search" role="search">
+      ${icon('search')}
+      <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
+      <ul class="results" id="homeResults" role="listbox"></ul>
+    </div>
+    <p class="promise">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>`;
+}
 
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
@@ -115,11 +137,7 @@ function render() {
   startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
-    <div class="search" role="search">
-      ${icon('search')}
-      <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
-      <ul class="results" id="homeResults" role="listbox"></ul>
-    </div>
+    ${promiseHtml()}
     ${liveHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
@@ -146,7 +164,7 @@ function render() {
         ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>`
         : `<span class="pill">${icon('people', 'sm')} ${t('c.todayN', { n: fmtCount(s.today) })}</span>`); }).join('')}</div></section>` : ''}
 
-    <section class="section"><div class="section-head"><div><h2>${plain(t('dp.title'))}</h2><p class="sub">${t('dp.sub')}</p></div></div>
+    <section class="section" id="dayPlans"><div class="section-head"><div><h2>${plain(t('dp.title'))}</h2><p class="sub">${t('dp.sub')}</p></div></div>
       ${dayPlanHtml()}</section>
 
     <section class="section"><div class="section-head"><div><h2>${plain(t('h.trails'))}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
@@ -180,6 +198,7 @@ function wire(el) {
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
+    if (q === 'myplan') return $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
     if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }
     if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }

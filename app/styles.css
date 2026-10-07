@@ -349,6 +349,7 @@ img[src$="tiles/howrah.jpg"] { object-position: 50% 12% !important; }
   font-variation-settings: "opsz" 144, "SOFT" 50; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
 html[lang="bn"] .sharad-greet { font-family: var(--bn-serif); font-weight: 400; letter-spacing: 0; }
 .sharad-sub { margin-top: 10px; font-size: 10.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-2); }
+:lang(bn) .sharad-sub { letter-spacing: 0; font-size: 12.5px; }   /* spacing pulls Bengali conjuncts apart */
 .sharad-when { margin-top: 14px; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 550; font-size: 13px; padding: 7px 14px; border-radius: 999px;
   color: #FFF6E6; background: rgba(255,255,255,.1); border: 1px solid rgba(207,169,81,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .sharad-when .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--gold-2); overflow: hidden; color: transparent; }
@@ -359,6 +360,13 @@ html[lang="bn"] .sharad-greet { font-family: var(--bn-serif); font-weight: 400; 
 .hero.slides .dots { position: absolute; right: 26px; bottom: 34px; z-index: 3; display: flex; gap: 5px; pointer-events: none; }
 .hero.slides .dots i { width: 5px; height: 5px; border-radius: 3px; background: rgba(255,246,230,.4); transition: width .3s, background .3s; }
 .hero.slides .dots i.on { width: 16px; background: var(--gold-2); }
+
+/* the promise: one line and one button in the banner, the facts in one line under the search */
+.hero-promise { margin: 12px 0 0; font-family: var(--serif); font-size: 19px; line-height: 1.25; font-weight: 560; color: #FFF6E6; text-shadow: 0 1px 2px rgba(0,0,0,.75), 0 0 14px rgba(0,0,0,.55); }
+.hero-cta { pointer-events: auto; display: block; margin-top: 12px; border: 0; border-radius: 999px; padding: 11px 20px; min-height: 46px;
+  background: var(--gold-2); color: #2A1208; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 6px 16px -8px rgba(0,0,0,.6); }
+.hero-cta:focus-visible { outline: 2px solid #FFF6E6; outline-offset: 2px; }
+.promise { margin: 12px 28px 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); text-align: center; }
 
 /* search: a quiet field that sits on the banner's edge */
 .search { position: relative; margin: -24px 28px 0; z-index: 5; }
@@ -528,8 +536,8 @@ html[lang="bn"] .how-lingo { font-family: var(--bn-serif); font-style: normal; }
 .radio-links { display: flex; gap: 12px; align-items: center; margin-top: 6px; font-size: 12.5px; color: var(--on-deep-2); flex-wrap: wrap; }
 .radio-links a { color: var(--gold-2); font-weight: 600; }
 .pads { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 320px; }
-.pad { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 10px; border-radius: 14px; border: 1px solid rgba(207,169,81,.45); background: rgba(255,255,255,.05); color: var(--on-deep); font-weight: 600; font-size: 14px; cursor: pointer; touch-action: manipulation; }
-.pad span { font-size: 22px; }
+.tap-pad { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 10px; border-radius: 14px; border: 1px solid rgba(207,169,81,.45); background: rgba(255,255,255,.05); color: var(--on-deep); font-weight: 600; font-size: 14px; cursor: pointer; touch-action: manipulation; }
+.tap-pad span { font-size: 22px; }
 .hit { animation: hit .22s ease-out; }
 @keyframes hit { 40% { transform: scale(1.08) rotate(-3deg); } }
 

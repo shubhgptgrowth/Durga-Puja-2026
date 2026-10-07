@@ -37,6 +37,27 @@ from seo.stories import StoriesMixin
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Link codes (?src=) for links from guide pages into the app, by section. The same codes are what guide.js reports
+# as the source when a guide page is someone's first visit, so the reach report shows search per page type.
+SRC_BY_PREFIX = (("guide/pandals/", "seo_pandal"), ("guide/food/", "seo_food"), ("guide/trails/", "seo_trail"),
+                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/", "seo_guide"),
+                 ("durga-puja/rituals/", "seo_ritual"), ("durga-puja/recipes/", "seo_recipe"), ("durga-puja/", "seo_article"),
+                 ("navratri/", "seo_navratri"), ("festivals/", "seo_festival"), ("stories/", "seo_story"), ("guides/", "seo_article"))
+
+
+def report_date(d):
+    """A theme report's date: a full date reads '5 October'; some reports give only the year."""
+    return nice_date(d) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) else d
+
+
+def source_host(url):
+    return re.sub(r"^(www|m)\.", "", re.sub(r"^https?://([^/]+).*", r"\1", url))
+
+
+def src_code(path):
+    return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
+
+
 class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
@@ -73,7 +94,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         crumb_ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": n, "item": self.url(p)} for i, (n, p) in enumerate((("Pujo Parikrama", ""),) + tuple(crumbs))]}
         nav = " › ".join(f'<a href="{up}{p}">{esc(n)}</a>' for n, p in (("Home", ""),) + tuple(crumbs[:-1])) + (f" › <span>{esc(crumbs[-1][0])}</span>" if crumbs else "")
-        cta = f'<a class="cta" href="{up}{app_link}">Open in the {NAME} app →</a>' if app_link is not None else ""
+        src = src_code(path)   # ?src= tells the reach report which kind of page brought someone into the app
+        cta_text = "Going pandal hopping? See when each pandal is quiet →" if app_link == "" else f"Open in the {NAME} app →"
+        cta = f'<a class="cta" href="{up}?src={src}{app_link}">{cta_text}</a>' if app_link is not None else ""
         doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -88,7 +111,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
-<meta property="og:image" content="{esc(og_image or self.url('icons/og.png'))}">{'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if og_image and og_image.endswith(".jpg") else ""}{f'<meta property="og:image:alt" content="{esc(og_alt)}">' if og_alt else ""}
+<meta property="og:image" content="{esc(og_image or self.url('icons/og.png'))}">{'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if og_image and og_image.startswith(self.base) and og_image.endswith(".jpg") else ""}{f'<meta property="og:image:alt" content="{esc(og_alt)}">' if og_alt else ""}
 <meta name="twitter:image" content="{esc(og_image or self.url('icons/og.png'))}">
 <meta property="article:modified_time" content="{modified or self.updated}">
 <meta name="twitter:card" content="summary_large_image">
@@ -101,8 +124,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 {''.join(jsonld(x) for x in ld)}
 </head>
 <body>
-<header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}">Open app</a></header>
-<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}stories/">Photo stories</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
+<header class="top"><a class="brand" href="{up}durga-puja/"><img src="{up}icons/icon-192.png" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{up}?src={src}">Open app</a></header>
+<nav class="sections" aria-label="Sections"><a href="{up}search/" aria-label="Search">🔍</a><a href="{up}guides/">All guides</a><a href="{up}stories/">Photo stories</a><a href="{up}durga-puja/">Durga Puja</a><a href="{up}durga-puja/rituals/">Rituals</a><a href="{up}navratri/">Navratri</a><a href="{up}durga-puja/recipes/">Recipes</a><a href="{up}festivals/">Festivals</a><a href="{up}guide/">Kolkata {self.year}</a><a href="{up}guide/themes-{self.year}/">Themes {self.year}</a><a href="{up}guide/dates/">Dates</a><a href="{up}tools/bijoya-card/">Bijoya card</a></nav>
 <main>
 <nav class="crumbs" aria-label="Breadcrumb">{nav}</nav>
 {body}
@@ -177,7 +200,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         foods = [x for x in p["food"] if x["id"] in self.food]
         parks = [x for x in p["parking"] if x["id"] in self.park]
         same = [q for q in z["pandal_ids"] if q != p["id"] and q in self.pandal][:8]
-        rows = [("Area", f'<a href="{up}guide/areas/{z["id"]}/">{esc(z["name"])}</a> ({esc(self.region[z["region"]]["name"])} Kolkata)'),
+        rows = [(f"Theme {self.year}", f"{esc(th['title'])}" + (f" ({esc(th['title_bn'])})" if th.get("title_bn") else "") if th
+                 else f"Not announced yet. See <a href='{up}guide/themes-{self.year}/'>all {self.year} themes</a>"),
+                ("Area", f'<a href="{up}guide/areas/{z["id"]}/">{esc(z["name"])}</a> ({esc(self.region[z["region"]]["name"])} Kolkata)'),
                 ("Known for", esc(known)),
                 ("Established", esc(p["est_year"])) if p.get("est_year") else None,
                 ("Popularity", f"{p['popularity']} out of 5"),
@@ -205,8 +230,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         ]
         faq_html, faq_ld = self.faq(qa)
         body = f"""<article>
-<h1>{esc(p['name'])} Durga Puja {self.year}: best time, how to reach, food nearby</h1>
+<h1>{esc(p['name'])} Durga Puja {self.year}: theme, best time, how to reach</h1>
 <p class="lead">{lead}</p>
+<p><a class="cta" href="{up}?src={src_code('guide/pandals/')}#p={p['id']}">Open in the app: crowd by the hour, directions, check in →</a></p>
 {theme_html}
 {gallery}
 <h2>Key facts</h2>
@@ -234,9 +260,10 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         if imgs:
             event["image"] = imgs
         desc = (f"{p['name']} {self.year} theme: {th['title']}. " if th else "") + f"{p['name']}, {z['name']}: best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}."
-        self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: timings, best time, how to reach | {NAME}", desc, body,
+        self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: Theme, Best Time, Metro", desc, body,
                   ld=(place, event, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (p["name"], f"guide/pandals/{p['id']}/")),
-                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs)
+                  priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs,
+                  og_image=imgs[0] if imgs else None, og_alt=f"{p['name']} Durga Puja" if imgs else "")
         self.full.append(f"### {p['name']} ({z['name']})\n{re.sub(r'<[^>]+>', '', lead)}\nKnown for: {known}. Food nearby: {', '.join(self.food[x['id']]['name'] for x in foods) or 'none listed'}. Page: {self.url('guide/pandals/' + p['id'] + '/')}\n")
 
     # ------------------------------------------------------------------ food
@@ -395,6 +422,109 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                   crumbs=(("Durga Puja guide", "guide/"), ("Parking", "guide/parking/")), priority=0.7, summary=lead, app_link="#explore")
         self.full.append(f"## Parking\n{lead}\n" + "\n".join(f"- {x['name']} ({self.zone[x['zone']]['name']}){': ' + x['rate_hint'] if x.get('rate_hint') else ''}" for x in self.g["parking"]) + "\n")
 
+    def themes_page(self):
+        """Every announced theme on one page: what people search for most from Mahalaya on. Rows come from
+        data/raw/themes_<year>.csv, so each theme links to where it was announced."""
+        up = "../../"
+        path = f"guide/themes-{self.year}/"
+        withs = [p for p in self.g["pandals"] if p.get("theme_2026")]
+        waiting = sorted((p for p in self.g["pandals"] if not p.get("theme_2026") and p["popularity"] >= 4), key=lambda p: (-p["popularity"], p["name"]))
+        latest = self.updated[:10]   # the list is rebuilt with every deploy that adds a theme
+        lead = (f"Themes of Kolkata's Durga Puja {self.year} pandals, one line each, with the report each theme comes from. "
+                f"{len(withs)} {'theme has' if len(withs) == 1 else 'themes have'} been announced so far; committees usually reveal theirs in the weeks around Mahalaya "
+                f"({nice_date(self.days['mahalaya']['date'], True)}), and this list is updated as they do. The puja runs from Panchami, {nice_date(self.start, True)}, "
+                f"to Dashami, {nice_date(self.end, True)}. Last updated {nice_date(latest, True)}.")
+        sections = []
+        for r in self.g["regions"]:
+            rows = [p for p in withs if self.zone[p["zone"]]["region"] == r["id"]]
+            if not rows:
+                continue
+            rows.sort(key=lambda p: (-p["popularity"], p["name"]))
+            sections.append(f"<h2>{esc(r['name'])} Kolkata</h2><table class='days'><thead><tr><th>Pandal</th><th>Theme {self.year}</th><th>Source</th></tr></thead><tbody>" + "".join(
+                f"<tr><td>{self.link_pandal(p['id'], up)}<br><small>{esc(self.zone[p['zone']]['name'])}</small></td>"
+                f"<td>{esc(p['theme_2026']['title'])}{(' · ' + esc(p['theme_2026']['title_bn'])) if p['theme_2026'].get('title_bn') else ''}{(' <small>(' + esc(p['theme_2026']['artist']) + ')</small>') if p['theme_2026'].get('artist') else ''}</td>"
+                f"<td><a href='{esc(p['theme_2026']['source'])}' rel='noopener'>{esc(source_host(p['theme_2026']['source']))}</a>{('<br><small>' + report_date(p['theme_2026'].get('source_date', '')) + '</small>') if p['theme_2026'].get('source_date') else ''}</td></tr>"
+                for p in rows) + "</tbody></table>")
+        body = f"""<article>
+<h1>Kolkata Durga Puja {self.year} themes: the full list</h1>
+<p class="lead">{lead}</p>
+{''.join(sections) or '<p>No themes have been announced yet. Check back after Mahalaya.</p>'}
+{f'<h2>Not announced yet</h2><p>{", ".join(self.link_pandal(p["id"], up) for p in waiting)}</p>' if waiting else ''}
+<p>Each pandal page has its quiet hours, nearest metro and food nearby. <a href="{up}guide/">All {len(self.g['pandals'])} pandals</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
+</article>"""
+        items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Kolkata Durga Puja {self.year} themes", "numberOfItems": len(withs),
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": f"{p['name']}: {p['theme_2026']['title']}", "url": self.url(f"guide/pandals/{p['id']}/")} for i, p in enumerate(withs)]}
+        self.page(path, f"Kolkata Durga Puja {self.year} Themes: Full List by Pandal",
+                  f"All announced Durga Puja {self.year} themes of Kolkata pandals in one list, by area, with sources. Updated daily from Mahalaya.",
+                  body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (f"Themes {self.year}", path)), priority=0.95,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="", modified=latest)
+
+    # ------------------------------------------------------------------ list pages (what people search for)
+    def theme_note(self, p):
+        th = p.get("theme_2026")
+        return f" <small>Theme {self.year}: {esc(th['title'])}</small>" if th else ""
+
+    def best_pandals_page(self):
+        """The 25 best-known pandals with their theme, quietest window and metro, for 'best pandals in Kolkata <year>'."""
+        up = "../../"
+        path = f"guide/best-pandals-{self.year}/"
+        top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"], p["name"]))[:25]
+        lead = (f"The 25 best-known Durga Puja pandals in Kolkata for {self.year}, from Bagbazar and Kumartuli in the north to Sreebhumi in the "
+                f"east and Behala in the south, with each one's {self.year} theme where it has been announced, the quietest time to go on "
+                f"Saptami and the nearest metro. The puja runs from Panchami, {nice_date(self.start, True)}, to Dashami, {nice_date(self.end, True)}. "
+                f"Crowd times are estimates from our crowd model, not live counts.")
+        rows = "".join(
+            f"<li>{self.link_pandal(p['id'], up)} <small>({esc(self.zone[p['zone']]['name'])})</small>: {esc(p['highlight'])}{self.theme_note(p)}"
+            f"<br><small>Quietest on Saptami: {hrange(p['quiet_hours']['saptami'])} · Metro: {esc(p['nearest_metro']['name'])}, {p['nearest_metro']['walk_min']} min walk</small></li>"
+            for p in top)
+        body = f"""<article>
+<h1>Best Durga Puja pandals in Kolkata {self.year}: the top 25</h1>
+<p class="lead">{lead}</p>
+<ol class='list'>{rows}</ol>
+<p><a href="{up}guide/themes-{self.year}/">All {self.year} themes</a> · <a href="{up}guide/">All {len(self.g['pandals'])} pandals by area</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
+</article>"""
+        items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Best Durga Puja pandals in Kolkata {self.year}", "numberOfItems": len(top),
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, p in enumerate(top)]}
+        self.page(path, f"Best Durga Puja Pandals in Kolkata {self.year}: Top 25",
+                  f"The 25 best-known Kolkata Durga Puja pandals for {self.year}, with themes, the quietest time to visit and the nearest metro.",
+                  body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (f"Best pandals {self.year}", path)), priority=0.95,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="")
+
+    def region_page(self, r):
+        """One page per region (North, South…): its areas and every pandal in them, for 'north kolkata durga puja' searches."""
+        up = "../../"
+        slug = "howrah" if r["id"] == "howrah" else f"{r['id']}-kolkata"
+        name = "Howrah" if r["id"] == "howrah" else f"{r['name']} Kolkata"
+        zones = [self.zone[z] for z in r["zone_ids"] if z in self.zone]
+        ps = [self.pandal[i] for z in zones for i in z["pandal_ids"] if i in self.pandal]
+        if not ps:
+            return
+        top = sorted(ps, key=lambda p: (-p["popularity"], p["name"]))
+        lead = (f"{len(ps)} Durga Puja pandals in {name} for {self.year}, in {len(zones)} {'area' if len(zones) == 1 else 'areas'}: "
+                f"{esc(', '.join(z['name'] for z in zones))}. The best known are {esc(', '.join(p['name'] for p in top[:5]))}. "
+                f"Each area below is a walkable cluster; the pandal pages give the quietest hours and the nearest metro.")
+        sections = "".join(
+            f"<h2><a href='{up}guide/areas/{z['id']}/'>{esc(z['name'])}</a></h2>{('<p>' + esc(z['vibe']) + '</p>') if z.get('vibe') else ''}<ul>"
+            + "".join(f"<li>{self.link_pandal(p['id'], up)}: best {esc(p['best_slot_label'])} · metro {esc(p['nearest_metro']['name'])}{self.theme_note(p)}</li>"
+                      for p in sorted((self.pandal[i] for i in z["pandal_ids"] if i in self.pandal), key=lambda p: (-p["popularity"], p["name"])))
+            + "</ul>" for z in zones)
+        trails = [t for t in self.g["itineraries"] if any(seg.get("zone") in r["zone_ids"] for seg in t["segments"])]
+        trail_html = ("<h2>Ready-made routes</h2><ul>" + "".join(f"<li><a href='{up}guide/trails/{t['id']}/'>{esc(t['name'])}</a>: {esc(t['blurb'])}</li>" for t in trails) + "</ul>") if trails else ""
+        body = f"""<article>
+<h1>{esc(name)} Durga Puja {self.year}: pandals by area</h1>
+<p class="lead">{lead}</p>
+{sections}
+{trail_html}
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">All {self.year} themes</a> · <a href="{up}guide/">All areas</a></p>
+</article>"""
+        items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Durga Puja pandals in {name} {self.year}", "numberOfItems": len(top),
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, p in enumerate(top)]}
+        self.page(f"guide/{slug}/", f"{name} Durga Puja {self.year}: Pandal List by Area",
+                  f"{len(ps)} Durga Puja pandals in {name} for {self.year}, by area, with best times, metro and {self.year} themes.",
+                  body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (name, f"guide/{slug}/")), priority=0.9,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="#explore")
+        self.region_links.append((name, f"guide/{slug}/"))
+
     def hub_page(self):
         up = "../"
         top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"]))[:12]
@@ -424,7 +554,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 {tops}
 <h2>Ready-made trails</h2>
 {trails}
-<p><a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -503,7 +634,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
                         ("Navratri", "navratri/"), ("Kolkata pandals " + str(self.year), "guide/"), ("Durga Puja dates", "guide/dates/"), ("Open the app", "")))
         doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | {NAME}</title><meta name="robots" content="noindex"><link rel="stylesheet" href="{self.url('guide/guide.css')}"></head>
-<body><header class="top"><a class="brand" href="{self.url('durga-puja/')}"><img src="{self.url('icons/icon-192.png')}" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{self.base}">Open app</a></header>
+<body><header class="top"><a class="brand" href="{self.url('durga-puja/')}"><img src="{self.url('icons/icon-192.png')}" alt="" width="32" height="32"> {NAME}</a><a class="open" href="{self.base}?src=seo_404">Open app</a></header>
 <main><h1>This page has gone pandal hopping</h1><p class="lead">We couldn't find that page. Try one of these:</p><ul>{links}</ul></main></body></html>
 """
         (self.out / "404.html").write_text(doc, encoding="utf-8")
@@ -558,6 +689,11 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         for t in self.g["itineraries"]:
             self.trail_page(t)
         self.dates_page()
+        self.themes_page()
+        self.best_pandals_page()
+        self.region_links = []
+        for r in self.g["regions"]:
+            self.region_page(r)
         self.parking_page()
         self.hub_page()
         self.story_pages()   # before the articles, which link to their stories

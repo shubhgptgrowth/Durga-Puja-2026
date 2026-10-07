@@ -71,7 +71,11 @@ try {
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
   await page.click('.tab[data-view="home"]');
   must(await count('#view-home .how li') === 4, 'the how-to steps should be on Home');
-  must(await page.locator('#radioFab').isVisible(), 'sticky radio button should show from the start');
+  // Nothing plays until someone asks for music, so the sticky radio button stays away until then
+  must(!(await page.locator('#radioFab').isVisible()), 'sticky radio button should be hidden while no music plays');
+  // A newcomer sees what this is and one thing to do: the promise and "Plan my pujo" in the banner, search under it
+  must(await count('#view-home .hero .hero-cta[data-q="myplan"]') === 1, 'Plan my pujo button missing from the banner');
+  must(await count('#view-home .search #homeSearch') === 1, 'search should sit right under the banner');
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
   must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');
@@ -453,7 +457,7 @@ try {
   await p2.waitForSelector('.sheet.open #waShare');
   must(!/src=/.test(p2.url()), 'tracking code not tidied from the URL: ' + p2.url());
   const wa = decodeURIComponent(await p2.getAttribute('#waShare', 'href'));
-  must(wa.startsWith('https://wa.me/?text=') && wa.includes('?src=wa_place#p=sreebhumi'), 'WhatsApp link wrong: ' + wa);
+  must(wa.startsWith('https://wa.me/?text=') && wa.includes('/guide/pandals/sreebhumi/?src=wa_place'), 'WhatsApp link wrong: ' + wa);
   // Place page layout: "I'm here" beside the name, photos in the first fold, Directions + one Share at the bottom
   must(await p2.locator('.sheet.open .title-row #visitBtn').count() === 1, "I'm here should sit beside the name");
   must(await p2.locator('.sheet.open .sheet-cta a').count() === 2 && /maps\/dir/.test(await p2.getAttribute('.sheet.open .sheet-cta a.primary', 'href')), 'bottom bar should hold Directions and Share');

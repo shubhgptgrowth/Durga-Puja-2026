@@ -27,9 +27,10 @@ export function statsHtml(id, { compact = false, day = S.day } = {}) {
     const real = s?.visits ? `<span class="count">${icon('check', 'sm')} ${fmtCount(s.visits)}</span>` : '';
     return `${live}${estTxt ? `<span class="count est" title="${t('est.note')}">${estTxt}</span>` : ''}${real}`;
   }
+  // Real counts appear from the first verified visit; before that a row of zeros only says "nobody comes here".
   return `<div class="stat-row">
     ${est ? `<div class="stat est"><b>≈${short(est)}</b><span>${t(food ? 'est.diners' : 'est.visitors', { day: dn(idx.day[day]) })}</span></div>` : ''}
-    ${s ? `<div class="stat"><b>${fmtCount(s.visits)}</b><span>${t(food ? 'c.ate' : 'c.visits')}</span></div>
+    ${s?.visits ? `<div class="stat"><b>${fmtCount(s.visits)}</b><span>${t(food ? 'c.ate' : 'c.visits')}</span></div>
     <div class="stat"><b>${s.last_hour >= 1 ? fmtCount(s.last_hour) : fmtCount(s.today)}</b><span>${s.last_hour >= 1 ? t('c.lastHour') : t('c.today')}</span></div>` : ''}
   </div>${est ? `<p class="fine est-note">${t('est.note')}</p>` : ''}`;
 }

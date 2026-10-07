@@ -59,7 +59,7 @@ Status: ⬜ todo · 🟡 in progress · ✅ done · ⏸ waiting on a decision.
 
 | # | Item | Why | Status |
 |---|---|---|---|
-| [P1-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/9) | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | ⬜ |
+| [P1-1](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/9) | **2026 themes**: add each pandal's 2026 theme once committees announce them (usually around Mahalaya) | It's the first thing people ask: "what's the theme this year?" | 🟡 plumbing done: add a row to `data/raw/themes_2026.csv` (`id,theme,theme_bn,artist,source_url,source_name,source_date`; every theme needs its https source) and rebuild. It shows on the pandal sheet and list, the pandal page (title, lead, FAQ) and `/guide/themes-2026/` |
 | [P1-2](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/10) | **Bengali names** for the 31 OSM-discovered pandals | The Bengali UI shows English names for them | ⬜ |
 | [P1-3](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/11) | **"Add to home screen" prompt** after a first check-in or a saved plan | Repeat use during the 5 days, and fewer cold loads | ⬜ |
 | [P1-4](https://github.com/shubhgptgrowth/Durga-Puja-2026/issues/12) | **Crowd report button**: "How's the queue here? Short / Medium / Long" next to check-in | Turns the crowd curve from a guess into a live signal (Phase 6 in [SCOPE.md](SCOPE.md)) | ⬜ |
@@ -101,5 +101,5 @@ Don't break these without telling the marketing track:
 | Direct links: `#p=<place id>` | `app/app.js` | QR posters, WhatsApp shares, comment replies. **Renaming a place id breaks printed posters** |
 | Place ids and names | `app/data/guide.json` | `marketing/kit.py` builds every card from it |
 | Reach counting | `track_open()`, `growth_report()` in `supabase/migrations/*_growth.sql` | The `marketing-report` workflow |
-| Share UI | WhatsApp, Story card and Link buttons on sheets; My Pujo card on the Me tab | The viral loop in the marketing plan |
+| Share UI | WhatsApp, Story card and Link buttons on sheets; My Pujo card on the Me tab. Place shares link to the place's guide page (`guide/pandals/<id>/?src=…`), which has its own link preview and opens the place in the app | The viral loop in the marketing plan |
 | Public address | `site.json` (change it with `python scripts/site.py set …`) | All links, the kit, QR posters and link previews. Printed posters keep working through GitHub's redirect (see [HOSTING.md](HOSTING.md)) |
