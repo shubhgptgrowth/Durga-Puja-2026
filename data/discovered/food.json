@@ -1,135 +1,8 @@
 {
  "source": "OpenStreetMap contributors (ODbL)",
- "fetched": "2026-10-03",
- "failed_batches": 1,
+ "fetched": "2026-10-07",
+ "failed_batches": 3,
  "places": [
-  {
-   "osm": "node/3406728168",
-   "lat": 22.594063,
-   "lng": 88.370835,
-   "name": "Bhojohori Manna",
-   "amenity": "restaurant",
-   "cuisine": "indian",
-   "opening_hours": "12:00-22:00"
-  },
-  {
-   "osm": "node/4571180589",
-   "lat": 22.576097,
-   "lng": 88.363891,
-   "name": "Indian Coffee House",
-   "amenity": "restaurant",
-   "cuisine": "coffee_shop;indian",
-   "addr:street": "Bankim Chatterjee Street",
-   "brand": "Indian Coffee House"
-  },
-  {
-   "osm": "node/7029177785",
-   "lat": 22.574033,
-   "lng": 88.364553,
-   "name": "Paramount Juices & Shakes",
-   "name:en": "Paramount Juices & Shakes",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/7030754397",
-   "lat": 22.579331,
-   "lng": 88.358935,
-   "name": "Shree Ram Dhaba",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/9052559015",
-   "lat": 22.596747,
-   "lng": 88.370901,
-   "name": "New Madras Tiffin",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/9993017417",
-   "lat": 22.598857,
-   "lng": 88.372672,
-   "name": "Aminia Restaurant",
-   "amenity": "restaurant",
-   "cuisine": "indian;kebab",
-   "opening_hours": "Mo-Su 11:30-23:30",
-   "addr:street": "Bidhan Sarani"
-  },
-  {
-   "osm": "node/10079224417",
-   "lat": 22.588787,
-   "lng": 88.369664,
-   "name": "Fatso's roll",
-   "amenity": "fast_food"
-  },
-  {
-   "osm": "node/10864043305",
-   "lat": 22.605252,
-   "lng": 88.384432,
-   "name": "Royal Biryani",
-   "amenity": "fast_food",
-   "cuisine": "indian",
-   "opening_hours": "Mo-Su 13:00-23:59",
-   "addr:street": "Belgachia Road"
-  },
-  {
-   "osm": "node/10876008006",
-   "lat": 22.605373,
-   "lng": 88.384163,
-   "name": "Bharat Biryani",
-   "amenity": "fast_food",
-   "cuisine": "indian",
-   "opening_hours": "Mo-Su 14:00-23:59",
-   "addr:street": "Belgachia Road"
-  },
-  {
-   "osm": "node/10876010006",
-   "lat": 22.605728,
-   "lng": 88.386139,
-   "name": "CFC",
-   "amenity": "fast_food",
-   "cuisine": "american;chinese",
-   "opening_hours": "Mo-Su 18:00-22:30",
-   "addr:street": "Belgachia Metro"
-  },
-  {
-   "osm": "node/10876010007",
-   "lat": 22.611296,
-   "lng": 88.385129,
-   "name": "Mio Amore",
-   "shop": "bakery",
-   "opening_hours": "Mo-Su 09:00-21:00",
-   "addr:street": "Paikpara"
-  },
-  {
-   "osm": "node/11428279469",
-   "lat": 22.607235,
-   "lng": 88.382856,
-   "name": "Benfish",
-   "amenity": "restaurant",
-   "cuisine": "chinese;indian",
-   "opening_hours": "Mo-Su 03:00-10:30",
-   "addr:street": "Tala Park Path"
-  },
-  {
-   "osm": "node/11428279470",
-   "lat": 22.607677,
-   "lng": 88.38391,
-   "name": "MOMO HUY",
-   "name:en": "MOMO HUT",
-   "amenity": "restaurant",
-   "cuisine": "chinese",
-   "opening_hours": "Mo-Su 05:30-10:00",
-   "addr:street": "Tara Sankar Sarani"
-  },
-  {
-   "osm": "node/13240161770",
-   "lat": 22.594514,
-   "lng": 88.377385,
-   "name": "Chowman Gouribari",
-   "amenity": "restaurant",
-   "cuisine": "chinese;thai;continental;seafood",
-   "addr:street": "Raja Dinendra Street"
-  },
   {
    "osm": "node/1833168504",
    "lat": 22.517004,
@@ -236,6 +109,16 @@
    "brand": "Cafe Coffee Day"
   },
   {
+   "osm": "node/4571180589",
+   "lat": 22.576097,
+   "lng": 88.363891,
+   "name": "Indian Coffee House",
+   "amenity": "restaurant",
+   "cuisine": "coffee_shop;indian",
+   "addr:street": "Bankim Chatterjee Street",
+   "brand": "Indian Coffee House"
+  },
+  {
    "osm": "node/4716438832",
    "lat": 22.523093,
    "lng": 88.36526,
@@ -330,6 +213,14 @@
    "amenity": "fast_food",
    "cuisine": "momo",
    "brand": "Wow! Momo"
+  },
+  {
+   "osm": "node/7029177785",
+   "lat": 22.574033,
+   "lng": 88.364553,
+   "name": "Paramount Juices & Shakes",
+   "name:en": "Paramount Juices & Shakes",
+   "amenity": "cafe"
   },
   {
    "osm": "node/7030462685",
@@ -642,9 +533,7 @@
    "lat": 22.515896,
    "lng": 88.392403,
    "name": "Punjabee Rasoi",
-   "amenity": "restaurant",
-   "cuisine": "indian",
-   "opening_hours": "Tu-Su 11:00-22:30"
+   "amenity": "restaurant"
   },
   {
    "osm": "node/13982189170",
@@ -654,34 +543,6 @@
    "amenity": "restaurant",
    "cuisine": "chinese;kebab;noodle;barbecue",
    "opening_hours": "Mo-Su 10:00-22:00"
-  },
-  {
-   "osm": "node/14019780957",
-   "lat": 22.564061,
-   "lng": 88.367959,
-   "name": "Sen Sweets",
-   "name:bn": "সেন সুইটস",
-   "shop": "confectionery",
-   "opening_hours": "Mo-Su 07:00-22:00",
-   "addr:street": "AJC Bose Road"
-  },
-  {
-   "osm": "node/14213339601",
-   "lat": 22.527121,
-   "lng": 88.353593,
-   "name": "Blue Tokai;Bahrisons Bookstore",
-   "amenity": "cafe",
-   "shop": "books",
-   "opening_hours": "Mo-Su 08:00-21:00",
-   "addr:street": "Palit Street"
-  },
-  {
-   "osm": "node/14230076301",
-   "lat": 22.52649,
-   "lng": 88.355389,
-   "name": "Blue Tokai",
-   "amenity": "cafe",
-   "opening_hours": "Mo-Su 08:00-21:00"
   },
   {
    "osm": "way/358819089",
@@ -706,753 +567,6 @@
    "name": "Oudh 1590",
    "amenity": "restaurant",
    "cuisine": "indian;biriyani;kebab"
-  },
-  {
-   "osm": "node/2337486079",
-   "lat": 22.588215,
-   "lng": 88.409401,
-   "name": "Bhikharam Chandmal",
-   "shop": "confectionery"
-  },
-  {
-   "osm": "node/3677394125",
-   "lat": 22.580358,
-   "lng": 88.411745,
-   "name": "Golden City",
-   "amenity": "restaurant",
-   "cuisine": "chinese"
-  },
-  {
-   "osm": "node/3677394126",
-   "lat": 22.588012,
-   "lng": 88.408287,
-   "name": "KFC",
-   "name:en": "KFC",
-   "amenity": "fast_food",
-   "cuisine": "chicken",
-   "brand": "KFC"
-  },
-  {
-   "osm": "node/3677394127",
-   "lat": 22.587944,
-   "lng": 88.408165,
-   "name": "Pizza Hut",
-   "amenity": "restaurant",
-   "cuisine": "pizza",
-   "brand": "Pizza Hut"
-  },
-  {
-   "osm": "node/3807066487",
-   "lat": 22.601263,
-   "lng": 88.407547,
-   "name": "Aqua Java Air",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop",
-   "addr:street": "Lake Town Road"
-  },
-  {
-   "osm": "node/3810110642",
-   "lat": 22.583178,
-   "lng": 88.409396,
-   "name": "Baati Chokha",
-   "amenity": "restaurant",
-   "cuisine": "north_indian;indian"
-  },
-  {
-   "osm": "node/4147768799",
-   "lat": 22.499746,
-   "lng": 88.317319,
-   "name": "Haji Saheb",
-   "amenity": "restaurant",
-   "cuisine": "regional"
-  },
-  {
-   "osm": "node/4147782996",
-   "lat": 22.499211,
-   "lng": 88.317066,
-   "name": "Panna Sweets",
-   "amenity": "fast_food",
-   "cuisine": "indian",
-   "addr:street": "Brahma Samaj Road"
-  },
-  {
-   "osm": "node/4563514490",
-   "lat": 22.589468,
-   "lng": 88.408905,
-   "name": "The Fat Monk",
-   "name:en": "The Fat Monk",
-   "amenity": "fast_food",
-   "cuisine": "sandwich;sausage;local;chinese;noodles;pancake;chicken;thai",
-   "opening_hours": "Mo-Su 14:00-22:30",
-   "addr:street": "2nd Cross Road"
-  },
-  {
-   "osm": "node/4679601931",
-   "lat": 22.590242,
-   "lng": 88.409238,
-   "name": "6 Ballygunge Place",
-   "amenity": "restaurant",
-   "cuisine": "regional"
-  },
-  {
-   "osm": "node/4679622353",
-   "lat": 22.587297,
-   "lng": 88.40781,
-   "name": "Afraa",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/4679622354",
-   "lat": 22.588123,
-   "lng": 88.408714,
-   "name": "Wow! Momo",
-   "amenity": "fast_food",
-   "cuisine": "momo",
-   "brand": "Wow! Momo"
-  },
-  {
-   "osm": "node/6474490785",
-   "lat": 22.499211,
-   "lng": 88.31708,
-   "name": "PANNA SWEETS",
-   "amenity": "restaurant",
-   "opening_hours": "Mo-Su 09:00-22:00",
-   "addr:street": "Brahmo Samaj Road"
-  },
-  {
-   "osm": "node/6700782253",
-   "lat": 22.590474,
-   "lng": 88.408261,
-   "name": "Momo I Am",
-   "name:en": "Momo i am",
-   "amenity": "restaurant",
-   "cuisine": "asian;chinese",
-   "opening_hours": "Mo-Su 12:00-23:00",
-   "addr:street": "2nd Cross Road"
-  },
-  {
-   "osm": "node/6700824101",
-   "lat": 22.592121,
-   "lng": 88.411819,
-   "name": "Oudh 1590",
-   "amenity": "restaurant",
-   "cuisine": "awadhi;mughlai",
-   "opening_hours": "Mo-Su 12:00-15:30,18:30-22:30",
-   "addr:street": "2nd Avenue"
-  },
-  {
-   "osm": "node/6907625185",
-   "lat": 22.509209,
-   "lng": 88.345324,
-   "name": "Cafe HQ",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/7037787285",
-   "lat": 22.512899,
-   "lng": 88.348545,
-   "name": "North & South",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/7037787385",
-   "lat": 22.51281,
-   "lng": 88.348874,
-   "name": "Bombay Kulfi",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/8008509574",
-   "lat": 22.514584,
-   "lng": 88.344688,
-   "name": "Bru Mugs",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop;burger"
-  },
-  {
-   "osm": "node/8011950434",
-   "lat": 22.510964,
-   "lng": 88.348225,
-   "name": "Steak Factory",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/8011950435",
-   "lat": 22.511536,
-   "lng": 88.348968,
-   "name": "Cafe Kathmandu",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/8011950437",
-   "lat": 22.511221,
-   "lng": 88.350387,
-   "name": "Cakes",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/8484372103",
-   "lat": 22.517163,
-   "lng": 88.334755,
-   "name": "Ikura - Flavours of Pan Asia",
-   "amenity": "restaurant",
-   "cuisine": "chinese;japanese",
-   "addr:street": "Chetla Central Rd"
-  },
-  {
-   "osm": "node/9379888439",
-   "lat": 22.489294,
-   "lng": 88.316895,
-   "name": "Chowman",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/9497006698",
-   "lat": 22.587279,
-   "lng": 88.407844,
-   "name": "Starbucks",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop",
-   "brand": "Starbucks"
-  },
-  {
-   "osm": "node/9537536817",
-   "lat": 22.58956,
-   "lng": 88.408458,
-   "name": "033 4044 2294",
-   "name:en": "Balle Balle Dhaba",
-   "amenity": "restaurant",
-   "opening_hours": "Mo-Su 12:00-02:00",
-   "addr:street": "2nd Cross Road"
-  },
-  {
-   "osm": "node/9638686517",
-   "lat": 22.601449,
-   "lng": 88.407121,
-   "name": "Banyan tree pure veg green kitchen",
-   "amenity": "restaurant",
-   "diet:vegetarian": "yes"
-  },
-  {
-   "osm": "node/9638690117",
-   "lat": 22.601252,
-   "lng": 88.406354,
-   "name": "Rose",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/9638691617",
-   "lat": 22.601239,
-   "lng": 88.406309,
-   "name": "Rose",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/9640611217",
-   "lat": 22.599643,
-   "lng": 88.405379,
-   "name": "Pizza Hut",
-   "amenity": "restaurant",
-   "cuisine": "pizza",
-   "brand": "Pizza Hut"
-  },
-  {
-   "osm": "node/9640618217",
-   "lat": 22.598868,
-   "lng": 88.403979,
-   "name": "Domino's",
-   "amenity": "fast_food",
-   "cuisine": "pizza",
-   "brand": "Domino's"
-  },
-  {
-   "osm": "node/10091511619",
-   "lat": 22.602003,
-   "lng": 88.40556,
-   "name": "Subway",
-   "name:en": "Subway",
-   "amenity": "fast_food",
-   "cuisine": "sandwich",
-   "brand": "Subway"
-  },
-  {
-   "osm": "node/10091511719",
-   "lat": 22.601897,
-   "lng": 88.405687,
-   "name": "Mio Amore",
-   "name:en": "Mio Amore",
-   "name:bn": "মিও আমোরে",
-   "shop": "pastry",
-   "diet:vegetarian": "yes",
-   "brand": "Mio Amore"
-  },
-  {
-   "osm": "node/10091514217",
-   "lat": 22.601337,
-   "lng": 88.405777,
-   "name": "Wow! Momo",
-   "amenity": "fast_food",
-   "cuisine": "momo",
-   "brand": "Wow! Momo"
-  },
-  {
-   "osm": "node/10186264176",
-   "lat": 22.501343,
-   "lng": 88.320021,
-   "name": "Eatelicious",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/10287098375",
-   "lat": 22.491093,
-   "lng": 88.317795,
-   "name": "Cafe Coffee Day",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop",
-   "opening_hours": "Mo-Su 08:30-23:00",
-   "brand": "Cafe Coffee Day"
-  },
-  {
-   "osm": "node/10287769485",
-   "lat": 22.514578,
-   "lng": 88.347657,
-   "name": "The Irish Brewery",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/10287804508",
-   "lat": 22.513992,
-   "lng": 88.349198,
-   "name": "Cafe the Eggspresso",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/11264617761",
-   "lat": 22.585847,
-   "lng": 88.405326,
-   "name": "Melbourne Cafe",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop"
-  },
-  {
-   "osm": "node/11264617762",
-   "lat": 22.58587,
-   "lng": 88.405242,
-   "name": "Icy Fusion",
-   "amenity": "ice_cream",
-   "opening_hours": "10:30-24:00"
-  },
-  {
-   "osm": "node/11381115942",
-   "lat": 22.508335,
-   "lng": 88.336896,
-   "name": "Ubuntu Eat",
-   "name:en": "Ubuntu Eat",
-   "amenity": "cafe",
-   "cuisine": "indian;pizza;burger;chinese;italian;sandwich;regional;thai",
-   "diet:vegetarian": "yes",
-   "diet:vegan": "yes",
-   "opening_hours": "Mo-Su 12:00-22:00",
-   "addr:street": "Block O"
-  },
-  {
-   "osm": "node/11729976509",
-   "lat": 22.514785,
-   "lng": 88.347707,
-   "name": "Suchali's Artisan Bakehouse",
-   "shop": "bakery"
-  },
-  {
-   "osm": "node/11730000184",
-   "lat": 22.51519,
-   "lng": 88.348782,
-   "name": "Abar Boithok",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/12690977754",
-   "lat": 22.603502,
-   "lng": 88.404122,
-   "name": "Sharma Snacks",
-   "amenity": "fast_food"
-  },
-  {
-   "osm": "node/12925518525",
-   "lat": 22.484681,
-   "lng": 88.314407,
-   "name": "Celestial Cafe",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop;pizza;burger;chinese;chicken"
-  },
-  {
-   "osm": "node/13206842938",
-   "lat": 22.519311,
-   "lng": 88.345238,
-   "name": "Apanjan",
-   "amenity": "fast_food"
-  },
-  {
-   "osm": "node/13437657267",
-   "lat": 22.60157,
-   "lng": 88.407334,
-   "name": "Bean Stop",
-   "amenity": "cafe",
-   "cuisine": "cafe;coffee_shop",
-   "opening_hours": "Mo-Su 10:00-22:00",
-   "addr:street": "Lake Town Road",
-   "brand": "Bean Stop"
-  },
-  {
-   "osm": "node/13437719135",
-   "lat": 22.579678,
-   "lng": 88.412605,
-   "name": "Bean Stop",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop;cafe;fish_and_chips;sandwich;burger;pasta;coffee",
-   "opening_hours": "Mo-Su 11:00-23:00",
-   "addr:street": "GC Block, Sector 3, Bidhannagar",
-   "brand": "Bean Stop"
-  },
-  {
-   "osm": "node/14213339701",
-   "lat": 22.513278,
-   "lng": 88.348981,
-   "name": "Share Chai",
-   "amenity": "cafe",
-   "opening_hours": "Mo-Su 06:00-21:00"
-  },
-  {
-   "osm": "way/358763246",
-   "lat": 22.509093,
-   "lng": 88.333749,
-   "name": "Kowloon",
-   "amenity": "restaurant",
-   "cuisine": "chinese"
-  },
-  {
-   "osm": "way/359302479",
-   "lat": 22.51715,
-   "lng": 88.334742,
-   "name": "Ikura - Flavours of Pan Asia",
-   "amenity": "restaurant",
-   "cuisine": "japanese;chinese"
-  },
-  {
-   "osm": "node/2057721042",
-   "lat": 22.615669,
-   "lng": 88.412228,
-   "name": "KFC",
-   "name:en": "KFC",
-   "amenity": "fast_food",
-   "cuisine": "chicken",
-   "brand": "KFC"
-  },
-  {
-   "osm": "node/2234881738",
-   "lat": 22.538062,
-   "lng": 88.351218,
-   "name": "Oh! Calcutta",
-   "amenity": "restaurant",
-   "addr:street": "Elgin Road"
-  },
-  {
-   "osm": "node/3724122991",
-   "lat": 22.620153,
-   "lng": 88.413501,
-   "name": "New Rajkumar Sweets",
-   "amenity": "fast_food",
-   "cuisine": "indian",
-   "addr:street": "Nagendra Nath Road"
-  },
-  {
-   "osm": "node/4393259890",
-   "lat": 22.536589,
-   "lng": 88.350951,
-   "name": "Kewpie's",
-   "name:en": "Kewpie's",
-   "amenity": "restaurant",
-   "cuisine": "bengali;indian",
-   "addr:street": "Elgin Lane"
-  },
-  {
-   "osm": "node/4841301732",
-   "lat": 22.568492,
-   "lng": 88.39118,
-   "name": "Pawan Putra",
-   "amenity": "restaurant",
-   "cuisine": "indian",
-   "diet:vegetarian": "yes"
-  },
-  {
-   "osm": "node/5303024722",
-   "lat": 22.537783,
-   "lng": 88.344129,
-   "name": "Balwant Singh's Eating House",
-   "amenity": "restaurant",
-   "cuisine": "indian",
-   "diet:vegetarian": "yes",
-   "addr:street": "Harish Mukherjee Road"
-  },
-  {
-   "osm": "node/5338962221",
-   "lat": 22.533141,
-   "lng": 88.347228,
-   "name": "Bengali Sweets",
-   "shop": "bakery"
-  },
-  {
-   "osm": "node/5339103821",
-   "lat": 22.534969,
-   "lng": 88.353786,
-   "name": "My Big Fat Belly",
-   "amenity": "restaurant",
-   "cuisine": "burger;sandwich;italian;italian_pizza"
-  },
-  {
-   "osm": "node/7030508385",
-   "lat": 22.538449,
-   "lng": 88.354281,
-   "name": "Piccadilly Square",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/7030510985",
-   "lat": 22.53311,
-   "lng": 88.353394,
-   "name": "Keventers",
-   "amenity": "ice_cream"
-  },
-  {
-   "osm": "node/7030511785",
-   "lat": 22.538653,
-   "lng": 88.351081,
-   "name": "Keventers",
-   "amenity": "ice_cream"
-  },
-  {
-   "osm": "node/7030524685",
-   "lat": 22.534221,
-   "lng": 88.353579,
-   "name": "Pabrai’s Fresh & Naturelle Ice Cream",
-   "amenity": "ice_cream"
-  },
-  {
-   "osm": "node/7030576887",
-   "lat": 22.536794,
-   "lng": 88.351161,
-   "name": "Fabbrica",
-   "amenity": "restaurant",
-   "addr:street": "Allenby Lane"
-  },
-  {
-   "osm": "node/7035409285",
-   "lat": 22.53318,
-   "lng": 88.353159,
-   "name": "Jai Hind Dhaba",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/8014162874",
-   "lat": 22.533162,
-   "lng": 88.353368,
-   "name": "Dawntown Cafe",
-   "amenity": "cafe",
-   "cuisine": "pizza;burger;coffee_shop;chinese;sandwich;chicken;french;international;ice_cream;hookah",
-   "opening_hours": "Mo-Su 12:00-4:00"
-  },
-  {
-   "osm": "node/8543466091",
-   "lat": 22.537073,
-   "lng": 88.343674,
-   "name": "Loading Tummy",
-   "amenity": "restaurant",
-   "cuisine": "fish_and_chips;pizza;burger;sandwich",
-   "addr:street": "Beninandan Street"
-  },
-  {
-   "osm": "node/9992983419",
-   "lat": 22.61509,
-   "lng": 88.411974,
-   "name": "Aminia",
-   "name:bn": "আমিনিয়া",
-   "amenity": "restaurant",
-   "cuisine": "mughlai_cuisine",
-   "opening_hours": "Mo-Su 11:30-23:30",
-   "addr:street": "Jessore Road",
-   "brand": "Aminia"
-  },
-  {
-   "osm": "node/10057179401",
-   "lat": 22.615658,
-   "lng": 88.412344,
-   "name": "Barbeque Nation",
-   "amenity": "restaurant",
-   "cuisine": "barbecue",
-   "opening_hours": "Mo-Su 12:00-15:30, Mo-Su 18:00-22:00",
-   "addr:street": "Diamond City Mall (5th Floor), Jessore Road",
-   "brand": "Barbeque Nation"
-  },
-  {
-   "osm": "node/10057179710",
-   "lat": 22.614893,
-   "lng": 88.411587,
-   "name": "WTF! Where's The Food",
-   "amenity": "restaurant",
-   "opening_hours": "Mo-Su 12:30-22:30",
-   "addr:street": "Jessore Road",
-   "brand": "WTF! Where's The Food"
-  },
-  {
-   "osm": "node/10057222887",
-   "lat": 22.615857,
-   "lng": 88.41189,
-   "name": "Mio Amore",
-   "name:en": "Mio Amore",
-   "name:bn": "মিও আমোরে",
-   "shop": "pastry",
-   "diet:vegetarian": "yes",
-   "opening_hours": "Mo-Su 09:00-21:30",
-   "addr:street": "Jessore Road",
-   "brand": "Mio Amore"
-  },
-  {
-   "osm": "node/10057238728",
-   "lat": 22.616005,
-   "lng": 88.412235,
-   "name": "Monginis",
-   "name:en": "Monginis",
-   "name:bn": "মনজিনিস",
-   "shop": "pastry",
-   "diet:vegetarian": "yes",
-   "addr:street": "Jessore Road",
-   "brand": "Monginis"
-  },
-  {
-   "osm": "node/10137952617",
-   "lat": 22.622569,
-   "lng": 88.412906,
-   "name": "Akram's Biriyani",
-   "amenity": "fast_food",
-   "cuisine": "chicken;indian;kebab",
-   "opening_hours": "Mo-Su 12:00-00:00",
-   "addr:street": "Dum Dum Road"
-  },
-  {
-   "osm": "node/11634134090",
-   "lat": 22.60227,
-   "lng": 88.375533,
-   "name": "Tea Shop",
-   "amenity": "cafe",
-   "cuisine": "chai"
-  },
-  {
-   "osm": "node/13186167901",
-   "lat": 22.622281,
-   "lng": 88.410277,
-   "name": "Basanti",
-   "shop": "confectionery"
-  },
-  {
-   "osm": "node/13204503595",
-   "lat": 22.602365,
-   "lng": 88.37553,
-   "name": "tea shop",
-   "amenity": "cafe",
-   "cuisine": "coffee_shop"
-  },
-  {
-   "osm": "node/13208111173",
-   "lat": 22.526113,
-   "lng": 88.347801,
-   "name": "The Bhawanipur House",
-   "name:en": "The Bhawanipur House",
-   "name:bn": "দ্যা ভবানীপুর হাউস",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "node/13264384220",
-   "lat": 22.601704,
-   "lng": 88.373869,
-   "name": "National Economic Restaurant",
-   "amenity": "cafe"
-  },
-  {
-   "osm": "node/13290284951",
-   "lat": 22.564274,
-   "lng": 88.388619,
-   "name": "Mukharuchi",
-   "amenity": "fast_food"
-  },
-  {
-   "osm": "node/13290284970",
-   "lat": 22.564009,
-   "lng": 88.390044,
-   "name": "Tutupie Café",
-   "amenity": "ice_cream",
-   "brand": "Amul"
-  },
-  {
-   "osm": "node/13290284979",
-   "lat": 22.564378,
-   "lng": 88.388327,
-   "name": "Ghosh Brothers",
-   "shop": "confectionery"
-  },
-  {
-   "osm": "node/13290284991",
-   "lat": 22.572061,
-   "lng": 88.389068,
-   "name": "Dough As You Like",
-   "shop": "pastry"
-  },
-  {
-   "osm": "node/13290285021",
-   "lat": 22.56401,
-   "lng": 88.390022,
-   "name": "Dough As You Like",
-   "shop": "pastry"
-  },
-  {
-   "osm": "node/13290285037",
-   "lat": 22.56428,
-   "lng": 88.388579,
-   "name": "Mukharuchi",
-   "shop": "confectionery"
-  },
-  {
-   "osm": "way/358734784",
-   "lat": 22.612332,
-   "lng": 88.41114,
-   "name": "Arsalan Restaurant & Caterar",
-   "amenity": "restaurant",
-   "cuisine": "mughlai_cuisine",
-   "opening_hours": "Mo-Su 11:00-23:00",
-   "addr:street": "Jessore Road"
-  },
-  {
-   "osm": "way/359152081",
-   "lat": 22.615,
-   "lng": 88.411599,
-   "name": "Kasturi Restaurant",
-   "amenity": "restaurant",
-   "cuisine": "Bengali",
-   "opening_hours": "Mo-Su 11:00-23:00",
-   "addr:street": "Jessore Road, Near Diamond Plaza Mall, Amarpalli, South Dumdum"
-  },
-  {
-   "osm": "way/1448557092",
-   "lat": 22.564249,
-   "lng": 88.388766,
-   "name": "KitchenQ",
-   "amenity": "restaurant"
-  },
-  {
-   "osm": "way/1448557104",
-   "lat": 22.564789,
-   "lng": 88.38714,
-   "name": "Dipu Fast Food Centre",
-   "amenity": "fast_food",
-   "addr:street": "Beleghata Main Road"
   },
   {
    "osm": "node/1784288704",
@@ -1707,6 +821,31 @@
    "addr:street": "Prince Anwar Shah Road"
   },
   {
+   "osm": "node/13206842938",
+   "lat": 22.519311,
+   "lng": 88.345238,
+   "name": "Apanjan",
+   "amenity": "fast_food"
+  },
+  {
+   "osm": "node/13208111173",
+   "lat": 22.526113,
+   "lng": 88.347801,
+   "name": "The Bhawanipur House",
+   "name:en": "The Bhawanipur House",
+   "name:bn": "দ্যা ভবানীপুর হাউস",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/13240161770",
+   "lat": 22.594514,
+   "lng": 88.377385,
+   "name": "Chowman Gouribari",
+   "amenity": "restaurant",
+   "cuisine": "chinese;thai;continental;seafood",
+   "addr:street": "Raja Dinendra Street"
+  },
+  {
    "osm": "node/13264338551",
    "lat": 22.543876,
    "lng": 88.364997,
@@ -1751,6 +890,15 @@
    "lng": 88.376128,
    "name": "Spice Of Joy",
    "amenity": "restaurant"
+  },
+  {
+   "osm": "node/8484372103",
+   "lat": 22.517163,
+   "lng": 88.334755,
+   "name": "Ikura - Flavours of Pan Asia",
+   "amenity": "restaurant",
+   "cuisine": "chinese;japanese",
+   "addr:street": "Chetla Central Rd"
   },
   {
    "osm": "node/10247535210",
@@ -1828,6 +976,24 @@
    "shop": "bakery"
   },
   {
+   "osm": "node/14213339601",
+   "lat": 22.527121,
+   "lng": 88.353593,
+   "name": "Blue Tokai;Bahrisons Bookstore",
+   "amenity": "cafe",
+   "shop": "books",
+   "opening_hours": "Mo-Su 08:00-21:00",
+   "addr:street": "Palit Street"
+  },
+  {
+   "osm": "way/359302479",
+   "lat": 22.51715,
+   "lng": 88.334742,
+   "name": "Ikura - Flavours of Pan Asia",
+   "amenity": "restaurant",
+   "cuisine": "japanese;chinese"
+  },
+  {
    "osm": "way/450200119",
    "lat": 22.494935,
    "lng": 88.369827,
@@ -1835,6 +1001,40 @@
    "amenity": "restaurant",
    "cuisine": "chinese;indian",
    "addr:street": "Ibrahimpur Road"
+  },
+  {
+   "osm": "node/2057721042",
+   "lat": 22.615669,
+   "lng": 88.412228,
+   "name": "KFC",
+   "name:en": "KFC",
+   "amenity": "fast_food",
+   "cuisine": "chicken",
+   "brand": "KFC"
+  },
+  {
+   "osm": "node/3677394127",
+   "lat": 22.587944,
+   "lng": 88.408165,
+   "name": "Pizza Hut",
+   "amenity": "restaurant",
+   "cuisine": "pizza",
+   "brand": "Pizza Hut"
+  },
+  {
+   "osm": "node/3810110642",
+   "lat": 22.583178,
+   "lng": 88.409396,
+   "name": "Baati Chokha",
+   "amenity": "restaurant",
+   "cuisine": "north_indian;indian"
+  },
+  {
+   "osm": "node/4679622353",
+   "lat": 22.587297,
+   "lng": 88.40781,
+   "name": "Afraa",
+   "amenity": "restaurant"
   },
   {
    "osm": "node/6700835187",
@@ -1854,6 +1054,58 @@
    "amenity": "restaurant",
    "cuisine": "indian;mughlai",
    "addr:street": "Karl Marx Sarani"
+  },
+  {
+   "osm": "node/7037787285",
+   "lat": 22.512899,
+   "lng": 88.348545,
+   "name": "North & South",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/7037787385",
+   "lat": 22.51281,
+   "lng": 88.348874,
+   "name": "Bombay Kulfi",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/8008509574",
+   "lat": 22.514584,
+   "lng": 88.344688,
+   "name": "Bru Mugs",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop;burger"
+  },
+  {
+   "osm": "node/8011950434",
+   "lat": 22.510964,
+   "lng": 88.348225,
+   "name": "Steak Factory",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/8011950435",
+   "lat": 22.511536,
+   "lng": 88.348968,
+   "name": "Cafe Kathmandu",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/8011950437",
+   "lat": 22.511221,
+   "lng": 88.350387,
+   "name": "Cakes",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/9497006698",
+   "lat": 22.587279,
+   "lng": 88.407844,
+   "name": "Starbucks",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop",
+   "brand": "Starbucks"
   },
   {
    "osm": "node/9651880303",
@@ -1890,6 +1142,78 @@
    "shop": "confectionery"
   },
   {
+   "osm": "node/9992983419",
+   "lat": 22.61509,
+   "lng": 88.411974,
+   "name": "Aminia",
+   "name:bn": "আমিনিয়া",
+   "amenity": "restaurant",
+   "cuisine": "mughlai_cuisine",
+   "opening_hours": "Mo-Su 11:30-23:30",
+   "addr:street": "Jessore Road",
+   "brand": "Aminia"
+  },
+  {
+   "osm": "node/10057179401",
+   "lat": 22.615658,
+   "lng": 88.412344,
+   "name": "Barbeque Nation",
+   "amenity": "restaurant",
+   "cuisine": "barbecue",
+   "opening_hours": "Mo-Su 12:00-15:30, Mo-Su 18:00-22:00",
+   "addr:street": "Diamond City Mall (5th Floor), Jessore Road",
+   "brand": "Barbeque Nation"
+  },
+  {
+   "osm": "node/10057179710",
+   "lat": 22.614893,
+   "lng": 88.411587,
+   "name": "WTF! Where's The Food",
+   "amenity": "restaurant",
+   "opening_hours": "Mo-Su 12:30-22:30",
+   "addr:street": "Jessore Road",
+   "brand": "WTF! Where's The Food"
+  },
+  {
+   "osm": "node/10057222887",
+   "lat": 22.615857,
+   "lng": 88.41189,
+   "name": "Mio Amore",
+   "name:en": "Mio Amore",
+   "name:bn": "মিও আমোরে",
+   "shop": "pastry",
+   "diet:vegetarian": "yes",
+   "opening_hours": "Mo-Su 09:00-21:30",
+   "addr:street": "Jessore Road",
+   "brand": "Mio Amore"
+  },
+  {
+   "osm": "node/10057238728",
+   "lat": 22.616005,
+   "lng": 88.412235,
+   "name": "Monginis",
+   "name:en": "Monginis",
+   "name:bn": "মনজিনিস",
+   "shop": "pastry",
+   "diet:vegetarian": "yes",
+   "addr:street": "Jessore Road",
+   "brand": "Monginis"
+  },
+  {
+   "osm": "node/10287769485",
+   "lat": 22.514578,
+   "lng": 88.347657,
+   "name": "The Irish Brewery",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/10287804508",
+   "lat": 22.513992,
+   "lng": 88.349198,
+   "name": "Cafe the Eggspresso",
+   "amenity": "cafe"
+  },
+  {
    "osm": "node/11257705393",
    "lat": 22.586138,
    "lng": 88.402401,
@@ -1899,12 +1223,266 @@
    "addr:street": "Salt Lake City"
   },
   {
+   "osm": "node/11264617761",
+   "lat": 22.585847,
+   "lng": 88.405326,
+   "name": "Melbourne Cafe",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop"
+  },
+  {
+   "osm": "node/11264617762",
+   "lat": 22.58587,
+   "lng": 88.405242,
+   "name": "Icy Fusion",
+   "amenity": "ice_cream",
+   "opening_hours": "10:30-24:00"
+  },
+  {
+   "osm": "node/11729976509",
+   "lat": 22.514785,
+   "lng": 88.347707,
+   "name": "Suchali's Artisan Bakehouse",
+   "shop": "bakery"
+  },
+  {
+   "osm": "node/11730000184",
+   "lat": 22.51519,
+   "lng": 88.348782,
+   "name": "Abar Boithok",
+   "amenity": "cafe"
+  },
+  {
    "osm": "node/13982394295",
    "lat": 22.620601,
    "lng": 88.421538,
    "name": "Healthy and Tasty Kitchen",
    "amenity": "fast_food",
    "cuisine": "regional"
+  },
+  {
+   "osm": "node/14213339701",
+   "lat": 22.513278,
+   "lng": 88.348981,
+   "name": "Share Chai",
+   "amenity": "cafe",
+   "opening_hours": "Mo-Su 06:00-21:00"
+  },
+  {
+   "osm": "way/358734784",
+   "lat": 22.612332,
+   "lng": 88.41114,
+   "name": "Arsalan Restaurant & Caterar",
+   "amenity": "restaurant",
+   "cuisine": "mughlai_cuisine",
+   "opening_hours": "Mo-Su 11:00-23:00",
+   "addr:street": "Jessore Road"
+  },
+  {
+   "osm": "way/359152081",
+   "lat": 22.615,
+   "lng": 88.411599,
+   "name": "Kasturi Restaurant",
+   "amenity": "restaurant",
+   "cuisine": "Bengali",
+   "opening_hours": "Mo-Su 11:00-23:00",
+   "addr:street": "Jessore Road, Near Diamond Plaza Mall, Amarpalli, South Dumdum"
+  },
+  {
+   "osm": "node/1783122342",
+   "lat": 22.528216,
+   "lng": 88.365789,
+   "name": "Dhaba",
+   "amenity": "restaurant",
+   "cuisine": "indian;burger;pizza"
+  },
+  {
+   "osm": "node/2746986381",
+   "lat": 22.543995,
+   "lng": 88.358333,
+   "name": "The Chocolate Room",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/2746986382",
+   "lat": 22.543762,
+   "lng": 88.358246,
+   "name": "Cafe Coffee Day",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop",
+   "brand": "Cafe Coffee Day"
+  },
+  {
+   "osm": "node/3051834901",
+   "lat": 22.52723,
+   "lng": 88.367311,
+   "name": "Kasturi",
+   "amenity": "restaurant",
+   "cuisine": "indian",
+   "addr:street": "Hazra Road"
+  },
+  {
+   "osm": "node/4147768799",
+   "lat": 22.499746,
+   "lng": 88.317319,
+   "name": "Haji Saheb",
+   "amenity": "restaurant",
+   "cuisine": "regional"
+  },
+  {
+   "osm": "node/4147782996",
+   "lat": 22.499211,
+   "lng": 88.317066,
+   "name": "Panna Sweets",
+   "amenity": "fast_food",
+   "cuisine": "indian",
+   "addr:street": "Brahma Samaj Road"
+  },
+  {
+   "osm": "node/4178789858",
+   "lat": 22.627697,
+   "lng": 88.353662,
+   "name": "Amul",
+   "shop": "confectionery"
+  },
+  {
+   "osm": "node/4718204589",
+   "lat": 22.52734,
+   "lng": 88.365592,
+   "name": "Momo on The Move",
+   "name:en": "Wow Momo (on The Move)",
+   "amenity": "fast_food",
+   "addr:street": "Hazra Road"
+  },
+  {
+   "osm": "node/5295758422",
+   "lat": 22.573624,
+   "lng": 88.356364,
+   "name": "Sea Voi Eating House",
+   "name:en": "Sea Voi Eating House",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/5303024722",
+   "lat": 22.537783,
+   "lng": 88.344129,
+   "name": "Balwant Singh's Eating House",
+   "amenity": "restaurant",
+   "cuisine": "indian",
+   "diet:vegetarian": "yes",
+   "addr:street": "Harish Mukherjee Road"
+  },
+  {
+   "osm": "node/5338962221",
+   "lat": 22.533141,
+   "lng": 88.347228,
+   "name": "Bengali Sweets",
+   "shop": "bakery"
+  },
+  {
+   "osm": "node/6135362107",
+   "lat": 22.532795,
+   "lng": 88.364988,
+   "name": "Haldiram's",
+   "amenity": "fast_food",
+   "cuisine": "indian",
+   "brand": "Haldiram's"
+  },
+  {
+   "osm": "node/6135362917",
+   "lat": 22.532871,
+   "lng": 88.365017,
+   "name": "Teekha",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/6135364481",
+   "lat": 22.544679,
+   "lng": 88.355312,
+   "name": "Cafe Coffee Day",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop",
+   "brand": "Cafe Coffee Day"
+  },
+  {
+   "osm": "node/6474490785",
+   "lat": 22.499211,
+   "lng": 88.31708,
+   "name": "PANNA SWEETS",
+   "amenity": "restaurant",
+   "opening_hours": "Mo-Su 09:00-22:00",
+   "addr:street": "Brahmo Samaj Road"
+  },
+  {
+   "osm": "node/7030754397",
+   "lat": 22.579331,
+   "lng": 88.358935,
+   "name": "Shree Ram Dhaba",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/7030789485",
+   "lat": 22.581006,
+   "lng": 88.356231,
+   "name": "Thakur Mahal",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/7896978158",
+   "lat": 22.631778,
+   "lng": 88.354365,
+   "name": "Student Canteen",
+   "amenity": "food_court",
+   "opening_hours": "Mo-Su 10:00-20:00"
+  },
+  {
+   "osm": "node/8543466091",
+   "lat": 22.537073,
+   "lng": 88.343674,
+   "name": "Loading Tummy",
+   "amenity": "restaurant",
+   "cuisine": "fish_and_chips;pizza;burger;sandwich",
+   "addr:street": "Beninandan Street"
+  },
+  {
+   "osm": "node/9052559015",
+   "lat": 22.596747,
+   "lng": 88.370901,
+   "name": "New Madras Tiffin",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/9651922244",
+   "lat": 22.612868,
+   "lng": 88.429162,
+   "name": "VIP sweets",
+   "amenity": "fast_food",
+   "opening_hours": "Mo-Sa 10:00-22:00",
+   "addr:street": "Baguiati"
+  },
+  {
+   "osm": "node/9993017417",
+   "lat": 22.598857,
+   "lng": 88.372672,
+   "name": "Aminia Restaurant",
+   "amenity": "restaurant",
+   "cuisine": "indian;kebab",
+   "opening_hours": "Mo-Su 11:30-23:30",
+   "addr:street": "Bidhan Sarani"
+  },
+  {
+   "osm": "node/10186264176",
+   "lat": 22.501343,
+   "lng": 88.320021,
+   "name": "Eatelicious",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/13264384220",
+   "lat": 22.601704,
+   "lng": 88.373869,
+   "name": "National Economic Restaurant",
+   "amenity": "cafe"
   }
  ]
 }
