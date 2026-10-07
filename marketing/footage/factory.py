@@ -135,6 +135,10 @@ def check(plan, idx):
             continue
         if it.get("video_url"):
             continue
+        if it.get("render") == "route":  # animated route reel drawn from the guide (marketing/route_reel.py)
+            if not (it.get("zone") and (it.get("caption") or {}).get("en")):
+                errs.append(f"{it['id']}: a route reel needs a zone and a caption")
+            continue
         for s in it["segments"]:
             e = idx.get(s[0])
             if not e:
@@ -218,6 +222,14 @@ def main(argv=None):
             print(f"built {fid} photo ×{len(names)}", flush=True)
         elif it.get("video_url"):
             entry.update(video_url=it["video_url"], caption=it.get("caption"))
+        elif it.get("render") == "route":
+            from .. import route_reel
+            secs, _ = route_reel.render(it["zone"], out / f"{fid}.mp4")
+            cap = route_reel.caption(it["caption"])
+            (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+            entry.update(video_url=base + f"{fid}.mp4", caption=cap)
+            qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
+            print(f"built {fid} route reel {it['zone']} {secs:.1f}s", flush=True)
         else:
             music = [it["music"]] if it.get("music") and not it.get("vo") else []
             for s in it["segments"] + music + ([it["end_clip"]] if it.get("end_clip") else []):
