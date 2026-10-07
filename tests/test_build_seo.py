@@ -73,7 +73,8 @@ class BuildSeoTest(unittest.TestCase):
 
     def test_one_page_per_place_area_and_trail(self):
         g = self.g
-        want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 4 + len(self.articles)  # + hub, dates, themes, parking
+        want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 5 + len(self.articles)  # + hub, dates, themes, best pandals, parking
+        want += sum(1 for r in g["regions"] if any(z["id"] in r["zone_ids"] and z["pandal_ids"] for z in g["zones"]))   # + a page per region
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
             self.assertEqual(stories, len(self.articles))

@@ -459,6 +459,72 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                   body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (f"Themes {self.year}", path)), priority=0.95,
                   summary=re.sub(r"<[^>]+>", "", lead), app_link="", modified=latest)
 
+    # ------------------------------------------------------------------ list pages (what people search for)
+    def theme_note(self, p):
+        th = p.get("theme_2026")
+        return f" <small>Theme {self.year}: {esc(th['title'])}</small>" if th else ""
+
+    def best_pandals_page(self):
+        """The 25 best-known pandals with their theme, quietest window and metro, for 'best pandals in Kolkata <year>'."""
+        up = "../../"
+        path = f"guide/best-pandals-{self.year}/"
+        top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"], p["name"]))[:25]
+        lead = (f"The 25 best-known Durga Puja pandals in Kolkata for {self.year}, from Bagbazar and Kumartuli in the north to Sreebhumi in the "
+                f"east and Behala in the south, with each one's {self.year} theme where it has been announced, the quietest time to go on "
+                f"Saptami and the nearest metro. The puja runs from Panchami, {nice_date(self.start, True)}, to Dashami, {nice_date(self.end, True)}. "
+                f"Crowd times are estimates from our crowd model, not live counts.")
+        rows = "".join(
+            f"<li>{self.link_pandal(p['id'], up)} <small>({esc(self.zone[p['zone']]['name'])})</small>: {esc(p['highlight'])}{self.theme_note(p)}"
+            f"<br><small>Quietest on Saptami: {hrange(p['quiet_hours']['saptami'])} · Metro: {esc(p['nearest_metro']['name'])}, {p['nearest_metro']['walk_min']} min walk</small></li>"
+            for p in top)
+        body = f"""<article>
+<h1>Best Durga Puja pandals in Kolkata {self.year}: the top 25</h1>
+<p class="lead">{lead}</p>
+<ol class='list'>{rows}</ol>
+<p><a href="{up}guide/themes-{self.year}/">All {self.year} themes</a> · <a href="{up}guide/">All {len(self.g['pandals'])} pandals by area</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
+</article>"""
+        items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Best Durga Puja pandals in Kolkata {self.year}", "numberOfItems": len(top),
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, p in enumerate(top)]}
+        self.page(path, f"Best Durga Puja Pandals in Kolkata {self.year}: Top 25",
+                  f"The 25 best-known Kolkata Durga Puja pandals for {self.year}, with themes, the quietest time to visit and the nearest metro.",
+                  body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (f"Best pandals {self.year}", path)), priority=0.95,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="")
+
+    def region_page(self, r):
+        """One page per region (North, South…): its areas and every pandal in them, for 'north kolkata durga puja' searches."""
+        up = "../../"
+        slug = "howrah" if r["id"] == "howrah" else f"{r['id']}-kolkata"
+        name = "Howrah" if r["id"] == "howrah" else f"{r['name']} Kolkata"
+        zones = [self.zone[z] for z in r["zone_ids"] if z in self.zone]
+        ps = [self.pandal[i] for z in zones for i in z["pandal_ids"] if i in self.pandal]
+        if not ps:
+            return
+        top = sorted(ps, key=lambda p: (-p["popularity"], p["name"]))
+        lead = (f"{len(ps)} Durga Puja pandals in {name} for {self.year}, in {len(zones)} {'area' if len(zones) == 1 else 'areas'}: "
+                f"{esc(', '.join(z['name'] for z in zones))}. The best known are {esc(', '.join(p['name'] for p in top[:5]))}. "
+                f"Each area below is a walkable cluster; the pandal pages give the quietest hours and the nearest metro.")
+        sections = "".join(
+            f"<h2><a href='{up}guide/areas/{z['id']}/'>{esc(z['name'])}</a></h2>{('<p>' + esc(z['vibe']) + '</p>') if z.get('vibe') else ''}<ul>"
+            + "".join(f"<li>{self.link_pandal(p['id'], up)}: best {esc(p['best_slot_label'])} · metro {esc(p['nearest_metro']['name'])}{self.theme_note(p)}</li>"
+                      for p in sorted((self.pandal[i] for i in z["pandal_ids"] if i in self.pandal), key=lambda p: (-p["popularity"], p["name"])))
+            + "</ul>" for z in zones)
+        trails = [t for t in self.g["itineraries"] if any(seg.get("zone") in r["zone_ids"] for seg in t["segments"])]
+        trail_html = ("<h2>Ready-made routes</h2><ul>" + "".join(f"<li><a href='{up}guide/trails/{t['id']}/'>{esc(t['name'])}</a>: {esc(t['blurb'])}</li>" for t in trails) + "</ul>") if trails else ""
+        body = f"""<article>
+<h1>{esc(name)} Durga Puja {self.year}: pandals by area</h1>
+<p class="lead">{lead}</p>
+{sections}
+{trail_html}
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">All {self.year} themes</a> · <a href="{up}guide/">All areas</a></p>
+</article>"""
+        items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Durga Puja pandals in {name} {self.year}", "numberOfItems": len(top),
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, p in enumerate(top)]}
+        self.page(f"guide/{slug}/", f"{name} Durga Puja {self.year}: Pandal List by Area",
+                  f"{len(ps)} Durga Puja pandals in {name} for {self.year}, by area, with best times, metro and {self.year} themes.",
+                  body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (name, f"guide/{slug}/")), priority=0.9,
+                  summary=re.sub(r"<[^>]+>", "", lead), app_link="#explore")
+        self.region_links.append((name, f"guide/{slug}/"))
+
     def hub_page(self):
         up = "../"
         top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"]))[:12]
@@ -488,7 +554,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 {tops}
 <h2>Ready-made trails</h2>
 {trails}
-<p><a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -623,6 +690,10 @@ Articles are written by the {NAME} team from the sources each one lists; practic
             self.trail_page(t)
         self.dates_page()
         self.themes_page()
+        self.best_pandals_page()
+        self.region_links = []
+        for r in self.g["regions"]:
+            self.region_page(r)
         self.parking_page()
         self.hub_page()
         self.story_pages()   # before the articles, which link to their stories
