@@ -19,7 +19,7 @@ permissions:
 # a running deploy of the default branch.
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false   # let a running deploy finish; the newest push waits and deploys next (pushes come every few minutes)
 
 jobs:
   build:
