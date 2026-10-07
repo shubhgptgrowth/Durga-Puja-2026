@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T18:34:04+00:00
+# Build report — 2026-10-07T18:38:58+00:00
 
-Bundle version `f7e50ef2ca9a`
+Bundle version `c4a35d2a5bd8`
 
 | Entity | Count |
 |---|---|
@@ -25,12 +25,12 @@ Bundle version `f7e50ef2ca9a`
 | Salt Lake | 7 | 1 | 7.9 km | 11,576 | 694 |
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
-| Kasba & Bosepukur | 5 | 0 | 3.9 km | 5,627 | 395 |
-| Jadavpur & Santoshpur | 8 | 0 | 10.8 km | 15,835 | 881 |
-| Tollygunge & Naktala | 4 | 1 | 5.6 km | 8,120 | 452 |
+| Kasba & Bosepukur | 5 | 0 | 4.0 km | 5,774 | 405 |
+| Jadavpur & Santoshpur | 8 | 0 | 11.2 km | 16,405 | 904 |
+| Tollygunge & Naktala | 4 | 1 | 5.8 km | 8,425 | 465 |
 | Beleghata & Phoolbagan | 1 | 0 | 0.5 km | 705 | 50 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
-| Howrah: Shibpur & Salkia | 2 | 0 | 8.3 km | 12,174 | 551 |
+| Howrah: Shibpur & Salkia | 2 | 0 | 8.3 km | 12,115 | 548 |
 
 ## Curated itineraries
 
