@@ -40,6 +40,15 @@ def creds():
     return user, token
 
 
+def page_token(token, page):
+    """Messages go out through the Facebook Page and need the Page's own token. A saved user token (Graph API
+    Explorer, Facebook Login) is swapped for it here; a Page token or an Instagram-Login token is used as it is."""
+    if not page or token.startswith("IG"):
+        return token
+    r, e = safe(graph, "GET", page, token, fields="access_token")
+    return (r or {}).get("access_token") or token
+
+
 def safe(fn, *a, **k):
     """A Graph error (missing permission, private account) is reported in the output, not fatal for the scan."""
     try:
@@ -163,13 +172,14 @@ def dm(ledger_path, dry, days=7):
         raise SystemExit(f"cannot read comments: {err}")
     todo = [c for c in comments if wants_guide(c["text"]) and c["comment_id"] not in sent]
     page = os.environ.get("IG_PAGE_ID")  # Facebook-Login tokens send through the Page; Instagram-Login through the account
+    send = page_token(token, page)
     done = 0
     for c in todo[:40]:  # at most 40 a run, spaced out
         if dry:
             print(f"[dry run] DM @{c['from']} (comment {c['comment_id']}: {c['text'][:40]!r})")
             continue
         msg = json.dumps({"text": f"{DM_BN}\n\n{DM_EN}\n{GUIDE}"}, ensure_ascii=False)
-        r, e = safe(graph, "POST", f"{page or user}/messages", token,
+        r, e = safe(graph, "POST", f"{page or user}/messages", send,
                     recipient=json.dumps({"comment_id": c["comment_id"]}), message=msg)
         if e:
             print(f"DM to @{c['from']} failed: {e}", flush=True)
@@ -199,6 +209,20 @@ def check():
         ok = ok and e is None
         return r
 
+    if not token.startswith("IG"):  # a token can inspect itself: which permissions it really carries, and until when
+        d, e = safe(graph, "GET", "debug_token", token, input_token=token)
+        if d:
+            d = d.get("data", {})
+            exp = d.get("expires_at") or 0
+            until = f"expires {dt.datetime.fromtimestamp(exp, dt.timezone.utc):%Y-%m-%d}" if exp else "never expires"
+            print(f"     token: {d.get('type')}, app {d.get('application')}, valid {d.get('is_valid')}, {until}")
+            print(f"     permissions: {', '.join(sorted(d.get('scopes', []))) or 'none'}")
+            for sc in ("instagram_basic", "instagram_manage_comments", "instagram_manage_messages", "pages_show_list",
+                       "pages_read_engagement", "pages_manage_metadata"):
+                if sc not in d.get("scopes", []):
+                    print(f"     missing: {sc}")
+        else:
+            print(f"     token details unavailable: {e}")
     acct = step("account", graph, "GET", user, token, fields="username")
     if acct:
         print(f"     @{acct.get('username')}")
@@ -209,7 +233,8 @@ def check():
             linked = (p.get("instagram_business_account") or {}).get("id")
             print(f"     {p.get('name')} · linked Instagram account {'matches IG_USER_ID' if linked == user else 'does NOT match IG_USER_ID'}")
             ok = ok and linked == user
-    step("messages (comment-to-DM)", graph, "GET", f"{page or user}/conversations", token, platform="instagram", limit="1")
+    step("messages (comment-to-DM)", graph, "GET", f"{page or user}/conversations", page_token(token, page),
+         platform="instagram", limit="1")
     handles = [c["handle"].lstrip("@") for c in json.loads(CREATORS.read_text(encoding="utf-8"))["creators"]]
     step(f"creator posts (@{handles[0]}, Business Discovery)", graph, "GET", user, token,
          fields=f"business_discovery.username({handles[0]}){{username}}")

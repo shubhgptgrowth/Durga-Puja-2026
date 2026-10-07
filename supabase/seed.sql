@@ -117,6 +117,7 @@ insert into public.places (id, kind, name, zone, lat, lng, radius_m) values
   ('obosor_sarbojanin', 'pandal', 'Obosor Sarbojanin', 'bhowanipore', 22.532584, 88.345443, 600),
   ('lake_gardens_peoples', 'pandal', 'Lake Gardens Peoples Association', 'south_lakemarket', 22.505968, 88.356109, 250),
   ('tollygunge_santi_pally', 'pandal', 'Tollygunge Santi Pally', 'south_lakemarket', 22.498636, 88.345391, 600),
+  ('barisha_sarbojanin', 'pandal', 'Barisha Sarbojanin', 'southwest', 22.479989, 88.308078, 250),
   ('mitra_cafe', 'food', 'Mitra Cafe (Sovabazar)', 'north', 22.5945, 88.366, 350),
   ('girish_nakur', 'food', 'Girish Chandra Dey & Nakur Chandra Nandy', 'north', 22.5928, 88.3642, 350),
   ('chittaranjan', 'food', 'Chittaranjan Mistanna Bhandar', 'north', 22.6001, 88.3716, 350),
