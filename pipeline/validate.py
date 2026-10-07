@@ -1,6 +1,4 @@
 """Stage 2: schema and integrity checks. Errors stop the build; warnings get reported."""
-import re
-
 from . import config
 from .geo import haversine_m
 
@@ -11,9 +9,7 @@ REQUIRED = {
     "food": ["id", "name", "zone", "lat", "lng", "type", "dishes", "veg", "price"],
     "parking": ["id", "name", "zone", "lat", "lng", "kind"],
     "transit": ["id", "name", "line", "lat", "lng"],
-    "themes": ["id", "theme", "source_url", "source_name"],   # source_date when the report has one
 }
-THEME_MAX = 100   # one line on a pandal sheet
 VEG_VALUES = {"veg", "nonveg", "both"}
 CAR_ADVISORY = {"ok", "limited", "avoid"}
 
@@ -43,7 +39,7 @@ def validate(data):
             if "lat" in row and row.get("lat") is not None:
                 if not (bb["lat_min"] <= row["lat"] <= bb["lat_max"] and bb["lng_min"] <= row["lng"] <= bb["lng_max"]):
                     errors.append(f"{where}: coordinates {row['lat']},{row['lng']} are outside Kolkata")
-            if kind not in ("regions", "zones", "transit", "themes") and row.get("zone") not in zone_ids:
+            if kind not in ("regions", "zones", "transit") and row.get("zone") not in zone_ids:
                 errors.append(f"{where}: unknown zone '{row.get('zone')}'")
             if kind in ("zones", "pandals", "regions") and not row.get("name_bn") and row.get("geo_source") != "osm-discovered":
                 warnings.append(f"{where}: missing Bengali name (name_bn)")
@@ -56,19 +52,6 @@ def validate(data):
             errors.append(f"zones ({z['id']}): unknown region '{z.get('region')}'")
         if z.get("car_advisory") not in CAR_ADVISORY:
             errors.append(f"zones ({z['id']}): car_advisory must be one of {sorted(CAR_ADVISORY)}")
-
-    # Themes are published facts about a committee's pujo, so each one needs its source.
-    pandal_ids = {p["id"] for p in data["pandals"]}
-    for th in data.get("themes", []):
-        where = f"themes ({th.get('id')})"
-        if th.get("id") not in pandal_ids:
-            errors.append(f"{where}: no pandal with this id")
-        if not str(th.get("source_url", "")).startswith("https://"):
-            errors.append(f"{where}: source_url must be an https:// link")
-        if len(th.get("theme") or "") > THEME_MAX:
-            errors.append(f"{where}: theme is longer than {THEME_MAX} characters")
-        if th.get("source_date") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", th["source_date"]):
-            errors.append(f"{where}: source_date must be YYYY-MM-DD (or empty when the report gives no date)")
 
     for p in data["pandals"]:
         if p.get("best_slot") not in config.SLOTS:

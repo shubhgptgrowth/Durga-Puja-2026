@@ -291,6 +291,22 @@ class RedesignTest(unittest.TestCase):
             photo_post.crop(f"{d}/l.jpg", f"{d}/o.jpg", 0.9, 0.5)
             self.assertEqual(Image.open(f"{d}/o.jpg").size, (photo_post.PW, photo_post.PH))
 
+    def test_engagement_creators_and_replies(self):
+        import io, contextlib, tempfile
+        from marketing import engage
+        cs = json.loads(engage.CREATORS.read_text(encoding="utf-8"))["creators"]
+        self.assertTrue(cs)
+        for c in cs:
+            self.assertRegex(c["handle"], r"^[A-Za-z0-9_.]{1,30}$")
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"replies": [{"comment_id": "1", "text": "ধন্যবাদ", "approved": True},
+                                   {"comment_id": "2", "text": "not yet", "approved": False}]}, f)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            engage.reply(f.name, dry=True)  # only approved replies, and a dry run needs no token
+        self.assertIn("reply to 1", out.getvalue())
+        self.assertNotIn("reply to 2", out.getvalue())
+
     def test_creator_clip_needs_permission(self):
         from marketing.footage import factory
         idx = factory.footage_index(None)

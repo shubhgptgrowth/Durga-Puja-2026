@@ -1,13 +1,13 @@
 /* Home: a simple start screen. "What would you like to do?" tasks, areas to pick, and ready-made routes. */
 import { hav, fmtCount, searchEntries } from '../core.js';
-import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits, loc,
+import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits, loc, plain,
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
 import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
-import { radioCard, watchCard } from '../radioCard.js';
+import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
 import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
@@ -50,11 +50,13 @@ function heroHtml() {
       <img src="${x.src}" alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></button>`).join('')}
     <div class="hero-shade"></div>
     <div class="hero-copy">
-      <div class="sharad-greet">${t(today ? 'lingo.heroToday' : diff > 0 ? 'lingo.hero' : 'lingo.after')}</div>
+      <div class="sharad-greet">${plain(t(today ? 'lingo.heroToday' : diff > 0 ? 'lingo.hero' : 'lingo.after'))}</div>
       <div class="sharad-sub">${t('h.greetSub')}</div>
-      <div class="sharad-when"><span>${when}</span><span class="sep">·</span><span>${span()}</span></div>
+      <div class="sharad-when"><span>${when}</span><span class="sep" aria-hidden="true">·</span><span>${span()}</span></div>
+      <p class="hero-promise">${t('promise.title')}</p>
+      <button type="button" class="hero-cta" data-q="myplan">${t('promise.cta')}</button>
     </div>
-    <div class="hero-meta"><span class="hero-place">📍 <span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span></div>
+    <div class="hero-meta"><span class="hero-place"><span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span></div>
     <div class="dots" aria-hidden="true">${SLIDES.map((_, k) => `<i class="${k === slide ? 'on' : ''}"></i>`).join('')}</div>
   </div>`;
 }
@@ -89,6 +91,7 @@ function miniPandal(p, extra) {
 }
 
 function taskImg(k) {
+  return '';  // the shortcuts are plain icon tiles; photos are kept for areas, days and trails
   if (!photosOn()) return '';
   return ({ near: 'img/hero-3.jpg', plan: pandalPhoto('tala_prattoy'), famous: 'img/hero-1.jpg', food: dishPhoto(['Kathi roll', 'Biryani', 'Egg roll']),
     park: tilePhoto('parking'), photos: 'img/hero-2.jpg' })[k] || '';
@@ -96,19 +99,15 @@ function taskImg(k) {
 const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
 
-/* Right under the banner, for someone arriving from a post or a forward: what this is, in one line, the one thing
- * to do next, and search (most people come looking for one pandal and when it's quiet). */
+/* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
+ * pandal and when it's quiet, and the facts behind the promise in one line. */
 function promiseHtml() {
-  return `<section class="promise">
-    <p class="promise-t">${t('promise.title')}</p>
-    <p class="promise-s">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>
-    <button type="button" class="btn primary block promise-cta" data-q="myplan">${t('promise.cta')}</button>
-    <div class="search" role="search">
+  return `<div class="search" role="search">
       ${icon('search')}
       <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
       <ul class="results" id="homeResults" role="listbox"></ul>
     </div>
-  </section>`;
+    <p class="promise">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>`;
 }
 
 // How to use the app, in order: each step opens that part of it.
@@ -122,7 +121,7 @@ function render() {
     .map((s) => idx.pandal[s.place_id]).filter(Boolean);
 
   // The radio card is built once and moved in, never re-rendered, so its player keeps playing.
-  if (!$('#homeTop', el)) el.innerHTML = '<div id="homeTop"></div><div id="radioSlot"></div><div id="homeRest"></div>';
+  if (!$('#homeTop', el)) el.innerHTML = '<div id="homeTop"></div><div id="homeRest"></div><div id="radioSlot"></div><div id="homeFoot"></div>';
   const slot = $('#radioSlot', el), card = radioCard();
   if (card.parentNode !== slot) slot.appendChild(card);
   watchCard();
@@ -131,22 +130,18 @@ function render() {
     ${heroHtml()}
     ${promiseHtml()}
     ${liveHtml()}
-    <section class="how-wrap" aria-label="${t('h.introTitle')}">
-      <p class="how-lingo">${t('how.lingo')}</p>
-      <ol class="how">${HOW.map(([q, em], i) => `<li><button type="button" data-q="${q}"><span class="how-n">${i + 1}</span><span class="how-em" aria-hidden="true">${em}</span>
-        <span class="how-tx"><b>${t('how.t' + (i + 1))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
-    </section>
-    <section class="section first"><div class="section-head"><h2>${t('h.whatToDo')}</h2></div>
+    <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
-
-    <div id="homeCar">${carCardHtml()}</div>`;
+    <section class="how-wrap" aria-label="${t('h.introTitle')}">
+      <p class="how-lingo">${plain(t('how.lingo'))}</p>
+      <ol class="how">${HOW.map(([q, em], i) => `<li><button type="button" data-q="${q}"><span class="how-n">${i + 1}</span><span class="how-em" aria-hidden="true">${em}</span>
+        <span class="how-tx"><b>${plain(t('how.t' + (i + 1)))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
+    </section>
+    ${musicStripHtml()}`;
   $('#homeRest', el).innerHTML = `
-
-
-
-    <section class="section"><div class="section-head"><div><h2>${t('h.pickArea')}</h2><p class="sub">${t('h.pickAreaSub')}</p></div></div>
+    <section class="section"><div class="section-head"><div><h2>${plain(t('h.pickArea'))}</h2><p class="sub">${t('h.pickAreaSub')}</p></div></div>
       <div class="regions">${G.data.regions.map((r) => {
         const n = r.zone_ids.reduce((c, id) => c + (idx.zone[id]?.pandal_ids.length || 0), 0);
         const areas = r.zone_ids.map((id) => idx.zone[id]).filter(Boolean).map(zs).join(' · ');
@@ -155,21 +150,25 @@ function render() {
       }).join('')}</div>
     </section>
 
-    ${busy.length ? `<section class="section"><div class="section-head"><div><h2>${t('h.trending')}</h2><p class="sub">${t('h.trendingSub')}</p></div></div>
+    ${busy.length ? `<section class="section"><div class="section-head"><div><h2>${plain(t('h.trending'))}</h2><p class="sub">${t('h.trendingSub')}</p></div></div>
       <div class="hscroll">${busy.map((p) => { const s = st[p.id]; return miniPandal(p, s.last_hour
         ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>`
         : `<span class="pill">${icon('people', 'sm')} ${t('c.todayN', { n: fmtCount(s.today) })}</span>`); }).join('')}</div></section>` : ''}
 
-    <section class="section" id="dayPlans"><div class="section-head"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
+    <section class="section" id="dayPlans"><div class="section-head"><div><h2>${plain(t('dp.title'))}</h2><p class="sub">${t('dp.sub')}</p></div></div>
       ${dayPlanHtml()}</section>
 
-    <section class="section"><div class="section-head"><div><h2>${t('h.trails')}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
+    <section class="section"><div class="section-head"><div><h2>${plain(t('h.trails'))}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
       <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
-    <section class="section"><div class="section-head"><div><h2>${t('kn.title')}</h2><p class="sub">${t('kn.sub')}</p></div><a class="link-btn" href="durga-puja/">${t('h.seeAll')}</a></div>
-      <div class="learn">${LEARN.map(([path, key, em]) => `<a class="learn-card" href="${path}"><span aria-hidden="true">${em}</span><b>${t('kn.' + key)}</b></a>`).join('')}</div></section>
-    <p class="fine center" style="margin:24px 16px 0">${t('p.disclaimer')} · <a href="privacy.html">${t('del.policy')}</a></p>
+
+    <div id="homeCar">${carCardHtml()}</div>`;
+  $('#homeFoot', el).innerHTML = `
+    <section class="section"><div class="section-head"><div><h2>${plain(t('kn.title'))}</h2><p class="sub">${t('kn.sub')}</p></div><a class="link-btn" href="durga-puja/">${t('h.seeAll')}</a></div>
+      <div class="learn">${LEARN.map(([path, key, ic]) => `<a class="learn-card" href="${path}"><span aria-hidden="true">${icon(ic)}</span><b>${t('kn.' + key)}</b></a>`).join('')}</div></section>
+    <footer class="home-foot"><div class="wm">Pujo Parikrama<span lang="bn">পুজো পরিক্রমা</span></div>
+      <p class="fine" style="margin:10px 0 0">${t('p.disclaimer')} · <a href="privacy.html">${t('del.policy')}</a></p></footer>
 `;
 
   wire(el);
@@ -177,14 +176,15 @@ function render() {
 
 /* "Know your pujo": links to the guide's articles (static pages, also what search engines index). */
 const LEARN = [
-  ['durga-puja/rituals/', 'rituals', '🪔'], ['durga-puja/rituals/pushpanjali-mantra/', 'anjali', '🌺'], ['durga-puja/what-is-durga-puja/', 'meaning', '🔱'],
-  ['durga-puja/history/', 'history', '📜'], ['durga-puja/at-home/', 'home', '🏠'], ['navratri/', 'navratri', '✨'],
-  ['durga-puja/food-and-bhog/', 'bhog', '🍛'], ['durga-puja/bijoya-dashami-wishes/', 'wishes', '💌'],
+  ['durga-puja/rituals/', 'rituals', 'diya'], ['durga-puja/rituals/pushpanjali-mantra/', 'anjali', 'flower'], ['durga-puja/what-is-durga-puja/', 'meaning', 'trident'],
+  ['durga-puja/history/', 'history', 'scroll'], ['durga-puja/at-home/', 'home', 'home'], ['navratri/', 'navratri', 'sparkle'],
+  ['durga-puja/food-and-bhog/', 'bhog', 'food'], ['durga-puja/bijoya-dashami-wishes/', 'wishes', 'letter'],
 ];
 
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
+    if (musicStripClick(e)) return;
     if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;

@@ -73,9 +73,9 @@ try {
   must(await count('#view-home .how li') === 4, 'the how-to steps should be on Home');
   // Nothing plays until someone asks for music, so the sticky radio button stays away until then
   must(!(await page.locator('#radioFab').isVisible()), 'sticky radio button should be hidden while no music plays');
-  // A newcomer sees what this is and one thing to do: the promise, "Plan my pujo" and search, right under the banner
-  must(await count('#view-home .promise .promise-cta[data-q="myplan"]') === 1, 'Plan my pujo button missing');
-  must(await count('#view-home .promise #homeSearch') === 1, 'search should sit right under the promise');
+  // A newcomer sees what this is and one thing to do: the promise and "Plan my pujo" in the banner, search under it
+  must(await count('#view-home .hero .hero-cta[data-q="myplan"]') === 1, 'Plan my pujo button missing from the banner');
+  must(await count('#view-home .search #homeSearch') === 1, 'search should sit right under the banner');
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
   must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');

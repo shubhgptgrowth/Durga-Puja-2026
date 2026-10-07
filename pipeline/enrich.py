@@ -3,6 +3,23 @@ from . import config
 from .discovered import attach_photos, attach_transit, build_archive, transit_bundle, transit_index
 from .geo import centroid, haversine_m, walk_m
 
+THEMES = config.RAW_DIR / "themes_2026.csv"
+
+
+def load_themes(path=THEMES):
+    """This year's pandal themes, each with the report it came from (data/raw/themes_2026.csv).
+    Rows for pujas not (yet) in pandals.csv are kept aside until that puja is added."""
+    import csv
+    if not path.exists():
+        return {}
+    out = {}
+    for r in csv.DictReader(open(path, encoding="utf-8")):
+        r = {k: (v or "").strip() for k, v in r.items()}
+        if not r["pandal_id"] or not r["title"] or not r["source"].startswith("https://"):
+            raise ValueError(f"themes_2026.csv: {r.get('pandal_id')!r} needs a title and an https source")
+        out[r["pandal_id"]] = {k: r[k] for k in ("title", "title_bn", "about", "artist", "source", "source_date") if r[k]}
+    return out
+
 
 def crowd_index(crowd_base, day_factor, hour):
     """Return a 0–100 heuristic crowd level for a pandal at a given day and hour."""
@@ -39,14 +56,11 @@ def enrich(data):
     zones = {z["id"]: dict(z) for z in data["zones"] if z["id"] in used}
     transit, parking, food = data["transit"], data["parking"], data["food"]
     pandals = []
+    themes = load_themes()
 
-    themes = {th["id"]: th for th in data.get("themes", [])}
     for p in data["pandals"]:
         pt = (p["lat"], p["lng"])
         e = dict(p)
-        if p["id"] in themes:   # this year's theme, with where it was announced
-            th = themes[p["id"]]
-            e["theme"] = {k: th[k] for k in ("theme", "theme_bn", "artist", "source_url", "source_name", "source_date") if th.get(k)}
 
         (metro_d, metro), = _nearest(pt, transit)
         e["nearest_metro"] = {"id": metro["id"], "name": metro["name"], "line": metro["line"],
@@ -65,6 +79,8 @@ def enrich(data):
         e["peak_crowd"] = crowd_index(p["crowd_base"], 1.1, 20)
         e["checkin_radius_m"] = checkin_radius(p)
         e["best_slot_label"] = config.SLOTS[p["best_slot"]]["label"]
+        if p["id"] in themes:
+            e["theme_2026"] = themes[p["id"]]
         pandals.append(e)
 
     for zid, z in zones.items():

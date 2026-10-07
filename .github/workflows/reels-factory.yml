@@ -17,7 +17,9 @@ permissions:
   actions: write   # download the footage catalogue artifact and start deploy
 
 concurrency:
-  group: reels-factory
+  # one queue per branch: a plan pushed on a work branch (whose run is skipped) must not bump a pending render
+  # on the default branch out of the queue
+  group: reels-factory-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -37,7 +39,7 @@ jobs:
       - name: Tools and fonts
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libfribidi0 libraqm0 >/dev/null
-          pip install -q pillow
+          pip install -q pillow edge-tts
           python -c "from PIL import features; assert features.check('raqm'), 'Pillow without raqm: Bengali would not shape'"
           mkdir -p fonts
           for w in ExtraBold Bold SemiBold Medium; do curl -fsSLo fonts/Poppins-$w.ttf https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-$w.ttf; done
@@ -59,6 +61,7 @@ jobs:
           restore-keys: reels-src-
       - name: Render
         run: |
+          set -o pipefail   # a failed render must fail the run, not hide behind tee
           for d in ${{ steps.dates.outputs.dates }}; do
             [ -f "marketing/daily/$d.json" ] || continue
             python -m marketing.footage.factory "$d" --catalog catalog/catalog.json --out "out/$d" | tee -a "$GITHUB_STEP_SUMMARY"
