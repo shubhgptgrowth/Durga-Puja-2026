@@ -111,8 +111,45 @@ must be in their inboxes by June 2027.
 | **Apr – Jun 2027** | M7 generalised engine; Delhi-NCR and Bengaluru data; a 2027 brand refresh | **Sponsor sales season:** the media kit goes to brands by 1 June |
 | **Jul – Oct 2027** | Pujo 2027 starts in July (search, Channel, committees), with a Mumbai Ganesh pilot in September | Title sponsor, featured eateries, committee tier, affiliates, ads |
 
+## Part 4b: Phasing under competition (added 7 Oct)
+
+**Who else is in the race (2025–26):**
+* **Kolkata Police's Puja Bandhu:** live crowd counts and nearest metro. Official, free, police distribution.
+* **West Bengal Tourism's Sharadotsav app:** maps and zone-wise pujas.
+* **Utsav:** 500+ committees and bonedi baris, online dakshina, follow-a-committee. The closest to a committee business.
+* **Swiggy ShresthoPujo:** pandal voting inside an app with tens of millions of users, with cash prizes for the winning pandals.
+* **Brand campaign apps** such as Titan's pandal locator and Sunrise Spices' AI pandal hopping.
+
+**What this means:**
+1. **We won't win a download race this season.** Swiggy and the police have distribution we can't match by 17 Oct.
+2. **Most of these aren't businesses.** The police and tourism apps are public services. Swiggy, Titan and Sunrise are one-season marketing campaigns. Brands paid to *build* them, which makes those brands **customers**, not only competitors: next year it's cheaper for them to sponsor or white-label ours than to build again.
+3. **Where we're different, and where to dig in:**
+   * We help people **plan ahead** (quiet hours by day, a walking route, food on the way), not only see live counts.
+   * We're a **web link, not an app install**, so we travel on WhatsApp in one tap.
+   * We're **Bengali-first**.
+   * We're building a **search moat** (440 pages).
+   * We have **verified footfall data**.
+   * We **ship faster** than any of them.
+4. **Play where they aren't:** Kali Puja, Barasat, Naihati, Chandannagar Jagaddhatri, probashi pujas in Delhi and Bengaluru, and the evergreen guides. Puja Bandhu, ShresthoPujo and the brand apps are Durga-Puja-in-Kolkata only.
+
+### The phases
+
+| Phase | Window | Goal | Money | Exit test |
+|---|---|---|---|---|
+| **0. Grab what's reachable** | Now → 16 Oct | Reach (STRATEGY.md), plus proof that someone will pay | **Featured eatery offers** (M1), sold by phone or in person to the ~40 eateries next to the top-20 pandals. **Micro-sponsors** (local sweet shops, cafés, regional brands) at ₹10–50k or barter. Big brands' pujo budgets were locked in July–August, so don't wait on them | ≥10 paying eateries, or 1 micro-sponsor |
+| **1. Bank the data** | 17–21 Oct (the five days) | Most verified check-ins and crowd reports, and the most WhatsApp Channel joins and opted-in contacts. This data is what we sell later | Only what Phase 0 sold. **No new ad units on puja nights:** trust and speed matter more | ≥5,000 check-ins, ≥10,000 Channel followers |
+| **2. Turn the season into assets** | 22 Oct – 30 Nov | Footfall reports (M5) to every committee, free. A recap press story with real numbers. Media kit v1 (M9). **Kali Puja and Chandannagar run monetised from day one**, where the big apps don't play | Eatery offers and a sponsor for Kali Puja and Chandannagar; AdSense on guide pages | ≥30 committees receive their report; ≥1 paid deal for Kali Puja or Chandannagar |
+| **3. B2B before B2C** | Dec 2026 – Mar 2027 | The **committee portal** (M6): committees claim their pandal, post their theme early and see their footfall, before Utsav locks them in. An **embeddable quiet-hours widget** for news sites: free with credit, giving backlinks and reach; a paid API later. A **white-label pitch** to the brands that built their own 2026 apps | Committee tier (₹5–25k), walks commissions | ≥50 committees claimed; ≥2 brand meetings booked |
+| **4. Sell 2027 before anyone else** | Apr – Aug 2027 | The multi-festival, multi-city engine (M7); Delhi and Bengaluru data | **Title sponsor and brand partners signed by July**, while pujo budgets are being set | 1 title sponsor signed |
+| **5. Fully monetised season** | Sep – Oct 2027 | Pujo 2027 in three cities, plus a Mumbai Ganesh pilot | Sponsor, featured eateries, committee tier, affiliates, ads, widget API | Revenue covers the year's costs |
+
+**Kill or pivot test (25 Oct 2026):** if the season ends under 25,000 devices *and* under 2,000 check-ins, the
+consumer brand isn't strong enough on its own. Then the bet becomes the B2B layer (committee portal, footfall
+data, white-label engine for brands and tourism), with the consumer site kept as its showcase.
+
 ## Part 5: Decisions needed from the owner
 
+0. **Approve the phasing in Part 4b.** Phase 0 starts today: someone has to call or visit eateries this week.
 1. **Is this a business or a passion project?** A business needs a legal entity, a bank account and GST, so sponsors can be invoiced. It can start as a proprietorship.
 2. **Can we start selling now?** That means M1 (paid featured offers) and one title-sponsor pitch this season, with the "Sponsored" label and the rule that paid placements never change crowd advice.
 3. **Do we apply for AdSense now?** Ads would show on guide pages only, never in the app.
