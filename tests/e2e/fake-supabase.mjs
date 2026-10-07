@@ -117,7 +117,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       if (String(a.p_title || '').trim().length < 3) return { status: 'bad_title' };
       if (String(a.p_name || '').trim().length < 2) return { status: 'bad_name' };
       if (!a.p_from || !a.p_to || a.p_to < a.p_from || a.p_to < istDay()) return { status: 'bad_dates' };
-      const o = { id: randomUUID(), place_id: p.id, title: a.p_title.trim(), details: a.p_details || null, valid_from: a.p_from, valid_to: a.p_to, status: 'pending', phone: '+91' + d };
+      const o = { id: randomUUID(), place_id: p.id, title: a.p_title.trim(), details: a.p_details || null, valid_from: a.p_from, valid_to: a.p_to, status: 'pending', phone: '+91' + d, wants_featured: !!a.p_featured, featured_until: null };
       db.offers.push(o);
       return { status: 'pending', id: o.id };
     },
@@ -178,6 +178,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       res.writeHead(302, { Location: to, ...cors }); return res.end();
     }
     if (p === '/__approveOffers') { db.offers.forEach((o) => (o.status = 'approved')); return json(res, 200, { n: db.offers.length }); }
+    if (p === '/__featureOffers') { db.offers.forEach((o) => { o.status = 'approved'; o.featured_until = o.valid_to; }); return json(res, 200, { n: db.offers.length }); }
     if (p === '/__offline') { db.offline = url.searchParams.get('on') === '1'; return json(res, 200, { offline: db.offline }); }
     if (!req.headers.apikey && !p.startsWith('/storage/v1/object/public/') && p !== '/auth/v1/authorize') return json(res, 401, { message: 'no apikey' });
 
@@ -196,7 +197,8 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       const b = JSON.parse(await body(req)); const uid = String(b.refresh_token || '').replace(/^ref-/, '');
       return uid ? json(res, 200, issue(uid)) : json(res, 400, { error: 'invalid_grant' });
     }
-    if (p === '/rest/v1/offers_feed') return json(res, 200, db.offers.filter((o) => o.status === 'approved' && o.valid_to >= istDay()).map(({ phone, status, ...o }) => o));
+    if (p === '/rest/v1/offers_feed') return json(res, 200, db.offers.filter((o) => o.status === 'approved' && o.valid_to >= istDay())
+      .map(({ phone, status, wants_featured, featured_until, ...o }) => ({ ...o, featured: !!featured_until && featured_until >= istDay() })));
     if (p === '/rest/v1/place_stats') return json(res, 200, stats());
     if (p === '/rest/v1/place_rating_stats') return json(res, 200, ratingStats());
     if (p === '/rest/v1/traffic_notices') return json(res, 200, [{ title: 'Traffic arrangements for Durga Puja 2026', url: 'https://kolkatatrafficpolice.gov.in/puja2026.pdf', first_seen: '2026-10-10T06:00:00Z' }]);

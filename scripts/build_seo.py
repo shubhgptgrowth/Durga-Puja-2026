@@ -33,6 +33,7 @@ from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock
                         jsonld, km, nice_date, rupees)
 from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
+from seo.metro import MetroMixin
 from seo.stories import StoriesMixin
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,7 +41,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # Link codes (?src=) for links from guide pages into the app, by section. The same codes are what guide.js reports
 # as the source when a guide page is someone's first visit, so the reach report shows search per page type.
 SRC_BY_PREFIX = (("guide/pandals/", "seo_pandal"), ("guide/food/", "seo_food"), ("guide/trails/", "seo_trail"),
-                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/", "seo_guide"),
+                 ("guide/areas/", "seo_area"), ("guide/dates/", "seo_dates"), ("guide/metro/", "seo_metro"), ("guide/", "seo_guide"),
                  ("durga-puja/rituals/", "seo_ritual"), ("durga-puja/recipes/", "seo_recipe"), ("durga-puja/", "seo_article"),
                  ("navratri/", "seo_navratri"), ("festivals/", "seo_festival"), ("stories/", "seo_story"), ("guides/", "seo_article"))
 
@@ -58,7 +59,7 @@ def src_code(path):
     return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
 
 
-class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
+class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
@@ -180,6 +181,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         z = self.zone[p["zone"]]
         up = "../../../"
         m = p["nearest_metro"]
+        far = self.metro_far(p)
         quiet = p["quiet_hours"]
         known = ", ".join(TAGS.get(t, t) for t in p["tags"])
         est = f", established in {p['est_year']}" if p.get("est_year") else ""
@@ -187,8 +189,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         lead = (f"<b>{esc(p['name'])}</b> ({esc(p.get('name_bn', ''))}) is a Durga Puja pandal in {esc(z['name'])}, Kolkata{est}. "
                 f"{esc(p['highlight'])} In {self.year} the puja runs from Panchami, {nice_date(self.start)}, to Dashami, {nice_date(self.end)}. "
                 f"Our crowd model suggests visiting {esc(p['best_slot_label'])}; on Ashtami, the busiest day, the quietest window is {quiet_ash}. "
-                f"The nearest metro station is {esc(m['name'])} on the {LINE.get(m['line'], m['line'] + ' line')}, about {m['walk_min']} minutes' walk ({km(m['distance_m'])}). "
-                f"Plan about {p['visit_min']} minutes inside.")
+                + (f"There is no metro within walking distance: the nearest station, {esc(m['name'])}, is {km(m['distance_m'])} away, so take an auto, bus or cab. " if far else
+                   f"The nearest metro station is {esc(m['name'])} on the {LINE.get(m['line'], m['line'] + ' line')}, about {m['walk_min']} minutes' walk ({km(m['distance_m'])}). ")
+                + f"Plan about {p['visit_min']} minutes inside.")
         th = p.get("theme_2026")
         theme_html = ""
         if th:
@@ -208,7 +211,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
                 ("Popularity", f"{p['popularity']} out of 5"),
                 ("Best time to visit", esc(p["best_slot_label"])),
                 ("Time inside", f"about {p['visit_min']} minutes"),
-                ("Nearest metro", f"{esc(m['name'])}, {LINE.get(m['line'], m['line'])} · {km(m['distance_m'])}, {m['walk_min']} min walk"),
+                ("Nearest metro", f"{self.link_station(m['id'], up, m['name'])}, {LINE.get(m['line'], m['line'])} · {km(m['distance_m'])}"
+                 + (" (too far to walk: take an auto, bus or cab)" if far else f", {m['walk_min']} min walk")),
                 ("Buses", "; ".join(f"{esc(b['stop'])}: {esc(', '.join(b['routes']))} ({b['walk_min']} min walk)" for b in p.get("bus", []))) if p.get("bus") else None,
                 ("Autos", "; ".join(esc(a["route"]) for a in p.get("auto", []))) if p.get("auto") else None,
                 ("Coordinates", f"{p['lat']:.5f}, {p['lng']:.5f}" + (" (approximate)" if p.get("geo_source") == "osm-approx" else "")),
@@ -222,7 +226,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
         gallery, imgs = self.photos(p.get("photos"), f"{p['name']} Durga Puja")
         qa = [
             (f"What is the best time to visit {p['name']}?", f"{esc(p['best_slot_label'])} is the best slot. On Saptami, Ashtami and Navami the quietest window is {hrange(quiet['saptami'])}; evenings from 6 pm to midnight are the busiest."),
-            (f"How do I reach {p['name']} by metro?", f"Get off at {esc(m['name'])} ({LINE.get(m['line'], m['line'])}). It is about {km(m['distance_m'])} away, roughly {m['walk_min']} minutes on foot."),
+            (f"How do I reach {p['name']} by metro?", f"There is no metro within walking distance. The nearest station is {esc(m['name'])} ({LINE.get(m['line'], m['line'])}), {km(m['distance_m'])} away; take an auto, bus or cab from there." if far
+             else f"Get off at {esc(m['name'])} ({LINE.get(m['line'], m['line'])}). It is about {km(m['distance_m'])} away, roughly {m['walk_min']} minutes on foot."),
             (f"Where can I park near {p['name']}?", (f"The nearest listed parking is {esc(self.park[parks[0]['id']]['name'])}, {km(parks[0]['distance_m'])} away. " if parks else "There is no listed parking nearby. ") + esc(CAR.get(z.get("car_advisory"), ""))),
             (f"What can I eat near {p['name']}?", ("Within walking distance: " + "; ".join(f"{esc(self.food[x['id']]['name'])} ({esc(', '.join(self.food[x['id']]['dishes'][:2]))})" for x in foods[:3]) + ".") if foods else "No eateries are listed within walking distance."),
             *([(f"What is the {self.year} theme at {p['name']}?", f"{esc(th['title'])}" + (f" ({esc(th['title_bn'])})" if th.get("title_bn") else "") + f". {esc(th.get('about', ''))} This is as reported in the press; themes can change before the puja.")] if th else []),
@@ -555,7 +560,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin):
 <h2>Ready-made trails</h2>
 {trails}
 <p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
-<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -680,6 +685,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
     def build(self):
         self.load_articles()   # first, so place pages can link to the ritual articles
         self.load_stories()
+        self.metro_prepare()   # and the station pages
         for p in self.g["pandals"]:
             self.pandal_page(p)
         for f in self.g["food"]:
@@ -694,6 +700,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.region_links = []
         for r in self.g["regions"]:
             self.region_page(r)
+        self.metro_pages()
         self.parking_page()
         self.hub_page()
         self.story_pages()   # before the articles, which link to their stories

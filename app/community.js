@@ -275,8 +275,13 @@ export class Community {
       .catch(() => { this._offers = null; return {}; });
     return this._offers;
   }
-  submitOffer(o) {
-    return this.rpc('submit_offer', { p_place: o.placeId, p_title: o.title, p_details: o.details || null, p_from: o.from, p_to: o.to, p_name: o.name, p_phone: o.phone });
+  async submitOffer(o) {
+    const args = { p_place: o.placeId, p_title: o.title, p_details: o.details || null, p_from: o.from, p_to: o.to, p_name: o.name, p_phone: o.phone };
+    if (!o.featured) return this.rpc('submit_offer', args);
+    // "Feature this" needs the *_featured_offers.sql migration. Until it is applied (PostgREST answers 404 for an
+    // unknown argument), the offer still goes in and the team asks about featuring on the call.
+    try { return await this.rpc('submit_offer', { ...args, p_featured: true }); } catch (e) { if (e.status !== 404) throw e; }
+    return this.rpc('submit_offer', args);
   }
 
   upload(path, blob, contentType, onProgress) {

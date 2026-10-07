@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T19:07:02+00:00
+# Build report — 2026-10-07T19:11:51+00:00
 
-Bundle version `5d6511eb0649`
+Bundle version `6381963e4d1b`
 
 | Entity | Count |
 |---|---|
@@ -9,7 +9,7 @@ Bundle version `5d6511eb0649`
 | pandals | 125 |
 | food | 175 |
 | parking | 16 |
-| transit | 35 |
+| transit | 56 |
 | itineraries | 6 |
 | dish_photos | 46 |
 
@@ -25,10 +25,10 @@ Bundle version `5d6511eb0649`
 | Salt Lake | 7 | 1 | 7.9 km | 11,576 | 694 |
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
-| Kasba & Bosepukur | 5 | 0 | 4.9 km | 7,200 | 463 |
+| Kasba & Bosepukur | 5 | 0 | 4.0 km | 5,774 | 405 |
 | Jadavpur & Santoshpur | 9 | 0 | 12.9 km | 18,846 | 1037 |
-| Tollygunge & Naktala | 4 | 1 | 6.1 km | 8,955 | 486 |
-| Beleghata & Phoolbagan | 1 | 0 | 2.1 km | 3,119 | 151 |
+| Tollygunge & Naktala | 4 | 1 | 5.8 km | 8,425 | 465 |
+| Beleghata & Phoolbagan | 1 | 0 | 0.5 km | 705 | 50 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
 | Howrah: Shibpur, Salkia & Liluah | 8 | 1 | 26.8 km | 39,125 | 1866 |
 

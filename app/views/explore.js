@@ -4,7 +4,7 @@ import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
-import { offerChip } from '../offers.js';
+import { offerChip, featuredFirst } from '../offers.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
@@ -101,7 +101,7 @@ function foodList(e) {
     && (!F.has('sweets') || f.type === 'sweets' || f.type === 'drinks') && (!F.has('street') || f.type === 'street')
     && (!F.has('open') || isOpen(f.hours)));
   if (S.me) list.sort((a, b) => hav(S.me, ll(a)) - hav(S.me, ll(b)));
-  return list;
+  return featuredFirst(list);   // paid featured offers first, labelled "Sponsored" on the tile
 }
 const parkList = (e) => G.data.parking.filter((p) => inArea(e, p.zone) || (idx.zone[p.zone] == null && e.region === 'all'));
 

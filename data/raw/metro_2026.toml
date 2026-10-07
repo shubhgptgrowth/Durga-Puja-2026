@@ -1,0 +1,17 @@
+# Kolkata Metro announcements for the puja, shown on /guide/metro/ and every station page.
+# Add a [[notice]] the day Metro Railway announces something, with the link you read it in; the next deploy
+# (or a manual deploy run) puts it live. Facts only: if a time isn't announced yet, say so.
+
+# Puja nights (Shashthi to Dashami). Set announced = true and fill in text and source once Metro announces
+# its late-night or all-night timings; until then the pages say they haven't been announced.
+[puja_nights]
+announced = false
+text = ""
+source = ""
+date = ""
+
+[[notice]]
+date = "2026-09-30"
+title = "Extra trains on the two weekends before the puja"
+text = "Metro Railway is running extra trains on Saturday 10 and Sunday 11 October (as on 3 and 4 October) on the Blue, Green and Yellow lines for the pre-puja shopping rush. The first and last trains run at the usual times."
+source = "https://ddindia.co.in/2026/09/kolkata-metro-rail-to-operate-additional-services-ahead-of-durga-puja/"

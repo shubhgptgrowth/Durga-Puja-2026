@@ -16,6 +16,24 @@
 
 The **offers** workflow also runs daily at 09:45 IST and lists what's waiting.
 
+## Featured (paid) offers
+
+Phase 0 of [BUSINESS_ROADMAP.md](BUSINESS_ROADMAP.md). The rate card, pitch and call list are in [../marketing/FEATURED_OFFERS.md](../marketing/FEATURED_OFFERS.md).
+
+* **The owner asks.** The offer form has a **Feature it** tick, with the price from `featured.priceInr` in `app/config.js`. It is stored as `wants_featured`, and those offers sit at the top of `analytics.offers_pending`.
+  * If `featured.upiId` is set, the owner gets a *Pay by UPI* button after sending. The amount is filled in, and the note carries the offer's short id.
+  * Without a UPI id, payment is taken on the call.
+* **The team switches it on after payment.**
+  * In the SQL editor: `select public.feature_offer('<id>', '<last day>', '<payment note>')`. The note is visible only in `analytics.offers_featured`.
+  * Or the **offers** workflow, action `feature` with *featured until*. Never put payment details in the workflow: the repo is public.
+  * Featuring also approves the offer, and never runs past the offer's own end date. `feature_offer('<id>', null)` or action `unfeature` turns it off.
+* **What diners see.**
+  * `offers_feed.featured` is true.
+  * The card and the food-list chip are labelled **Sponsored** (স্পনসরড / प्रायोजित).
+  * The eatery is listed first in Explore → Food and in "Food nearby" on pandal pages, still labelled.
+  * Nothing else moves: crowd estimates, routes and pandal order never depend on payment.
+* **Deploy order.** Run **supabase-setup** (it applies `*_featured_offers.sql`) when this ships. Until then the app still submits offers, without the featured flag.
+
 ## Menu photos
 
 Anyone can add a menu or price-board photo from the eatery page (**Menu → Add menu photo**). They are normal

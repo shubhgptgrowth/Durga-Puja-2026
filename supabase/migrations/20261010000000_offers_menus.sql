@@ -102,7 +102,9 @@ alter table public.food_offers enable row level security;
 revoke all on public.food_offers from anon, authenticated;
 
 -- What diners see: approved offers that haven't ended. No contact details.
-create or replace view public.offers_feed as
+-- (Dropped and recreated so re-running this file after *_featured_offers.sql, which adds a column, still works.)
+drop view if exists public.offers_feed;
+create view public.offers_feed as
   select o.id, o.place_id, o.title, o.details, o.valid_from, o.valid_to
   from public.food_offers o
   where o.status = 'approved' and o.valid_to >= public.ist_today();
@@ -163,7 +165,8 @@ $$;
 revoke all on function public.offers_report() from public, anon, authenticated;
 
 -- In the dashboard (Table editor → schema "analytics"): offers waiting for a call back, with the number to call.
-create or replace view analytics.offers_pending as
+drop view if exists analytics.offers_pending;
+create view analytics.offers_pending as
   select o.id, p.name as place, o.title, o.details, o.valid_from, o.valid_to, o.contact_name, o.contact_phone, o.created_at
   from public.food_offers o join public.places p on p.id = o.place_id
   where o.status = 'pending' order by o.created_at;

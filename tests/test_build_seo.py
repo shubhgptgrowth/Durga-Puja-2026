@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_seo  # noqa: E402
 from seo.knowledge import CONTENT, Article  # noqa: E402
 from seo.markdown import render  # noqa: E402
+from seo.metro import FAR_MIN, MIN_PANDALS, NEAR_MIN, metro_stations, walk  # noqa: E402
 
 
 class Page(HTMLParser):
@@ -75,6 +76,7 @@ class BuildSeoTest(unittest.TestCase):
         g = self.g
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 5 + len(self.articles)  # + hub, dates, themes, best pandals, parking
         want += sum(1 for r in g["regions"] if any(z["id"] in r["zone_ids"] and z["pandal_ids"] for z in g["zones"]))   # + a page per region
+        want += 1 + len(metro_stations(g))   # + the metro hub and a page per station with pandals in walking distance
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
             self.assertEqual(stories, len(self.articles))
@@ -325,6 +327,28 @@ class BuildSeoTest(unittest.TestCase):
         d = (self.tmp / "guide" / "dates" / "index.html").read_text(encoding="utf-8")
         for day in self.g["meta"]["days"]:
             self.assertIn(build_seo.nice_date(day["date"], True), d)
+
+    def test_metro_pages(self):
+        g, stations = self.g, metro_stations(self.g)
+        self.assertTrue(stations)
+        for st, near in stations:   # each station page lists only walkable pandals, nearest first
+            with self.subTest(station=st["id"]):
+                self.assertGreaterEqual(len(near), MIN_PANDALS)
+                self.assertEqual([w for w, _, _ in near], sorted(w for w, _, _ in near))
+                self.assertTrue(all(w <= NEAR_MIN for w, _, _ in near))
+                html = (self.tmp / "guide" / "metro" / st["id"] / "index.html").read_text(encoding="utf-8")
+                self.assertLess(html.index(near[0][2]["name"]), html.index(near[-1][2]["name"]) + 1)
+                self.assertIn("haven't announced", html.replace("hasn't announced", "haven't announced"))   # no invented timings
+        hub = (self.tmp / "guide" / "metro" / "index.html").read_text(encoding="utf-8")
+        for p in g["pandals"]:   # every pandal appears on the hub, under its station or as too far to walk
+            self.assertIn(f"pandals/{p['id']}/", hub)
+        far = next((p for p in g["pandals"] if p["nearest_metro"]["walk_min"] > FAR_MIN), None)
+        if far:   # its own page doesn't suggest an hour's walk from the metro
+            s = (self.tmp / "guide" / "pandals" / far["id"] / "index.html").read_text(encoding="utf-8")
+            self.assertIn("no metro within walking distance", s)
+            self.assertNotIn(f"{far['nearest_metro']['walk_min']} minutes' walk", s)
+        a, b = (22.587145, 88.362942), (22.5854, 88.3610)   # the walk model matches pipeline/enrich.py
+        self.assertEqual(walk(a, b)[1], round(walk(a, b)[0] * 1.3 / (3.2 * 1000 / 60)))
 
 
 if __name__ == "__main__":

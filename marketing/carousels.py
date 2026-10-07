@@ -336,11 +336,16 @@ Save it and tag who's coming 📌 Live version with maps → link in bio."""
         slides = [{"t": "cover", "theme": "red", "kicker": "Metro cheat sheet", "title": "Get off here, walk there",
                    "accent": f"{len(items)} stations", "sub": "Every metro station with a well-known pandal within a 15-minute walk.",
                    "bn": "কোন মেট্রো স্টেশনে নামলে কোন পুজো হাঁটা পথে", "tag": "SCREENSHOT THIS 📲"}]
-        pages = []
-        for line in dict.fromkeys(x["line"] for x in items):
-            xs = [x for x in items if x["line"] == line]
-            k = -(-len(xs) // 4)
-            pages += [(line, j + 1, k, xs[round(j * len(xs) / k):round((j + 1) * len(xs) / k)]) for j in range(k)]
+        def paged(per):
+            out = []
+            for line in dict.fromkeys(x["line"] for x in items):
+                xs = [x for x in items if x["line"] == line]
+                k = -(-len(xs) // per)
+                out += [(line, j + 1, k, xs[round(j * len(xs) / k):round((j + 1) * len(xs) / k)]) for j in range(k)]
+            return out
+        pages = paged(4)
+        if len(pages) > 7:   # Instagram allows 10 slides: cover, these, tip, CTA. More stations, so 5 to a slide
+            pages = paged(5)
         for i, (line, j, k, part) in enumerate(pages):
             slides.append({"t": "stations", "theme": "red" if i % 2 == 0 else "dark", "kicker": "Station → pandals (walk)",
                            "title": LINE_NAME[line] + (f" · {j}/{k}" if k > 1 else ""), "items": part})

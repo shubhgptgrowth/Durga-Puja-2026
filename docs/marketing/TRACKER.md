@@ -59,11 +59,13 @@ Each partner gets its own link code so the report shows who delivers (`?src=<cod
 |---|---|---|---|---|---|---|
 | | | `committee_` | ⬜ | | ⬜ | |
 
-**Eateries** (counter QR, `qr_<id>`, already on `/kit/posters.pdf`)
+**Eateries** (counter QR, `qr_<id>`, already on `/kit/posters.pdf`, and **featured offers**: rate card, pitch and call list in [FEATURED_OFFERS.md](FEATURED_OFFERS.md))
 
-| Eatery | Contact | Asked | Yes? | Poster up | Notes |
-|---|---|---|---|---|---|
-| | | ⬜ | | ⬜ | |
+Phone numbers stay in the dashboard or the caller's phone, never in this public file.
+
+| Eatery | Called by | Asked | Featured? (₹) | Paid | Featured until | Poster up | Notes |
+|---|---|---|---|---|---|---|---|
+| | | ⬜ | | ⬜ | | ⬜ | |
 
 **Creators** (Collab posts, `creator_<handle>`)
 

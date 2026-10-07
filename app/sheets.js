@@ -12,7 +12,7 @@ import { shareCtaHtml, wireShareCta } from './growth.js';
 import { estVisitors, estDiners, short } from './footfall.js';
 import { hasEgg, cost2, rupees } from './foodinfo.js';
 import { track, placeOpened } from './analytics.js';
-import { offersHtml, offerSheet } from './offers.js';
+import { offersHtml, offerSheet, featuredFirst, sponsoredTag } from './offers.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
 
@@ -224,7 +224,7 @@ export function pandalSheet(id) {
   const p = idx.pandal[id], z = zoneOf(p.zone), df = dayFactor();
   const hours = [...Array(24).keys()].map((h) => crowdIndex(p.crowd_base, df, h));
   const now = hours[S.hour];
-  const foods = p.food.map((f) => ({ ...idx.food[f.id], ...f }));
+  const foods = featuredFirst(p.food.map((f) => ({ ...idx.food[f.id], ...f })));   // paid featured offers first, labelled
   const parks = p.parking.map((x) => ({ ...idx.parking[x.id], ...x }));
   const away = S.me ? ` · ${dist(hav(S.me, ll(p)))}` : '';
   openSheet(`
@@ -246,7 +246,7 @@ export function pandalSheet(id) {
     ${z.car_advisory !== 'ok' ? `<p class="fine" style="margin-top:6px">${esc(z.walk_tip)}</p>` : ''}
 
     <h3 class="sh">${t('p.eat')}</h3>
-    <ul class="mini-list">${foods.map((f) => `<li data-food="${f.id}" ${btn()}><span><b>${esc(f.name)}</b><br><small>${esc(f.dishes.slice(0, 2).join(' · '))}</small></span><small>${t('p.walkMin', { n: f.walk_min })}</small></li>`).join('') || `<li>${t('p.noeat')}</li>`}</ul>
+    <ul class="mini-list">${foods.map((f) => `<li data-food="${f.id}" ${btn()}><span><b>${esc(f.name)}</b>${sponsoredTag(f.id)}<br><small>${esc(f.dishes.slice(0, 2).join(' · '))}</small></span><small>${t('p.walkMin', { n: f.walk_min })}</small></li>`).join('') || `<li>${t('p.noeat')}</li>`}</ul>
 
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>
