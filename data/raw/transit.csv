@@ -23,15 +23,14 @@ behala_bazar,Behala Bazar,purple,22.498759,88.317387,osm
 behala_chowrasta,Behala Chowrasta,purple,22.487355,88.313379,osm
 hemanta_mukhopadhyay,Hemanta Mukhopadhyay (Ruby),orange,22.514851,88.401428,osm
 ballygunge_rail,Ballygunge Junction (Suburban),suburban,22.519341,88.371978,osm
-howrah_metro,Howrah,green,22.583200,88.342400,curated
-howrah_maidan,Howrah Maidan,green,22.581700,88.329800,curated
-howrah_rail,Howrah Junction (Suburban),suburban,22.583900,88.342900,curated
-tikiapara,Tikiapara (Suburban),suburban,22.575600,88.319700,curated
-dasnagar,Dasnagar (Suburban),suburban,22.570700,88.304200,curated
-santragachi,Santragachi Junction (Suburban),suburban,22.581300,88.283700,curated
-liluah,Liluah (Suburban),suburban,22.622200,88.339700,curated
-belur,Belur (Suburban),suburban,22.636600,88.348000,curated
-bally,Bally (Suburban),suburban,22.650300,88.342600,curated
-kavi_nazrul,Kavi Nazrul,blue,22.471000,88.385600,curated
-kavi_subhash,Kavi Subhash,blue,22.473300,88.394600,curated
-garia_rail,Garia (Suburban),suburban,22.467600,88.390700,curated
+howrah_metro,Howrah,green,22.583365,88.340345,osm
+howrah_maidan,Howrah Maidan,green,22.583859,88.333998,osm
+howrah_rail,Howrah Junction (Suburban),suburban,22.582871,88.342811,osm
+tikiapara,Tikiapara (Suburban),suburban,22.598577,88.324035,osm
+dasnagar,Dashnagar (Suburban),suburban,22.597997,88.308404,osm
+santragachi,Santragachi Junction (Suburban),suburban,22.584699,88.283072,osm
+liluah,Liluah (Suburban),suburban,22.620903,88.339404,osm
+belur,Belur Math (Suburban),suburban,22.631302,88.350583,osm
+bally,Bally Ghat (Suburban),suburban,22.652430,88.347909,osm
+kavi_nazrul,Kavi Nazrul,blue,22.464250,88.380460,osm
+kavi_subhash,Kavi Subhash,blue,22.471109,88.398099,osm
