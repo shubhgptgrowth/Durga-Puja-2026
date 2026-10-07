@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T01:58:30+00:00
+# Build report — 2026-10-07T18:34:04+00:00
 
-Bundle version `c864cf7f3398`
+Bundle version `f7e50ef2ca9a`
 
 | Entity | Count |
 |---|---|
@@ -9,7 +9,7 @@ Bundle version `c864cf7f3398`
 | pandals | 117 |
 | food | 175 |
 | parking | 14 |
-| transit | 24 |
+| transit | 49 |
 | itineraries | 6 |
 | dish_photos | 46 |
 
@@ -25,12 +25,12 @@ Bundle version `c864cf7f3398`
 | Salt Lake | 7 | 1 | 7.9 km | 11,576 | 694 |
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
-| Kasba & Bosepukur | 5 | 0 | 4.9 km | 7,200 | 463 |
-| Jadavpur & Santoshpur | 8 | 0 | 12.1 km | 17,653 | 952 |
-| Tollygunge & Naktala | 4 | 1 | 8.0 km | 11,680 | 600 |
-| Beleghata & Phoolbagan | 1 | 0 | 2.1 km | 3,119 | 151 |
+| Kasba & Bosepukur | 5 | 0 | 3.9 km | 5,627 | 395 |
+| Jadavpur & Santoshpur | 8 | 0 | 10.8 km | 15,835 | 881 |
+| Tollygunge & Naktala | 4 | 1 | 5.6 km | 8,120 | 452 |
+| Beleghata & Phoolbagan | 1 | 0 | 0.5 km | 705 | 50 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
-| Howrah: Shibpur & Salkia | 2 | 0 | 9.9 km | 14,415 | 647 |
+| Howrah: Shibpur & Salkia | 2 | 0 | 8.3 km | 12,174 | 551 |
 
 ## Curated itineraries
 
