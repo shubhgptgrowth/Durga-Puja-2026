@@ -1,7 +1,7 @@
 {
  "source": "OpenStreetMap contributors (ODbL)",
  "fetched": "2026-10-07",
- "failed_batches": 3,
+ "failed_batches": 1,
  "places": [
   {
    "osm": "node/1833168504",
