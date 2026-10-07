@@ -122,12 +122,12 @@ Record each in TRACKER.md §3 with its `press_<code>`.
 ## Creator DM (short, Bengali first)
 
 > নমস্কার {name}! আমরা @pujoparikrama.guide, কলকাতার ঠাকুর দেখার একটা ফ্রি গাইড: ১০৭টা প্যান্ডেলে কখন ভিড় কম, মেট্রো-অটো
-> রুট আর কাছের খাবার। এবারের পুজোয় একবার ব্যবহার করে একটা Collab রিল করবেন? বিনিময়ে অ্যাপে আপনার নামে একটা পরিক্রমা
-> রুট থাকবে, আর আমাদের কার্ড ও স্টোরিতে আপনার নাম। আপনার লিংক: pujoparikramaguide.in/?src=creator_{handle} 🙏
+> রুট আর কাছের খাবার। এবারের পুজোয় একবার ব্যবহার করে একটা Collab রিল করবেন? বিনিময়ে আমাদের কার্ড ও স্টোরিতে আপনার নাম,
+> আর পুজোর পরে জানাব আপনার লিংক থেকে কতজন এসেছেন। আপনার লিংক: pujoparikramaguide.in/?src=creator_{handle} 🙏
 >
 > Hi {name}! We're @pujoparikrama.guide, a free Kolkata pandal-hopping guide: quiet hours for 107 pandals, metro and
-> auto routes, food nearby. Would you use it on one pujo outing and do a Collab Reel? In return, a trail named after
-> you in the app, and credit on our cards and stories. Your link: pujoparikramaguide.in/?src=creator_{handle}
+> auto routes, food nearby. Would you use it on one pujo outing and do a Collab Reel? In return, credit on our cards
+> and stories, and after the pujas, how many people your link brought. Your link: pujoparikramaguide.in/?src=creator_{handle}
 
 **Follow-up after 48 hours, once:** "Just checking you saw this 🙏 Happy to send you a ready-made route for your
 area." Then stop.

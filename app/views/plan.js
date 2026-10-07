@@ -10,6 +10,7 @@ import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
 import { areaPhoto, pandalPhoto, photoBg } from '../photos.js';
 import { track } from '../analytics.js';
+import { waUrl } from '../growth.js';
 
 let planSel = new Set(), step = 0, inPlan = false, transitData = null, transitLoading = null;
 // Bus / auto data is optional and loaded lazily (app/data/transit.json, built from OpenStreetMap).
@@ -194,6 +195,13 @@ const planTitle = (plan) => {
   return (plan.zones || []).map((z) => zs(zoneOf(z))).join(' + ');
 };
 const shareUrl = (plan) => location.origin + location.pathname + '?src=plan_share' + (plan.kind === 'trail' ? '#trail=' + plan.id : '#plan=' + encodePlan(plan.params));
+/** The WhatsApp message for a route: the stops and times in the message itself, so the family group sees the plan
+ * without opening anything, then the link that opens the same route in the app. */
+function waPlanText(plan) {
+  const stops = stopsOf(plan);
+  const lines = stops.slice(0, 6).map((st) => `• ${st.arrive} ${nm(idx.pandal[st.pandal])}`).join('\n') + (stops.length > 6 ? `\n${t('plan.waMore', { n: stops.length - 6 })}` : '');
+  return t('plan.waText', { title: planTitle(plan), day: dn(idx.day[plan.day]), start: plan.start, end: plan.end, stops: lines, url: shareUrl(plan).replace('src=plan_share', 'src=wa_plan') });
+}
 async function share(plan) {
   const url = shareUrl(plan), text = t('share.text', { title: planTitle(plan) });
   try {
@@ -297,6 +305,7 @@ function resultHtml(plan) {
       <h3>${esc(planTitle(plan))}</h3>
       <div class="ph-sub">${t('plan.from', { start: esc(ptName(plan.startPt)) })}${plan.skipped ? ` · ${t('plan.dropped', { n: plan.skipped })}` : ''}</div>
       <div class="kpis big"><div><b>${x.pandals}</b><span>${t('kpi.pandals')}</span></div><div><b>${km(walkM)}</b><span>${t('kpi.km')}</span></div><div><b>${fmt(stepsFor(walkM))}</b><span>${t('kpi.steps')}</span></div><div><b>${fmt(kcalFor(x.walk_min, x.dwell_min, x.brisk))}</b><span>${t('kpi.kcal')}</span></div></div>
+      <a class="btn wa block" id="planWa" target="_blank" rel="noopener" href="${waUrl(waPlanText(plan))}">${t('plan.waSend')}</a>
       <div class="ph-actions"><button class="btn sm" id="planWalk">${icon('walk', 'sm')} ${t('plan.startWalk')}</button><button class="btn sm" id="planShare">${icon('share', 'sm')} ${t('plan.share')}</button></div>
     </section>
     <div class="mode-row"><span class="mode-q">${t('mode.q')}</span>${modeChips()}</div>
@@ -356,6 +365,7 @@ function wire(el, plan) {
     const pl = e.target.closest('[data-place]')?.dataset.place; if (pl) return openPlace(pl);
     if (e.target.closest('#planWalk')) { go('me'); if (!walking()) startWalk(); return; }
     if (e.target.closest('#planShare')) return share(plan);
+    if (e.target.closest('#planWa')) track('share', { d: 'wa_plan' });
   };
   const f = $('#planForm', el);
   if (f) {

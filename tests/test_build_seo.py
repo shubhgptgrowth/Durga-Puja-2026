@@ -62,7 +62,8 @@ class BuildSeoTest(unittest.TestCase):
         shutil.copy(ROOT / "app" / "index.html", cls.tmp / "index.html")
         cls.g = json.loads((ROOT / "app" / "data" / "guide.json").read_text(encoding="utf-8"))
         cls.base = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))["url"]
-        cls.n = build_seo.Site(cls.g, cls.base, cls.tmp).build()
+        cls.site = build_seo.Site(cls.g, cls.base, cls.tmp)
+        cls.n = cls.site.build()
         cls.articles = [Article(f) for f in sorted(CONTENT.rglob("*.md")) if f.name != "README.md"]
         cls.pages = sorted([cls.tmp / "guide" / "index.html", *cls.tmp.glob("guide/**/index.html")]
                            + [cls.tmp / a.path / "index.html" for a in cls.articles])
@@ -76,10 +77,10 @@ class BuildSeoTest(unittest.TestCase):
         g = self.g
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 5 + len(self.articles)  # + hub, dates, themes, best pandals, parking
         want += sum(1 for r in g["regions"] if any(z["id"] in r["zone_ids"] and z["pandal_ids"] for z in g["zones"]))   # + a page per region
-        want += 1 + len(metro_stations(g))   # + the metro hub and a page per station with pandals in walking distance
+        want += 1 + len(metro_stations(g)) + 1   # + the metro hub, a page per station with pandals in walking distance, late night
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
-            self.assertEqual(stories, len(self.articles))
+            self.assertEqual(stories, len(self.articles) + len(self.site.data_stories_list))   # + the data stories (themes, metro)
         self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0))   # + the stories index
         self.assertEqual(len(self.pages), want)
 
@@ -347,6 +348,9 @@ class BuildSeoTest(unittest.TestCase):
             s = (self.tmp / "guide" / "pandals" / far["id"] / "index.html").read_text(encoding="utf-8")
             self.assertIn("no metro within walking distance", s)
             self.assertNotIn(f"{far['nearest_metro']['walk_min']} minutes' walk", s)
+        night = (self.tmp / "guide" / "late-night-pandal-hopping" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("trails/all_nighter/", night)
+        self.assertIn("estimates", night)   # crowd shares come from the model and say so
         a, b = (22.587145, 88.362942), (22.5854, 88.3610)   # the walk model matches pipeline/enrich.py
         self.assertEqual(walk(a, b)[1], round(walk(a, b)[0] * 1.3 / (3.2 * 1000 / 60)))
 

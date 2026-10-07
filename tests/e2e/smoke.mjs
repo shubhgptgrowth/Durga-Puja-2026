@@ -104,6 +104,10 @@ try {
   await page.click('#view-home [data-dayplan="2"]');
   await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
   must(await count('.timeline li[data-place]') >= 4, 'Saptami day plan should have a route');
+  {   // the plan goes to WhatsApp with its stops in the message and a link that opens the same route
+    const wa = decodeURIComponent(await page.locator('#planWa').getAttribute('href'));
+    must(wa.startsWith('https://wa.me/?text=') && /src=wa_plan#(plan|trail)=/.test(wa) && (wa.match(/^• \d\d:\d\d /gm) || []).length >= 4, 'WhatsApp plan message: ' + wa.slice(0, 200));
+  }
   await shot('01c-dayplan');
   await page.click('#planNew');
   await page.click('.tab[data-view="home"]');
