@@ -1,4 +1,4 @@
 {
  "note": "dm: the scheduled comment-to-DM run (engage.yml) only sends while this is true. Turn on once IG_ACCESS_TOKEN carries the messaging permission (instagram_manage_messages, or instagram_business_manage_messages on an Instagram-Login token). The owner asked for comment-to-DM on 7 Oct.",
- "dm": false
+ "dm": true
 }
