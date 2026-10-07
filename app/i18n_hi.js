@@ -109,7 +109,7 @@ export const HI = {
   'plan.me': 'आपकी लोकेशन', 'plan.pickZone': 'कम से कम एक ज़ोन चुनें', 'plan.none': 'कोई पंडाल नहीं मिला। स्टार फ़िल्टर कम करके देखें।',
   'plan.sub': '{day} · {from}–{to}, {start} से', 'plan.dropped': 'आपके समय में फ़िट करने के लिए {n} पंडाल हटाए गए',
   'kpi.pandals': 'पंडाल', 'kpi.km': 'किमी पैदल', 'kpi.steps': 'कदम', 'kpi.kcal': 'kcal',
-  'plan.startWalk': 'कदम काउंटर', 'plan.share': 'शेयर करें', 'plan.nextDir': '{name} का रास्ता', 'plan.dirHint': 'आपके अगले पंडाल के लिए Google Maps खुलेगा। वहाँ चेक-इन करें, फिर यह बटन अगले पंडाल पर चला जाएगा। किसी और स्टॉप पर जाने के लिए उस पर 📍 टैप करें।',
+  'plan.startWalk': 'कदम काउंटर', 'plan.share': 'शेयर करें', 'plan.waSend': 'यह प्लान फ़ैमिली ग्रुप में भेजें', 'plan.waMore': '…और {n}', 'plan.waText': 'हमारा पूजो प्लान: {title}\n{day}, {start}–{end}\n{stops}\n\nरूट, कम भीड़ का समय और रास्ता: {url}', 'plan.nextDir': '{name} का रास्ता', 'plan.dirHint': 'आपके अगले पंडाल के लिए Google Maps खुलेगा। वहाँ चेक-इन करें, फिर यह बटन अगले पंडाल पर चला जाएगा। किसी और स्टॉप पर जाने के लिए उस पर 📍 टैप करें।',
   'tl.hop': '🛺 यह हिस्सा सवारी से · {km} किमी', 'tl.hopAuto': '{name} तक ऑटो, टोटो या कैब', 'tl.orWalk': 'या ~{n} मिनट पैदल', 'it.rides': '{n} सवारी',
   'tl.start': '{name} से शुरू करें', 'tl.ride': '{name} तक सवारी', 'tl.rideMin': '~{n} मिनट की सवारी',
   'tl.walk': '{m} मीटर पैदल', 'tl.inside': 'अंदर ~{n} मिनट', 'tl.eat': '🍴 पास में: {place} का {dish}',

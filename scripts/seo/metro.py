@@ -8,6 +8,7 @@ from math import asin, cos, radians, sin, sqrt
 from pathlib import Path
 
 from .common import LINE, crowd_word, esc, hrange, km, nice_date
+from .knowledge import share_bar
 
 ROOT = Path(__file__).resolve().parents[2]
 NOTICES = ROOT / "data" / "raw" / "metro_2026.toml"
@@ -110,6 +111,9 @@ class MetroMixin:
             f"<li>{self.link_pandal(p['id'], up)}: <b>{w} min walk</b> ({km(m)}){self.theme_note(p)}"
             f"<br><small>{esc(p['highlight'])} Best time: {esc(p['best_slot_label'])}; quietest on Ashtami: {hrange(p['quiet_hours']['ashtami'])}.</small></li>"
             for w, m, p in near)
+        wa = (f"Durga Puja {self.year}: pandals near {label}\n"
+              + "\n".join(f"• {p['name']} ({w} min walk)" for w, _, p in near[:6])
+              + f"\n\nQuiet hours and directions: {self.url(path)}?src=wa_metro")
         same_line = [x for x, _ in self.metro if x["line"] == s["line"] and x["id"] != s["id"]]
         others = " · ".join(self.link_station(x["id"], up) for x in same_line)
         top = max(near, key=lambda x: (x[2]["popularity"], -x[0]))[2]
@@ -123,6 +127,7 @@ class MetroMixin:
 <h1>Durga Puja pandals near {esc(label)} ({self.year})</h1>
 <p class="lead">{lead}</p>
 <ol class="list">{rows}</ol>
+{share_bar(wa)}
 <p><a class="cta" href="{up}?src=seo_metro#plan">Plan a walking route from here in the app →</a></p>
 {self.notices_html(up)}
 {f'<h2>More stations on the {esc(line)}</h2><p>{others}</p>' if others else ''}
@@ -185,6 +190,7 @@ class MetroMixin:
         body = f"""<article>
 <h1>Kolkata Durga Puja {self.year} by metro: pandals near every station</h1>
 <p class="lead">{lead}</p>
+{share_bar(f"Durga Puja {self.year} by metro: which pandals are walkable from each Kolkata metro station, nearest first, with the quiet hours.\n{self.url(path)}?src=wa_metro")}
 {self.notices_html(up)}
 <p><b>Station guides:</b> {stations_html}</p>
 {''.join(sections)}
@@ -254,6 +260,7 @@ class MetroMixin:
         body = f"""<article>
 <h1>Late-night pandal hopping in Kolkata: Durga Puja {self.year}</h1>
 <p class="lead">{lead}</p>
+{share_bar(f"Late-night pandal hopping, Durga Puja {self.year}: when the crowds thin after midnight, the all-night route and food open late.\n{self.url(path)}?src=wa_night")}
 <h2>How the night thins out</h2>
 {tbl}
 {self.notices_html(up)}
