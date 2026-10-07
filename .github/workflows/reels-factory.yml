@@ -61,6 +61,7 @@ jobs:
           restore-keys: reels-src-
       - name: Render
         run: |
+          set -o pipefail   # a failed render must fail the run, not hide behind tee
           for d in ${{ steps.dates.outputs.dates }}; do
             [ -f "marketing/daily/$d.json" ] || continue
             python -m marketing.footage.factory "$d" --catalog catalog/catalog.json --out "out/$d" | tee -a "$GITHUB_STEP_SUMMARY"
