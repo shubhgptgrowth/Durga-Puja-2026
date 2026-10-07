@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from marketing import kit
+from marketing.captions import compose
 
 SRC_OK = re.compile(r"^[a-z0-9_]{1,40}$")  # same rule as public._clean_src in supabase/migrations
 
@@ -181,11 +182,10 @@ class DailySetTest(unittest.TestCase):
                     cap = it["caption"]
                     self.assertGreater(len(cap["en"]), 200, it["id"])
                     self.assertLessEqual(cap["tags"].count("#"), 5, it["id"])
-                    self.assertNotIn("github.io", cap["bn"] + cap["en"])
+                    self.assertNotIn("github.io", cap.get("bn", "") + cap["en"])
                 if it["type"] == "reel":
-                    cap = it.get("caption")
-                    text = cap if isinstance(cap, str) else f"{cap['bn']} {cap['en']} {cap['tags']}"
-                    self.assertLessEqual(len(text), 1900, it["id"])  # room for the credits line
+                    text = compose(it.get("caption"))
+                    self.assertLessEqual(len(text), 2200, it["id"])
                     self.assertLessEqual(text.count("#"), 25, it["id"])
                     self.assertNotIn("github.io", text)
             known = {s[0] for it in plan["items"] for s in it.get("segments", [])} - set(idx)
@@ -283,12 +283,13 @@ class RedesignTest(unittest.TestCase):
                          {"src": "https://e/c.jpg", "license": "AI"}]}
         self.assertEqual(photo_post.check(it), [])
         self.assertTrue(photo_post.check(dict(it, photos=[{"src": "https://e/x.jpg"}])))
-        cap = photo_post.caption(it)
-        self.assertIn("A (CC BY 3.0); B (CC BY-SA 4.0)", cap)
-        self.assertIn("AI-generated", cap)
+        cap = photo_post.caption(it)  # credits are on the photos, not in the caption
+        self.assertNotIn("CC BY", cap)
+        self.assertEqual(photo_post.credit_line(it["photos"][0]), "Photo: A · CC BY 3.0")
+        self.assertEqual(photo_post.credit_line(it["photos"][2]), "AI image")
         with tempfile.TemporaryDirectory() as d:
             Image.new("RGB", (3000, 2000), (200, 30, 40)).save(f"{d}/l.jpg")
-            photo_post.crop(f"{d}/l.jpg", f"{d}/o.jpg", 0.9, 0.5)
+            photo_post.crop(f"{d}/l.jpg", f"{d}/o.jpg", 0.9, 0.5, "Photo: A · CC BY 3.0")
             self.assertEqual(Image.open(f"{d}/o.jpg").size, (photo_post.PW, photo_post.PH))
 
     def test_engagement_creators_and_replies(self):
@@ -328,6 +329,33 @@ class RedesignTest(unittest.TestCase):
         idx["cr-x"]["permission"] = "2026-10-07, Instagram DM"
         factory.check(plan, idx)
 
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
+    def test_card_carousel_has_our_words_on_every_slide(self):
+        import tempfile
+        from PIL import Image
+        from marketing import cards
+        it = {"id": "p3", "type": "photo", "render": "cards", "caption": {"en": "Durga Puja 2026 themes"},
+              "slides": [{"t": "cover", "title": ["2026 THEMES"], "photo": {"src": "https://e/a.jpg", "artist": "A", "license": "CC BY 3.0"}},
+                         {"t": "item", "kicker": "1/1", "name": "Behala Notun Dal", "title": "Ay Aaro Bendhe Bendhe Thaki",
+                          "body": "A Shankha Ghosh poem.", "foot": "Nearest station: Behala Bazar · 2 min walk"},
+                         {"t": "end", "title": ["SEND THIS", "TO YOUR PUJO GROUP"]}]}
+        self.assertEqual(cards.check(it), [])
+        self.assertTrue(cards.check(dict(it, slides=it["slides"][:1])))  # one slide is not a carousel
+        self.assertTrue(cards.check(dict(it, slides=[{"t": "photo", "title": "x"}, it["slides"][2]])))  # photo slide, no photo
+        with tempfile.TemporaryDirectory() as d:
+            names = cards.build(it, "x", d, d, lambda src, dest: Image.new("RGB", (900, 700)).save(dest))
+            self.assertEqual(len(names), 3)
+            self.assertEqual(Image.open(f"{d}/{names[1]}").size, (1440, 1800))
+
+    def test_caption_layout_is_english_first_keywords_then_three_tags(self):
+        from marketing.captions import compose
+        c = {"en": "Durga Puja 2026 in Kolkata: one route a night.", "bn": "এক রাতে এক এলাকা",
+             "keywords": ["durga puja 2026", "kolkata pandal hopping"], "tags": "#a #b #c #d #e"}
+        self.assertEqual(compose(c), "Durga Puja 2026 in Kolkata: one route a night.\n\nএক রাতে এক এলাকা\n\n"
+                                     "(durga puja 2026, kolkata pandal hopping)\n\n#a #b #c")
+        self.assertEqual(compose("as is"), "as is")
+        self.assertEqual(compose(None), "")
+
     def test_caption_lint_from_the_ig_skills(self):
         from marketing import caption_lint
         two_asks = "পুজোর রুট 🙏\n\nComment PUJO for the Durga Puja Kolkata routes. Save this for later.\n\n#DurgaPuja2026"
@@ -351,5 +379,6 @@ class RedesignTest(unittest.TestCase):
             self.assertTrue(x0 <= x <= x1 and y0 <= y <= y1)
         im = route_reel.frame(route_reel.backdrop(pl), pl, pl["t_hold"] - 0.1)
         self.assertEqual(im.size, (route_reel.W, route_reel.H))
-        cap = route_reel.caption({"bn": "বাংলা", "en": "English", "tags": "#DurgaPuja2026"})
-        self.assertIn("Sumita Roy Dutta", cap)
+        cap = route_reel.caption({"en": "English", "keywords": ["durga puja 2026"], "tags": "#DurgaPuja2026"})
+        self.assertNotIn("Sumita Roy Dutta", cap)  # the dhak credit is on the end frame
+        self.assertEqual(cap, "English\n\n(durga puja 2026)\n\n#DurgaPuja2026")

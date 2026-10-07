@@ -359,6 +359,10 @@ def credits_for(reel, footage):
     txt = f"Footage: {', '.join(srcs)} — " + "; ".join(parts) if parts else "Footage: Wikimedia Commons"
     if ai:
         txt += ". Some scenes are AI-generated recreations."
+    if reel.get("vo"):
+        txt += ". Voiceover: AI voice."
+    if any("SA" in footage[s]["license"] for s in seen):
+        txt += " This reel: CC BY-SA 4.0."
     return txt
 
 
@@ -419,17 +423,13 @@ def build_vo(reel, footage, src_dir, out_dir, tmp):
 
 def write_caption(reel, footage, out_dir):
     c = reel.get("caption")
-    if c:  # Instagram caption: Bengali, English, hashtags, then the attribution the CC licences require
-        credit = "🎥 Credits — " + credits_for(reel, footage).replace("Footage: ", "", 1)
-        if reel.get("vo"):
-            credit = credit + ". Voiceover: " + reel["vo"].get("credit", "AI voice (ElevenLabs)")
-        sa = " This reel: CC BY-SA 4.0." if any("SA" in footage[x[0]]["license"] for x in reel["segments"] if x[0] in footage) else ""
+    if c:  # Instagram caption (marketing/captions.py); the CC credits are on the end card, not here
+        from ..captions import compose
         handles = sorted({footage[x[0]]["artist"] for x in reel["segments"]
                           if footage.get(x[0], {}).get("license") == "used with permission"})
-        if handles:  # creators who shared their clips: thank them by handle, first thing after the hook
-            c = dict(c, bn=c["bn"] + "\n\n🎥 " + " ".join(handles) + "-কে অনেক ধন্যবাদ!")
+        extra = ["🎥 Shot by " + " ".join(handles) + ", shared with us. Thank you!"] if handles else []
         with open(f"{out_dir}/{reel['id']}.caption.txt", "w", encoding="utf-8") as f:
-            f.write(f"{c['bn']}\n\n{c['en']}\n\n{c['tags']}\n\n{credit}.{sa}\n".replace("..", "."))  # Bengali first
+            f.write(compose(c, extra) + "\n")
 
 
 def build(reel, footage, src_dir, out_dir, tmp):

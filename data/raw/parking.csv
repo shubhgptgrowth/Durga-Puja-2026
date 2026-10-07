@@ -13,3 +13,5 @@ new_alipore_street,New Alipore Police-marked Street Parking,southwest,22.4990,88
 city_centre_parking,City Centre 1 Parking,salt_lake,22.5888,88.4078,curated,mall,large,₹40/hr,"Walk to FD Block, or take a short auto to BJ Block.",false
 central_park_parking,Central Park Salt Lake (Puja Lot),salt_lake,22.5860,88.4160,curated,street,medium,₹30–50,A temporary lot that usually opens on the puja days.,false
 diamond_plaza,Diamond Plaza (Jessore Road),lake_town_dumdum,22.615493,88.412466,osm,mall,large,₹40/hr,Leave the car here. VIP Road near Sreebhumi stays jammed for hours.,false
+howrah_station_parking,Howrah Station Parking,howrah,22.582900,88.342500,curated,station,large,,"Paid parking at the station forecourt; from here the Green Line, buses and totos fan out across Howrah. Ask at the counter for overnight rates.",false
+avani_riverside_mall,Avani Riverside Mall (Shibpur),howrah,22.566000,88.323000,curated,mall,large,,The handiest mall car park for the Shibpur pujas. Check closing time before you leave the car late.,false
