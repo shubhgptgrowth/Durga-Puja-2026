@@ -338,3 +338,17 @@ class RedesignTest(unittest.TestCase):
         self.assertTrue(any(n.startswith("FAIL hashtags") for n in caption_lint.caption_notes(six)))
         self.assertRegex(caption_lint.hook_note("In 1976, Bengal switched on the radio and got a shock"), r"^hook \d+ (STRONG|OK|WEAK)")
         self.assertEqual(caption_lint.caption_notes(""), [])
+
+    def test_route_reel_draws_the_guide_route(self):
+        from marketing import route_reel
+        pl = route_reel.plan("south_lakemarket")
+        self.assertEqual(len(pl["xy"]), len(pl["order"]) + (1 if pl["station"] else 0))
+        self.assertAlmostEqual(pl["km"][-1], pl["route"]["walk_m"] / 1000, places=1)
+        self.assertEqual(pl["km"], sorted(pl["km"]))
+        x0, y0, x1, y1 = route_reel.MAP
+        for x, y in pl["xy"]:  # every stop inside the map, clear of the action rail and the caption
+            self.assertTrue(x0 <= x <= x1 and y0 <= y <= y1)
+        im = route_reel.frame(route_reel.backdrop(pl), pl, pl["t_hold"] - 0.1)
+        self.assertEqual(im.size, (route_reel.W, route_reel.H))
+        cap = route_reel.caption({"bn": "বাংলা", "en": "English", "tags": "#DurgaPuja2026"})
+        self.assertIn("Sumita Roy Dutta", cap)
