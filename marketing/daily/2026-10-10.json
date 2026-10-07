@@ -1,6 +1,6 @@
 {
  "date": "2026-10-10",
- "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
+ "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
  "items": [
   {
    "id": "p1",
@@ -43,6 +43,30 @@
      "pill": "Tell us in the comments"
     }
    ]
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "x-tarpan1",
+     2,
+     5.0,
+     "Shubho Mahalaya. 7 days to Shashthi"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "শুভ মহালয়া! আজ থেকে দেবীপক্ষ শুরু… মা আসছেন।"
+    ],
+    "en": [
+     "Shubho Mahalaya! Devipaksha begins today... Maa is coming."
+    ]
+   }
   },
   {
    "id": "p3",
@@ -156,6 +180,30 @@
    }
   },
   {
+   "id": "s2",
+   "type": "story",
+   "at": "15:35",
+   "segments": [
+    [
+     "f28",
+     1,
+     5.0,
+     "2026 themes: Santosh Mitra Square, Sreebhumi and more. New post"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "সন্তোষ মিত্র স্কোয়ার থেকে শ্রীভূমি, এবারের থিম এক পোস্টে!"
+    ],
+    "en": [
+     "From Santosh Mitra Square to Sreebhumi: this year's themes in one post!"
+    ]
+   }
+  },
+  {
    "id": "r1",
    "type": "reel",
    "at": "18:30",
@@ -175,6 +223,47 @@
     ],
     "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
    }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "18:35",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-10/1010-r1.mp4"
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "20:30",
+   "segments": [
+    [
+     "f15",
+     4,
+     5.0,
+     "Did you wake up at 4 am for Mahalaya? Reply"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "আজ ভোরে মহালয়া শুনলেন? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "Did you listen to Mahalaya this morning? Reply and tell us!"
+    ]
+   }
   }
- ]
+ ],
+ "clips": {
+  "x-tarpan1": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Tarpan_-_Jagannath_Ghat_-_Kolkata_2012-10-15_0641.ogv",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Tarpan at Jagannath Ghat on Mahalaya",
+   "w": 1920,
+   "h": 1080
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "date": "2026-10-09",
- "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026).",
+ "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
  "items": [
   {
    "id": "p1",
@@ -91,6 +91,30 @@
      "pill": "Save this for your visit"
     }
    ]
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "segments": [
+    [
+     "f27",
+     2,
+     5.0,
+     "8 days to go: Kumartuli is almost done"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "আর মাত্র আট দিন! কুমোরটুলিতে এখন শেষ তুলির টান।"
+    ],
+    "en": [
+     "Just 8 days! The final brushstrokes in Kumartuli."
+    ]
+   }
   },
   {
    "id": "p3",
@@ -204,6 +228,30 @@
    }
   },
   {
+   "id": "s2",
+   "type": "story",
+   "at": "15:35",
+   "segments": [
+    [
+     "f14",
+     4,
+     5.0,
+     "2026 themes, North Kolkata: new post on our page"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "উত্তর কলকাতার এবারের থিম কী কী? নতুন পোস্টে সব দেখে নিন!"
+    ],
+    "en": [
+     "What are North Kolkata's themes this year? See them all in our new post!"
+    ]
+   }
+  },
+  {
    "id": "r1",
    "type": "reel",
    "at": "18:30",
@@ -223,6 +271,36 @@
      "durga puja 2026"
     ],
     "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "18:35",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-09/1009-r1.mp4"
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "20:30",
+   "segments": [
+    [
+     "f16",
+     3,
+     5.0,
+     "Good evening, Kolkata. North or South this year? Reply"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "শুভ সন্ধ্যা! এবার পুজোয় উত্তর না দক্ষিণ? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "Good evening! North or South Kolkata this pujo? Reply and tell us!"
+    ]
    }
   }
  ]
