@@ -166,7 +166,7 @@ class StoriesMixin:
     def story_pages(self):
         ph = self.pics
         for s in self.stories:
-            pages = [p for p in s["pages"] if p["image"] in ph]
+            pages = [p for p in s["pages"] if isinstance(p["image"], dict) or p["image"] in ph]
             if s["cover"] not in ph or len(pages) < 4:
                 continue
             url = self.url(f"stories/{s['slug']}/")
@@ -174,11 +174,16 @@ class StoriesMixin:
             poster, pw, phh = self.story_poster(s)
 
             def img(key):
+                if isinstance(key, dict):   # a pandal's own Commons photo (data stories), served by Wikimedia
+                    return f'<amp-img src="{esc(key["src"])}" layout="fill" object-fit="cover" alt="{esc(key.get("alt", ""))}"></amp-img>'
                 p = ph.items[key]
                 return (f'<amp-img src="../../img/guide/{key}.webp" srcset="../../img/guide/{key}-600.webp 600w, ../../img/guide/{key}.webp {p["w"]}w" '
                         f'width="{p["w"]}" height="{p["h"]}" layout="fill" object-fit="cover" alt="{esc(p.get("caption", ""))}"></amp-img>')
 
             def credit(key):
+                if isinstance(key, dict):   # the year matters: last year's pandal, not this year's theme
+                    return (f'<p class="credit">{esc(key.get("alt", ""))}{", " + str(key["year"]) if key.get("year") else ""}. '
+                            f'Photo: {esc(key["author"])}, {esc(key["license"])}, Wikimedia Commons.</p>')
                 p = ph.items[key]
                 return f'<p class="credit">{esc(p.get("caption", ""))} Photo: {esc(p["author"])}, {esc(p["license"])}, Wikimedia Commons.</p>'
 
@@ -219,7 +224,8 @@ class StoriesMixin:
 <a class="more" href="../">All photo stories</a>{music_credit}</amp-story-grid-layer>
 </amp-story-page>""")
             self.article_links.setdefault("stories", []).append(s["article"])
-            images = [ph.url(k) for k in dict.fromkeys([s["cover"], *(p["image"] for p in pages)])]
+            images = [k["src"] if isinstance(k, dict) else ph.url(k) for k in [s["cover"], *(p["image"] for p in pages)]]
+            images = list(dict.fromkeys(images))
             ld = {"@context": "https://schema.org", "@type": "Article", "headline": s["title"][:110], "description": s["dek"], "url": url,
                   "mainEntityOfPage": url, "inLanguage": "en", "datePublished": "2026-10-06", "dateModified": self.updated,
                   "image": [poster] + images, "author": {"@type": "Organization", "name": NAME, "url": self.base},

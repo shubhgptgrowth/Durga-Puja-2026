@@ -276,3 +276,49 @@ class MetroMixin:
                   body, ld=(faq_ld,), crumbs=(("Durga Puja guide", "guide/"), ("Late night", path)), priority=0.9,
                   summary=re.sub(r"<[^>]+>", "", lead), app_link="#trail=all_nighter")
         self.full.append(f"## Late-night pandal hopping\n{re.sub(r'<[^>]+>', '', lead)}\nPage: {self.url(path)}\n")
+
+    # ------------------------------------------------------------------ web stories from the data
+    def pandal_photo(self, p):
+        """The pandal's most recent freely licensed Commons photo, for a data story page (None if it has none)."""
+        ph = sorted((x for x in p.get("photos", []) if x.get("src", "").startswith("https://") and x.get("author") and x.get("license")),
+                    key=lambda x: -(x.get("year") or 0))
+        if not ph:
+            return None
+        x = ph[0]
+        return {"src": x["src"], "author": x["author"], "license": x["license"], "year": x.get("year"), "alt": f"{p['name']} Durga Puja"}
+
+    def data_stories(self):
+        """Two timely Web Stories built from the guide's data: the 2026 themes and the pandals by metro station. They
+        use each pandal's own Commons photo, credited with its year, so a photo is never passed off as this year's."""
+        out, gen = [], ["pandal-lights", "pandal-art", "crowd", "dhaki", "dhunuchi", "kolkata"]
+        themed = sorted((p for p in self.g["pandals"] if p.get("theme_2026") and p["theme_2026"].get("title")),
+                        key=lambda p: (-p["popularity"], p["name"]))
+        pages = []
+        for p in themed:
+            pic = self.pandal_photo(p)
+            if not pic:
+                continue
+            th = p["theme_2026"]
+            about = re.split(r"(?<=[.!?])\s", th.get("about", ""), maxsplit=1)[0]
+            pages.append({"image": pic, "kicker": self.zone[p["zone"]]["name"], "heading": p["name"],
+                          "text": f"{self.year} theme: {th['title']}." + (f" {about}" if about and about != th["title"] else ""),
+                          "link": f"guide/pandals/{p['id']}/"})
+            if len(pages) == 8:
+                break
+        if len(pages) >= 4:
+            out.append({"slug": f"durga-puja-{self.year}-themes", "title": f"Durga Puja {self.year} themes: Kolkata's big pandals",
+                        "dek": f"What Kolkata's best-known pandals are building for {self.year}, as reported so far. Each photo is captioned with the year it was taken.",
+                        "article": f"guide/themes-{self.year}/", "cover": "pandal-art", "pages": pages, "music": "story_dhak"})
+        ranked = sorted(self.metro, key=lambda x: (-sum(p["popularity"] for _, _, p in x[1]), x[0]["name"]))
+        pages = []
+        for n, (st, near) in enumerate(ranked[:8]):
+            star = max(near, key=lambda x: (x[2]["popularity"], -x[0]))[2]
+            pages.append({"image": self.pandal_photo(star) or gen[n % len(gen)], "kicker": LINES.get(st["line"], st["line"]),
+                          "heading": station_label(st)[0].upper() + station_label(st)[1:],
+                          "text": "Within a short walk: " + ", ".join(f"{p['name']} ({w} min)" for w, _, p in near[:4]) + ".",
+                          "link": f"guide/metro/{st['id']}/"})
+        if len(pages) >= 4:
+            out.append({"slug": f"durga-puja-{self.year}-by-metro", "title": f"Durga Puja {self.year} by metro: pandals near each station",
+                        "dek": "Which pandals are a short walk from each Kolkata metro station, nearest first.",
+                        "article": "guide/metro/", "cover": "crowd", "pages": pages, "music": "story_dhak"})
+        return out

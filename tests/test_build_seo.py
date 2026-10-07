@@ -62,7 +62,8 @@ class BuildSeoTest(unittest.TestCase):
         shutil.copy(ROOT / "app" / "index.html", cls.tmp / "index.html")
         cls.g = json.loads((ROOT / "app" / "data" / "guide.json").read_text(encoding="utf-8"))
         cls.base = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))["url"]
-        cls.n = build_seo.Site(cls.g, cls.base, cls.tmp).build()
+        cls.site = build_seo.Site(cls.g, cls.base, cls.tmp)
+        cls.n = cls.site.build()
         cls.articles = [Article(f) for f in sorted(CONTENT.rglob("*.md")) if f.name != "README.md"]
         cls.pages = sorted([cls.tmp / "guide" / "index.html", *cls.tmp.glob("guide/**/index.html")]
                            + [cls.tmp / a.path / "index.html" for a in cls.articles])
@@ -79,7 +80,7 @@ class BuildSeoTest(unittest.TestCase):
         want += 1 + len(metro_stations(g)) + 1   # + the metro hub, a page per station with pandals in walking distance, late night
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
-            self.assertEqual(stories, len(self.articles))
+            self.assertEqual(stories, len(self.articles) + len(self.site.data_stories_list))   # + the data stories (themes, metro)
         self.assertEqual(self.n, want + len(SITE_PAGES) + stories + (1 if stories else 0))   # + the stories index
         self.assertEqual(len(self.pages), want)
 

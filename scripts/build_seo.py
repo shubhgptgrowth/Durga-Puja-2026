@@ -686,6 +686,8 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.load_articles()   # first, so place pages can link to the ritual articles
         self.load_stories()
         self.metro_prepare()   # and the station pages
+        self.data_stories_list = self.data_stories()
+        self.stories += self.data_stories_list
         for p in self.g["pandals"]:
             self.pandal_page(p)
         for f in self.g["food"]:
