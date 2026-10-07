@@ -257,21 +257,31 @@ def discover_archive():
 
 
 # ---------------------------------------------------------------- food
-def discover_food():
+def discover_food(only=""):
     """Named eateries within 600 m of each pandal, from OSM, asked for in small batches (a whole-city query
-    times out on the public Overpass servers). `python -m pipeline.discovered food` picks the best ones."""
+    times out on the public Overpass servers). `python -m pipeline.discovered food` picks the best ones.
+    `only` (zones or pandal ids, '+'-separated) fetches just those pandals and adds to the places already found."""
     pandals = list(csv.DictReader(open(config.RAW_DIR / "pandals.csv", encoding="utf-8")))
+    want = {w for w in only.split("+") if w}
+    if want:
+        pandals = [p for p in pandals if p["zone"] in want or p["id"] in want]
+        print(f"food: {len(pandals)} pandals in {sorted(want)}", file=sys.stderr)
     amen = '["amenity"~"^(restaurant|fast_food|cafe|ice_cream|food_court)$"]["name"]'
     shop = '["shop"~"^(confectionery|bakery|pastry|sweets)$"]["name"]'
     seen, out, failed = set(), [], 0
-    for i in range(0, len(pandals), 15):
-        batch = pandals[i:i + 15]
+    prev = OUT / "food.json"
+    if want and prev.exists():  # a partial run keeps what earlier runs found
+        out = json.loads(prev.read_text(encoding="utf-8")).get("places", [])
+        seen = {e["osm"] for e in out}
+    size = 5 if want else 15
+    for i in range(0, len(pandals), size):
+        batch = pandals[i:i + size]
         parts = "".join(f'nwr{sel}(around:600,{p["lat"]},{p["lng"]});' for p in batch for sel in (amen, shop))
         try:
             els = overpass(f"[out:json][timeout:90];({parts});out center tags;", timeout=90)
         except Exception as ex:
             failed += 1
-            print(f"batch {i // 15} failed: {ex}", file=sys.stderr)
+            print(f"batch {i // size} failed: {ex}", file=sys.stderr)
             continue
         for e in els:
             key = f'{e["type"]}/{e["id"]}'
@@ -283,7 +293,7 @@ def discover_food():
             keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "amenity", "shop", "cuisine", "diet:vegetarian",
                                           "diet:vegan", "opening_hours", "addr:street", "brand") if k in tags}
             out.append({"osm": key, "lat": round(lat, 6), "lng": round(lng, 6), **keep})
-        print(f"batch {i // 15}: {len(out)} eateries so far", file=sys.stderr)
+        print(f"batch {i // size}: {len(out)} eateries so far", file=sys.stderr)
         time.sleep(3)  # be gentle with the public servers
     if not out:
         raise RuntimeError("no eateries fetched")
@@ -293,4 +303,5 @@ def discover_food():
 
 
 if __name__ == "__main__":
-    {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]()
+    fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]
+    fn(*sys.argv[2:3])

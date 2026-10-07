@@ -124,7 +124,7 @@ FOOD_PER_PANDAL_SPARSE = 8   # areas with few listed pandals (Howrah) get more e
 SPARSE_ZONE_PANDALS = 10
 FOOD_MAX_NEW = 240
 # Global chains: the guide is about where to eat during pujo, and these are the same everywhere.
-CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa|taco bell|barbeque nation|monginis|blue tokai|bean stop|caterer", re.I)
+CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa|taco bell|barbeque nation|monginis|blue tokai|bean stop|caterer|\bamul\b", re.I)
 GENERIC = re.compile(r"^(tea ?shop|tea stall|cakes?|roll shop|phuchka stand|restaurant|hotel|cafe|canteen|sweets?|bakery)$", re.I)
 SWEET_WORDS = re.compile(r"sweet|mishti|misti|mithai|mistanna|bhandar", re.I)
 BAKE_WORDS = re.compile(r"cake|bake|pastry|patisserie|cookie|kookie|caf[eé]|dough|amore|pie\b", re.I)

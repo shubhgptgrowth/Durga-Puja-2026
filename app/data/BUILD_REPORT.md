@@ -1,13 +1,13 @@
-# Build report — 2026-10-07T19:11:51+00:00
+# Build report — 2026-10-07T19:47:01+00:00
 
-Bundle version `6381963e4d1b`
+Bundle version `064fc88af285`
 
 | Entity | Count |
 |---|---|
 | regions | 5 |
 | zones | 14 |
 | pandals | 125 |
-| food | 175 |
+| food | 185 |
 | parking | 16 |
 | transit | 56 |
 | itineraries | 6 |
@@ -43,8 +43,8 @@ Bundle version `6381963e4d1b`
 | Salt Lake + Lake Town Hop | 13 | 16:00–00:03 | 13.41 km | 19,581 |
 | The All-Nighter: North → South | 10 | 22:00–07:13 | 11.21 km | 16,375 |
 
-## Warnings (318)
+## Warnings (328)
 
-- 316 records are not ground-verified yet
+- 326 records are not ground-verified yet
 - pandals bhowanipore_75pally and obosor_sarbojanin are less than 25 m apart. Check the coordinates.
 - zones (new_town): has no pandals yet, so it is left out of the bundle

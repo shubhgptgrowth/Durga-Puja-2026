@@ -299,6 +299,16 @@ insert into public.places (id, kind, name, zone, lat, lng, radius_m) values
   ('chowman', 'food', 'Chowman', 'southwest', 22.489294, 88.316895, 250),
   ('sitala_cafe', 'food', 'Sitala Cafe', 'jadavpur_santoshpur', 22.478037, 88.38133, 250),
   ('baba_tea', 'food', 'Baba Tea', 'bhowanipore', 22.543876, 88.364997, 250),
-  ('brothers_kitchen', 'food', 'Brothers Kitchen', 'tolly_naktala', 22.477243, 88.381762, 250)
+  ('brothers_kitchen', 'food', 'Brothers Kitchen', 'tolly_naktala', 22.477243, 88.381762, 250),
+  ('dhaba', 'food', 'Dhaba', 'south_gariahat', 22.528216, 88.365789, 250),
+  ('student_canteen', 'food', 'Student Canteen', 'howrah', 22.631778, 88.354365, 250),
+  ('ozora', 'food', 'Ozora', 'kasba', 22.515362, 88.393415, 250),
+  ('vip_sweets', 'food', 'VIP sweets', 'baguiati_kestopur', 22.612868, 88.429162, 250),
+  ('misti_mukh', 'food', 'MISTI MUKH', 'kasba', 22.513659, 88.392752, 250),
+  ('afraa', 'food', 'Afraa', 'salt_lake', 22.587297, 88.40781, 250),
+  ('thali', 'food', 'Thali', 'kasba', 22.515756, 88.38901, 250),
+  ('the_lighthouse_cafe', 'food', 'The Lighthouse Cafe', 'south_lakemarket', 22.505952, 88.359076, 250),
+  ('the_chocolate_room', 'food', 'The Chocolate Room', 'central', 22.543995, 88.358333, 250),
+  ('hondo_s_burgers', 'food', 'Hondo’s Burgers', 'south_lakemarket', 22.502161, 88.354042, 250)
 on conflict (id) do update set kind = excluded.kind, name = excluded.name, zone = excluded.zone,
   lat = excluded.lat, lng = excluded.lng, radius_m = excluded.radius_m;

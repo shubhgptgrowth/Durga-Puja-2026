@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       what:
-        description: "pandals, transit, food, photos, archive (comma-separated)"
+        description: "pandals, transit, food, photos, archive (comma-separated; food:howrah+<pandal_id> limits food to those zones/pandals)"
         default: "pandals,transit,photos"
 
 permissions:
@@ -28,7 +28,7 @@ jobs:
         run: |
           failed=""
           for w in $(echo "${{ inputs.what || 'photos,archive' }}" | tr ',' ' '); do
-            echo "::group::$w"; python -m pipeline.discover "$w" || failed="$failed $w"; echo "::endgroup::"
+            echo "::group::$w"; python -m pipeline.discover ${w%%:*} $([ "${w#*:}" != "$w" ] && echo "${w#*:}") || failed="$failed $w"; echo "::endgroup::"
           done
           echo "FAILED=$failed" >> "$GITHUB_ENV"
           if [ -n "$failed" ]; then echo "::warning::discover failed for:$failed (previous data kept)"; fi
