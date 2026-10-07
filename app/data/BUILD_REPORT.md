@@ -1,12 +1,12 @@
-# Build report — 2026-10-07T01:58:30+00:00
+# Build report — 2026-10-07T18:42:40+00:00
 
-Bundle version `c864cf7f3398`
+Bundle version `7d7a4c4e9db2`
 
 | Entity | Count |
 |---|---|
 | regions | 5 |
 | zones | 14 |
-| pandals | 117 |
+| pandals | 118 |
 | food | 175 |
 | parking | 14 |
 | transit | 24 |
@@ -21,7 +21,7 @@ Bundle version `c864cf7f3398`
 | College Street & Sealdah | 10 | 3 | 9.6 km | 14,090 | 1003 |
 | Gariahat & Ballygunge | 13 | 2 | 11.5 km | 16,724 | 1086 |
 | Lake Market & Kalighat | 15 | 3 | 13.0 km | 18,913 | 1282 |
-| Behala & New Alipore | 15 | 1 | 20.2 km | 29,548 | 1675 |
+| Behala & New Alipore | 16 | 1 | 20.3 km | 29,716 | 1714 |
 | Salt Lake | 7 | 1 | 7.9 km | 11,576 | 694 |
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
@@ -39,12 +39,12 @@ Bundle version `c864cf7f3398`
 | North Kolkata Heritage Trail | 17 | 07:00–15:21 | 11.28 km | 16,467 |
 | Central Blockbusters at Dawn | 7 | 05:30–09:26 | 5.72 km | 8,356 |
 | South Heavyweights | 17 | 14:00–00:59 | 11.4 km | 16,643 |
-| Behala & New Alipore Theme Trail | 15 | 15:00–00:51 | 17.85 km | 26,062 |
+| Behala & New Alipore Theme Trail | 16 | 15:00–01:13 | 17.96 km | 26,231 |
 | Salt Lake + Lake Town Hop | 13 | 16:00–00:03 | 13.41 km | 19,581 |
 | The All-Nighter: North → South | 10 | 22:00–07:13 | 11.21 km | 16,375 |
 
-## Warnings (308)
+## Warnings (309)
 
-- 306 records are not ground-verified yet
+- 307 records are not ground-verified yet
 - pandals bhowanipore_75pally and obosor_sarbojanin are less than 25 m apart. Check the coordinates.
 - zones (new_town): has no pandals yet, so it is left out of the bundle
