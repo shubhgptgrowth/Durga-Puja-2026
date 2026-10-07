@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T18:42:40+00:00
+# Build report — 2026-10-07T18:47:38+00:00
 
-Bundle version `7d7a4c4e9db2`
+Bundle version `4c68d87533c7`
 
 | Entity | Count |
 |---|---|
@@ -9,7 +9,7 @@ Bundle version `7d7a4c4e9db2`
 | pandals | 118 |
 | food | 175 |
 | parking | 14 |
-| transit | 24 |
+| transit | 36 |
 | itineraries | 6 |
 | dish_photos | 46 |
 
@@ -26,11 +26,11 @@ Bundle version `7d7a4c4e9db2`
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
 | Kasba & Bosepukur | 5 | 0 | 4.9 km | 7,200 | 463 |
-| Jadavpur & Santoshpur | 8 | 0 | 12.1 km | 17,653 | 952 |
-| Tollygunge & Naktala | 4 | 1 | 8.0 km | 11,680 | 600 |
+| Jadavpur & Santoshpur | 8 | 0 | 11.9 km | 17,444 | 944 |
+| Tollygunge & Naktala | 4 | 1 | 5.6 km | 8,155 | 453 |
 | Beleghata & Phoolbagan | 1 | 0 | 2.1 km | 3,119 | 151 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
-| Howrah: Shibpur & Salkia | 2 | 0 | 9.9 km | 14,415 | 647 |
+| Howrah: Shibpur & Salkia | 2 | 0 | 6.2 km | 9,053 | 421 |
 
 ## Curated itineraries
 
