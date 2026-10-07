@@ -3,6 +3,7 @@
     python -m marketing.engage scan --out engage/2026-10-07.json      # read-only: our comments + creators' new posts
     python -m marketing.engage reply marketing/engage/replies/2026-10-07.json [--dry-run]   # post approved replies
     python -m marketing.engage dm --ledger dm.json [--dry-run]          # comment "PUJO" -> the guide in a private reply
+    python -m marketing.engage check                                    # read-only: can the token do all of the above?
 
 scan collects, for the daily engagement brief:
   - comments on our recent posts that we have not answered yet (needs instagram_manage_comments, or
@@ -183,6 +184,39 @@ def dm(ledger_path, dry, days=7):
     print(f"{done} DMs sent, {len(todo) - done} pending, {len(sent)} in ledger")
 
 
+def check():
+    """Read-only token check, for after a new token is saved: nothing is posted or sent. A dm --dry-run never calls
+    the messaging endpoint, so this reads the inbox instead, which needs the same permission and the "Allow access
+    to messages" switch in the Instagram app."""
+    user, token = creds()
+    page = os.environ.get("IG_PAGE_ID")
+    ok = True
+
+    def step(name, fn, *a, **k):
+        nonlocal ok
+        r, e = safe(fn, *a, **k)
+        print(f"{'ok  ' if e is None else 'FAIL'} {name}" + (f": {e}" if e else ""), flush=True)
+        ok = ok and e is None
+        return r
+
+    acct = step("account", graph, "GET", user, token, fields="username")
+    if acct:
+        print(f"     @{acct.get('username')}")
+    step("our posts and their comments", graph, "GET", f"{user}/media", token, fields="id,comments_count", limit="1")
+    if page:
+        p = step("Facebook Page", graph, "GET", page, token, fields="name,instagram_business_account")
+        if p:
+            linked = (p.get("instagram_business_account") or {}).get("id")
+            print(f"     {p.get('name')} · linked Instagram account {'matches IG_USER_ID' if linked == user else 'does NOT match IG_USER_ID'}")
+            ok = ok and linked == user
+    step("messages (comment-to-DM)", graph, "GET", f"{page or user}/conversations", token, platform="instagram", limit="1")
+    handles = [c["handle"].lstrip("@") for c in json.loads(CREATORS.read_text(encoding="utf-8"))["creators"]]
+    step(f"creator posts (@{handles[0]}, Business Discovery)", graph, "GET", user, token,
+         fields=f"business_discovery.username({handles[0]}){{username}}")
+    print("all checks passed" if ok else "some checks failed")
+    return 0 if ok else 1
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -194,7 +228,10 @@ def main(argv=None):
     r = sub.add_parser("reply")
     r.add_argument("file")
     r.add_argument("--dry-run", action="store_true")
+    sub.add_parser("check")
     a = ap.parse_args(argv)
+    if a.cmd == "check":
+        return check()
     if a.cmd == "scan":
         scan(a.out)
     elif a.cmd == "dm":
