@@ -120,6 +120,8 @@ def apply_pandals(dry_run=False):
 # ---------------------------------------------------------------- food (CSV writer)
 FOOD_NEAR_M = 600       # walkable from a pandal (the discover radius)
 FOOD_PER_PANDAL = 5     # so one busy street does not flood the list
+FOOD_PER_PANDAL_SPARSE = 8   # areas with few listed pandals (Howrah) get more eateries per pandal
+SPARSE_ZONE_PANDALS = 10
 FOOD_MAX_NEW = 240
 # Global chains: the guide is about where to eat during pujo, and these are the same everywhere.
 CHAINS = re.compile(r"kfc|mcdonald|domino|pizza hut|subway|burger king|starbucks|cafe coffee day|\bccd\b|baskin|dunkin|wow! ?momo|haldiram|keventers|chai point|chaayos|barista|costa|taco bell|barbeque nation|monginis|blue tokai|bean stop|caterer", re.I)
@@ -171,6 +173,10 @@ def apply_food(dry_run=False):
     fields = list(rows[0].keys()) + [f for f in ("cost2",) if f not in rows[0]]
     pandals = [r for r in csv.DictReader(open(raw / "pandals.csv", encoding="utf-8"))]
     pts = [((float(p["lat"]), float(p["lng"])), p) for p in pandals]
+    zone_n = {}
+    for p in pandals:
+        zone_n[p["zone"]] = zone_n.get(p["zone"], 0) + 1
+    cap = lambda p: FOOD_PER_PANDAL_SPARSE if zone_n.get(p["zone"], 0) < SPARSE_ZONE_PANDALS else FOOD_PER_PANDAL
     have = [((float(r["lat"]), float(r["lng"])), r["name"]) for r in rows]
     ids = {r["id"] for r in rows}
     per = {}
@@ -195,7 +201,7 @@ def apply_food(dry_run=False):
     for _, d, e, near in cands:
         if len(added) >= FOOD_MAX_NEW:
             break
-        if per.get(near["id"], 0) >= FOOD_PER_PANDAL:
+        if per.get(near["id"], 0) >= cap(near):
             continue
         pt = (e["lat"], e["lng"])
         if any(haversine_m(pt, q) < 40 or (haversine_m(pt, q) < 400 and similarity(e["name"], n) > 0.75) for q, n in have):
