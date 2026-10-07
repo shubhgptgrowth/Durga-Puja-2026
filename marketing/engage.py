@@ -199,6 +199,20 @@ def check():
         ok = ok and e is None
         return r
 
+    if not token.startswith("IG"):  # a token can inspect itself: which permissions it really carries, and until when
+        d, e = safe(graph, "GET", "debug_token", token, input_token=token)
+        if d:
+            d = d.get("data", {})
+            exp = d.get("expires_at") or 0
+            until = f"expires {dt.datetime.fromtimestamp(exp, dt.timezone.utc):%Y-%m-%d}" if exp else "never expires"
+            print(f"     token: {d.get('type')}, app {d.get('application')}, valid {d.get('is_valid')}, {until}")
+            print(f"     permissions: {', '.join(sorted(d.get('scopes', []))) or 'none'}")
+            for sc in ("instagram_basic", "instagram_manage_comments", "instagram_manage_messages", "pages_show_list",
+                       "pages_read_engagement", "pages_manage_metadata"):
+                if sc not in d.get("scopes", []):
+                    print(f"     missing: {sc}")
+        else:
+            print(f"     token details unavailable: {e}")
     acct = step("account", graph, "GET", user, token, fields="username")
     if acct:
         print(f"     @{acct.get('username')}")
