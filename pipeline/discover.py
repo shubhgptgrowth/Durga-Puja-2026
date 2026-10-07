@@ -38,7 +38,10 @@ def overpass(q, timeout=180):
         try:
             req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(), headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=timeout + 30) as r:
-                return json.load(r)["elements"]
+                data = json.load(r)
+            if "error" in data.get("remark", ""):  # an overloaded server answers 200 with an empty result and a remark
+                raise RuntimeError(data["remark"][:200])
+            return data["elements"]
         except Exception as e:  # 429 / 504 / timeouts
             last = e
             print(f"overpass {url} failed ({e}); retrying", file=sys.stderr)
@@ -273,7 +276,7 @@ def discover_food(only=""):
     if want and prev.exists():  # a partial run keeps what earlier runs found
         out = json.loads(prev.read_text(encoding="utf-8")).get("places", [])
         seen = {e["osm"] for e in out}
-    size = 5 if want else 15
+    size = 3 if want else 15
     for i in range(0, len(pandals), size):
         batch = pandals[i:i + size]
         parts = "".join(f'nwr{sel}(around:600,{p["lat"]},{p["lng"]});' for p in batch for sel in (amen, shop))
