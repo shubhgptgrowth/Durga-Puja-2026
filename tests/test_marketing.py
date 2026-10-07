@@ -327,3 +327,14 @@ class RedesignTest(unittest.TestCase):
             factory.check(plan, idx)
         idx["cr-x"]["permission"] = "2026-10-07, Instagram DM"
         factory.check(plan, idx)
+
+    def test_caption_lint_from_the_ig_skills(self):
+        from marketing import caption_lint
+        two_asks = "পুজোর রুট 🙏\n\nComment PUJO for the Durga Puja Kolkata routes. Save this for later.\n\n#DurgaPuja2026"
+        notes = caption_lint.caption_notes(two_asks)
+        self.assertTrue(any("one ask" in n for n in notes), notes)
+        self.assertFalse(any("hashtags" in n for n in notes), notes)
+        six = "Durga Puja in Kolkata, one route a night.\n\n#a1 #a2 #a3 #a4 #a5 #a6"
+        self.assertTrue(any(n.startswith("FAIL hashtags") for n in caption_lint.caption_notes(six)))
+        self.assertRegex(caption_lint.hook_note("In 1976, Bengal switched on the radio and got a shock"), r"^hook \d+ (STRONG|OK|WEAK)")
+        self.assertEqual(caption_lint.caption_notes(""), [])

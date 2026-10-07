@@ -26,6 +26,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
+from .. import caption_lint
 from ..kit import SITE
 from . import photo_post
 
@@ -169,15 +170,18 @@ def review_page(date, items, out):
             media = "".join(f'<img src="{html.escape(u)}" loading="lazy">' for u in it["image_urls"])
         else:
             media = f'<video src="{html.escape(it["video_url"])}" controls playsinline preload="metadata"></video>'
+        notes = ([caption_lint.hook_note(it["hook"])] if it.get("hook") else []) + caption_lint.caption_notes(it.get("caption"))
+        lint = "".join(f"<li>{html.escape(n)}</li>" for n in notes if n)
         rows.append(f"""<section><h2>{html.escape(it['at'])} · {it['type']} · {html.escape(it['id'])}</h2>
 {media}
-<pre>{cap}</pre></section>""")
+<pre>{cap}</pre>{f'<ul class="lint">{lint}</ul>' if lint else ''}</section>""")
     (out / "index.html").write_text(f"""<!doctype html><html lang="bn"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Reels review {date}</title>
 <style>body{{font-family:system-ui,sans-serif;background:#fbf3e4;color:#2b1410;margin:0;padding:16px;max-width:760px;margin:auto}}
 h1{{color:#b21826}}section{{background:#fff;border:3px solid #b21826;border-radius:14px;padding:12px;margin:16px 0}}
-video{{width:100%;max-height:70vh;background:#000;border-radius:8px}}img{{width:100%;border-radius:8px;margin:4px 0}}pre{{white-space:pre-wrap;font:14px/1.45 system-ui}}</style>
+video{{width:100%;max-height:70vh;background:#000;border-radius:8px}}img{{width:100%;border-radius:8px;margin:4px 0}}pre{{white-space:pre-wrap;font:14px/1.45 system-ui}}
+.lint{{font-size:13px;color:#7a4a00;background:#fff6dc;border-radius:8px;padding:8px 8px 8px 24px}}</style>
 <h1>পুজো পরিক্রমা · {date}</h1><p>{len(items)} items in posting order (IST). Nothing posts until this day is approved.</p>
 {''.join(rows)}</html>""", encoding="utf-8")
 
@@ -206,6 +210,8 @@ def main(argv=None):
     for it in sorted(plan["items"], key=lambda x: x["at"]):
         fid = f"{pfx}-{it['id']}"
         entry = {"type": it["type"], "id": fid, "at": it["at"]}
+        if it.get("hook") and it["type"] == "reel":
+            entry["hook"] = it["hook"]
         if it["type"] == "photo":
             names, cap = photo_post.build(it, fid, a.src, out, download)
             entry.update(image_urls=[base + n for n in names], caption=cap)
