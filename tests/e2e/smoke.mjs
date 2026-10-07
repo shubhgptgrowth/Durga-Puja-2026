@@ -269,12 +269,17 @@ try {
     await page.fill('#ofName', 'Ratan');
     await page.fill('#ofPhone', '98300 12345');
     await page.check('#ofOwner');
+    await page.check('#ofFeatured');   // the owner asks for the paid, featured placement
     await shot('10c-offer-form');
     await page.click('#offerForm [type="submit"]');
-    await waitToast(/call to confirm/, 'offer sent');
+    await page.waitForSelector('.sheet.open #ofDone');   // what happens next, and how to pay
+    must(/₹1,999/.test(await page.locator('.sheet.open').innerText()), 'the featured price should be on the pay step');
+    await page.click('#ofDone');
+    await page.waitForSelector('.sheet.open #postOfferBtn');
     if (fake) {
       const st = await (await fetch(`${fake.url}/__state`)).json();
       must(st.offers.length === 1 && st.offers[0].phone === '+919830012345' && st.offers[0].status === 'pending', 'offer not stored as pending');
+      must(st.offers[0].wants_featured === true, 'the featured request should be stored');
       await fetch(`${fake.url}/__approveOffers`);
       await closeSheet();
       await page.reload(); await page.waitForSelector('.tab[data-view="explore"]');
@@ -285,7 +290,20 @@ try {
       await page.waitForSelector('.sheet.open .offer-card');
       must(/Free mishti doi/.test(await page.locator('.sheet.open .offer-card').innerText()), 'approved offer not on the eatery page');
       must(!/98300/.test(await page.locator('.sheet.open').innerText()), 'owner phone must never show');
+      must(!(await count('.sheet.open .offer-card.featured')), 'not featured until the team features it');
       await shot('10d-offer');
+      // After payment the team features it: labelled Sponsored, and the eatery is listed first
+      await fetch(`${fake.url}/__featureOffers`);
+      await closeSheet();
+      await page.reload(); await page.waitForSelector('.tab[data-view="explore"]');
+      await page.click('.tab[data-view="explore"]');
+      await page.click('#exploreBar [data-seg="food"]');
+      await page.waitForSelector('#explorePanel .item[data-place="coffee_house"] .offer-chip.featured', { timeout: 8000 });
+      must(await page.locator('#explorePanel .item[data-place]').first().getAttribute('data-place') === 'coffee_house', 'a featured eatery is listed first');
+      must(/Sponsored/.test(await page.locator('#explorePanel .item[data-place="coffee_house"] .offer-chip').innerText()), 'featured must say Sponsored');
+      await page.click('#explorePanel .item[data-place="coffee_house"]');
+      await page.waitForSelector('.sheet.open .offer-card.featured .sponsored');
+      await shot('10e-offer-featured');
     }
     await closeSheet();
     await page.click('.tab[data-view="moments"]');

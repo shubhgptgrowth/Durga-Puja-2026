@@ -8,12 +8,16 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: "list, approve, reject or pending"
+        description: "list, approve, reject, pending, feature (after payment) or unfeature"
         type: choice
-        options: [list, approve, reject, pending]
+        options: [list, approve, reject, pending, feature, unfeature]
         default: list
       offer_id:
-        description: "Offer id (for approve / reject / pending)"
+        description: "Offer id (for every action but list)"
+        required: false
+        default: ""
+      featured_until:
+        description: "feature: last day it is featured, YYYY-MM-DD (e.g. Dashami). Record the payment in the dashboard, never here: this repo is public"
         required: false
         default: ""
 
@@ -34,6 +38,7 @@ jobs:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
           ACTION: ${{ inputs.action || 'list' }}
           OFFER_ID: ${{ inputs.offer_id }}
+          FEATURED_UNTIL: ${{ inputs.featured_until }}
         run: |
           if [ "$ACTION" = "list" ]; then python -m marketing.offers | tee -a "$GITHUB_STEP_SUMMARY"
-          else python -m marketing.offers "$ACTION" "$OFFER_ID" | tee -a "$GITHUB_STEP_SUMMARY"; fi
+          else python -m marketing.offers "$ACTION" "$OFFER_ID" $FEATURED_UNTIL | tee -a "$GITHUB_STEP_SUMMARY"; fi

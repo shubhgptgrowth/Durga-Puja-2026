@@ -55,4 +55,38 @@ do $$ declare r jsonb; begin
   assert r->>'status' = 'rate_limited', r::text;
 end $$;
 
+-- Featured offers (paid): asked for on the form, switched on by the team only, labelled in the feed.
+do $$ declare r jsonb; begin
+  perform set_config('request.jwt.claims', '{"sub": "cdcdcdcd-0000-0000-0000-000000000002", "role": "authenticated"}', false);
+  set local role authenticated;
+  r := public.submit_offer('mitra_cafe', 'Kabiraji at half price', null, public.ist_today(), public.ist_today() + 3, 'Ratan', '9830012345', true);
+  assert r->>'status' = 'pending', r::text;
+  perform set_config('pp.feat', r->>'id', false);
+  begin perform public.feature_offer((r->>'id')::uuid, public.ist_today() + 3); assert false, 'the app cannot feature';
+  exception when insufficient_privilege then null; end;
+end $$;
+
+do $$ declare r jsonb; f record; begin
+  assert (select wants_featured from public.food_offers where id = current_setting('pp.feat')::uuid), 'the request is kept';
+  assert (select wants_featured from analytics.offers_pending where id = current_setting('pp.feat')::uuid), 'and shown to the team';
+  r := public.feature_offer(current_setting('pp.feat')::uuid, public.ist_today() - 1);
+  assert r->>'status' = 'bad_date', r::text;
+  r := public.feature_offer(current_setting('pp.feat')::uuid, public.ist_today() + 30, 'Rs 1999 UPI ref 123');
+  assert r->>'status' = 'ok', r::text;
+  assert (r->>'featured_until')::date = public.ist_today() + 3, 'featuring never runs past the offer: ' || r::text;
+  assert (select status from public.food_offers where id = current_setting('pp.feat')::uuid) = 'approved', 'featuring approves';
+  assert (select count(*) from jsonb_array_elements(public.offers_report()) e where e ? 'featured_note' or e ? 'contact_phone') = 0, 'no payment notes or phones in the report';
+  set local role anon;
+  select * into f from public.offers_feed where id = current_setting('pp.feat')::uuid;
+  assert f.featured, 'featured in the feed';
+  assert exists (select 1 from public.offers_feed where place_id = 'mitra_cafe' and not featured), 'other offers are not';
+  assert not exists (select 1 from information_schema.columns where table_name = 'offers_feed' and column_name like 'featured\_%'), 'no payment fields in the feed';
+end $$;
+
+do $$ declare r jsonb; begin
+  r := public.feature_offer(current_setting('pp.feat')::uuid, null);
+  assert r->>'status' = 'ok', r::text;
+  assert not (select featured from public.offers_feed where id = current_setting('pp.feat')::uuid), 'un-featured';
+end $$;
+
 select 'offers ok';

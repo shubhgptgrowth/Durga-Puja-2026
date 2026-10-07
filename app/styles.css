@@ -942,6 +942,14 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .offer-card b { display: block; font-size: 14.5px; }
 .offer-card p { margin: 2px 0; font-size: 13px; color: var(--ink-2); }
 .offer-card small { color: var(--gold); font-size: 12px; }
+/* Featured (paid) offers: always labelled; a brighter card and chip, nothing that looks like crowd advice */
+.offer-chip.featured { background: var(--gold-2); color: #2A1208; }
+.offer-card.featured { border-style: solid; border-width: 1.5px; }
+.sponsored { display: inline-block; margin: 0 6px 2px 0; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink-3);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; vertical-align: middle; }
+.mini-list .sponsored { margin-left: 6px; }
+:lang(bn) .sponsored { letter-spacing: 0; }
+.feat-opt span { line-height: 1.4; }
 .owner-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 13.5px; }
 .owner-cta .btn { flex: none; }
 

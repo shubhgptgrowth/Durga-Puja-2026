@@ -15,6 +15,10 @@ export const CONFIG = {
   },
   // iCloud link to the "Pujo steps" Shortcut (docs/product/IPHONE_SHORTCUT.md). Empty: My Pujo shows how to build it.
   healthShortcut: '',
+  // Featured (paid) eatery offers, docs/marketing/FEATURED_OFFERS.md. priceInr is shown on the offer form; with a
+  // UPI id (e.g. 'pujoparikrama@okicici') the owner also gets a UPI pay button after sending. Empty upiId: we
+  // take payment on the call. Set priceInr to 0 to hide the featured option.
+  featured: { priceInr: 1999, upiId: '', payeeName: 'Pujo Parikrama' },
   map: {
     // Vector base map: a Kolkata extract of the Protomaps/OpenStreetMap basemap, built at deploy time
     // into app/tiles/ (scripts/build_tiles.sh). The manifest names the current file. If it's missing
