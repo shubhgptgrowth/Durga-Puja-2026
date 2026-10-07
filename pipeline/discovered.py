@@ -119,6 +119,7 @@ def apply_pandals(dry_run=False):
 
 # ---------------------------------------------------------------- food (CSV writer)
 FOOD_NEAR_M = 600       # walkable from a pandal (the discover radius)
+FOOD_NEAR_M_SPARSE = 1500   # Howrah and other areas with few listed pandals: OSM has fewer eateries there
 FOOD_PER_PANDAL = 5     # so one busy street does not flood the list
 FOOD_PER_PANDAL_SPARSE = 8   # areas with few listed pandals (Howrah) get more eateries per pandal
 SPARSE_ZONE_PANDALS = 10
@@ -194,7 +195,7 @@ def apply_food(dry_run=False):
             continue
         pt = (e["lat"], e["lng"])
         d, near = min((haversine_m(x[0], pt), x[1]) for x in pts) if pts else (1e9, None)
-        if d <= FOOD_NEAR_M:
+        if d <= (FOOD_NEAR_M_SPARSE if zone_n.get(near["zone"], 0) < SPARSE_ZONE_PANDALS else FOOD_NEAR_M):
             cands.append((-score(e), d, e, near))
     cands.sort(key=lambda c: (c[0], c[1]))
     added, names = [], {}
