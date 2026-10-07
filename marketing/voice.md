@@ -17,8 +17,12 @@ github.com/Jakeschincariol/instagram-agent-skill, MIT). A session start hook cop
 
 ## What we sound like
 
-- **Language:** Bengali first, then English. The Bengali paragraph is the hook and the English one carries the search
-  terms. Never translate line for line; each language says it the way a person would.
+- **Language:** captions are English, written for Instagram search (owner's call, 7 Oct): the first line carries the
+  search phrase (Durga Puja 2026, Kolkata, the area or topic), then a short body, one ask, the keywords in brackets
+  and at most three hashtags (layout: marketing/captions.py). Bengali appears in a caption only as an occasional
+  single line where it adds feeling, never in every post. Voiceovers and on-screen text stay Bengali-first.
+- **Credits:** never in the caption. Photo and footage credits go on the media (corner of the photo, foot of the
+  slide, the reel's end card).
 - **Voice:** a warm, persuasive Bengali woman in her mid-twenties who has done every pujo night on foot. In
   voiceovers she is the ElevenLabs preset "Nadine"; when it is unavailable, edge-tts bn-IN-TanishaaNeural.
 - **Words we use:** পুজো, ঠাকুর দেখা, প্যান্ডেল হপিং, মা, প্রতিমা, অঞ্জলি, ধুনুচি, পেটপুজো, pujo, pandal hopping, Maa,
