@@ -57,11 +57,23 @@ def footage_index(catalog_path):
     return idx
 
 
-def download(url, dest):
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=300) as r, open(str(dest) + ".part", "wb") as f:
-        shutil.copyfileobj(r, f, 1 << 20)
-    os.replace(str(dest) + ".part", dest)
+def download(url, dest, tries=5):
+    """Wikimedia answers bursts with 429 (and the odd 503): wait and retry rather than fail the whole render."""
+    import time
+    import urllib.error
+    for k in range(tries):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=300) as r, open(str(dest) + ".part", "wb") as f:
+                shutil.copyfileobj(r, f, 1 << 20)
+            os.replace(str(dest) + ".part", dest)
+            return
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 504) or k == tries - 1:
+                raise
+            wait = int(e.headers.get("Retry-After") or 0) or 5 * 2 ** k
+            print(f"{e.code} for {url.rsplit('/', 1)[-1][:60]}, retrying in {wait}s", flush=True)
+            time.sleep(min(wait, 120))
 
 
 def fetch(cid, e, src_dir):
