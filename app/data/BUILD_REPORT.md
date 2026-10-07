@@ -1,12 +1,12 @@
-# Build report — 2026-10-07T19:01:40+00:00
+# Build report — 2026-10-07T19:07:02+00:00
 
-Bundle version `56b9c52c3aed`
+Bundle version `5d6511eb0649`
 
 | Entity | Count |
 |---|---|
 | regions | 5 |
 | zones | 14 |
-| pandals | 118 |
+| pandals | 125 |
 | food | 175 |
 | parking | 16 |
 | transit | 35 |
@@ -26,11 +26,11 @@ Bundle version `56b9c52c3aed`
 | Lake Town & Dum Dum | 7 | 1 | 7.0 km | 10,277 | 684 |
 | Bhowanipore & Elgin | 12 | 1 | 12.4 km | 18,045 | 1084 |
 | Kasba & Bosepukur | 5 | 0 | 4.9 km | 7,200 | 463 |
-| Jadavpur & Santoshpur | 8 | 0 | 12.1 km | 17,653 | 952 |
+| Jadavpur & Santoshpur | 9 | 0 | 12.9 km | 18,846 | 1037 |
 | Tollygunge & Naktala | 4 | 1 | 6.1 km | 8,955 | 486 |
 | Beleghata & Phoolbagan | 1 | 0 | 2.1 km | 3,119 | 151 |
 | Baguiati & Kestopur | 1 | 0 | 3.2 km | 4,683 | 218 |
-| Howrah: Shibpur, Salkia & Liluah | 2 | 0 | 6.5 km | 9,422 | 437 |
+| Howrah: Shibpur, Salkia & Liluah | 8 | 1 | 26.8 km | 39,125 | 1866 |
 
 ## Curated itineraries
 
@@ -43,8 +43,8 @@ Bundle version `56b9c52c3aed`
 | Salt Lake + Lake Town Hop | 13 | 16:00–00:03 | 13.41 km | 19,581 |
 | The All-Nighter: North → South | 10 | 22:00–07:13 | 11.21 km | 16,375 |
 
-## Warnings (311)
+## Warnings (318)
 
-- 309 records are not ground-verified yet
+- 316 records are not ground-verified yet
 - pandals bhowanipore_75pally and obosor_sarbojanin are less than 25 m apart. Check the coordinates.
 - zones (new_town): has no pandals yet, so it is left out of the bundle
