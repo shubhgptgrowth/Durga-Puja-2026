@@ -6,6 +6,8 @@ summary = """Bathukamma is Telangana's state festival, a nine-day celebration of
 type = "Article"
 section = "Navratri"
 order = 72
+image = "bathukamma"
+images = ["bathukamma-2"]
 keywords = ["Bathukamma", "Bathukamma 2026", "Saddula Bathukamma", "Engili Pula Bathukamma", "Bathukamma flowers", "Telangana festival", "Bathukamma songs"]
 related = ["navratri/across-india/", "navratri/golu/", "navratri/", "navratri/navadurga/"]
 

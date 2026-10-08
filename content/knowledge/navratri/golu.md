@@ -6,6 +6,8 @@ summary = """Golu (also Kolu or Bommai Kolu) is the Navratri custom of arranging
 type = "Article"
 section = "Navratri"
 order = 70
+image = "golu"
+images = ["golu-2"]
 keywords = ["Golu", "Navratri Golu", "Bommai Kolu", "Kolu steps", "Bommala Koluvu", "Gombe Habba", "Golu 2026", "marapachi dolls", "sundal"]
 related = ["navratri/across-india/", "navratri/ayudha-puja-vidyarambham/", "navratri/mysuru-dasara/", "navratri/", "navratri/in-kolkata/"]
 

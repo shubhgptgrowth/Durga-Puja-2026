@@ -6,6 +6,7 @@ summary = """In South India the last days of Navratri honour knowledge and work.
 type = "Article"
 section = "Navratri"
 order = 78
+image = "ayudha-puja"
 keywords = ["Ayudha Puja", "Ayudha Puja 2026", "Saraswati Puja Navratri", "Vidyarambham", "Vidyarambham 2026", "Pooja Vaippu", "Ezhuthiniruthu", "Hari Sri"]
 related = ["navratri/across-india/", "navratri/golu/", "navratri/mysuru-dasara/", "festivals/vishwakarma-puja/", "durga-puja/rituals/navami/"]
 

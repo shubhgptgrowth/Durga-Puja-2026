@@ -6,6 +6,8 @@ summary = """Kullu Dussehra is a week-long festival in Himachal Pradesh's Kullu 
 type = "Article"
 section = "Navratri"
 order = 76
+image = "kullu-dussehra"
+images = ["kullu-dussehra-2"]
 keywords = ["Kullu Dussehra", "Kullu Dussehra 2026", "Dhalpur Maidan", "Raghunath rath yatra", "Himachal Dussehra", "Lanka Dahan Kullu"]
 related = ["navratri/across-india/", "navratri/dussehra-vijayadashami/", "navratri/mysuru-dasara/"]
 

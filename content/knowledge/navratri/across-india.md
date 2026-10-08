@@ -7,7 +7,7 @@ type = "Article"
 section = "Navratri"
 order = 3
 image = "navadurga"
-images = ["garba", "dussehra"]
+images = ["garba", "golu", "bathukamma", "mysuru-dasara", "dussehra"]
 keywords = ["Navratri across India", "how Navratri is celebrated in different states", "Dussehra traditions", "Navratri regional traditions", "Golu", "Bathukamma", "Mysuru Dasara", "Kullu Dussehra"]
 related = ["navratri/", "navratri/in-kolkata/", "navratri/golu/", "navratri/bathukamma/", "navratri/mysuru-dasara/", "navratri/kullu-dussehra/", "navratri/ayudha-puja-vidyarambham/", "navratri/garba-dandiya/", "navratri/dussehra-vijayadashami/"]
 

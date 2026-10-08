@@ -6,6 +6,7 @@ summary = """Mysuru Dasara is Karnataka's state festival (Nadahabba), held over 
 type = "Article"
 section = "Navratri"
 order = 74
+image = "mysuru-dasara"
 keywords = ["Mysuru Dasara", "Mysore Dasara 2026", "Jamboo Savari", "Mysore Palace lighting", "Nadahabba", "Dasara elephants", "torchlight parade"]
 related = ["navratri/across-india/", "navratri/dussehra-vijayadashami/", "navratri/golu/", "navratri/ayudha-puja-vidyarambham/"]
 
