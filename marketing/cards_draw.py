@@ -64,9 +64,10 @@ def cover(s, photo):
         text(d, (W // 2, y - 70), s["kicker"].upper(), F("semi", 40), fill=YEL, anchor="mm", stroke=2)
     for ln in ls:
         text(d, (W // 2, y), ln, f, fill=YEL, anchor="ma", stroke=4)
-        y += int(f.size * 1.05)
+        bottom = d.textbbox((W // 2, y), ln, font=f, anchor="ma", stroke_width=4)[3]
+        y = max(y + int(f.size * 1.05), bottom + 8)
     if s.get("sub"):
-        y = block(d, y + 50, s["sub"], F("semi", 50), W - 200, centre=True, stroke=3, max_lines=2)
+        y = block(d, bottom + 40, s["sub"], F("semi", 50), W - 200, centre=True, stroke=3, max_lines=2)
     if s.get("pill"):
         fp = F("bold", 44)
         tw = d.textlength(s["pill"], font=fp)
@@ -90,12 +91,14 @@ def item(s, photo):
     while size > 80 and len(wrap(d, s["title"].upper(), F("display", size), W - 180)) > 3:
         size -= 8  # the whole title, in at most three lines
     f = F("display", size)
+    bottom = y
     for ln in wrap(d, s["title"].upper(), f, W - 180):
         text(d, (90, y), ln, f, fill=YEL, stroke=2)
-        y += int(f.size * 1.12)  # Anton's capitals sit low: room before the next line and the rule
-    d.rectangle((90, y + 40, 330, y + 48), fill=RED)
+        bottom = d.textbbox((90, y), ln, font=f, stroke_width=2)[3]  # Anton draws well below its line step
+        y = bottom + int(f.size * 0.12)
+    d.rectangle((90, bottom + 36, 330, bottom + 44), fill=RED)
     if s.get("body"):
-        block(d, y + 100, s["body"], F("med", 58), W - 180, max_lines=7)
+        block(d, bottom + 90, s["body"], F("med", 58), W - 180, max_lines=7)
     if s.get("foot"):
         d.rounded_rectangle((70, H - 250, W - 70, H - 90), 34, fill=(255, 255, 255, 28))
         text(d, (110, H - 170), s["foot"], fit(d, s["foot"], "semi", 44, W - 220), fill=WHITE, anchor="lm")
@@ -134,9 +137,10 @@ def end(s, photo):
     y = 560
     for k, ln in enumerate(ls):
         text(d, (W // 2, y), ln, f, fill=YEL if k == len(ls) - 1 else WHITE, anchor="ma", stroke=4)
-        y += int(f.size * 1.05)
+        bottom = d.textbbox((W // 2, y), ln, font=f, anchor="ma", stroke_width=4)[3]
+        y = max(y + int(f.size * 1.05), bottom + 8)
     if s.get("sub"):
-        y = block(d, y + 70, s["sub"], F("semi", 52), W - 220, centre=True, stroke=3, max_lines=3)
+        y = block(d, bottom + 50, s["sub"], F("semi", 52), W - 220, centre=True, stroke=3, max_lines=3)
     if s.get("pill"):
         fp = F("bold", 44)
         tw = d.textlength(s["pill"], font=fp)
