@@ -7,8 +7,8 @@ The manifest lists items in posting order:
     {"items": [{"type": "reel", "id": "r02", "video_url": "https://….mp4", "caption": "…"},
                {"type": "carousel", "slug": "pujo-dates-2026"}]}
 Reels need a public MP4 URL. Carousels are the ones the deploy renders to /kit/carousels/ (marketing/carousels.py);
-their slides and caption come from the published carousels.json. --start N resumes at the Nth item (1-based) after a
-failed run, so nothing is posted twice. Same token and account as marketing.publish_ig.
+their slides and caption come from the published carousels.json. A failed item is skipped and the rest still post; --start N
+--count 1 reposts just that item (1-based), so nothing is posted twice. Same token and account as marketing.publish_ig.
 
 Daily sets (marketing/footage/factory.py) are read from the live site with --date: items carry "at" (HH:MM IST) and
 the run waits for each slot; --window am|pm posts only the slots before / from SPLIT (14:00), so each half fits in one job (GitHub stops a job
@@ -33,6 +33,10 @@ from .publish_ig import get_json, graph
 KIT_CAROUSELS = SITE + "kit/carousels/"
 
 
+class NotProcessed(SystemExit):
+    """Instagram took the media but its processing failed; a fresh container often goes through."""
+
+
 def wait_ready(cid, token, tries=90, every=5):
     """Instagram fetches and processes media asynchronously; videos can take a few minutes."""
     for _ in range(tries):
@@ -40,7 +44,7 @@ def wait_ready(cid, token, tries=90, every=5):
         if st == "FINISHED":
             return
         if st in ("ERROR", "EXPIRED"):
-            raise SystemExit(f"Instagram could not process container {cid} ({st})")
+            raise NotProcessed(f"Instagram could not process container {cid} ({st})")
         time.sleep(every)
     raise SystemExit(f"container {cid} still not ready after {tries * every}s")
 
@@ -66,7 +70,19 @@ def resolve(item, spec):
     raise SystemExit(f"unknown item type {item['type']!r}")
 
 
-def publish(p, user, token):
+def publish(p, user, token, retries=1):
+    """Creates the container, waits for Instagram to process it and publishes; one fresh try if processing fails."""
+    for attempt in range(retries + 1):
+        try:
+            return publish_once(p, user, token)
+        except NotProcessed as e:
+            if attempt == retries:
+                raise
+            print(f"  {e}; trying a fresh container", flush=True)
+            time.sleep(60)
+
+
+def publish_once(p, user, token):
     if p["kind"] == "reel":
         cid = graph("POST", f"{user}/media", token, media_type="REELS", video_url=p["urls"][0],
                     caption=p["caption"], share_to_feed="true")["id"]
@@ -154,12 +170,11 @@ def main(argv=None):
         try:
             print(f"{head} → media {publish(p, user, token)}", flush=True)
             last = time.time()
-        except SystemExit as e:
-            print(f"{head} FAILED: {e}  (resume with --start {n})", flush=True)
+        except SystemExit as e:  # nothing was published for this item, so the later slots still go out
+            print(f"{head} FAILED: {e}  (repost with --start {n} --count 1)", flush=True)
             failed.append(n)
-            break  # stop here so a --start resume never posts anything twice
     if failed:
-        raise SystemExit(f"failed items: {failed}")
+        raise SystemExit(f"failed items: {failed} (each can be reposted alone with --start N --count 1)")
     sys.stdout.flush()
 
 
