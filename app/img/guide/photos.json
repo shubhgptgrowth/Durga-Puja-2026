@@ -9,6 +9,26 @@
   "h": 675,
   "caption": "Alpana drawn at the doorstep in rice paste and chalk water."
  },
+ "ayudha-puja": {
+  "title": "File:Ayudha Pooja.jpg",
+  "author": "Balasubramanian G Velu",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ayudha_Pooja.jpg",
+  "w": 1200,
+  "h": 533,
+  "caption": "Vehicles garlanded for Ayudha Puja, with an ash gourd ready in front."
+ },
+ "ayudha-puja-2": {
+  "title": "File:Ayuthapooja.jpg",
+  "author": "Whitecat51364",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ayuthapooja.jpg",
+  "w": 1200,
+  "h": 900,
+  "caption": "Books and offerings set before the Goddess for Saraswati and Ayudha Puja."
+ },
  "basanti": {
   "title": "File:Basanti puja pratima @ Netaji sangha play ground ,Ghola Sodepure.jpg",
   "author": "Chandrapirh Chakraborty",
@@ -18,6 +38,26 @@
   "w": 1200,
   "h": 900,
   "caption": "A Durga image for Basanti Puja, the spring worship of the goddess."
+ },
+ "bathukamma": {
+  "title": "File:Bathukamma in telangana.jpg",
+  "author": "Happie1Soul",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathukamma_in_telangana.jpg",
+  "w": 541,
+  "h": 1200,
+  "caption": "Women gather around their bathukammas, towers of flowers, in Telangana."
+ },
+ "bathukamma-2": {
+  "title": "File:Bathukamma.jpg",
+  "author": "Randhirreddy at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathukamma.jpg",
+  "w": 960,
+  "h": 1200,
+  "caption": "A bathukamma: flowers stacked in rings into a cone."
  },
  "beguni": {
   "title": "File:Bharer cha and beguni.jpg",
@@ -207,7 +247,27 @@
   "page": "https://commons.wikimedia.org/wiki/File:Navratri_Kalash_Puja.jpg",
   "w": 904,
   "h": 1200,
-  "caption": "A kalash with a lamp and flowers, installed for Navratri."
+  "caption": "A kalash (ghat) with a lamp, leaves and flowers, set up for worship."
+ },
+ "golu": {
+  "title": "File:Navratri Golu - Dashavatara.JPG",
+  "author": "Mandayamr",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Navratri_Golu_-_Dashavatara.JPG",
+  "w": 1200,
+  "h": 900,
+  "caption": "A Golu on steps, with the Dashavatara, Vishnu's ten forms, among the dolls."
+ },
+ "golu-2": {
+  "title": "File:Golu, Kolu scene of couple in a Hindu festive doll display.jpg",
+  "author": "GoDakshin from Bangalore, India",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Golu,_Kolu_scene_of_couple_in_a_Hindu_festive_doll_display.jpg",
+  "w": 1200,
+  "h": 798,
+  "caption": "A doll couple on a Golu display."
  },
  "history": {
   "title": "File:Plate 3. Festival of the Goddess Durga at Calcutta.jpg",
@@ -309,6 +369,26 @@
   "h": 900,
   "caption": "A Kolkata tram among yellow taxis."
  },
+ "kullu-dussehra": {
+  "title": "File:Kullu Dussehra - main procession.jpg",
+  "author": "Kondephy",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kullu_Dussehra_-_main_procession.jpg",
+  "w": 1200,
+  "h": 800,
+  "caption": "The main procession at Kullu Dussehra, with long horns sounding."
+ },
+ "kullu-dussehra-2": {
+  "title": "File:Kullu Dussehra - Main procession.jpg",
+  "author": "Kondephy",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kullu_Dussehra_-_Main_procession.jpg",
+  "w": 1200,
+  "h": 800,
+  "caption": "Village deities in their palanquins at Kullu Dussehra."
+ },
  "kumari-puja": {
   "title": "File:Kumari Puja of Durga Puja (West Bengal).jpg",
   "author": "Shutterpixs",
@@ -408,6 +488,16 @@
   "w": 1200,
   "h": 600,
   "caption": "An illustrated leaf of the Devi Mahatmya."
+ },
+ "mysuru-dasara": {
+  "title": "File:Mysore Palace Dussehra Illumination.jpg",
+  "author": "V N GUPTA",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mysore_Palace_Dussehra_Illumination.jpg",
+  "w": 1200,
+  "h": 900,
+  "caption": "Mysuru Palace lit up for Dasara."
  },
  "narkel-naru": {
   "title": "File:Narkel naru.made up of coconut and jaggery.jpg",
