@@ -8,7 +8,7 @@ section = "Navratri"
 order = 0
 image = "garba"
 keywords = ["Navratri 2026", "Sharad Navratri 2026", "Navratri dates", "Navratri meaning", "Navratri vs Durga Puja", "Chaitra Navratri"]
-related = ["navratri/navadurga/", "navratri/ghatasthapana/", "navratri/fasting-rules/", "navratri/kanya-pujan/", "navratri/dussehra-vijayadashami/", "navratri/garba-dandiya/", "durga-puja/what-is-durga-puja/"]
+related = ["navratri/across-india/", "navratri/in-kolkata/", "navratri/navadurga/", "navratri/ghatasthapana/", "navratri/fasting-rules/", "navratri/kanya-pujan/", "navratri/dussehra-vijayadashami/", "navratri/garba-dandiya/", "durga-puja/what-is-durga-puja/"]
 
 [[faq]]
 q = "When does Navratri start in 2026?"
@@ -100,6 +100,10 @@ Lunar days (*tithis*) do not line up neatly with calendar days. A tithi can star
 | Ending | Dussehra, Ravan dahan, Ramlila | Bijoya Dashami, [sindoor khela](/durga-puja/rituals/sindoor-khela/), immersion |
 
 In Bengal the Goddess is understood as a daughter, Uma, returning to her parents' home with her children for a few days, which is why the mood of Dashami is a tender farewell. In much of north and west India, the emphasis is on austerity, devotion and the triumph of good over evil. Both are expressions of the same reverence, and many families, especially in cities like Kolkata, Delhi and Mumbai, now enjoy both: a pandal visit in the evening and garba later at night. Read more in [what is Durga Puja](/durga-puja/what-is-durga-puja/).
+
+## How other communities celebrate
+
+The nine nights look different in every part of India. Tamil, Telugu and Kannada homes set up [Golu](/navratri/golu/), steps of dolls visited by neighbours each evening; Telangana's women build flower towers for [Bathukamma](/navratri/bathukamma/); Karnataka holds the [Mysuru Dasara](/navratri/mysuru-dasara/) with its elephant procession; the Kullu valley gathers its village gods for [Kullu Dussehra](/navratri/kullu-dussehra/); and the south worships tools and books on Navami and starts children on their letters on Vijayadashami ([Ayudha Puja and Vidyarambham](/navratri/ayudha-puja-vidyarambham/)). See the whole map in [Navratri across India](/navratri/across-india/), and if you live in Kolkata, [Navratri in Kolkata](/navratri/in-kolkata/) for Ravan dahan, garba nights and fasting during Pujo.
 
 ## The tenth day
 

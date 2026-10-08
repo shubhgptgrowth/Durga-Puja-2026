@@ -296,3 +296,23 @@ caption = "Jagaddhatri, seated on her lion, at Chandannagar."
 [print]
 file = "File:Popular print, album (BM 2003,1022,0.25).jpg"
 caption = "Durga slaying Mahishasura: a popular print from Bengal."
+
+# Community Navratri guides (navratri/golu, bathukamma, mysuru-dasara, kullu-dussehra, ayudha-puja-vidyarambham).
+# Not chosen yet: run Actions → article-photos with mode=candidates, pick a file, then mode=fetch.
+[golu]
+q = ["Navaratri Golu", "Bommai Kolu dolls", "Golu dolls steps"]
+
+[bathukamma]
+q = ["Bathukamma", "Bathukamma flowers Telangana", "Bathukamma festival women"]
+
+[mysuru-dasara]
+q = ["Mysore Dasara Jamboo Savari", "Mysore Palace illumination Dasara", "Mysuru Dasara elephant"]
+
+[kullu-dussehra]
+q = ["Kullu Dussehra", "Kullu Dussehra Dhalpur", "Kullu Dussehra deities"]
+
+[ayudha-puja]
+q = ["Ayudha Puja", "Ayudha Pooja vehicle decoration", "Saraswati Puja books Navaratri"]
+
+[vidyarambham]
+q = ["Vidyarambham", "Ezhuthiniruthu", "Vidyarambham child writing rice"]
