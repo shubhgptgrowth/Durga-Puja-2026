@@ -21,6 +21,25 @@ or *Global Privacy Control* send nothing. Each device can log at most 1,500 even
 | `plan`, `trail` | a route is built, a 6-day plan day or ready-made trail is opened | zones / trail id |
 | `lang`, `moment` | language switched, a photo/video posted | en/bn/hi, image/video |
 
+## The live dashboard
+
+**pujoparikramaguide.in/kit/dashboard/** shows everything below on one page, refreshed every minute: who is on
+the site now (and on which screen), people reached against the 1,00,000 goal, visitors per day (new and
+returning), activity by hour, which channels and `?src=` links brought people in, app screens, actions, the
+most-opened places, and music and sound taps. Pick Today, 7, 14 or 30 days at the top; every chart has a table view.
+
+It is a public page that shows nothing without a key. The key lives in the database, so it never touches the repo:
+
+1. After the dashboard migration is applied (run **Actions → supabase-setup** once), open Supabase → **SQL editor**
+   and run `select key from private.dashboard_access;`.
+2. Open `pujoparikramaguide.in/kit/dashboard/#key=<that key>` and bookmark it, or paste the key into the page. The
+   part after `#` is never sent to any server; the page keeps the key on that device and clears it from the address bar.
+3. To share it with a teammate, send them the link privately. To shut everyone out, run
+   `select public.rotate_dashboard_key();` in the SQL editor; the old key stops working at once.
+
+The page calls `public.dashboard(key, days)`, which returns aggregates only (no device ids). A wrong key gets
+`{"ok": false}` and runs no query.
+
 ## Where to look (the directory)
 
 Supabase dashboard → **Table editor → schema `analytics`** (or SQL editor). Read-only views:
