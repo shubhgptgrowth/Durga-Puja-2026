@@ -194,6 +194,7 @@ class MetroMixin:
 <p class="lead">{lead}</p>
 {share_bar(wa)}
 {self.notices_html(up)}
+{f"<p>Rather be taken round? {self.parikrama_link(up, 'WBTC Puja Parikrama')} runs guided pujo tours by AC bus, AC tram and river launch.</p>" if getattr(self, "parikrama", None) else ""}
 <p><b>Station guides:</b> {stations_html}</p>
 {''.join(sections)}
 {far_html}

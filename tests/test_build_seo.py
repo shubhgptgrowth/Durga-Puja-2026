@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_seo  # noqa: E402
 from seo.knowledge import CONTENT, Article  # noqa: E402
+from seo.common import esc  # noqa: E402
 from seo.markdown import render  # noqa: E402
 from seo.metro import FAR_MIN, MIN_PANDALS, NEAR_MIN, metro_stations, walk  # noqa: E402
 
@@ -78,6 +79,7 @@ class BuildSeoTest(unittest.TestCase):
         want = len(g["pandals"]) + len(g["food"]) + len(g["zones"]) + len(g["itineraries"]) + 5 + len(self.articles)  # + hub, dates, themes, best pandals, parking
         want += sum(1 for r in g["regions"] if any(z["id"] in r["zone_ids"] and z["pandal_ids"] for z in g["zones"]))   # + a page per region
         want += 1 + len(metro_stations(g)) + 1   # + the metro hub, a page per station with pandals in walking distance, late night
+        want += 1 if self.site.parikrama else 0   # + WBTC Puja Parikrama
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
             self.assertEqual(stories, len(self.articles) + len(self.site.data_stories_list))   # + the data stories (themes, metro)
@@ -354,6 +356,26 @@ class BuildSeoTest(unittest.TestCase):
         self.assertIn("estimates", night)   # crowd shares come from the model and say so
         a, b = (22.587145, 88.362942), (22.5854, 88.3610)   # the walk model matches pipeline/enrich.py
         self.assertEqual(walk(a, b)[1], round(walk(a, b)[0] * 1.3 / (3.2 * 1000 / 60)))
+
+    def test_parikrama(self):
+        from seo.parikrama import PATH, load_parikrama
+        pr = load_parikrama()
+        self.assertTrue(pr["booking_url"].startswith("https://wbtconline.in"))
+        self.assertTrue(pr.get("source"))   # every fact comes from a listed report
+        html = (self.tmp / PATH / "index.html").read_text(encoding="utf-8")
+        for pk in pr["package"]:
+            with self.subTest(package=pk["id"]):
+                self.assertTrue(pk["fare"].startswith("₹"))
+                self.assertTrue(pk.get("dates") or pk.get("when"))
+                self.assertTrue(all(pr["first_day"] <= d <= pr["last_day"] for d in pk.get("dates", [])))
+                self.assertIn(esc(pk["fare"]), html)
+                for pid in pk.get("pandals", []):   # every stop is a pandal in the guide, linked, and its page says so
+                    self.assertIn(pid, {p["id"] for p in self.g["pandals"]})
+                    self.assertIn(f"pandals/{pid}/", html)
+                    self.assertIn("wbtc-puja-parikrama/", (self.tmp / "guide" / "pandals" / pid / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("wbtconline.in", html)
+        self.assertIn("wbtc-puja-parikrama/", (self.tmp / "guide" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("wbtc-puja-parikrama/", (self.tmp / "guide" / "metro" / "index.html").read_text(encoding="utf-8"))
 
     def test_quiz(self):
         from seo.quiz import QUESTIONS, TYPES

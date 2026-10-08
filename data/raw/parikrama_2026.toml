@@ -1,0 +1,82 @@
+# WBTC (West Bengal Transport Corporation) Puja Parikrama 2026: the guided puja tours by AC bus, AC tram and river
+# launch, shown on /guide/wbtc-puja-parikrama/. Facts only, each from the reports listed under [[source]]; where the
+# reports disagree or only one gives a detail, leave it out and point to wbtconline.in. Update `checked` when you
+# re-check, and change a package the day WBTC changes it. Pandal ids link the stops to their guide pages.
+
+checked = "2026-10-08"
+first_day = "2026-10-17"
+last_day = "2026-10-21"
+booking_url = "https://wbtconline.in/"
+booking = "Book online at wbtconline.in, or at WBTC (CTC) counters such as the Esplanade tram depot."
+
+[[package]]
+id = "ac_tram"
+mode = "AC tram"
+name = "AC tram parikrama"
+name_bn = "এসি ট্রামে পুজো পরিক্রমা"
+dates = ["2026-10-17", "2026-10-18", "2026-10-20"]
+departs = "10 am from Esplanade"
+route = "Esplanade to Shyambazar in the north, then south to Gariahat, and back to Esplanade."
+pandals = ["kashi_bose_lane", "hatibagan", "nalin_sarkar", "ekdalia", "singhi_park"]
+fare = "₹800 per person"
+includes = "A welcome drink, tea or coffee and a snack pack."
+
+[[package]]
+id = "launch"
+mode = "River launch"
+name = "Ganga launch parikrama"
+name_bn = "গঙ্গাবক্ষে লঞ্চে পুজো পরিক্রমা"
+dates = []
+when = "Saptami to Navami (check dates when you book)"
+departs = "From Millennium Park"
+route = "Up the river past Howrah to Ahiritola Ghat, then by AC bus to the north Kolkata pandals; about 5 hours in all, ending at Millennium Park."
+pandals = []
+fare = "₹800 per person (age 5 and up)"
+includes = "Food on board."
+
+[[package]]
+id = "bonedi"
+mode = "AC Volvo bus"
+name = "Bonedi bari (heritage homes) parikrama"
+name_bn = "বনেদি বাড়ির পুজো পরিক্রমা"
+dates = []
+when = "Saptami to Navami (check dates when you book)"
+departs = "8 am from Esplanade (report by 7:30 am); also from Barasat"
+route = "Old family pujas of north and south Kolkata, with Belur Math."
+pandals = ["belur_math"]
+fare = "₹2,400 per person from Esplanade, ₹2,500 from Barasat"
+
+[[package]]
+id = "suburban"
+mode = "AC bus"
+name = "Suburban pujas parikrama"
+name_bn = "শহরতলির পুজো পরিক্রমা"
+dates = ["2026-10-17", "2026-10-18", "2026-10-20"]
+departs = "Morning, from Howrah, Tollygunge, Dunlop or Barrackpore"
+route = "The big pujas of the suburbs; the stops are on the booking page."
+pandals = []
+fare = "₹1,000 per person from Howrah or Tollygunge, ₹1,100 from Dunlop or Barrackpore"
+
+[[source]]
+name = "ThePrint (PTI): WBTC to run special Puja Parikrama services from Oct 17 to 21"
+url = "https://theprint.in/india/wbtc-to-run-special-puja-parikrama-services-in-kolkata-from-oct-17-to-21/3052596/"
+
+[[source]]
+name = "Aaj Tak Bangla, 7 October 2026"
+url = "https://bangla.aajtak.in/amp/kolkata/story/west-bengal-transport-department-plan-for-this-year-puja-transport-corporation-special-puja-parikrama-17th-to-21st-october-all-detail-sus-1459808-2026-10-07"
+
+[[source]]
+name = "TV9 Bangla: AC tram parikrama, ₹800"
+url = "https://tv9bangla.com/kolkata/durga-puja-2026-kolkata-gets-special-ac-tram-for-puja-parikrama-fare-rs-800-1348686.html"
+
+[[source]]
+name = "TV9 Bangla: launch parikrama from Millennium Park"
+url = "https://tv9bangla.com/kolkata/kolkata-puja-parikrama-special-launch-service-from-millennium-park-check-fare-1348684.html"
+
+[[source]]
+name = "Zee 24 Ghanta: WBTC Durga Puja Parikrama 2026"
+url = "https://zeenews.india.com/bengali/kolkata/durga-puja-parikrama-2026-wbtc-kolkata-bus-tram-launch-puja-tour_672170.html"
+
+[[source]]
+name = "Banglahunt: Puja Parikrama 2026 routes and fares"
+url = "https://banglahunt.com/puja-parikrama-2026-routes-fares-and-booking-dns/"

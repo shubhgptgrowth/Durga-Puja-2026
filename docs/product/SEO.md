@@ -15,6 +15,7 @@ HTML pages from `app/data/guide.json` (`scripts/build_seo.py`, run in `deploy.ym
 | `/guide/dates/` | "When is Durga Puja 2026?" Mahalaya to Dashami, with crowd levels |
 | `/guide/areas/<zone>/`, `/guide/pandals/<id>/`, `/guide/food/<id>/`, `/guide/trails/<id>/`, `/guide/parking/` | Every area, pandal (107), eatery (175), trail, parking |
 | `/guide/metro/`, `/guide/metro/<station>/` | "Pandals near <station> metro": every pandal under its nearest station, a page per station with 2+ pandals within a 20-minute walk, and Metro's puja announcements from `data/raw/metro_2026.toml` (edit it the day Metro announces the puja-night timings, then run **deploy**) |
+| `/guide/wbtc-puja-parikrama/` | "WBTC puja parikrama 2026", "AC tram puja parikrama fare": WBTC's AC bus, AC tram and launch tours with dates, start points, fares and sources, from `data/raw/parikrama_2026.toml` (facts two reports agree on; booking is on wbtconline.in). Pandal pages on a tour route link to it |
 | `/sitemap.xml` (with images), `/robots.txt` | Every page; all crawlers, AI included, allowed |
 | `/llms.txt`, `/llms-full.txt`, `…/index.md` | The [llms.txt](https://llmstxt.org) index, the whole guide as text, and a Markdown copy of every article |
 | `/404.html` | Missing pages point back to the hubs |

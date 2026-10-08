@@ -34,6 +34,7 @@ from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock
 from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
 from seo.metro import MetroMixin
+from seo.parikrama import ParikramaMixin
 from seo.quiz import QuizMixin
 from seo.stories import StoriesMixin
 
@@ -60,7 +61,7 @@ def src_code(path):
     return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
 
 
-class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin):
+class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, ParikramaMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
         self.verify = f'<meta name="google-site-verification" content="{esc(verify)}">' if verify else ""
@@ -216,6 +217,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin):
                  + (" (too far to walk: take an auto, bus or cab)" if far else f", {m['walk_min']} min walk")),
                 ("Buses", "; ".join(f"{esc(b['stop'])}: {esc(', '.join(b['routes']))} ({b['walk_min']} min walk)" for b in p.get("bus", []))) if p.get("bus") else None,
                 ("Autos", "; ".join(esc(a["route"]) for a in p.get("auto", []))) if p.get("auto") else None,
+                self.parikrama_row(p, up),
                 ("Coordinates", f"{p['lat']:.5f}, {p['lng']:.5f}" + (" (approximate)" if p.get("geo_source") == "osm-approx" else "")),
                 ("Driving", esc(CAR.get(z.get("car_advisory"), ""))) if z.get("car_advisory") else None]
         facts = "<dl class='facts'>" + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in filter(None, rows)) + "</dl>"
@@ -543,7 +545,8 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin):
         qa = [(f"When is Durga Puja {self.year} in Kolkata?", f"Panchami {nice_date(self.start, True)} to Bijoya Dashami {nice_date(self.end, True)}. Mahalaya is {nice_date(self.days['mahalaya']['date'], True)}. See the <a href='{up}guide/dates/'>day-by-day dates</a>."),
               ("Which are the most famous Durga Puja pandals in Kolkata?", ", ".join(esc(p["name"]) for p in top[:8]) + "."),
               ("What is the best time to go pandal hopping in Kolkata?", "Early morning (5–9 am) and after 1 am are the quietest. Evenings from 6 pm to midnight are the busiest, especially on Ashtami."),
-              ("How do I get around Kolkata during Durga Puja?", "The metro is the fastest way. Many neighbourhood lanes close to cars in the evening, so park at a park-and-ride and walk the last stretch. Each pandal page lists its nearest metro station and walking time."),
+              ("How do I get around Kolkata during Durga Puja?", "The metro is the fastest way. Many neighbourhood lanes close to cars in the evening, so park at a park-and-ride and walk the last stretch. Each pandal page lists its nearest metro station and walking time."
+               + (f" For a guided tour, WBTC runs {self.parikrama_link(up, 'Puja Parikrama rides by AC bus, AC tram and launch')}." if self.parikrama else "")),
               ("Which areas of Kolkata are best for pandal hopping?", "North Kolkata (Kumartuli, Bagbazar, Hatibagan) for heritage and bonedi bari pujas; South Kolkata (Gariahat, Ballygunge, Lake Market, Behala) for theme pandals; Salt Lake and Lake Town for big-budget installations."),
               (f"Is {NAME} free?", "Yes. It works in the browser, in English, Bengali and Hindi, and most of it works offline.")]
         faq_html, faq_ld = self.faq(qa)
@@ -561,7 +564,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin):
 <h2>Ready-made trails</h2>
 {trails}
 <p>{" · ".join(f'<a href="{up}{p}">{esc(n)} pandals</a>' for n, p in self.region_links)}</p>
-<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/late-night-pandal-hopping/">Late-night pandal hopping</a> · <a href="{up}quiz/which-pandal/">Quiz: which pandal are you?</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
+<p><a href="{up}guide/best-pandals-{self.year}/">Best pandals {self.year}</a> · <a href="{up}guide/themes-{self.year}/">Durga Puja {self.year} themes</a> · <a href="{up}guide/metro/">Pandals by metro station</a> · <a href="{up}guide/late-night-pandal-hopping/">Late-night pandal hopping</a>{" · " + self.parikrama_link(up) if self.parikrama else ""} · <a href="{up}quiz/which-pandal/">Quiz: which pandal are you?</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a> · <a href="{up}guide/parking/">Parking</a> · <a href="{up}durga-puja/">Rituals, meaning and history of Durga Puja</a> · <a href="{up}navratri/">Navratri</a></p>
 {faq_html}
 </article>"""
         self.page("guide/", f"Kolkata Durga Puja {self.year} guide: {len(self.g['pandals'])} pandals, dates, food, routes | {NAME}",
@@ -602,6 +605,8 @@ Articles are written by the {NAME} team from the sources each one lists; practic
 - [Kolkata Durga Puja {self.year} guide]({self.url('guide/')}): areas, most-visited pandals, trails, FAQ
 - [Durga Puja {self.year} dates]({self.url('guide/dates/')}): Mahalaya {nice_date(self.days['mahalaya']['date'], True)}; Panchami {nice_date(self.start, True)} to Dashami {nice_date(self.end, True)}
 - [Parking and park & ride]({self.url('guide/parking/')})
+- [Pandals by metro station]({self.url('guide/metro/')})
+- [WBTC Puja Parikrama {self.year}]({self.url('guide/wbtc-puja-parikrama/')}): AC bus, AC tram and launch tours, routes and fares
 - [Full text for LLMs]({self.url('llms-full.txt')}): every pandal, eatery and trail in one file
 - [Open data (JSON)]({self.url('data/guide.json')}): the dataset behind the app
 
@@ -687,6 +692,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
         self.load_articles()   # first, so place pages can link to the ritual articles
         self.load_stories()
         self.metro_prepare()   # and the station pages
+        self.parikrama_prepare()
         self.data_stories_list = self.data_stories()
         self.stories += self.data_stories_list
         for p in self.g["pandals"]:
@@ -705,6 +711,7 @@ Articles are written by the {NAME} team from the sources each one lists; practic
             self.region_page(r)
         self.metro_pages()
         self.late_night_page()
+        self.parikrama_page()
         self.parking_page()
         self.hub_page()
         self.story_pages()   # before the articles, which link to their stories
