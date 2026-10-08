@@ -5,6 +5,8 @@ name: engage
 #   mode=scan   read-only: unanswered comments on our posts + new posts from marketing/engage/creators.json,
 #               committed to the engage-data branch as <date>.json (no deploy is triggered)
 #   mode=reply  posts the approved replies in marketing/engage/replies/<date>.json (skips any already answered)
+#   mode=stats  read-only: every post's likes/comments (and insights when permitted), labelled by format; saved to
+#               engage-data as stats/<date>.json
 #   mode=check  read-only token check (account, comments, Page link, messages, Business Discovery); sends nothing
 #   mode=dm     comment-to-DM: whoever comments "PUJO" on a recent post gets the guide in a private reply, once
 #               (ledger: dm.json on engage-data). Also every 15 min on a schedule, only while
@@ -15,7 +17,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "scan, reply, dm or check"
+        description: "scan, reply, dm, stats or check"
         default: scan
       date:
         description: "YYYY-MM-DD (default: today, IST)"
@@ -60,6 +62,8 @@ jobs:
             git fetch -q origin engage-data 2>/dev/null && git show origin/engage-data:dm.json > /tmp/dm.json 2>/dev/null || echo '{"sent": []}' > /tmp/dm.json
             args=(); [ "${{ inputs.dry_run }}" = true ] && args+=(--dry-run)
             python -m marketing.engage dm --ledger /tmp/dm.json "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"
+          elif [ "$mode" = stats ]; then
+            python -m marketing.engage stats --out "/tmp/engage/stats/$d.json" | tee -a "$GITHUB_STEP_SUMMARY"
           elif [ "$mode" = check ]; then
             python -m marketing.engage check | tee -a "$GITHUB_STEP_SUMMARY"
           elif [ "$mode" = reply ]; then
@@ -69,10 +73,12 @@ jobs:
             python -m marketing.engage scan --out "/tmp/engage/$d.json" | tee -a "$GITHUB_STEP_SUMMARY"
           fi
       - name: Save the scan or the DM ledger (engage-data branch)
-        if: env.MODE == 'scan' || env.MODE == 'dm'
+        if: env.MODE == 'scan' || env.MODE == 'dm' || env.MODE == 'stats'
         run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin engage-data && git checkout engage-data || git checkout --orphan engage-data
           git rm -rq --cached . 2>/dev/null || true
-          if [ "$MODE" = dm ]; then f=dm.json; cp /tmp/dm.json dm.json; else f="$DAY.json"; cp "/tmp/engage/$DAY.json" "$f"; fi
+          if [ "$MODE" = dm ]; then f=dm.json; cp /tmp/dm.json dm.json
+          elif [ "$MODE" = stats ]; then mkdir -p stats; f="stats/$DAY.json"; cp "/tmp/engage/stats/$DAY.json" "$f"
+          else f="$DAY.json"; cp "/tmp/engage/$DAY.json" "$f"; fi
           git add "$f" && { git diff --cached --quiet || { git commit -qm "engage $MODE $DAY" && git push -q origin HEAD:engage-data; }; }

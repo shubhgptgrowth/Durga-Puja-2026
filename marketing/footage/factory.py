@@ -27,6 +27,7 @@ import urllib.request
 from pathlib import Path
 
 from .. import caption_lint
+from ..captions import compose
 from ..kit import SITE
 from . import photo_post
 
@@ -135,6 +136,11 @@ def check(plan, idx):
             continue
         if it.get("video_url"):
             continue
+        if it.get("render") == "cards_reel":  # a carousel's slides as a reel (marketing/cards_reel.py)
+            src = {x["id"]: x for x in plan["items"]}.get(it.get("from"))
+            if not (src and src["type"] == "photo" and src["at"] < it["at"] and (it.get("caption") or {}).get("en")):
+                errs.append(f"{it['id']}: a cards reel needs an earlier photo post in 'from' and a caption")
+            continue
         if it.get("render") == "route":  # animated route reel drawn from the guide (marketing/route_reel.py)
             if not (it.get("zone") and (it.get("caption") or {}).get("en")):
                 errs.append(f"{it['id']}: a route reel needs a zone and a caption")
@@ -222,6 +228,15 @@ def main(argv=None):
             print(f"built {fid} photo ×{len(names)}", flush=True)
         elif it.get("video_url"):
             entry.update(video_url=it["video_url"], caption=it.get("caption"))
+        elif it.get("render") == "cards_reel":
+            from .. import cards_reel
+            slides = sorted(out.glob(f"{pfx}-{it['from']}-*.jpg"), key=lambda q: int(q.stem.rsplit("-", 1)[1]))
+            secs = cards_reel.render(slides, out / f"{fid}.mp4", tmp)
+            cap = compose(it["caption"])
+            (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+            entry.update(video_url=base + f"{fid}.mp4", caption=cap)
+            qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
+            print(f"built {fid} cards reel from {it['from']} ({len(slides)} slides) {secs:.1f}s", flush=True)
         elif it.get("render") == "route":
             from .. import route_reel
             secs, _ = route_reel.render(it["zone"], out / f"{fid}.mp4")

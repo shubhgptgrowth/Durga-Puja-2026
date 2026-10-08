@@ -1,6 +1,6 @@
 {
  "date": "2026-10-10",
- "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
+ "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides).",
  "items": [
   {
    "id": "p1",
@@ -231,6 +231,74 @@
    "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-10/1010-r1.mp4"
   },
   {
+   "id": "r4",
+   "type": "reel",
+   "at": "19:45",
+   "hook": "7 days from now, Kolkata looks like this",
+   "bn": {
+    "hook": "আর ৭ দিন, তারপর কলকাতা এরকম",
+    "segs": [
+     "",
+     "অষ্টমীর অঞ্জলি",
+     "সন্ধিপুজোর ১০৮ প্রদীপ",
+     "নবমীর ধুনুচি নাচ",
+     "শুভ মহালয়া"
+    ],
+    "end": "শুভ মহালয়া! আপনার প্রিয় দিন কোনটা?"
+   },
+   "segments": [
+    [
+     "f28",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "f17",
+     6,
+     3.0,
+     "Ashtami anjali"
+    ],
+    [
+     "f18",
+     20,
+     3.0,
+     "Sandhi puja, 108 lamps"
+    ],
+    [
+     "f05",
+     10,
+     3.0,
+     "Dhunuchi on Navami"
+    ],
+    [
+     "f24",
+     2,
+     3.2,
+     "Shubho Mahalaya"
+    ]
+   ],
+   "end": [
+    "Shubho Mahalaya",
+    "Which day is your favourite?"
+   ],
+   "music": [
+    "f23",
+    0
+   ],
+   "caption": {
+    "en": "Shubho Mahalaya. Seven days from now, Kolkata looks like this 🙏\n\nAshtami anjali, the 108 lamps of Sandhi puja, dhunuchi on Navami, sindoor on Dashami. Devipaksha starts today.\n\nSend this to someone who's coming home for pujo.",
+    "keywords": [
+     "mahalaya 2026",
+     "durga puja 2026",
+     "kolkata durga puja",
+     "devipaksha",
+     "pujo countdown"
+    ],
+    "tags": "#Mahalaya #DurgaPuja2026 #KolkataPujo"
+   }
+  },
+  {
    "id": "s4",
    "type": "story",
    "at": "20:30",
@@ -252,6 +320,25 @@
     "en": [
      "Did you listen to Mahalaya this morning? Reply and tell us!"
     ]
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "render": "cards_reel",
+   "from": "p3",
+   "hook": "Sreebhumi, Santosh Mitra Square: 2026 themes",
+   "caption": {
+    "en": "Durga Puja 2026 themes: Santosh Mitra Square, Chaltabagan, Sreebhumi and more, in 30 seconds 🎨\n\nVande Mataram at Lebutala, Jaipur's Hawa Mahal at Sreebhumi, Gond art at FD Block, Park Street's first-ever puja. Eight themes with the nearest station.\n\nSend this to your pujo group.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "santosh mitra square 2026",
+     "sreebhumi 2026 theme",
+     "chaltabagan 2026",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #Sreebhumi"
    }
   }
  ],

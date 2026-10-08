@@ -1,7 +1,7 @@
 {
  "source": "OpenStreetMap contributors (ODbL)",
  "fetched": "2026-10-07",
- "failed_batches": 1,
+ "failed_batches": 0,
  "places": [
   {
    "osm": "node/1833168504",
@@ -1483,6 +1483,177 @@
    "lng": 88.373869,
    "name": "National Economic Restaurant",
    "amenity": "cafe"
+  },
+  {
+   "osm": "node/12343766872",
+   "lat": 22.56387,
+   "lng": 88.326997,
+   "name": "Chai Break - Foreshoreroad",
+   "amenity": "restaurant",
+   "cuisine": "pizza;coffee_shop;burger;italian;sandwich;mexican;indian;thai;american;dessert",
+   "diet:vegetarian": "yes",
+   "opening_hours": "Mo-Su 10:00-22:00",
+   "addr:street": "Foreshore Road, 1A"
+  },
+  {
+   "osm": "node/5744988924",
+   "lat": 22.471423,
+   "lng": 88.389165,
+   "name": "Machhranga Airconditioned Multi Cuisine",
+   "amenity": "restaurant",
+   "cuisine": "indian;chinese;asian",
+   "opening_hours": "Mo-Su 12:00-23:30",
+   "addr:street": "EM Bypass"
+  },
+  {
+   "osm": "node/11261206722",
+   "lat": 22.465529,
+   "lng": 88.376712,
+   "name": "Aminia",
+   "amenity": "restaurant",
+   "cuisine": "indian;fish;ice_cream;dessert;regional",
+   "diet:vegetarian": "yes"
+  },
+  {
+   "osm": "node/11263213112",
+   "lat": 22.45897,
+   "lng": 88.383978,
+   "name": "Chowman",
+   "amenity": "restaurant",
+   "cuisine": "chinese",
+   "diet:vegetarian": "yes"
+  },
+  {
+   "osm": "node/11300066506",
+   "lat": 22.477564,
+   "lng": 88.376769,
+   "name": "I Snax",
+   "amenity": "fast_food",
+   "cuisine": "pizza;burger;sandwich;chicken;indian"
+  },
+  {
+   "osm": "node/11300070189",
+   "lat": 22.477512,
+   "lng": 88.377245,
+   "name": "Amiyo Snacks",
+   "amenity": "fast_food",
+   "cuisine": "indian;chicken;fish;pasta",
+   "diet:vegetarian": "yes"
+  },
+  {
+   "osm": "node/11300138803",
+   "lat": 22.477069,
+   "lng": 88.376455,
+   "name": "Surendra Sweets",
+   "shop": "confectionery"
+  },
+  {
+   "osm": "node/11300161815",
+   "lat": 22.477065,
+   "lng": 88.376112,
+   "name": "Chumuke Chomok Cafe",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/11300199334",
+   "lat": 22.477236,
+   "lng": 88.37774,
+   "name": "Rashika South Indian Snacks",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/11300205367",
+   "lat": 22.476408,
+   "lng": 88.376147,
+   "name": "Chez",
+   "amenity": "restaurant"
+  },
+  {
+   "osm": "node/11300205474",
+   "lat": 22.476408,
+   "lng": 88.375558,
+   "name": "Solace Cafe",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/11300249734",
+   "lat": 22.464385,
+   "lng": 88.377468,
+   "name": "Sushma Tea Stall",
+   "amenity": "cafe"
+  },
+  {
+   "osm": "node/12778278592",
+   "lat": 22.477825,
+   "lng": 88.376179,
+   "name": "Mio Amore",
+   "name:en": "Mio Amore",
+   "name:bn": "মিও আমোরে",
+   "shop": "pastry",
+   "diet:vegetarian": "yes",
+   "brand": "Mio Amore"
+  },
+  {
+   "osm": "node/13437639560",
+   "lat": 22.475751,
+   "lng": 88.391392,
+   "name": "Bean Stop",
+   "amenity": "cafe",
+   "cuisine": "coffee_shop;cafe;pizza;pasta",
+   "opening_hours": "Mo-Su 11:00-23:00",
+   "addr:street": "Bapai Rd, near Patuli, Baishnabghata Patuli Township",
+   "brand": "Bean Stop"
+  },
+  {
+   "osm": "node/10294779009",
+   "lat": 22.592916,
+   "lng": 88.341756,
+   "name": "SIP 'N' BITE'S Chinese fast food",
+   "amenity": "fast_food"
+  },
+  {
+   "osm": "node/12011718875",
+   "lat": 22.594874,
+   "lng": 88.341462,
+   "name": "THE DELHI DURBAR RESTAURANT",
+   "amenity": "restaurant",
+   "cuisine": "indian",
+   "diet:vegetarian": "yes",
+   "diet:vegan": "yes",
+   "opening_hours": "Mo-Su 11:30-23:30",
+   "addr:street": "Bijoy Kumar Mukherjee Road"
+  },
+  {
+   "osm": "node/13982146353",
+   "lat": 22.601933,
+   "lng": 88.342241,
+   "name": "Haldiram's",
+   "amenity": "fast_food",
+   "cuisine": "sweet_shop",
+   "diet:vegetarian": "yes",
+   "opening_hours": "Mo-Su 09:00-21:00",
+   "addr:street": "Sri Arabind Road",
+   "brand": "Haldiram's"
+  },
+  {
+   "osm": "node/14041129402",
+   "lat": 22.594499,
+   "lng": 88.364574,
+   "name": "Lamprini Cafe",
+   "amenity": "cafe",
+   "cuisine": "american;italian",
+   "opening_hours": "Mo-Sa 10:00-21:00",
+   "addr:street": "Jatinda Mohan Avenue"
+  },
+  {
+   "osm": "way/357978434",
+   "lat": 22.594931,
+   "lng": 88.341386,
+   "name": "THE DELHI DURBAR RESTAURANT",
+   "amenity": "restaurant",
+   "cuisine": "indian;chinese;italian",
+   "opening_hours": "Mo-Su 11:30-23:30",
+   "addr:street": "Bijoy Kumar Mukherjee Road"
   }
  ]
 }

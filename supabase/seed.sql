@@ -309,6 +309,17 @@ insert into public.places (id, kind, name, zone, lat, lng, radius_m) values
   ('thali', 'food', 'Thali', 'kasba', 22.515756, 88.38901, 250),
   ('the_lighthouse_cafe', 'food', 'The Lighthouse Cafe', 'south_lakemarket', 22.505952, 88.359076, 250),
   ('the_chocolate_room', 'food', 'The Chocolate Room', 'central', 22.543995, 88.358333, 250),
-  ('hondo_s_burgers', 'food', 'Hondo’s Burgers', 'south_lakemarket', 22.502161, 88.354042, 250)
+  ('hondo_s_burgers', 'food', 'Hondo’s Burgers', 'south_lakemarket', 22.502161, 88.354042, 250),
+  ('the_delhi_durbar_restaurant', 'food', 'THE DELHI DURBAR RESTAURANT', 'howrah', 22.594874, 88.341462, 250),
+  ('chai_break_foreshoreroad', 'food', 'Chai Break - Foreshoreroad', 'howrah', 22.56387, 88.326997, 250),
+  ('aminia_jadavpur_santoshpur', 'food', 'Aminia', 'jadavpur_santoshpur', 22.465529, 88.376712, 250),
+  ('amiyo_snacks', 'food', 'Amiyo Snacks', 'tolly_naktala', 22.477512, 88.377245, 250),
+  ('machhranga_airconditioned_multi_cuis', 'food', 'Machhranga Airconditioned Multi Cuisine', 'tolly_naktala', 22.471423, 88.389165, 250),
+  ('chowman_jadavpur_santoshpur', 'food', 'Chowman', 'jadavpur_santoshpur', 22.45897, 88.383978, 250),
+  ('lamprini_cafe', 'food', 'Lamprini Cafe', 'north', 22.594499, 88.364574, 250),
+  ('i_snax', 'food', 'I Snax', 'tolly_naktala', 22.477564, 88.376769, 250),
+  ('mio_amore_tolly_naktala', 'food', 'Mio Amore', 'tolly_naktala', 22.477825, 88.376179, 250),
+  ('sip_n_bite_s_chinese_fast_food', 'food', 'SIP ''N'' BITE''S Chinese fast food', 'howrah', 22.592916, 88.341756, 250),
+  ('sushma_tea_stall', 'food', 'Sushma Tea Stall', 'jadavpur_santoshpur', 22.464385, 88.377468, 250)
 on conflict (id) do update set kind = excluded.kind, name = excluded.name, zone = excluded.zone,
   lat = excluded.lat, lng = excluded.lng, radius_m = excluded.radius_m;

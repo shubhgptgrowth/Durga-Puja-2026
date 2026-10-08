@@ -1,6 +1,6 @@
 {
  "date": "2026-10-12",
- "note": "Metro cheat sheet for the 8 biggest pandals (09:30), pandal hopping checklist (15:30), Bhowanipore route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out).",
+ "note": "Metro cheat sheet for the 8 biggest pandals (09:30), pandal hopping checklist (15:30), Bhowanipore route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides).",
  "items": [
   {
    "id": "p1",
@@ -135,6 +135,25 @@
     "en": [
      "Not a cab, the Metro! Which pandal is next to which station: see our new post."
     ]
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "12:30",
+   "render": "cards_reel",
+   "from": "p1",
+   "hook": "Skip the cab, take the Metro",
+   "caption": {
+    "en": "Kolkata Metro guide for Durga Puja 2026: 8 big pandals within a 20-minute walk of a station 🚇\n\nChaltabagan, Tala Prattoy, Santosh Mitra Square, Kumartuli Park and more, with the station and the walk.\n\nComment \"PUJO\" and we'll DM you the full walking routes.",
+    "keywords": [
+     "kolkata metro durga puja",
+     "durga puja 2026 metro",
+     "nearest metro to pandals",
+     "kolkata pandal hopping",
+     "durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataMetro #PandalHopping"
    }
   },
   {
@@ -277,6 +296,74 @@
    "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-12/1012-r1.mp4"
   },
   {
+   "id": "r4",
+   "type": "reel",
+   "at": "19:45",
+   "hook": "5 nights. Here's what they feel like",
+   "bn": {
+    "hook": "পাঁচটা রাত, এরকম লাগে",
+    "segs": [
+     "ষষ্ঠী: প্রথম রাত",
+     "অষ্টমী: সকালের অঞ্জলি",
+     "সন্ধ্যায় সন্ধিপুজো",
+     "নবমী: রাত অবধি ধুনুচি",
+     "দশমী: সিঁদুর আর বিদায়"
+    ],
+    "end": "আপনার রাত কোনটা?"
+   },
+   "segments": [
+    [
+     "f04",
+     0,
+     3.4,
+     "Shashthi: the first night"
+    ],
+    [
+     "f17",
+     10,
+     3.0,
+     "Ashtami: anjali in the morning"
+    ],
+    [
+     "f18",
+     30,
+     3.0,
+     "Sandhi puja at dusk"
+    ],
+    [
+     "f05",
+     18,
+     3.0,
+     "Navami: dhunuchi till late"
+    ],
+    [
+     "f26",
+     1,
+     3.2,
+     "Dashami: sindoor and goodbye"
+    ]
+   ],
+   "end": [
+    "Which night is yours?",
+    "5 days to go"
+   ],
+   "music": [
+    "f23",
+    0
+   ],
+   "caption": {
+    "en": "Durga Puja 2026: five nights, and here's what they feel like 🪔\n\nShashthi's first night, Ashtami anjali, Sandhi puja at dusk, Navami dhunuchi till late, and Dashami's sindoor and goodbye. Pujo runs 17 to 21 October.\n\nWhich night is yours? 👇",
+    "keywords": [
+     "durga puja 2026",
+     "durga puja 2026 dates",
+     "kolkata durga puja",
+     "shashthi saptami ashtami navami dashami",
+     "pujo vibes"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataPujo #DurgaPuja"
+   }
+  },
+  {
    "id": "s4",
    "type": "story",
    "at": "20:30",
@@ -298,6 +385,24 @@
     "en": [
      "Five more nights! Who are you going pandal hopping with? Reply!"
     ]
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "render": "cards_reel",
+   "from": "p3",
+   "hook": "Pandal hopping checklist",
+   "caption": {
+    "en": "Durga Puja 2026 pandal hopping checklist: 7 things to sort before Shashthi ✅\n\nOne area a night, start at the Metro, go early or very late, comfortable shoes, power bank and cash, a meeting point, food stops.\n\nSend this to the one friend who plans nothing.",
+    "keywords": [
+     "durga puja 2026",
+     "pandal hopping tips",
+     "durga puja checklist",
+     "kolkata pandal hopping"
+    ],
+    "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
    }
   }
  ]

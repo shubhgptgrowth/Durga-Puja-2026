@@ -38,7 +38,11 @@ def overpass(q, timeout=180):
         try:
             req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(), headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=timeout + 30) as r:
-                return json.load(r)["elements"]
+                data = json.load(r)
+            if "error" in data.get("remark", ""):  # an overloaded server answers 200 with an empty result and a remark
+                raise RuntimeError(data["remark"][:200])
+            print(f"overpass {url}: {len(data['elements'])} elements", file=sys.stderr)
+            return data["elements"]
         except Exception as e:  # 429 / 504 / timeouts
             last = e
             print(f"overpass {url} failed ({e}); retrying", file=sys.stderr)
@@ -273,10 +277,11 @@ def discover_food(only=""):
     if want and prev.exists():  # a partial run keeps what earlier runs found
         out = json.loads(prev.read_text(encoding="utf-8")).get("places", [])
         seen = {e["osm"] for e in out}
-    size = 5 if want else 15
+    size = 3 if want else 15
     for i in range(0, len(pandals), size):
         batch = pandals[i:i + size]
-        parts = "".join(f'nwr{sel}(around:600,{p["lat"]},{p["lng"]});' for p in batch for sel in (amen, shop))
+        rad = 1500 if want else 600  # targeted runs are for areas with few listed pandals, so look further out
+        parts = "".join(f'nwr{sel}(around:{rad},{p["lat"]},{p["lng"]});' for p in batch for sel in (amen, shop))
         try:
             els = overpass(f"[out:json][timeout:90];({parts});out center tags;", timeout=90)
         except Exception as ex:
@@ -293,7 +298,7 @@ def discover_food(only=""):
             keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "amenity", "shop", "cuisine", "diet:vegetarian",
                                           "diet:vegan", "opening_hours", "addr:street", "brand") if k in tags}
             out.append({"osm": key, "lat": round(lat, 6), "lng": round(lng, 6), **keep})
-        print(f"batch {i // size}: {len(out)} eateries so far", file=sys.stderr)
+        print(f"batch {i // size}: {len(els)} returned, {len(out)} eateries so far", file=sys.stderr)
         time.sleep(3)  # be gentle with the public servers
     if not out:
         raise RuntimeError("no eateries fetched")
