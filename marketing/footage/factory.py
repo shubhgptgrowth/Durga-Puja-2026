@@ -153,6 +153,9 @@ def check(plan, idx):
                 errs.append(f"{it['id']}: {s[0]} ({e['artist']}) has no recorded permission or file yet")
             elif e.get("dur") and s[1] + s[2] > e["dur"] + 0.05:
                 errs.append(f"{it['id']}: {s[0]} is {e['dur']}s, cut ends at {s[1] + s[2]}s")
+            for a, b, why in e.get("avoid") or [] if e else []:  # stretches of a clip we must not show (footage.json)
+                if s[1] < b and s[1] + s[2] > a:
+                    errs.append(f"{it['id']}: {s[0]} {s[1]}-{s[1] + s[2]}s overlaps {a}-{b}s ({why})")
         vo = it.get("vo")
         if vo and not (len(vo.get("lines", [])) == len(vo.get("urls") or vo["lines"]) == len(it["segments"])):
             errs.append(f"{it['id']}: voiceover needs one line and one audio url per shot")

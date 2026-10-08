@@ -20,6 +20,7 @@
   "label": "Bagbazar Sarbojanin immersion 2018"
  },
  "f02": {
+  "avoid": [[11.0, 14.0, "burned-in subtitle"], [50.0, 69.0, "burned-in subtitles"]],
   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Bijaya_Dashami.webm",
   "page": "https://commons.wikimedia.org/wiki/File:Bijaya_Dashami.webm",
   "w": 1920,
@@ -50,6 +51,7 @@
   "label": "Samajsevi Sangh ambience"
  },
  "f05": {
+  "avoid": [[3.6, 15.0, "the camera points at the sky"]],
   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Dhunuchi_dance_at_Samajsevi_Sangh_V_20181017_112000.webm",
   "page": "https://commons.wikimedia.org/wiki/File:Dhunuchi_dance_at_Samajsevi_Sangh_V_20181017_112000.webm",
   "w": 1920,
@@ -130,6 +132,7 @@
   "label": "Singhi Park 2"
  },
  "f13": {
+  "avoid": [[0, 3.8, "another creator's burned-in title card"], [19.0, 23.2, "the title card again"]],
   "url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Durga_Puja_in_Kolkata_2017_Video_Time_Lapse_01.webm",
   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_in_Kolkata_2017_Video_Time_Lapse_01.webm",
   "w": 1280,
