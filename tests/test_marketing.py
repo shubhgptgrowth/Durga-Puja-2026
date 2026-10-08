@@ -205,6 +205,29 @@ class DailySetTest(unittest.TestCase):
             publish_batch.main(["--date", "2026-10-06", "--window", "pm"])
         pub.assert_not_called()
 
+    def test_failed_item_does_not_block_later_slots(self):
+        from unittest import mock
+        from marketing import publish_batch
+        items = {"items": [{"type": "story", "id": "s3", "at": "20:00", "video_url": "https://e/s3.mp4"},
+                           {"type": "reel", "id": "r3", "at": "21:00", "video_url": "https://e/r3.mp4", "caption": "c"}]}
+        tries = []
+
+        def once(p, user, token):
+            tries.append(p["label"])
+            if p["label"] == "s3":
+                raise publish_batch.NotProcessed("Instagram could not process container 1 (ERROR)")
+            return "m1"
+        with mock.patch.object(publish_batch, "get_json", return_value=items), \
+             mock.patch.object(publish_batch, "approved", return_value=True), \
+             mock.patch.object(publish_batch, "reachable", return_value=True), \
+             mock.patch.object(publish_batch, "publish_once", side_effect=once), \
+             mock.patch.object(publish_batch, "wait_until"), mock.patch.object(publish_batch.time, "sleep"), \
+             mock.patch.dict("os.environ", {"IG_USER_ID": "1", "IG_ACCESS_TOKEN": "IGx"}):
+            with self.assertRaises(SystemExit) as e:
+                publish_batch.main(["--date", "2026-10-08", "--window", "pm"])
+        self.assertEqual(tries, ["s3", "s3", "r3"])  # one fresh container for the story, then the reel still posts
+        self.assertIn("[1]", str(e.exception))
+
 
 class RedesignTest(unittest.TestCase):
     """Real-photo redesign: every slide finds a photo, Wave 1 keeps its words, voiceover reels line up."""
