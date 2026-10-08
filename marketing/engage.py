@@ -4,6 +4,7 @@
     python -m marketing.engage reply marketing/engage/replies/2026-10-07.json [--dry-run]   # post approved replies
     python -m marketing.engage dm --ledger dm.json [--dry-run]          # comment "PUJO" -> the guide in a private reply
     python -m marketing.engage check                                    # read-only: can the token do all of the above?
+    python -m marketing.engage stats --out stats/2026-10-08.json         # read-only: every post's numbers, by format
 
 scan collects, for the daily engagement brief:
   - comments on our recent posts that we have not answered yet (needs instagram_manage_comments, or
@@ -242,6 +243,72 @@ def check():
     return 0 if ok else 1
 
 
+FORMAT = {"cards": "carousel (cards)", "routes": "carousel (route map)", "cards_reel": "reel (from carousel)",
+          "route": "reel (route map)"}
+
+
+def plan_index():
+    """Caption start → (date, plan id, format, hook) for everything in marketing/daily, to label each post."""
+    from .captions import compose
+    idx = {}
+    for f in sorted((ROOT / "marketing" / "daily").glob("2*.json")):
+        plan = json.loads(f.read_text(encoding="utf-8"))
+        for it in plan["items"]:
+            cap = compose(it.get("caption")) if it.get("caption") else ""
+            if not cap:
+                continue
+            fmt = FORMAT.get(it.get("render")) or ("carousel (photos)" if it["type"] == "photo" and len(it.get("photos") or []) > 1
+                                                    else "photo" if it["type"] == "photo" else "reel (footage)")
+            row = {"date": plan["date"], "id": it["id"], "at": it["at"], "format": fmt, "hook": it.get("hook", "")}
+            c = it["caption"]
+            legacy = "\n\n".join(x for x in (c.get("bn", ""), c.get("en", "")) if x) if isinstance(c, dict) else ""
+            for text in (cap, legacy):  # posts before 7 Oct went out Bengali first
+                if text:
+                    idx[" ".join(text.split())[:60]] = row
+    return idx
+
+
+def stats(out):
+    """Read-only: likes and comments for every post (and reach, saves, shares, views when the token carries
+    instagram_manage_insights), each labelled with its plan item and format, so formats can be compared."""
+    user, token = creds()
+    media, err = safe(graph, "GET", f"{user}/media", token, limit="50",
+                      fields="id,caption,media_type,media_product_type,timestamp,permalink,like_count,comments_count")
+    if err:
+        raise SystemExit(f"cannot read posts: {err}")
+    idx = plan_index()
+    rows, ins_err = [], None
+    for m in media.get("data", []):
+        key = " ".join((m.get("caption") or "").split())[:60]
+        row = {"media": m["id"], "at": m["timestamp"], "type": m.get("media_product_type") or m.get("media_type"),
+               "likes": m.get("like_count"), "comments": m.get("comments_count"), "permalink": m.get("permalink"),
+               "first_line": (m.get("caption") or "").split("\n")[0][:90], **idx.get(key, {"format": "unplanned"})}
+        if ins_err is None or "permission" not in ins_err:
+            metrics = "reach,saved,shares,views" if row["type"] == "REELS" else "reach,saved,shares"
+            ins, e = safe(graph, "GET", f"{m['id']}/insights", token, metric=metrics)
+            if ins:
+                row.update({x["name"]: (x.get("values") or [{}])[0].get("value", x.get("total_value", {}).get("value"))
+                            for x in ins.get("data", [])})
+            else:
+                ins_err = e
+        rows.append(row)
+    by = {}
+    for r in rows:
+        b = by.setdefault(r["format"], {"posts": 0, "likes": 0, "comments": 0})
+        b["posts"] += 1
+        b["likes"] += r["likes"] or 0
+        b["comments"] += r["comments"] or 0
+    data = {"taken_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "posts": rows,
+            "by_format": by, "insights_error": ins_err}
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    Path(out).write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{len(rows)} posts" + ("" if not ins_err else " (likes and comments only: no insights permission)"))
+    for f, b in sorted(by.items(), key=lambda kv: -(kv[1]["likes"] + 3 * kv[1]["comments"]) / kv[1]["posts"]):
+        print(f"  {f:24s} {b['posts']:3d} posts · {b['likes'] / b['posts']:.1f} likes · {b['comments'] / b['posts']:.1f} comments per post")
+    for r in sorted(rows, key=lambda r: -((r["likes"] or 0) + 3 * (r["comments"] or 0)))[:5]:
+        print(f"  top: {r['likes']} likes, {r['comments']} comments · {r['format']} · {r['first_line'][:60]}")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -254,9 +321,13 @@ def main(argv=None):
     r.add_argument("file")
     r.add_argument("--dry-run", action="store_true")
     sub.add_parser("check")
+    st = sub.add_parser("stats")
+    st.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     if a.cmd == "check":
         return check()
+    if a.cmd == "stats":
+        return stats(a.out)
     if a.cmd == "scan":
         scan(a.out)
     elif a.cmd == "dm":

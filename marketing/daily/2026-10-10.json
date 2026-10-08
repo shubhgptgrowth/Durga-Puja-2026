@@ -1,6 +1,6 @@
 {
  "date": "2026-10-10",
- "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom.",
+ "note": "Mahalaya. Bagbazar sabeki cards (09:30), 2026 themes for Central Kolkata, Sreebhumi and FD Block (15:30), North Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to.",
  "items": [
   {
    "id": "p1",
@@ -252,6 +252,25 @@
     "en": [
      "Did you listen to Mahalaya this morning? Reply and tell us!"
     ]
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "render": "cards_reel",
+   "from": "p3",
+   "hook": "Sreebhumi, Santosh Mitra Square: 2026 themes",
+   "caption": {
+    "en": "Durga Puja 2026 themes: Santosh Mitra Square, Chaltabagan, Sreebhumi and more, in 30 seconds 🎨\n\nVande Mataram at Lebutala, Jaipur's Hawa Mahal at Sreebhumi, Gond art at FD Block, Park Street's first-ever puja. Eight themes with the nearest station.\n\nSend this to your pujo group.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "santosh mitra square 2026",
+     "sreebhumi 2026 theme",
+     "chaltabagan 2026",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #Sreebhumi"
    }
   }
  ],

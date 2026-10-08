@@ -1,6 +1,6 @@
 {
  "date": "2026-10-09",
- "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom.",
+ "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to.",
  "items": [
   {
    "id": "p1",
@@ -114,6 +114,26 @@
     "en": [
      "Just 8 days! The final brushstrokes in Kumartuli."
     ]
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "12:30",
+   "render": "cards_reel",
+   "from": "p1",
+   "hook": "It starts as river clay",
+   "caption": {
+    "en": "Kumartuli, Kolkata: how a Durga idol is made, from river clay to the eyes 🎨\n\nStraw and bamboo, layers of Ganga clay, the colour, the sari, and last of all chokkhu daan, when the eyes are painted. Kumartuli is a short walk from Sovabazar Metro.\n\nSend this to the friend you're visiting Kumartuli with.",
+    "keywords": [
+     "kumartuli",
+     "kumartuli idol making",
+     "durga idol making",
+     "chokkhu daan",
+     "durga puja 2026",
+     "kolkata"
+    ],
+    "tags": "#Kumartuli #DurgaPuja2026 #Kolkata"
    }
   },
   {
@@ -301,6 +321,25 @@
     "en": [
      "Good evening! North or South Kolkata this pujo? Reply and tell us!"
     ]
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "render": "cards_reel",
+   "from": "p3",
+   "hook": "North Kolkata's 2026 themes",
+   "caption": {
+    "en": "North Kolkata Durga Puja 2026 themes in 30 seconds 🎨\n\nKumartuli Park, Ahiritola, Tala Prattoy, Shyam Square, Jagat Mukherjee Park, Nalin Sarkar Street, Hatibagan and Kashi Bose Lane, each with the nearest station.\n\nSend this to your pujo group.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "north kolkata pandals 2026",
+     "kumartuli park 2026",
+     "tala prattoy 2026",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #NorthKolkata #KolkataDurgaPuja"
    }
   }
  ]

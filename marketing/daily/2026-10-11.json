@@ -1,6 +1,6 @@
 {
  "date": "2026-10-11",
- "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom.",
+ "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to.",
  "items": [
   {
    "id": "p1",
@@ -89,6 +89,25 @@
     "en": [
      "Just six more days... then pandal hopping!"
     ]
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "12:30",
+   "render": "cards_reel",
+   "from": "p1",
+   "hook": "No theme, no queue",
+   "caption": {
+    "en": "Bonedi bari Durga Puja near Kolkata: no theme, no queue 🪔\n\nAndul Royal Palace and Sushil Dhar Estate in Howrah, where families have kept the same rituals for generations.\n\nKnow a bonedi bari pujo we should feature? Comment the name 👇",
+    "keywords": [
+     "bonedi bari durga puja",
+     "rajbari durga puja",
+     "andul rajbari",
+     "howrah durga puja",
+     "durga puja 2026"
+    ],
+    "tags": "#BonediBari #DurgaPuja2026 #BengaliCulture"
    }
   },
   {
@@ -276,6 +295,25 @@
     "en": [
      "Which night is your favourite: Saptami, Ashtami or Navami? Reply!"
     ]
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "21:00",
+   "render": "cards_reel",
+   "from": "p3",
+   "hook": "South Kolkata's 2026 themes",
+   "caption": {
+    "en": "South Kolkata Durga Puja 2026 themes in 30 seconds 🎨\n\nSomnath at Ekdalia, Bastar at Singhi Park, 208 Uttam Kumar posters at Samaj Sebi, a coal mine at Thakurpukur SB Park, and more, each with the nearest station.\n\nSend this to your South Kolkata pujo gang.",
+    "keywords": [
+     "durga puja 2026 theme",
+     "south kolkata pandals 2026",
+     "ekdalia evergreen 2026",
+     "singhi park 2026",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #SouthKolkata #KolkataDurgaPuja"
    }
   }
  ]
