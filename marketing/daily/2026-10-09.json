@@ -1,6 +1,6 @@
 {
  "date": "2026-10-09",
- "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to.",
+ "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides).",
  "items": [
   {
    "id": "p1",
@@ -298,6 +298,74 @@
    "type": "story",
    "at": "18:35",
    "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-09/1009-r1.mp4"
+  },
+  {
+   "id": "r4",
+   "type": "reel",
+   "at": "19:45",
+   "hook": "Things only a Kolkata pujo night has",
+   "bn": {
+    "hook": "শুধু কলকাতার পুজোর রাতেই এগুলো হয়",
+    "segs": [
+     "",
+     "মাঝরাতে ধুনুচির ধোঁয়া",
+     "গোটা পাড়া মিলে আরতি",
+     "রাত দুটোয় ভিড়, কেউ ক্লান্ত নয়",
+     "আর মাত্র ৮ দিন"
+    ],
+    "end": "কোনটা সবচেয়ে মিস করেন?"
+   },
+   "segments": [
+    [
+     "f13",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "f05",
+     4,
+     3.0,
+     "Dhunuchi smoke at midnight"
+    ],
+    [
+     "f15",
+     6,
+     3.0,
+     "Aarti with the whole para watching"
+    ],
+    [
+     "f29",
+     3,
+     3.0,
+     "Crowds at 2 am, nobody tired"
+    ],
+    [
+     "f16",
+     8,
+     3.2,
+     "8 days to go"
+    ]
+   ],
+   "end": [
+    "Which one do you miss most?",
+    "Tell us below"
+   ],
+   "music": [
+    "f23",
+    0
+   ],
+   "caption": {
+    "en": "Things only a Kolkata Durga Puja night has 🪔\n\nDhunuchi smoke at midnight, aarti with the whole para watching, crowds at 2 am and nobody tired. Eight days to go.\n\nTag the friend you pandal-hop with every year 👇",
+    "keywords": [
+     "kolkata durga puja",
+     "durga puja 2026",
+     "pujo vibes",
+     "dhunuchi naach",
+     "kolkata pujo night"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataPujo #DurgaPuja"
+   }
   },
   {
    "id": "s4",
