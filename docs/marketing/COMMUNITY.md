@@ -123,7 +123,17 @@ This is the single biggest search and forward moment before the pujas. Every des
 3. Post the same as an Instagram story with a link sticker (`ig_story_metro`).
 4. Reply on the Reddit thread from §1 with the timings.
 
-## 6. The daily 30 minutes (8–16 Oct)
+## 6. WBTC Puja Parikrama (from 8 Oct, while tickets are on sale)
+
+Families ask every year whether the government tram and bus tours are running. Forward the answer, especially to
+family groups with elders:
+
+> এবার পুজোয় পরিবহণ নিগমের এসি ট্রাম, এসি বাস আর লঞ্চে পুজো পরিক্রমা, ১৭ থেকে ২১ অক্টোবর। এসি ট্রাম ৮০০ টাকা,
+> হাতিবাগান থেকে একডালিয়া-সিংহী পার্ক। রুট, ভাড়া, বুকিং: pujoparikramaguide.in/guide/wbtc-puja-parikrama/?src=wa_parikrama
+
+Fares change on WBTC's site, not ours: before forwarding, check the page still matches wbtconline.in.
+
+## 7. The daily 30 minutes (8–16 Oct)
 
 | When | Who | What |
 |---|---|---|
