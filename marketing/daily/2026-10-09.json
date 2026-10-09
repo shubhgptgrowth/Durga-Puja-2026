@@ -1,6 +1,6 @@
 {
  "date": "2026-10-09",
- "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides).",
+ "note": "Kumartuli making-of as text-on-photo cards (09:30), North Kolkata 2026 themes carousel (15:30), South Kolkata route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides). Mahalaya-eve set added on 9 Oct (owner: more posts today, around Mahalaya): p4 carousel, s5 and s6 stories, r5 footage reel.",
  "items": [
   {
    "id": "p1",
@@ -272,6 +272,194 @@
    }
   },
   {
+   "id": "p4",
+   "type": "photo",
+   "at": "16:30",
+   "render": "cards",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Mahalaya 2026 · Saturday 10 October",
+     "title": [
+      "MAHALAYA",
+      "IS TOMORROW"
+     ],
+     "sub": "What happens, from 4 am to sunset",
+     "pill": "Save it for tonight",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Pitri_Tarpan_on_the_dawn_of_Mahalaya_at_Raichak%2C_West_Bengal%2C_India.jpg",
+      "artist": "Kingshuk Mondal",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.5
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "4:00 AM",
+     "name": "On the radio",
+     "title": "Mahishasuramardini",
+     "body": "Birendra Krishna Bhadra's chanting on Akashvani: the sound of Mahalaya dawn in Bengali homes since the 1930s.",
+     "foot": "Set the alarm for 3:55"
+    },
+    {
+     "t": "photo",
+     "kicker": "First light",
+     "title": "Tarpan at the ghats",
+     "body": "Families stand in the Ganga to offer water and sesame to their ancestors.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Mahalaya%2C_an_auspicious_day_to_perform_Tarpan_04.jpg",
+      "artist": "Goutam1962",
+      "license": "CC BY-SA 4.0",
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "item",
+     "kicker": "Where in Kolkata",
+     "name": "Ghats on the Hooghly",
+     "title": "Bagbazar · Ahiritola · Jagannath Ghat",
+     "body": "Tarpan starts at first light and carries on through the morning.",
+     "foot": "Sovabazar Metro is the closest for Bagbazar and Ahiritola"
+    },
+    {
+     "t": "item",
+     "kicker": "All day",
+     "name": "The calendar turns",
+     "title": "Devi Paksha begins",
+     "body": "Mahalaya closes the fortnight for the ancestors (Pitri Paksha) and opens the fortnight of the Goddess.",
+     "foot": "Durga Puja is 7 days away"
+    },
+    {
+     "t": "item",
+     "kicker": "Kumartuli",
+     "name": "The last touch",
+     "title": "Chokkhu Daan",
+     "body": "Traditionally the protima's eyes are painted around Mahalaya: the moment she is said to come alive.",
+     "foot": "Kumartuli · Sovabazar Metro, 17 min walk"
+    },
+    {
+     "t": "end",
+     "title": [
+      "SEND THIS",
+      "TO YOUR 4 AM BUDDY"
+     ],
+     "sub": "The one you listen to Mahalaya with",
+     "pill": "Routes & quiet hours: link in bio"
+    }
+   ],
+   "caption": {
+    "en": "Mahalaya 2026 in Kolkata is tomorrow, Saturday 10 October: what happens, from 4 am to sunset 📻\n\nMahishasuramardini on the radio at 4, tarpan at the Ganga ghats at first light, and Devi Paksha begins. Durga Puja is seven days away.\n\nSend this to the friend you listen to Mahalaya with 👇",
+    "keywords": [
+     "mahalaya 2026",
+     "mahalaya date 2026",
+     "mahalaya time",
+     "tarpan kolkata",
+     "mahishasuramardini",
+     "durga puja 2026"
+    ],
+    "tags": "#Mahalaya #DurgaPuja2026 #Kolkata"
+   }
+  },
+  {
+   "id": "s5",
+   "type": "story",
+   "at": "16:35",
+   "segments": [
+    [
+     "x-offering",
+     0,
+     5.0,
+     "Mahalaya is tomorrow. Alarm set for 4 am? Reply",
+     0.5,
+     0.45
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "কাল মহালয়া! ভোর চারটের অ্যালার্ম দিয়েছেন? রিপ্লাই করে জানান!"
+    ],
+    "en": [
+     "Mahalaya is tomorrow! Have you set the 4 am alarm? Reply and tell us!"
+    ]
+   }
+  },
+  {
+   "id": "r5",
+   "type": "reel",
+   "at": "17:30",
+   "hook": "Tomorrow, 4 am. Every Bengali home, one voice.",
+   "bn": {
+    "hook": "কাল ভোর চারটে। বাঙালির ঘরে ঘরে একটাই কণ্ঠ।",
+    "segs": [
+     "",
+     "প্রথম আলোয় তর্পণ",
+     "ভোরের গঙ্গা",
+     "যাঁরা আগে চলে গেছেন, তাঁদের জন্য",
+     "দেবীপক্ষ শুরু, আর ৭ দিন"
+    ],
+    "end": "কাল ভোর চারটেয় কে কে উঠছেন?"
+   },
+   "segments": [
+    [
+     "x-radio",
+     0,
+     3.4,
+     "",
+     0.5,
+     0.55
+    ],
+    [
+     "x-dawn",
+     0,
+     3.0,
+     "Tarpan at first light",
+     0.5,
+     0.5
+    ],
+    [
+     "x-tarpan1",
+     2,
+     3.0,
+     "The Ganga at dawn"
+    ],
+    [
+     "x-tarpan2",
+     2,
+     3.0,
+     "For those who came before"
+    ],
+    [
+     "f17",
+     6,
+     3.2,
+     "Devi Paksha begins. 7 days to go"
+    ]
+   ],
+   "end": [
+    "Who's waking up at 4 tomorrow?",
+    "Tell us below"
+   ],
+   "music": [
+    "f23",
+    0
+   ],
+   "caption": {
+    "en": "Mahalaya is tomorrow: Durga Puja's countdown starts at 4 am, and Kolkata wakes up to one voice 🙏\n\nThe radio on in a dark room, tarpan at the ghats at first light, and Devi Paksha begins. Seven days after that, Durga Puja.\n\nWho's waking up at 4? Tell us below 👇",
+    "keywords": [
+     "mahalaya 2026",
+     "mahalaya tomorrow",
+     "mahishasuramardini",
+     "tarpan",
+     "durga puja 2026",
+     "kolkata"
+    ],
+    "tags": "#Mahalaya #DurgaPuja2026 #KolkataPujo"
+   }
+  },
+  {
    "id": "r1",
    "type": "reel",
    "at": "18:30",
@@ -392,6 +580,30 @@
    }
   },
   {
+   "id": "s6",
+   "type": "story",
+   "at": "20:50",
+   "segments": [
+    [
+     "x-tarpan2",
+     4,
+     5.0,
+     "Radio, TV or phone: how will you hear Mahalaya? Reply"
+    ]
+   ],
+   "vo": {
+    "engine": "edge:bn-IN-TanishaaNeural",
+    "credit": "AI voice (Microsoft Azure neural TTS)",
+    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
+    "lines": [
+     "কাল ভোরে মহালয়া শুনবেন কীসে? রেডিও, টিভি না ফোন? রিপ্লাই করুন!"
+    ],
+    "en": [
+     "How will you listen to Mahalaya at dawn tomorrow? Radio, TV or phone? Reply!"
+    ]
+   }
+  },
+  {
    "id": "r3",
    "type": "reel",
    "at": "21:00",
@@ -410,5 +622,43 @@
     "tags": "#DurgaPuja2026 #NorthKolkata #KolkataDurgaPuja"
    }
   }
- ]
+ ],
+ "clips": {
+  "x-radio": {
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3C4ckPluFiRw2Fro30FUIlIR0V7/hf_20261006_194338_a7450c52-80c7-4867-a353-5259fb1f2983.png",
+   "label": "Radio before dawn (AI)"
+  },
+  "x-dawn": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Pitri_Tarpan_on_the_dawn_of_Mahalaya_at_Raichak%2C_West_Bengal%2C_India.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kingshuk Mondal",
+   "label": "Tarpan at dawn on Mahalaya, Raichak"
+  },
+  "x-offering": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Mahalaya%2C_an_auspicious_day_to_perform_Tarpan_04.jpg",
+   "source": "Wikimedia Commons",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Tarpan offering on Mahalaya"
+  },
+  "x-tarpan1": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Tarpan_-_Jagannath_Ghat_-_Kolkata_2012-10-15_0641.ogv",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Tarpan at Jagannath Ghat on Mahalaya",
+   "w": 1920,
+   "h": 1080
+  },
+  "x-tarpan2": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Tarpan_-_Jagannath_Ghat_-_Kolkata_2012-10-15_0707.ogv",
+   "source": "Wikimedia Commons",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Tarpan at Jagannath Ghat on Mahalaya",
+   "w": 1920,
+   "h": 1080
+  }
+ }
 }
