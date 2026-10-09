@@ -78,6 +78,16 @@ def cover(s, photo):
     return im
 
 
+def title_font(d, title, size, width, floor=72):
+    """Largest display size at which the title fits in three lines and no single word runs past the edge."""
+    while size > floor:
+        ls = wrap(d, title, F("display", size), width)
+        if len(ls) <= 3 and all(d.textlength(ln, font=F("display", size)) <= width for ln in ls):
+            break
+        size -= 8
+    return F("display", size)
+
+
 def item(s, photo):
     im = backdrop(s, photo, 0.62 if photo else 0)
     d = ImageDraw.Draw(im, "RGBA")
@@ -87,10 +97,7 @@ def item(s, photo):
         y += 90
     if s.get("name"):
         y = block(d, y, s["name"], F("bold", 76), W - 180, max_lines=2) + 40
-    size = 170
-    while size > 80 and len(wrap(d, s["title"].upper(), F("display", size), W - 180)) > 3:
-        size -= 8  # the whole title, in at most three lines
-    f = F("display", size)
+    f = title_font(d, s["title"].upper(), 170, W - 180)
     bottom = y
     for ln in wrap(d, s["title"].upper(), f, W - 180):
         text(d, (90, y), ln, f, fill=YEL, stroke=2)
@@ -112,7 +119,7 @@ def photo_slide(s, photo):
     im = backdrop(s, photo, 0.18)
     d = ImageDraw.Draw(im, "RGBA")
     body = wrap(d, s.get("body", ""), F("med", 46), W - 180)[:5] if s.get("body") else []
-    f = F("display", 120)
+    f = title_font(d, s["title"].upper(), 120, W - 180)
     tl = wrap(d, s["title"].upper(), f, W - 180)[:3]
     y = H - 160 - len(body) * 56 - len(tl) * 124 - (70 if s.get("kicker") else 0)
     if s.get("kicker"):
