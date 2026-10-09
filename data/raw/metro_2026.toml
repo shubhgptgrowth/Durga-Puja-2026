@@ -5,10 +5,10 @@
 # Puja nights (Shashthi to Dashami). Set announced = true and fill in text and source once Metro announces
 # its late-night or all-night timings; until then the pages say they haven't been announced.
 [puja_nights]
-announced = false
-text = ""
-source = ""
-date = ""
+announced = true
+text = "Metro Railway has announced its puja timings. From Saturday 17 to Tuesday 20 October, the Blue Line (Dakshineswar to Shahid Khudiram) runs from 1 pm until about 4 am the next morning, and the Green Line from 1:30 pm until about 4 am. On 15 and 16 October the Blue Line runs from 6 am to 11 pm, and on Dashami (21 October) it runs fewer trains. The Orange Line is suspended from Saptami to Dashami. Last trains vary by station, so check the notice at your station, and book tickets on the Aamar Kolkata Metro app to skip the queues."
+source = "https://www.indiatvnews.com/west-bengal/kolkata-kolkata-metro-to-run-special-train-services-on-five-corridors-during-durga-puja-check-date-timing-2026-10-08-1056474"
+date = "2026-10-08"
 
 [[notice]]
 date = "2026-09-30"
