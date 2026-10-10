@@ -46,8 +46,14 @@ jobs:
           curl -fsSLo fonts/Anton-Regular.ttf https://github.com/google/fonts/raw/main/ofl/anton/Anton-Regular.ttf
           for f in galada/Galada-Regular hindsiliguri/HindSiliguri-Bold; do curl -fsSLo fonts/${f#*/}.ttf https://github.com/google/fonts/raw/main/ofl/$f.ttf; done
           # the cinematic look's serif faces; without them the reels fall back to the house faces
-          for f in marcellus/Marcellus-Regular tirobangla/TiroBangla-Regular; do
+          for f in marcellus/Marcellus-Regular tirobangla/TiroBangla-Regular tirodevanagarisanskrit/TiroDevanagariSanskrit-Regular \
+                   hindsiliguri/HindSiliguri-Regular poppins/Poppins-Regular; do
             curl -fsSLo fonts/${f#*/}.ttf https://github.com/google/fonts/raw/main/ofl/$f.ttf || echo "::warning::font $f missing"
+          done
+          # editorial carousels' display face (variable font; the renderer sets the weight)
+          for f in "CormorantGaramond[wght]" "CormorantGaramond-Italic[wght]"; do
+            u=$(printf '%s' "$f" | sed 's/\[/%5B/; s/\]/%5D/')
+            curl -fsSLo "fonts/$f.ttf" "https://github.com/google/fonts/raw/main/ofl/cormorantgaramond/$u.ttf" || echo "::warning::font $f missing"
           done
       - name: Which dates
         id: dates

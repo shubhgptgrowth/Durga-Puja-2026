@@ -221,10 +221,14 @@ def step(s, k, n, src_dir, download):
 
     def lay(d, y0):
         y = y0
-        ft = fit(d, s["title"], "display", 112, W - 2 * M - (200 if s.get("num") is not None else 0), 2, floor=72)
+        if s.get("num") is not None:  # the step number, large and faint, top right of the title
+            fn = font("display", 260)
+            num = f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"])
+            d.text((W - M - d.textlength(num, font=fn), y - 120), num, font=fn, fill=GOLD + (70,))
+        ft = fit(d, s["title"], "display", 112, W - 2 * M - (260 if s.get("num") is not None else 0), 2, floor=72)
         y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.04, max_lines=2)
         if s.get("bn"):
-            y += round(ft.size * 0.22)
+            y += round(ft.size * 0.3)
             fb_ = fit(d, s["bn"], "bn", 58, W - 2 * M, 1, floor=40)
             y = draw_lines(d, (M, y), s["bn"], fb_, SINDOOR, W - 2 * M, gap=1.3, max_lines=1)
         y += 34
@@ -244,14 +248,10 @@ def step(s, k, n, src_dir, download):
     if has_photo:
         im = paper()
         d = ImageDraw.Draw(im, "RGBA")
-        lay(d, 250)
+        lay(d, 300)
     else:
-        im, d = centred(lay, 260, H - 200, paper)
+        im, d = centred(lay, 330, H - 200, paper)
     header(d, s.get("kicker"), k, n)
-    if s.get("num") is not None:
-        fn = font("display", 300)
-        num = f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"])
-        d.text((W - M - d.textlength(num, font=fn), 150), num, font=fn, fill=GOLD + (70,))
     if has_photo:
         ph = photo_img(s["photo"], src_dir, download, (W - 2 * M, 620))
         mask = Image.new("L", ph.size, 0)

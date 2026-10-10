@@ -57,10 +57,10 @@ def resolve(item, spec):
     """Turns a manifest item into what gets posted: kind, media URLs and caption."""
     if item["type"] == "photo":  # pure photography: one image, or a carousel of up to 10
         return {"label": item["id"], "kind": "photo", "urls": item["image_urls"], "caption": item.get("caption") or "",
-                "at": item.get("at")}
+                "at": item.get("at"), "tags": item.get("tags") or []}
     if item["type"] in ("reel", "story"):
         return {"label": item["id"], "kind": item["type"], "urls": [item["video_url"]], "caption": item.get("caption") or "",
-                "at": item.get("at")}
+                "at": item.get("at"), "tags": item.get("tags") or []}
     if item["type"] == "carousel":
         c = next((c for c in spec["carousels"] if c["slug"] == item["slug"]), None)
         if not c:
@@ -82,16 +82,41 @@ def publish(p, user, token, retries=1):
             time.sleep(60)
 
 
+def user_tags(handles, image=True):
+    """Instagram user tags: on an image they sit at a point (spread along the lower third), on a reel they have none."""
+    tags = []
+    for i, h in enumerate(handles[:5]):
+        t = {"username": h.lstrip("@")}
+        if image:
+            t.update(x=round(0.2 + 0.6 * (i + 0.5) / max(1, len(handles[:5])), 3), y=0.85)
+        tags.append(t)
+    return json.dumps(tags)
+
+
 def publish_once(p, user, token):
+    try:
+        return _publish_once(p, user, token, p.get("tags") or [])
+    except NotProcessed:
+        raise
+    except SystemExit as e:  # graph() reports API errors this way; a bad or untaggable handle must not lose the post
+        if not p.get("tags") or "tag" not in str(e).lower() and "user" not in str(e).lower():
+            raise
+        print(f"  tagging failed ({str(e)[:160]}); posting without tags", flush=True)
+        return _publish_once(p, user, token, [])
+
+
+def _publish_once(p, user, token, tags):
+    tag = {"user_tags": user_tags(tags)} if tags else {}
     if p["kind"] == "reel":
         cid = graph("POST", f"{user}/media", token, media_type="REELS", video_url=p["urls"][0],
-                    caption=p["caption"], share_to_feed="true")["id"]
+                    caption=p["caption"], share_to_feed="true", **({"user_tags": user_tags(tags, image=False)} if tags else {}))["id"]
     elif p["kind"] == "story":
         cid = graph("POST", f"{user}/media", token, media_type="STORIES", video_url=p["urls"][0])["id"]
     elif p["kind"] == "photo" and len(p["urls"]) == 1:
-        cid = graph("POST", f"{user}/media", token, image_url=p["urls"][0], caption=p["caption"])["id"]
-    else:
-        kids = [graph("POST", f"{user}/media", token, image_url=u, is_carousel_item="true")["id"] for u in p["urls"]]
+        cid = graph("POST", f"{user}/media", token, image_url=p["urls"][0], caption=p["caption"], **tag)["id"]
+    else:  # a carousel's tags go on its first image, where they show
+        kids = [graph("POST", f"{user}/media", token, image_url=u, is_carousel_item="true", **(tag if i == 0 else {}))["id"]
+                for i, u in enumerate(p["urls"])]
         for k in kids:
             wait_ready(k, token, tries=30)
         cid = graph("POST", f"{user}/media", token, media_type="CAROUSEL", children=",".join(kids),
