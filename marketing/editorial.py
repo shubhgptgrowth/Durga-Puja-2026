@@ -185,10 +185,10 @@ def cover(s, k, n, src_dir, download):
         t = max(0.0, (y - H * 0.34) / (H * 0.66))
         shade.putpixel((0, y), int(235 * t ** 1.15))
     im = Image.composite(Image.new("RGB", (W, H), (22, 6, 8)), im, shade.resize((W, H)))
-    top = Image.new("L", (1, 260))
-    for y in range(260):
-        top.putpixel((0, y), int(120 * (1 - y / 260)))
-    im.paste((0, 0, 0), (0, 0, W, 260), top.resize((W, 260)))
+    top = Image.new("L", (1, 340))
+    for y in range(340):
+        top.putpixel((0, y), int(175 * (1 - y / 340) ** 1.2))
+    im.paste((14, 4, 6), (0, 0, W, 340), top.resize((W, 340)))
     d = ImageDraw.Draw(im, "RGBA")
     spaced(d, (M, 96), s.get("kicker") or "Pujo Parikrama", font("caps", 32), (232, 196, 120), track=0.24)
     ft = fit(d, s["title"], "display", 150, W - 2 * M, 3, floor=90)
@@ -314,7 +314,8 @@ def mantra(s, k, n, src_dir, download):
         return Image.composite(Image.new("RGB", (W, H), (124, 32, 30)), im, glow)
 
     role = "deva" if s.get("script", "deva") == "deva" else "bn"
-    lines_src = [ln.strip() for ln in s["text"].split("\n") if ln.strip()]
+    # a danda never starts a line on its own: glue it to the word before it
+    lines_src = [re.sub(r"\s+([।॥])", r"\1", ln.strip()) for ln in s["text"].split("\n") if ln.strip()]
 
     def lay(d, y0):
         y = y0
