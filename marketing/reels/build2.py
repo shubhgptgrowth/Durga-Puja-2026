@@ -229,6 +229,20 @@ def cine_png(path, frame, hook=None, line=None, end=None):
     d, sd = ImageDraw.Draw(im), ImageDraw.Draw(sh)
     win = frame == "window"
 
+    def fit(text, size, n=2, floor=40):
+        """The largest size (stepping down from size) at which the whole line fits in n lines: never cut a line short."""
+        while size > floor and len(wrap(d, text, cfont(CINE_BN, size, bn=True), W - 150)) > n:
+            size -= 6
+        return cfont(CINE_BN, size, bn=True)
+
+    def efit(text, size, n, track):
+        """English caps: step the size down until the line fits in n lines, then never cut it (at most one extra line)."""
+        text = plain(text).upper()
+        while size > 20 and len(wrap(d, text, cfont(CINE_SERIF, size), (W - 200) / (1 + track))) > n:
+            size -= 2
+        f = cfont(CINE_SERIF, size)
+        return f, wrap(d, text, f, (W - 200) / (1 + track))[:n + 1]
+
     def bn_lines(text, f, y, n, step):
         for ln in wrap(d, text, f, W - 150)[:n]:
             x = (W - d.textlength(ln, font=f)) / 2
@@ -241,30 +255,31 @@ def cine_png(path, frame, hook=None, line=None, end=None):
         if not win:  # darken the middle of the shot so the closing lines read on any footage
             for y in range(H // 4, H):
                 sd.line((0, y, W, y), fill=(0, 0, 0, int(170 * min(1, (y - H / 4) / (H / 3)) ** 0.9)))
-        fb = cfont(CINE_BN, 62 if win else 74, bn=True)
-        y = bn_lines(end[0], fb, 120 if win else 960, 2, 80 if win else 96)
+        fb = fit(end[0], 62 if win else 74)
+        y = bn_lines(end[0], fb, 120 if win else 960, 2, int(fb.size * 1.3))
         if end[1]:
             spaced(d, (W / 2, y + 8), end[1], cfont(CINE_SERIF, 28), (232, 196, 120, 255), track=0.14, layer=sd); y += 52
         spaced(d, (W / 2, y + (14 if win else 40)), "Free pandal guide  ·  link in bio", cfont(CINE_SERIF, 26 if win else 30),
                (255, 255, 255, 235), track=0.16, layer=sd)
     elif hook:
-        fb = cfont(CINE_BN, 68 if win else 96, bn=True)
+        fb = fit(hook[0], 62 if win else 96) if hook[0] else cfont(CINE_BN, 62, bn=True)
         lines = wrap(d, hook[0], fb, W - 150)[:2] if hook[0] else []
-        step = int(fb.size * 1.2)
-        y = (150 if len(lines) > 1 else 200) if win else 1060 - (len(lines) - 1) * step // 2
+        step = int(fb.size * 1.25)
+        y = (115 if len(lines) > 1 else 180) if win else 1060 - (len(lines) - 1) * step // 2
         y = bn_lines(hook[0], fb, y, 2, step) if lines else y
         if hook[1]:
-            fe = cfont(CINE_SERIF, 28 if win else 34)
-            for ln in wrap(d, plain(hook[1]).upper(), fe, (W - 200) / 1.15)[:1 if win else 2]:
-                spaced(d, (W / 2, y + 12), ln, fe, (236, 200, 128, 255), track=0.12, layer=sd); y += 50
+            fe, lns = efit(hook[1], 26 if win else 34, 2, 0.15)
+            for ln in lns:
+                spaced(d, (W / 2, y + 30), ln, fe, (236, 200, 128, 255), track=0.12, layer=sd); y += int(fe.size * 1.5)
     elif line and (line[0] or line[1]):
         y = 210 if win else 1250
         if line[0]:
-            y = bn_lines(line[0], cfont(CINE_BN, 52, bn=True), y, 2, 70)
+            fl = fit(line[0], 52)
+            y = bn_lines(line[0], fl, y, 2, int(fl.size * 1.35))
         if line[1]:
-            fe = cfont(CINE_SERIF, 28)
-            for ln in wrap(d, plain(line[1]).upper(), fe, (W - 220) / 1.12)[:1 if win else 2]:
-                spaced(d, (W / 2, y + 10), ln, fe, (236, 210, 160, 240), track=0.1, layer=sd); y += 42
+            fe, lns = efit(line[1], 28, 1 if win else 2, 0.12)
+            for ln in lns:
+                spaced(d, (W / 2, y + 22), ln, fe, (236, 210, 160, 240), track=0.1, layer=sd); y += int(fe.size * 1.5)
     out = Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(6)), im)
     out.save(path)
 
