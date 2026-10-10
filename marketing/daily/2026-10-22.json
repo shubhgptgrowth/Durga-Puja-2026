@@ -1,38 +1,6 @@
 {
  "date": "2026-10-22",
  "clips": {
-  "fx-363ad4e8": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Joydeep",
-   "label": "Durga,_Burdwan,_West_Bengal,_India_21_10_2012_03.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg"
-  },
-  "fx-330ac5ac": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG",
-   "license": "CC BY-SA 3.0",
-   "artist": "JDP90 (Joydeep)",
-   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(1).JP",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG"
-  },
-  "fx-09c9bc1b": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG",
-   "license": "CC BY-SA 3.0",
-   "artist": "JDP90 (Joydeep)",
-   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(2).JP",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG"
-  },
-  "fx-8e8e3553": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Subhrajyoti07",
-   "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
-   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
-  },
   "fx-74d985b1": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9219.jpg",
@@ -286,53 +254,53 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "Pujo doesn't end at the city limits",
+   "hook": "A 269-year-old goodbye",
    "bn": {
-    "hook": "পুজো শুধু শহরে নয়",
+    "hook": "২৬৯ বছরের বিদায়",
     "segs": [
      "",
-     "বর্ধমান",
-     "বর্ধমান",
-     "বাগুইআটি"
+     "শোভাবাজার রাজবাড়ি",
+     "বাগবাজার ঘাট",
+     "আসছে বছর আবার হবে"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-363ad4e8",
+     "fx-74d985b1",
      0,
      4.0,
      ""
     ],
     [
-     "fx-330ac5ac",
+     "fx-54b42620",
      0,
      3.6,
-     "Bardhaman"
+     "Sovabazar Rajbari"
     ],
     [
-     "fx-09c9bc1b",
+     "fx-bdb3d42f",
      0,
      3.6,
-     "Bardhaman"
+     "Baghbazar Ghat"
     ],
     [
-     "fx-8e8e3553",
+     "fx-6771bed7",
      0,
      3.6,
-     "Baguiati"
+     "Asche bochor abar hobe"
     ]
    ],
    "end": [
-    "Pujo doesn't end at the city limits",
-    "Where is your hometown pujo? Tell us"
+    "A 269-year-old goodbye",
+    "Have you ever watched a bisarjan at the ghat? Tell us"
    ],
    "music": [
-    "f21",
-    80
+    "f23",
+    90
    ],
    "caption": {
-    "en": "Durga Puja beyond Kolkata: Bardhaman and Baguiati 🪔\n\nPujo in Bengal's towns and the city's edges, from past years.\n\nWhere is your hometown pujo? Tell us 👇",
+    "en": "Sovabazar Rajbari's Durga Puja immersion at Baghbazar Ghat, Kolkata 🙏\n\nThe royal family's protima goes to the Hooghly the old way, carried down to the river. These photos are from 2014.\n\nHave you ever watched a bisarjan at the ghat? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -352,15 +320,15 @@
    },
    "segments": [
     [
-     "fx-330ac5ac",
+     "fx-54b42620",
      0,
      6.0,
      "Asche bochor abar hobe"
     ]
    ],
    "music": [
-    "f21",
-    150
+    "f23",
+    50
    ]
   },
   {
@@ -592,53 +560,53 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "A 269-year-old goodbye",
+   "hook": "The walk no one wants to end",
    "bn": {
-    "hook": "২৬৯ বছরের বিদায়",
+    "hook": "যে পথ কেউ শেষ করতে চায় না",
     "segs": [
      "",
-     "শোভাবাজার রাজবাড়ি",
-     "বাগবাজার ঘাট",
-     "আসছে বছর আবার হবে"
+     "শোভাযাত্রা",
+     "ঢাকের তালে",
+     "গঙ্গার দিকে"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-74d985b1",
+     "fx-411bb78a",
      0,
      4.0,
      ""
     ],
     [
-     "fx-54b42620",
+     "fx-b3d0c71d",
      0,
      3.6,
-     "Sovabazar Rajbari"
+     "The procession"
     ],
     [
-     "fx-bdb3d42f",
+     "fx-125db1f9",
      0,
      3.6,
-     "Baghbazar Ghat"
+     "Dhak all the way"
     ],
     [
-     "fx-6771bed7",
+     "fx-7705df50",
      0,
      3.6,
-     "Asche bochor abar hobe"
+     "To the river"
     ]
    ],
    "end": [
-    "A 269-year-old goodbye",
-    "Have you ever watched a bisarjan at the ghat? Tell us"
+    "The walk no one wants to end",
+    "Does your para dance all the way to the ghat? Tell us"
    ],
    "music": [
-    "f20",
-    30
+    "f22",
+    20
    ],
    "caption": {
-    "en": "Sovabazar Rajbari's Durga Puja immersion at Baghbazar Ghat, Kolkata 🙏\n\nThe royal family's protima goes to the Hooghly the old way, carried down to the river. These photos are from 2014.\n\nHave you ever watched a bisarjan at the ghat? Tell us 👇",
+    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -658,15 +626,15 @@
    },
    "segments": [
     [
-     "fx-8e8e3553",
+     "fx-6771bed7",
      0,
      6.0,
      "Which pandal are you going to?"
     ]
    ],
    "music": [
-    "f23",
-    90
+    "f22",
+    120
    ]
   },
   {
@@ -864,10 +832,10 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Ready-made pujo night",
-     "title": "North Kolkata Heritage Trail",
-     "bn": "উত্তর কলকাতার ঐতিহ্য পরিক্রমা",
-     "sub": "17 pandals, from 7 am",
+     "kicker": "After the pujo",
+     "title": "How many steps was your pujo?",
+     "bn": "এবারের পুজোয় কত পা হাঁটলেন?",
+     "sub": "Your pandals and steps, kept in one place",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Durga_with_Her_Family_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2016_10-08_9693.JPG",
       "artist": "Biswarup Ganguly",
@@ -877,34 +845,36 @@
      }
     },
     {
-     "t": "step",
-     "kicker": "The route",
-     "title": "What you'll see",
-     "bn": "কী কী দেখবেন",
-     "body": "Kumartuli, Bagbazar, the bonedi bari and Hatibagan, finishing with kabiraji at Mitra Cafe."
+     "t": "app",
+     "kicker": "My Pujo",
+     "num": 1,
+     "title": "Every step, counted",
+     "bn": "প্রতিটা পা",
+     "body": "Start a pujo walk and the app counts your steps, kilometres and pandals as you go.",
+     "shot": "repo:marketing/app-shots/me.jpg"
     },
     {
      "t": "app",
-     "kicker": "In the app",
-     "num": 1,
-     "title": "Open it, start walking",
-     "bn": "খুলুন, হাঁটা শুরু",
-     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
-     "shot": "repo:marketing/app-shots/north_heritage.jpg"
+     "kicker": "Your route",
+     "num": 2,
+     "title": "Every pandal, ticked off",
+     "bn": "কোন কোন প্যান্ডেল",
+     "body": "Your route keeps the pandals you planned, with the walking order and the Metro station you started from.",
+     "shot": "repo:marketing/app-shots/trail.jpg"
     },
     {
      "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
-     "ask": "Tag who you're going with"
+     "title": "Tell us your number",
+     "bn": "কমেন্টে লিখুন কত পা",
+     "ask": "Comment your step count"
     }
    ],
    "caption": {
-    "en": "North Kolkata Heritage Trail: a ready-made Kolkata Durga Puja 2026 route, 17 pandals from 7 am 🗺️\n\nKumartuli, Bagbazar, the bonedi bari and Hatibagan, finishing with kabiraji at Mitra Cafe.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
+    "en": "Kolkata Durga Puja 2026 is done. How many steps did your pujo take? 👣\n\nOur free guide counts your steps, kilometres and pandals when you start a pujo walk, and keeps your route in one place.\n\nTell us your step count in the comments 👇",
     "keywords": [
-     "north kolkata heritage trail",
-     "kolkata durga puja route 2026",
-     "pandal hopping route kolkata"
+     "durga puja 2026 kolkata",
+     "pandal hopping steps",
+     "pujo walk"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
@@ -913,53 +883,53 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "The walk no one wants to end",
+   "hook": "Kolkata's hardest goodbye",
    "bn": {
-    "hook": "যে পথ কেউ শেষ করতে চায় না",
+    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
     "segs": [
      "",
-     "শোভাযাত্রা",
-     "ঢাকের তালে",
-     "গঙ্গার দিকে"
+     "বাজা কদমতলা ঘাট",
+     "",
+     "বিসর্জন"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-411bb78a",
+     "fx-6a7c4367",
      0,
      4.0,
      ""
     ],
     [
-     "fx-b3d0c71d",
+     "fx-1e576a95",
      0,
      3.6,
-     "The procession"
+     "Baja Kadamtala Ghat"
     ],
     [
-     "fx-125db1f9",
+     "fx-9ce6f7cb",
      0,
      3.6,
-     "Dhak all the way"
+     ""
     ],
     [
-     "fx-7705df50",
+     "fx-e68a45ca",
      0,
      3.6,
-     "To the river"
+     "Bisarjan"
     ]
    ],
    "end": [
-    "The walk no one wants to end",
-    "Does your para dance all the way to the ghat? Tell us"
+    "Kolkata's hardest goodbye",
+    "Who do you miss the most when pujo ends? Tell us"
    ],
    "music": [
-    "f23",
-    50
+    "f21",
+    80
    ],
    "caption": {
-    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
+    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -979,15 +949,15 @@
    },
    "segments": [
     [
-     "fx-bdb3d42f",
+     "fx-125db1f9",
      0,
      6.0,
      "North or South this year?"
     ]
    ],
    "music": [
-    "f22",
-    20
+    "f20",
+    140
    ]
   },
   {
@@ -1067,62 +1037,83 @@
    }
   },
   {
-   "id": "r7",
-   "type": "reel",
+   "id": "p7",
+   "type": "photo",
+   "render": "editorial",
    "at": "20:50",
-   "hook": "Kolkata's hardest goodbye",
-   "bn": {
-    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
-    "segs": [
-     "",
-     "বাজা কদমতলা ঘাট",
-     "",
-     "বিসর্জন"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
-   "segments": [
-    [
-     "fx-6a7c4367",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "fx-1e576a95",
-     0,
-     3.6,
-     "Baja Kadamtala Ghat"
-    ],
-    [
-     "fx-9ce6f7cb",
-     0,
-     3.6,
-     ""
-    ],
-    [
-     "fx-e68a45ca",
-     0,
-     3.6,
-     "Bisarjan"
-    ]
-   ],
-   "end": [
-    "Kolkata's hardest goodbye",
-    "Who do you miss the most when pujo ends? Tell us"
-   ],
-   "music": [
-    "f22",
-    120
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Lake Market",
+     "title": "Deshapriya Park",
+     "bn": "দেশপ্রিয় পার্ক",
+     "sub": "Pictured: 2017",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4506-4508.tif",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Once famous for the biggest Durga idol in the world, it now runs grand themes."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Kalighat, 20 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Since 1938",
+       "প্রতিষ্ঠা"
+      ],
+      [
+       "Eat nearby: Lake Market Telebhaja Stalls",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4501.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Deshapriya Park, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
    ],
    "caption": {
-    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
+    "en": "Deshapriya Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nOnce famous for the biggest Durga idol in the world, it now runs grand themes.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 20 minutes' walk from Kalighat Metro.\n\nAre you going this year? Tell us 👇",
     "keywords": [
-     "durga puja 2026",
-     "kolkata durga puja",
-     "bijoya dashami kolkata"
+     "deshapriya park durga puja 2026",
+     "deshapriya park pandal",
+     "lake market & kalighat pandals",
+     "kolkata durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
    }
   },
   {
@@ -1172,7 +1163,7 @@
    ],
    "music": [
     "f20",
-    140
+    30
    ],
    "caption": {
     "en": "Sovabazar Rajbari's bisarjan, the traditional way, Kolkata 🙏\n\nBefore the immersion the protima is readied at Baghbazar Ghat. These photos are from 2014.\n\nSave this, and tell us your para's bisarjan story 👇",
@@ -1195,7 +1186,7 @@
    },
    "segments": [
     [
-     "fx-b3d0c71d",
+     "fx-1e576a95",
      0,
      6.0,
      "Who are you going with?"
@@ -1203,7 +1194,7 @@
    ],
    "music": [
     "f21",
-    80
+    150
    ]
   }
  ]

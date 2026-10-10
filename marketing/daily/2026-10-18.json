@@ -1,70 +1,6 @@
 {
  "date": "2026-10-18",
  "clips": {
-  "pp-kashi_bose_lane-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Kashi_Bose_Lane_Durga_Utsav_committee_2024_12.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Kashi_Bose_Lane_Durga_Utsav_committee_2024_12.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kashi_Bose_Lane_Durga_Utsav_committee_2024_12.jpg"
-  },
-  "pp-nalin_sarkar-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Nalin_Sarkar_Street_Durga_puja_2024_04.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Nalin_Sarkar_Street_Durga_puja_2024_04.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Nalin_Sarkar_Street_Durga_puja_2024_04.jpg"
-  },
-  "pp-hatibagan-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Hatibagan_Sarbojanin_Durga_Puja_2023_06.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Hatibagan_Sarbojanin_Durga_Puja_2023_06.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hatibagan_Sarbojanin_Durga_Puja_2023_06.jpg"
-  },
-  "pp-jagat_mukherjee-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Jagat_Mukherjee_Park_Durga_Puja_2025_23.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Jagat_Mukherjee_Park_Durga_Puja_2025_23.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_23.jpg"
-  },
-  "pp-bagbazar-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Bagbazar_Srbojanin_Durga_Puja_2025_05.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Bagbazar_Srbojanin_Durga_Puja_2025_05.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bagbazar_Srbojanin_Durga_Puja_2025_05.jpg"
-  },
-  "pp-sovabazar_rajbari-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Shobhabazar_Rajbari_Durga_Puja.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Dassurojitsd",
-   "label": "Shobhabazar_Rajbari_Durga_Puja.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Shobhabazar_Rajbari_Durga_Puja.jpg"
-  },
-  "pp-kumartuli_sarbojanin-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Kumartuli_Sarbojanin_Durgatsab_2025_01.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Kumartuli_Sarbojanin_Durgatsab_2025_01.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Sarbojanin_Durgatsab_2025_01.jpg"
-  },
-  "pp-ahiritola-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_07.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_07.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_07.jpg"
-  },
   "pp-deshapriya_park-4": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4498.JPG",
@@ -128,6 +64,70 @@
    "artist": "Goutam1962",
    "label": "Ajeya_Sanghati_Club_(Haridevpur)_Durga_Puja_2025_41.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_41.jpg"
+  },
+  "pp-simla_byayam-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Simla_Byayam_Samity_Durga_Puja_2024_05.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Simla_Byayam_Samity_Durga_Puja_2024_05.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Simla_Byayam_Samity_Durga_Puja_2024_05.jpg"
+  },
+  "pp-college_square-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Pandal_College_Square_Arnab_Dutta_2011.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Jonoikobangali",
+   "label": "Pandal_College_Square_Arnab_Dutta_2011.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Pandal_College_Square_Arnab_Dutta_2011.jpg"
+  },
+  "pp-chaltabagan-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Chaltabagan_Durga_puja_2023_05.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Chaltabagan_Durga_puja_2023_05.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_05.jpg"
+  },
+  "pp-chorbagan-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Durga_Puja_2025_at_Chorbagan_Sarbojanin_16.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Durga_Puja_2025_at_Chorbagan_Sarbojanin_16.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_16.jpg"
+  },
+  "pp-jodhpur_park-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kinjal bose 78",
+   "label": "Jodhpur_Park.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jodhpur_Park.jpg"
+  },
+  "pp-hindustan_club-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg"
+  },
+  "pp-ekdalia-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3313.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3313.JPG"
+  },
+  "pp-singhi_park-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2014-10-02_8933.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_20",
+   "page": "https://commons.wikimedia.org/wiki/File:Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2014-10-02_8933.JPG"
   }
  },
  "items": [
@@ -221,56 +221,56 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "All of this, a few lanes apart",
+   "hook": "Rate these pandals out of 10",
    "bn": {
-    "hook": "সবটাই কয়েক গলির মধ্যে",
+    "hook": "দশে কত দেবেন?",
     "segs": [
      "",
-     "নলিন সরকার স্ট্রিট",
-     "হাতিবাগান সার্বজনীন",
-     "জগৎ মুখার্জি পার্ক"
+     "মুদিয়ালি ক্লাব",
+     "ত্রিধারা সম্মিলনী",
+     "চেতলা অগ্রণী ক্লাব"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-kashi_bose_lane-4",
+     "pp-deshapriya_park-4",
      0,
      4.0,
      ""
     ],
     [
-     "pp-nalin_sarkar-4",
+     "pp-mudiali-4",
      0,
      3.6,
-     "Nalin Sarkar Street"
+     "Mudiali Club"
     ],
     [
-     "pp-hatibagan-4",
+     "pp-tridhara-5",
      0,
      3.6,
-     "Hatibagan Sarbojanin"
+     "Tridhara Sammilani"
     ],
     [
-     "pp-jagat_mukherjee-4",
+     "pp-chetla_agrani-5",
      0,
      3.6,
-     "Jagat Mukherjee Park"
+     "Chetla Agrani Club"
     ]
    ],
    "end": [
-    "Kashi Bose Lane, Nalin Sarkar Street, Hatiba",
+    "Lake Market & Kalighat: four pujas, past yea",
     "Which one's your favourite? Tell us"
    ],
    "music": [
-    "f20",
-    140
+    "f22",
+    120
    ],
    "caption": {
-    "en": "Kumartuli, Bagbazar & Hatibagan Durga Puja pandals in Kolkata: four to see this year 🪔\n\nKashi Bose Lane, Nalin Sarkar Street, Hatibagan Sarbojanin and Jagat Mukherjee Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Rate Deshapriya Park, Mudiali Club and more out of 10: Kolkata Durga Puja pandals 🪔\n\nDeshapriya Park, Mudiali Club, Tridhara Sammilani and Chetla Agrani Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
-     "kumartuli, bagbazar & hatibagan durga puja",
-     "kashi bose lane",
+     "lake market & kalighat durga puja",
+     "deshapriya park",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -288,15 +288,15 @@
    },
    "segments": [
     [
-     "pp-nalin_sarkar-4",
+     "pp-mudiali-4",
      0,
      6.0,
      "Maha Saptami"
     ]
    ],
    "music": [
-    "f20",
-    30
+    "f21",
+    80
    ]
   },
   {
@@ -426,7 +426,7 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Pandal guide · Bagbazar–Hatibagan",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Ahiritola Sarbojanin",
      "bn": "আহিরীটোলা সার্বজনীন",
      "sub": "Pictured: 2025",
@@ -501,56 +501,56 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Only Kolkata builds this for four days",
+   "hook": "All of this, a few lanes apart",
    "bn": {
-    "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
+    "hook": "সবটাই কয়েক গলির মধ্যে",
     "segs": [
      "",
-     "শোভাবাজার রাজবাড়ি",
-     "কুমোরটুলি সার্বজনীন",
-     "আহিরীটোলা সার্বজনীন"
+     "বড়িশা ক্লাব",
+     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
+     "হরিদেবপুর অজেয় সংহতি"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-bagbazar-5",
+     "pp-behala_friends-4",
      0,
      4.0,
      ""
     ],
     [
-     "pp-sovabazar_rajbari-5",
+     "pp-barisha_club-4",
      0,
      3.6,
-     "Sovabazar Rajbari"
+     "Barisha Club"
     ],
     [
-     "pp-kumartuli_sarbojanin-5",
+     "pp-thakurpukur_sb_park-4",
      0,
      3.6,
-     "Kumartuli Sarbojanin"
+     "Thakurpukur SB Park Sarbojanin"
     ],
     [
-     "pp-ahiritola-5",
+     "pp-haridevpur_ajeya-4",
      0,
      3.6,
-     "Ahiritola Sarbojanin"
+     "Haridevpur Ajeya Sanghati"
     ]
    ],
    "end": [
-    "Bagbazar Sarbojanin, Sovabazar Rajbari, Kuma",
+    "Behala & New Alipore: four pujas, past years",
     "Which one's your favourite? Tell us"
    ],
    "music": [
-    "f21",
-    150
+    "f20",
+    140
    ],
    "caption": {
-    "en": "Kumartuli, Bagbazar & Hatibagan Durga Puja pandals in Kolkata: four to see this year 🪔\n\nBagbazar Sarbojanin, Sovabazar Rajbari, Kumartuli Sarbojanin and Ahiritola Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Behala Friends, Barisha Club and more: Kolkata Durga Puja pandals a few lanes apart 🪔\n\nBehala Friends, Barisha Club, Thakurpukur SB Park Sarbojanin and Haridevpur Ajeya Sanghati. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
-     "kumartuli, bagbazar & hatibagan durga puja",
-     "bagbazar sarbojanin",
+     "behala & new alipore durga puja",
+     "behala friends",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -568,15 +568,15 @@
    },
    "segments": [
     [
-     "pp-jagat_mukherjee-4",
+     "pp-chetla_agrani-5",
      0,
      6.0,
      "Which pandal are you going to?"
     ]
    ],
    "music": [
-    "f23",
-    50
+    "f20",
+    30
    ]
   },
   {
@@ -586,8 +586,8 @@
    "from": "p1",
    "hook": "Navratri Day 7: Maa Kalaratri",
    "music": [
-    "f23",
-    90
+    "f21",
+    150
    ],
    "caption": {
     "en": "Navratri Day 7 of the Durga Puja 2026 countdown: Maa Kalaratri, with her mantra 🙏\n\nFrom our Kolkata pujo page to your puja corner. Save it for your morning puja.",
@@ -797,56 +797,56 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "Save this for your pujo night",
+   "hook": "Only Kolkata builds this for four days",
    "bn": {
-    "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
+    "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
     "segs": [
      "",
-     "মুদিয়ালি ক্লাব",
-     "ত্রিধারা সম্মিলনী",
-     "চেতলা অগ্রণী ক্লাব"
+     "কলেজ স্কোয়ার সার্বজনীন",
+     "চালতাবাগান লোহাপট্টি",
+     "চোরবাগান সার্বজনীন"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-deshapriya_park-4",
+     "pp-simla_byayam-3",
      0,
      4.0,
      ""
     ],
     [
-     "pp-mudiali-4",
+     "pp-college_square-4",
      0,
      3.6,
-     "Mudiali Club"
+     "College Square Sarbojanin"
     ],
     [
-     "pp-tridhara-5",
+     "pp-chaltabagan-4",
      0,
      3.6,
-     "Tridhara Sammilani"
+     "Chaltabagan Lohapatty"
     ],
     [
-     "pp-chetla_agrani-5",
+     "pp-chorbagan-4",
      0,
      3.6,
-     "Chetla Agrani Club"
+     "Chorbagan Sarbojanin"
     ]
    ],
    "end": [
-    "Deshapriya Park, Mudiali Club, Tridhara Samm",
+    "College Street & Sealdah: four pujas, past y",
     "Which one's your favourite? Tell us"
    ],
    "music": [
-    "f22",
-    20
+    "f23",
+    90
    ],
    "caption": {
-    "en": "Lake Market & Kalighat Durga Puja pandals in Kolkata: four to see this year 🪔\n\nDeshapriya Park, Mudiali Club, Tridhara Sammilani and Chetla Agrani Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Only Kolkata builds this for four days: Simla Byayam Samity, College Square Sarbojanin and more Durga Puja pandals 🪔\n\nSimla Byayam Samity, College Square Sarbojanin, Chaltabagan Lohapatty and Chorbagan Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
-     "lake market & kalighat durga puja",
-     "deshapriya park",
+     "college street & sealdah durga puja",
+     "simla byayam samity",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -864,15 +864,15 @@
    },
    "segments": [
     [
-     "pp-kumartuli_sarbojanin-5",
+     "pp-thakurpukur_sb_park-4",
      0,
      6.0,
      "North or South this year?"
     ]
    ],
    "music": [
-    "f22",
-    120
+    "f23",
+    50
    ]
   },
   {
@@ -883,7 +883,7 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Pandal guide · Bagbazar–Hatibagan",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Jagat Mukherjee Park",
      "bn": "জগৎ মুখার্জি পার্ক",
      "sub": "Pictured: 2025",
@@ -1094,56 +1094,56 @@
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "Is your para's pujo in here?",
+   "hook": "Save this for your pujo night",
    "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
+    "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
     "segs": [
      "",
-     "বড়িশা ক্লাব",
-     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
-     "হরিদেবপুর অজেয় সংহতি"
+     "হিন্দুস্থান ক্লাব",
+     "একডালিয়া এভারগ্রিন",
+     "সিংহী পার্ক"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-behala_friends-4",
+     "pp-jodhpur_park-3",
      0,
      4.0,
      ""
     ],
     [
-     "pp-barisha_club-4",
+     "pp-hindustan_club-3",
      0,
      3.6,
-     "Barisha Club"
+     "Hindustan Club"
     ],
     [
-     "pp-thakurpukur_sb_park-4",
+     "pp-ekdalia-4",
      0,
      3.6,
-     "Thakurpukur SB Park Sarbojanin"
+     "Ekdalia Evergreen"
     ],
     [
-     "pp-haridevpur_ajeya-4",
+     "pp-singhi_park-4",
      0,
      3.6,
-     "Haridevpur Ajeya Sanghati"
+     "Singhi Park"
     ]
    ],
    "end": [
-    "Behala Friends, Barisha Club, Thakurpukur SB",
+    "Gariahat & Ballygunge: four pujas, past year",
     "Which one's your favourite? Tell us"
    ],
    "music": [
-    "f21",
-    80
+    "f22",
+    20
    ],
    "caption": {
-    "en": "Behala & New Alipore Durga Puja pandals in Kolkata: four to see this year 🪔\n\nBehala Friends, Barisha Club, Thakurpukur SB Park Sarbojanin and Haridevpur Ajeya Sanghati. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Save Jodhpur Park, Hindustan Club and more for your Kolkata Durga Puja night 🪔\n\nJodhpur Park, Hindustan Club, Ekdalia Evergreen and Singhi Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
-     "behala & new alipore durga puja",
-     "behala friends",
+     "gariahat & ballygunge durga puja",
+     "jodhpur park",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -1161,15 +1161,15 @@
    },
    "segments": [
     [
-     "pp-mudiali-4",
+     "pp-college_square-4",
      0,
      6.0,
      "Who are you going with?"
     ]
    ],
    "music": [
-    "f20",
-    140
+    "f22",
+    120
    ]
   }
  ]

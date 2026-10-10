@@ -1,70 +1,6 @@
 {
  "date": "2026-10-21",
  "clips": {
-  "pp-singhi_park-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2014-10-02_8935.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_20",
-   "page": "https://commons.wikimedia.org/wiki/File:Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2014-10-02_8935.JPG"
-  },
-  "pp-hindustan_park-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hindustan_Park_Sarbojanin_Durga_Puja_2025_03.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_03.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_03.jpg"
-  },
-  "pp-jodhpur_park-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Pratitimajumdar",
-   "label": "Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Chandelier_at_Jodhpur_Park_Durga_Puja.jpg"
-  },
-  "pp-hindustan_club-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg"
-  },
-  "fx-2d1ee1f7": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Sindur_Khela_in_Durga_Puja_Kolkata_2024_08.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_08.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_08.jpg"
-  },
-  "fx-3c2c1baa": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Sindur_Khela_in_Durga_Puja_Kolkata_2024_33.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_33.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_33.jpg"
-  },
-  "fx-de0f38dc": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Sindur_Khela_in_Durga_Puja_Kolkata_2024_45.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_45.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_45.jpg"
-  },
-  "fx-c486f0d6": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Sindur_Khela_in_Durga_Puja_Kolkata_2024_47.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_47.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_47.jpg"
-  },
   "fx-f23d7f35": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg",
@@ -160,6 +96,38 @@
    "artist": "Xopolino",
    "label": "Pandal_at_Durga_Puja_in_Kolkata_2018_23.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Pandal_at_Durga_Puja_in_Kolkata_2018_23.jpg"
+  },
+  "fx-363ad4e8": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Joydeep",
+   "label": "Durga,_Burdwan,_West_Bengal,_India_21_10_2012_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg"
+  },
+  "fx-330ac5ac": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "JDP90 (Joydeep)",
+   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(1).JP",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG"
+  },
+  "fx-09c9bc1b": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "JDP90 (Joydeep)",
+   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(2).JP",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG"
+  },
+  "fx-8e8e3553": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
   }
  },
  "items": [
@@ -257,60 +225,59 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "All of this, a few lanes apart",
+   "hook": "The last morning of pujo",
    "bn": {
-    "hook": "সবটাই কয়েক গলির মধ্যে",
+    "hook": "পুজোর শেষ সকাল",
     "segs": [
      "",
-     "হিন্দুস্থান পার্ক সার্বজনীন",
-     "যোধপুর পার্ক",
-     "হিন্দুস্থান ক্লাব"
+     "বরণ",
+     "সিঁদুর",
+     "মিষ্টিমুখ"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-singhi_park-5",
+     "fx-f23d7f35",
      0,
      4.0,
      ""
     ],
     [
-     "pp-hindustan_park-5",
+     "fx-1db4e0bb",
      0,
      3.6,
-     "Hindustan Park Sarbojanin"
+     "Boron"
     ],
     [
-     "pp-jodhpur_park-5",
+     "fx-a95e13e2",
      0,
      3.6,
-     "Jodhpur Park"
+     "Sindoor"
     ],
     [
-     "pp-hindustan_club-5",
+     "fx-3c0b4e02",
      0,
      3.6,
-     "Hindustan Club"
+     "Mishti"
     ]
    ],
    "end": [
-    "Singhi Park, Hindustan Park Sarbojanin, Jodh",
-    "Which one's your favourite? Tell us"
+    "The last morning of pujo",
+    "What does Dashami morning mean to you? Tell us"
    ],
    "music": [
-    "f22",
-    20
+    "f23",
+    90
    ],
    "caption": {
-    "en": "Gariahat & Ballygunge Durga Puja pandals in Kolkata: four to see this year 🪔\n\nSinghi Park, Hindustan Park Sarbojanin, Jodhpur Park and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Bijoya Dashami morning in Kolkata: boron and sindoor khela 🪔\n\nSweets to her lips, sindoor on her forehead, and a promise to come back. Photos from Durga Puja 2024.\n\nWhat does Dashami morning mean to you? Tell us 👇",
     "keywords": [
-     "gariahat & ballygunge durga puja",
-     "singhi park",
-     "kolkata pandals",
-     "durga puja 2026 kolkata"
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
    }
   },
   {
@@ -324,15 +291,15 @@
    },
    "segments": [
     [
-     "pp-hindustan_park-5",
+     "fx-1db4e0bb",
      0,
      6.0,
      "Shubho Bijoya"
     ]
    ],
    "music": [
-    "f20",
-    140
+    "f23",
+    50
    ]
   },
   {
@@ -466,7 +433,7 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Pandal guide · Bagbazar–Hatibagan",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Bagbazar Sarbojanin",
      "bn": "বাগবাজার সার্বজনীন",
      "sub": "Pictured: 2025",
@@ -480,10 +447,10 @@
     },
     {
      "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Traditional puja",
-     "bn": "",
-     "body": "No theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair. As reported; themes can change before the puja."
+     "kicker": "This year",
+     "title": "No theme, by choice",
+     "bn": "থিম নয়, ঐতিহ্য",
+     "body": "No theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair."
     },
     {
      "t": "step",
@@ -531,7 +498,7 @@
     }
    ],
    "caption": {
-    "en": "Bagbazar Sarbojanin, Kolkata Durga Puja 2026: the theme is Traditional puja 🪔\n\nNo theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 9 am to 12 pm, and it's 18 minutes' walk from Shyambazar Metro.\n\nAre you going this year? Tell us 👇",
+    "en": "Bagbazar Sarbojanin, Kolkata Durga Puja 2026: it keeps it traditional 🪔\n\nNo theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair.\n\nOur crowd model says it's least crowded around 9 am to 12 pm, and it's 18 minutes' walk from Shyambazar Metro.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "bagbazar sarbojanin durga puja 2026",
      "bagbazar sarbojanin theme",
@@ -545,53 +512,53 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Red till next year",
+   "hook": "Salt Lake does pujo block by block",
    "bn": {
-    "hook": "লাল রঙে বিদায়",
+    "hook": "সল্টলেকের পুজো, ব্লকে ব্লকে",
     "segs": [
      "",
-     "সিঁদুর খেলা",
-     "শুভ বিজয়া",
-     "আসছে বছর আবার হবে"
+     "বিই ব্লক",
+     "এই ব্লক",
+     "বিজে ব্লকের ঝাড়লণ্ঠন"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-2d1ee1f7",
+     "fx-cdd7623d",
      0,
      4.0,
      ""
     ],
     [
-     "fx-3c2c1baa",
+     "fx-cfc01b95",
      0,
      3.6,
-     "Sindoor khela"
+     "BE Block"
     ],
     [
-     "fx-de0f38dc",
+     "fx-46b41fdc",
      0,
      3.6,
-     "Shubho Bijoya"
+     "AE Block"
     ],
     [
-     "fx-c486f0d6",
+     "fx-676bb36d",
      0,
      3.6,
-     "Asche bochor abar hobe"
+     "BJ Block chandelier"
     ]
    ],
    "end": [
-    "Red till next year",
-    "Are you playing sindoor this year? Tell us"
+    "Salt Lake does pujo block by block",
+    "Which block is yours? Tell us"
    ],
    "music": [
-    "f21",
-    80
+    "f22",
+    20
    ],
    "caption": {
-    "en": "Sindoor khela, Bijoya Dashami in Kolkata 🔴\n\nOn Dashami married women smear sindoor on each other and bid Maa farewell, wishing each other a long, happy married life. These photos are from 2024.\n\nAre you playing sindoor this year? Tell us 👇",
+    "en": "Salt Lake Durga Puja, Kolkata: the block pujas 🪔\n\nEvery block in Salt Lake has its own pujo. These photos are from 2017 and 2018.\n\nWhich block is yours? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -611,15 +578,15 @@
    },
    "segments": [
     [
-     "pp-hindustan_club-5",
+     "fx-3c0b4e02",
      0,
      6.0,
      "Which pandal are you going to?"
     ]
    ],
    "music": [
-    "f21",
-    150
+    "f22",
+    120
    ]
   },
   {
@@ -857,53 +824,53 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "The last morning of pujo",
+   "hook": "Look her in the eyes",
    "bn": {
-    "hook": "পুজোর শেষ সকাল",
+    "hook": "মায়ের চোখের দিকে তাকান",
     "segs": [
      "",
-     "বরণ",
-     "সিঁদুর",
-     "মিষ্টিমুখ"
+     "বাগবাজার",
+     "",
+     "কলকাতা"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-f23d7f35",
+     "fx-c571f664",
      0,
      4.0,
      ""
     ],
     [
-     "fx-1db4e0bb",
+     "fx-ab29ee98",
      0,
      3.6,
-     "Boron"
+     "Bagbazar, 2018"
     ],
     [
-     "fx-a95e13e2",
+     "fx-94f14c14",
      0,
      3.6,
-     "Sindoor"
+     ""
     ],
     [
-     "fx-3c0b4e02",
+     "fx-6089f5d7",
      0,
      3.6,
-     "Mishti"
+     "Kolkata, 2018"
     ]
    ],
    "end": [
-    "The last morning of pujo",
-    "What does Dashami morning mean to you? Tell us"
+    "Look her in the eyes",
+    "Which pujo's protima do you miss most? Tell us"
    ],
    "music": [
-    "f20",
-    30
+    "f21",
+    80
    ],
    "caption": {
-    "en": "Bijoya Dashami morning in Kolkata: boron and sindoor khela 🪔\n\nSweets to her lips, sindoor on her forehead, and a promise to come back. Photos from Durga Puja 2024.\n\nWhat does Dashami morning mean to you? Tell us 👇",
+    "en": "Kolkata Durga Puja: Maa, up close 🙏\n\nFaces of Maa from Kolkata's pujas, past years. Asche bochor abar hobe.\n\nWhich pujo's protima do you miss most? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -923,15 +890,15 @@
    },
    "segments": [
     [
-     "fx-de0f38dc",
+     "fx-46b41fdc",
      0,
      6.0,
      "North or South this year?"
     ]
    ],
    "music": [
-    "f23",
-    90
+    "f20",
+    140
    ]
   },
   {
@@ -942,7 +909,7 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Pandal guide · Bagbazar–Hatibagan",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Sovabazar Rajbari",
      "bn": "শোভাবাজার রাজবাড়ি",
      "sub": "Pictured: 2019",
@@ -1015,115 +982,132 @@
    }
   },
   {
-   "id": "r7",
-   "type": "reel",
+   "id": "p7",
+   "type": "photo",
+   "render": "editorial",
    "at": "20:50",
-   "hook": "Salt Lake does pujo block by block",
-   "bn": {
-    "hook": "সল্টলেকের পুজো, ব্লকে ব্লকে",
-    "segs": [
-     "",
-     "বিই ব্লক",
-     "এই ব্লক",
-     "বিজে ব্লকের ঝাড়লণ্ঠন"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
-   "segments": [
-    [
-     "fx-cdd7623d",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "fx-cfc01b95",
-     0,
-     3.6,
-     "BE Block"
-    ],
-    [
-     "fx-46b41fdc",
-     0,
-     3.6,
-     "AE Block"
-    ],
-    [
-     "fx-676bb36d",
-     0,
-     3.6,
-     "BJ Block chandelier"
-    ]
-   ],
-   "end": [
-    "Salt Lake does pujo block by block",
-    "Which block is yours? Tell us"
-   ],
-   "music": [
-    "f23",
-    50
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Gariahat",
+     "title": "Jodhpur Park",
+     "bn": "যোধপুর পার্ক",
+     "sub": "Pictured: 2017",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/79/Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4067-4070.tif",
+      "artist": "gangulybiswarup",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Big theme pandal in a residential para."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Ballygunge Junction (Suburban), 32 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Diner 49B, Tandoor Park",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4098-4102.tif",
+      "artist": "gangulybiswarup",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Jodhpur Park, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
    ],
    "caption": {
-    "en": "Salt Lake Durga Puja, Kolkata: the block pujas 🪔\n\nEvery block in Salt Lake has its own pujo. These photos are from 2017 and 2018.\n\nWhich block is yours? Tell us 👇",
+    "en": "Jodhpur Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nBig theme pandal in a residential para.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 32 minutes' walk from Ballygunge Junction (Suburban) Metro.\n\nAre you going this year? Tell us 👇",
     "keywords": [
-     "durga puja 2026",
-     "kolkata durga puja",
-     "bijoya dashami kolkata"
+     "jodhpur park durga puja 2026",
+     "jodhpur park pandal",
+     "gariahat & ballygunge pandals",
+     "kolkata durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
    }
   },
   {
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "Look her in the eyes",
+   "hook": "Pujo doesn't end at the city limits",
    "bn": {
-    "hook": "মায়ের চোখের দিকে তাকান",
+    "hook": "পুজো শুধু শহরে নয়",
     "segs": [
      "",
-     "বাগবাজার",
-     "",
-     "কলকাতা"
+     "বর্ধমান",
+     "বর্ধমান",
+     "বাগুইআটি"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-c571f664",
+     "fx-363ad4e8",
      0,
      4.0,
      ""
     ],
     [
-     "fx-ab29ee98",
+     "fx-330ac5ac",
      0,
      3.6,
-     "Bagbazar, 2018"
+     "Bardhaman"
     ],
     [
-     "fx-94f14c14",
+     "fx-09c9bc1b",
      0,
      3.6,
-     ""
+     "Bardhaman"
     ],
     [
-     "fx-6089f5d7",
+     "fx-8e8e3553",
      0,
      3.6,
-     "Kolkata, 2018"
+     "Baguiati"
     ]
    ],
    "end": [
-    "Look her in the eyes",
-    "Which pujo's protima do you miss most? Tell us"
+    "Pujo doesn't end at the city limits",
+    "Where is your hometown pujo? Tell us"
    ],
    "music": [
-    "f22",
-    120
+    "f20",
+    30
    ],
    "caption": {
-    "en": "Kolkata Durga Puja: Maa, up close 🙏\n\nFaces of Maa from Kolkata's pujas, past years. Asche bochor abar hobe.\n\nWhich pujo's protima do you miss most? Tell us 👇",
+    "en": "Durga Puja beyond Kolkata: Bardhaman and Baguiati 🪔\n\nPujo in Bengal's towns and the city's edges, from past years.\n\nWhere is your hometown pujo? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -1143,15 +1127,15 @@
    },
    "segments": [
     [
-     "fx-1db4e0bb",
+     "fx-ab29ee98",
      0,
      6.0,
      "Who are you going with?"
     ]
    ],
    "music": [
-    "f22",
-    20
+    "f21",
+    150
    ]
   }
  ]
