@@ -100,9 +100,254 @@
  },
  "items": [
   {
+   "id": "p0",
+   "type": "photo",
+   "render": "editorial",
+   "at": "08:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Navratri · Day 1 · Pratipada",
+     "title": "Ghatasthapana at home, step by step",
+     "bn": "ঘরেই ঘটস্থাপনা",
+     "sub": "The first-day kalash ritual, the simple way",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Navratri_Kalash_Puja.jpg",
+      "artist": "Ashish Suryavanshi858",
+      "license": "CC0",
+      "cx": 0.5,
+      "cy": 0.5
+     }
+    },
+    {
+     "t": "list",
+     "kicker": "What you need",
+     "title": "Keep these ready",
+     "bn": "যা যা লাগবে",
+     "items": [
+      [
+       "A kalash of clay, brass or copper",
+       "ঘট"
+      ],
+      [
+       "A clay tray, clean soil and barley",
+       "মাটি আর যব"
+      ],
+      [
+       "Five mango or ashoka leaves",
+       "আমপাতা"
+      ],
+      [
+       "A whole coconut in red cloth",
+       "নারকেল"
+      ],
+      [
+       "Red thread, roli and rice",
+       "লাল সুতো, সিঁদুর, আতপ চাল"
+      ],
+      [
+       "Ganga water or clean water",
+       "গঙ্গাজল"
+      ],
+      [
+       "A coin, a betel nut, durva",
+       "পয়সা, সুপুরি, দূর্বা"
+      ],
+      [
+       "The Goddess's picture, a ghee lamp, incense, flowers",
+       "দেবীর ছবি, প্রদীপ, ধূপ, ফুল"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "Step 1",
+     "num": 1,
+     "title": "Find the muhurta",
+     "bn": "শুভ সময় দেখে নিন",
+     "body": "Look up Pratipada and the ghatasthapana window for your city in your local panchang, or ask your family priest. Most families set up the kalash in the morning."
+    },
+    {
+     "t": "step",
+     "kicker": "Step 2",
+     "num": 2,
+     "title": "Sow the barley",
+     "bn": "মাটিতে যব ছড়ান",
+     "body": "Clean the puja corner and set a low stool with a red cloth. Spread clean soil in the clay tray, scatter barley seeds, cover them lightly and sprinkle water. They will sprout over the nine days."
+    },
+    {
+     "t": "step",
+     "kicker": "Step 3",
+     "num": 3,
+     "title": "Prepare the kalash",
+     "bn": "ঘট সাজান",
+     "body": "Draw a swastika on it with roli and tie red thread round its neck. Fill it with water, a little Ganga water, a coin, a betel nut and a few grains of rice.",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/79/Arcana_Plate_for_Worship.jpg",
+      "artist": "Vish79",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.55
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Step 4",
+     "num": 4,
+     "title": "Leaves, coconut, and in place",
+     "bn": "আমপাতা আর নারকেল",
+     "body": "Arrange five mango leaves in the mouth with the tips outward and rest the coconut on them. Set the kalash on the barley tray, in front of the Goddess's picture."
+    },
+    {
+     "t": "step",
+     "kicker": "Step 5",
+     "num": 5,
+     "title": "Make your sankalpa",
+     "bn": "সংকল্প করুন",
+     "body": "Light the lamp and incense. Holding water, rice and a flower, say your name, the occasion and your wish to worship the Goddess for these nine days. Your own words are enough.",
+     "bn_body": "নিজের ভাষাতেই বলুন: আপনি কে, কোন উপলক্ষ্যে, কী প্রার্থনা।"
+    },
+    {
+     "t": "step",
+     "kicker": "Every day",
+     "num": 6,
+     "title": "For the nine days",
+     "bn": "ন'দিন রোজ",
+     "body": "Offer flowers, a lamp and fruit each day, and sprinkle a little water on the barley. After Navami, retire the kalash gently and pour its water at the roots of a plant."
+    },
+    {
+     "t": "end",
+     "title": "Save this for Pratipada morning",
+     "bn": "পরিবারের গ্রুপে পাঠিয়ে দিন",
+     "ask": "Save it · send it to the family group"
+    }
+   ],
+   "caption": {
+    "en": "Navratri and Durga Puja 2026 at home: ghatasthapana step by step, the way Kolkata families do it 🪔\n\nEverything you need, then the kalash, the barley, the sankalpa and what to do each of the nine days. Customs differ from family to family, so follow yours where it's different, and check today's muhurta in your local panchang.\n\nSave this for tomorrow morning, and tell us: does your family set up a ghat? 👇",
+    "keywords": [
+     "navratri 2026",
+     "ghatasthapana",
+     "kalash sthapana",
+     "ghatasthapana vidhi at home",
+     "navratri puja at home",
+     "durga puja at home"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "10:30",
+   "bn": {
+    "segs": [
+     "আর সাত দিন"
+    ]
+   },
+   "segments": [
+    [
+     "q59",
+     0,
+     6.0,
+     "7 days to go"
+    ]
+   ],
+   "music": [
+    "f22",
+    30
+   ]
+  },
+  {
+   "id": "p2",
+   "type": "photo",
+   "render": "editorial",
+   "at": "12:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Navadurga · Day 1 of 9",
+     "title": "Shailaputri, daughter of the mountain",
+     "bn": "মা শৈলপুত্রী",
+     "sub": "The first form of Durga, worshipped on Pratipada",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/55/Idol_of_Navadurga_during_Durga_Puja_2024_at_Paltan_Bazar_Durga_Mandir%2C_Dibrrugarh_01.jpg",
+      "artist": "AjayDas",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Who she is",
+     "title": "Parvati, born to the Himalaya",
+     "bn": "হিমালয়-কন্যা",
+     "body": "Shaila means mountain and putri daughter. She is Parvati as the daughter of Himavat, king of the Himalayas, and in many tellings Sati reborn. Her day begins Navratri, together with ghatasthapana."
+    },
+    {
+     "t": "step",
+     "kicker": "How she is shown",
+     "title": "Bull, trident, lotus, moon",
+     "bn": "বৃষবাহিনী",
+     "body": "She rides a bull and holds a trident in one hand and a lotus in the other, with a crescent moon on her head. She stands for steadiness: the root from which the rest of Navratri grows."
+    },
+    {
+     "t": "mantra",
+     "kicker": "Shailaputri dhyana mantra",
+     "script": "deva",
+     "text": "वन्दे वाञ्छितलाभाय चन्द्रार्धकृतशेखराम् ।\nवृषारूढां शूलधरां शैलपुत्रीं यशस्विनीम् ॥",
+     "translit": "Vande vanchhita labhaya chandrardha krita shekharam, vrisharudham shuladharam shailaputrim yashasvinim",
+     "meaning": "I bow to the glorious Shailaputri, who grants what we wish for, who wears the half-moon on her head, rides a bull and holds a trident.",
+     "meaning_bn": "অর্ধচন্দ্রশোভিতা, বৃষবাহিনী, ত্রিশূলধারিণী মা শৈলপুত্রীকে প্রণাম।"
+    },
+    {
+     "t": "list",
+     "kicker": "Today",
+     "title": "Day 1 at a glance",
+     "bn": "প্রথম দিন",
+     "items": [
+      [
+       "Form: Shailaputri",
+       "শৈলপুত্রী"
+      ],
+      [
+       "Ritual: ghatasthapana",
+       "ঘটস্থাপনা"
+      ],
+      [
+       "Common offering: ghee",
+       "ঘি"
+      ],
+      [
+       "Short mantra: Om Devi Shailaputryai Namah",
+       "ওঁ দেবী শৈলপুত্র্যৈ নমঃ"
+      ]
+     ]
+    },
+    {
+     "t": "end",
+     "title": "Nine forms, nine days. Follow along.",
+     "bn": "কাল: মা ব্রহ্মচারিণী",
+     "ask": "Follow for all nine days"
+    }
+   ],
+   "caption": {
+    "en": "Navratri Day 1 of the Durga Puja 2026 countdown: Maa Shailaputri 🙏\n\nThe first of the nine forms of Durga: who she is, how she is shown, and her dhyana mantra with its meaning. In Kolkata the big pujo starts on Shashthi, but many Bengali homes light the ghat from today.\n\nSave the mantra for your morning puja, and send it to someone keeping all nine days 🙏",
+    "keywords": [
+     "navratri day 1",
+     "shailaputri",
+     "maa shailaputri mantra",
+     "navadurga",
+     "navratri 2026",
+     "durga puja 2026"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
+  },
+  {
    "id": "p1",
    "type": "photo",
-   "at": "09:30",
+   "at": "15:30",
    "photos": [
     {
      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0_-_%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B0_%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B.jpg",
@@ -172,29 +417,33 @@
      "kolkata pandals"
     ],
     "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
-   }
+   },
+   "tags": [
+    "durgapujakolkata",
+    "durgopuja"
+   ]
   },
   {
-   "id": "s1",
-   "type": "story",
-   "at": "10:30",
-   "bn": {
-    "segs": [
-     "আর সাত দিন"
-    ]
-   },
-   "segments": [
-    [
-     "q59",
-     0,
-     6.0,
-     "7 days to go"
-    ]
-   ],
+   "id": "r5",
+   "type": "reel",
+   "at": "17:30",
+   "render": "cards_reel",
+   "from": "p2",
+   "hook": "Navratri Day 1: Maa Shailaputri",
    "music": [
     "f22",
     30
-   ]
+   ],
+   "caption": {
+    "en": "Navratri Day 1 of the Durga Puja 2026 countdown: Maa Shailaputri, with her dhyana mantra 🙏\n\nFrom our Kolkata pujo page to your puja corner. Save it for tomorrow morning.",
+    "keywords": [
+     "shailaputri",
+     "navratri day 1",
+     "navadurga",
+     "navratri 2026"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
   },
   {
    "id": "r1",

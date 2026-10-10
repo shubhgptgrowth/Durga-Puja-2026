@@ -156,70 +156,218 @@
  },
  "items": [
   {
-   "id": "p1",
+   "id": "p0",
    "type": "photo",
-   "at": "09:30",
-   "photos": [
+   "render": "editorial",
+   "at": "08:30",
+   "slides": [
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e7/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "artist": "Subhrajyoti07",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "cover",
+     "kicker": "Durga Puja at home",
+     "title": "The complete Durga Puja samagri list",
+     "bn": "পুজোর সামগ্রীর তালিকা",
+     "sub": "Screenshot it before you go to the market",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/79/Arcana_Plate_for_Worship.jpg",
+      "artist": "Vish79",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.5
+     }
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "artist": "Subhrajyoti07",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "list",
+     "kicker": "Essentials · 1 of 2",
+     "title": "For the altar",
+     "bn": "পুজোর আসন",
+     "items": [
+      [
+       "A picture or small image of Ma Durga",
+       "প্রতিমা বা ছবি"
+      ],
+      [
+       "Ghat of brass, copper or clay",
+       "ঘট"
+      ],
+      [
+       "Five mango leaves",
+       "আমের পল্লব"
+      ],
+      [
+       "Green coconut or a whole fruit",
+       "ডাব বা ফল"
+      ],
+      [
+       "Uncooked sun-dried rice",
+       "আতপ চাল"
+      ],
+      [
+       "Red cloth and a low stool",
+       "লাল কাপড়, জলচৌকি"
+      ],
+      [
+       "A sitting mat",
+       "আসন"
+      ]
+     ]
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/c/ce/%E0%A6%86%E0%A6%B9%E0%A6%BF%E0%A6%B0%E0%A7%80%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%BE_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "artist": "Subhrajyoti07",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%86%E0%A6%B9%E0%A6%BF%E0%A6%B0%E0%A7%80%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%BE_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "list",
+     "kicker": "Essentials · 2 of 2",
+     "title": "For the worship",
+     "bn": "পুজোর উপকরণ",
+     "items": [
+      [
+       "Ganga water",
+       "গঙ্গাজল"
+      ],
+      [
+       "Sindoor and sandalwood paste",
+       "সিঁদুর, চন্দন"
+      ],
+      [
+       "Lamp, ghee or mustard oil, wicks",
+       "প্রদীপ"
+      ],
+      [
+       "Incense or dhuno",
+       "ধূপ, ধুনো"
+      ],
+      [
+       "Bell, and a conch if you have one",
+       "ঘণ্টা, শাঁখ"
+      ],
+      [
+       "Red thread",
+       "লাল সুতো"
+      ],
+      [
+       "Chandi Path book or a recording",
+       "চণ্ডীপাঠ"
+      ]
+     ]
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/2016_Durga_Puja_Kolkata_Shobhabazar_Sarbojonin_(9).jpg",
-     "artist": "Sumit Surai",
-     "license": "CC BY-SA 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:2016_Durga_Puja_Kolkata_Shobhabazar_Sarbojonin_(9).jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "list",
+     "kicker": "Flowers and leaves",
+     "title": "What Maa loves",
+     "bn": "ফুল ও পাতা",
+     "items": [
+      [
+       "Red hibiscus, the flower of Durga",
+       "জবা"
+      ],
+      [
+       "Lotus, prized for Sandhi Puja",
+       "পদ্ম"
+      ],
+      [
+       "Marigold for garlands",
+       "গাঁদা"
+      ],
+      [
+       "Bel leaves, three-leaflet sprigs",
+       "বেলপাতা"
+      ],
+      [
+       "Durva grass",
+       "দূর্বা"
+      ],
+      [
+       "Mango leaves for the door",
+       "আমপাতার তোরণ"
+      ]
+     ]
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/8/88/Chalta_Bagan_Durga_Puja_2019.jpg",
-     "artist": "Subhrajyoti07",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Chalta_Bagan_Durga_Puja_2019.jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "list",
+     "kicker": "Offerings and bhog",
+     "title": "For the thali",
+     "bn": "নৈবেদ্য ও ভোগ",
+     "items": [
+      [
+       "Seasonal fruit",
+       "মরসুমি ফল"
+      ],
+      [
+       "Sandesh, batasha, narkel naru",
+       "মিষ্টি"
+      ],
+      [
+       "Milk, curd, honey, ghee, sugar",
+       "পঞ্চামৃত"
+      ],
+      [
+       "Paan and supari",
+       "পান-সুপারি"
+      ],
+      [
+       "Gobindobhog rice and moong dal",
+       "খিচুড়ির জন্য"
+      ],
+      [
+       "Drinking water with every offering",
+       "জল"
+      ]
+     ]
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
-     "artist": "Subhrajyoti07",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
-     "cx": 0.5,
-     "cy": 0.45
+     "t": "list",
+     "kicker": "Ashtami and Dashami",
+     "title": "Don't forget these",
+     "bn": "অষ্টমী ও দশমী",
+     "items": [
+      [
+       "Extra flowers and bel for anjali",
+       "অঞ্জলির ফুল"
+      ],
+      [
+       "The pushpanjali mantra, saved",
+       "অঞ্জলির মন্ত্র"
+      ],
+      [
+       "Doi-chire for Dashami",
+       "দই-চিঁড়ে"
+      ],
+      [
+       "Sindoor for sindoor khela",
+       "সিঁদুর খেলা"
+      ],
+      [
+       "A pot of soil for the ghat water",
+       "ঘটের জলের জন্য টব"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/1/10/Khichiri_bhog_of_Durga_puja.jpg",
+      "artist": "AjayDas",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.5
+     },
+     "line": "Anything pure, offered with love, is accepted."
+    },
+    {
+     "t": "end",
+     "title": "Screenshot. Shop. Done.",
+     "bn": "বাজারে যাওয়ার আগে সেভ করুন",
+     "ask": "Save it · send it to the family group"
     }
    ],
    "caption": {
-    "en": "North Kolkata Durga Puja: the classics, from Bagbazar to Telengabagan 🪔\n\nBagbazar Sarbojanin, Chaltabagan, Ahiritola, Shobhabazar Sarbojanin, Chalta Bagan again, Telengabagan. Start at Sovabazar Metro and you can walk most of them in one night; the route is in the free guide (link in bio).\n\nNorth or south: which side are you? 👇",
+    "en": "Durga Puja 2026 samagri list for home puja, the Kolkata way: everything in one place 🛕\n\nThe altar, the worship, the flowers Maa loves, the bhog thali, and the few things people forget for Ashtami anjali and Dashami. Substitutes are fine at home: a picture for an idol, any clean pot for a ghat.\n\nSave it for market day. What's the one thing your family never forgets? 👇",
     "keywords": [
-     "north kolkata durga puja",
-     "bagbazar sarbojanin",
-     "chaltabagan",
-     "ahiritola",
-     "sovabazar",
-     "durga puja 2026"
+     "durga puja samagri list",
+     "puja samagri list",
+     "durga puja at home",
+     "navratri samagri",
+     "durga puja 2026",
+     "ashtami puja items"
     ],
-    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
+    "tags": "#DurgaPuja2026 #Navratri2026 #DurgaPujo"
    }
   },
   {
@@ -243,6 +391,86 @@
     "f22",
     70
    ]
+  },
+  {
+   "id": "p2",
+   "type": "photo",
+   "render": "editorial",
+   "at": "11:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Navadurga · Day 2 of 9",
+     "title": "Brahmacharini, the one who keeps the vow",
+     "bn": "মা ব্রহ্মচারিণী",
+     "sub": "The second form of Durga, worshipped on Dwitiya",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Kalighat_pictures_Indian_gods_f.12.jpg",
+      "artist": "Unknown Kalighat painter (Wellcome Collection)",
+      "license": "CC BY 4.0",
+      "cx": 0.5,
+      "cy": 0.35
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Who she is",
+     "title": "Parvati in tapasya",
+     "bn": "তপস্বিনী উমা",
+     "body": "The young Parvati performing long austerities to win Shiva as her husband. Barefoot, with a rosary and a water pot, she stands for discipline, devotion and endurance, and many people begin their fast on her day."
+    },
+    {
+     "t": "mantra",
+     "kicker": "Brahmacharini dhyana mantra",
+     "script": "deva",
+     "text": "दधाना करपद्माभ्यामक्षमालाकमण्डलू ।\nदेवी प्रसीदतु मयि ब्रह्मचारिण्यनुत्तमा ॥",
+     "translit": "Dadhana kara padmabhyam aksha mala kamandalu, devi prasidatu mayi brahmacharinyanuttama",
+     "meaning": "May the supreme Goddess Brahmacharini, who holds a rosary and a water pot in her lotus hands, be gracious to me.",
+     "meaning_bn": "পদ্মহস্তে জপমালা ও কমণ্ডলুধারিণী মা ব্রহ্মচারিণী, প্রসন্ন হও।"
+    },
+    {
+     "t": "list",
+     "kicker": "Today",
+     "title": "Day 2 at a glance",
+     "bn": "দ্বিতীয় দিন",
+     "items": [
+      [
+       "Form: Brahmacharini",
+       "ব্রহ্মচারিণী"
+      ],
+      [
+       "She holds: rosary and kamandalu",
+       "জপমালা, কমণ্ডলু"
+      ],
+      [
+       "Common offering: sugar and fruit",
+       "চিনি, ফল"
+      ],
+      [
+       "Short mantra: Om Devi Brahmacharinyai Namah",
+       "ওঁ দেবী ব্রহ্মচারিণ্যৈ নমঃ"
+      ]
+     ]
+    },
+    {
+     "t": "end",
+     "title": "Day 2 of 9. Keep going.",
+     "bn": "কাল: মা চন্দ্রঘণ্টা",
+     "ask": "Follow for all nine days"
+    }
+   ],
+   "caption": {
+    "en": "Navratri Day 2 of the Durga Puja 2026 countdown: Maa Brahmacharini 🙏\n\nWho she is, what she holds and her dhyana mantra with its meaning. Many people begin their fast today, in Kolkata and everywhere; customs vary, so follow yours.\n\nSave the mantra, and tell us: are you fasting this Navratri? 👇",
+    "keywords": [
+     "navratri day 2",
+     "brahmacharini",
+     "maa brahmacharini mantra",
+     "navadurga",
+     "navratri 2026",
+     "durga puja 2026"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
   },
   {
    "id": "r1",
@@ -318,6 +546,99 @@
      "durga puja 2026"
     ],
     "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
+   }
+  },
+  {
+   "id": "p1",
+   "type": "photo",
+   "at": "15:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e7/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/c/ce/%E0%A6%86%E0%A6%B9%E0%A6%BF%E0%A6%B0%E0%A7%80%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%BE_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%86%E0%A6%B9%E0%A6%BF%E0%A6%B0%E0%A7%80%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%BE_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/2016_Durga_Puja_Kolkata_Shobhabazar_Sarbojonin_(9).jpg",
+     "artist": "Sumit Surai",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:2016_Durga_Puja_Kolkata_Shobhabazar_Sarbojonin_(9).jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/8/88/Chalta_Bagan_Durga_Puja_2019.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Chalta_Bagan_Durga_Puja_2019.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    }
+   ],
+   "caption": {
+    "en": "North Kolkata Durga Puja: the classics, from Bagbazar to Telengabagan 🪔\n\nBagbazar Sarbojanin, Chaltabagan, Ahiritola, Shobhabazar Sarbojanin, Chalta Bagan again, Telengabagan. Start at Sovabazar Metro and you can walk most of them in one night; the route is in the free guide (link in bio).\n\nNorth or south: which side are you? 👇",
+    "keywords": [
+     "north kolkata durga puja",
+     "bagbazar sarbojanin",
+     "chaltabagan",
+     "ahiritola",
+     "sovabazar",
+     "durga puja 2026"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
+   },
+   "tags": [
+    "durgapujakolkata",
+    "durgopuja"
+   ]
+  },
+  {
+   "id": "r6",
+   "type": "reel",
+   "at": "17:30",
+   "render": "cards_reel",
+   "from": "p2",
+   "hook": "Navratri Day 2: Maa Brahmacharini",
+   "music": [
+    "f21",
+    40
+   ],
+   "caption": {
+    "en": "Navratri Day 2 of the Durga Puja 2026 countdown: Maa Brahmacharini, with her dhyana mantra 🙏\n\nFrom our Kolkata pujo page to your puja corner. Save it for your morning puja.",
+    "keywords": [
+     "brahmacharini",
+     "navratri day 2",
+     "navadurga",
+     "navratri 2026"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
    }
   },
   {

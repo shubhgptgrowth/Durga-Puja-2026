@@ -22,6 +22,9 @@ def check(it):
     if it.get("render") == "cards":
         from .. import cards
         return cards.check(it)
+    if it.get("render") == "editorial":
+        from .. import editorial
+        return editorial.check(it)
     if it.get("render") == "routes":
         return [] if (it.get("caption") or {}).get("en") else [f"{it['id']}: a route carousel needs a caption"]
     ps = it.get("photos") or []
@@ -111,6 +114,9 @@ def build(it, fid, src_dir, out, download):
     """Writes out/<fid>-<n>.jpg and out/<fid>.caption.txt; returns (file names, caption)."""
     if it.get("render") == "routes":
         return build_routes(it, fid, src_dir, out)
+    if it.get("render") == "editorial":  # magazine-style slides from content/knowledge (marketing/editorial.py)
+        from .. import editorial
+        return editorial.build(it, fid, src_dir, out, download)
     if it.get("render") == "cards":  # our own words and data on every slide (marketing/cards.py)
         from .. import cards
         names = cards.build(it, fid, src_dir, out, download)

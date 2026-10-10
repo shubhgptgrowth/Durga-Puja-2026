@@ -29,8 +29,8 @@ def frame(slide):
     return bg
 
 
-def render(slides, out, tmp):
-    """slides: paths in order → out mp4; returns seconds."""
+def render(slides, out, tmp, audio=None, start=2.0):
+    """slides: paths in order → out mp4; returns seconds. audio: a music bed to use instead of the dhak."""
     tmp = Path(tmp)
     tmp.mkdir(parents=True, exist_ok=True)
     n = len(slides)
@@ -41,7 +41,7 @@ def render(slides, out, tmp):
         frame(s).save(png)
         args += ["-loop", "1", "-t", f"{durs[k]:.2f}", "-framerate", str(FPS), "-i", str(png)]
     total = sum(durs) - FADE * (n - 1)
-    args += ["-ss", "2", "-i", str(AUDIO)]
+    args += ["-ss", str(start), "-i", str(audio or AUDIO)]
     chain, last, offset = [], "[0:v]", 0.0
     for k in range(1, n):
         offset += durs[k - 1] - FADE

@@ -144,8 +144,8 @@ def visuals(plan):
         for ph in it.get("photos") or []:
             seen.add(ph["src"])
         for sl in it.get("slides") or []:
-            if (sl.get("photo") or {}).get("src"):
-                seen.add(sl["photo"]["src"])
+            if (sl.get("photo") or {}).get("src") and it.get("render") != "editorial":
+                seen.add(sl["photo"]["src"])  # editorial slides reuse a topic photo by design (a kalash is a kalash)
     return seen
 
 
@@ -172,8 +172,9 @@ def check(plan, idx):
         for v, d in repeats(plan).items():
             errs.append(f"{v.rsplit('/', 1)[-1][:70]} was already shown on {d}: pick something fresh")
     for it in plan["items"]:
-        if plan.get("date", "") >= PHOTO_OR_FILM_FROM and it.get("render") in TEXT_RENDERS:
-            errs.append(f"{it['id']}: '{it['render']}' is a text/graphic post; posts are photographs or footage now")
+        src_render = {x["id"]: x for x in plan["items"]}.get(it.get("from"), {}).get("render")
+        if plan.get("date", "") >= PHOTO_OR_FILM_FROM and it.get("render") in TEXT_RENDERS and src_render != "editorial":
+            errs.append(f"{it['id']}: '{it['render']}' is a text/graphic post; use the editorial style (marketing/editorial.py)")
         if it["type"] == "photo":
             errs += photo_post.check(it)
             continue
@@ -266,6 +267,8 @@ def main(argv=None):
     for it in sorted(plan["items"], key=lambda x: x["at"]):
         fid = f"{pfx}-{it['id']}"
         entry = {"type": it["type"], "id": fid, "at": it["at"]}
+        if it.get("tags"):  # Instagram accounts to tag on the post (marketing/publish_batch.py)
+            entry["tags"] = it["tags"]
         if it.get("hook") and it["type"] == "reel":
             entry["hook"] = it["hook"]
         if it["type"] == "photo":
@@ -277,7 +280,9 @@ def main(argv=None):
         elif it.get("render") == "cards_reel":
             from .. import cards_reel
             slides = sorted(out.glob(f"{pfx}-{it['from']}-*.jpg"), key=lambda q: int(q.stem.rsplit("-", 1)[1]))
-            secs = cards_reel.render(slides, out / f"{fid}.mp4", tmp)
+            mus = it.get("music")  # a licensed bed from the footage index, e.g. ["f22", 30] (Raga Durga)
+            secs = cards_reel.render(slides, out / f"{fid}.mp4", tmp,
+                                     audio=fetch(mus[0], idx[mus[0]], a.src) if mus else None, start=mus[1] if mus else 2.0)
             cap = compose(it["caption"])
             (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
             entry.update(video_url=base + f"{fid}.mp4", caption=cap)

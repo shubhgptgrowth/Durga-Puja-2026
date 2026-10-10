@@ -295,6 +295,21 @@ class RedesignTest(unittest.TestCase):
         self.assertGreater(build2.ease(0.5), build2.ease(0.1))
         self.assertEqual((build2.ease(0), build2.ease(1)), (0, 1))
 
+    def test_user_tags_sit_on_images_and_not_on_reels(self):
+        import json as _j
+        from marketing import publish_batch
+        img = _j.loads(publish_batch.user_tags(["@durgapujakolkata", "durgopuja"]))
+        self.assertEqual([t["username"] for t in img], ["durgapujakolkata", "durgopuja"])
+        self.assertTrue(all(0 < t["x"] < 1 and 0 < t["y"] < 1 for t in img))
+        self.assertEqual(_j.loads(publish_batch.user_tags(["a"], image=False)), [{"username": "a"}])
+
+    def test_editorial_check_needs_meaning_for_mantras(self):
+        from marketing import editorial
+        it = {"id": "p1", "caption": {"en": "x"}, "slides": [{"t": "cover", "title": "T"}, {"t": "mantra", "text": "ॐ"}]}
+        self.assertTrue(any("meaning" in e for e in editorial.check(it)))
+        it["slides"][1]["meaning"] = "Om"
+        self.assertEqual(editorial.check(it), [])
+
     @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
     def test_cinematic_look_conforms_to_24fps_and_frames_small_footage(self):
         from marketing.reels import build2
