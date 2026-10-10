@@ -11,7 +11,7 @@ their slides and caption come from the published carousels.json. A failed item i
 --count 1 reposts just that item (1-based), so nothing is posted twice. Same token and account as marketing.publish_ig.
 
 Daily sets (marketing/footage/factory.py) are read from the live site with --date: items carry "at" (HH:MM IST) and
-the run waits for each slot; --window am|pm posts only the slots before / from SPLIT (14:00), so each half fits in one job (GitHub stops a job
+the run waits for each slot; --window am|pm|night posts only that window's slots (WINDOWS), so each half fits in one job (GitHub stops a job
 after 6 hours; 09:30 to 15:30 in one job did not fit).
 Video stories ({"type": "story", "video_url"}) are posted as Stories; photo posts ({"type": "photo", "image_urls"}) as
 a single image or, with several, a carousel. A daily set posts only once its date is listed
@@ -151,14 +151,22 @@ def wait_until(date, at, last, min_gap):
         time.sleep(delay)
 
 
-SPLIT = "14:00"  # am window: slots before this (dispatched ~09:10 IST); pm: from it (dispatched ~15:15 IST)
+SPLIT = "14:00"  # kept for older callers; the windows below are what --window uses
+# Each window must fit one GitHub job (under ~5h50m from its dispatch), so a 08:00-23:00 day is posted in three:
+# am 00:00-12:59 (dispatched ~07:50 IST), pm 13:00-17:59 (~12:50 IST), night 18:00-23:59 (~17:50 IST).
+WINDOWS = {"am": ("00:00", "13:00"), "pm": ("13:00", "18:00"), "night": ("18:00", "24:00"), "all": ("00:00", "24:00")}
+
+
+def in_window(at, window):
+    lo, hi = WINDOWS[window]
+    return lo <= (at or "00:00") < hi
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("manifest", nargs="?", help="batch file (omit with --date)")
     ap.add_argument("--date", help="daily set: read SITE/kit/reels/<date>/manifest.json and post at each item's slot")
-    ap.add_argument("--window", choices=["am", "pm", "all"], default="all", help="with --date: slots before / from SPLIT")
+    ap.add_argument("--window", choices=list(WINDOWS), default="all", help="with --date: am, pm or night slots (WINDOWS)")
     ap.add_argument("--start", type=int, default=1, help="1-based item to start from")
     ap.add_argument("--count", type=int, default=0, help="how many items (0 = to the end)")
     ap.add_argument("--gap", type=int, default=300, help="seconds between posts")
@@ -166,7 +174,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.date:
         items = get_json(f"{SITE}kit/reels/{a.date}/manifest.json?cb={int(time.time())}")["items"]
-        items = [i for i in items if a.window == "all" or (i.get("at", "00:00") < SPLIT) == (a.window == "am")]
+        items = [i for i in items if in_window(i.get("at"), a.window)]
         if not approved(a.date) and not a.dry_run:
             print(f"{a.date} is not in marketing/daily/approved.txt yet: dry run.")
             a.dry_run = True
