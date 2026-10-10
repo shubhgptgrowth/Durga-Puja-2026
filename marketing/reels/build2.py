@@ -555,10 +555,14 @@ def cine_segment(src_dir, footage, i, seg, reel, tmp):
 
 
 def credits_for(reel, footage):
-    seen, parts, ai = [], [], False
+    seen, parts, ai, animated = [], [], False, []
     for seg in reel["segments"]:
         sid = seg[0]
-        if sid.startswith("c") and sid not in footage or footage.get(sid, {}).get("source") == "AI":
+        base = footage.get(sid, {}).get("based_on")  # an AI clip animated from a real photo: credit the photo
+        if base:
+            if sid not in animated:
+                animated.append(sid)
+        elif sid.startswith("c") and sid not in footage or footage.get(sid, {}).get("source") == "AI":
             ai = True
         elif sid not in seen:
             seen.append(sid)
@@ -568,6 +572,9 @@ def credits_for(reel, footage):
         src = f.get("source", "Wikimedia Commons")
         lic = f["license"] if src == "Wikimedia Commons" else src  # Pexels / Pixabay licences need no attribution; we credit anyway
         by_artist.setdefault((f["artist"] or "Unknown", lic), []).append(sid)
+    for sid in animated:
+        b = footage[sid]["based_on"]
+        by_artist.setdefault((b["artist"], b["license"]), []).append(sid)
     for (artist, lic), _ in by_artist.items():
         parts.append(f"{artist} ({lic})")
     m = reel.get("music") if not reel.get("vo") else None
@@ -576,11 +583,13 @@ def credits_for(reel, footage):
         parts.append(f"Music: {f['label'].replace(' (audio)', '')}" + (f", {f['artist']}" if f["artist"] else "") + f" ({f['license']})")
     srcs = sorted({footage[s].get("source", "Wikimedia Commons") for s in seen}) or ["Wikimedia Commons"]
     txt = f"Footage: {', '.join(srcs)} — " + "; ".join(parts) if parts else "Footage: Wikimedia Commons"
+    if animated:
+        txt += ". Some shots are these photos brought to motion with AI."
     if ai:
         txt += ". Some scenes are AI-generated recreations."
     if reel.get("vo"):
         txt += ". Voiceover: AI voice."
-    if any("SA" in footage[s]["license"] for s in seen):
+    if any("SA" in footage[s]["license"] for s in seen) or any("SA" in footage[s]["based_on"]["license"] for s in animated):
         txt += " This reel: CC BY-SA 4.0."
     return txt
 
