@@ -437,3 +437,19 @@ class RedesignTest(unittest.TestCase):
         cap = route_reel.caption({"en": "English", "keywords": ["durga puja 2026"], "tags": "#DurgaPuja2026"})
         self.assertNotIn("Sumita Roy Dutta", cap)  # the dhak credit is on the end frame
         self.assertEqual(cap, "English\n\n(durga puja 2026)\n\n#DurgaPuja2026")
+
+    def test_download_percent_encodes_bengali_file_names(self):
+        from unittest import mock
+        from marketing.footage import factory
+        seen = []
+
+        def fake(req, timeout=None):
+            seen.append(req.full_url)
+            raise OSError("stop")
+        with mock.patch("urllib.request.urlopen", fake), tempfile.TemporaryDirectory() as d, self.assertRaises(OSError):
+            factory.download("https://upload.wikimedia.org/wikipedia/commons/e/e1/দূর্গা_(2).jpg", Path(d) / "x.jpg")
+        self.assertEqual(seen, ["https://upload.wikimedia.org/wikipedia/commons/e/e1/%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_(2).jpg"])
+        seen.clear()
+        with mock.patch("urllib.request.urlopen", fake), tempfile.TemporaryDirectory() as d, self.assertRaises(OSError):
+            factory.download("https://x.org/a/%E0%A6%8F_b.jpg", Path(d) / "x.jpg")
+        self.assertEqual(seen, ["https://x.org/a/%E0%A6%8F_b.jpg"])  # already encoded: left alone

@@ -63,6 +63,8 @@ def download(url, dest, tries=5):
     """Wikimedia answers bursts with 429 (and the odd 503): wait and retry rather than fail the whole render."""
     import time
     import urllib.error
+    import urllib.parse
+    url = urllib.parse.quote(url, safe=":/?&=%#,()~+'!*;@$")  # a raw non-ASCII path (Bengali file names) can't go on the wire
     for k in range(tries):
         try:
             req = urllib.request.Request(url, headers=UA)
