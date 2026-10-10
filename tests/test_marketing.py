@@ -224,7 +224,7 @@ class DailySetTest(unittest.TestCase):
              mock.patch.object(publish_batch, "wait_until"), mock.patch.object(publish_batch.time, "sleep"), \
              mock.patch.dict("os.environ", {"IG_USER_ID": "1", "IG_ACCESS_TOKEN": "IGx"}):
             with self.assertRaises(SystemExit) as e:
-                publish_batch.main(["--date", "2026-10-08", "--window", "pm"])
+                publish_batch.main(["--date", "2026-10-08", "--window", "night"])
         self.assertEqual(tries, ["s3", "s3", "r3"])  # one fresh container for the story, then the reel still posts
         self.assertIn("[1]", str(e.exception))
 
@@ -453,3 +453,9 @@ class RedesignTest(unittest.TestCase):
         with mock.patch("urllib.request.urlopen", fake), tempfile.TemporaryDirectory() as d, self.assertRaises(OSError):
             factory.download("https://x.org/a/%E0%A6%8F_b.jpg", Path(d) / "x.jpg")
         self.assertEqual(seen, ["https://x.org/a/%E0%A6%8F_b.jpg"])  # already encoded: left alone
+
+    def test_posting_windows_cover_the_day_once(self):
+        from marketing.publish_batch import in_window
+        for at in ("08:00", "12:59", "13:00", "17:59", "18:00", "23:00"):
+            self.assertEqual(sum(in_window(at, w) for w in ("am", "pm", "night")), 1, at)
+        self.assertTrue(in_window("12:40", "am") and in_window("13:20", "pm") and in_window("22:40", "night"))

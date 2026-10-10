@@ -3,7 +3,7 @@ name: marketing-batch
 # Posts reels, video stories and carousels to Instagram (marketing/publish_batch.py), with the same IG_USER_ID /
 # IG_ACCESS_TOKEN secrets as marketing-publish. Two ways to run it:
 #   date + window: the day's set from the reels factory (/kit/reels/<date>/manifest.json), each item at its IST slot.
-#     A Claude Routine dispatches the am window (slots before 14:00, at 09:10 IST) and the pm window (from 14:00, at 15:15 IST) daily; GitHub's own cron was
+#     Claude Routines dispatch the am window (slots before 13:00, at 07:50 IST), pm (13:00-17:59, at 12:50) and night (from 18:00, at 17:50) daily; GitHub's own cron was
 #     hours late. It posts only when the date is in marketing/daily/approved.txt.
 #   manifest: a hand-picked batch file from marketing/batches/, spaced by gap.
 # Nothing posts unless the repository variable IG_AUTOPUBLISH is "true" and dry_run is false.
@@ -14,7 +14,7 @@ on:
         description: "Daily set to post (YYYY-MM-DD, IST). Empty = use manifest"
         default: ""
       window:
-        description: "With date: am (slots before 14:00), pm, or all"
+        description: "With date: am (before 13:00), pm (13:00-17:59), night (from 18:00), or all"
         default: "all"
       manifest:
         description: "Batch file (when date is empty)"
