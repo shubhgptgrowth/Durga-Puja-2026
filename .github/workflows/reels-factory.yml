@@ -26,7 +26,7 @@ jobs:
   render:
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 330  # ten days of reels in one push run (about 15 min a day)
     env:
       GH_TOKEN: ${{ github.token }}
     steps:

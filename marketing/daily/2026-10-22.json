@@ -1,0 +1,1210 @@
+{
+ "date": "2026-10-22",
+ "clips": {
+  "fx-363ad4e8": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Joydeep",
+   "label": "Durga,_Burdwan,_West_Bengal,_India_21_10_2012_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_03.jpg"
+  },
+  "fx-330ac5ac": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "JDP90 (Joydeep)",
+   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(1).JP",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%281%29.JPG"
+  },
+  "fx-09c9bc1b": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG",
+   "license": "CC BY-SA 3.0",
+   "artist": "JDP90 (Joydeep)",
+   "label": "Durga_temple_,_Burdwan,_West_Bengal,_India_21_10_2012_(2).JP",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_temple_%2C_Burdwan%2C_West_Bengal%2C_India_21_10_2012_%282%29.JPG"
+  },
+  "fx-8e8e3553": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "fx-74d985b1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9219.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209219.jpg"
+  },
+  "fx-54b42620": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9221.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209221.jpg"
+  },
+  "fx-bdb3d42f": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9227.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209227.jpg"
+  },
+  "fx-6771bed7": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9229.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209229.jpg"
+  },
+  "fx-411bb78a": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6578.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion Procession - Baja Kadamtala Ghat - Kolk",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20Procession%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202015-10-22%206578.JPG"
+  },
+  "fx-b3d0c71d": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6581.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion Procession - Baja Kadamtala Ghat - Kolk",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20Procession%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202015-10-22%206581.JPG"
+  },
+  "fx-125db1f9": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6585.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion Procession - Baja Kadamtala Ghat - Kolk",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20Procession%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202015-10-22%206585.JPG"
+  },
+  "fx-7705df50": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6590.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion Procession - Baja Kadamtala Ghat - Kolk",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20Procession%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202015-10-22%206590.JPG"
+  },
+  "fx-6a7c4367": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1280.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion - Baja Kadamtala Ghat - Kolkata 2012-10",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202012-10-24%201280.JPG"
+  },
+  "fx-1e576a95": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1343.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion - Baja Kadamtala Ghat - Kolkata 2012-10",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202012-10-24%201343.JPG"
+  },
+  "fx-9ce6f7cb": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1477.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion - Baja Kadamtala Ghat - Kolkata 2012-10",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202012-10-24%201477.JPG"
+  },
+  "fx-e68a45ca": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1591.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion - Baja Kadamtala Ghat - Kolkata 2012-10",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202012-10-24%201591.JPG"
+  },
+  "fx-be3f0e56": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9190.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209190.jpg"
+  },
+  "fx-895b5194": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9205.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209205.jpg"
+  },
+  "fx-a6274bcd": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9211.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209211.jpg"
+  },
+  "fx-ebf259a2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9215.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209215.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "p1",
+   "type": "photo",
+   "render": "editorial",
+   "at": "08:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "After the immersion",
+     "title": "Subho Bijoya: what to say, and to whom",
+     "bn": "শুভ বিজয়া",
+     "sub": "Pranam, kolakuli, mishti and the messages",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/Narkel_naru.made_up_of_coconut_and_jaggery.jpg",
+      "artist": "Priyankasingha1811",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The meaning",
+     "title": "Auspicious victory",
+     "bn": "শুভ বিজয়া মানে",
+     "body": "Subho Bijoya means auspicious victory: Durga's victory over Mahishasura. Say it only after the immersion. Before that, it's Sharodiya shubhechha or Happy Durga Puja."
+    },
+    {
+     "t": "list",
+     "kicker": "The Bijoya custom",
+     "title": "More than a phrase",
+     "bn": "বিজয়ার রীতি",
+     "items": [
+      [
+       "Pranam: touch an elder's feet",
+       "প্রণাম"
+      ],
+      [
+       "Kolakuli: friends embrace, traditionally thrice",
+       "কোলাকুলি"
+      ],
+      [
+       "Mishti for every visitor",
+       "মিষ্টিমুখ"
+      ],
+      [
+       "Visits to relatives and neighbours",
+       "বিজয়ার দেখা করা"
+      ],
+      [
+       "Bijoyar chithi: letters to elders far away",
+       "বিজয়ার চিঠি"
+      ]
+     ]
+    },
+    {
+     "t": "list",
+     "kicker": "In Bengali",
+     "title": "Wishes to send",
+     "bn": "বাংলায় শুভেচ্ছা",
+     "items": [
+      [
+       "Accept my Bijoya pranam and my love.",
+       "শুভ বিজয়ার প্রণাম ও ভালোবাসা নিও।"
+      ],
+      [
+       "Ma will come again; until then, stay well.",
+       "মা আবার আসবেন, ততদিন ভালো থেকো, হাসিখুশি থেকো।"
+      ],
+      [
+       "The dhak is quiet; may the joy last all year.",
+       "ঢাকের আওয়াজ থেমে গেল, কিন্তু মনের আনন্দ থাকুক সারা বছর।"
+      ],
+      [
+       "Pranam to the elders, love to the little ones.",
+       "বড়দের প্রণাম, ছোটদের ভালোবাসা। শুভ বিজয়া!"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "How to reply",
+     "title": "When someone says it to you",
+     "bn": "উত্তরে কী বলবেন",
+     "body": "Just say Subho Bijoya back. To an elder, add pranam. To someone younger, add ashirbad (blessings) or bhalobasha (love)."
+    },
+    {
+     "t": "step",
+     "kicker": "For work",
+     "title": "For colleagues and clients",
+     "bn": "অফিসের জন্য",
+     "body": "Warm Bijoya greetings to you and your family. May the year ahead bring good health and success."
+    },
+    {
+     "t": "step",
+     "kicker": "One tip",
+     "title": "A call beats a forward",
+     "bn": "ফোন করুন, দেখা করুন",
+     "body": "A call or a visit with a box of sweets still means more than a forwarded image. People visit the relatives and neighbours they owe a Bijoya call, and some families keep it up for weeks."
+    },
+    {
+     "t": "end",
+     "title": "Who's getting your first pranam?",
+     "bn": "প্রথম প্রণামটা কাকে?",
+     "ask": "Send it to the family group"
+    }
+   ],
+   "caption": {
+    "en": "Subho Bijoya wishes after Durga Puja 2026: what Kolkata says, and when 🙏\n\nSubho Bijoya means auspicious victory. You say it only after the immersion, from Dashami evening, which was Wednesday 21 October this year. Before that it's Sharodiya shubhechha.\n\nThen comes the custom: pranam to elders, kolakuli with friends, sweets for every visitor, and calls to the relatives you owe a Bijoya visit. To an elder, add pranam. To someone younger, ashirbad or bhalobasha.\n\nWe wrote the Bengali wishes in this post ourselves, so copy them freely. A call still means more than a forward, though.\n\nSend this to the family group before the forwards start 👇",
+    "keywords": [
+     "subho bijoya wishes",
+     "bijoya dashami wishes",
+     "subho bijoya in bengali",
+     "durga puja wishes",
+     "kolkata bijoya"
+    ],
+    "tags": "#bijoyadashami #durgapuja2026 #bengali"
+   }
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "09:10",
+   "hook": "Pujo doesn't end at the city limits",
+   "bn": {
+    "hook": "পুজো শুধু শহরে নয়",
+    "segs": [
+     "",
+     "বর্ধমান",
+     "বর্ধমান",
+     "বাগুইআটি"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-363ad4e8",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-330ac5ac",
+     0,
+     3.6,
+     "Bardhaman"
+    ],
+    [
+     "fx-09c9bc1b",
+     0,
+     3.6,
+     "Bardhaman"
+    ],
+    [
+     "fx-8e8e3553",
+     0,
+     3.6,
+     "Baguiati"
+    ]
+   ],
+   "end": [
+    "Pujo doesn't end at the city limits",
+    "Where is your hometown pujo? Tell us"
+   ],
+   "music": [
+    "f21",
+    80
+   ],
+   "caption": {
+    "en": "Durga Puja beyond Kolkata: Bardhaman and Baguiati 🪔\n\nPujo in Bengal's towns and the city's edges, from past years.\n\nWhere is your hometown pujo? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "09:45",
+   "bn": {
+    "segs": [
+     "আসছে বছর আবার হবে"
+    ]
+   },
+   "segments": [
+    [
+     "fx-330ac5ac",
+     0,
+     6.0,
+     "Asche bochor abar hobe"
+    ]
+   ],
+   "music": [
+    "f21",
+    150
+   ]
+  },
+  {
+   "id": "p2",
+   "type": "photo",
+   "render": "editorial",
+   "at": "10:20",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "After Durga Puja",
+     "title": "Kojagari Lakshmi Puja: who is awake tonight?",
+     "bn": "কোজাগরী লক্ষ্মীপুজো",
+     "sub": "The full-moon puja a few days after Dashami",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Kojagari_Lakshmi_Puja_Arrangement_-_Bengali_Brahman_Family_-_Howrah_20171005173553.jpg",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The name",
+     "title": "Ko jagarti?",
+     "bn": "কে জেগে আছ?",
+     "body": "Kojagari comes from the Sanskrit ko jagarti, who is awake? On this full-moon night, tradition says, Lakshmi goes from house to house asking it, and blesses the homes she finds awake."
+    },
+    {
+     "t": "step",
+     "kicker": "When",
+     "title": "The full moon after Dashami",
+     "bn": "শরৎ পূর্ণিমা",
+     "body": "It falls on Sharad Purnima, the full moon of Ashwin, a few days after Bijoya Dashami (21 October in 2026). The date and hours of the Purnima tithi change every year: check your local panjika."
+    },
+    {
+     "t": "list",
+     "kicker": "Getting ready",
+     "title": "Preparing the home",
+     "bn": "ঘর সাজানো",
+     "items": [
+      [
+       "Clean the whole house",
+       "ঘর পরিষ্কার"
+      ],
+      [
+       "Alpana in ground rice paste",
+       "চালবাটার আলপনা"
+      ],
+      [
+       "Lakshmi's footprints, pointing inwards",
+       "লক্ষ্মীর পা, ঘরের দিকে"
+      ],
+      [
+       "Lotus, paddy, conch, pot and owl motifs",
+       "পদ্ম, ধানের শিষ, শাঁখ, প্যাঁচা"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/59/Alpona_or_drawings_made_right_at_the_doorstep_with_chalk_water_is_mandatory_during_marriage_in_any_Bengali_household_in_India.This_is_regarded_as_auspicious.jpg",
+      "artist": "Shonamug",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Alpana: many girls first learn it for Lakshmi Puja"
+    },
+    {
+     "t": "list",
+     "kicker": "Bhog",
+     "title": "On the plate",
+     "bn": "লক্ষ্মীর ভোগ",
+     "items": [
+      [
+       "Khichuri, often with ghee",
+       "খিচুড়ি"
+      ],
+      [
+       "Labra and bhaja",
+       "লাবড়া আর ভাজা"
+      ],
+      [
+       "Narkel naru and til naru",
+       "নারকেল নাড়ু, তিলের নাড়ু"
+      ],
+      [
+       "Khoi and murki",
+       "খই আর মুড়কি"
+      ],
+      [
+       "Payesh",
+       "পায়েস"
+      ],
+      [
+       "Cut fruit, with sugarcane and coconut",
+       "ফল, আখ, নারকেল"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "One common telling",
+     "title": "The king who bought Alakshmi",
+     "bn": "লক্ষ্মীর পাঁচালি",
+     "body": "A king buys an unsold image of Alakshmi, and good fortune leaves his palace. The queen keeps the Kojagari vow: she cleans, lights lamps and stays awake all night. Lakshmi returns."
+    },
+    {
+     "t": "end",
+     "title": "Lamp lit, home clean, stay awake",
+     "bn": "প্রদীপ জ্বেলে জেগে থাকুন",
+     "ask": "Send it to whoever draws the alpana"
+    }
+   ],
+   "caption": {
+    "en": "Kojagari Lakshmi Puja after Durga Puja: the Kolkata home puja on Sharad Purnima 🌕\n\nKojagari comes from ko jagarti, who is awake? Lakshmi is said to visit homes on this full-moon night and stay where she finds the lamp lit and the household awake.\n\nIt falls a few days after Bijoya Dashami, which is Wednesday 21 October this year. The date and hours of the Purnima tithi change every year, so check your local panjika.\n\nAlpana in rice paste, little footprints walking in from the door, khichuri, narkel naru, khoi and the Lakshmir panchali read aloud. Every family does it a little differently.\n\nWho draws the alpana in your home? Tell us in the comments 👇",
+    "keywords": [
+     "kojagari lakshmi puja",
+     "lakshmi puja after durga puja",
+     "sharad purnima",
+     "lakshmi alpana",
+     "kolkata lakshmi puja"
+    ],
+    "tags": "#lakshmipuja #kojagarilakshmipuja #bengali"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "11:30",
+   "render": "route",
+   "zone": "central",
+   "hook": "10 pandals. 10 km. One night.",
+   "caption": {
+    "en": "College Street & Sealdah pandal hopping route for Durga Puja 2026 in Kolkata: 10 pandals, 10 km, one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the numbers. This is the walking order through 10 pandals in College Street & Sealdah, from Chaltabagan Lohapatty and Simla Byayam Samity to Park Street Allen Park Puja: about 10 km and 14,090 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "keywords": [
+     "college street & sealdah durga puja",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "mahatma gandhi road metro"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
+   "id": "p3",
+   "type": "photo",
+   "render": "editorial",
+   "at": "12:40",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · College St",
+     "title": "College Square Sarbojanin",
+     "bn": "কলেজ স্কোয়ার সার্বজনীন",
+     "sub": "Pictured: 2022",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/9/9d/People_at_the_pandal_of_College_Square_Sarbojonin_Durgotsav_%28Durga_Puja%29_in_College_Street%2C_Kolkata%2C_West_Bengal.jpg",
+      "artist": "Billjones94",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "The lighting reflected on the College Square pond is iconic at night."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 9 pm to 1 am",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Central, 15 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Since 1948",
+       "প্রতিষ্ঠা"
+      ],
+      [
+       "Eat nearby: Swadhin Bharat Hindu Hotel",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Idols_at_the_pandal_of_College_Square_Sarbojonin_Durgotsab_%28Durga_Puja%29_in_College_Street%2C_Kolkata%2C_West_Bengal.jpg",
+      "artist": "Billjones94",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "College Square Sarbojanin, 2022"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "College Square Sarbojanin, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nThe lighting reflected on the College Square pond is iconic at night.\n\nOur crowd model says it's least crowded around 9 pm to 1 am, and it's 15 minutes' walk from Central Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "college square sarbojanin durga puja 2026",
+     "college square sarbojanin pandal",
+     "college street & sealdah pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "13:50",
+   "hook": "A 269-year-old goodbye",
+   "bn": {
+    "hook": "২৬৯ বছরের বিদায়",
+    "segs": [
+     "",
+     "শোভাবাজার রাজবাড়ি",
+     "বাগবাজার ঘাট",
+     "আসছে বছর আবার হবে"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-74d985b1",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-54b42620",
+     0,
+     3.6,
+     "Sovabazar Rajbari"
+    ],
+    [
+     "fx-bdb3d42f",
+     0,
+     3.6,
+     "Baghbazar Ghat"
+    ],
+    [
+     "fx-6771bed7",
+     0,
+     3.6,
+     "Asche bochor abar hobe"
+    ]
+   ],
+   "end": [
+    "A 269-year-old goodbye",
+    "Have you ever watched a bisarjan at the ghat? Tell us"
+   ],
+   "music": [
+    "f20",
+    30
+   ],
+   "caption": {
+    "en": "Sovabazar Rajbari's Durga Puja immersion at Baghbazar Ghat, Kolkata 🙏\n\nThe royal family's protima goes to the Hooghly the old way, carried down to the river. These photos are from 2014.\n\nHave you ever watched a bisarjan at the ghat? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "story",
+   "at": "14:25",
+   "bn": {
+    "segs": [
+     "কোন প্যান্ডেলে যাচ্ছেন?"
+    ]
+   },
+   "segments": [
+    [
+     "fx-8e8e3553",
+     0,
+     6.0,
+     "Which pandal are you going to?"
+    ]
+   ],
+   "music": [
+    "f23",
+    90
+   ]
+  },
+  {
+   "hook": "Kolkata waits a whole year for this",
+   "bn": {
+    "hook": "এক বছরের অপেক্ষা আবার শুরু",
+    "segs": [
+     "",
+     "শোভাবাজার রাজবাড়ির বিসর্জন",
+     "গঙ্গার ঘাটে",
+     ""
+    ],
+    "end": "আসছে বছর আবার হবে"
+   },
+   "segments": [
+    [
+     "cm-bfc66f",
+     10,
+     4.0,
+     ""
+    ],
+    [
+     "cm-eb9b74",
+     12,
+     3.6,
+     "Sovabazar Rajbari immersion"
+    ],
+    [
+     "cm-15b29f",
+     8,
+     3.6,
+     "At the ghat"
+    ],
+    [
+     "cm-d7ad92",
+     4,
+     3.6,
+     ""
+    ]
+   ],
+   "end": [
+    "Asche bochor abar hobe",
+    "Which moment of this pujo will you keep?"
+   ],
+   "music": [
+    "f21",
+    20
+   ],
+   "caption": {
+    "en": "After Bijoya Dashami in Kolkata: the long wait for next year's Durga Puja begins 🪔\n\nThe old family pujas go to the Hooghly the traditional way. These clips of Sovabazar Rajbari's immersion are from past years.\n\nWhich moment of this pujo will you keep? Tell us 👇",
+    "keywords": [
+     "durga puja immersion kolkata",
+     "sovabazar rajbari bisarjan",
+     "bijoya 2026",
+     "kolkata durga puja"
+    ],
+    "tags": "#durgapuja2026 #bijoya #kolkatadurgapuja"
+   },
+   "id": "r4",
+   "type": "reel",
+   "at": "15:00"
+  },
+  {
+   "id": "p4",
+   "type": "photo",
+   "render": "editorial",
+   "at": "16:10",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja · A greener pujo",
+     "title": "Eco-friendly pujo, at home and in the para",
+     "bn": "পরিবেশের কথা ভেবে পুজো",
+     "sub": "Going greener often means going back to the old ways",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Artificial_temporary_pond_on_Old_Prabhadevi_beach.jpg",
+      "artist": "Rudolph.A.Furtado",
+      "license": "CC BY 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The idol",
+     "num": 1,
+     "title": "Clay, not plaster of Paris",
+     "bn": "মাটির ঠাকুর",
+     "body": "Straw, bamboo and unbaked clay break down in water. Plaster of Paris sets hard and dissolves very slowly. Look for an idol with no thermocol, or ornaments you can remove before immersion."
+    },
+    {
+     "t": "step",
+     "kicker": "Colours",
+     "num": 2,
+     "title": "Gentler paint",
+     "bn": "প্রাকৃতিক রং",
+     "body": "Ask the artisan whether they use water-based, non-toxic or natural colours. Choose lightly painted or unpainted idols for home pujas, and skip glitter and metallic sprays."
+    },
+    {
+     "t": "step",
+     "kicker": "Bisarjan",
+     "num": 3,
+     "title": "Before the immersion",
+     "bn": "বিসর্জনের আগে",
+     "body": "Take off flowers, garlands, cloth, ornaments and plastic first. Use an artificial pond or immersion tank if there's one near you. Rules vary and change, so check current local notices."
+    },
+    {
+     "t": "list",
+     "kicker": "For the para committee",
+     "title": "In the pandal",
+     "bn": "পাড়ার পুজো কমিটির জন্য",
+     "items": [
+      [
+       "Bhog on sal-leaf, banana-leaf or steel",
+       "শালপাতা বা স্টিলের থালায় ভোগ"
+      ],
+      [
+       "Clear bins for wet and dry waste",
+       "ভেজা-শুকনো আলাদা ডাস্টবিন"
+      ],
+      [
+       "LED lights, off in the small hours",
+       "এলইডি আলো, গভীর রাতে বন্ধ"
+      ],
+      [
+       "Cloth signs instead of plastic flex",
+       "ফ্লেক্সের বদলে কাপড়"
+      ],
+      [
+       "Reuse bamboo, jute, frames and panels",
+       "বাঁশ, পাট, পুরনো কাঠামো"
+      ],
+      [
+       "Moderate sound, switched off at night",
+       "রাতে মাইক বন্ধ"
+      ]
+     ]
+    },
+    {
+     "t": "list",
+     "kicker": "For your home puja",
+     "title": "At home",
+     "bn": "বাড়ির পুজোয়",
+     "items": [
+      [
+       "A small unpainted clay idol, or a ghot",
+       "ছোট মাটির ঠাকুর বা ঘট"
+      ],
+      [
+       "Fresh flowers, mango leaves, rice alpana",
+       "ফুল, আমপাতা, আলপনা"
+      ],
+      [
+       "Clay diyas, not plastic decorations",
+       "মাটির প্রদীপ"
+      ],
+      [
+       "Steel or leaf plates for prasad",
+       "স্টিল বা পাতার থালা"
+      ],
+      [
+       "Compost the flowers afterwards",
+       "ফুল দিয়ে সার"
+      ],
+      [
+       "Immerse in a tub, pour the clay into a plant",
+       "বালতিতে বিসর্জন, মাটি টবে"
+      ]
+     ]
+    },
+    {
+     "t": "end",
+     "title": "Greener is also older",
+     "bn": "সবুজ মানেই পুরনো রীতি",
+     "ask": "Send it to your para committee"
+    }
+   ],
+   "caption": {
+    "en": "Eco-friendly Durga Puja in Kolkata: clay idols, cleaner immersion and less plastic in the para 🌿\n\nClay, straw, natural colours, flowers and leaf plates are the oldest parts of pujo. So going greener often means going back. Plaster of Paris sets hard and dissolves very slowly in water, while unbaked clay returns to the earth far more readily.\n\nAt home, you can immerse a small clay idol in a bucket or tub and pour the clay into a plant, if your family priest agrees. Immersion rules change, so check current notices from the pollution control board, the municipality and the police.\n\nSend this to your para's puja committee 🙏",
+    "keywords": [
+     "eco-friendly durga puja",
+     "clay idol vs plaster of paris",
+     "green durga puja",
+     "artificial pond immersion",
+     "durga puja kolkata"
+    ],
+    "tags": "#EcoFriendlyPuja #DurgaPuja2026 #KolkataDurgaPuja"
+   }
+  },
+  {
+   "id": "p5",
+   "type": "photo",
+   "render": "editorial",
+   "at": "17:20",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Ready-made pujo night",
+     "title": "North Kolkata Heritage Trail",
+     "bn": "উত্তর কলকাতার ঐতিহ্য পরিক্রমা",
+     "sub": "17 pandals, from 7 am",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Durga_with_Her_Family_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2016_10-08_9693.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The route",
+     "title": "What you'll see",
+     "bn": "কী কী দেখবেন",
+     "body": "Kumartuli, Bagbazar, the bonedi bari and Hatibagan, finishing with kabiraji at Mitra Cafe."
+    },
+    {
+     "t": "app",
+     "kicker": "In the app",
+     "num": 1,
+     "title": "Open it, start walking",
+     "bn": "খুলুন, হাঁটা শুরু",
+     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
+     "shot": "repo:marketing/app-shots/north_heritage.jpg"
+    },
+    {
+     "t": "end",
+     "title": "Free. No sign-up. Link in bio.",
+     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
+     "ask": "Tag who you're going with"
+    }
+   ],
+   "caption": {
+    "en": "North Kolkata Heritage Trail: a ready-made Kolkata Durga Puja 2026 route, 17 pandals from 7 am 🗺️\n\nKumartuli, Bagbazar, the bonedi bari and Hatibagan, finishing with kabiraji at Mitra Cafe.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
+    "keywords": [
+     "north kolkata heritage trail",
+     "kolkata durga puja route 2026",
+     "pandal hopping route kolkata"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
+   "id": "r5",
+   "type": "reel",
+   "at": "18:30",
+   "hook": "The walk no one wants to end",
+   "bn": {
+    "hook": "যে পথ কেউ শেষ করতে চায় না",
+    "segs": [
+     "",
+     "শোভাযাত্রা",
+     "ঢাকের তালে",
+     "গঙ্গার দিকে"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-411bb78a",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-b3d0c71d",
+     0,
+     3.6,
+     "The procession"
+    ],
+    [
+     "fx-125db1f9",
+     0,
+     3.6,
+     "Dhak all the way"
+    ],
+    [
+     "fx-7705df50",
+     0,
+     3.6,
+     "To the river"
+    ]
+   ],
+   "end": [
+    "The walk no one wants to end",
+    "Does your para dance all the way to the ghat? Tell us"
+   ],
+   "music": [
+    "f23",
+    50
+   ],
+   "caption": {
+    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "19:05",
+   "bn": {
+    "segs": [
+     "উত্তর না দক্ষিণ?"
+    ]
+   },
+   "segments": [
+    [
+     "fx-bdb3d42f",
+     0,
+     6.0,
+     "North or South this year?"
+    ]
+   ],
+   "music": [
+    "f22",
+    20
+   ]
+  },
+  {
+   "id": "p6",
+   "type": "photo",
+   "render": "editorial",
+   "at": "19:40",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Bhowanipore",
+     "title": "Maddox Square",
+     "bn": "ম্যাডক্স স্কোয়ার",
+     "sub": "Pictured: 2017",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3958-3962.tif",
+      "artist": "gangulybiswarup",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Kolkata's favourite adda ground. A traditional idol and the city's best people-watching."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 9 pm to 1 am",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Jatin Das Park, 21 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Bojangles, Ammini",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Maddox Square, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nOur crowd model says it's least crowded around 9 pm to 1 am, and it's 21 minutes' walk from Jatin Das Park Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "maddox square durga puja 2026",
+     "maddox square pandal",
+     "bhowanipore & elgin pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r7",
+   "type": "reel",
+   "at": "20:50",
+   "hook": "Kolkata's hardest goodbye",
+   "bn": {
+    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
+    "segs": [
+     "",
+     "বাজা কদমতলা ঘাট",
+     "",
+     "বিসর্জন"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-6a7c4367",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-1e576a95",
+     0,
+     3.6,
+     "Baja Kadamtala Ghat"
+    ],
+    [
+     "fx-9ce6f7cb",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "fx-e68a45ca",
+     0,
+     3.6,
+     "Bisarjan"
+    ]
+   ],
+   "end": [
+    "Kolkata's hardest goodbye",
+    "Who do you miss the most when pujo ends? Tell us"
+   ],
+   "music": [
+    "f22",
+    120
+   ],
+   "caption": {
+    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "r6",
+   "type": "reel",
+   "at": "22:00",
+   "hook": "How a royal family says goodbye",
+   "bn": {
+    "hook": "রাজবাড়ির বিদায়",
+    "segs": [
+     "",
+     "প্রস্তুতি",
+     "দুই নৌকো",
+     "গঙ্গায়"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-be3f0e56",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-895b5194",
+     0,
+     3.6,
+     "The arrangement"
+    ],
+    [
+     "fx-a6274bcd",
+     0,
+     3.6,
+     "Two boats"
+    ],
+    [
+     "fx-ebf259a2",
+     0,
+     3.6,
+     "Into the Hooghly"
+    ]
+   ],
+   "end": [
+    "How a royal family says goodbye",
+    "Save this, and tell us your para's bisarjan story"
+   ],
+   "music": [
+    "f20",
+    140
+   ],
+   "caption": {
+    "en": "Sovabazar Rajbari's bisarjan, the traditional way, Kolkata 🙏\n\nBefore the immersion the protima is readied at Baghbazar Ghat. These photos are from 2014.\n\nSave this, and tell us your para's bisarjan story 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "22:40",
+   "bn": {
+    "segs": [
+     "কাদের সঙ্গে বেরোচ্ছেন?"
+    ]
+   },
+   "segments": [
+    [
+     "fx-b3d0c71d",
+     0,
+     6.0,
+     "Who are you going with?"
+    ]
+   ],
+   "music": [
+    "f21",
+    80
+   ]
+  }
+ ]
+}
