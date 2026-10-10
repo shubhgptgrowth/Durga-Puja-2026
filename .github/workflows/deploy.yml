@@ -117,6 +117,9 @@ jobs:
           # Instagram carousels at /kit/carousels/ (marketing/carousels.py), which marketing-batch posts from.
           pip install -q pillow && python -m marketing.carousels --out app/kit/carousels --photos && node marketing/carousels.mjs app/kit/carousels \
             || echo "::warning::Carousels not rendered"
+      - name: Team dashboard (/kit/dashboard/)
+        # Live numbers behind a private key (supabase/migrations/*_dashboard.sql, docs/product/ANALYTICS.md).
+        run: mkdir -p app/kit/dashboard && cp marketing/dashboard/index.html marketing/dashboard/dashboard.js app/kit/dashboard/
       - name: Daily reels and footage catalogue (/kit/reels/)
         # Rendered by reels-factory / footage-scan (marketing/footage/). Yesterday to 6 days ahead are kept (review ahead); a newer
         # render of a date replaces the older one. Never blocks the app deploy.

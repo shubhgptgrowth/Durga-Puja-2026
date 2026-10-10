@@ -296,3 +296,49 @@ caption = "Jagaddhatri, seated on her lion, at Chandannagar."
 [print]
 file = "File:Popular print, album (BM 2003,1022,0.25).jpg"
 caption = "Durga slaying Mahishasura: a popular print from Bengal."
+
+# Community Navratri guides (navratri/golu, bathukamma, mysuru-dasara, kullu-dussehra, ayudha-puja-vidyarambham).
+# Not chosen yet: run Actions → article-photos with mode=candidates, pick a file, then mode=fetch.
+[golu]
+q = ["Navaratri Golu", "Bommai Kolu dolls", "Golu dolls steps"]
+file = "File:Navratri Golu - Dashavatara.JPG"
+caption = "A Golu on steps, with the Dashavatara, Vishnu's ten forms, among the dolls."
+
+[bathukamma]
+q = ["Bathukamma", "Bathukamma flowers Telangana", "Bathukamma festival women"]
+file = "File:Bathukamma in telangana.jpg"
+caption = "Women gather around their bathukammas, towers of flowers, in Telangana."
+
+[golu-2]
+file = "File:Golu, Kolu scene of couple in a Hindu festive doll display.jpg"
+caption = "A doll couple on a Golu display."
+
+[bathukamma-2]
+file = "File:Bathukamma.jpg"
+caption = "A bathukamma: flowers stacked in rings into a cone."
+
+[mysuru-dasara]
+q = ["Mysore Dasara Jamboo Savari", "Mysore Palace illumination Dasara", "Mysuru Dasara elephant"]
+file = "File:Mysore Palace Dussehra Illumination.jpg"
+caption = "Mysuru Palace lit up for Dasara."
+
+[kullu-dussehra]
+q = ["Kullu Dussehra", "Kullu Dussehra Dhalpur", "Kullu Dussehra deities"]
+file = "File:Kullu Dussehra - main procession.jpg"
+caption = "The main procession at Kullu Dussehra, with long horns sounding."
+
+[kullu-dussehra-2]
+file = "File:Kullu Dussehra - Main procession.jpg"
+caption = "Village deities in their palanquins at Kullu Dussehra."
+
+[ayudha-puja]
+q = ["Ayudha Puja", "Ayudha Pooja vehicle decoration", "Saraswati Puja books Navaratri"]
+file = "File:Ayudha Pooja.jpg"
+caption = "Vehicles garlanded for Ayudha Puja, with an ash gourd ready in front."
+
+[ayudha-puja-2]
+file = "File:Ayuthapooja.jpg"
+caption = "Books and offerings set before the Goddess for Saraswati and Ayudha Puja."
+
+[vidyarambham]
+q = ["Vidyarambham", "Ezhuthiniruthu", "Vidyarambham child writing rice"]

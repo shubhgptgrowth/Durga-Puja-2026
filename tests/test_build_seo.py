@@ -14,7 +14,7 @@ import build_seo  # noqa: E402
 from seo.knowledge import CONTENT, Article  # noqa: E402
 from seo.common import esc  # noqa: E402
 from seo.markdown import render  # noqa: E402
-from seo.metro import FAR_MIN, MIN_PANDALS, NEAR_MIN, metro_stations, walk  # noqa: E402
+from seo.metro import FAR_MIN, MIN_PANDALS, NEAR_MIN, load_notices, metro_stations, walk  # noqa: E402
 
 
 class Page(HTMLParser):
@@ -342,7 +342,12 @@ class BuildSeoTest(unittest.TestCase):
                 self.assertTrue(all(w <= NEAR_MIN for w, _, _ in near))
                 html = (self.tmp / "guide" / "metro" / st["id"] / "index.html").read_text(encoding="utf-8")
                 self.assertLess(html.index(near[0][2]["name"]), html.index(near[-1][2]["name"]) + 1)
-                self.assertIn("haven't announced", html.replace("hasn't announced", "haven't announced"))   # no invented timings
+                nights = load_notices().get("puja_nights", {})
+                if nights.get("announced"):   # the announced timings, with their source
+                    self.assertIn(esc(nights["text"]), html)
+                    self.assertIn(esc(nights["source"]), html)
+                else:   # no invented timings
+                    self.assertIn("haven't announced", html.replace("hasn't announced", "haven't announced"))
         hub = (self.tmp / "guide" / "metro" / "index.html").read_text(encoding="utf-8")
         for p in g["pandals"]:   # every pandal appears on the hub, under its station or as too far to walk
             self.assertIn(f"pandals/{p['id']}/", hub)

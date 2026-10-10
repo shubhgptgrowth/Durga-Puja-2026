@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Pujo Parikrama dashboard</title>
+<link rel="icon" href="../../icons/icon-192.png">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10); --wash: rgba(11,11,11,0.04);
+  --s1: #2a78d6; --s2: #eb6834; --track: #cde2fb; --up: #006300; --down: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+    --s1: #3987e5; --s2: #d95926; --track: #184f95; --up: #0ca30c; --down: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+  --s1: #3987e5; --s2: #d95926; --track: #184f95; --up: #0ca30c; --down: #e66767;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 20px 16px 48px; transition: opacity .2s; }
+main.loading { opacity: .55; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 16px; }
+h1 { font-size: 20px; margin: 0; font-weight: 650; }
+.sub { color: var(--ink-2); font-size: 13px; }
+.spacer { flex: 1; }
+.seg { display: inline-flex; border: 1px solid var(--ring); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; color: var(--ink-2); font: inherit; font-size: 13px; padding: 7px 12px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--ring); }
+.seg button[aria-pressed="true"] { color: var(--ink); font-weight: 650; background: var(--wash); }
+.btn { border: 1px solid var(--ring); background: var(--surface); color: var(--ink); font: inherit; font-size: 13px; padding: 7px 12px; border-radius: 10px; cursor: pointer; }
+.btn:hover, .seg button:hover { background: var(--wash); }
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(12, 1fr); }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 14px; padding: 16px; min-width: 0; }
+.c3 { grid-column: span 3; } .c4 { grid-column: span 4; } .c5 { grid-column: span 5; } .c6 { grid-column: span 6; } .c7 { grid-column: span 7; } .c8 { grid-column: span 8; } .c12 { grid-column: span 12; }
+@media (max-width: 900px) { .c3 { grid-column: span 6; } .c4, .c5, .c6, .c7, .c8 { grid-column: span 12; } }
+@media (max-width: 520px) { .c3 { grid-column: span 12; } }
+.card h2 { font-size: 14px; font-weight: 650; margin: 0; }
+.card .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 12px; }
+.card .head .sub { flex: 1 1 200px; }
+@media (max-width: 520px) { .card .head .sub { order: 3; flex-basis: 100%; } .hide-sm { display: none; } }
+.label { font-size: 13px; color: var(--ink-2); }
+.value { font-size: 30px; font-weight: 650; line-height: 1.15; margin-top: 4px; }
+.hero { font-size: 56px; font-weight: 650; line-height: 1; margin: 6px 0 8px; }
+.delta { font-size: 13px; margin-top: 4px; color: var(--ink-2); }
+.delta .up { color: var(--up); font-weight: 600; } .delta .down { color: var(--down); font-weight: 600; }
+.meter { height: 10px; border-radius: 5px; background: var(--track); margin: 12px 0 6px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--s1); border-radius: 5px; min-width: 4px; }
+.pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.pill { font-size: 12px; padding: 3px 8px; border-radius: 999px; background: var(--wash); color: var(--ink-2); }
+.pill b { color: var(--ink); font-weight: 650; }
+/* horizontal bars: label | bar | value */
+.hbars { display: grid; grid-template-columns: minmax(90px, 38%) 1fr auto; gap: 6px 10px; align-items: center; }
+.hbars .n { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hbars .t { height: 16px; position: relative; }
+.hbars .t i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 0 4px 4px 0; min-width: 2px; }
+.hbars .t:hover i, .hbars .t:focus i { filter: brightness(1.15); }
+.hbars .v { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--ink-2); text-align: right; }
+.hbars .t:focus { outline: 2px solid var(--s1); outline-offset: 2px; border-radius: 4px; }
+svg text { fill: var(--muted); font: 11px system-ui, -apple-system, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; }
+svg .grid-line { stroke: var(--grid); stroke-width: 1; }
+svg .base { stroke: var(--axis); stroke-width: 1; }
+svg .hit { fill: transparent; cursor: default; }
+svg .hit:hover, svg .hit:focus { fill: var(--wash); outline: none; }
+svg .end { fill: var(--ink-2); font-weight: 600; }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); }
+th { color: var(--muted); font-weight: 600; font-size: 12px; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+.scroll { max-height: 420px; overflow: auto; }
+.empty { color: var(--muted); font-size: 13px; padding: 12px 0; }
+.tip { position: fixed; z-index: 10; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--ring); box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  border-radius: 10px; padding: 8px 10px; font-size: 12px; min-width: 120px; display: none; }
+.tip .k { color: var(--ink-2); }
+.tip .row { display: flex; align-items: center; gap: 8px; margin-top: 3px; }
+.tip .row::before { content: ""; width: 12px; height: 2px; background: var(--c); border-radius: 1px; }
+.tip b { font-size: 13px; }
+.gate { max-width: 480px; margin: 12vh auto; }
+.gate input { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink); margin: 10px 0; }
+.gate code { background: var(--wash); padding: 1px 5px; border-radius: 5px; font-size: 13px; }
+.err { color: var(--down); font-size: 13px; }
+footer { margin-top: 18px; font-size: 12px; color: var(--muted); }
+footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+<div class="tip" id="tip" role="status"></div>
+<script type="module">
+import { CONFIG } from '../../config.js';
+import { model, fetchDashboard, num, compact, ticks } from './dashboard.js';
+
+const app = document.getElementById('app'), tip = document.getElementById('tip');
+const store = { get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
+  set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch { /* private mode */ } } };
+const RANGES = [[1, 'Today'], [7, '7 days'], [14, '14 days'], [30, '30 days']];
+let key = null, days = Number(store.get('pp_dash_days')) || 14, last = null, timer = null;
+
+// The key arrives once as #key=…, is kept on this device, and is cleared from the address bar.
+const m = location.hash.match(/key=([A-Za-z0-9]+)/);
+if (m) { store.set('pp_dash_key', m[1]); history.replaceState(null, '', location.pathname + location.search); }
+key = store.get('pp_dash_key');
+
+function el(tag, attrs = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') e.className = v; else if (k === 'style') e.style.cssText = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v);
+  }
+  for (const c of kids.flat()) if (c != null) e.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return e;
+}
+const svgEl = (tag, attrs = {}) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); return e; };
+
+// ---------------------------------------------------------------- tooltip (enhances; every value is also in a table)
+function showTip(evt, title, rows) {
+  tip.replaceChildren(el('div', { class: 'k' }, title), ...rows.map(([name, value, color]) =>
+    el('div', { class: 'row', style: `--c:${color}` }, el('b', {}, value), el('span', { class: 'k' }, name))));
+  tip.style.display = 'block';
+  const r = evt.clientX != null && evt.type !== 'focus' ? { x: evt.clientX, y: evt.clientY } : (() => { const b = evt.target.getBoundingClientRect(); return { x: b.left + b.width / 2, y: b.top }; })();
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = `${Math.min(window.innerWidth - w - 8, Math.max(8, r.x + 12))}px`;
+  tip.style.top = `${Math.max(8, r.y - h - 12)}px`;
+}
+const hideTip = () => { tip.style.display = 'none'; };
+function hover(node, title, rows) {
+  node.setAttribute('tabindex', '0');
+  node.setAttribute('aria-label', `${title}: ${rows.map((r) => `${r[0]} ${r[1]}`).join(', ')}`);
+  for (const ev of ['pointermove', 'focus']) node.addEventListener(ev, (e) => showTip(e, title, rows));
+  for (const ev of ['pointerleave', 'blur']) node.addEventListener(ev, hideTip);
+}
+
+// ---------------------------------------------------------------- building blocks
+function table(cols, rows) {
+  if (!rows.length) return el('div', { class: 'empty' }, 'Nothing yet in this period.');
+  return el('div', { class: 'scroll' }, el('table', {},
+    el('thead', {}, el('tr', {}, cols.map((c) => el('th', { class: `${c.num ? 'r' : ''} ${c.cls || ''}` }, c.name)))),
+    el('tbody', {}, rows.map((r) => el('tr', {}, cols.map((c) => el('td', { class: `${c.num ? 'r' : ''} ${c.cls || ''}` }, c.num ? num(r[c.key]) : r[c.key])))))));
+}
+
+/** A card whose chart can be swapped for its table (the table is the accessible twin). */
+function chartCard(cls, title, sub, chart, tbl, legend) {
+  const body = el('div', {}, chart);
+  let showing = 'chart';
+  const toggle = el('button', { class: 'btn', type: 'button', 'aria-pressed': 'false', onclick: () => {
+    showing = showing === 'chart' ? 'table' : 'chart';
+    body.replaceChildren(showing === 'chart' ? chart : tbl);
+    toggle.textContent = showing === 'chart' ? 'Table' : 'Chart';
+    toggle.setAttribute('aria-pressed', String(showing === 'table'));
+  } }, 'Table');
+  return el('section', { class: `card ${cls}` }, el('div', { class: 'head' }, el('h2', {}, title), el('span', { class: 'sub' }, sub), legend, toggle), body);
+}
+
+/** Horizontal bars, one series: label | bar | value at the tip. */
+function hbars(rows, unit) {
+  if (!rows.length) return el('div', { class: 'empty' }, 'Nothing yet in this period.');
+  const max = Math.max(...rows.map((r) => r.value), 1);
+  return el('div', { class: 'hbars' }, rows.flatMap((r) => {
+    const t = el('div', { class: 't' }, el('i', { style: `width:${(100 * r.value / max).toFixed(2)}%` }));
+    hover(t, r.name, [[unit, num(r.value), 'var(--s1)'], ...(r.extra || [])]);
+    return [el('div', { class: 'n', title: r.name }, r.name), t, el('div', { class: 'v' }, num(r.value))];
+  }));
+}
+
+/** Columns, optionally stacked. series: [{key, name, color}], bottom first. Labels only the latest total. */
+function columns(rows, series, { height = 200 } = {}) {
+  if (!rows.length) return el('div', { class: 'empty' }, 'Nothing yet in this period.');
+  const wrap = el('div', {});
+  const draw = () => {
+    const W = Math.max(280, wrap.clientWidth || 600), padL = 40, padR = 8, padT = 18, axisH = 24, H = height;
+    const totals = rows.map((r) => series.reduce((s, x) => s + (r[x.key] || 0), 0));
+    const tk = ticks(Math.max(...totals, 1)), top = tk.at(-1);
+    const band = (W - padL - padR) / rows.length, bw = Math.max(3, Math.min(24, band * 0.62));
+    const y = (v) => padT + H - (H * v) / top;
+    const svg = svgEl('svg', { width: W, height: padT + H + axisH, role: 'img', 'aria-label': 'chart' });
+    for (const t of tk) {
+      svg.append(svgEl('line', { class: t === 0 ? 'base' : 'grid-line', x1: padL, x2: W - padR, y1: y(t), y2: y(t) }));
+      const lab = svgEl('text', { x: padL - 6, y: y(t) + 4, 'text-anchor': 'end' }); lab.textContent = compact(t); svg.append(lab);
+    }
+    const every = Math.ceil(rows.length / Math.max(1, Math.floor((W - padL) / 54)));
+    rows.forEach((r, i) => {
+      const cx = padL + band * i + band / 2, x = cx - bw / 2;
+      let acc = 0;
+      const drawn = series.filter((s) => r[s.key] > 0);
+      drawn.forEach((s, j) => {
+        const v = r[s.key], y0 = y(acc), y1 = y(acc + v) + (j > 0 ? 2 : 0);   // 2px surface gap between segments
+        acc += v;
+        const h = Math.max(0, y0 - y1), rad = j === drawn.length - 1 ? Math.min(4, h, bw / 2) : 0;
+        svg.append(svgEl('path', { fill: s.color, d: `M${x},${y0} V${y1 + rad} Q${x},${y1} ${x + rad},${y1} H${x + bw - rad} Q${x + bw},${y1} ${x + bw},${y1 + rad} V${y0} Z` }));
+      });
+      const lastI = rows.length - 1;
+      if (i === lastI || (i % every === 0 && lastI - i >= every)) {   // the latest day always gets its label; neighbours make room
+        const edge = cx + 22 > W ? 'end' : 'middle';
+        const lab = svgEl('text', { x: edge === 'end' ? W - 2 : cx, y: padT + H + 16, 'text-anchor': edge }); lab.textContent = r.label; svg.append(lab);
+      }
+      if (i === rows.length - 1 && totals[i] > 0) {
+        const lab = svgEl('text', { class: 'end', x: cx, y: y(totals[i]) - 5, 'text-anchor': 'middle' }); lab.textContent = num(totals[i]); svg.append(lab);
+      }
+      const hit = svgEl('rect', { class: 'hit', x: padL + band * i, y: padT, width: band, height: H });
+      hover(hit, r.label, [...series].reverse().map((s) => [s.name, num(r[s.key] || 0), s.color]).concat(series.length > 1 ? [['Total', num(totals[i]), 'transparent']] : []));
+      svg.append(hit);
+    });
+    wrap.replaceChildren(svg);
+  };
+  requestAnimationFrame(draw);
+  new ResizeObserver(() => draw()).observe(wrap);
+  return wrap;
+}
+
+function tile(cls, label, value, delta) {
+  return el('section', { class: `card ${cls}` }, el('div', { class: 'label' }, label), el('div', { class: 'value' }, value), delta ? el('div', { class: 'delta' }, delta) : null);
+}
+
+// ---------------------------------------------------------------- the page
+function render(d) {
+  const ago = new Date(d.generatedAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' });
+  const rangeName = RANGES.find(([n]) => n === days)?.[1] || `${days} days`;
+  const seg = el('div', { class: 'seg', role: 'group', 'aria-label': 'Period' }, RANGES.map(([n, name]) =>
+    el('button', { type: 'button', 'aria-pressed': String(n === days), onclick: () => { days = n; store.set('pp_dash_days', String(n)); load(); } }, name)));
+  const head = el('header', {}, el('div', {}, el('h1', {}, 'Pujo Parikrama · live dashboard'),
+    el('div', { class: 'sub' }, `Updated ${ago} IST · refreshes every minute`)), el('div', { class: 'spacer' }), seg,
+    el('button', { class: 'btn', type: 'button', onclick: () => load() }, 'Refresh'));
+
+  const r = d.reach;
+  const vs = r.vsYesterday == null ? null : el('span', {}, el('span', { class: r.vsYesterday >= 0 ? 'up' : 'down' }, `${r.vsYesterday >= 0 ? '▲ +' : '▼ '}${num(r.vsYesterday)}`), ' vs yesterday');
+  const liveCard = el('section', { class: 'card c4' }, el('div', { class: 'label' }, '🟢 On the site right now'), el('div', { class: 'hero' }, num(d.live.now)),
+    el('div', { class: 'sub' }, `${num(d.live.hour)} in the last hour · ${num(d.live.today)} today`),
+    d.onlineByPage.length ? el('div', { class: 'pill-list' }, d.onlineByPage.map((p) => el('span', { class: 'pill' }, el('b', {}, num(p.people)), ` ${p.name}`))) : null);
+  const reachCard = el('section', { class: 'card c8' }, el('div', { class: 'label' }, 'People reached so far (app and guide pages)'),
+    el('div', { class: 'value', style: 'font-size:40px' }, num(r.total)),
+    el('div', { class: 'meter', role: 'meter', 'aria-valuemin': '0', 'aria-valuemax': String(r.goal), 'aria-valuenow': String(r.total), 'aria-label': 'Progress to goal' },
+      el('i', { style: `width:${(100 * r.share).toFixed(2)}%` })),
+    el('div', { class: 'sub' }, `${(100 * r.share).toFixed(r.share < 0.1 ? 1 : 0)}% of the ${num(r.goal)} goal · ${num(Math.max(0, r.goal - r.total))} to go`));
+
+  const perDay = chartCard('c8', 'Visitors per day', 'People (devices) who opened the app or a guide page',
+    columns(d.perDay, [{ key: 'returning', name: 'Returning', color: 'var(--s1)' }, { key: 'new', name: 'New', color: 'var(--s2)' }]),
+    table([{ name: 'Day', key: 'label' }, { name: 'People', key: 'total', num: 1 }, { name: 'New', key: 'new', num: 1 }, { name: 'Returning', key: 'returning', num: 1 }, { name: 'Opens', key: 'opens', num: 1 }], [...d.perDay].reverse()),
+    el('div', { class: 'legend' }, el('span', { style: '--c:var(--s2)' }, 'New'), el('span', { style: '--c:var(--s1)' }, 'Returning')));
+  const hourly = chartCard('c4', 'Active by hour', 'Last 24 hours, IST',
+    columns(d.hourly, [{ key: 'people', name: 'People', color: 'var(--s1)' }], { height: 200 }),
+    table([{ name: 'Hour', key: 'label' }, { name: 'People', key: 'people', num: 1 }], [...d.hourly].reverse()));
+
+  const channels = chartCard('c5', 'How people found us', 'First link each person came from, all time',
+    hbars(d.channels.map((c) => ({ name: c.name, value: c.people })), 'People'),
+    table([{ name: 'Channel', key: 'name' }, { name: 'People', key: 'people', num: 1 }], d.channels));
+  const links = el('section', { class: 'card c7' }, el('div', { class: 'head' }, el('h2', {}, 'Top links'), el('span', { class: 'sub' }, 'Each ?src= code, by people it first brought in')),
+    table([{ name: 'Link', key: 'label' }, { name: 'Code', key: 'src', cls: 'hide-sm' }, { name: 'Channel', key: 'channel', cls: 'hide-sm' }, { name: 'People', key: 'people', num: 1 }], d.sources.slice(0, 40)));
+  const todayLinks = el('section', { class: 'card c12' }, el('div', { class: 'head' }, el('h2', {}, 'Today\'s visits by link'), el('span', { class: 'sub' }, 'What people opened today, new or returning')),
+    hbars(d.todaySources.slice(0, 15).map((s) => ({ name: s.label, value: s.people })), 'People'));
+
+  const pages = chartCard('c6', 'App screens', `Views · ${rangeName}`,
+    hbars(d.pages.map((p) => ({ name: p.name, value: p.views, extra: [['People', num(p.people), 'transparent']] })), 'Views'),
+    table([{ name: 'Screen', key: 'name' }, { name: 'Views', key: 'views', num: 1 }, { name: 'People', key: 'people', num: 1 }], d.pages));
+  const actions = chartCard('c6', 'What people did', `Times · ${rangeName}`,
+    hbars(d.actions.map((a) => ({ name: a.name, value: a.times, extra: [['People', num(a.people), 'transparent']] })), 'Times'),
+    table([{ name: 'Action', key: 'name' }, { name: 'Times', key: 'times', num: 1 }, { name: 'People', key: 'people', num: 1 }], d.actions));
+  const places = el('section', { class: 'card c8' }, el('div', { class: 'head' }, el('h2', {}, 'Most-opened places'), el('span', { class: 'sub' }, `Pandals, eateries and parking · ${rangeName}`)),
+    table([{ name: 'Place', key: 'name' }, { name: 'Kind', key: 'kind', cls: 'hide-sm' }, { name: 'Opens', key: 'opens', num: 1 }, { name: 'Directions', key: 'directions', num: 1 }, { name: 'Check-in taps', key: 'checkins', num: 1 }], d.places));
+  const sounds = el('section', { class: 'card c4' }, el('div', { class: 'head' }, el('h2', {}, 'Music & sounds'), el('span', { class: 'sub' }, rangeName)),
+    table([{ name: 'What', key: 'name' }, { name: 'Taps', key: 'taps', num: 1 }, { name: 'People', key: 'people', num: 1 }], d.sounds.slice(0, 20)));
+
+  const c = d.checkins;
+  app.replaceChildren(head, el('div', { class: 'grid' },
+    liveCard, reachCard,
+    tile('c3', 'Visitors today', num(r.today), vs),
+    tile('c3', 'New today', num(r.newToday)),
+    tile('c3', 'Check-ins at pandals', num(c.pandal), el('span', {}, `${num(c.food)} "I ate here" · ${num(c.today)} today`)),
+    tile('c3', `Active in the app · ${rangeName}`, num(d.period.people), el('span', {}, `${num(d.period.events)} things done`)),
+    perDay, hourly, channels, links, todayLinks, pages, actions, places, sounds),
+    el('footer', {},
+      el('p', {}, 'People are counted by device: one phone is one person. A guide-page visit counts the same as an app open. Everything here is anonymous totals; no names, phones or locations are stored.'),
+      el('p', {}, 'Keep this link private. To change the key: Supabase → SQL editor → select public.rotate_dashboard_key(); then open this page with #key=<new key>.'),
+      el('p', {}, el('button', { class: 'btn', type: 'button', onclick: () => { store.set('pp_dash_key', null); key = null; gate(); } }, 'Forget the key on this device'))));
+}
+
+function gate(msg) {
+  clearInterval(timer);
+  const input = el('input', { type: 'password', autocomplete: 'off', placeholder: 'Dashboard key', 'aria-label': 'Dashboard key' });
+  app.classList.remove('loading');
+  app.replaceChildren(el('div', { class: 'gate card' }, el('h1', {}, 'Pujo Parikrama dashboard'),
+    el('p', { class: 'sub' }, 'Paste the dashboard key. It is in Supabase → SQL editor → ', el('code', {}, 'select key from private.dashboard_access;')),
+    msg ? el('p', { class: 'err' }, msg) : null,
+    el('form', { onsubmit: (e) => { e.preventDefault(); const v = input.value.trim(); if (v) { key = v; store.set('pp_dash_key', v); load(); } } },
+      input, el('button', { class: 'btn', type: 'submit' }, 'Open dashboard'))));
+  input.focus();
+}
+
+async function load() {
+  if (!key) return gate();
+  if (!CONFIG.community?.url) return gate('The app is not connected to Supabase yet (app/config.js).');
+  app.classList.add('loading');   // the last render stays on screen while the new numbers load
+  try {
+    last = model(await fetchDashboard(CONFIG.community, key, days));
+    render(last);
+    clearInterval(timer);
+    timer = setInterval(() => { if (!document.hidden) load(); }, 60000);
+  } catch (e) {
+    if (e.message === 'denied') { store.set('pp_dash_key', null); key = null; return gate('That key didn\'t work. It may have been changed.'); }
+    if (!last) return gate(`Couldn't load the numbers (${e.message}). Check the connection and try again.`);
+  } finally { app.classList.remove('loading'); }
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden && key && last) load(); });
+load();
+</script>
+</body>
+</html>
