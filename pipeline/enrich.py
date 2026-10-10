@@ -62,7 +62,7 @@ def load_help(path=HELP):
 
 
 # Not where you'd take someone hurt in a crowd: specialist centres (OpenStreetMap tags them all amenity=hospital).
-SPECIALIST = re.compile(r"(?i)matern|\beye\b|netra|ophthalm|dental|diagnostic|dialysis|skin|ent\b|veterinar|animal")
+SPECIALIST = re.compile(r"(?i)matern|\beye\b|netra|ophthalm|dental|diagnostic|dialysis|skin|\bent\b|veterinar|animal")
 
 
 def _hospital_ok(h):
