@@ -405,6 +405,98 @@
     ],
     "tags": "#DurgaPuja2026 #KolkataDurgaPuja #Sreebhumi"
    }
+  },
+  {
+   "id": "n2",
+   "type": "reel",
+   "at": "20:30",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-11/1011-r2.mp4",
+   "caption": "(posted 10 Oct, media 17909304858482917)",
+   "posted": "17909304858482917",
+   "segments": [
+    [
+     "q129",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "q42",
+     0,
+     3.6,
+     "Chaltabagan"
+    ],
+    [
+     "q44",
+     0,
+     3.6,
+     "Labony Estate"
+    ],
+    [
+     "q26",
+     0,
+     3.6,
+     "Kashi Bose Lane"
+    ],
+    [
+     "q34",
+     0,
+     3.6,
+     "Telengabagan"
+    ],
+    [
+     "q14",
+     0,
+     3.6,
+     "Haridevpur 41 Pally"
+    ]
+   ]
+  },
+  {
+   "id": "n1",
+   "type": "reel",
+   "at": "21:15",
+   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-11/1011-r1.mp4",
+   "caption": "(posted 10 Oct, media 18409871797093710)",
+   "posted": "18409871797093710",
+   "segments": [
+    [
+     "q24",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "q30",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q31",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q32",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q36",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q46",
+     0,
+     3.6,
+     ""
+    ]
+   ]
   }
  ],
  "clips": {
@@ -472,6 +564,102 @@
    "artist": "Tarunsamanta",
    "label": "chorbagan-lotus",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_06.jpg"
+  },
+  "q129": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Victoria_Memorial,_Kolkata_at_night.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Dlinemedia",
+   "label": "Victoria_Memorial,_Kolkata_at_night.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Victoria_Memorial,_Kolkata_at_night.jpg"
+  },
+  "q42": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%A4%E0%A6%B2%E0%A6%BE_%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AC.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "মানিকতলা_চালতাবাগান_দূর্গা_পূজা_২০১৬.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%A4%E0%A6%B2%E0%A6%BE_%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AC.jpg"
+  },
+  "q44": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/%E0%A6%B2%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A7%80_%E0%A6%8F%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%9F_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "লাবনী_এস্টেট_সল্টলেক_দূর্গাপুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%B2%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A7%80_%E0%A6%8F%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%9F_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q26": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%80_%E0%A6%AC%E0%A7%8B%E0%A6%B8_%E0%A6%B2%E0%A7%87%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "কাশী_বোস_লেন_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%80_%E0%A6%AC%E0%A7%8B%E0%A6%B8_%E0%A6%B2%E0%A7%87%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q34": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "তেলেঙ্গাবাগান_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q14": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Haridevpur_41_Pally_Durga_Puja_2019.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "Haridevpur_41_Pally_Durga_Puja_2019.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Haridevpur_41_Pally_Durga_Puja_2019.jpg"
+  },
+  "q24": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/%E0%A6%8F_.%E0%A6%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F_-%E0%A7%A8_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%AE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AA%E0%A7%87%E0%A6%B0_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "এ_.ই._ব্লক_পার্ট_-২_সল্টলেক_দূর্গা_পুজো_২০১৮_-_মণ্ডপের_ঝাড়ল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%8F_.%E0%A6%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F_-%E0%A7%A8_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%AE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AA%E0%A7%87%E0%A6%B0_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8.jpg"
+  },
+  "q30": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_-_%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%82_%E0%A6%B6%E0%A6%BE%E0%A6%B0%E0%A6%A6_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_-_শ্রীভূমি_স্পোর্টিং_শারদ_দুর্গোৎসব_২০১৭.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_-_%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%82_%E0%A6%B6%E0%A6%BE%E0%A6%B0%E0%A6%A6_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q31": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95,_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_বি._যে._ব্লক,_লবণহ্রদ,_কলিকাতা_দুর্গাপুজো_২০১৭.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95,_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q32": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC,_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF,_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC,_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF,_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q36": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%AC%E0%A6%BE%E0%A6%A4%E0%A6%BF.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "বাগবাজার_দূর্গা_পুজো_২০১৮_-_ঝাড়বাতি.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%AC%E0%A6%BE%E0%A6%A4%E0%A6%BF.jpg"
+  },
+  "q46": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mandap_in_North_Kolkata,_2016.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mand",
+   "page": "https://commons.wikimedia.org/wiki/File:A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mandap_in_North_Kolkata,_2016.jpg"
   }
  }
 }
