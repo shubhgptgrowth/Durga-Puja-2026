@@ -295,6 +295,7 @@ class RedesignTest(unittest.TestCase):
         self.assertGreater(build2.ease(0.5), build2.ease(0.1))
         self.assertEqual((build2.ease(0), build2.ease(1)), (0, 1))
 
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
     def test_cinematic_look_conforms_to_24fps_and_frames_small_footage(self):
         from marketing.reels import build2
         self.assertEqual(build2.conform(30), 0.8)  # every source frame becomes one 24 fps frame
