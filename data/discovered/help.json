@@ -1,0 +1,2315 @@
+{
+ "source": "OpenStreetMap contributors (ODbL)",
+ "fetched": "2026-10-10",
+ "failed_batches": 1,
+ "toilets": [
+  {
+   "osm": "node/2266850251",
+   "lat": 22.56607,
+   "lng": 88.36517
+  },
+  {
+   "osm": "node/5169245524",
+   "lat": 22.57475,
+   "lng": 88.363156
+  },
+  {
+   "osm": "node/11422441929",
+   "lat": 22.525905,
+   "lng": 88.366335
+  },
+  {
+   "osm": "node/12492448757",
+   "lat": 22.568739,
+   "lng": 88.365424
+  },
+  {
+   "osm": "node/13227037500",
+   "lat": 22.51217,
+   "lng": 88.353688
+  },
+  {
+   "osm": "node/13227043143",
+   "lat": 22.512857,
+   "lng": 88.359682,
+   "fee": "yes",
+   "wheelchair": "no"
+  },
+  {
+   "osm": "node/13291177188",
+   "lat": 22.567106,
+   "lng": 88.37186,
+   "fee": "yes",
+   "wheelchair": "limited"
+  },
+  {
+   "osm": "node/13291177196",
+   "lat": 22.567046,
+   "lng": 88.371898,
+   "fee": "yes",
+   "wheelchair": "limited"
+  },
+  {
+   "osm": "way/478428220",
+   "lat": 22.514633,
+   "lng": 88.365221,
+   "fee": "yes"
+  },
+  {
+   "osm": "node/1881428450",
+   "lat": 22.522402,
+   "lng": 88.344208
+  },
+  {
+   "osm": "node/5336091222",
+   "lat": 22.533773,
+   "lng": 88.347773
+  },
+  {
+   "osm": "node/11963325168",
+   "lat": 22.509167,
+   "lng": 88.355503,
+   "opening_hours": "Mo-Su 06:00-20:00"
+  },
+  {
+   "osm": "node/13206857189",
+   "lat": 22.52608,
+   "lng": 88.347093,
+   "fee": "yes"
+  },
+  {
+   "osm": "node/4069810783",
+   "lat": 22.509515,
+   "lng": 88.332676
+  },
+  {
+   "osm": "node/4072202051",
+   "lat": 22.506979,
+   "lng": 88.337245
+  },
+  {
+   "osm": "node/12133228314",
+   "lat": 22.524145,
+   "lng": 88.337052
+  },
+  {
+   "osm": "node/12776621046",
+   "lat": 22.50793,
+   "lng": 88.30626
+  },
+  {
+   "osm": "node/13751420290",
+   "lat": 22.498463,
+   "lng": 88.352785,
+   "fee": "yes",
+   "wheelchair": "no"
+  },
+  {
+   "osm": "node/5273034721",
+   "lat": 22.542072,
+   "lng": 88.341862
+  },
+  {
+   "osm": "node/5273034921",
+   "lat": 22.541999,
+   "lng": 88.346026
+  },
+  {
+   "osm": "node/9638076917",
+   "lat": 22.600718,
+   "lng": 88.407777,
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/10822337305",
+   "lat": 22.539023,
+   "lng": 88.333392
+  },
+  {
+   "osm": "node/10822337405",
+   "lat": 22.536874,
+   "lng": 88.333274
+  },
+  {
+   "osm": "node/10822337609",
+   "lat": 22.534653,
+   "lng": 88.332351
+  },
+  {
+   "osm": "node/10822337610",
+   "lat": 22.533251,
+   "lng": 88.330845
+  },
+  {
+   "osm": "node/13207967209",
+   "lat": 22.543427,
+   "lng": 88.345196,
+   "fee": "yes",
+   "wheelchair": "limited"
+  },
+  {
+   "osm": "way/123004925",
+   "lat": 22.535199,
+   "lng": 88.332529
+  },
+  {
+   "osm": "node/4368120292",
+   "lat": 22.553748,
+   "lng": 88.356732,
+   "name": "Pay Toilet"
+  },
+  {
+   "osm": "node/5341885721",
+   "lat": 22.556014,
+   "lng": 88.350897,
+   "fee": "yes"
+  },
+  {
+   "osm": "node/6135364806",
+   "lat": 22.549703,
+   "lng": 88.349911
+  },
+  {
+   "osm": "node/6144992691",
+   "lat": 22.556015,
+   "lng": 88.350769,
+   "fee": "no"
+  },
+  {
+   "osm": "node/6173705433",
+   "lat": 22.557609,
+   "lng": 88.351477
+  },
+  {
+   "osm": "node/12208616776",
+   "lat": 22.574711,
+   "lng": 88.434102,
+   "wheelchair": "limited"
+  },
+  {
+   "osm": "node/13290125044",
+   "lat": 22.550123,
+   "lng": 88.354162,
+   "fee": "no",
+   "wheelchair": "no"
+  },
+  {
+   "osm": "node/13290125064",
+   "lat": 22.55014,
+   "lng": 88.354148,
+   "fee": "no",
+   "wheelchair": "no"
+  },
+  {
+   "osm": "node/11300084063",
+   "lat": 22.476581,
+   "lng": 88.381596
+  },
+  {
+   "osm": "node/9566132717",
+   "lat": 22.584699,
+   "lng": 88.391964,
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/6173584906",
+   "lat": 22.575381,
+   "lng": 88.3459
+  },
+  {
+   "osm": "node/12136549041",
+   "lat": 22.631348,
+   "lng": 88.355909,
+   "fee": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/4178789860",
+   "lat": 22.618957,
+   "lng": 88.353191
+  },
+  {
+   "osm": "node/5982424185",
+   "lat": 22.560149,
+   "lng": 88.286074
+  },
+  {
+   "osm": "node/12136549040",
+   "lat": 22.614747,
+   "lng": 88.346438
+  }
+ ],
+ "hospitals": [
+  {
+   "osm": "node/1189036467",
+   "lat": 22.57274,
+   "lng": 88.36002,
+   "name": "Eden Hospital",
+   "name:en": "Eden Hospital"
+  },
+  {
+   "osm": "node/1189036837",
+   "lat": 22.572224,
+   "lng": 88.361436,
+   "name": "Calcutta Medical College & Hospital",
+   "name:en": "Calcutta Medical College & Hospital"
+  },
+  {
+   "osm": "node/3324142933",
+   "lat": 22.589569,
+   "lng": 88.350727,
+   "name": "Mayor Chect Clinick"
+  },
+  {
+   "osm": "node/4834257106",
+   "lat": 22.572857,
+   "lng": 88.373007,
+   "name": "ESI HOSPITAL, SEALDAH",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/5832603186",
+   "lat": 22.564879,
+   "lng": 88.369562,
+   "name": "UNB building, NRS medical college",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/5832603385",
+   "lat": 22.564505,
+   "lng": 88.368694,
+   "name": "NRS OPD Building"
+  },
+  {
+   "osm": "node/5832603585",
+   "lat": 22.565297,
+   "lng": 88.369154,
+   "name": "NRS Medical college & Hospital",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7048109181",
+   "lat": 22.624456,
+   "lng": 88.378544,
+   "name": "The May Fair Hospital"
+  },
+  {
+   "osm": "node/7048119664",
+   "lat": 22.590015,
+   "lng": 88.392955,
+   "name": "Rameswara Nursing Home Pvt Ltd"
+  },
+  {
+   "osm": "node/7051127196",
+   "lat": 22.604008,
+   "lng": 88.367819,
+   "name": "Eskag Sanjeevani Hospital"
+  },
+  {
+   "osm": "node/7051190630",
+   "lat": 22.580788,
+   "lng": 88.388096,
+   "name": "Eye Foundation And Research Centre"
+  },
+  {
+   "osm": "node/7051213951",
+   "lat": 22.599771,
+   "lng": 88.374418,
+   "name": "Five Point Micro Surgery Centre Pvt Ltd",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/7051316701",
+   "lat": 22.581055,
+   "lng": 88.365624,
+   "name": "Aurobindo Netralaya"
+  },
+  {
+   "osm": "node/7062411420",
+   "lat": 22.581208,
+   "lng": 88.333786,
+   "name": "Howrah Lions Hospital"
+  },
+  {
+   "osm": "node/7065265207",
+   "lat": 22.581936,
+   "lng": 88.355944,
+   "name": "Shree Vishudhanand Hospital and Research Institute"
+  },
+  {
+   "osm": "node/7065269299",
+   "lat": 22.592589,
+   "lng": 88.342175,
+   "name": "Alpha Medical Services Pvt. Ltd."
+  },
+  {
+   "osm": "node/7065473779",
+   "lat": 22.596013,
+   "lng": 88.341794,
+   "name": "Shiny Swadha Eye Care"
+  },
+  {
+   "osm": "node/7065628364",
+   "lat": 22.623546,
+   "lng": 88.374517,
+   "name": "Critical and Trauma Care Hospital"
+  },
+  {
+   "osm": "node/7068409266",
+   "lat": 22.583226,
+   "lng": 88.376287,
+   "name": "Jitendra Narayan Ray Hospital"
+  },
+  {
+   "osm": "node/7068631608",
+   "lat": 22.586611,
+   "lng": 88.353926,
+   "name": "Asharam Bhiwaniwala Hospital"
+  },
+  {
+   "osm": "node/7069051117",
+   "lat": 22.591904,
+   "lng": 88.341855,
+   "name": "Anjali Eye Center"
+  },
+  {
+   "osm": "node/7069095510",
+   "lat": 22.583706,
+   "lng": 88.36069,
+   "name": "Mitra Snagh Hospital"
+  },
+  {
+   "osm": "node/7069095565",
+   "lat": 22.584285,
+   "lng": 88.358102,
+   "name": "Matri Mangal Pratishthan"
+  },
+  {
+   "osm": "node/7070928709",
+   "lat": 22.602305,
+   "lng": 88.370416,
+   "name": "Medilink Health Care Diagnostic Centre Pvt. Ltd."
+  },
+  {
+   "osm": "node/7071458839",
+   "lat": 22.583371,
+   "lng": 88.374818,
+   "name": "The Leprosy Mission Permananda Memorial Leprosy Ho"
+  },
+  {
+   "osm": "node/7071466553",
+   "lat": 22.614675,
+   "lng": 88.346187,
+   "name": "Tulsiram Lakshmi Devi Jaiswal Hospital"
+  },
+  {
+   "osm": "node/7071650047",
+   "lat": 22.599956,
+   "lng": 88.367783,
+   "name": "Sterling Hospital, Kolkata",
+   "emergency": "yes",
+   "opening_hours": "24/7",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/7071683933",
+   "lat": 22.578146,
+   "lng": 88.374129,
+   "name": "Dr. M. N. Chatterjee Memorial Eye Hospital"
+  },
+  {
+   "osm": "node/7074312657",
+   "lat": 22.582728,
+   "lng": 88.357345,
+   "name": "Marwari Relief Society Hospital"
+  },
+  {
+   "osm": "node/7074329102",
+   "lat": 22.567162,
+   "lng": 88.357281,
+   "name": "Kalidas Mullick Sebayatan"
+  },
+  {
+   "osm": "node/7074329113",
+   "lat": 22.582755,
+   "lng": 88.390935,
+   "name": "Orthopaedic Centre"
+  },
+  {
+   "osm": "node/7074329149",
+   "lat": 22.593288,
+   "lng": 88.339057,
+   "name": "Kumar Maternity Home"
+  },
+  {
+   "osm": "node/7199742922",
+   "lat": 22.610922,
+   "lng": 88.346327,
+   "name": "Satya Bala Devi ID Hospital"
+  },
+  {
+   "osm": "node/7199853302",
+   "lat": 22.595575,
+   "lng": 88.359983,
+   "name": "Abinash Dutta Maternity Home"
+  },
+  {
+   "osm": "node/7199853340",
+   "lat": 22.569144,
+   "lng": 88.365794,
+   "name": "Lady Dufferin Victoria Hospital, Kolkata",
+   "emergency": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/9658687917",
+   "lat": 22.58888,
+   "lng": 88.399371,
+   "name": "Ananya"
+  },
+  {
+   "osm": "way/102036495",
+   "lat": 22.580274,
+   "lng": 88.336086,
+   "name": "Howrah District Hospital"
+  },
+  {
+   "osm": "way/103477674",
+   "lat": 22.575572,
+   "lng": 88.368125,
+   "name": "SVS Marwari Hospital",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/104049649",
+   "lat": 22.576431,
+   "lng": 88.370376,
+   "name": "Narcotic Disease Hospital",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/105833317",
+   "lat": 22.564616,
+   "lng": 88.372214
+  },
+  {
+   "osm": "way/116334765",
+   "lat": 22.604409,
+   "lng": 88.378381,
+   "name": "R.G. Kar Medical College & Hospital",
+   "emergency": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/134098669",
+   "lat": 22.620222,
+   "lng": 88.348265,
+   "name": "MCKV Medical Centre"
+  },
+  {
+   "osm": "way/191033304",
+   "lat": 22.589287,
+   "lng": 88.393747,
+   "name": "North City Hospital",
+   "emergency": "no",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/191033307",
+   "lat": 22.585669,
+   "lng": 88.392454,
+   "name": "ESI Hospital Maniktala",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/359522237",
+   "lat": 22.58867,
+   "lng": 88.393508,
+   "name": "North City Hospital Emergency Unit",
+   "emergency": "yes",
+   "opening_hours": "24/7",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/383577205",
+   "lat": 22.565362,
+   "lng": 88.371127,
+   "name": "B R Singh Hospital",
+   "emergency": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/491293458",
+   "lat": 22.572796,
+   "lng": 88.373487,
+   "name": "ESI OFFICE"
+  },
+  {
+   "osm": "way/539609612",
+   "lat": 22.574293,
+   "lng": 88.387562,
+   "name": "Dr. B. C. Roy Post Graduate Institute of Paediatric Sciences"
+  },
+  {
+   "osm": "way/755641767",
+   "lat": 22.617152,
+   "lng": 88.37016,
+   "name": "KSD Jain Dental College and Hospital"
+  },
+  {
+   "osm": "way/1234548390",
+   "lat": 22.563868,
+   "lng": 88.370571,
+   "name": "Nil Ratan Sircar Medical College and Hospital",
+   "name:en": "Nil Ratan Sircar Medical College and Hospital",
+   "name:bn": "নীলরতন সরকার মেডিকেল কলেজ ও হাসপাতাল",
+   "emergency": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/1355797693",
+   "lat": 22.591374,
+   "lng": 88.364716,
+   "name": "North Maternity Home - Darjipara Matri Sadan — নর্থ মেটার্নিটি হোম (দর্জিপাড়া মাতৃসদন)",
+   "name:en": "North Maternity Home",
+   "name:bn": "নর্থ মেটার্নিটি হোম"
+  },
+  {
+   "osm": "node/2471894122",
+   "lat": 22.526441,
+   "lng": 88.347121,
+   "name": "Chittaranjan Shishu Hospital"
+  },
+  {
+   "osm": "node/2471894125",
+   "lat": 22.525926,
+   "lng": 88.347007,
+   "name": "Chittaranjan Seva Sadan"
+  },
+  {
+   "osm": "node/2471894143",
+   "lat": 22.525269,
+   "lng": 88.346642,
+   "name": "Chittaranjan National Cancer Institute Hospital",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/5574214722",
+   "lat": 22.523988,
+   "lng": 88.348694,
+   "name": "Paramount Nursing Home"
+  },
+  {
+   "osm": "node/5832603185",
+   "lat": 22.562769,
+   "lng": 88.367931,
+   "name": "Dr Rafi Ahmed Dental College & Hospital"
+  },
+  {
+   "osm": "node/5832603485",
+   "lat": 22.563395,
+   "lng": 88.369861,
+   "name": "Bekar Ward, NRS Medical College",
+   "name:en": "Baker Ward"
+  },
+  {
+   "osm": "node/5832603685",
+   "lat": 22.562947,
+   "lng": 88.367509,
+   "name": "Dr Rafi Ahmed Dental College & Hospital, Old Campus"
+  },
+  {
+   "osm": "node/6180273185",
+   "lat": 22.563659,
+   "lng": 88.369077,
+   "name": "Obs & Gynaecology Building, NRS"
+  },
+  {
+   "osm": "node/6602110919",
+   "lat": 22.501244,
+   "lng": 88.36024,
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7048046835",
+   "lat": 22.557297,
+   "lng": 88.372356,
+   "name": "Micro Phaco Surgery Centre"
+  },
+  {
+   "osm": "node/7048136974",
+   "lat": 22.54742,
+   "lng": 88.35926,
+   "name": "Bhagirathi Neotia Woman And Child Care Centre"
+  },
+  {
+   "osm": "node/7048158968",
+   "lat": 22.523421,
+   "lng": 88.351982,
+   "name": "Rama Krishna Mission Seva Pratisthan"
+  },
+  {
+   "osm": "node/7048161360",
+   "lat": 22.51378,
+   "lng": 88.34363,
+   "name": "Ramakrishma Sarada Mission Matri Bhavan/Matri Bhavan Hospital"
+  },
+  {
+   "osm": "node/7048235268",
+   "lat": 22.519843,
+   "lng": 88.34746,
+   "name": "Probal Eye Institute"
+  },
+  {
+   "osm": "node/7048456215",
+   "lat": 22.542424,
+   "lng": 88.35541,
+   "name": "Priyamvada Birla Aravind Eye Hospital",
+   "opening_hours": "Mo-Sa 08:30-17:30"
+  },
+  {
+   "osm": "node/7048489106",
+   "lat": 22.542529,
+   "lng": 88.365155,
+   "name": "Harvard Medicare And Research Institute (P) Ltd."
+  },
+  {
+   "osm": "node/7048590774",
+   "lat": 22.54777,
+   "lng": 88.354225,
+   "name": "Life Line Diagnostic Centre And Nursing Home"
+  },
+  {
+   "osm": "node/7048758386",
+   "lat": 22.534732,
+   "lng": 88.374381,
+   "name": "Swastik Seva Sadan"
+  },
+  {
+   "osm": "node/7050661963",
+   "lat": 22.540308,
+   "lng": 88.355001,
+   "name": "The Orthopaedic And Fracture Clinic"
+  },
+  {
+   "osm": "node/7050735633",
+   "lat": 22.601309,
+   "lng": 88.407577,
+   "name": "Udichi ENT and Head Neck Center"
+  },
+  {
+   "osm": "node/7050801780",
+   "lat": 22.524006,
+   "lng": 88.360659,
+   "name": "Dr Nihar Munshi Eye Foundation",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/7050840075",
+   "lat": 22.508602,
+   "lng": 88.338097,
+   "name": "Shradha Health Care Pvt. Ltd"
+  },
+  {
+   "osm": "node/7050974464",
+   "lat": 22.546022,
+   "lng": 88.351542,
+   "name": "Nightingale Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/7051027437",
+   "lat": 22.518779,
+   "lng": 88.359129,
+   "name": "N G Medicare And Calcutta Hope Infertility Clinic"
+  },
+  {
+   "osm": "node/7051204581",
+   "lat": 22.518169,
+   "lng": 88.355913,
+   "name": "Fortis Healthcare"
+  },
+  {
+   "osm": "node/7051208986",
+   "lat": 22.539975,
+   "lng": 88.36189,
+   "name": "Farsight Eye Research Centre"
+  },
+  {
+   "osm": "node/7051230850",
+   "lat": 22.539526,
+   "lng": 88.362165,
+   "name": "Implant House Laser and Diagnostic Centre"
+  },
+  {
+   "osm": "node/7051238080",
+   "lat": 22.562914,
+   "lng": 88.395052,
+   "name": "Vivekananda Eye Care Centre"
+  },
+  {
+   "osm": "node/7051316710",
+   "lat": 22.544666,
+   "lng": 88.355166,
+   "name": "Gamma Centauri Health Care P Ltd.,"
+  },
+  {
+   "osm": "node/7059017540",
+   "lat": 22.538669,
+   "lng": 88.372307,
+   "name": "Institute Of Child Health"
+  },
+  {
+   "osm": "node/7059027977",
+   "lat": 22.516508,
+   "lng": 88.353089,
+   "name": "B.N Basu Memorial Clinic Appolo Nursing Home"
+  },
+  {
+   "osm": "node/7059136652",
+   "lat": 22.556734,
+   "lng": 88.361332,
+   "name": "Angel Maternity and Nursing Home"
+  },
+  {
+   "osm": "node/7059220242",
+   "lat": 22.51367,
+   "lng": 88.348313,
+   "name": "Infirmary Orthopaedic Centre and Nursing Home"
+  },
+  {
+   "osm": "node/7059255451",
+   "lat": 22.505811,
+   "lng": 88.367417,
+   "name": "RG Stone Urology And Laparoscopy Hospital, Kolkata"
+  },
+  {
+   "osm": "node/7062120846",
+   "lat": 22.542712,
+   "lng": 88.366448,
+   "name": "Islamia Medical Institute",
+   "emergency": "yes",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/7062138859",
+   "lat": 22.54476,
+   "lng": 88.370806,
+   "name": "Islamia Hospital"
+  },
+  {
+   "osm": "node/7062229867",
+   "lat": 22.53733,
+   "lng": 88.364168,
+   "name": "Implant's Better Sight Centre Pvt Ltd"
+  },
+  {
+   "osm": "node/7062396399",
+   "lat": 22.527795,
+   "lng": 88.368455,
+   "name": "Deshari Complete Eye Care"
+  },
+  {
+   "osm": "node/7062396402",
+   "lat": 22.518877,
+   "lng": 88.371776,
+   "name": "B.K.Dutt Memorial Medical Centre"
+  },
+  {
+   "osm": "node/7062470862",
+   "lat": 22.53109,
+   "lng": 88.353246,
+   "name": "Health Point Hospitals"
+  },
+  {
+   "osm": "node/7062656664",
+   "lat": 22.568257,
+   "lng": 88.391851,
+   "name": "Poorva Eye Care"
+  },
+  {
+   "osm": "node/7065226681",
+   "lat": 22.503187,
+   "lng": 88.341416,
+   "name": "Siddhi Multi Speciality Ayurveda Hospital and Research Institute"
+  },
+  {
+   "osm": "node/7065226682",
+   "lat": 22.502909,
+   "lng": 88.361097,
+   "name": "SilverLine Eye Hospital"
+  },
+  {
+   "osm": "node/7065232712",
+   "lat": 22.503234,
+   "lng": 88.364493,
+   "name": "Sri Aurobindo Seva Kendra (EEDF)"
+  },
+  {
+   "osm": "node/7065232720",
+   "lat": 22.566876,
+   "lng": 88.3932,
+   "name": "Srijoni Healing Home"
+  },
+  {
+   "osm": "node/7065232721",
+   "lat": 22.535379,
+   "lng": 88.35189,
+   "name": "Sri Lakshmi Narayana Trust Maternity Home and Hospital"
+  },
+  {
+   "osm": "node/7065549029",
+   "lat": 22.515287,
+   "lng": 88.357465,
+   "name": "Complete Care"
+  },
+  {
+   "osm": "node/7065628332",
+   "lat": 22.606595,
+   "lng": 88.403876,
+   "name": "Alokon Eye Care Pvt. Ltd."
+  },
+  {
+   "osm": "node/7065697990",
+   "lat": 22.507916,
+   "lng": 88.34391,
+   "name": "Debdoot Sevayan"
+  },
+  {
+   "osm": "node/7065866539",
+   "lat": 22.504195,
+   "lng": 88.370822,
+   "name": "Dr. Mina Majumder Seva Mandir Pvt. Ltd"
+  },
+  {
+   "osm": "node/7065868649",
+   "lat": 22.518597,
+   "lng": 88.354516,
+   "name": "Nemesis Eye Centre"
+  },
+  {
+   "osm": "node/7065868653",
+   "lat": 22.630013,
+   "lng": 88.385316,
+   "name": "Dum Dum Eye Microsurgery Centre"
+  },
+  {
+   "osm": "node/7065871405",
+   "lat": 22.503069,
+   "lng": 88.344739,
+   "name": "RSV Hospital"
+  },
+  {
+   "osm": "node/7065871411",
+   "lat": 22.513769,
+   "lng": 88.39226,
+   "name": "Amrapali Medical Center and Nursing Home Pvt Ltd"
+  },
+  {
+   "osm": "node/7065871417",
+   "lat": 22.524196,
+   "lng": 88.361726,
+   "name": "All Asia Medical Institute"
+  },
+  {
+   "osm": "node/7065871453",
+   "lat": 22.511141,
+   "lng": 88.373291,
+   "name": "Dhakuria Sree Ramkrishna Sebasram"
+  },
+  {
+   "osm": "node/7068429387",
+   "lat": 22.522325,
+   "lng": 88.371152,
+   "name": "Mood"
+  },
+  {
+   "osm": "node/7068798177",
+   "lat": 22.536652,
+   "lng": 88.343991,
+   "name": "Kolkata Heart Foundation",
+   "opening_hours": "10:00-20:00"
+  },
+  {
+   "osm": "node/7068798178",
+   "lat": 22.523317,
+   "lng": 88.352562,
+   "name": "Calcutta Heart Research Center"
+  },
+  {
+   "osm": "node/7069034093",
+   "lat": 22.630258,
+   "lng": 88.384789,
+   "name": "Binayak Imaging And Diagnostic Pvt Ltd"
+  },
+  {
+   "osm": "node/7069051085",
+   "lat": 22.52076,
+   "lng": 88.352489,
+   "name": "Amulya Jyoti Eye Foundation"
+  },
+  {
+   "osm": "node/7069095504",
+   "lat": 22.525291,
+   "lng": 88.363941,
+   "name": "Micro Surgery Day Centre"
+  },
+  {
+   "osm": "node/7069095554",
+   "lat": 22.52003,
+   "lng": 88.348037,
+   "name": "Palm Springs"
+  },
+  {
+   "osm": "node/7069095555",
+   "lat": 22.562237,
+   "lng": 88.362235,
+   "name": "GD Hospital and Diabetes Institute"
+  },
+  {
+   "osm": "node/7069112434",
+   "lat": 22.541041,
+   "lng": 88.361811,
+   "name": "East End Nursing Home"
+  },
+  {
+   "osm": "node/7069117897",
+   "lat": 22.539216,
+   "lng": 88.370566,
+   "name": "Good Samaritan Hospital"
+  },
+  {
+   "osm": "node/7071390530",
+   "lat": 22.521368,
+   "lng": 88.371007,
+   "name": "The Medicure, Kolkata"
+  },
+  {
+   "osm": "node/7071458833",
+   "lat": 22.547893,
+   "lng": 88.360261,
+   "name": "Mission Of Mercy Hospital And Research Centre"
+  },
+  {
+   "osm": "node/7071650048",
+   "lat": 22.515173,
+   "lng": 88.390496,
+   "name": "Calcutta Institute Of Maxill Ofacial Surgery and R"
+  },
+  {
+   "osm": "node/7071670269",
+   "lat": 22.629666,
+   "lng": 88.378846,
+   "name": "Astha Medical Services Pvt Ltd"
+  },
+  {
+   "osm": "node/7071670270",
+   "lat": 22.539519,
+   "lng": 88.371009,
+   "name": "TRA General Hospital - Kolkata"
+  },
+  {
+   "osm": "node/7071677083",
+   "lat": 22.540804,
+   "lng": 88.358484,
+   "name": "Lions Club Of Calcutta"
+  },
+  {
+   "osm": "node/7071683932",
+   "lat": 22.496326,
+   "lng": 88.358423,
+   "name": "Calcutta Lions Netra Niketan"
+  },
+  {
+   "osm": "node/7071685707",
+   "lat": 22.623667,
+   "lng": 88.406728,
+   "name": "Nayan Jyoti Eye Care Centre"
+  },
+  {
+   "osm": "node/7074272608",
+   "lat": 22.540448,
+   "lng": 88.36989,
+   "name": "Calcutta Pay Clinic and Hospital Pvt Ltd"
+  },
+  {
+   "osm": "node/7074312573",
+   "lat": 22.507751,
+   "lng": 88.364805,
+   "name": "KD Cure S.C. Das Memorial Medical Center"
+  },
+  {
+   "osm": "node/7074312654",
+   "lat": 22.566516,
+   "lng": 88.355316,
+   "name": "Netra Sevasram"
+  },
+  {
+   "osm": "node/7074329101",
+   "lat": 22.517495,
+   "lng": 88.354597,
+   "name": "Himalaya Vision Care Centre"
+  },
+  {
+   "osm": "node/7668176272",
+   "lat": 22.531149,
+   "lng": 88.345912,
+   "name": "Anandalok Hospital"
+  },
+  {
+   "osm": "node/7668176281",
+   "lat": 22.526734,
+   "lng": 88.388423,
+   "name": "Cancer Hospital"
+  },
+  {
+   "osm": "node/7668176283",
+   "lat": 22.532648,
+   "lng": 88.34615,
+   "name": "Harlaka Hospital"
+  },
+  {
+   "osm": "node/7668176286",
+   "lat": 22.629564,
+   "lng": 88.378271,
+   "name": "Saraju Nursing Home"
+  },
+  {
+   "osm": "node/7668176293",
+   "lat": 22.552075,
+   "lng": 88.363293,
+   "name": "Mission Hospital"
+  },
+  {
+   "osm": "node/7668176307",
+   "lat": 22.54444,
+   "lng": 88.359626,
+   "name": "Miot Hospitals"
+  },
+  {
+   "osm": "node/7668176310",
+   "lat": 22.563724,
+   "lng": 88.360787,
+   "name": "Sankara Nethralaya"
+  },
+  {
+   "osm": "node/7668176312",
+   "lat": 22.515562,
+   "lng": 88.352518,
+   "name": "Kottakkal Ayurvedic Hospital and Research Centre"
+  },
+  {
+   "osm": "node/7668176314",
+   "lat": 22.514789,
+   "lng": 88.39227,
+   "name": "Dr. Agarwals Eye Hospital"
+  },
+  {
+   "osm": "node/7668176329",
+   "lat": 22.533192,
+   "lng": 88.359039,
+   "name": "Duncan Gleneagles Hospitals"
+  },
+  {
+   "osm": "node/7668176330",
+   "lat": 22.532144,
+   "lng": 88.34329,
+   "name": "Netaji Eye Hospital"
+  },
+  {
+   "osm": "node/7668176332",
+   "lat": 22.520251,
+   "lng": 88.365974,
+   "name": "Disha Eye Hospital"
+  },
+  {
+   "osm": "node/7968592609",
+   "lat": 22.512541,
+   "lng": 88.367608,
+   "name": "AMRI Hospital",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/10679793548",
+   "lat": 22.564503,
+   "lng": 88.398403,
+   "name": "ID Hospital"
+  },
+  {
+   "osm": "node/11648826969",
+   "lat": 22.566281,
+   "lng": 88.392756,
+   "name": "Divine Nursing Home"
+  },
+  {
+   "osm": "node/12888185712",
+   "lat": 22.628704,
+   "lng": 88.392986,
+   "name": "Duttanagar Mental Health Centre"
+  },
+  {
+   "osm": "node/13410251761",
+   "lat": 22.563834,
+   "lng": 88.368492,
+   "name": "Medical College and Hospital"
+  },
+  {
+   "osm": "node/13410278676",
+   "lat": 22.558211,
+   "lng": 88.372774,
+   "name": "Horizon Hospital"
+  },
+  {
+   "osm": "way/52097642",
+   "lat": 22.539952,
+   "lng": 88.342351,
+   "name": "SSKM College and Hospital",
+   "name:en": "SSKM College and Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/113279088",
+   "lat": 22.54614,
+   "lng": 88.371514,
+   "name": "Calcutta National Medical College & Hospital"
+  },
+  {
+   "osm": "way/118140494",
+   "lat": 22.521979,
+   "lng": 88.369763,
+   "name": "Bharat Sevashram Sangha Hospital"
+  },
+  {
+   "osm": "way/118667313",
+   "lat": 22.499231,
+   "lng": 88.346454,
+   "name": "MR Bangur Hospital"
+  },
+  {
+   "osm": "way/120981212",
+   "lat": 22.493982,
+   "lng": 88.37332,
+   "name": "KPC Medical College And Hospital"
+  },
+  {
+   "osm": "way/122192000",
+   "lat": 22.538635,
+   "lng": 88.348138,
+   "name": "Sambhunath Pandit Hospital",
+   "emergency": "yes",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/122564319",
+   "lat": 22.537384,
+   "lng": 88.345289,
+   "name": "Police Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/122756318",
+   "lat": 22.538021,
+   "lng": 88.340464,
+   "name": "Bangur Institute Of Neurosciences",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/190953982",
+   "lat": 22.521248,
+   "lng": 88.335688,
+   "name": "KMC Urban Health Centre"
+  },
+  {
+   "osm": "way/197120148",
+   "lat": 22.542499,
+   "lng": 88.355052,
+   "name": "Belle Vue Clinic",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/205114935",
+   "lat": 22.54371,
+   "lng": 88.35337,
+   "name": "Gamma Centauri Healthcare Private Limited"
+  },
+  {
+   "osm": "way/539480618",
+   "lat": 22.564539,
+   "lng": 88.398375,
+   "name": "I.D & B.G. Hospital, Beliaghata"
+  },
+  {
+   "osm": "way/637058205",
+   "lat": 22.547005,
+   "lng": 88.362077,
+   "name": "Institute Of Neurosciences Kolkata",
+   "emergency": "yes",
+   "opening_hours": "Mo-Sa 10:00-18:00",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "way/656173034",
+   "lat": 22.553267,
+   "lng": 88.354349,
+   "name": "Royd Nursing Home and Healthcare Limited"
+  },
+  {
+   "osm": "way/753625286",
+   "lat": 22.54771,
+   "lng": 88.375795,
+   "name": "Calcutta Pavlov Hospital"
+  },
+  {
+   "osm": "way/1390913883",
+   "lat": 22.543476,
+   "lng": 88.379807
+  },
+  {
+   "osm": "way/1482995111",
+   "lat": 22.534765,
+   "lng": 88.370445,
+   "name": "Regal Nursing home",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/1490199793",
+   "lat": 22.542016,
+   "lng": 88.359136,
+   "name": "Institute of Neurosciences OPD Building",
+   "emergency": "no",
+   "opening_hours": "Mo-Sa 10:00-18:00"
+  },
+  {
+   "osm": "node/7062150359",
+   "lat": 22.504121,
+   "lng": 88.397457,
+   "name": "A.H.IVF and Infertility Research Centre [P] Ltd"
+  },
+  {
+   "osm": "node/7065864053",
+   "lat": 22.529657,
+   "lng": 88.326213,
+   "name": "Bellona Nursing Home And Diagnostic Centre"
+  },
+  {
+   "osm": "node/7068614368",
+   "lat": 22.502607,
+   "lng": 88.338795,
+   "name": "Arogya Maternity and Nursing Home"
+  },
+  {
+   "osm": "node/7071466514",
+   "lat": 22.483066,
+   "lng": 88.374984,
+   "name": "Baghajatin State General Hospital"
+  },
+  {
+   "osm": "node/7074329127",
+   "lat": 22.540937,
+   "lng": 88.389544,
+   "name": "R-Fleming Hospital / Zodiac Medicare and Hospital Pvt.Ltd."
+  },
+  {
+   "osm": "node/7668176334",
+   "lat": 22.511769,
+   "lng": 88.33243,
+   "name": "B.P. Poddar Hospital"
+  },
+  {
+   "osm": "node/13805533201",
+   "lat": 22.540344,
+   "lng": 88.342353,
+   "name": "কার্ডিওলজি জরুরী বিভাগ ও ই.সি.জি, ইকোকার্ডিওগ্ৰাফি পরিষেবা",
+   "name:en": "Cardiology Emergency & ECG, Echocardiography Service",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/120961918",
+   "lat": 22.48752,
+   "lng": 88.364401,
+   "name": "Bijoygarh State General Hospital"
+  },
+  {
+   "osm": "way/122925159",
+   "lat": 22.539062,
+   "lng": 88.337945,
+   "name": "Military Hospital"
+  },
+  {
+   "osm": "way/143600746",
+   "lat": 22.532407,
+   "lng": 88.327888,
+   "name": "The Calcutta Medical Research Institute"
+  },
+  {
+   "osm": "way/143600750",
+   "lat": 22.532831,
+   "lng": 88.328334,
+   "name": "BM Birla Heart Research Centre",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/143600756",
+   "lat": 22.532301,
+   "lng": 88.329246,
+   "name": "Woodlands Multispeciality Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/143600760",
+   "lat": 22.532329,
+   "lng": 88.329206,
+   "name": "Woodlands Multispeciality Hospital"
+  },
+  {
+   "osm": "way/143601501",
+   "lat": 22.532633,
+   "lng": 88.330554,
+   "name": "Kothari Medical Research Centre",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/143604769",
+   "lat": 22.529422,
+   "lng": 88.330503,
+   "name": "Command Hospital"
+  },
+  {
+   "osm": "way/224922460",
+   "lat": 22.513531,
+   "lng": 88.403047,
+   "name": "Ruby General Hospital",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/224927481",
+   "lat": 22.494279,
+   "lng": 88.400994,
+   "name": "Medica Superspecialty Hospital"
+  },
+  {
+   "osm": "way/224927512",
+   "lat": 22.494049,
+   "lng": 88.402198,
+   "name": "Vision Care Hospital",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/358178023",
+   "lat": 22.520311,
+   "lng": 88.400951,
+   "name": "Fortis Hospitals",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/358779040",
+   "lat": 22.514127,
+   "lng": 88.399125,
+   "name": "Genesis Hospital, Kolkata"
+  },
+  {
+   "osm": "way/363252848",
+   "lat": 22.51458,
+   "lng": 88.403259,
+   "name": "Desun Hospital And Heart Research Institute",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/404712375",
+   "lat": 22.511829,
+   "lng": 88.332371,
+   "name": "Bp Poddar Hospital And Medical Research Ltd",
+   "emergency": "yes"
+  },
+  {
+   "osm": "way/599375917",
+   "lat": 22.491234,
+   "lng": 88.402125,
+   "name": "Rabindranath Tagore International Institute of Cardiac Sciences"
+  },
+  {
+   "osm": "node/1272967205",
+   "lat": 22.498718,
+   "lng": 88.316332,
+   "name": "Vidyasagar State General Hospital"
+  },
+  {
+   "osm": "node/1765139008",
+   "lat": 22.49514,
+   "lng": 88.312166
+  },
+  {
+   "osm": "node/4596276123",
+   "lat": 22.473154,
+   "lng": 88.307961,
+   "name": "Prima Orthopaedic Centre",
+   "name:en": "Prima Orthopaedic Centre"
+  },
+  {
+   "osm": "node/5162659222",
+   "lat": 22.486627,
+   "lng": 88.346055,
+   "name": "Chandi tala health center",
+   "opening_hours": "Mo-Sa 09:00-15:00"
+  },
+  {
+   "osm": "node/5358863021",
+   "lat": 22.506559,
+   "lng": 88.320576,
+   "name": "Behala Balananda Brahmachari Hospital and Research Center"
+  },
+  {
+   "osm": "node/6420585685",
+   "lat": 22.459015,
+   "lng": 88.319503,
+   "name": "Thakur Pukur Cancer Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/7050837362",
+   "lat": 22.466088,
+   "lng": 88.310506,
+   "name": "DM Hospitals Pvt. Ltd"
+  },
+  {
+   "osm": "node/7053689148",
+   "lat": 22.459248,
+   "lng": 88.319711,
+   "name": "Saroj Gupta Cancer Centre And Research Institute"
+  },
+  {
+   "osm": "node/7059096584",
+   "lat": 22.458061,
+   "lng": 88.306381,
+   "name": "Swadesh Basu Hospital"
+  },
+  {
+   "osm": "node/7065628333",
+   "lat": 22.501693,
+   "lng": 88.321094,
+   "name": "Mohanananda Brahmachari Sishu Seva Pratisthan"
+  },
+  {
+   "osm": "node/7065868655",
+   "lat": 22.457394,
+   "lng": 88.304555,
+   "name": "Bangur Medicare Research Institute"
+  },
+  {
+   "osm": "node/7068409204",
+   "lat": 22.517726,
+   "lng": 88.321456,
+   "name": "Kolkata Port Trust Centenary Hospital"
+  },
+  {
+   "osm": "node/7071466620",
+   "lat": 22.455605,
+   "lng": 88.304601,
+   "name": "Kasturi Medical Centre Pvt Ltd"
+  },
+  {
+   "osm": "node/7071650069",
+   "lat": 22.484987,
+   "lng": 88.28518,
+   "name": "Netaji Eye Hospital"
+  },
+  {
+   "osm": "node/7071683907",
+   "lat": 22.511317,
+   "lng": 88.304906,
+   "name": "Vivekananda Hospital and Research Institute"
+  },
+  {
+   "osm": "node/7071685703",
+   "lat": 22.472666,
+   "lng": 88.307239,
+   "name": "Suburban Eye Microsurgery Centre"
+  },
+  {
+   "osm": "node/7199853420",
+   "lat": 22.534245,
+   "lng": 88.324507,
+   "name": "S.S.K.M. Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/7668176285",
+   "lat": 22.508538,
+   "lng": 88.322746,
+   "name": "Hope Hospital"
+  },
+  {
+   "osm": "node/7668176340",
+   "lat": 22.486588,
+   "lng": 88.341953,
+   "name": "Tapan Sinha Memorial Hospital"
+  },
+  {
+   "osm": "node/1684554285",
+   "lat": 22.584373,
+   "lng": 88.428958,
+   "name": "Anandalok(আনন্দলোক)",
+   "name:bn": "আনন্দলোক হাসপাতাল"
+  },
+  {
+   "osm": "node/2365903278",
+   "lat": 22.572808,
+   "lng": 88.413469,
+   "name": "Subodh Mitra Cancer Hospital and Research Centre"
+  },
+  {
+   "osm": "node/2460793572",
+   "lat": 22.590989,
+   "lng": 88.412247,
+   "name": "Suraksha Diagnostic"
+  },
+  {
+   "osm": "node/2460827333",
+   "lat": 22.591227,
+   "lng": 88.411089,
+   "name": "Bidhannagar State General Hospital"
+  },
+  {
+   "osm": "node/2460827352",
+   "lat": 22.590873,
+   "lng": 88.410544,
+   "name": "Seba Hospital"
+  },
+  {
+   "osm": "node/2460827384",
+   "lat": 22.589642,
+   "lng": 88.408927,
+   "name": "Vasan Eye Care Hospital, Kolkata"
+  },
+  {
+   "osm": "node/5473635802",
+   "lat": 22.590791,
+   "lng": 88.410894,
+   "name": "Bidhannagar Sub-Divisional Hospital",
+   "name:bn": "বিধাননগর মহকুমা হাসপাতাল"
+  },
+  {
+   "osm": "node/6069716076",
+   "lat": 22.58787,
+   "lng": 88.442307,
+   "name": "Tarulia Upashasthya Kendra"
+  },
+  {
+   "osm": "node/7053438377",
+   "lat": 22.572622,
+   "lng": 88.409074,
+   "name": "Salt Lake Eye Foundation"
+  },
+  {
+   "osm": "node/7053734498",
+   "lat": 22.591118,
+   "lng": 88.411102,
+   "name": "Seba Hospital"
+  },
+  {
+   "osm": "node/7065232702",
+   "lat": 22.620542,
+   "lng": 88.432953,
+   "name": "Spandan Hospital"
+  },
+  {
+   "osm": "node/7069051103",
+   "lat": 22.584789,
+   "lng": 88.423172,
+   "name": "Anandalok Hospital, Salt Lake City",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7071683908",
+   "lat": 22.615672,
+   "lng": 88.411849,
+   "name": "Aditya Hospital"
+  },
+  {
+   "osm": "node/7071685704",
+   "lat": 22.620653,
+   "lng": 88.42975,
+   "name": "Avenue Nursing Home"
+  },
+  {
+   "osm": "node/7074312616",
+   "lat": 22.634648,
+   "lng": 88.434888,
+   "name": "Little Hut Nirikshan Kendra"
+  },
+  {
+   "osm": "node/7074312631",
+   "lat": 22.590219,
+   "lng": 88.412524,
+   "name": "Salt Lake City Medical Centre"
+  },
+  {
+   "osm": "node/7074329128",
+   "lat": 22.577636,
+   "lng": 88.433562,
+   "name": "Rotary Narayana Nethralaya"
+  },
+  {
+   "osm": "node/7074329148",
+   "lat": 22.625766,
+   "lng": 88.435077,
+   "name": "Charnock Hospital Pvt Ltd",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7079023527",
+   "lat": 22.624873,
+   "lng": 88.433718,
+   "name": "Renaissance Hospital"
+  },
+  {
+   "osm": "node/7199853198",
+   "lat": 22.589918,
+   "lng": 88.410437,
+   "name": "Salt Lake Sub-divisional Hospital"
+  },
+  {
+   "osm": "node/7199853392",
+   "lat": 22.569687,
+   "lng": 88.415212,
+   "name": "All India Institute of Hygiene and Public Health (A.I.I.H. & P.H)"
+  },
+  {
+   "osm": "node/7668176345",
+   "lat": 22.582009,
+   "lng": 88.435147,
+   "name": "Composite Hospital"
+  },
+  {
+   "osm": "node/12378974171",
+   "lat": 22.628413,
+   "lng": 88.425135,
+   "name": "Urban Primary Health Centre 1"
+  },
+  {
+   "osm": "way/150612581",
+   "lat": 22.574272,
+   "lng": 88.401557,
+   "name": "Apollo Gleneagles Hospitals",
+   "emergency": "yes",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/150612583",
+   "lat": 22.574669,
+   "lng": 88.401571,
+   "name": "Apollo Gleneagles Hospitals"
+  },
+  {
+   "osm": "way/157924352",
+   "lat": 22.575222,
+   "lng": 88.417049,
+   "name": "Institute of Reproductive Medicine"
+  },
+  {
+   "osm": "way/173731205",
+   "lat": 22.572317,
+   "lng": 88.412773,
+   "name": "Columbia Asia Hospital",
+   "emergency": "yes",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/191911197",
+   "lat": 22.575092,
+   "lng": 88.418401,
+   "name": "Calcutta Heart Clinic & Hospital",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "way/191911481",
+   "lat": 22.576246,
+   "lng": 88.420096,
+   "name": "National Institute of Homeopathy"
+  },
+  {
+   "osm": "way/191912827",
+   "lat": 22.581426,
+   "lng": 88.422595,
+   "name": "Bidhannagar Municipal Hospital (Matrisadan)"
+  },
+  {
+   "osm": "way/223460634",
+   "lat": 22.578019,
+   "lng": 88.418679,
+   "name": "Rita Skin Foundation"
+  },
+  {
+   "osm": "way/237402101",
+   "lat": 22.61259,
+   "lng": 88.429703,
+   "name": "VIP Apex General Hospital"
+  },
+  {
+   "osm": "way/238233667",
+   "lat": 22.590987,
+   "lng": 88.412239
+  },
+  {
+   "osm": "way/238233669",
+   "lat": 22.589302,
+   "lng": 88.410941,
+   "name": "ILS Hospitals"
+  },
+  {
+   "osm": "way/238238395",
+   "lat": 22.590804,
+   "lng": 88.410606
+  },
+  {
+   "osm": "way/358108604",
+   "lat": 22.61529,
+   "lng": 88.432412,
+   "name": "New Town Nursing Home",
+   "emergency": "yes",
+   "opening_hours": "Mo-Su 09:00-21:00"
+  },
+  {
+   "osm": "way/756460737",
+   "lat": 22.575351,
+   "lng": 88.417582,
+   "name": "Susrut Eye Foundation And Research Centre",
+   "opening_hours": "Mo-Sa 08:30-17:30"
+  },
+  {
+   "osm": "way/1044251645",
+   "lat": 22.639032,
+   "lng": 88.415093,
+   "name": "Dum Dum Municipal Specialized Hospital and Cancer Research Centre",
+   "emergency": "yes"
+  },
+  {
+   "osm": "relation/14590809",
+   "lat": 22.644264,
+   "lng": 88.408533,
+   "name": "Matri Sadan-O-Swasthya Kendra"
+  },
+  {
+   "osm": "node/1822525113",
+   "lat": 22.458082,
+   "lng": 88.383698,
+   "name": "Hindustan Health Point Pvt Ltd",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/2192928421",
+   "lat": 22.480964,
+   "lng": 88.393821,
+   "name": "Peerless Hospital and B.K.Roy Research Center",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/5385568522",
+   "lat": 22.479207,
+   "lng": 88.375858,
+   "name": "IRIS HOSPITAL"
+  },
+  {
+   "osm": "node/7048063851",
+   "lat": 22.483166,
+   "lng": 88.385041,
+   "name": "Red Plus Society Nursing Home"
+  },
+  {
+   "osm": "node/7048073590",
+   "lat": 22.465278,
+   "lng": 88.389812,
+   "name": "Remedy Hospital (Unit Of Remedy Medical Services Pvt Ltd)"
+  },
+  {
+   "osm": "node/7065473746",
+   "lat": 22.467458,
+   "lng": 88.373923,
+   "name": "Sevangan Medical Complex"
+  },
+  {
+   "osm": "node/7065549006",
+   "lat": 22.481475,
+   "lng": 88.37569,
+   "name": "Dakshinee Eye Foundation"
+  },
+  {
+   "osm": "node/7068614354",
+   "lat": 22.484884,
+   "lng": 88.390496,
+   "name": "Apex Institute Of Medical Sciences"
+  },
+  {
+   "osm": "node/7069112469",
+   "lat": 22.471233,
+   "lng": 88.377672,
+   "name": "BRWS Hospital"
+  },
+  {
+   "osm": "node/7071685696",
+   "lat": 22.468007,
+   "lng": 88.379223,
+   "name": "Garia Eye Clinic and Micro Surgery Centre"
+  },
+  {
+   "osm": "node/7074329114",
+   "lat": 22.481825,
+   "lng": 88.354442,
+   "name": "Lions North Kolkata Hospital and Medical Centre"
+  },
+  {
+   "osm": "way/358073343",
+   "lat": 22.471567,
+   "lng": 88.366503,
+   "name": "Vivekananda ENT Clinic",
+   "emergency": "no"
+  },
+  {
+   "osm": "way/359031070",
+   "lat": 22.473477,
+   "lng": 88.368663,
+   "name": "Shree Guru Sangha Hospital Doctors Unit"
+  },
+  {
+   "osm": "way/359031098",
+   "lat": 22.473382,
+   "lng": 88.368607,
+   "name": "Shree Guru Ashram Hospital Indoor Unit",
+   "emergency": "no"
+  },
+  {
+   "osm": "way/359031182",
+   "lat": 22.473582,
+   "lng": 88.368749,
+   "name": "Shree Guru Sangha Hospital Outdoor Unit",
+   "emergency": "no"
+  },
+  {
+   "osm": "way/479590809",
+   "lat": 22.479206,
+   "lng": 88.375754
+  },
+  {
+   "osm": "node/7069095563",
+   "lat": 22.487327,
+   "lng": 88.393436,
+   "name": "Sunetra Eye and Family Care Centre"
+  },
+  {
+   "osm": "node/7065692304",
+   "lat": 22.480055,
+   "lng": 88.407621,
+   "name": "Netaji Subhash Chandra Bose Cancer Reasearch Inst"
+  },
+  {
+   "osm": "node/7069095521",
+   "lat": 22.465116,
+   "lng": 88.404779,
+   "name": "Namita Biswas Memorial Eye Hospital"
+  },
+  {
+   "osm": "node/11272131233",
+   "lat": 22.449944,
+   "lng": 88.392513,
+   "name": "Susrut Eye Foundation And Research Hospital",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/2453083684",
+   "lat": 22.622519,
+   "lng": 88.450677,
+   "name": "ASMII Save The Sight Foundation"
+  },
+  {
+   "osm": "node/7048662834",
+   "lat": 22.58174,
+   "lng": 88.323228,
+   "name": "People Meditreat Pvt Ltd"
+  },
+  {
+   "osm": "node/7050952687",
+   "lat": 22.634941,
+   "lng": 88.438683,
+   "name": "Maa Sarada Nursing Home"
+  },
+  {
+   "osm": "node/7062316904",
+   "lat": 22.581666,
+   "lng": 88.319724,
+   "name": "Dristi Eye Foundation"
+  },
+  {
+   "osm": "node/7065252195",
+   "lat": 22.562627,
+   "lng": 88.318754,
+   "name": "SMI Pvt Ltd"
+  },
+  {
+   "osm": "node/7069095553",
+   "lat": 22.564176,
+   "lng": 88.321133,
+   "name": "Mandelia Maternity and Nursing Home"
+  },
+  {
+   "osm": "node/7071390546",
+   "lat": 22.585848,
+   "lng": 88.303501,
+   "name": "S.C. Bagchi Arogya Sadan Pvt.Ltd."
+  },
+  {
+   "osm": "node/7199742804",
+   "lat": 22.619314,
+   "lng": 88.300364,
+   "name": "Kona Jagadishpur Rural Hospital"
+  },
+  {
+   "osm": "way/123870454",
+   "lat": 22.546107,
+   "lng": 88.310252,
+   "name": "BNR Hospital"
+  },
+  {
+   "osm": "way/134098367",
+   "lat": 22.586421,
+   "lng": 88.309476,
+   "name": "M B Homoepathy Medical College and Hospital"
+  },
+  {
+   "osm": "node/7053865156",
+   "lat": 22.578219,
+   "lng": 88.330466,
+   "name": "Belur Sramajibi Swasthya Prakalpa Samity"
+  },
+  {
+   "osm": "node/7065252203",
+   "lat": 22.569734,
+   "lng": 88.325738,
+   "name": "Smt. Sarla Pahwa Memorial Eye Centre"
+  },
+  {
+   "osm": "node/7065473780",
+   "lat": 22.571426,
+   "lng": 88.329752,
+   "name": "Shree Jain Hospital And Research Centre"
+  },
+  {
+   "osm": "node/7065549022",
+   "lat": 22.573849,
+   "lng": 88.328214,
+   "name": "D.B. Eye Foundation"
+  },
+  {
+   "osm": "node/7065866518",
+   "lat": 22.576874,
+   "lng": 88.301756,
+   "name": "Chokher Aloy"
+  },
+  {
+   "osm": "node/7199853326",
+   "lat": 22.560292,
+   "lng": 88.303938,
+   "name": "South Howrah State General Hospital"
+  },
+  {
+   "osm": "way/379403725",
+   "lat": 22.562564,
+   "lng": 88.307897,
+   "name": "West Bank Hospital & NH Narayana Heart Research Institute"
+  },
+  {
+   "osm": "node/7051039419",
+   "lat": 22.656886,
+   "lng": 88.346307,
+   "name": "Nilima Matri Sadan"
+  },
+  {
+   "osm": "node/7065628302",
+   "lat": 22.655877,
+   "lng": 88.359596,
+   "name": "LAB-O-AID"
+  },
+  {
+   "osm": "node/7065864062",
+   "lat": 22.638531,
+   "lng": 88.380376,
+   "name": "Baranagar State General Hospital"
+  },
+  {
+   "osm": "node/7071677008",
+   "lat": 22.6435,
+   "lng": 88.350891,
+   "name": "Netra Jyoti Eye Care Centre"
+  },
+  {
+   "osm": "node/7199742877",
+   "lat": 22.636777,
+   "lng": 88.340744,
+   "name": "Belur State General Hospital"
+  },
+  {
+   "osm": "node/7668176326",
+   "lat": 22.625878,
+   "lng": 88.343323,
+   "name": "Eastern Railway Hospital"
+  },
+  {
+   "osm": "node/7668176341",
+   "lat": 22.637624,
+   "lng": 88.327889,
+   "name": "ESI Hospital"
+  },
+  {
+   "osm": "node/7050784008",
+   "lat": 22.544024,
+   "lng": 88.269687,
+   "name": "Unipon Hospital and Medical Sciences Pvt.Ltd -Kolkata"
+  },
+  {
+   "osm": "node/7050808074",
+   "lat": 22.663208,
+   "lng": 88.343501,
+   "name": "Uttarpara State General Hospital",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7059155602",
+   "lat": 22.665205,
+   "lng": 88.341272,
+   "name": "Arogya Niketan Pvt. Ltd"
+  },
+  {
+   "osm": "node/7065868652",
+   "lat": 22.660317,
+   "lng": 88.364857,
+   "name": "Nayandeep Eye Care",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/7068798167",
+   "lat": 22.567307,
+   "lng": 88.270424,
+   "name": "N H Narayana Multispeciality Hospital",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7592786738",
+   "lat": 22.567255,
+   "lng": 88.271883,
+   "name": "Indus Nursing Home",
+   "emergency": "yes"
+  },
+  {
+   "osm": "node/7640497232",
+   "lat": 22.567133,
+   "lng": 88.273032,
+   "name": "Smile Dental Care",
+   "emergency": "yes"
+  }
+ ],
+ "police": [
+  {
+   "osm": "node/2168547540",
+   "lat": 22.584146,
+   "lng": 88.378896,
+   "name": "Manicktala P.S"
+  },
+  {
+   "osm": "node/3324142934",
+   "lat": 22.593116,
+   "lng": 88.356043,
+   "name": "Jorabagan Police Station"
+  },
+  {
+   "osm": "node/8185335386",
+   "lat": 22.592513,
+   "lng": 88.371143,
+   "name": "Burtolla Police Station"
+  },
+  {
+   "osm": "node/1186025286",
+   "lat": 22.57254,
+   "lng": 88.352413,
+   "name": "Kolkata Police Headquarters",
+   "name:en": "Kolkata Police Headquarters"
+  },
+  {
+   "osm": "node/2266850257",
+   "lat": 22.566664,
+   "lng": 88.365341,
+   "name": "Muchipara Police Station"
+  },
+  {
+   "osm": "node/2813667209",
+   "lat": 22.562718,
+   "lng": 88.354114,
+   "name": "New Market Police Station"
+  },
+  {
+   "osm": "node/9609217317",
+   "lat": 22.569139,
+   "lng": 88.356611,
+   "name": "Bowbazar police station",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/9609217417",
+   "lat": 22.568834,
+   "lng": 88.356961,
+   "name": "Hare Police Station",
+   "name:en": "Hare Police Station"
+  },
+  {
+   "osm": "node/11436646870",
+   "lat": 22.60741,
+   "lng": 88.381795,
+   "name": "Tala Police Station"
+  },
+  {
+   "osm": "node/11867113269",
+   "lat": 22.521053,
+   "lng": 88.364692,
+   "name": "गरियाहाट पुलिस थाना",
+   "name:en": "Gariahat Police Station"
+  },
+  {
+   "osm": "way/360460191",
+   "lat": 22.580206,
+   "lng": 88.354541,
+   "name": "boubazar police station",
+   "wheelchair": "yes"
+  },
+  {
+   "osm": "node/651795823",
+   "lat": 22.502768,
+   "lng": 88.367729,
+   "name": "Jadavpur Police Station"
+  },
+  {
+   "osm": "node/2471894120",
+   "lat": 22.526645,
+   "lng": 88.345994,
+   "name": "Bhowanipore Police Station"
+  },
+  {
+   "osm": "way/190923516",
+   "lat": 22.521393,
+   "lng": 88.343777,
+   "name": "Kalighat Police Station"
+  },
+  {
+   "osm": "way/190925408",
+   "lat": 22.52091,
+   "lng": 88.343649,
+   "name": "Kalighat Police Station"
+  },
+  {
+   "osm": "node/3363195847",
+   "lat": 22.503528,
+   "lng": 88.319003,
+   "name": "Behala Thana"
+  },
+  {
+   "osm": "node/3961003585",
+   "lat": 22.508882,
+   "lng": 88.30682,
+   "name": "Parnasree Police Station"
+  },
+  {
+   "osm": "node/663943188",
+   "lat": 22.539338,
+   "lng": 88.344409,
+   "name": "Gokhale Road Police Quarters"
+  },
+  {
+   "osm": "node/2454270956",
+   "lat": 22.620372,
+   "lng": 88.425417,
+   "name": "Baguiati Police Station"
+  },
+  {
+   "osm": "node/2461308616",
+   "lat": 22.576779,
+   "lng": 88.429872,
+   "name": "Sector - V Police Station"
+  },
+  {
+   "osm": "node/9641103817",
+   "lat": 22.589392,
+   "lng": 88.395101,
+   "name": "Ultadanga traffic guard"
+  },
+  {
+   "osm": "node/9911020517",
+   "lat": 22.54204,
+   "lng": 88.346983,
+   "name": "Exide South Traffic Guard Police Station"
+  },
+  {
+   "osm": "node/9911020617",
+   "lat": 22.542028,
+   "lng": 88.347112,
+   "name": "Maidan police station"
+  },
+  {
+   "osm": "node/12606460874",
+   "lat": 22.621002,
+   "lng": 88.400148,
+   "name": "Ghugudanga O.P."
+  },
+  {
+   "osm": "way/357517702",
+   "lat": 22.591753,
+   "lng": 88.417932,
+   "name": "BIdhannagar North Police Station"
+  },
+  {
+   "osm": "way/359314010",
+   "lat": 22.570161,
+   "lng": 88.41367,
+   "name": "Bidhannagar South Police Station",
+   "opening_hours": "24/7"
+  },
+  {
+   "osm": "node/4356781089",
+   "lat": 22.547021,
+   "lng": 88.368046,
+   "name": "beniapukur police station"
+  },
+  {
+   "osm": "node/6147021003",
+   "lat": 22.551627,
+   "lng": 88.356407,
+   "name": "Park Street Police Station"
+  },
+  {
+   "osm": "node/9570240617",
+   "lat": 22.588834,
+   "lng": 88.391005,
+   "name": "Kolkata Armed Police, 5th Battalion"
+  },
+  {
+   "osm": "way/469676580",
+   "lat": 22.548483,
+   "lng": 88.328555,
+   "name": "Hastings Police Station"
+  },
+  {
+   "osm": "way/379075449",
+   "lat": 22.563948,
+   "lng": 88.322496,
+   "name": "Shibpur Police Line"
+  },
+  {
+   "osm": "way/384710781",
+   "lat": 22.570789,
+   "lng": 88.326314,
+   "name": "Shibpur Police Station"
+  },
+  {
+   "osm": "way/385542170",
+   "lat": 22.563476,
+   "lng": 88.30146,
+   "name": "Amtala Phari"
+  }
+ ]
+}
