@@ -191,18 +191,18 @@ def cover(s, k, n, src_dir, download):
     im.paste((0, 0, 0), (0, 0, W, 260), top.resize((W, 260)))
     d = ImageDraw.Draw(im, "RGBA")
     spaced(d, (M, 96), s.get("kicker") or "Pujo Parikrama", font("caps", 32), (232, 196, 120), track=0.24)
-    ft = fit(d, s["title"], "display", 132, W - 2 * M, 3, floor=84)
+    ft = fit(d, s["title"], "display", 150, W - 2 * M, 3, floor=90)
     lines = wrap(d, s["title"], ft, W - 2 * M)
     bn = s.get("bn")
     sub = s.get("sub")
-    block = len(lines) * round(ft.size * 1.02) + (round(64 * 1.4) if bn else 0) + (110 if sub else 0)
+    block = len(lines) * round(ft.size * 1.02) + (round(ft.size * 0.28) + 96 if bn else 0) + (120 if sub else 0)
     y = H - 230 - block
     for ln in lines:
         d.text((M, y), ln, font=ft, fill=(252, 246, 236))
         y += round(ft.size * 1.02)
     if bn:
-        y += 14
-        y = draw_lines(d, (M, y), bn, fit(d, bn, "bn", 64, W - 2 * M, 1, floor=40), (236, 200, 128), W - 2 * M, max_lines=1)
+        y += round(ft.size * 0.28)
+        y = draw_lines(d, (M, y), bn, fit(d, bn, "bn", 68, W - 2 * M, 1, floor=40), (236, 200, 128), W - 2 * M, max_lines=1)
     if sub:
         y += 10
         draw_lines(d, (M, y), sub, fit(d, sub, "body", 36, W - 2 * M, 2, floor=28), (238, 228, 214), W - 2 * M, max_lines=2)
@@ -215,117 +215,136 @@ def cover(s, k, n, src_dir, download):
 
 
 def step(s, k, n, src_dir, download):
-    from PIL import ImageDraw
-    im = paper()
-    d = ImageDraw.Draw(im, "RGBA")
-    header(d, s.get("kicker"), k, n)
-    y = 230
-    if s.get("num") is not None:
-        fn = font("display", 220)
-        d.text((M - 6, y - 70), f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"]), font=fn, fill=GOLD + (90,))
-        y += 90
-    ft = fit(d, s["title"], "display", 96, W - 2 * M, 2, floor=64)
-    y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.06, max_lines=2)
-    if s.get("bn"):
-        y += 6
-        y = draw_lines(d, (M, y), s["bn"], fit(d, s["bn"], "bn", 52, W - 2 * M, 1, floor=36), SINDOOR, W - 2 * M, max_lines=1)
-    y += 26
-    d.line((M, y, M + 110, y), fill=SINDOOR, width=5)
-    y += 50
+    from PIL import Image, ImageDraw
     has_photo = bool(s.get("photo"))
-    bottom = (H - 170 - 640) if has_photo else (H - 190)
     body = s.get("body") or ""
-    fb = font("body", 40)
-    while fb.size > 30 and len(wrap(d, body, fb, W - 2 * M)) * round(fb.size * 1.5) > bottom - y:
-        fb = font("body", fb.size - 2)
-    y = draw_lines(d, (M, y), body, fb, INK, W - 2 * M, gap=1.5)
-    if s.get("bn_body"):
-        y += 16
-        draw_lines(d, (M, y), s["bn_body"], fit(d, s["bn_body"], "bn_body", 36, W - 2 * M, 3, floor=28), MUTED, W - 2 * M, gap=1.45, max_lines=3)
+
+    def lay(d, y0):
+        y = y0
+        ft = fit(d, s["title"], "display", 112, W - 2 * M - (200 if s.get("num") is not None else 0), 2, floor=72)
+        y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.04, max_lines=2)
+        if s.get("bn"):
+            y += round(ft.size * 0.22)
+            fb_ = fit(d, s["bn"], "bn", 58, W - 2 * M, 1, floor=40)
+            y = draw_lines(d, (M, y), s["bn"], fb_, SINDOOR, W - 2 * M, gap=1.3, max_lines=1)
+        y += 34
+        d.line((M, y, M + 120, y), fill=SINDOOR, width=5)
+        y += 54
+        limit = (H - 180 - 620 - 40) if has_photo else (H - 200)
+        fb = font("body", 48 if not has_photo else 42)
+        while fb.size > 30 and y + len(wrap(d, body, fb, W - 2 * M)) * round(fb.size * 1.5) > limit:
+            fb = font("body", fb.size - 2)
+        y = draw_lines(d, (M, y), body, fb, INK, W - 2 * M, gap=1.5)
+        if s.get("bn_body"):
+            y += 22
+            y = draw_lines(d, (M, y), s["bn_body"], fit(d, s["bn_body"], "bn_body", 42, W - 2 * M, 3, floor=30), MUTED,
+                           W - 2 * M, gap=1.45, max_lines=3)
+        return y
+
     if has_photo:
-        from PIL import Image
-        ph = photo_img(s["photo"], src_dir, download, (W - 2 * M, 600))
+        im = paper()
+        d = ImageDraw.Draw(im, "RGBA")
+        lay(d, 250)
+    else:
+        im, d = centred(lay, 260, H - 200, paper)
+    header(d, s.get("kicker"), k, n)
+    if s.get("num") is not None:
+        fn = font("display", 300)
+        num = f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"])
+        d.text((W - M - d.textlength(num, font=fn), 150), num, font=fn, fill=GOLD + (70,))
+    if has_photo:
+        ph = photo_img(s["photo"], src_dir, download, (W - 2 * M, 620))
         mask = Image.new("L", ph.size, 0)
         ImageDraw.Draw(mask).rounded_rectangle((0, 0, ph.width, ph.height), 28, fill=255)
-        im.paste(ph, (M, H - 170 - 600), mask)
+        im.paste(ph, (M, H - 180 - 620), mask)
         d = ImageDraw.Draw(im, "RGBA")
-        credit(d, s["photo"], (W - M - 18, H - 170 - 14))
+        credit(d, s["photo"], (W - M - 18, H - 180 - 14))
     footer(d, k, n)
     return im
 
 
 def listing(s, k, n, src_dir, download):
-    from PIL import ImageDraw
-    im = paper()
-    d = ImageDraw.Draw(im, "RGBA")
-    header(d, s.get("kicker"), k, n)
-    y = 230
-    ft = fit(d, s["title"], "display", 92, W - 2 * M, 2, floor=60)
-    y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.06, max_lines=2)
-    if s.get("bn"):
-        y = draw_lines(d, (M, y + 4), s["bn"], fit(d, s["bn"], "bn", 50, W - 2 * M, 1, floor=34), SINDOOR, W - 2 * M, max_lines=1)
-    y += 40
     items = [it if isinstance(it, (list, tuple)) else [it, ""] for it in s["items"]]
-    cols = 2 if len(items) > 7 else 1
-    colw = (W - 2 * M - (60 if cols == 2 else 0)) // cols
+    cols = 2 if len(items) > 6 else 1
+    colw = (W - 2 * M - (70 if cols == 2 else 0)) // cols
     per = -(-len(items) // cols)
-    avail = H - 200 - y
-    fe = font("body", 38)
-    while fe.size > 26:
-        rowh = round(fe.size * 1.35) * (2 if any(b for _, b in items) else 1) + 22
-        need = max(sum(max(1, len(wrap(d, a, fe, colw - 50))) * round(fe.size * 1.35) + (round(fe.size * 1.3) if b else 0) + 22
-                       for a, b in items[c * per:(c + 1) * per]) for c in range(cols)) if items else 0
-        if need <= avail:
-            break
-        fe = font("body", fe.size - 2)
-    fbn = font("bn_body", max(24, fe.size - 6))
-    for c in range(cols):
-        x, yy = M + c * (colw + 60), y
-        for a, b in items[c * per:(c + 1) * per]:
-            cy = yy + fe.size * 0.62
-            d.polygon([(x + 8, cy - 9), (x + 17, cy), (x + 8, cy + 9), (x - 1, cy)], fill=GOLD)
-            yy = draw_lines(d, (x + 44, yy), a, fe, INK, colw - 50, gap=1.35)
-            if b:
-                yy = draw_lines(d, (x + 44, yy - 4), b, fbn, MUTED, colw - 50, gap=1.3, max_lines=1)
-            yy += 22
+
+    def lay(d, y0):
+        y = y0
+        ft = fit(d, s["title"], "display", 112, W - 2 * M, 2, floor=70)
+        y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.04, max_lines=2)
+        if s.get("bn"):
+            y += round(ft.size * 0.22)
+            y = draw_lines(d, (M, y), s["bn"], fit(d, s["bn"], "bn", 56, W - 2 * M, 1, floor=38), SINDOOR, W - 2 * M, max_lines=1)
+        y += 64
+        avail = H - 210 - y
+        fe = font("body", 46 if cols == 1 else 42)
+        def height(f):
+            fbn = font("bn_body", max(26, f.size - 8))
+            return max(sum(len(wrap(d, a, f, colw - 56)) * round(f.size * 1.3) + (round(fbn.size * 1.45) if b else 0) + 30
+                           for a, b in items[c * per:(c + 1) * per]) for c in range(cols))
+        while fe.size > 28 and height(fe) > avail:
+            fe = font("body", fe.size - 2)
+        fbn = font("bn_body", max(26, fe.size - 8))
+        bottom = y
+        for c in range(cols):
+            x, yy = M + c * (colw + 70), y
+            for a, b in items[c * per:(c + 1) * per]:
+                cy = yy + fe.size * 0.66
+                d.polygon([(x + 9, cy - 10), (x + 19, cy), (x + 9, cy + 10), (x - 1, cy)], fill=GOLD)
+                yy = draw_lines(d, (x + 50, yy), a, fe, INK, colw - 56, gap=1.3)
+                if b:
+                    yy = draw_lines(d, (x + 50, yy + 2), b, fbn, MUTED, colw - 56, gap=1.3, max_lines=1)
+                yy += 30
+            bottom = max(bottom, yy)
+        return bottom
+
+    im, d = centred(lay, 250, H - 200, paper)
+    header(d, s.get("kicker"), k, n)
     footer(d, k, n)
     return im
 
 
 def mantra(s, k, n, src_dir, download):
-    from PIL import Image, ImageDraw
-    im = paper(NIGHT, seed=3)
-    glow = Image.radial_gradient("L").resize((W, H)).point(lambda v: int(70 * (1 - v / 255) ** 2))
-    im = Image.composite(Image.new("RGB", (W, H), (120, 30, 30)), im, glow)
-    d = ImageDraw.Draw(im, "RGBA")
+    from PIL import Image
+
+    def bg():
+        im = paper(NIGHT, seed=3)
+        glow = Image.radial_gradient("L").resize((W, H)).point(lambda v: int(80 * (1 - v / 255) ** 2))
+        return Image.composite(Image.new("RGB", (W, H), (124, 32, 30)), im, glow)
+
+    role = "deva" if s.get("script", "deva") == "deva" else "bn"
+    lines_src = [ln.strip() for ln in s["text"].split("\n") if ln.strip()]
+
+    def lay(d, y0):
+        y = y0
+        ftx = font(role, 86)
+        while ftx.size > 44 and sum(len(wrap(d, ln, ftx, W - 2 * M)) for ln in lines_src) * round(ftx.size * 1.6) > 760:
+            ftx = font(role, ftx.size - 2)
+        for ln in lines_src:
+            y = draw_lines(d, (M, y), ln, ftx, (252, 240, 214), W - 2 * M, gap=1.6, align="center")
+        y += 30
+        if s.get("translit"):
+            fi = fit(d, s["translit"], "display_it", 54, W - 2 * M, 4, floor=36)
+            y = draw_lines(d, (M, y), s["translit"], fi, (226, 190, 120), W - 2 * M, gap=1.28, align="center")
+        y += 46
+        cx = W // 2
+        d.polygon([(cx, y - 11), (cx + 11, y), (cx, y + 11), (cx - 11, y)], fill=GOLD)
+        d.line((cx - 180, y, cx - 30, y), fill=GOLD, width=2)
+        d.line((cx + 30, y, cx + 180, y), fill=GOLD, width=2)
+        y += 58
+        if s.get("meaning"):
+            fm = fit(d, s["meaning"], "body", 44, W - 2 * M, 6, floor=30)
+            y = draw_lines(d, (M, y), s["meaning"], fm, (240, 228, 210), W - 2 * M, gap=1.5, align="center")
+        if s.get("meaning_bn"):
+            y += 22
+            y = draw_lines(d, (M, y), s["meaning_bn"], fit(d, s["meaning_bn"], "bn_body", 42, W - 2 * M, 3, floor=28),
+                           (214, 186, 150), W - 2 * M, gap=1.45, align="center", max_lines=3)
+        return y
+
+    im, d = centred(lay, 230, H - 190, bg)
     spaced(d, (M, 104), s.get("kicker") or "Mantra", font("caps", 30), GOLD, track=0.22)
     d.line((M, 160, W - M, 160), fill=GOLD, width=2)
-    role = "deva" if s.get("script", "deva") == "deva" else "bn"
-    text = s["text"]
-    lines_src = [ln.strip() for ln in text.split("\n") if ln.strip()]
-    ftx = font(role, 70)
-    while ftx.size > 40 and sum(len(wrap(d, ln, ftx, W - 2 * M)) for ln in lines_src) * round(ftx.size * 1.55) > 640:
-        ftx = font(role, ftx.size - 2)
-    y = 250
-    for ln in lines_src:
-        y = draw_lines(d, (M, y), ln, ftx, (252, 240, 214), W - 2 * M, gap=1.55, align="center")
-    y += 24
-    if s.get("translit"):
-        fi = fit(d, s["translit"], "display_it", 46, W - 2 * M, 4, floor=32)
-        y = draw_lines(d, (M, y), s["translit"], fi, (226, 190, 120), W - 2 * M, gap=1.3, align="center")
-    y += 30
-    cx = W // 2
-    d.polygon([(cx, y - 10), (cx + 10, y), (cx, y + 10), (cx - 10, y)], fill=GOLD)
-    d.line((cx - 160, y, cx - 26, y), fill=GOLD, width=2)
-    d.line((cx + 26, y, cx + 160, y), fill=GOLD, width=2)
-    y += 44
-    if s.get("meaning"):
-        fm = fit(d, s["meaning"], "body", 38, W - 2 * M, 6, floor=28)
-        y = draw_lines(d, (M, y), s["meaning"], fm, (240, 228, 210), W - 2 * M, gap=1.5, align="center")
-    if s.get("meaning_bn"):
-        y += 12
-        draw_lines(d, (M, y), s["meaning_bn"], fit(d, s["meaning_bn"], "bn_body", 36, W - 2 * M, 3, floor=26),
-                   (214, 186, 150), W - 2 * M, gap=1.45, align="center", max_lines=3)
     footer(d, k, n, dark=True)
     return im
 
@@ -356,10 +375,10 @@ def end(s, k, n, src_dir, download):
     d.ellipse((cx - 70, 300, cx + 70, 440), outline=SINDOOR, width=5)
     d.ellipse((cx - 22, 348, cx + 22, 392), fill=SINDOOR)
     y = 540
-    ft = fit(d, s["title"], "display", 100, W - 2 * M, 3, floor=64)
-    y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.08, align="center")
+    ft = fit(d, s["title"], "display", 120, W - 2 * M, 3, floor=70)
+    y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.06, align="center")
     if s.get("bn"):
-        y = draw_lines(d, (M, y + 10), s["bn"], fit(d, s["bn"], "bn", 54, W - 2 * M, 2, floor=36), SINDOOR, W - 2 * M,
+        y = draw_lines(d, (M, y + round(ft.size * 0.3)), s["bn"], fit(d, s["bn"], "bn", 56, W - 2 * M, 2, floor=36), SINDOOR, W - 2 * M,
                        gap=1.35, align="center", max_lines=2)
     y += 60
     ask = s.get("ask") or "Save it · send it to the family group"
@@ -371,6 +390,18 @@ def end(s, k, n, src_dir, download):
     spaced(d, (M, y), "Free pandal guide · link in bio", font("caps", 30), MUTED, track=0.16, align="center", width=W - 2 * M)
     spaced(d, (M, y + 56), HANDLE.lstrip("@"), font("caps", 30), GOLD, track=0.2, align="center", width=W - 2 * M)
     return im
+
+
+def centred(draw_fn, top, bottom, bg_fn):
+    """Lays a slide's text block out once on scratch paper to measure it, then again centred between top and bottom."""
+    from PIL import ImageDraw
+    scratch = bg_fn()
+    end_y = draw_fn(ImageDraw.Draw(scratch, "RGBA"), 0)
+    im = bg_fn()
+    d = ImageDraw.Draw(im, "RGBA")
+    off = max(top, top + (bottom - top - end_y) // 2)
+    draw_fn(d, off)
+    return im, d
 
 
 KINDS = {"cover": cover, "step": step, "list": listing, "mantra": mantra, "photo": photo_slide, "end": end}
