@@ -103,7 +103,7 @@
    "id": "p0",
    "type": "photo",
    "render": "editorial",
-   "at": "08:30",
+   "at": "08:00",
    "slides": [
     {
      "t": "cover",
@@ -236,9 +236,151 @@
    }
   },
   {
+   "id": "p3",
+   "type": "photo",
+   "render": "editorial",
+   "at": "09:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Navratri 2026 · Vrat guide",
+     "title": "Fasting for Navratri? Eat this, skip that",
+     "bn": "নবরাত্রির উপোস",
+     "sub": "What most families allow and avoid",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/3/33/Alu_Sabudana_Khichdi.jpg",
+      "artist": "Mrudit161187",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.5
+     }
+    },
+    {
+     "t": "list",
+     "kicker": "Usually eaten",
+     "title": "On the vrat plate",
+     "bn": "যা খাওয়া যায়",
+     "items": [
+      [
+       "Kuttu, singhara, rajgira flour",
+       "কুট্টু, সিঙাড়া আটা"
+      ],
+      [
+       "Sama rice and sabudana",
+       "সামা চাল, সাবুদানা"
+      ],
+      [
+       "Potato, sweet potato, pumpkin",
+       "আলু, রাঙা আলু, কুমড়ো"
+      ],
+      [
+       "All fresh fruit, dates",
+       "ফল, খেজুর"
+      ],
+      [
+       "Milk, curd, paneer, ghee",
+       "দুধ, দই, পনির, ঘি"
+      ],
+      [
+       "Makhana, almonds, peanuts",
+       "মাখানা, বাদাম"
+      ],
+      [
+       "Sendha namak instead of salt",
+       "সৈন্ধব লবণ"
+      ]
+     ]
+    },
+    {
+     "t": "list",
+     "kicker": "Usually avoided",
+     "title": "Keep these off",
+     "bn": "যা বাদ",
+     "items": [
+      [
+       "Wheat, rice, maida, suji",
+       "গম, চাল, ময়দা, সুজি"
+      ],
+      [
+       "Dal and all pulses",
+       "ডাল"
+      ],
+      [
+       "Onion and garlic",
+       "পেঁয়াজ, রসুন"
+      ],
+      [
+       "Regular table salt",
+       "সাধারণ নুন"
+      ],
+      [
+       "Meat, fish and eggs",
+       "মাছ, মাংস, ডিম"
+      ],
+      [
+       "Alcohol and tobacco",
+       "মদ, তামাক"
+      ]
+     ]
+    },
+    {
+     "t": "list",
+     "kicker": "Pick your fast",
+     "title": "Five ways people keep it",
+     "bn": "উপোসের ধরন",
+     "items": [
+      [
+       "Nirjala: no food or water, often one day",
+       "নির্জলা"
+      ],
+      [
+       "Phalahar: fruit, milk, nuts",
+       "ফলাহার"
+      ],
+      [
+       "One meal, usually in the evening",
+       "একবেলা"
+      ],
+      [
+       "Partial: no onion, garlic or meat",
+       "নিরামিষ"
+      ],
+      [
+       "First and last day only",
+       "প্রথম ও শেষ দিন"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "Worth knowing",
+     "title": "Why kuttu counts as fasting food",
+     "bn": "কুট্টু কেন চলে",
+     "body": "Kuttu and rajgira are seeds, not true grains, which is one reason they became vrat staples. Turmeric and some spices are fine in some families and not in others, so follow your own house rule."
+    },
+    {
+     "t": "end",
+     "title": "Save this for all nine days",
+     "bn": "উপোস যিনি রাখছেন, তাঁকে পাঠান",
+     "ask": "Save it · send it to whoever's fasting"
+    }
+   ],
+   "caption": {
+    "en": "Navratri 2026 fasting rules for Durga Puja week in Kolkata: what to eat and what to avoid 🍠\n\nKuttu, sabudana, potatoes, fruit, milk and sendha namak are in. Grains, dal, onion, garlic and regular salt are out. Every family's rules differ a little, so go with yours where they do. If you have a health condition, check with your doctor before a strict fast.\n\nSend this to whoever in your family is fasting this year 💛",
+    "keywords": [
+     "navratri fasting rules",
+     "navratri vrat food list",
+     "what to eat in navratri fast",
+     "navratri 2026",
+     "durga puja 2026"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
+  },
+  {
    "id": "s1",
    "type": "story",
-   "at": "10:30",
+   "at": "10:15",
    "bn": {
     "segs": [
      "আর সাত দিন"
@@ -256,6 +398,76 @@
     "f22",
     30
    ]
+  },
+  {
+   "id": "p4",
+   "type": "photo",
+   "render": "editorial",
+   "at": "11:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Hot take · Durga Puja 2026",
+     "title": "Panchami is the new Saptami",
+     "bn": "পঞ্চমীই নতুন সপ্তমী?",
+     "sub": "Agree or disagree? Swipe first",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lighting_Idol_People_during_Durga_Puja_Festival_2023_in_Behala_Kolkata_44.jpg",
+      "artist": "Goutam1962",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The numbers",
+     "num": 1,
+     "title": "A little over half the crowd",
+     "bn": "ভিড় প্রায় অর্ধেক",
+     "body": "Our crowd model puts a Panchami evening at about 0.6 of a normal Saptami evening, and an Ashtami evening at 1.1. These are model estimates, not live counts."
+    },
+    {
+     "t": "step",
+     "kicker": "What you get",
+     "num": 2,
+     "title": "Built, lit, and no queue yet",
+     "bn": "আলো জ্বলে গেছে, লাইন ছোট",
+     "body": "By Panchami most big pandals are ready and lit. You see the same art you'd queue an hour for on Ashtami."
+    },
+    {
+     "t": "step",
+     "kicker": "When",
+     "num": 3,
+     "title": "Friday 16 October",
+     "bn": "শুক্রবার, ১৬ অক্টোবর",
+     "body": "A weekday evening, so you can go straight from work and still be home before the city wakes up for Shashthi."
+    },
+    {
+     "t": "step",
+     "kicker": "The catch",
+     "num": 4,
+     "title": "You trade the buzz",
+     "bn": "যা হারাবেন",
+     "body": "Saptami to Navami the whole city is on the street. That feeling is real, and Panchami doesn't have it yet."
+    },
+    {
+     "t": "end",
+     "title": "Team Panchami or team Saptami?",
+     "bn": "কমেন্টে লিখুন: পঞ্চমী না সপ্তমী",
+     "ask": "One word in the comments"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 in Kolkata: is Panchami the smartest night to go pandal hopping? 🪔\n\nWe think so. Our crowd model puts a Panchami evening at a little over half of an Ashtami evening. The pandals are ready, the lights are on, and Panchami falls on Friday 16 October.\n\nWhat you give up is the Saptami-to-Navami buzz on the streets. That's real.\n\nTeam Panchami or team Saptami? Tell us in the comments 👇",
+    "keywords": [
+     "durga puja 2026 kolkata",
+     "panchami pandal hopping",
+     "kolkata crowd",
+     "best day for pandal hopping"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
   },
   {
    "id": "p2",
@@ -345,6 +557,113 @@
    }
   },
   {
+   "id": "s3",
+   "type": "story",
+   "at": "13:15",
+   "bn": {
+    "segs": [
+     "আজ প্রতিপদ। ঘট বসালেন?"
+    ]
+   },
+   "segments": [
+    [
+     "q6",
+     0,
+     6.0,
+     "Pratipada today. Is your ghat up?"
+    ]
+   ],
+   "music": [
+    "f20",
+    20
+   ]
+  },
+  {
+   "id": "p5",
+   "type": "photo",
+   "render": "editorial",
+   "at": "14:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Themes 2026 · North Kolkata",
+     "title": "Six North Kolkata themes to see this year",
+     "bn": "উত্তরের থিম ২০২৬",
+     "sub": "Pictured: Kashi Bose Lane in 2018",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/কাশী_বোস_লেন_দূর্গা_পুজো_২০১৮.jpg",
+      "artist": "Subhrajyoti07",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Kumartuli Park",
+     "num": 1,
+     "title": "Ganga Tumi Boichho Keno",
+     "bn": "গঙ্গা তুমি বইছ কেন",
+     "body": "Bhupen Hazarika's song brought to life: the Ganga's journey from its source to the delta."
+    },
+    {
+     "t": "step",
+     "kicker": "Ahiritola",
+     "num": 2,
+     "title": "Madhuri Maitrir Anweshane",
+     "bn": "মাধুরী মৈত্রীর অন্বেষণে",
+     "body": "Bengal's sweets as carriers of harmony."
+    },
+    {
+     "t": "step",
+     "kicker": "Kashi Bose Lane",
+     "num": 3,
+     "title": "Warli",
+     "bn": "ওরলি",
+     "body": "The Warli folk art of Maharashtra."
+    },
+    {
+     "t": "step",
+     "kicker": "Tala Prattoy",
+     "num": 4,
+     "title": "Biyojon",
+     "bn": "বিয়োজন",
+     "body": "'Separation': letting go of worldly attachment, in the puja's 101st year."
+    },
+    {
+     "t": "step",
+     "kicker": "Chaltabagan",
+     "num": 5,
+     "title": "Nishan",
+     "bn": "নিশান",
+     "body": "'The Mark': Chhattisgarh's Ramnami Samaj, who write Ram's name on their bodies."
+    },
+    {
+     "t": "step",
+     "kicker": "Shyam Square",
+     "num": 6,
+     "title": "P C Sorcar",
+     "bn": "পি সি সরকার",
+     "body": "A magic-themed tribute to the magician P C Sorcar."
+    },
+    {
+     "t": "end",
+     "title": "Save this for your North Kolkata night",
+     "bn": "কোনটা আগে দেখবেন?",
+     "ask": "Save it · tell us your first stop"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 themes in North Kolkata, from Kumartuli Park to Shyam Square 🎨\n\nKumartuli Park sings Bhupen Hazarika's Ganga. Ahiritola builds a world out of Bengal's sweets, and Kashi Bose Lane goes Warli. Tala Prattoy turns 101, and Shyam Square does magic for P C Sorcar.\n\nThemes come from the committees' announcements and news reports, and they can still change before the puja.\n\nWhich one is your first stop? Tell us 👇",
+    "keywords": [
+     "north kolkata durga puja 2026 themes",
+     "kumartuli park theme 2026",
+     "kolkata pandal themes"
+    ],
+    "tags": "#durgapuja2026 #northkolkata #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "p1",
    "type": "photo",
    "at": "15:30",
@@ -426,7 +745,7 @@
   {
    "id": "r5",
    "type": "reel",
-   "at": "17:30",
+   "at": "17:00",
    "render": "cards_reel",
    "from": "p2",
    "hook": "Navratri Day 1: Maa Shailaputri",
@@ -524,7 +843,7 @@
   {
    "id": "s2",
    "type": "story",
-   "at": "19:00",
+   "at": "19:15",
    "bn": {
     "segs": [
      "আপনার পাড়ার পুজোর নাম লিখুন"
@@ -544,9 +863,122 @@
    ]
   },
   {
+   "id": "p6",
+   "type": "photo",
+   "render": "editorial",
+   "at": "20:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "The sound of pujo",
+     "title": "No dhak, no pujo",
+     "bn": "ঢাক না বাজলে পুজো শুরু হয় না",
+     "sub": "The drum, the drummers, the beats",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Dhaki_at_Durga_puja_2024_at_Shantipara%2C_Dibrugarh_12.jpg",
+      "artist": "AjayDas",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The drum",
+     "num": 1,
+     "title": "Wood, skin and kash flowers",
+     "bn": "ঢাক",
+     "body": "A big barrel drum with skin on both ends, slung from the shoulder and played with two thin cane sticks. For the pujo it wears tall white plumes of kash phool, the grass that says autumn has come."
+    },
+    {
+     "t": "step",
+     "kicker": "The dhakis",
+     "num": 2,
+     "title": "They travel to play for you",
+     "bn": "ঢাকি",
+     "body": "Many dhakis are farmers or labourers from rural West Bengal, and the craft passes from father to son. Before the pujo many wait at Sealdah station, playing on the platform to get hired."
+    },
+    {
+     "t": "list",
+     "kicker": "Listen for it",
+     "title": "One drum, many beats",
+     "bn": "ঢাকের বোল",
+     "items": [
+      [
+       "Aarti: steady, building to a rush",
+       "আরতি"
+      ],
+      [
+       "Dhunuchi naach: fast and playful",
+       "ধুনুচি নাচ"
+      ],
+      [
+       "Bodhon, Kola Bou snan, Sandhi Puja: urgent",
+       "সন্ধিপুজো"
+      ],
+      [
+       "Bisarjan: a walking beat, glad and sad",
+       "বিসর্জন"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Traditional_Dhunuchi_Dance.jpg",
+      "artist": "Bhuppigraphy",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Dhunuchi naach: the dhaki speeds up as the dancers do"
+    },
+    {
+     "t": "list",
+     "kicker": "The full sound",
+     "title": "Dhak never plays alone",
+     "bn": "ঢাক, কাঁসর, শাঁখ, উলু",
+     "items": [
+      [
+       "Kashor: the bell-metal gong",
+       "কাঁসর"
+      ],
+      [
+       "Ghonta: the priest's hand bell",
+       "ঘণ্টা"
+      ],
+      [
+       "Shankh: the conch",
+       "শাঁখ"
+      ],
+      [
+       "Ulu: the women's ululation",
+       "উলু"
+      ]
+     ]
+    },
+    {
+     "t": "end",
+     "title": "Tip your dhaki this pujo",
+     "bn": "ছোটবেলার কোন বোলটা মনে পড়ে?",
+     "ask": "Tell us the beat you grew up with"
+    }
+   ],
+   "caption": {
+    "en": "Kolkata Durga Puja starts with the dhak 🥁\n\nMany dhakis come from rural West Bengal for the pujo days, and before the festival many wait at Sealdah station, playing on the platform to be hired. They play through every ritual: aarti, dhunuchi naach, Sandhi Puja and the immersion.\n\nIf you enjoy the playing, a small tip goes a long way, and if you film, ask first.\n\nWhich beat takes you back to your childhood pujo? Tell us 👇",
+    "keywords": [
+     "durga puja dhak",
+     "dhaki kolkata",
+     "durga puja 2026",
+     "dhunuchi naach"
+    ],
+    "tags": "#durgapuja #dhaki #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r3",
    "type": "reel",
-   "at": "21:00",
+   "at": "21:30",
    "hook": "Before the pandal, there's Kumartuli",
    "bn": {
     "hook": "প্যান্ডেলের আগে কুমোরটুলি",
@@ -603,6 +1035,125 @@
      "sovabazar metro"
     ],
     "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
+   }
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "22:15",
+   "bn": {
+    "segs": [
+     "আর ছ'দিন"
+    ]
+   },
+   "segments": [
+    [
+     "q19",
+     0,
+     6.0,
+     "6 days to Shashthi"
+    ]
+   ],
+   "music": [
+    "f23",
+    10
+   ]
+  },
+  {
+   "id": "p7",
+   "type": "photo",
+   "render": "editorial",
+   "at": "23:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Mantra with meaning",
+     "title": "Ya Devi Sarvabhuteshu",
+     "bn": "যা দেবী সর্বভূতেষু",
+     "sub": "The hymn you hear at every pujo, line by line",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Chlorite_sculpture_of_Mahishasuramardini%2C_12th_century%2C_Mandabhum._Pala_School_of_Art._Indian_Museum%2C_Kolkata.jpg",
+      "artist": "SpeakingArch",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Where it comes from",
+     "title": "Chapter 5 of the Chandi",
+     "bn": "অপরাজিতা স্তুতি",
+     "body": "The gods sing it in the Devi Mahatmya, the text recited as the Chandi during Durga Puja. They salute the Goddess as the power living in every being."
+    },
+    {
+     "t": "mantra",
+     "kicker": "Shakti · power",
+     "script": "bn",
+     "text": "যা দেবী সর্বভূতেষু শক্তিরূপেণ সংস্থিতা।\nনমস্তস্যৈ নমস্তস্যৈ নমস্তস্যৈ নমো নমঃ॥",
+     "translit": "Ya devi sarvabhuteshu shakti-rupena samsthita, namastasyai namastasyai namastasyai namo namah",
+     "meaning": "To the Goddess who dwells in all beings as power: salutations to her, salutations to her, salutations to her, again and again."
+    },
+    {
+     "t": "mantra",
+     "kicker": "Matri · mother",
+     "script": "bn",
+     "text": "যা দেবী সর্বভূতেষু মাতৃরূপেণ সংস্থিতা।\nনমস্তস্যৈ নমস্তস্যৈ নমস্তস্যৈ নমো নমঃ॥",
+     "translit": "Ya devi sarvabhuteshu matri-rupena samsthita, namastasyai namastasyai namastasyai namo namah",
+     "meaning": "To the Goddess who dwells in all beings as the mother: salutations to her, again and again."
+    },
+    {
+     "t": "list",
+     "kicker": "One word changes",
+     "title": "Swap it for",
+     "bn": "রূপভেদে",
+     "items": [
+      [
+       "Buddhi: intelligence",
+       "বুদ্ধি"
+      ],
+      [
+       "Shanti: peace",
+       "শান্তি"
+      ],
+      [
+       "Lakshmi: prosperity",
+       "লক্ষ্মী"
+      ],
+      [
+       "Shakti: power",
+       "শক্তি"
+      ],
+      [
+       "Matri: mother",
+       "মাতৃ"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "What it means",
+     "title": "She is in you too",
+     "bn": "সব প্রাণে তিনি",
+     "body": "The Goddess isn't only the warrior on the lion. The hymn says she is the power in your own mind and body, in peace as much as in strength."
+    },
+    {
+     "t": "end",
+     "title": "Save the mantra for tomorrow's puja",
+     "bn": "কোন রূপের শ্লোকটা আপনার প্রিয়?",
+     "ask": "Tell us your favourite verse"
+    }
+   ],
+   "caption": {
+    "en": "Ya Devi Sarvabhuteshu meaning: the Durga Puja hymn, line by line 🙏\n\nIt comes from chapter 5 of the Devi Mahatmya, the Chandi. In each verse one word changes, and the Goddess is saluted as power, mother, peace, intelligence and more, living in every being.\n\nSave it for tomorrow morning's puja. Which form is your favourite verse? Tell us 👇",
+    "keywords": [
+     "ya devi sarvabhuteshu meaning",
+     "durga mantra with meaning",
+     "navratri mantra",
+     "durga puja 2026",
+     "kolkata"
+    ],
+    "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
    }
   }
  ]

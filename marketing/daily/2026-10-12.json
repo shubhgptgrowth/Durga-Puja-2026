@@ -159,7 +159,7 @@
    "id": "p0",
    "type": "photo",
    "render": "editorial",
-   "at": "08:30",
+   "at": "08:00",
    "slides": [
     {
      "t": "cover",
@@ -371,9 +371,123 @@
    }
   },
   {
+   "id": "p3",
+   "type": "photo",
+   "render": "editorial",
+   "at": "09:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja explained",
+     "title": "Who is Kola Bou, really?",
+     "bn": "কলা বউ আসলে কে?",
+     "sub": "Not who you grew up thinking",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Kola_Bou_Snan_Durga_Puja_2024_04.jpg",
+      "artist": "Goutam1962",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "The short answer",
+     "num": 1,
+     "title": "She is the Goddess herself",
+     "bn": "নবপত্রিকা",
+     "body": "Kola Bou is the Nabapatrika: nine plants tied round a banana plant with a white aparajita creeper and a pair of bel fruits, worshipped as nine forms of the Goddess."
+    },
+    {
+     "t": "list",
+     "kicker": "The nine plants",
+     "title": "Nine plants, nine forms",
+     "bn": "ন'টি গাছ",
+     "items": [
+      [
+       "Banana: Brahmani",
+       "কলা"
+      ],
+      [
+       "Colocasia: Kalika",
+       "কচু"
+      ],
+      [
+       "Turmeric: Durga",
+       "হলুদ"
+      ],
+      [
+       "Jayanti: Kartiki",
+       "জয়ন্তী"
+      ],
+      [
+       "Bel: Shivaa",
+       "বেল"
+      ],
+      [
+       "Pomegranate: Raktadantika",
+       "ডালিম"
+      ],
+      [
+       "Ashoka: Shokarahita",
+       "অশোক"
+      ],
+      [
+       "Arum: Chamunda",
+       "মানকচু"
+      ],
+      [
+       "Paddy: Lakshmi",
+       "ধান"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "Saptami dawn",
+     "num": 2,
+     "title": "The bath at the ghat",
+     "bn": "কলা বউ স্নান",
+     "body": "At dawn on Saptami, Sunday 18 October, she is bathed at a river or ghat with dhak, conch and ulu, wrapped in a red-bordered sari like a bride, and carried back."
+    },
+    {
+     "t": "step",
+     "kicker": "The mix-up",
+     "num": 3,
+     "title": "Why people call her Ganesha's wife",
+     "bn": "গণেশের বউ?",
+     "body": "She stands beside Ganesha, veiled like a new bride, so in Bengal she is lovingly called his wife. In ritual terms she is the Goddess, which is why some say mother, not bride."
+    },
+    {
+     "t": "step",
+     "kicker": "See it yourself",
+     "num": 4,
+     "title": "Bagbazar and Ahiritola ghats",
+     "bn": "কোথায় দেখবেন",
+     "body": "The Hooghly ghats near Bagbazar and Ahiritola fill with small processions early on Saptami morning. Get there around sunrise; the rites finish early."
+    },
+    {
+     "t": "end",
+     "title": "Did you think she was Ganesha's wife?",
+     "bn": "কমেন্টে বলুন",
+     "ask": "Tell us in the comments"
+    }
+   ],
+   "caption": {
+    "en": "Kola Bou, the Durga Puja bride you see in every Kolkata pandal: who is she, really? 🍃\n\nShe isn't Ganesha's wife. We grew up thinking that too.\n\nThe Kola Bou is the Nabapatrika, nine plants worshipped as nine forms of the Goddess. On Saptami morning she's bathed at a ghat, dressed in a red-bordered sari and placed beside Ganesha, and then the main puja begins.\n\nDid you also think she was Ganesha's wife? Tell us in the comments 👇",
+    "keywords": [
+     "kola bou nabapatrika",
+     "kola bou kolkata",
+     "durga puja saptami 2026",
+     "nabapatrika nine plants"
+    ],
+    "tags": "#durgapuja2026 #kolabou #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "s1",
    "type": "story",
-   "at": "10:30",
+   "at": "10:15",
    "bn": {
     "segs": [
      "এবার কোন প্যান্ডেল আগে?"
@@ -396,7 +510,7 @@
    "id": "p2",
    "type": "photo",
    "render": "editorial",
-   "at": "11:30",
+   "at": "11:00",
    "slides": [
     {
      "t": "cover",
@@ -549,6 +663,113 @@
    }
   },
   {
+   "id": "s3",
+   "type": "story",
+   "at": "13:15",
+   "bn": {
+    "segs": [
+     "উত্তর না দক্ষিণ?"
+    ]
+   },
+   "segments": [
+    [
+     "q18",
+     0,
+     6.0,
+     "North or South this year?"
+    ]
+   ],
+   "music": [
+    "f23",
+    30
+   ]
+  },
+  {
+   "id": "p4",
+   "type": "photo",
+   "render": "editorial",
+   "at": "14:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Themes 2026 · South Kolkata",
+     "title": "Six South Kolkata themes to see this year",
+     "bn": "দক্ষিণের থিম ২০২৬",
+     "sub": "Pictured: a South Kolkata pujo, past year",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/মুখ্য_দূর্গা_প্রতিমার_অতিনিকট_চিত্র_-_দক্ষিণ_কলিকাতার_একটি_পুজো.jpg",
+      "artist": "Subhrajyoti07",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.4
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Samaj Sebi Sangha",
+     "num": 1,
+     "title": "Mahapujoy Mahanayak",
+     "bn": "মহাপুজোয় মহানায়ক",
+     "body": "Uttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films."
+    },
+    {
+     "t": "step",
+     "kicker": "Suruchi Sangha",
+     "num": 2,
+     "title": "Utso",
+     "bn": "উৎস",
+     "body": "'The Source': the life and times of Syama Prasad Mookerjee, 125 years after his birth."
+    },
+    {
+     "t": "step",
+     "kicker": "Ekdalia Evergreen",
+     "num": 3,
+     "title": "Somnath",
+     "bn": "সোমনাথ",
+     "body": "A replica of Gujarat's Somnath Temple, in the club's 84th year."
+    },
+    {
+     "t": "step",
+     "kicker": "Singhi Park",
+     "num": 4,
+     "title": "Bastar",
+     "bn": "বস্তারিও",
+     "body": "Inspired by the art and heritage of Bastar in Chhattisgarh."
+    },
+    {
+     "t": "step",
+     "kicker": "Ballygunge Cultural",
+     "num": 5,
+     "title": "Jojon",
+     "bn": "যোজন",
+     "body": "'Connection': between people, generations and nature. A zero-waste puja."
+    },
+    {
+     "t": "step",
+     "kicker": "71 Pally Baishakhi",
+     "num": 6,
+     "title": "Samudra Darpan",
+     "bn": "সমুদ্র দর্পণ",
+     "body": "Plastic pollution in the oceans, made with a Dutch artist."
+    },
+    {
+     "t": "end",
+     "title": "Save this for your South Kolkata night",
+     "bn": "কোনটা আগে দেখবেন?",
+     "ask": "Save it · tell us your first stop"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 themes in South Kolkata: Ekdalia, Singhi Park, Suruchi and more 🎨\n\nSamaj Sebi Sangha marks Uttam Kumar's centenary with posters from all 208 of his films. Ekdalia builds Somnath, Singhi Park brings Bastar, and Ballygunge Cultural has gone zero-waste with Jojon.\n\nThemes come from the committees' announcements and news reports, and they can still change before the puja.\n\nWhich one is your first stop? Tell us 👇",
+    "keywords": [
+     "south kolkata durga puja 2026 themes",
+     "ekdalia evergreen theme 2026",
+     "samaj sebi uttam kumar"
+    ],
+    "tags": "#durgapuja2026 #southkolkata #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "p1",
    "type": "photo",
    "at": "15:30",
@@ -622,7 +843,7 @@
   {
    "id": "r6",
    "type": "reel",
-   "at": "17:30",
+   "at": "17:00",
    "render": "cards_reel",
    "from": "p2",
    "hook": "Navratri Day 2: Maa Brahmacharini",
@@ -720,7 +941,7 @@
   {
    "id": "s2",
    "type": "story",
-   "at": "19:00",
+   "at": "19:15",
    "bn": {
     "segs": [
      "পুজোর রাত শুরু ১৭ অক্টোবর"
@@ -740,9 +961,102 @@
    ]
   },
   {
+   "id": "p5",
+   "type": "photo",
+   "render": "editorial",
+   "at": "20:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · Ready-made nights",
+     "title": "Six pandal hopping routes, planned for you",
+     "bn": "ছ'টা রাত, ছ'টা রুট",
+     "sub": "Pick one, start walking",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/2016_Durga_Puja_Kolkata_Shobhabazar_Sarbojonin_(9).jpg",
+      "artist": "Sumit Surai",
+      "license": "CC BY-SA 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "list",
+     "kicker": "The six routes",
+     "title": "Your pujo nights, ready",
+     "bn": "আপনার পুজোর রাত",
+     "items": [
+      [
+       "North Heritage Trail: 17 pandals, 11 km, from 07:00",
+       "উত্তর কলকাতার ঐতিহ্য পরিক্রমা"
+      ],
+      [
+       "Central at Dawn: 7 pandals, 6 km, from 05:30",
+       "ভোরের মধ্য কলকাতা"
+      ],
+      [
+       "South Heavyweights: 17 pandals, 11 km, from 14:00",
+       "দক্ষিণের হেভিওয়েট"
+      ],
+      [
+       "Behala & New Alipore: 16 pandals, 18 km, from 15:00",
+       "বেহালা ও নিউ আলিপুর থিম পরিক্রমা"
+      ],
+      [
+       "Salt Lake + Lake Town: 13 pandals, 13 km, from 16:00",
+       "সল্টলেক + লেক টাউন"
+      ],
+      [
+       "The All-Nighter: 10 pandals, 11 km, from 22:00",
+       "সারা রাত: উত্তর থেকে দক্ষিণ"
+      ]
+     ]
+    },
+    {
+     "t": "step",
+     "kicker": "For the purists",
+     "num": 1,
+     "title": "North Kolkata Heritage Trail",
+     "bn": "উত্তর কলকাতার ঐতিহ্য পরিক্রমা",
+     "body": "Kumartuli, Bagbazar, the bonedi bari and Hatibagan, finishing with kabiraji at Mitra Cafe."
+    },
+    {
+     "t": "step",
+     "kicker": "Beat the queue",
+     "num": 2,
+     "title": "Central Blockbusters at Dawn",
+     "bn": "ভোরের মধ্য কলকাতা",
+     "body": "Md. Ali Park and Santosh Mitra Square before the queues wake up, then kochuri at Putiram."
+    },
+    {
+     "t": "step",
+     "kicker": "For the brave",
+     "num": 3,
+     "title": "The All-Nighter: North to South",
+     "bn": "সারা রাত: উত্তর থেকে দক্ষিণ",
+     "body": "Only the five-star pandals. Ride the Blue Line between clusters and walk till dawn."
+    },
+    {
+     "t": "end",
+     "title": "Which night are you doing?",
+     "bn": "পরিবারের গ্রুপে পাঠিয়ে দিন",
+     "ask": "Save it · send it to the family group"
+    }
+   ],
+   "caption": {
+    "en": "Kolkata Durga Puja 2026 routes: six ready-made pandal hopping nights 🪔\n\nNorth Kolkata Heritage, Central at Dawn, South Heavyweights, Behala and New Alipore, Salt Lake with Lake Town, and the All-Nighter, North to South. Each has the pandal count, the walking distance and a start time, so the family group can stop arguing and just pick one.\n\nWhich one are you doing? Tell us 👇",
+    "keywords": [
+     "kolkata durga puja route 2026",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata itinerary"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r3",
    "type": "reel",
-   "at": "21:00",
+   "at": "21:30",
    "hook": "Only Kolkata builds a world in every para",
    "bn": {
     "hook": "শুধু কলকাতাই প্রতিটা পাড়ায় একটা পৃথিবী গড়ে",
@@ -806,6 +1120,126 @@
      "ultadanga"
     ],
     "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
+   }
+  },
+  {
+   "id": "s4",
+   "type": "story",
+   "at": "22:15",
+   "bn": {
+    "segs": [
+     "আর পাঁচ দিন"
+    ]
+   },
+   "segments": [
+    [
+     "q130",
+     0,
+     6.0,
+     "5 days to Shashthi"
+    ]
+   ],
+   "music": [
+    "f22",
+    50
+   ]
+  },
+  {
+   "id": "p6",
+   "type": "photo",
+   "render": "editorial",
+   "at": "23:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Mantra with meaning",
+     "title": "The pushpanjali mantra, line by line",
+     "bn": "অঞ্জলির মন্ত্র",
+     "sub": "Learn it before Ashtami morning",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Pushpanjali_-_Maha_Ashtami_-_Durga_Puja_-_Biswamilani_Club_-_Padmapukur_Water_Treatment_Plant_Road_-_Howrah_2015-10-21_6082.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "list",
+     "kicker": "How anjali is done",
+     "title": "Seven simple steps",
+     "bn": "অঞ্জলি কীভাবে দেবেন",
+     "items": [
+      [
+       "Wash your hands, shoes off near the altar",
+       "হাত ধুয়ে নিন"
+      ],
+      [
+       "Take flowers and bel leaves from the plate",
+       "ফুল, বেলপাতা"
+      ],
+      [
+       "Hold them in cupped hands at your chest",
+       "অঞ্জলি ধরুন"
+      ],
+      [
+       "Repeat each line after the priest",
+       "পুরোহিতের সঙ্গে বলুন"
+      ],
+      [
+       "Offer them at the Goddess's feet, don't throw",
+       "পায়ে নিবেদন"
+      ],
+      [
+       "Most pujas do three rounds",
+       "তিনবার"
+      ],
+      [
+       "Fold your hands for the pranam mantra",
+       "প্রণাম"
+      ]
+     ]
+    },
+    {
+     "t": "mantra",
+     "kicker": "Verse 1 · from the Argala Stotram",
+     "script": "bn",
+     "text": "ওঁ জয়ন্তী মঙ্গলা কালী ভদ্রকালী কপালিনী।\nদুর্গা শিবা ক্ষমা ধাত্রী স্বাহা স্বধা নমোঽস্তু তে॥",
+     "translit": "Om jayanti mangala kali bhadrakali kapalini, durga shiva kshama dhatri swaha swadha namo'stu te",
+     "meaning": "Victorious One, Auspicious One, Kali, Bhadrakali, Kapalini; Durga, Benevolent, Forgiving, Sustainer of all, Swaha and Swadha: salutations to you."
+    },
+    {
+     "t": "mantra",
+     "kicker": "The offering line",
+     "script": "bn",
+     "text": "এষ সচন্দন পুষ্প বিল্বপত্রাঞ্জলি\nওঁ শ্রী শ্রী দুর্গায়ৈ নমঃ।",
+     "translit": "Esha sachandana pushpa bilwapatranjali, om shri shri durgayai namah",
+     "meaning": "This offering of flowers and bel leaves with sandalwood: Om, salutations to Sri Durga."
+    },
+    {
+     "t": "mantra",
+     "kicker": "Verse 3 · the closing pranam",
+     "script": "bn",
+     "text": "সর্বমঙ্গলমঙ্গল্যে শিবে সর্বার্থসাধিকে।\nশরণ্যে ত্র্যম্বকে গৌরি নারায়ণি নমোঽস্তু তে॥",
+     "translit": "Sarva mangala mangalye shive sarvartha sadhike, sharanye tryambake gauri narayani namo'stu te",
+     "meaning": "O auspiciousness of all that is auspicious, Benevolent One who fulfils every aim, refuge of all, three-eyed Gauri, Narayani: salutations to you."
+    },
+    {
+     "t": "end",
+     "title": "Save it for Ashtami, Monday 19 October",
+     "bn": "পুরোহিতের কথাই শেষ কথা",
+     "ask": "Save it · send it to the family group"
+    }
+   ],
+   "caption": {
+    "en": "Durga Puja pushpanjali mantra with meaning: say it right this Ashtami 🌺\n\nHow anjali is done, then the verses most Bengali pujas use, in Bengali with transliteration and meaning. Wording and order vary between pujas, so follow your priest where they differ. Maha Ashtami is Monday 19 October.\n\nSend this to the family group before Ashtami morning 💛",
+    "keywords": [
+     "pushpanjali mantra",
+     "durga puja anjali mantra meaning",
+     "ashtami anjali 2026",
+     "durga puja 2026 kolkata"
+    ],
+    "tags": "#durgapuja2026 #pushpanjali #kolkatadurgapuja"
    }
   }
  ]
