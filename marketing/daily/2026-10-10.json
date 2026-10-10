@@ -72,100 +72,66 @@
    "id": "p3",
    "type": "photo",
    "at": "15:30",
-   "render": "cards",
-   "slides": [
+   "photos": [
     {
-     "t": "cover",
-     "kicker": "Durga Puja 2026 · Central Kolkata and the north-east",
-     "title": [
-      "2026 THEMES",
-      "PANDAL BY PANDAL"
-     ],
-     "sub": "What each big pujo is building this year",
-     "pill": "Save it for pujo nights",
-     "photo": {
-      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Chaltabagan_Durga_puja_2023_02.jpg/1280px-Chaltabagan_Durga_puja_2023_02.jpg",
-      "artist": "Tarunsamanta (2023)",
-      "license": "CC BY-SA 4.0",
-      "cy": 0.42
-     }
+     "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Durga_Puja_2025_at_Chalta_Bagan_Lohapatti_Durga_puja_Committee_03.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chalta_Bagan_Lohapatti_Durga_puja_Committee_03.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "1/8 · Central Kolkata",
-     "name": "Santosh Mitra Square (Lebutala)",
-     "title": "Vande Mataram",
-     "body": "150 years of the national song and its part in the freedom struggle.",
-     "foot": "Nearest station: Sealdah · 15 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Santosh_Mitra_square_Durga_Puja_2025_06.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Santosh_Mitra_square_Durga_Puja_2025_06.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "2/8 · Central Kolkata",
-     "name": "Chaltabagan Lohapatty",
-     "title": "Nishan",
-     "body": "'The Mark': Chhattisgarh's Ramnami Samaj, who write Ram's name on their bodies.",
-     "foot": "Nearest station: Girish Park · 13 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Santosh_Mitra_square_Durga_Puja_2025_01.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Santosh_Mitra_square_Durga_Puja_2025_01.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "3/8 · Central Kolkata",
-     "name": "Taltala Sarbojanin",
-     "title": "Bangadarshan",
-     "body": "19th-century Bengal and 150 years of Vande Mataram.",
-     "foot": "Nearest station: Esplanade · 37 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_2025_at_Chorbagan_Sarbojanin_11.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_11.jpg",
+     "cx": 0.5,
+     "cy": 0.4
     },
     {
-     "t": "item",
-     "kicker": "4/8 · Central Kolkata",
-     "name": "Young Boys Club",
-     "title": "Ram Rajya",
-     "body": "An ideal, just society, in a pandal of natural materials (the 57th puja).",
-     "foot": "Nearest station: Mahatma Gandhi Road · 12 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/6/6f/ShrI_Bhumi_Sporting_Club_2022_Durga_Puja_01.jpg",
+     "artist": "Goutam1962",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:ShrI_Bhumi_Sporting_Club_2022_Durga_Puja_01.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "5/8 · Central Kolkata",
-     "name": "Chorbagan Sarbojanin",
-     "title": "Beyond Sound",
-     "body": "The puja's 91st year.",
-     "foot": "Nearest station: Mahatma Gandhi Road · 8 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Chaltabagan_Durga_puja_2023_02.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_02.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "6/8 · Central Kolkata",
-     "name": "Park Street Allen Park Puja",
-     "title": "Tandav",
-     "body": "Park Street's first-ever puja: Shiva's tandav and Parvati.",
-     "foot": "Nearest station: Rabindra Sadan · 36 min walk"
-    },
-    {
-     "t": "item",
-     "kicker": "7/8 · Lake Town",
-     "name": "Sreebhumi Sporting Club",
-     "title": "Hawa Mahal",
-     "body": "A replica of Jaipur's Hawa Mahal.",
-     "foot": "Nearest station: City Centre · 38 min walk"
-    },
-    {
-     "t": "item",
-     "kicker": "8/8 · Salt Lake",
-     "name": "FD Block Salt Lake",
-     "title": "Gond art",
-     "body": "A walk through the world of Gond tribal art, as a large 3D installation.",
-     "foot": "Nearest station: City Centre · 6 min walk"
-    },
-    {
-     "t": "end",
-     "title": [
-      "SEND THIS",
-      "TO YOUR PUJO GROUP"
-     ],
-     "sub": "Walking routes, Metro stops and live quiet hours for every pandal: link in bio",
-     "pill": "Comment PUJO for the routes"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/4/45/Durga_Puja_2025_at_Chorbagan_Sarbojanin_06.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_06.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     }
    ],
    "caption": {
-    "en": "Durga Puja 2026 themes: Santosh Mitra Square, Chaltabagan, Sreebhumi and more, pandal by pandal 🎨\n\nSantosh Mitra Square marks 150 years of Vande Mataram. Chaltabagan's Nishan is about Chhattisgarh's Ramnami Samaj. Sreebhumi builds Jaipur's Hawa Mahal, Park Street gets its first-ever puja, and FD Block goes 3D with Gond art. Eight themes, each with the nearest station and the walk.\n\nSend this to the friend who's planning your pujo nights.",
+    "en": "Durga Puja 2026 themes in Kolkata: Santosh Mitra Square, Chaltabagan, Sreebhumi and more 🎨\n\nThese frames are from the same pujos in the last few years. This year Santosh Mitra Square marks 150 years of Vande Mataram, Chaltabagan Lohapatty's \"Nishan\" is about Chhattisgarh's Ramnami Samaj, Taltala does Bangadarshan, Young Boys Club builds \"Ram Rajya\" from natural materials, Chorbagan turns 91 with \"Beyond Sound\", Park Street gets its first-ever puja, Sreebhumi builds Jaipur's Hawa Mahal and FD Block goes 3D with Gond art.\n\nEvery one of them, with the walk and the nearest Metro, is in the free guide (link in bio).\n\nSend this to the friend who's planning your pujo nights.",
     "keywords": [
      "durga puja 2026 theme",
      "santosh mitra square 2026",
@@ -207,21 +173,69 @@
    "id": "r1",
    "type": "reel",
    "at": "18:30",
-   "render": "route",
-   "zone": "north",
-   "hook": "17 pandals. 11.3 km. One night.",
-   "caption": {
-    "en": "North Kolkata pandal hopping route for Durga Puja 2026: 17 pandals, 11.3 km, one night 🚶\n\nStart at Sovabazar Metro. Kumartuli, Ahiritola, Bagbazar Sarbojanin, Sovabazar Rajbari, then east to Hatibagan and Telengabagan: 17 pujos, about 11 km and 16,500 steps, in the order you'd actually walk them.\n\nMahalaya is today. Eight nights to Shashthi.\n\nComment \"PUJO\" and we'll DM you every route.",
-    "keywords": [
-     "north kolkata pandals",
-     "pandal hopping route",
-     "kumartuli park",
-     "ahiritola",
-     "hatibagan durga puja",
-     "sovabazar metro",
-     "durga puja 2026"
+   "hook": "You can't explain these nights to anyone outside Kolkata",
+   "bn": {
+    "hook": "এই রাতগুলো কলকাতার বাইরে কাউকে বোঝানো যায় না",
+    "segs": [
+     "",
+     "",
+     "",
+     "",
+     ""
     ],
-    "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
+    "end": "আর ৭ দিন। কোন রাতটা আপনার?"
+   },
+   "segments": [
+    [
+     "f16",
+     8,
+     3.4,
+     ""
+    ],
+    [
+     "f29",
+     1,
+     3.0,
+     ""
+    ],
+    [
+     "f30",
+     1,
+     3.0,
+     ""
+    ],
+    [
+     "f00",
+     4,
+     3.0,
+     ""
+    ],
+    [
+     "f26",
+     3,
+     3.2,
+     ""
+    ]
+   ],
+   "end": [
+    "7 nights to go",
+    "Which night is yours?"
+   ],
+   "music": [
+    "f23",
+    30
+   ],
+   "caption": {
+    "en": "Kolkata Durga Puja nights, seven days from now 🪔\n\nThe bridge lit up, the crowds, the dhak, the last sindoor of Dashami. Mahalaya was this morning; Shashthi is a week away.\n\nEvery pandal route, north to south, is in the free guide (link in bio).\n\nWhich night is yours: Saptami, Ashtami or Navami?",
+    "keywords": [
+     "kolkata durga puja",
+     "durga puja 2026",
+     "pujo nights",
+     "pandal hopping",
+     "kolkata at night",
+     "howrah bridge"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
    }
   },
   {
@@ -326,11 +340,62 @@
    "id": "r3",
    "type": "reel",
    "at": "21:00",
-   "render": "cards_reel",
-   "from": "p3",
-   "hook": "Sreebhumi, Santosh Mitra Square: 2026 themes",
+   "hook": "Kolkata's 2026 themes before anyone sees them",
+   "bn": {
+    "hook": "এবারের থিম, প্যান্ডেল খোলার আগেই",
+    "segs": [
+     "",
+     "সন্তোষ মিত্র স্কোয়ার · বন্দে মাতরম",
+     "চালতাবাগান · নিশান",
+     "চোরবাগান · ৯১ বছর",
+     "শ্রীভূমি · হাওয়া মহল"
+    ],
+    "end": "কোন থিমটা আগে দেখবেন?"
+   },
+   "segments": [
+    [
+     "ph-smsq-chand",
+     0,
+     3.2,
+     "",
+     0.5,
+     0.4
+    ],
+    [
+     "ph-smsq",
+     0,
+     3.0,
+     "Santosh Mitra Square: Vande Mataram"
+    ],
+    [
+     "ph-chalta",
+     0,
+     3.0,
+     "Chaltabagan: Nishan"
+    ],
+    [
+     "ph-chorbagan",
+     0,
+     3.0,
+     "Chorbagan: 91 years"
+    ],
+    [
+     "ph-sreebhumi",
+     0,
+     3.0,
+     "Sreebhumi: Hawa Mahal"
+    ]
+   ],
+   "end": [
+    "Which theme first?",
+    "Photos: earlier years. Themes: 2026"
+   ],
+   "music": [
+    "f23",
+    12
+   ],
    "caption": {
-    "en": "Durga Puja 2026 themes: Santosh Mitra Square, Chaltabagan, Sreebhumi and more, in 30 seconds 🎨\n\nVande Mataram at Lebutala, Jaipur's Hawa Mahal at Sreebhumi, Gond art at FD Block, Park Street's first-ever puja. Eight themes with the nearest station.\n\nSend this to your pujo group.",
+    "en": "Durga Puja 2026 themes in Kolkata: Santosh Mitra Square, Chaltabagan, Sreebhumi and more 🎨\n\nVande Mataram at Lebutala, Ramnami Samaj at Chaltabagan, Chorbagan's 91st year and Jaipur's Hawa Mahal at Sreebhumi. The photos are from earlier years; the themes are this year's.\n\nSend this to your pujo group.",
     "keywords": [
      "durga puja 2026 theme",
      "santosh mitra square 2026",
@@ -351,6 +416,62 @@
    "label": "Tarpan at Jagannath Ghat on Mahalaya",
    "w": 1920,
    "h": 1080
+  },
+  "ph-chalta": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Durga_Puja_2025_at_Chalta_Bagan_Lohapatti_Durga_puja_Committee_03.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "chalta",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chalta_Bagan_Lohapatti_Durga_puja_Committee_03.jpg"
+  },
+  "ph-smsq-chand": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Santosh_Mitra_square_Durga_Puja_2025_06.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "smsq-chand",
+   "page": "https://commons.wikimedia.org/wiki/File:Santosh_Mitra_square_Durga_Puja_2025_06.jpg"
+  },
+  "ph-smsq": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Santosh_Mitra_square_Durga_Puja_2025_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "smsq",
+   "page": "https://commons.wikimedia.org/wiki/File:Santosh_Mitra_square_Durga_Puja_2025_01.jpg"
+  },
+  "ph-chorbagan": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_2025_at_Chorbagan_Sarbojanin_11.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "chorbagan",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_11.jpg"
+  },
+  "ph-sreebhumi": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/ShrI_Bhumi_Sporting_Club_2022_Durga_Puja_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "sreebhumi",
+   "page": "https://commons.wikimedia.org/wiki/File:ShrI_Bhumi_Sporting_Club_2022_Durga_Puja_01.jpg"
+  },
+  "ph-chalta23": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Chaltabagan_Durga_puja_2023_02.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "chalta23",
+   "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_02.jpg"
+  },
+  "ph-chorbagan-lotus": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Durga_Puja_2025_at_Chorbagan_Sarbojanin_06.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "chorbagan-lotus",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_06.jpg"
   }
  }
 }
