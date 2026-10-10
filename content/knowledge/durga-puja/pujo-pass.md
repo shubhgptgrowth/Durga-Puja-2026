@@ -62,6 +62,7 @@ The short answer: **buy the Forum for Durgotsab Pujor Passport (₹999)** unless
 | Dashami | Not covered | Not covered |
 | Entries | Not stated on the listing | One entry per pandal |
 | Getting it | Collect at RBR Skill Academy, Sealdah, or home delivery by Rapido | In person only, 12 to 14 October, 12 noon to 8 pm, at Binodini Theatre (Sovabazar) or 66 Pally (Kalighat) |
+| Helpline | 62910 30338 | See the BookMyShow listing |
 
 For 2026 the main puja days run from Shashthi, Saturday 17 October, to Bijoya Dashami, Wednesday 21 October; see the full [2026 dates](/guide/dates/). Both passes start on 15 October, so you can use them on Chaturthi and Panchami too, when many big pandals are already open and the crowds are thinner.
 
