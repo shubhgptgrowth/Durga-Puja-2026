@@ -61,11 +61,26 @@ def load_help(path=HELP):
     return {k: d.get(k, []) for k in HELP_MAX_M}
 
 
+# Not where you'd take someone hurt in a crowd: specialist centres (OpenStreetMap tags them all amenity=hospital).
+SPECIALIST = re.compile(r"(?i)matern|\beye\b|netra|ophthalm|dental|diagnostic|dialysis|skin|\bent\b|veterinar|animal")
+
+
+def _hospital_ok(h):
+    name = h.get("name:en") or h.get("name") or ""
+    return bool(name) and h.get("emergency") != "no" and not SPECIALIST.search(name)
+
+
 def help_near(pt, places):
-    """The nearest place of each kind within reach: {kind: {name, lat, lng, distance_m, walk_min}}."""
+    """The nearest place of each kind within reach: {kind: {name, lat, lng, distance_m, walk_min}}. For hospitals, the
+    nearest one with an emergency department wins if it's within reach; otherwise the nearest general hospital."""
     out = {}
     for kind, max_m in HELP_MAX_M.items():
-        best = min(((haversine_m(pt, (h["lat"], h["lng"])), h) for h in places.get(kind, [])), key=lambda x: x[0], default=None)
+        rows = places.get(kind, [])
+        if kind == "hospitals":
+            rows = [h for h in rows if _hospital_ok(h)]
+            er = [h for h in rows if h.get("emergency") == "yes" and haversine_m(pt, (h["lat"], h["lng"])) <= max_m]
+            rows = er or rows
+        best = min(((haversine_m(pt, (h["lat"], h["lng"])), h) for h in rows), key=lambda x: x[0], default=None)
         if best and best[0] <= max_m:
             h = best[1]
             out[kind] = {"name": h.get("name:en") or h.get("name") or "", "lat": h["lat"], "lng": h["lng"],

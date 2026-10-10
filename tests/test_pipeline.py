@@ -231,3 +231,14 @@ class AwardsPanjikaHelpTests(unittest.TestCase):
         self.assertNotIn("hospitals", h)   # beyond 3 km
         self.assertEqual(h["police"]["name"], "Thana")
         self.assertLess(h["toilets"]["distance_m"], 100)
+
+    def test_help_near_prefers_an_emergency_hospital_and_skips_specialists(self):
+        from pipeline.enrich import help_near
+        pt = (22.5726, 88.3639)
+        hosp = [{"lat": 22.5730, "lng": 88.3640, "name": "North Maternity Home"},
+                {"lat": 22.5735, "lng": 88.3641, "name": "City Eye Hospital"},
+                {"lat": 22.5740, "lng": 88.3645, "name": "Para Nursing Home"},
+                {"lat": 22.5800, "lng": 88.3700, "name": "Medical College Hospital", "emergency": "yes"}]
+        self.assertEqual(help_near(pt, {"hospitals": hosp})["hospitals"]["name"], "Medical College Hospital")
+        self.assertTrue(help_near(pt, {"hospitals": hosp})["hospitals"]["emergency"])
+        self.assertEqual(help_near(pt, {"hospitals": hosp[:3]})["hospitals"]["name"], "Para Nursing Home")   # no ER in reach
