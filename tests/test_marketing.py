@@ -295,6 +295,22 @@ class RedesignTest(unittest.TestCase):
         self.assertGreater(build2.ease(0.5), build2.ease(0.1))
         self.assertEqual((build2.ease(0), build2.ease(1)), (0, 1))
 
+    def test_cinematic_look_conforms_to_24fps_and_frames_small_footage(self):
+        from marketing.reels import build2
+        self.assertEqual(build2.conform(30), 0.8)  # every source frame becomes one 24 fps frame
+        self.assertEqual(build2.conform(60), 0.4)
+        self.assertEqual(build2.conform(25), 1.0)
+        self.assertTrue(build2.cine({}) and not build2.cine({"style": "classic"}))
+        fx = {"hd": {"w": 1920, "h": 1080}, "uhd": {"w": 3840, "h": 2160}, "tall": {"w": 1080, "h": 1920}}
+        src = lambda d, sid: f"{sid}.mp4"
+        real = build2.src_file
+        build2.src_file = src
+        try:
+            self.assertEqual(build2.frame_for({"segments": [["uhd", 0, 3, ""], ["tall", 0, 3, ""]]}, fx, "."), "full")
+            self.assertEqual(build2.frame_for({"segments": [["uhd", 0, 3, ""], ["hd", 0, 3, ""]]}, fx, "."), "window")
+        finally:
+            build2.src_file = real
+
     @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "needs Pillow")
     def test_photo_post_is_4x5_and_credits_every_photographer(self):
         import tempfile

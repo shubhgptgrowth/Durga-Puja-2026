@@ -54,6 +54,23 @@ def stamp(im, line):
     d.text((x, y), line, font=f, fill=(255, 255, 255, 215))
 
 
+def grade(im):
+    """The photo half of the house look, matching the reels: a gentle S-curve with lifted blacks, warm highlights and
+    cool shadows, and a soft vignette. No grain on stills."""
+    from PIL import Image
+    lut = []
+    for c in range(3):
+        for v in range(256):
+            x = v / 255
+            y = 0.035 + 0.925 * (x + 0.06 * (x - 0.5) * (1 - abs(2 * x - 1)) * 2)  # S-curve, blacks at ~9, whites at ~245
+            hi, lo = x * x, (1 - x) ** 2
+            y += (0.022 * hi - 0.012 * lo, 0.006 * hi, -0.024 * hi + 0.02 * lo)[c]
+            lut.append(max(0, min(255, round(y * 255))))
+    im = im.point(lut)
+    mask = Image.radial_gradient("L").resize(im.size, Image.BILINEAR).point(lambda m: 255 - int(0.16 * max(0, m - 90) * 255 / 165))
+    return Image.composite(im, Image.new("RGB", im.size, (0, 0, 0)), mask)
+
+
 def crop(src, dest, cx=0.5, cy=0.45, credit=None):
     from PIL import Image, ImageFilter, ImageOps
     im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
@@ -62,7 +79,7 @@ def crop(src, dest, cx=0.5, cy=0.45, credit=None):
     x = min(max(0, round(im.width * cx - w / 2)), im.width - w)
     y = min(max(0, round(im.height * cy - h / 2)), im.height - h)
     im = im.crop((x, y, x + w, y + h)).resize((PW, PH), Image.LANCZOS)
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=40, threshold=2))
+    im = grade(im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=40, threshold=2)))
     if credit:
         stamp(im, credit)
     im.save(dest, quality=93, optimize=True, progressive=True, subsampling=0)
@@ -108,8 +125,8 @@ def build(it, fid, src_dir, out, download):
             download(p["src"], src)
         name = f"{fid}-{n}.jpg"
         scale = crop(src, Path(out) / name, p.get("cx", 0.5), p.get("cy", 0.45), credit_line(p))
-        if scale < 0.75:
-            print(f"warning: {fid} photo {n} is upscaled {1 / scale:.1f}x, pick a bigger original", flush=True)
+        if scale < 0.8:  # a blown-up photo looks soft next to everything else: pick a bigger original
+            raise SystemExit(f"{fid} photo {n} would be upscaled {1 / scale:.1f}x: use an original of at least {PW}x{PH}")
         names.append(name)
     cap = caption(it)
     (Path(out) / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")

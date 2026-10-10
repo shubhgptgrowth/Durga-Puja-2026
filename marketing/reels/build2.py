@@ -24,6 +24,19 @@ bnfont = lambda name, s: ImageFont.truetype(os.path.join(FONTS, name), s, layout
 RED, GOLD, CREAM, MAROON, INK = (179, 18, 46), (232, 176, 75), (255, 244, 224), (122, 16, 32), (58, 34, 22)
 GRADE = "eq=contrast=1.06:saturation=1.12:gamma=0.98,unsharp=5:5:0.4"
 
+# The cinematic look (every reel and story from 10 Oct; "style": "classic" keeps the old one): a filmic grade (teal
+# shadows, warm highlights, soft S-curve with lifted blacks), a light vignette and fine grain, 24 fps with footage
+# conformed frame for frame (30 fps plays at 0.8x, 50/60 fps as real slow motion), hard cuts, and quiet serif type
+# with no outlines, boxes or buttons. Footage too small for a full 9:16 crop sits in a 4:5 window on black instead
+# of being blown up: 4:5 is also what the feed shows of a reel.
+CINE_FPS = 24
+CINE_GRADE = ("unsharp=5:5:0.35,colorbalance=rs=-0.05:gs=-0.01:bs=0.05:rm=0.02:bm=-0.02:rh=0.06:gh=0.02:bh=-0.06,"
+              "curves=master='0/0.035 0.25/0.22 0.5/0.5 0.78/0.82 1/0.96',eq=saturation=1.05,vignette=angle=PI/5,"
+              "noise=alls=5:allf=t")
+WIN_W, WIN_H, WIN_Y = 1080, 1350, 400  # the 4:5 window: text goes in the 400 px bar above it, clear of the Reels
+# header and of the caption and buttons Instagram lays over the bottom fifth
+CINE_SERIF, CINE_BN = "Marcellus-Regular.ttf", "TiroBangla-Regular.ttf"
+
 
 def run(*a):
     r = subprocess.run(a, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -180,6 +193,137 @@ def subtitle_png(path, bn, en, hook=None, end=None):
     im.save(path)
 
 
+def cine(reel):
+    return reel.get("style", "cine") == "cine"
+
+
+def cfont(name, size, bn=False):
+    """The cinematic faces (fonts/ from the workflow), falling back to the house faces when they are missing."""
+    try:
+        return ImageFont.truetype(os.path.join(FONTS, name), size, layout_engine=ImageFont.Layout.RAQM) if bn else \
+            ImageFont.truetype(os.path.join(FONTS, name), size)
+    except OSError:
+        return bnfont("HindSiliguri-Bold.ttf", size) if bn else font("Medium", size)
+
+
+def spaced(d, xy_c, text, f, fill, track=0.12, shadow=True, layer=None):
+    """Letter-spaced caps centred on x: the title-card look."""
+    text = plain(text).upper()
+    gap = f.size * track
+    w = sum(d.textlength(ch, font=f) for ch in text) + gap * (len(text) - 1)
+    x, y = xy_c[0] - w / 2, xy_c[1]
+    for ch in text:
+        if shadow and layer is not None:
+            layer.text((x + 2, y + 3), ch, font=f, fill=(0, 0, 0, 200))
+        d.text((x, y), ch, font=f, fill=fill)
+        x += d.textlength(ch, font=f) + gap
+    return w
+
+
+def cine_png(path, frame, hook=None, line=None, end=None):
+    """Text for one cinematic shot: the hook (Bengali over English caps), a quiet subtitle, or the closing lines.
+    Soft shadows only. Everything stays between y 120 and 1400, out from under Instagram's own overlays: in the
+    window frame it sits in the bar above the picture."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d, sd = ImageDraw.Draw(im), ImageDraw.Draw(sh)
+    win = frame == "window"
+
+    def bn_lines(text, f, y, n, step):
+        for ln in wrap(d, text, f, W - 150)[:n]:
+            x = (W - d.textlength(ln, font=f)) / 2
+            sd.text((x + 2, y + 3), ln, font=f, fill=(0, 0, 0, 220))
+            d.text((x, y), ln, font=f, fill=(255, 250, 240, 255))
+            y += step
+        return y
+
+    if end:
+        if not win:  # darken the middle of the shot so the closing lines read on any footage
+            for y in range(H // 4, H):
+                sd.line((0, y, W, y), fill=(0, 0, 0, int(170 * min(1, (y - H / 4) / (H / 3)) ** 0.9)))
+        fb = cfont(CINE_BN, 62 if win else 74, bn=True)
+        y = bn_lines(end[0], fb, 120 if win else 960, 2, 80 if win else 96)
+        if end[1]:
+            spaced(d, (W / 2, y + 8), end[1], cfont(CINE_SERIF, 28), (232, 196, 120, 255), track=0.14, layer=sd); y += 52
+        spaced(d, (W / 2, y + (14 if win else 40)), "Free pandal guide  ·  link in bio", cfont(CINE_SERIF, 26 if win else 30),
+               (255, 255, 255, 235), track=0.16, layer=sd)
+    elif hook:
+        fb = cfont(CINE_BN, 68 if win else 96, bn=True)
+        lines = wrap(d, hook[0], fb, W - 150)[:2] if hook[0] else []
+        step = int(fb.size * 1.2)
+        y = (150 if len(lines) > 1 else 200) if win else 1060 - (len(lines) - 1) * step // 2
+        y = bn_lines(hook[0], fb, y, 2, step) if lines else y
+        if hook[1]:
+            fe = cfont(CINE_SERIF, 28 if win else 34)
+            for ln in wrap(d, plain(hook[1]).upper(), fe, (W - 200) / 1.15)[:1 if win else 2]:
+                spaced(d, (W / 2, y + 12), ln, fe, (236, 200, 128, 255), track=0.12, layer=sd); y += 50
+    elif line and (line[0] or line[1]):
+        y = 210 if win else 1250
+        if line[0]:
+            y = bn_lines(line[0], cfont(CINE_BN, 52, bn=True), y, 2, 70)
+        if line[1]:
+            fe = cfont(CINE_SERIF, 28)
+            for ln in wrap(d, plain(line[1]).upper(), fe, (W - 220) / 1.12)[:1 if win else 2]:
+                spaced(d, (W / 2, y + 10), ln, fe, (236, 210, 160, 240), track=0.1, layer=sd); y += 42
+    out = Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(6)), im)
+    out.save(path)
+
+
+def cine_end_png(path, bn, en, credits):
+    """Closing card: black, পুজো পরিক্রমা in the serif Bengali face, one line, the guide and the credits, small."""
+    im = Image.new("RGB", (W, H), (8, 6, 6)); d = ImageDraw.Draw(im)
+    f = cfont(CINE_BN, 84, bn=True)
+    t = "পুজো পরিক্রমা"
+    d.text(((W - d.textlength(t, font=f)) / 2, 560), t, font=f, fill=(240, 222, 186))
+    d.line((W / 2 - 60, 710, W / 2 + 60, 710), fill=(178, 34, 52), width=3)
+    y = 770
+    fb = cfont(CINE_BN, 50, bn=True)
+    for ln in wrap(d, bn or "", fb, W - 200)[:2]:
+        d.text(((W - d.textlength(ln, font=fb)) / 2, y), ln, font=fb, fill=(255, 250, 240)); y += 70
+    if en:
+        spaced(d, (W / 2, y + 16), en, cfont(CINE_SERIF, 28), (220, 200, 160), track=0.12); y += 60
+    spaced(d, (W / 2, y + 70), "Free pandal guide  ·  link in bio", cfont(CINE_SERIF, 30), (255, 255, 255), track=0.16)
+    spaced(d, (W / 2, y + 118), HANDLE.lstrip("@"), cfont(CINE_SERIF, 26), (200, 180, 140), track=0.3)
+    fc = cfont(CINE_SERIF, 20)
+    yy = 1400
+    for ln in wrap(d, credits, fc, W - 200)[:7]:
+        d.text(((W - d.textlength(ln, font=fc)) / 2, yy), ln, font=fc, fill=(150, 140, 125)); yy += 28
+    im.save(path)
+
+
+def src_fps(path):
+    r = run("ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=avg_frame_rate", "-of", "csv=p=0", path).strip()
+    try:
+        a, b = (r.split("/") + ["1"])[:2]
+        return float(a) / float(b or 1)
+    except (ValueError, ZeroDivisionError):
+        return 0.0
+
+
+def conform(fps):
+    """Playback speed that maps each source frame to one 24 fps frame: 30 fps → 0.8x, 60 → 0.4x, 50 → 0.48x. Footage
+    at 25 fps or less keeps its speed."""
+    return round(CINE_FPS / fps, 4) if fps >= 28 else 1.0
+
+
+def frame_for(reel, footage, src_dir):
+    """"full" when every moving shot is big enough for a 9:16 crop without blowing it up, else the 4:5 "window"."""
+    if reel.get("frame"):
+        return reel["frame"]
+    for seg in reel["segments"] + ([reel["end_clip"]] if reel.get("end_clip") else []):
+        e = footage.get(seg[0]) or {}
+        path = src_file(src_dir, seg[0])
+        if e.get("source") == "AI" or path.lower().endswith((".jpg", ".jpeg", ".png")):
+            continue  # stills are cut from big originals; AI clips are made at frame size
+        w, h = e.get("w", 0), e.get("h", 0)
+        if not w or not h:
+            w, h = map(int, run("ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                                "-of", "csv=p=0", path).strip().split(",")[:2])
+        if min(w * 16 / 9, h) < 1700:  # a 9:16 crop would come from under ~1700 px of height: blown up, soft
+            return "window"
+    return "full"
+
+
 def caption_png(path, text, hook=False):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     grad = Image.new("L", (1, 760))
@@ -246,15 +390,15 @@ def ease(u):
     return u * u * (3 - 2 * u)  # smoothstep: the move starts and ends at rest
 
 
-def still_motion(jpg, out, secs, i):
+def still_motion(jpg, out, secs, i, fps=FPS):
     """A slow, sub-pixel push-in on a photo, drawn frame by frame (ffmpeg's crop/zoompan move in whole pixels, which
     reads as a judder at this speed). Alternate shots drift left or right a little as they push in."""
     im = Image.open(jpg).convert("RGB")
-    n = max(1, round(secs * FPS))
+    n = max(1, round(secs * fps))
     s0, s1 = min(im.width / W, im.height / H, 1.10), 1.0  # window scale, source px per frame px
     d = 1 if i % 2 else -1
     p = subprocess.Popen(["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-                          "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "fast", "-crf", "12",
+                          "-r", str(fps), "-i", "-", "-c:v", "libx264", "-preset", "fast", "-crf", "12",
                           "-pix_fmt", "yuv420p", out], stdin=subprocess.PIPE)
     for k in range(n):
         u = ease(k / max(1, n - 1))
@@ -300,6 +444,8 @@ def segment(src_dir, footage, i, seg, reel, tmp):
     png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
     hook = i == 0 and bool(reel.get("hook"))
     bn = reel.get("bn")
+    if cine(reel):
+        return cine_segment(src_dir, footage, i, seg, reel, tmp)
     if reel.get("vo_files") is not None:  # voiceover reel: subtitles of what is said
         vo = reel["vo"]
         if seg is reel.get("_end_seg"):
@@ -332,6 +478,64 @@ def segment(src_dir, footage, i, seg, reel, tmp):
         a = "[2:a]anull[ao]"
     run(*args, "-filter_complex", f"{v};{a}", "-map", "[vo]", "-map", "[ao]", "-t", str(secs),
         "-c:v", "libx264", "-preset", "medium", "-crf", "14", "-c:a", "aac", "-b:a", "192k", out)
+    return out, secs
+
+
+def cine_segment(src_dir, footage, i, seg, reel, tmp):
+    """One shot in the cinematic look: steadied, conformed to 24 fps (slow motion where the source allows), cut to
+    the reel's frame, graded, with its text fading in and out."""
+    sid, start, secs, text, *rest = seg
+    cx = rest[0] if rest else 0.5
+    cy = rest[1] if len(rest) > 1 else 0.45
+    path = src_file(src_dir, sid)
+    png, out = f"{tmp}/{reel['id']}_{i}.png", f"{tmp}/{reel['id']}_{i}.mp4"
+    frame = reel.get("_frame") or "full"
+    bn, vo = reel.get("bn"), reel.get("vo")
+    is_end = seg is reel.get("_end_seg")
+    hook = i == 0 and bool(reel.get("hook")) and not is_end
+    if is_end:
+        cine_png(png, frame, end=(bn["end"] if bn else reel["end"][0], reel["end"][0] if bn else reel["end"][1]))
+    elif hook:
+        cine_png(png, frame, hook=((bn or {}).get("hook") or (vo["lines"][0] if vo else ""), reel["hook"]))
+    elif vo:
+        cine_png(png, frame, line=(vo["lines"][i], (vo.get("en") or [""] * len(vo["lines"]))[i] or text))
+    else:
+        cine_png(png, frame, line=((bn or {}).get("segs", [""] * (i + 1))[i] if bn else "", text))
+    fw, fh = (WIN_W, WIN_H) if frame == "window" else (W, H)
+    speed, aud_ok = 1.0, True
+    if path.lower().endswith((".jpg", ".jpeg", ".png")):
+        jpg = f"{tmp}/{reel['id']}_{i}_still.jpg"
+        still(path, jpg, cx, cy)
+        path = still_motion(jpg, f"{tmp}/{reel['id']}_{i}_move.mp4", secs, i, fps=CINE_FPS)
+        fit = f"scale={fw}:{fh}:force_original_aspect_ratio=increase:flags=lanczos,crop={fw}:{fh}"
+        args = ["ffmpeg", "-y", "-t", f"{secs:.3f}", "-i", path]
+    else:
+        if (footage.get(sid) or {}).get("source") != "AI":
+            speed = reel.get("speed") or conform(src_fps(path))
+        src_secs = round(secs * speed + 0.15, 3)
+        if (footage.get(sid) or {}).get("source") != "AI":
+            path = steady(path, start, src_secs, f"{tmp}/{reel['id']}_{i}_steady.mp4", f"{tmp}/{reel['id']}_{i}.trf")
+            start = 0
+        aud_ok = speed >= 0.75
+        fit = (f"setpts=PTS/{speed},scale={fw}:{fh}:force_original_aspect_ratio=increase:flags=lanczos,"
+               f"crop={fw}:{fh}:'max(0,min(iw-{fw},iw*{cx}-{fw}/2))':'max(0,min(ih-{fh},ih*{cy}-{fh}/2))',"
+               f"tpad=stop_mode=clone:stop_duration=4")
+        args = ["ffmpeg", "-y", "-ss", str(start), "-t", f"{src_secs:.3f}", "-i", path]
+    args += ["-loop", "1", "-t", f"{secs:.3f}", "-i", png]
+    fade_in = "" if hook else f",fade=t=in:st=0.25:d=0.5:alpha=1"
+    v = (f"[0:v]{fit},fps={CINE_FPS},setsar=1,{CINE_GRADE}[pic];"
+         f"color=c=0x080606:s={W}x{H}:r={CINE_FPS}:d={secs:.3f}[bg];"
+         f"[bg][pic]overlay=0:{WIN_Y if frame == 'window' else 0}:shortest=1[b];"
+         f"[1:v]format=rgba{fade_in},fade=t=out:st={max(0.1, secs - 0.45):.2f}:d=0.35:alpha=1[t];"
+         f"[b][t]overlay=0:0,format=yuv420p[vo]")
+    if aud_ok and has_audio(path):
+        tempo = f",atempo={speed}" if speed != 1.0 else ""
+        a = f"[0:a]aresample=48000,aformat=channel_layouts=stereo{tempo},apad[ao]"
+    else:
+        args += ["-f", "lavfi", "-t", f"{secs:.3f}", "-i", "anullsrc=r=48000:cl=stereo"]
+        a = "[2:a]anull[ao]"
+    run(*args, "-filter_complex", f"{v};{a}", "-map", "[vo]", "-map", "[ao]", "-t", f"{secs:.3f}",
+        "-c:v", "libx264", "-preset", "medium", "-crf", "14", "-r", str(CINE_FPS), "-c:a", "aac", "-b:a", "192k", out)
     return out, secs
 
 
@@ -415,7 +619,7 @@ def build_vo(reel, footage, src_dir, out_dir, tmp):
     fc.append(f"[nat]{mix}amix=inputs={len(vo) + 1}:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[aout]")
     run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[aout]", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high", "-pix_fmt", "yuv420p",
-        "-maxrate", "14M", "-bufsize", "28M", "-r", str(FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+        "-maxrate", "14M", "-bufsize", "28M", "-r", str(CINE_FPS if cine(reel) else FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
         "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
     write_caption(reel, footage, out_dir)
     return total
@@ -432,9 +636,49 @@ def write_caption(reel, footage, out_dir):
             f.write(compose(c, extra) + "\n")
 
 
+def build_cine(reel, footage, src_dir, out_dir, tmp):
+    """Cinematic reel: hard cuts, the music bed over the shots' own sound, a quiet closing card that fades up from
+    black (no end card on video stories)."""
+    parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
+    if reel.get("end"):
+        endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"
+        bn = reel.get("bn")
+        cine_end_png(endp, bn["end"] if bn else reel["end"][0], reel["end"][0] if bn else reel["end"][1],
+                     credits_for(reel, footage))
+        run("ffmpeg", "-y", "-loop", "1", "-t", "3.4", "-i", endp, "-f", "lavfi", "-t", "3.4", "-i", "anullsrc=r=48000:cl=stereo",
+            "-vf", f"fps={CINE_FPS},fade=t=in:st=0:d=0.6,format=yuv420p", "-c:v", "libx264", "-preset", "medium", "-crf", "16",
+            "-c:a", "aac", "-shortest", endv)
+        parts.append((endv, 3.4))
+    ins = []
+    for p_, _ in parts:
+        ins += ["-i", p_]
+    n = len(parts)
+    total = sum(d for _, d in parts)
+    fc = ["".join(f"[{k}:v][{k}:a]" for k in range(n)) + f"concat=n={n}:v=1:a=1[v][nat0]", "[nat0]volume=0.45[nat]"]
+    m = reel.get("music")
+    if m:
+        ins += ["-ss", str(m[1]), "-t", f"{total:.2f}", "-i", src_file(src_dir, m[0])]
+        fc.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.4,"
+                  f"afade=t=out:st={total - 2.2:.2f}:d=2.2,volume=0.95[mus];[mus][nat]amix=inputs=2:duration=first:normalize=0[mx]")
+        last = "[mx]"
+    else:
+        last = "[nat]"
+    fc.append(f"{last}loudnorm=I=-14:TP=-1.5:LRA=11[aout]")
+    run("ffmpeg", "-y", *ins, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[aout]", "-t", f"{total:.2f}",
+        "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high", "-pix_fmt", "yuv420p",
+        "-maxrate", "14M", "-bufsize", "28M", "-r", str(CINE_FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+        "-movflags", "+faststart", f"{out_dir}/{reel['id']}.mp4")
+    write_caption(reel, footage, out_dir)
+    return total
+
+
 def build(reel, footage, src_dir, out_dir, tmp):
+    if cine(reel):
+        reel = dict(reel, _frame=frame_for(reel, footage, src_dir))
     if reel.get("vo_files") is not None:
         return build_vo(reel, footage, src_dir, out_dir, tmp)
+    if cine(reel):
+        return build_cine(reel, footage, src_dir, out_dir, tmp)
     parts = [segment(src_dir, footage, i, s, reel, tmp) for i, s in enumerate(reel["segments"])]
     if reel.get("end"):  # video stories have no end card
         endp, endv = f"{tmp}/{reel['id']}_end.png", f"{tmp}/{reel['id']}_end.mp4"

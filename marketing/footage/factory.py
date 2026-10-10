@@ -127,10 +127,16 @@ def speak(text, engine, src_dir):
     return str(dest)
 
 
+PHOTO_OR_FILM_FROM = "2026-10-13"  # from this day every post is a photograph or footage (no text cards, maps or slides)
+TEXT_RENDERS = ("cards", "routes", "cards_reel", "route")
+
+
 def check(plan, idx):
     """Every clip exists and every cut fits inside its clip, before anything is downloaded."""
     errs = []
     for it in plan["items"]:
+        if plan.get("date", "") >= PHOTO_OR_FILM_FROM and it.get("render") in TEXT_RENDERS:
+            errs.append(f"{it['id']}: '{it['render']}' is a text/graphic post; posts are photographs or footage now")
         if it["type"] == "photo":
             errs += photo_post.check(it)
             continue
