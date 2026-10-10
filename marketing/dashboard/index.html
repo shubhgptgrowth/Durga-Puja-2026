@@ -109,6 +109,9 @@ const store = { get: (k) => { try { return localStorage.getItem(k); } catch { re
   set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch { /* private mode */ } } };
 const RANGES = [[1, 'Today'], [7, '7 days'], [14, '14 days'], [30, '30 days']];
 let key = null, days = Number(store.get('pp_dash_days')) || 14, last = null, timer = null;
+// Reel titles for the Pujo Reels table, from the app's feed (published at /data/reels.json).
+let reelTitles = {};
+fetch('../../data/reels.json').then((r) => r.json()).then((f) => { reelTitles = Object.fromEntries((f.reels || []).map((x) => [x.id, x.title || x.url])); if (last) render(last); }).catch(() => {});
 
 // The key arrives once as #key=…, is kept on this device, and is cleared from the address bar.
 const m = location.hash.match(/key=([A-Za-z0-9]+)/);
@@ -273,6 +276,13 @@ function render(d) {
   const sounds = el('section', { class: 'card c4' }, el('div', { class: 'head' }, el('h2', {}, 'Music & sounds'), el('span', { class: 'sub' }, rangeName)),
     table([{ name: 'What', key: 'name' }, { name: 'Taps', key: 'taps', num: 1 }, { name: 'People', key: 'people', num: 1 }], d.sounds.slice(0, 20)));
 
+  // Pujo Reels (app/reels.js): titles come from the live feed, so the table shows what each reel is.
+  const rl = d.reels, mins = (m) => (m >= 10 ? num(m) : m.toFixed(1));
+  const reels = el('section', { class: 'card c12' }, el('div', { class: 'head' }, el('h2', {}, 'Pujo Reels'),
+      el('span', { class: 'sub' }, `${num(rl.opens)} plays by ${num(rl.viewers)} people · ${mins(rl.minutes)} minutes watched · ${num(rl.pandalTaps)} taps through to a pandal · ${rangeName}`)),
+    rl.top.length ? table([{ name: 'Reel', key: 'title' }, { name: 'Plays', key: 'plays', num: 1 }, { name: 'Minutes', key: 'minutes', num: 1 }],
+      rl.top.map((x) => ({ ...x, title: reelTitles[x.id] || x.id }))) : el('p', { class: 'sub' }, 'No reels watched yet in this period.'));
+
   const c = d.checkins;
   app.replaceChildren(head, el('div', { class: 'grid' },
     liveCard, reachCard,
@@ -280,7 +290,7 @@ function render(d) {
     tile('c3', 'New today', num(r.newToday)),
     tile('c3', 'Check-ins at pandals', num(c.pandal), el('span', {}, `${num(c.food)} "I ate here" · ${num(c.today)} today`)),
     tile('c3', `Active in the app · ${rangeName}`, num(d.period.people), el('span', {}, `${num(d.period.events)} things done`)),
-    perDay, hourly, channels, links, todayLinks, pages, actions, places, sounds),
+    perDay, hourly, channels, links, todayLinks, pages, actions, reels, places, sounds),
     el('footer', {},
       el('p', {}, 'People are counted by device: one phone is one person. A guide-page visit counts the same as an app open. Everything here is anonymous totals; no names, phones or locations are stored.'),
       el('p', {}, 'Keep this link private. To change the key: Supabase → SQL editor → select public.rotate_dashboard_key(); then open this page with #key=<new key>.'),

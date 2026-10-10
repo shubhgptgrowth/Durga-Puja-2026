@@ -21,3 +21,5 @@ app/navratri/
 app/audio/guides/
 narration/
 narration-blocks.json
+# Pujo Reels thumbnails, saved at deploy by scripts/reels_feed.py
+app/img/reels/

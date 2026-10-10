@@ -1,0 +1,19 @@
+# Extra videos for the app's Pujo Reels feed (Moments tab and the Home strip), built at deploy by scripts/reels_feed.py.
+#
+# Every video on @pujoparikrama.guide's own Instagram grid is picked up automatically. Add a video here when you
+# repost it with Instagram's Repost button (those don't show on the grid), or for a Facebook or YouTube video.
+# Only public posts: the app embeds the post itself, credited and linked back; nothing is downloaded.
+#
+#   url      the post's link (Instagram reel/post, Facebook video, YouTube video or Short)
+#   title    one line shown under the thumbnail
+#   credit   the creator, e.g. "@handle"
+#   pandal   optional: the pandal's id in the guide (e.g. "bagbazar"); found from the title when left out
+#   added    the date you added it (newest first in the feed)
+#   sponsored = true  for a paid post (shown labelled "Sponsored")
+#
+# [[reel]]
+# url = "https://www.instagram.com/reel/XXXXXXXXXXX/"
+# title = "Bagbazar's sabeki protima, up close"
+# credit = "@creator_handle"
+# pandal = "bagbazar"
+# added = "2026-10-10"

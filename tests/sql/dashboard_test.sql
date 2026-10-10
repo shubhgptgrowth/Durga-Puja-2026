@@ -8,7 +8,11 @@ do $$ declare k text; r jsonb; begin
   assert (select count(*) from private.dashboard_access) = 1, 're-running the migration keeps one key';
   perform public.track_open('dddddddd-0000-0000-0000-000000000001', 'wa_fwd', 'wa_fwd');
   perform public.track('dddddddd-0000-0000-0000-000000000001', '[{"n": "view", "view": "home", "d": "home"},
-    {"n": "place_open", "view": "explore", "place": "t_pandal", "kind": "pandal"}]');
+    {"n": "place_open", "view": "explore", "place": "t_pandal", "kind": "pandal"},
+    {"n": "reel_open", "view": "home", "place": "t_pandal", "kind": "pandal", "d": "ig1:tile"},
+    {"n": "reel_watch", "view": "home", "place": "t_pandal", "kind": "pandal", "d": "ig1:90"},
+    {"n": "reel_watch", "view": "home", "d": "ig2:99999"},
+    {"n": "reel_pandal", "view": "home", "place": "t_pandal", "kind": "pandal", "d": "ig1"}]');
 
   set local role anon;
   r := public.dashboard(null);
@@ -23,6 +27,11 @@ do $$ declare k text; r jsonb; begin
   assert jsonb_array_length(r->'hourly') >= 1 and (r->'hourly'->0->>'people')::int >= 1, 'hourly: ' || (r->'hourly')::text;
   assert jsonb_array_length(r->'live_by_page') >= 1, 'online by page: ' || (r->'live_by_page')::text;
   assert r ? 'checkins', r::text;
+  assert (r->'reels'->>'opens')::int = 1 and (r->'reels'->>'viewers')::int = 1, 'reel plays: ' || (r->'reels')::text;
+  assert (r->'reels'->>'watch_minutes')::numeric = 16.5, 'watch time, each watch capped at 15 min: ' || (r->'reels')::text;
+  assert (r->'reels'->>'pandal_taps')::int = 1 and r->'reels'->'top'->0->>'reel' = 'ig2', 'reels: ' || (r->'reels')::text;
+  begin perform public.reels_report(1); assert false, 'the reels report is only reachable through the key';
+  exception when insufficient_privilege then null; end;
   assert (public.dashboard(k, 100000)->>'days')::int = 90, 'range is capped';
   assert r::text !~ 'dddddddd', 'no device ids leave the database';
   begin perform 1 from private.dashboard_access; assert false, 'the key must not be readable from the app';

@@ -8,6 +8,7 @@ on:
   schedule:
     - cron: "15 0 * * *"          # 05:45 IST every day: fresh content kit at /kit/
     - cron: "30 10 16-21 10 *"    # 16:00 IST, Panchami–Dashami: live "trending now" cards
+    - cron: "50 */3 10-22 10 *"   # every 3 hours from Mahalaya to Ekadashi: new Pujo Reels reach the app
 
 permissions:
   contents: read
@@ -117,6 +118,14 @@ jobs:
           # Instagram carousels at /kit/carousels/ (marketing/carousels.py), which marketing-batch posts from.
           pip install -q pillow && python -m marketing.carousels --out app/kit/carousels --photos && node marketing/carousels.mjs app/kit/carousels \
             || echo "::warning::Carousels not rendered"
+      - name: Pujo Reels feed (app/data/reels.json)
+        # Videos on our Instagram grid (official Graph API, same token as auto-posting) plus data/raw/reels_2026.toml.
+        # Never blocks the deploy: without the secrets or on an API error the feed keeps the hand-added links only.
+        continue-on-error: true
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python scripts/reels_feed.py --out app
       - name: Team dashboard (/kit/dashboard/)
         # Live numbers behind a private key (supabase/migrations/*_dashboard.sql, docs/product/ANALYTICS.md).
         run: mkdir -p app/kit/dashboard && cp marketing/dashboard/index.html marketing/dashboard/dashboard.js app/kit/dashboard/

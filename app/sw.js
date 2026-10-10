@@ -1,11 +1,11 @@
 /* Offline support.
- * - guide.json: network-first, so data fixes reach people during the festival, with the cache as a fallback.
+ * - guide.json and reels.json: network-first, so data fixes reach people during the festival, with the cache as a fallback.
  * - App shell: stale-while-revalidate.
  * - Map tiles and community thumbnails/photos: cache-first, size-capped. This also saves backend egress.
  * - Community API calls (auth, REST, uploads) are never cached. */
-const VERSION = 'pp-2026-v43';
+const VERSION = 'pp-2026-v44';
 const SHELL = ['./', 'index.html', 'styles.css', 'fonts/inter-latin-wght.woff2', 'fonts/fraunces-latin-wght.woff2', 'fonts/tiro-bangla-bengali-400.woff2', 'app.js', 'core.js', 'i18n.js', 'config.js', 'state.js', 'ui.js',
-  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'radio.js', 'radioCard.js', 'i18n_hi.js', 'data/music.json', 'img/hero-1.jpg', 'footfall.js', 'foodinfo.js', 'analytics.js', 'livecount.js', 'photos.js', 'celebrate.js', 'badges.js', 'car.js', 'credits.js', 'sync.js', 'offers.js', 'sfx.js', 'audio/dhak_hit.mp3', 'audio/shankh.mp3', 'views/home.js', 'views/explore.js', 'views/plan.js',
+  'community.js', 'media.js', 'actions.js', 'sheets.js', 'filters.js', 'pickers.js', 'growth.js', 'radio.js', 'radioCard.js', 'i18n_hi.js', 'data/music.json', 'img/hero-1.jpg', 'footfall.js', 'foodinfo.js', 'analytics.js', 'livecount.js', 'photos.js', 'celebrate.js', 'badges.js', 'car.js', 'credits.js', 'sync.js', 'offers.js', 'reels.js', 'sfx.js', 'audio/dhak_hit.mp3', 'audio/shankh.mp3', 'views/home.js', 'views/explore.js', 'views/plan.js',
   'views/moments.js', 'views/me.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'data/guide.json',
   'vendor/leaflet/leaflet.css', 'vendor/leaflet/leaflet.js', 'vendor/protomaps-leaflet/protomaps-leaflet.js'];
 const TILE_CACHE = 'pp-tiles', TILE_MAX = 800, MEDIA_CACHE = 'pp-media', MEDIA_MAX = 400;
@@ -69,13 +69,15 @@ self.addEventListener('fetch', (e) => {
 
   if (url.pathname.includes('/kit/')) return;   // the team's content kit: always from the network
   if (url.pathname.includes('/audio/') && req.headers.has('range')) return;   // <audio> streams in byte ranges; the Cache API can't store 206s
-  if (url.pathname.endsWith('/data/guide.json')) {
+  const fresh = url.pathname.match(/\/data\/(guide|reels)\.json$/);   // the guide and the Pujo Reels feed change during the festival
+  if (fresh) {
+    const key = `data/${fresh[1]}.json`;
     e.respondWith(caches.open(VERSION).then(async (c) => {
       try {
         const res = await fetch(req, { cache: 'no-cache' });
-        if (res.ok) c.put('data/guide.json', res.clone());
+        if (res.ok) c.put(key, res.clone());
         return res;
-      } catch { return (await c.match('data/guide.json')) || new Response('{}', { status: 503 }); }
+      } catch { return (await c.match(key)) || new Response('{}', { status: 503 }); }
     }));
     return;
   }

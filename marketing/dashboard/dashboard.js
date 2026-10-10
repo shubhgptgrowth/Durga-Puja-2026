@@ -49,6 +49,7 @@ const ACTIONS = {
   directions: 'Directions taps', transit: 'Transit route taps', checkin: 'Check-in / ate-here taps', rate: 'Ratings',
   share: 'Shares', filter: 'Filter & sort changes', lang: 'Language switches', plan: 'Routes built',
   trail: 'Ready-made trails opened', moment: 'Moments posted', install: 'Installs to home screen',
+  reel_open: 'Reels played', reel_watch: 'Reels watched (closed)', reel_pandal: 'Reel → pandal taps',
 };
 export const actionLabel = (a) => ACTIONS[a] || a;
 
@@ -81,7 +82,7 @@ export function dayLabel(iso) {
 
 /** Everything the page draws, from one dashboard() reply. */
 export function model(r) {
-  const g = r.growth || {}, u = r.usage || {}, live = u.live || {};
+  const g = r.growth || {}, u = r.usage || {}, live = u.live || {}, rl = r.reels || {};
   const days = (g.by_day || []).map((d) => ({ day: d.day, label: dayLabel(d.day), total: d.people, new: d.new, returning: Math.max(0, d.people - d.new), opens: d.opens }));
   const today = days.at(-1), yesterday = days.at(-2);
   const sources = (g.by_first_source || []).map((s) => ({ src: s.src, label: sourceLabel(s.src), channel: channel(s.src), people: s.people }));
@@ -105,6 +106,8 @@ export function model(r) {
     actions: (u.actions || []).map((a) => ({ name: actionLabel(a.action), times: a.times, people: a.people })).sort((a, b) => b.times - a.times),
     sounds: (u.sounds || []).map((s) => ({ name: `${s.source === 'sfx' ? 'Tap pad' : 'Radio'} · ${s.what}`, taps: s.taps, people: s.people })),
     period: { people: u.people || 0, events: u.events || 0 },
+    reels: { opens: rl.opens || 0, viewers: rl.viewers || 0, minutes: Number(rl.watch_minutes) || 0, pandalTaps: rl.pandal_taps || 0,
+      top: (rl.top || []).map((x) => ({ id: x.reel, plays: x.plays, minutes: Number(x.minutes) || 0 })) },
   };
 }
 
