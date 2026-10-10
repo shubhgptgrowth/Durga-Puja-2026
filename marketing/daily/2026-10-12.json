@@ -6,100 +6,58 @@
    "id": "p1",
    "type": "photo",
    "at": "09:30",
-   "render": "cards",
-   "slides": [
+   "photos": [
     {
-     "t": "cover",
-     "kicker": "Durga Puja 2026 · Metro cheat sheet",
-     "title": [
-      "SKIP THE CAB",
-      "TAKE THE METRO"
-     ],
-     "sub": "8 big pandals, all within a 20-minute walk of a station",
-     "pill": "Save this for pujo nights",
-     "photo": {
-      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg/1280px-DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg",
-      "artist": "Indrajit Das (2017)",
-      "license": "CC BY-SA 3.0",
-      "cy": 0.42
-     }
+     "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kumartuli_Park_Durga_Puja_2025_04.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Park_Durga_Puja_2025_04.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "1/8 · Central Kolkata",
-     "name": "Chaltabagan Lohapatty",
-     "title": "Girish Park Metro",
-     "body": "13 minutes on foot from the station. Best time to go: 5–9 pm.",
-     "foot": "Walking route and live crowd: link in bio"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/7/7d/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_02.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_02.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "2/8 · North Kolkata",
-     "name": "Tala Prattoy",
-     "title": "Belgachia Metro",
-     "body": "13 minutes on foot from the station. Best time to go: 5–9 am.",
-     "foot": "Walking route and live crowd: link in bio"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Kumartuli_Park_Durga_Puja_2025_15.jpg",
+     "artist": "Tarunsamanta",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Park_Durga_Puja_2025_15.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "3/8 · Central Kolkata",
-     "name": "Santosh Mitra Square (Lebutala)",
-     "title": "Sealdah Metro",
-     "body": "15 minutes on foot from the station. Best time to go: 5–9 am.",
-     "foot": "Walking route and live crowd: link in bio"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/0/00/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "4/8 · North Kolkata",
-     "name": "Kumartuli Park Sarbojanin",
-     "title": "Sovabazar Metro",
-     "body": "17 minutes on foot from the station. Best time to go: 5–9 am.",
-     "foot": "Walking route and live crowd: link in bio"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/3/3f/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "5/8 · Central Kolkata",
-     "name": "Mohammad Ali Park",
-     "title": "Mahatma Gandhi Road Metro",
-     "body": "10 minutes on foot from the station. Best time to go: 5–9 am.",
-     "foot": "Walking route and live crowd: link in bio"
-    },
-    {
-     "t": "item",
-     "kicker": "6/8 · North Kolkata",
-     "name": "Shyam Square Sarbojanin",
-     "title": "Shyambazar Metro",
-     "body": "11 minutes on foot from the station. Best time to go: 5–9 pm.",
-     "foot": "Walking route and live crowd: link in bio"
-    },
-    {
-     "t": "item",
-     "kicker": "7/8 · Salt Lake",
-     "name": "FD Block Salt Lake",
-     "title": "City Centre Metro",
-     "body": "6 minutes on foot from the station. Best time to go: 5–9 pm.",
-     "foot": "Walking route and live crowd: link in bio"
-    },
-    {
-     "t": "item",
-     "kicker": "8/8 · Behala",
-     "name": "Behala Notun Dal",
-     "title": "Behala Bazar Metro",
-     "body": "2 minutes on foot from the station. Best time to go: 5–9 pm.",
-     "foot": "Walking route and live crowd: link in bio"
-    },
-    {
-     "t": "end",
-     "title": [
-      "SEND THIS",
-      "TO YOUR PUJO GROUP"
-     ],
-     "sub": "Every pandal's nearest station and walking route: link in bio",
-     "pill": "Comment PUJO for the routes"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/5/5f/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_01.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_01.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     }
    ],
    "caption": {
-    "en": "Kolkata Metro guide for Durga Puja 2026: 8 big pandals within a 20-minute walk of a station 🚇\n\nChaltabagan, Tala Prattoy, Santosh Mitra Square, Kumartuli Park, Mohammad Ali Park, Shyam Square, FD Block and Behala Notun Dal, each with its station, the walk in minutes and the best time to go. Cabs crawl on Saptami night. The Metro doesn't.\n\nSend this to the friend who always says \"let's take an Uber\".",
+    "en": "Kolkata Metro guide for Durga Puja 2026: big pandals within a 20-minute walk of a station 🚇\n\nKumartuli Park is 10 minutes from Sovabazar, Mohammad Ali Park 5 from Central (that's them in the photos, in earlier years). Chaltabagan, Tala Prattoy, Santosh Mitra Square, Shyam Square, FD Block and Behala Notun Dal all have a station close by too: the stations, the walk in minutes and the best time to go are in the free guide (link in bio). Cabs crawl on Saptami night. The Metro doesn't.\n\nSend this to the friend who always says \"let's take an Uber\".",
     "keywords": [
      "kolkata metro durga puja",
      "durga puja 2026 metro",
@@ -141,11 +99,60 @@
    "id": "r2",
    "type": "reel",
    "at": "12:30",
-   "render": "cards_reel",
-   "from": "p1",
-   "hook": "Skip the cab, take the Metro",
+   "hook": "Stop taking cabs to pandals. Do this instead",
+   "bn": {
+    "hook": "প্যান্ডেলে ক্যাব নয়, এবার মেট্রো",
+    "segs": [
+     "",
+     "কুমোরটুলি পার্ক · শোভাবাজার মেট্রো",
+     "রাতের আলোয়",
+     "মহম্মদ আলি পার্ক · সেন্ট্রাল মেট্রো",
+     "ক্যাব নয়, মেট্রো"
+    ],
+    "end": "এবার পুজোয় মেট্রোতেই চলুন"
+   },
+   "segments": [
+    [
+     "ph-metro2",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "ph-metro1",
+     0,
+     3.0,
+     "Kumartuli Park: Sovabazar Metro"
+    ],
+    [
+     "ph-metro3",
+     0,
+     3.0,
+     "After dark"
+    ],
+    [
+     "ph-metro4",
+     0,
+     3.0,
+     "Mohammad Ali Park: Central Metro"
+    ],
+    [
+     "ph-metro6",
+     0,
+     3.0,
+     "Skip the cab"
+    ]
+   ],
+   "end": [
+    "Skip the cab",
+    "Every station, in the free guide"
+   ],
+   "music": [
+    "f23",
+    55
+   ],
    "caption": {
-    "en": "Kolkata Metro guide for Durga Puja 2026: 8 big pandals within a 20-minute walk of a station 🚇\n\nChaltabagan, Tala Prattoy, Santosh Mitra Square, Kumartuli Park and more, with the station and the walk.\n\nComment \"PUJO\" and we'll DM you the full walking routes.",
+    "en": "Kolkata Metro guide for Durga Puja 2026: skip the cab 🚇\n\nKumartuli Park is 10 minutes from Sovabazar Metro and Mohammad Ali Park 5 from Central.\n\nComment \"PUJO\" and we'll DM you the full walking routes.",
     "keywords": [
      "kolkata metro durga puja",
      "durga puja 2026 metro",
@@ -160,78 +167,50 @@
    "id": "p3",
    "type": "photo",
    "at": "15:30",
-   "render": "cards",
-   "slides": [
+   "photos": [
     {
-     "t": "cover",
-     "kicker": "Durga Puja 2026 · 17 to 21 October",
-     "title": [
-      "PANDAL HOPPING",
-      "CHECKLIST"
-     ],
-     "sub": "7 things to sort before Shashthi",
-     "pill": "Save this before Saptami",
-     "photo": {
-      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Chaltabagan_Durga_puja_2023_03.jpg/1280px-Chaltabagan_Durga_puja_2023_03.jpg",
-      "artist": "Tarunsamanta (2023)",
-      "license": "CC BY-SA 4.0",
-      "cy": 0.42
-     }
+     "src": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Durga_Puja_crowd.jpg",
+     "artist": "Snehangshu36",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_crowd.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "1/7",
-     "title": "Pick one area a night",
-     "body": "Kolkata is too big for one night. Choose North, South or Central and walk it end to end."
+     "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Durgotsab.jpg",
+     "artist": "DebanjanDutta 96",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durgotsab.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "2/7",
-     "title": "Start at the Metro",
-     "body": "Get off at the area's station and walk. Cabs and autos crawl after 7 pm on Saptami and Ashtami."
+     "src": "https://upload.wikimedia.org/wikipedia/commons/3/33/Street_Food_Making_-_Durga_Puja_Festival_-_Motilal_Nehru_Road_-_Kolkata_2017-09-27_4547.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Street_Food_Making_-_Durga_Puja_Festival_-_Motilal_Nehru_Road_-_Kolkata_2017-09-27_4547.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "3/7",
-     "title": "Go early or very late",
-     "body": "The big pandals are quietest from about 5 to 9 am. Queues peak from 8 pm to midnight."
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+     "artist": "Pramanikshreya",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+     "cx": 0.5,
+     "cy": 0.35
     },
     {
-     "t": "item",
-     "kicker": "4/7",
-     "title": "Comfortable shoes, not new ones",
-     "body": "A North Kolkata night is 11 km and 16,000 steps."
-    },
-    {
-     "t": "item",
-     "kicker": "5/7",
-     "title": "Power bank and some cash",
-     "body": "Phones die on pujo nights and some stalls only take cash."
-    },
-    {
-     "t": "item",
-     "kicker": "6/7",
-     "title": "Fix a meeting point",
-     "body": "Networks jam in the crowds. Agree where to meet if you get separated."
-    },
-    {
-     "t": "item",
-     "kicker": "7/7",
-     "title": "Leave room for food",
-     "body": "Phuchka, egg roll, Mughlai paratha: plan the stops, not just the pandals."
-    },
-    {
-     "t": "end",
-     "title": [
-      "SEND THIS",
-      "TO YOUR PUJO GROUP"
-     ],
-     "sub": "Routes, Metro stops and live quiet hours for every pandal: link in bio",
-     "pill": "Comment PUJO for the routes"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Durga_Ma_Idol_at_a_pandal.jpg",
+     "artist": "Pragyajain98",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Ma_Idol_at_a_pandal.jpg",
+     "cx": 0.5,
+     "cy": 0.45
     }
    ],
    "caption": {
-    "en": "Durga Puja 2026 pandal hopping checklist: 7 things to sort before Shashthi ✅\n\nPick one area a night, start at the Metro, go early or very late, wear shoes you've already walked in, carry a power bank and some cash, fix a meeting point, and plan the food stops. Pujo runs 17 to 21 October.\n\nSend this to the one friend who plans nothing.",
+    "en": "Durga Puja 2026 pandal hopping checklist: 7 things to sort before Shashthi ✅\n\n1. Pick one area a night. 2. Start at the Metro. 3. Go early or very late. 4. Wear shoes you've already walked in. 5. Carry a power bank and some cash. 6. Fix a meeting point. 7. Leave room for the food stops. Pujo runs 17 to 21 October.\n\nSend this to the one friend who plans nothing.",
     "keywords": [
      "durga puja 2026",
      "pandal hopping tips",
@@ -272,11 +251,60 @@
    "id": "r1",
    "type": "reel",
    "at": "18:30",
-   "render": "route",
-   "zone": "bhowanipore",
-   "hook": "12 pandals. 12.4 km. One night.",
+   "hook": "Five nights a year, Kolkata doesn't sleep",
+   "bn": {
+    "hook": "বছরে পাঁচটা রাত, কলকাতা ঘুমোয় না",
+    "segs": [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    "end": "আপনি কোন রাতে বেরোবেন?"
+   },
+   "segments": [
+    [
+     "f15",
+     10,
+     3.4,
+     ""
+    ],
+    [
+     "f31",
+     5,
+     3.0,
+     ""
+    ],
+    [
+     "f09",
+     3,
+     3.0,
+     ""
+    ],
+    [
+     "f12",
+     2,
+     3.0,
+     ""
+    ],
+    [
+     "f27",
+     8,
+     3.2,
+     ""
+    ]
+   ],
+   "end": [
+    "Which night are you out?",
+    "Saptami, Ashtami or Navami"
+   ],
+   "music": [
+    "f23",
+    85
+   ],
    "caption": {
-    "en": "Bhowanipore pandal hopping route, Kolkata Durga Puja 2026: 12 pandals, 12.4 km, one night 🚶\n\nStart at Netaji Bhavan Metro. Bhowanipore 75 Pally, Obosor, Kidderpore, Golmath and Chakraberia: 12 classic neighbourhood pujos, about 12.4 km and 18,000 steps, in walking order.\n\nComment \"PUJO\" and we'll DM you every route.",
+    "en": "Bhowanipore pandal hopping, Kolkata Durga Puja 2026: 12 pandals, one night 🚶\n\nStart at Netaji Bhavan Metro. Bhowanipore 75 Pally, Obosor, Kidderpore, Golmath and Chakraberia: 12 classic neighbourhood pujos, about 12.4 km and 18,000 steps, in walking order. The full route is in the free guide (link in bio).\n\nWhich night are you out: Saptami, Ashtami or Navami? 👇",
     "keywords": [
      "bhowanipore durga puja",
      "75 pally",
@@ -391,11 +419,60 @@
    "id": "r3",
    "type": "reel",
    "at": "21:00",
-   "render": "cards_reel",
-   "from": "p3",
-   "hook": "Pandal hopping checklist",
+   "hook": "Your first Ashtami night will teach you all of this",
+   "bn": {
+    "hook": "প্রথম অষ্টমীর রাতেই এগুলো শিখে যাবেন",
+    "segs": [
+     "",
+     "এক রাতে এক এলাকা",
+     "পুরনো জুতো, নতুন নয়",
+     "খাওয়ার জায়গা রাখুন",
+     "খুব সকালে, নয়তো অনেক রাতে"
+    ],
+    "end": "আপনার গ্রুপে পাঠিয়ে দিন"
+   },
+   "segments": [
+    [
+     "ph-night1",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "ph-night2",
+     0,
+     3.0,
+     "One area a night"
+    ],
+    [
+     "ph-night3",
+     0,
+     3.0,
+     "Old shoes, not new ones"
+    ],
+    [
+     "ph-night4",
+     0,
+     3.0,
+     "Leave room for food"
+    ],
+    [
+     "ph-night5",
+     0,
+     3.0,
+     "Go early, or very late"
+    ]
+   ],
+   "end": [
+    "Send this to your group",
+    "17 to 21 October"
+   ],
+   "music": [
+    "f23",
+    70
+   ],
    "caption": {
-    "en": "Durga Puja 2026 pandal hopping checklist: 7 things to sort before Shashthi ✅\n\nOne area a night, start at the Metro, go early or very late, comfortable shoes, power bank and cash, a meeting point, food stops.\n\nSend this to the one friend who plans nothing.",
+    "en": "Durga Puja 2026 pandal hopping checklist: what every pandal hopper learns the hard way ✅\n\nOne area a night, start at the Metro, go early or very late, comfortable shoes, power bank and cash, a meeting point, food stops.\n\nSend this to the one friend who plans nothing.",
     "keywords": [
      "durga puja 2026",
      "pandal hopping tips",
@@ -405,5 +482,95 @@
     "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
    }
   }
- ]
+ ],
+ "clips": {
+  "ph-metro1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kumartuli_Park_Durga_Puja_2025_04.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kumartuli_Park_Durga_Puja_2025_04.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Park_Durga_Puja_2025_04.jpg"
+  },
+  "ph-metro2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_02.jpg"
+  },
+  "ph-metro3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Kumartuli_Park_Durga_Puja_2025_15.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kumartuli_Park_Durga_Puja_2025_15.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kumartuli_Park_Durga_Puja_2025_15.jpg"
+  },
+  "ph-metro4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg"
+  },
+  "ph-metro5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg"
+  },
+  "ph-metro6": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_01.jpg"
+  },
+  "ph-night1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Durga_Puja_crowd.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Snehangshu36",
+   "label": "Durga_Puja_crowd.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_crowd.jpg"
+  },
+  "ph-night2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Durgotsab.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "DebanjanDutta 96",
+   "label": "Durgotsab.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durgotsab.jpg"
+  },
+  "ph-night3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Street_Food_Making_-_Durga_Puja_Festival_-_Motilal_Nehru_Road_-_Kolkata_2017-09-27_4547.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Street_Food_Making_-_Durga_Puja_Festival_-_Motilal_Nehru_Roa",
+   "page": "https://commons.wikimedia.org/wiki/File:Street_Food_Making_-_Durga_Puja_Festival_-_Motilal_Nehru_Road_-_Kolkata_2017-09-27_4547.JPG"
+  },
+  "ph-night4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Pramanikshreya",
+   "label": "Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Festival_-_Kolkata_October_2025.jpg"
+  },
+  "ph-night5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Durga_Ma_Idol_at_a_pandal.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Pragyajain98",
+   "label": "Durga_Ma_Idol_at_a_pandal.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Ma_Idol_at_a_pandal.jpg"
+  }
+ }
 }

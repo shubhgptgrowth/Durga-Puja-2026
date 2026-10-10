@@ -6,66 +6,59 @@
    "id": "p1",
    "type": "photo",
    "at": "09:30",
+   "photos": [
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
+     "cx": 0.5,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+     "artist": "Indrajit Das",
+     "license": "CC BY-SA 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+     "cx": 0.5,
+     "cy": 0.35
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
+     "cx": 0.5,
+     "cy": 0.45
+    }
+   ],
    "caption": {
-    "en": "Durga Puja the old way, near Kolkata: inside Howrah's bonedi bari (old family homes).\n\nSwipe: Andul Royal Palace (1–2) and Sushil Dhar Estate (3), Howrah. No theme and no crowds, just a thakurdalan, a protima in daaker saaj, and rituals a family has kept for generations.\n\nKnow a bonedi bari pujo we should feature? Drop the name in the comments 👇 and we may tell its story next.",
+    "en": "Durga Puja the old way in Kolkata and Howrah: inside the bonedi bari, the old family homes 🪔\n\nSwipe: Sovabazar Rajbari in north Kolkata, where the pujo goes back to 1757 (1 to 3), and Sushil Dhar Estate in Howrah (4 and 5). No theme and no queue, just a thakurdalan, a protima in daaker saaj, and rituals a family has kept for generations.\n\nKnow a bonedi bari pujo we should feature? Drop the name in the comments 👇",
     "keywords": [
      "bonedi bari durga puja",
      "rajbari durga puja",
-     "andul rajbari",
      "howrah durga puja",
      "durga puja 2026",
      "bengali heritage"
     ],
     "tags": "#BonediBari #DurgaPuja2026 #BengaliCulture"
-   },
-   "render": "cards",
-   "slides": [
-    {
-     "t": "photo",
-     "kicker": "Bonedi bari · Andul, Howrah",
-     "title": "No theme, no queue",
-     "body": "A thakurdalan, a protima in daaker saaj, and rituals one family has kept for generations.",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0937.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cy": 0.35
-     }
-    },
-    {
-     "t": "photo",
-     "kicker": "Andul Royal Palace",
-     "title": "The old way",
-     "body": "Bonedi bari pujos began in Bengal's old family homes, long before community pandals.",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/82/Durga_Idol_-_Andul_Royal_Palace_-_Howrah_2012-10-20_0936.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "photo",
-     "kicker": "Sushil Dhar Estate, Howrah",
-     "title": "Worth the detour",
-     "body": "Across the river from Kolkata, quieter than any pandal you'll see this pujo.",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cy": 0.4
-     }
-    },
-    {
-     "t": "end",
-     "title": [
-      "KNOW A",
-      "BONEDI BARI PUJO?"
-     ],
-     "sub": "Drop the name in the comments and we may tell its story next.",
-     "pill": "Comment the name 👇"
-    }
-   ]
+   }
   },
   {
    "id": "s1",
@@ -95,15 +88,63 @@
    "id": "r2",
    "type": "reel",
    "at": "12:30",
-   "render": "cards_reel",
-   "from": "p1",
-   "hook": "No theme, no queue",
+   "hook": "Nobody outside Kolkata believes this pujo is 269 years old",
+   "bn": {
+    "hook": "এই পুজোর বয়স ২৬৯ বছর",
+    "segs": [
+     "",
+     "শোভাবাজার রাজবাড়ি",
+     "ঠাকুরদালান",
+     "সুশীল ধর এস্টেট, হাওড়া",
+     "একই নিয়ম, প্রজন্মের পর প্রজন্ম"
+    ],
+    "end": "আপনার চেনা কোনো বনেদি বাড়ির পুজো আছে?"
+   },
+   "segments": [
+    [
+     "ph-bon1",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "ph-bon2",
+     0,
+     3.0,
+     "Sovabazar Rajbari, north Kolkata"
+    ],
+    [
+     "ph-bon3",
+     0,
+     3.0,
+     "The thakurdalan"
+    ],
+    [
+     "ph-bon4",
+     0,
+     3.0,
+     "Sushil Dhar Estate, Howrah"
+    ],
+    [
+     "ph-bon5",
+     0,
+     3.0,
+     "Same rituals, generation after generation"
+    ]
+   ],
+   "end": [
+    "Know a bonedi bari pujo?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    20
+   ],
    "caption": {
-    "en": "Bonedi bari Durga Puja near Kolkata: no theme, no queue 🪔\n\nAndul Royal Palace and Sushil Dhar Estate in Howrah, where families have kept the same rituals for generations.\n\nKnow a bonedi bari pujo we should feature? Comment the name 👇",
+    "en": "Bonedi bari Durga Puja in Kolkata and Howrah: no theme, no queue 🪔\n\nSovabazar Rajbari, where the pujo goes back to 1757, and Sushil Dhar Estate in Howrah, where families have kept the same rituals for generations.\n\nKnow a bonedi bari pujo we should feature? Comment the name 👇",
     "keywords": [
      "bonedi bari durga puja",
      "rajbari durga puja",
-     "andul rajbari",
      "howrah durga puja",
      "durga puja 2026"
     ],
@@ -114,100 +155,58 @@
    "id": "p3",
    "type": "photo",
    "at": "15:30",
-   "render": "cards",
-   "slides": [
+   "photos": [
     {
-     "t": "cover",
-     "kicker": "Durga Puja 2026 · South Kolkata",
-     "title": [
-      "2026 THEMES",
-      "PANDAL BY PANDAL"
-     ],
-     "sub": "What each big pujo is building this year",
-     "pill": "Save it for pujo nights",
-     "photo": {
-      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4109.JPG/1280px-Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4109.JPG",
-      "artist": "Biswarup Ganguly (2017)",
-      "license": "CC BY 3.0",
-      "cy": 0.42
-     }
+     "src": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "1/8 · Gariahat",
-     "name": "Ekdalia Evergreen",
-     "title": "Somnath",
-     "body": "The pandal is a replica of Gujarat's Somnath Temple, in the club's 84th year.",
-     "foot": "Nearest station: Ballygunge Junction (local train) · 16 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "2/8 · Gariahat",
-     "name": "Singhi Park",
-     "title": "Bastar",
-     "body": "Inspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year.",
-     "foot": "Nearest station: Ballygunge Junction (local train) · 23 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "3/8 · Lake Market",
-     "name": "Samaj Sebi Sangha",
-     "title": "Mahapujoy Mahanayak",
-     "body": "Uttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films.",
-     "foot": "Nearest station: Kalighat · 26 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "4/8 · Lake Market",
-     "name": "Ballygunge Cultural Association",
-     "title": "Jojon",
-     "body": "'Connection': between people, generations and nature. A zero-waste puja with a traditional protima.",
-     "foot": "Nearest station: Kalighat · 25 min walk"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/6/61/Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     },
     {
-     "t": "item",
-     "kicker": "5/8 · Behala",
-     "name": "Suruchi Sangha",
-     "title": "Utso",
-     "body": "'The Source': the life and times of Syama Prasad Mookerjee, 125 years after his birth.",
-     "foot": "Nearest station: Rabindra Sarobar · 29 min walk"
-    },
-    {
-     "t": "item",
-     "kicker": "6/8 · Behala",
-     "name": "Behala Notun Dal",
-     "title": "Ay Aaro Bendhe Bendhe Thaki",
-     "body": "Holding together while life pulls people apart; the title is a Shankha Ghosh poem.",
-     "foot": "Nearest station: Behala Bazar · 2 min walk"
-    },
-    {
-     "t": "item",
-     "kicker": "7/8 · Behala",
-     "name": "Behala Club",
-     "title": "Tel",
-     "body": "'Oil': leaders' tussles over oil, and people's endless struggle for it.",
-     "foot": "Nearest station: Taratala · 17 min walk"
-    },
-    {
-     "t": "item",
-     "kicker": "8/8 · Behala",
-     "name": "Thakurpukur SB Park Sarbojanin",
-     "title": "Colliery",
-     "body": "A Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners.",
-     "foot": "Nearest station: Behala Chowrasta · 67 min walk"
-    },
-    {
-     "t": "end",
-     "title": [
-      "SEND THIS",
-      "TO YOUR PUJO GROUP"
-     ],
-     "sub": "Walking routes, Metro stops and live quiet hours for every pandal: link in bio",
-     "pill": "Comment PUJO for the routes"
+     "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
+     "artist": "Biswarup Ganguly",
+     "license": "CC BY 3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
+     "cx": 0.5,
+     "cy": 0.45
     }
    ],
    "caption": {
-    "en": "Durga Puja 2026 themes in South Kolkata, from Ekdalia to Behala 🎨\n\nEkdalia Evergreen builds Gujarat's Somnath Temple. Singhi Park turns to Bastar's art, Samaj Sebi wraps its pandal in posters from all 208 Uttam Kumar films, and Thakurpukur SB Park takes you 20 feet down a Raniganj coal mine. Eight themes, each with the nearest station and the walk.\n\nSend this to your South Kolkata pujo gang 👇",
+    "en": "Durga Puja 2026 themes in South Kolkata, from Ekdalia to Behala 🎨\n\nThe frames are Ekdalia Evergreen and Singhi Park in earlier years. This year Ekdalia Evergreen builds Gujarat's Somnath Temple, Singhi Park turns to Bastar's art, Samaj Sebi wraps its pandal in posters from all 208 Uttam Kumar films, and Thakurpukur SB Park takes you 20 feet down a Raniganj coal mine. Ballygunge Cultural, Suruchi Sangha, Behala Notun Dal and Behala Club are in the guide too, each with the nearest station and the walk (link in bio).\n\nSend this to your South Kolkata pujo gang 👇",
     "keywords": [
      "durga puja 2026 theme",
      "south kolkata pandals 2026",
@@ -249,11 +248,60 @@
    "id": "r1",
    "type": "reel",
    "at": "18:30",
-   "render": "route",
-   "zone": "south_gariahat",
-   "hook": "13 pandals. 11.5 km. One night.",
+   "hook": "If you grew up in South Kolkata, you can hear this",
+   "bn": {
+    "hook": "দক্ষিণ কলকাতায় বড় হলে, এই শব্দটা চেনা",
+    "segs": [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    "end": "আপনার পাড়ার পুজো কোনটা?"
+   },
+   "segments": [
+    [
+     "f04",
+     1,
+     3.4,
+     ""
+    ],
+    [
+     "f06",
+     4,
+     3.0,
+     ""
+    ],
+    [
+     "f11",
+     2,
+     3.0,
+     ""
+    ],
+    [
+     "f05",
+     16,
+     3.0,
+     ""
+    ],
+    [
+     "f08",
+     10,
+     3.2,
+     ""
+    ]
+   ],
+   "end": [
+    "Your para's pujo?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    4
+   ],
    "caption": {
-    "en": "Gariahat and Ballygunge pandal hopping route, Kolkata Durga Puja 2026: 13 pandals, 11.5 km 🚶\n\nStart at Ballygunge station. Ekdalia Evergreen, Singhi Park, Hindustan Park and Jodhpur Park are all on one walking route: 13 pujos, about 11.5 km and 16,700 steps, with Gariahat's shops in the middle.\n\nComment \"PUJO\" and we'll DM you every route.",
+    "en": "Gariahat and Ballygunge pandal hopping, Kolkata Durga Puja 2026: 13 pandals, one night 🚶\n\nStart at Ballygunge station. Ekdalia Evergreen, Singhi Park, Hindustan Park and Jodhpur Park are on one walking route: 13 pujos, about 11.5 km and 16,700 steps, with Gariahat's shops in the middle. The full route is in the free guide (link in bio).\n\nWhich para's pujo is yours? Tell us 👇",
     "keywords": [
      "south kolkata pandals",
      "ekdalia evergreen",
@@ -369,11 +417,60 @@
    "id": "r3",
    "type": "reel",
    "at": "21:00",
-   "render": "cards_reel",
-   "from": "p3",
-   "hook": "South Kolkata's 2026 themes",
+   "hook": "South Kolkata's 2026 themes, before anyone sees them",
+   "bn": {
+    "hook": "দক্ষিণ কলকাতার এবারের থিম, প্যান্ডেল খোলার আগেই",
+    "segs": [
+     "",
+     "একডালিয়া এভারগ্রিন · সোমনাথ মন্দির",
+     "সমাজসেবী · উত্তমকুমারের ২০৮ ছবি",
+     "সিংহী পার্ক · বস্তারের শিল্প",
+     "ঠাকুরপুকুর · কয়লাখনির ভেতরে"
+    ],
+    "end": "কোনটা আগে দেখবেন?"
+   },
+   "segments": [
+    [
+     "ph-south2",
+     0,
+     3.4,
+     ""
+    ],
+    [
+     "ph-south1",
+     0,
+     3.0,
+     "Ekdalia Evergreen: Somnath Temple"
+    ],
+    [
+     "ph-south3",
+     0,
+     3.0,
+     "Samaj Sebi: 208 Uttam Kumar films"
+    ],
+    [
+     "ph-south5",
+     0,
+     3.0,
+     "Singhi Park: Bastar's art"
+    ],
+    [
+     "ph-south6",
+     0,
+     3.0,
+     "Thakurpukur SB Park: down a coal mine"
+    ]
+   ],
+   "end": [
+    "Which one first?",
+    "Photos: earlier years. Themes: 2026"
+   ],
+   "music": [
+    "f23",
+    40
+   ],
    "caption": {
-    "en": "South Kolkata Durga Puja 2026 themes in 30 seconds 🎨\n\nSomnath at Ekdalia, Bastar at Singhi Park, 208 Uttam Kumar posters at Samaj Sebi, a coal mine at Thakurpukur SB Park, and more, each with the nearest station.\n\nSend this to your South Kolkata pujo gang.",
+    "en": "South Kolkata Durga Puja 2026 themes, before the pandals open 🎨\n\nSomnath at Ekdalia, Bastar at Singhi Park, 208 Uttam Kumar posters at Samaj Sebi and a coal mine at Thakurpukur SB Park. The photos are from earlier years; the themes are this year's.\n\nSend this to your South Kolkata pujo gang.",
     "keywords": [
      "durga puja 2026 theme",
      "south kolkata pandals 2026",
@@ -384,5 +481,95 @@
     "tags": "#DurgaPuja2026 #SouthKolkata #KolkataDurgaPuja"
    }
   }
- ]
+ ],
+ "clips": {
+  "ph-bon1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg"
+  },
+  "ph-bon2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG"
+  },
+  "ph-bon3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg"
+  },
+  "ph-bon4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg"
+  },
+  "ph-bon5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG"
+  },
+  "ph-south1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG"
+  },
+  "ph-south2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG"
+  },
+  "ph-south3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road",
+   "page": "https://commons.wikimedia.org/wiki/File:Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG"
+  },
+  "ph-south4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_",
+   "page": "https://commons.wikimedia.org/wiki/File:Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG"
+  },
+  "ph-south5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG"
+  },
+  "ph-south6": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG"
+  }
+ }
 }

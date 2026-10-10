@@ -127,7 +127,7 @@ def speak(text, engine, src_dir):
     return str(dest)
 
 
-PHOTO_OR_FILM_FROM = "2026-10-13"  # from this day every post is a photograph or footage (no text cards, maps or slides)
+PHOTO_OR_FILM_FROM = "2026-10-11"  # from this day every post is a photograph or footage (no text cards, maps or slides)
 TEXT_RENDERS = ("cards", "routes", "cards_reel", "route")
 
 
