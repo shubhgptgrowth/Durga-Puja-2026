@@ -152,6 +152,46 @@
    "artist": "Indrajit Das",
    "label": "DurgaPuja2018_-_Pandal_of_Ultadanga_Pallyshree_in_Kolkata_03",
    "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2018_-_Pandal_of_Ultadanga_Pallyshree_in_Kolkata_03.jpg"
+  },
+  "kb-ghat": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/59/The_bathing_of_kola_bou.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Stellersen",
+   "label": "The_bathing_of_kola_bou.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_bathing_of_kola_bou.jpg"
+  },
+  "kb-snan04": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/The_Kalabau_Snan%28bath%29_or_Navapatrika_04.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "The_Kalabau_Snan(bath)_or_Navapatrika_04.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Kalabau_Snan%28bath%29_or_Navapatrika_04.jpg"
+  },
+  "kb-snan14": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/The_Kalabau_Snan%28bath%29_or_Navapatrika_14.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "The_Kalabau_Snan(bath)_or_Navapatrika_14.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Kalabau_Snan%28bath%29_or_Navapatrika_14.jpg"
+  },
+  "kb-snan25": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/The_Navapatrika_or_%27Kalabau%27_Snan%28bath%29_25.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "The_Navapatrika_or_'Kalabau'_Snan(bath)_25.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Navapatrika_or_%27Kalabau%27_Snan%28bath%29_25.jpg"
+  },
+  "kb-dressed": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Nabapatrika_Durga_Pooja.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Nayan j Nath",
+   "label": "Nabapatrika_Durga_Pooja.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Nabapatrika_Durga_Pooja.jpg"
   }
  },
  "items": [
@@ -371,110 +411,65 @@
    }
   },
   {
-   "id": "p3",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r7",
+   "type": "reel",
    "at": "09:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Durga Puja explained",
-     "title": "Who is Kola Bou, really?",
-     "bn": "কলা বউ আসলে কে?",
-     "sub": "Not who you grew up thinking",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Kola_Bou_Snan_Durga_Puja_2024_04.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The short answer",
-     "num": 1,
-     "title": "She is the Goddess herself",
-     "bn": "নবপত্রিকা",
-     "body": "Kola Bou is the Nabapatrika: nine plants tied round a banana plant with a white aparajita creeper and a pair of bel fruits, worshipped as nine forms of the Goddess."
-    },
-    {
-     "t": "list",
-     "kicker": "The nine plants",
-     "title": "Nine plants, nine forms",
-     "bn": "ন'টি গাছ",
-     "items": [
-      [
-       "Banana: Brahmani",
-       "কলা"
-      ],
-      [
-       "Colocasia: Kalika",
-       "কচু"
-      ],
-      [
-       "Turmeric: Durga",
-       "হলুদ"
-      ],
-      [
-       "Jayanti: Kartiki",
-       "জয়ন্তী"
-      ],
-      [
-       "Bel: Shivaa",
-       "বেল"
-      ],
-      [
-       "Pomegranate: Raktadantika",
-       "ডালিম"
-      ],
-      [
-       "Ashoka: Shokarahita",
-       "অশোক"
-      ],
-      [
-       "Arum: Chamunda",
-       "মানকচু"
-      ],
-      [
-       "Paddy: Lakshmi",
-       "ধান"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Saptami dawn",
-     "num": 2,
-     "title": "The bath at the ghat",
-     "bn": "কলা বউ স্নান",
-     "body": "At dawn on Saptami, Sunday 18 October, she is bathed at a river or ghat with dhak, conch and ulu, wrapped in a red-bordered sari like a bride, and carried back."
-    },
-    {
-     "t": "step",
-     "kicker": "The mix-up",
-     "num": 3,
-     "title": "Why people call her Ganesha's wife",
-     "bn": "গণেশের বউ?",
-     "body": "She stands beside Ganesha, veiled like a new bride, so in Bengal she is lovingly called his wife. In ritual terms she is the Goddess, which is why some say mother, not bride."
-    },
-    {
-     "t": "step",
-     "kicker": "See it yourself",
-     "num": 4,
-     "title": "Bagbazar and Ahiritola ghats",
-     "bn": "কোথায় দেখবেন",
-     "body": "The Hooghly ghats near Bagbazar and Ahiritola fill with small processions early on Saptami morning. Get there around sunrise; the rites finish early."
-    },
-    {
-     "t": "end",
-     "title": "Did you think she was Ganesha's wife?",
-     "bn": "কমেন্টে বলুন",
-     "ask": "Tell us in the comments"
-    }
+   "hook": "Who is Kola Bou, really?",
+   "bn": {
+    "hook": "কলা বউ আসলে কে, জানেন?",
+    "segs": [
+     "",
+     "সপ্তমীর ভোরে স্নান",
+     "ন'টি গাছ, এক দেবী",
+     "লাল পাড় শাড়ি",
+     "গণেশের পাশে"
+    ],
+    "end": "আপনিও কি ভাবতেন গণেশের বউ?"
+   },
+   "segments": [
+    [
+     "kb-ghat",
+     0,
+     4.0,
+     "",
+     0.5,
+     0.45
+    ],
+    [
+     "kb-snan04",
+     0,
+     3.5,
+     "Saptami dawn: the bath"
+    ],
+    [
+     "kb-snan14",
+     0,
+     3.5,
+     "Nine plants, one Goddess"
+    ],
+    [
+     "kb-snan25",
+     0,
+     3.5,
+     "A red-bordered sari"
+    ],
+    [
+     "kb-dressed",
+     0,
+     3.5,
+     "Beside Ganesha"
+    ]
+   ],
+   "end": [
+    "She's the Goddess, not Ganesha's wife",
+    "Did you think so too? Tell us"
+   ],
+   "music": [
+    "f21",
+    60
    ],
    "caption": {
-    "en": "Kola Bou, the Durga Puja bride you see in every Kolkata pandal: who is she, really? 🍃\n\nShe isn't Ganesha's wife. We grew up thinking that too.\n\nThe Kola Bou is the Nabapatrika, nine plants worshipped as nine forms of the Goddess. On Saptami morning she's bathed at a ghat, dressed in a red-bordered sari and placed beside Ganesha, and then the main puja begins.\n\nDid you also think she was Ganesha's wife? Tell us in the comments 👇",
+    "en": "Kola Bou, the Durga Puja bride you see in every Kolkata pandal: who is she, really? 🍃\n\nShe isn't Ganesha's wife. We grew up thinking that too.\n\nThe Kola Bou is the Nabapatrika, nine plants worshipped as nine forms of the Goddess. On Saptami morning, Sunday 18 October this year, she's bathed at a ghat, dressed in a red-bordered sari and placed beside Ganesha, and then the main puja begins.\n\nDid you also think she was Ganesha's wife? Tell us in the comments 👇",
     "keywords": [
      "kola bou nabapatrika",
      "kola bou kolkata",
@@ -584,6 +579,72 @@
      "durga puja 2026"
     ],
     "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
+   }
+  },
+  {
+   "id": "p8",
+   "type": "photo",
+   "render": "editorial",
+   "at": "11:20",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · Skip the queue",
+     "title": "Every Kolkata pandal has a quiet hour",
+     "bn": "প্রতিটা প্যান্ডেলের ফাঁকা সময় আছে",
+     "sub": "Pictured: Sovabazar Rajbari, 2025",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/4/47/Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750_00001.jpg",
+      "artist": "Kinjal bose 78",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45,
+      "year": 2019
+     }
+    },
+    {
+     "t": "app",
+     "kicker": "Explore",
+     "num": 1,
+     "title": "Find the least crowded time",
+     "bn": "সবচেয়ে কম ভিড় কখন",
+     "body": "Every pandal in the list shows its least crowded window. Sort by area or by how famous it is.",
+     "shot": "repo:marketing/app-shots/explore.jpg"
+    },
+    {
+     "t": "app",
+     "kicker": "Any pandal",
+     "num": 2,
+     "title": "Busy now, quiet later",
+     "bn": "এখন ভিড়, পরে ফাঁকা",
+     "body": "Open a pandal to see how busy it usually is and the hours that are calmer, day by day from Panchami to Dashami.",
+     "shot": "repo:marketing/app-shots/place.jpg"
+    },
+    {
+     "t": "app",
+     "kicker": "Beat the crowd",
+     "num": 3,
+     "title": "Or go at dawn",
+     "bn": "ভোরের পুজো",
+     "body": "Central Blockbusters at Dawn: 7 pandals from 5:30 am, before the queues wake up.",
+     "shot": "repo:marketing/app-shots/central_blockbusters.jpg"
+    },
+    {
+     "t": "end",
+     "title": "Free. No sign-up. Link in bio.",
+     "bn": "লাইনে দাঁড়ানোর আগে দেখে নিন",
+     "ask": "Save it for pujo week"
+    }
+   ],
+   "caption": {
+    "en": "Kolkata Durga Puja 2026: how to skip the pandal queues 🕰️\n\nEvery pandal in our free guide shows its least crowded hours, from Panchami to Dashami. They're estimates from a crowd model, not live counts, but they'll steer you away from the worst of it. Or do what the regulars do and go at dawn.\n\nSave this for pujo week, and tell us: which pandal's queue do you dread most? 👇",
+    "keywords": [
+     "durga puja 2026 kolkata",
+     "avoid crowd durga puja",
+     "kolkata pandal quiet hours",
+     "pandal hopping tips"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {
@@ -841,6 +902,24 @@
    ]
   },
   {
+   "id": "r8",
+   "type": "reel",
+   "at": "15:20",
+   "render": "route",
+   "zone": "south_gariahat",
+   "hook": "13 pandals. 11 km. One night.",
+   "caption": {
+    "en": "Gariahat & Ballygunge pandal hopping route for Durga Puja 2026 in Kolkata: 13 pandals, 11 km, one night 🚶\n\nGet off at Ballygunge Junction (Suburban) Metro and follow the numbers. This is the walking order through 13 pandals in Gariahat & Ballygunge, from Gariahat Sarbojanin Durgotsab and Ekdalia Evergreen to 71 Pally Baishakhi Sarbojanin: about 11 km and 16,724 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "keywords": [
+     "gariahat & ballygunge durga puja",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "ballygunge junction (suburban) metro"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r6",
    "type": "reel",
    "at": "16:00",
@@ -1068,30 +1147,38 @@
      "bn": "আপনার পুজোর রাত",
      "items": [
       [
-       "North Heritage Trail: 17 pandals, 11 km, from 07:00",
+       "North Heritage Trail: 17 pandals, from 7 am",
        "উত্তর কলকাতার ঐতিহ্য পরিক্রমা"
       ],
       [
-       "Central at Dawn: 7 pandals, 6 km, from 05:30",
+       "Central at Dawn: 7 pandals, from 5:30 am",
        "ভোরের মধ্য কলকাতা"
       ],
       [
-       "South Heavyweights: 17 pandals, 11 km, from 14:00",
+       "South Heavyweights: 17 pandals, from 2 pm",
        "দক্ষিণের হেভিওয়েট"
       ],
       [
-       "Behala & New Alipore: 16 pandals, 18 km, from 15:00",
+       "Behala & New Alipore: 16 pandals, from 3 pm",
        "বেহালা ও নিউ আলিপুর থিম পরিক্রমা"
       ],
       [
-       "Salt Lake + Lake Town: 13 pandals, 13 km, from 16:00",
+       "Salt Lake + Lake Town: 13 pandals, from 4 pm",
        "সল্টলেক + লেক টাউন"
       ],
       [
-       "The All-Nighter: 10 pandals, 11 km, from 22:00",
+       "The All-Nighter: 10 pandals, from 10 pm",
        "সারা রাত: উত্তর থেকে দক্ষিণ"
       ]
      ]
+    },
+    {
+     "t": "app",
+     "kicker": "In the app",
+     "title": "Each route, ready to walk",
+     "bn": "রুট তৈরি",
+     "body": "Pick a route and you get the start station, the walking order, the kilometres and steps, and a button to send it to the family group.",
+     "shot": "repo:marketing/app-shots/north_heritage.jpg"
     },
     {
      "t": "step",

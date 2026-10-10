@@ -225,8 +225,9 @@ def step(s, k, n, src_dir, download):
             fn = font("display", 260)
             num = f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"])
             d.text((W - M - d.textlength(num, font=fn), y - 120), num, font=fn, fill=GOLD + (70,))
-        ft = fit(d, s["title"], "display", 112, W - 2 * M - (260 if s.get("num") is not None else 0), 2, floor=72)
-        y = draw_lines(d, (M, y), s["title"], ft, MAROON, W - 2 * M, gap=1.04, max_lines=2)
+        tw = W - 2 * M - (300 if s.get("num") is not None else 0)  # the title wraps short of the number, never under it
+        ft = fit(d, s["title"], "display", 112, tw, 2, floor=72)
+        y = draw_lines(d, (M, y), s["title"], ft, MAROON, tw, gap=1.04, max_lines=2)
         if s.get("bn"):
             y += round(ft.size * 0.3)
             fb_ = fit(d, s["bn"], "bn", 58, W - 2 * M, 1, floor=40)
@@ -319,7 +320,11 @@ def mantra(s, k, n, src_dir, download):
 
     def lay(d, y0):
         y = y0
-        ftx = font(role, 86)
+        ftx = font(role, 86)  # first try to keep each verse line on one line, down to a readable size
+        while ftx.size > 58 and any(len(wrap(d, ln, ftx, W - 2 * M)) > 1 for ln in lines_src):
+            ftx = font(role, ftx.size - 2)
+        if any(len(wrap(d, ln, ftx, W - 2 * M)) > 1 for ln in lines_src):
+            ftx = font(role, 86)
         while ftx.size > 44 and sum(len(wrap(d, ln, ftx, W - 2 * M)) for ln in lines_src) * round(ftx.size * 1.6) > 760:
             ftx = font(role, ftx.size - 2)
         for ln in lines_src:
@@ -405,7 +410,57 @@ def centred(draw_fn, top, bottom, bg_fn):
     return im, d
 
 
-KINDS = {"cover": cover, "step": step, "list": listing, "mantra": mantra, "photo": photo_slide, "end": end}
+def app_slide(s, k, n, src_dir, download):
+    """A screen of our own app in a phone frame on the right, what it does on the left. "shot" is a repo path
+    (repo:marketing/app-shots/plan.jpg) or a URL; the screenshot is never cropped or graded."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageOps
+    im = paper()
+    d = ImageDraw.Draw(im, "RGBA")
+    header(d, s.get("kicker"), k, n)
+    pw, x0 = 600, W - M - 600  # phone screen width, left edge
+    ext = Path(s["shot"].split("?")[0]).suffix.lower() or ".jpg"
+    src = Path(src_dir) / ("app-" + hashlib.sha1(s["shot"].encode()).hexdigest()[:12] + ext)
+    if not src.exists():
+        download(s["shot"], src)
+    shot = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    ph = min(round(shot.height * pw / shot.width), H - 420)
+    y0 = (H - ph) // 2 + 10  # centred between the header rule and the footer
+    shot = shot.resize((pw, round(shot.height * pw / shot.width)), Image.LANCZOS).crop((0, 0, pw, ph))
+    bz = 18  # bezel
+    shadow = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(shadow).rounded_rectangle((x0 - bz + 14, y0 - bz + 26, x0 + pw + bz + 14, y0 + ph + bz + 26), 70, fill=120)
+    im.paste((40, 20, 16), (0, 0), shadow.filter(ImageFilter.GaussianBlur(28)))
+    d = ImageDraw.Draw(im, "RGBA")
+    d.rounded_rectangle((x0 - bz, y0 - bz, x0 + pw + bz, y0 + ph + bz), 70, fill=(24, 14, 12))
+    mask = Image.new("L", (pw, ph), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, pw, ph), 54, fill=255)
+    im.paste(shot, (x0, y0), mask)
+    d = ImageDraw.Draw(im, "RGBA")
+    tw = x0 - bz - 70 - M  # the text column
+    y = 300
+    if s.get("num") is not None:
+        fn = font("display", 150)
+        num = f"{s['num']:02d}" if isinstance(s["num"], int) else str(s["num"])
+        d.text((M, y - 40), num, font=fn, fill=GOLD + (110,))
+        y += 150
+    ft = fit(d, s["title"], "display", 96, tw, 4, floor=64)
+    y = draw_lines(d, (M, y), s["title"], ft, MAROON, tw, gap=1.06, max_lines=4)
+    if s.get("bn"):
+        y += round(ft.size * 0.3)
+        y = draw_lines(d, (M, y), s["bn"], fit(d, s["bn"], "bn", 52, tw, 2, floor=36), SINDOOR, tw, gap=1.3, max_lines=2)
+    y += 34
+    d.line((M, y, M + 110, y), fill=SINDOOR, width=5)
+    y += 50
+    body = s.get("body") or ""
+    fb = font("body", 42)
+    while fb.size > 30 and y + len(wrap(d, body, fb, tw)) * round(fb.size * 1.5) > H - 200:
+        fb = font("body", fb.size - 2)
+    draw_lines(d, (M, y), body, fb, INK, tw, gap=1.5)
+    footer(d, k, n)
+    return im
+
+
+KINDS = {"cover": cover, "step": step, "list": listing, "mantra": mantra, "photo": photo_slide, "end": end, "app": app_slide}
 
 
 def check(it):
@@ -419,6 +474,8 @@ def check(it):
         for p in [s.get("photo")] if s.get("photo") else []:
             if p.get("license") != "AI" and not (p.get("artist") and p.get("license") and p.get("src")):
                 errs.append(f"{it['id']}: slide {i} photo needs src, artist and license")
+        if s.get("t") == "app" and not s.get("shot"):
+            errs.append(f"{it['id']}: slide {i} app screen needs a shot")
         if s.get("t") == "mantra" and not (s.get("text") and s.get("meaning")):
             errs.append(f"{it['id']}: slide {i} mantra needs text and meaning")
     if not (it.get("caption") or {}).get("en"):

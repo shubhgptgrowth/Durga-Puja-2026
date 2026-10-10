@@ -96,6 +96,22 @@
    "artist": "Joydeep",
    "label": "Durga,_Burdwan,_West_Bengal,_India_21_10_2012_01.JPG",
    "page": "https://commons.wikimedia.org/wiki/File:Durga,_Burdwan,_West_Bengal,_India_21_10_2012_01.JPG"
+  },
+  "kd-dhaki": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Dhaki_at_Durga_puja_2024_at_Shantipara%2C_Dibrugarh_12.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "AjayDas",
+   "label": "Dhaki at Durga puja 2024 at Shantipara, Dibrugarh 12.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dhaki_at_Durga_puja_2024_at_Shantipara%2C_Dibrugarh_12.jpg"
+  },
+  "kd-dhunuchi": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Traditional_Dhunuchi_Dance.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Bhuppigraphy",
+   "label": "Traditional Dhunuchi Dance.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Traditional_Dhunuchi_Dance.jpg"
   }
  },
  "items": [
@@ -400,66 +416,56 @@
    ]
   },
   {
-   "id": "p4",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6",
+   "type": "reel",
    "at": "11:00",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Hot take · Durga Puja 2026",
-     "title": "Panchami is the new Saptami",
-     "bn": "পঞ্চমীই নতুন সপ্তমী?",
-     "sub": "Agree or disagree? Swipe first",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lighting_Idol_People_during_Durga_Puja_Festival_2023_in_Behala_Kolkata_44.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The numbers",
-     "num": 1,
-     "title": "A little over half the crowd",
-     "bn": "ভিড় প্রায় অর্ধেক",
-     "body": "Our crowd model puts a Panchami evening at about 0.6 of a normal Saptami evening, and an Ashtami evening at 1.1. These are model estimates, not live counts."
-    },
-    {
-     "t": "step",
-     "kicker": "What you get",
-     "num": 2,
-     "title": "Built, lit, and no queue yet",
-     "bn": "আলো জ্বলে গেছে, লাইন ছোট",
-     "body": "By Panchami most big pandals are ready and lit. You see the same art you'd queue an hour for on Ashtami."
-    },
-    {
-     "t": "step",
-     "kicker": "When",
-     "num": 3,
-     "title": "Friday 16 October",
-     "bn": "শুক্রবার, ১৬ অক্টোবর",
-     "body": "A weekday evening, so you can go straight from work and still be home before the city wakes up for Shashthi."
-    },
-    {
-     "t": "step",
-     "kicker": "The catch",
-     "num": 4,
-     "title": "You trade the buzz",
-     "bn": "যা হারাবেন",
-     "body": "Saptami to Navami the whole city is on the street. That feeling is real, and Panchami doesn't have it yet."
-    },
-    {
-     "t": "end",
-     "title": "Team Panchami or team Saptami?",
-     "bn": "কমেন্টে লিখুন: পঞ্চমী না সপ্তমী",
-     "ask": "One word in the comments"
-    }
+   "hook": "Panchami or Saptami? First, look at a Saptami queue",
+   "bn": {
+    "hook": "পঞ্চমী না সপ্তমী? আগে সপ্তমীর লাইনটা দেখুন",
+    "segs": [
+     "",
+     "একডালিয়া, সপ্তমী",
+     "ফাল্গুনী সংঘ, সপ্তমী",
+     "সিংহী পার্ক, সপ্তমী"
+    ],
+    "end": "পঞ্চমী না সপ্তমী? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-ac121e",
+     5,
+     4.0,
+     ""
+    ],
+    [
+     "cm-a144ef",
+     3,
+     3.5,
+     "Ekdalia, Saptami"
+    ],
+    [
+     "cm-1c734b",
+     25,
+     3.5,
+     "Falguni Sangha, Saptami"
+    ],
+    [
+     "cm-b043a8",
+     4,
+     3.5,
+     "Singhi Park, Saptami"
+    ]
+   ],
+   "end": [
+    "Panchami, Fri 16 Oct: about half an Ashtami crowd",
+    "Team Panchami or team Saptami?"
+   ],
+   "music": [
+    "f22",
+    90
    ],
    "caption": {
-    "en": "Durga Puja 2026 in Kolkata: is Panchami the smartest night to go pandal hopping? 🪔\n\nWe think so. Our crowd model puts a Panchami evening at a little over half of an Ashtami evening. The pandals are ready, the lights are on, and Panchami falls on Friday 16 October.\n\nWhat you give up is the Saptami-to-Navami buzz on the streets. That's real.\n\nTeam Panchami or team Saptami? Tell us in the comments 👇",
+    "en": "Durga Puja 2026 in Kolkata: is Panchami the smartest night to go pandal hopping? 🪔\n\nThis is a real Saptami queue, Ekdalia in 2013. Our crowd model puts a Panchami evening at a little over half of an Ashtami evening, with the pandals built and lit. Panchami is Friday 16 October.\n\nWhat you give up is the Saptami-to-Navami buzz on the streets. That's real.\n\nTeam Panchami or team Saptami? Tell us in the comments 👇",
     "keywords": [
      "durga puja 2026 kolkata",
      "panchami pandal hopping",
@@ -467,6 +473,81 @@
      "best day for pandal hopping"
     ],
     "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "p8",
+   "type": "photo",
+   "render": "editorial",
+   "at": "11:45",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Durga Puja 2026 · Free app",
+     "title": "Plan your whole pujo night in four taps",
+     "bn": "চার ট্যাপে পুজোর রাত",
+     "sub": "Pictured: Bagbazar Sarbojanin, 2025",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg",
+      "artist": "Tarunsamanta",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.42,
+      "year": 2025
+     }
+    },
+    {
+     "t": "app",
+     "kicker": "Step 1 · Plan route",
+     "num": 1,
+     "title": "Pick the areas you want",
+     "bn": "এলাকা বেছে নিন",
+     "body": "Open Plan route and tap North, Central, South, East or Howrah. Each card shows how many pandals it has.",
+     "shot": "repo:marketing/app-shots/plan.jpg"
+    },
+    {
+     "t": "app",
+     "kicker": "Step 2 · Your route",
+     "num": 2,
+     "title": "Get the walking order",
+     "bn": "হাঁটার রুট তৈরি",
+     "body": "It starts at a Metro station and shows the pandals, kilometres and steps. One tap sends it to the family group.",
+     "shot": "repo:marketing/app-shots/trail.jpg"
+    },
+    {
+     "t": "app",
+     "kicker": "Step 3 · Any pandal",
+     "num": 3,
+     "title": "See when it's quiet",
+     "bn": "কখন ভিড় কম",
+     "body": "Tap a pandal for its least crowded hours, this year's theme and directions.",
+     "shot": "repo:marketing/app-shots/place.jpg"
+    },
+    {
+     "t": "app",
+     "kicker": "Step 4 · On the night",
+     "num": 4,
+     "title": "Start your pujo walk",
+     "bn": "হাঁটা শুরু",
+     "body": "Tick off pandals as you go and watch your steps add up. It works on any phone, in the browser.",
+     "shot": "repo:marketing/app-shots/me.jpg"
+    },
+    {
+     "t": "end",
+     "title": "Free. No sign-up. Link in bio.",
+     "bn": "পরিবারের গ্রুপে পাঠিয়ে দিন",
+     "ask": "Send it to whoever plans your pujo"
+    }
+   ],
+   "caption": {
+    "en": "How to plan Kolkata Durga Puja 2026 pandal hopping in four taps 📱\n\nPick your areas, get a walking route that starts at a Metro station, check when each pandal is quiet, then start walking. It's free, it runs in your phone's browser and there's nothing to sign up for.\n\nSend this to whoever plans your family's pujo night 🙏",
+    "keywords": [
+     "durga puja 2026 kolkata",
+     "pandal hopping app",
+     "kolkata pandal route planner",
+     "durga puja map kolkata"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {
@@ -743,6 +824,24 @@
    ]
   },
   {
+   "id": "r8",
+   "type": "reel",
+   "at": "16:15",
+   "render": "route",
+   "zone": "north",
+   "hook": "17 pandals. 11 km. One night.",
+   "caption": {
+    "en": "Kumartuli, Bagbazar & Hatibagan pandal hopping route for Durga Puja 2026 in Kolkata: 17 pandals, 11 km, one night 🚶\n\nGet off at Sovabazar Sutanuti Metro and follow the numbers. This is the walking order through 17 pandals in Kumartuli, Bagbazar & Hatibagan, from Ahiritola Sarbojanin and Ahiritola Jubak Brinda to Lalabagan Nabankur: about 11 km and 16,467 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "keywords": [
+     "kumartuli, bagbazar & hatibagan durga puja",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "sovabazar sutanuti metro"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r5",
    "type": "reel",
    "at": "17:00",
@@ -863,106 +962,60 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r7",
+   "type": "reel",
    "at": "20:00",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "The sound of pujo",
-     "title": "No dhak, no pujo",
-     "bn": "ঢাক না বাজলে পুজো শুরু হয় না",
-     "sub": "The drum, the drummers, the beats",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Dhaki_at_Durga_puja_2024_at_Shantipara%2C_Dibrugarh_12.jpg",
-      "artist": "AjayDas",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.4
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The drum",
-     "num": 1,
-     "title": "Wood, skin and kash flowers",
-     "bn": "ঢাক",
-     "body": "A big barrel drum with skin on both ends, slung from the shoulder and played with two thin cane sticks. For the pujo it wears tall white plumes of kash phool, the grass that says autumn has come."
-    },
-    {
-     "t": "step",
-     "kicker": "The dhakis",
-     "num": 2,
-     "title": "They travel to play for you",
-     "bn": "ঢাকি",
-     "body": "Many dhakis are farmers or labourers from rural West Bengal, and the craft passes from father to son. Before the pujo many wait at Sealdah station, playing on the platform to get hired."
-    },
-    {
-     "t": "list",
-     "kicker": "Listen for it",
-     "title": "One drum, many beats",
-     "bn": "ঢাকের বোল",
-     "items": [
-      [
-       "Aarti: steady, building to a rush",
-       "আরতি"
-      ],
-      [
-       "Dhunuchi naach: fast and playful",
-       "ধুনুচি নাচ"
-      ],
-      [
-       "Bodhon, Kola Bou snan, Sandhi Puja: urgent",
-       "সন্ধিপুজো"
-      ],
-      [
-       "Bisarjan: a walking beat, glad and sad",
-       "বিসর্জন"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Traditional_Dhunuchi_Dance.jpg",
-      "artist": "Bhuppigraphy",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Dhunuchi naach: the dhaki speeds up as the dancers do"
-    },
-    {
-     "t": "list",
-     "kicker": "The full sound",
-     "title": "Dhak never plays alone",
-     "bn": "ঢাক, কাঁসর, শাঁখ, উলু",
-     "items": [
-      [
-       "Kashor: the bell-metal gong",
-       "কাঁসর"
-      ],
-      [
-       "Ghonta: the priest's hand bell",
-       "ঘণ্টা"
-      ],
-      [
-       "Shankh: the conch",
-       "শাঁখ"
-      ],
-      [
-       "Ulu: the women's ululation",
-       "উলু"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Tip your dhaki this pujo",
-     "bn": "ছোটবেলার কোন বোলটা মনে পড়ে?",
-     "ask": "Tell us the beat you grew up with"
-    }
+   "hook": "Can you imagine pujo without the dhak?",
+   "bn": {
+    "hook": "ঢাক ছাড়া পুজো ভাবতে পারেন?",
+    "segs": [
+     "",
+     "সপ্তমীর পুজো",
+     "ধুনুচি নাচ",
+     "বিসর্জন",
+     "বিসর্জন"
+    ],
+    "end": "ছোটবেলার কোন বোলটা মনে পড়ে?"
+   },
+   "segments": [
+    [
+     "kd-dhaki",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-2e4619",
+     20,
+     3.5,
+     "Saptami puja"
+    ],
+    [
+     "kd-dhunuchi",
+     0,
+     3.5,
+     "Dhunuchi naach"
+    ],
+    [
+     "cm-f89fc6",
+     8,
+     3.5,
+     "Bisarjan"
+    ],
+    [
+     "cm-dc1501",
+     4,
+     3.5,
+     "Bisarjan"
+    ]
+   ],
+   "end": [
+    "Which beat takes you back?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    0
    ],
    "caption": {
     "en": "Kolkata Durga Puja starts with the dhak 🥁\n\nMany dhakis come from rural West Bengal for the pujo days, and before the festival many wait at Sealdah station, playing on the platform to be hired. They play through every ritual: aarti, dhunuchi naach, Sandhi Puja and the immersion.\n\nIf you enjoy the playing, a small tip goes a long way, and if you film, ask first.\n\nWhich beat takes you back to your childhood pujo? Tell us 👇",
