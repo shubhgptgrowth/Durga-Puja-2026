@@ -313,23 +313,38 @@ HELP_KINDS = {"toilets": "toilets", "hospital": "hospitals", "police": "police"}
 
 
 def discover_help():
-    """Public toilets, hospitals and police stations across the city, for the "Help nearby" list on each pandal.
-    Private or customers-only toilets are left out."""
-    els = overpass(f'[out:json][timeout:180];(nwr["amenity"~"^(toilets|hospital|police)$"]({BBOX_Q}););out center tags;')
-    out = {v: [] for v in HELP_KINDS.values()}
-    for e in els:
-        tags = e.get("tags", {})
-        lat, lng = center(e)
-        kind = HELP_KINDS.get(tags.get("amenity"))
-        if not kind or lat is None or tags.get("disused") or tags.get("access") in ("private", "customers", "no"):
+    """Public toilets, hospitals and police stations near each pandal, for its "Help nearby" list. Asked for in small
+    batches around the pins, like food: a whole-city query times out on the public Overpass servers. Private or
+    customers-only toilets are left out; a batch that fails is skipped and the rest are kept."""
+    pandals = list(csv.DictReader(open(config.RAW_DIR / "pandals.csv", encoding="utf-8")))
+    out, seen, failed, size = {v: [] for v in HELP_KINDS.values()}, set(), 0, 10
+    for i in range(0, len(pandals), size):
+        batch = pandals[i:i + size]
+        # the same reach the pipeline uses (pipeline/enrich.py HELP_MAX_M): police and toilets close by, hospitals further
+        parts = "".join(f'nwr["amenity"~"^(toilets|police)$"](around:1500,{p["lat"]},{p["lng"]});'
+                        f'nwr["amenity"="hospital"](around:3000,{p["lat"]},{p["lng"]});' for p in batch)
+        try:
+            els = overpass(f"[out:json][timeout:90];({parts});out center tags;", timeout=90)
+        except Exception as ex:
+            failed += 1
+            print(f"batch {i // size} failed: {ex}", file=sys.stderr)
             continue
-        keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "emergency", "fee", "opening_hours", "wheelchair") if k in tags}
-        out[kind].append({"osm": f"{e['type']}/{e['id']}", "lat": round(lat, 6), "lng": round(lng, 6), **keep})
+        for e in els:
+            key = f"{e['type']}/{e['id']}"
+            tags = e.get("tags", {})
+            lat, lng = center(e)
+            kind = HELP_KINDS.get(tags.get("amenity"))
+            if key in seen or not kind or lat is None or tags.get("disused") or tags.get("access") in ("private", "customers", "no"):
+                continue
+            seen.add(key)
+            keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "emergency", "fee", "opening_hours", "wheelchair") if k in tags}
+            out[kind].append({"osm": key, "lat": round(lat, 6), "lng": round(lng, 6), **keep})
+        print(f"batch {i // size}: {len(els)} returned, " + ", ".join(f"{len(v)} {k}" for k, v in out.items()), file=sys.stderr)
+        time.sleep(3)  # be gentle with the public servers
     if not any(out.values()):
         raise RuntimeError("no help places fetched")
-    write("help", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"), **out})
-    print(", ".join(f"{len(v)} {k}" for k, v in out.items()), file=sys.stderr)
-
+    write("help", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"), "failed_batches": failed, **out})
+    print(", ".join(f"{len(v)} {k}" for k, v in out.items()) + f" ({failed} batches failed)", file=sys.stderr)
 
 if __name__ == "__main__":
     fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
