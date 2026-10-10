@@ -277,3 +277,17 @@ export function mergeProgress(a = {}, b = {}) {
     myMoments: Math.max(a.myMoments || 0, b.myMoments || 0), myRatings: { ...(b.myRatings || {}), ...(a.myRatings || {}) },
   };
 }
+
+/** The player URL for a Pujo Reels link (scripts/reels_feed.py accepts the same links), or null for anything else.
+ * Instagram and Facebook use their official embed pages; YouTube uses its privacy-enhanced domain. */
+export function embedUrl(url) {
+  const u = String(url || '').trim();
+  let m = u.match(/^https:\/\/(?:www\.)?instagram\.com\/(?:[A-Za-z0-9_.]+\/)?(reels?|p|tv)\/([A-Za-z0-9_-]{5,})/);
+  if (m) return `https://www.instagram.com/${m[1] === 'p' ? 'p' : 'reel'}/${m[2]}/embed/`;
+  m = u.match(/^https:\/\/(?:(?:www|m)\.youtube\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&playsinline=1&rel=0`;
+  if (/^https:\/\/(?:(?:www|m|web)\.facebook\.com\/\S+|fb\.watch\/[A-Za-z0-9_-]+\/?)$/.test(u)) {
+    return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&autoplay=true`;
+  }
+  return null;
+}

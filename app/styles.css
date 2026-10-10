@@ -1004,3 +1004,27 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Pujo Reels (reels.js): 9:16 tiles on Home and in Moments, and the embedded player in the sheet */
+.reel-tile { position: relative; flex: 0 0 116px; aspect-ratio: 9 / 16; border: 0; padding: 0; border-radius: 12px; overflow: hidden; cursor: pointer;
+  background: linear-gradient(160deg, #7a1f1f, #b4441c 60%, #e0962b); color: #fff; text-align: left; scroll-snap-align: start; }
+.reel-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(0, 0, 0, .74)); }
+.reel-play { position: absolute; top: 38%; left: 50%; z-index: 1; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+  background: rgba(0, 0, 0, .42); border: 1.5px solid rgba(255, 255, 255, .85); display: grid; place-items: center; font-size: 13px; padding-left: 2px; }
+.reel-tile .sponsored { position: absolute; top: 8px; left: 8px; z-index: 1; font-size: 10px; border-color: transparent; background: rgba(0, 0, 0, .55); color: #fff; }
+.reel-tx { position: absolute; left: 8px; right: 8px; bottom: 8px; z-index: 1; display: grid; gap: 2px; }
+.reel-tx b { font-size: 12.5px; font-weight: 600; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.reel-tx small { font-size: 11px; opacity: .9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reels-all { margin-top: 14px; scroll-margin-top: 96px; }
+.reel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 16px; }
+.reel-grid .reel-tile { width: 100%; }
+.reel-sheet { display: grid; gap: 12px; }
+.reel-player { height: min(60vh, 640px); aspect-ratio: 9 / 16; max-width: 100%; margin: 0 auto; border-radius: 12px; overflow: hidden; background: #000; }
+.reel-player.ig { aspect-ratio: 9 / 17.5; background: #fff; }
+.reel-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+.reel-meta { display: grid; gap: 4px; }
+.reel-meta b { font-size: 15px; line-height: 1.35; }
+.reel-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.reel-actions .btn { flex: 1 1 auto; }
+.reels-all .section-head .fine { white-space: nowrap; }

@@ -11,6 +11,7 @@ import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioC
 import { liveHtml } from '../livecount.js';
 import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
+import { loadReels, reelsStripHtml, reelsClick, showAllReels } from '../reels.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -143,6 +144,7 @@ function render() {
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
+    <div id="homeReels">${reelsStripHtml()}</div>
     <section class="how-wrap" aria-label="${t('h.introTitle')}">
       <p class="how-lingo">${plain(t('how.lingo'))}</p>
       <ol class="how">${HOW.map(([q, em], i) => `<li><button type="button" data-q="${q}"><span class="how-n">${i + 1}</span><span class="how-em" aria-hidden="true">${em}</span>
@@ -181,6 +183,7 @@ function render() {
 `;
 
   wire(el);
+  loadReels(() => { const r = $('#homeReels', el); if (r) r.innerHTML = reelsStripHtml(); });
 }
 
 /* "Know your pujo": links to the guide's articles (static pages, also what search engines index). */
@@ -194,10 +197,12 @@ function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
     if (musicStripClick(e)) return;
+    if (reelsClick(e)) return;
     if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
+    if (q === 'reels') return showAllReels(go);
     if (q === 'myplan') return $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
     if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }

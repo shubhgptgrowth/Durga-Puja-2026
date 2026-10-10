@@ -63,6 +63,10 @@ test('model: reach, deltas, channels and series from one reply', () => {
   assert.equal(d.places[0].name, 'Bagbazar Sarbojanin');
   assert.equal(d.actions[0].name, 'Directions taps');
   assert.equal(model({ ok: true }).reach.vsYesterday, null);   // an empty project still renders
+  assert.deepEqual(model({ ok: true }).reels, { opens: 0, viewers: 0, minutes: 0, pandalTaps: 0, top: [] });
+  const r = model({ ok: true, reels: { opens: 40, viewers: 25, watch_minutes: '31.5', pandal_taps: 6, top: [{ reel: 'ig1', plays: 9, minutes: '12.0' }] } }).reels;
+  assert.equal(r.minutes, 31.5);
+  assert.deepEqual(r.top[0], { id: 'ig1', plays: 9, minutes: 12 });
 });
 
 test('fetchDashboard posts the key and treats a refusal as denied', async () => {

@@ -20,8 +20,14 @@ or *Global Privacy Control* send nothing. Each device can log at most 1,500 even
 | `filter` | Map tab: section, area, sort, food chips, list/map | which |
 | `plan`, `trail` | a route is built, a 6-day plan day or ready-made trail is opened | zones / trail id |
 | `lang`, `moment` | language switched, a photo/video posted | en/bn/hi, image/video |
+| `reel_open` | a Pujo Reel starts (Home strip, Moments, or "Next reel") | its pandal; detail = reel id:tile/next |
+| `reel_watch` | the reel player closes | its pandal; detail = reel id:seconds watched |
+| `reel_pandal` | "Open this pandal" from a reel | the pandal; detail = reel id |
 
 ## The live dashboard
+
+The dashboard's **Pujo Reels** card shows plays, viewers, minutes watched (each watch counted up to 15 minutes) and taps
+through to a pandal, plus the reels watched longest (`supabase/migrations/*_reels_stats.sql`).
 
 **pujoparikramaguide.in/kit/dashboard/** shows everything below on one page, refreshed every minute: who is on
 the site now (and on which screen), people reached against the 1,00,000 goal, visitors per day (new and

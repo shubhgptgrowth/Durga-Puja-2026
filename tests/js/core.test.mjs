@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   hav, orderRoute, pathLen, crowdIndex, stepsFor, kcalFor, judgeFix, StepDetector,
-  routeUrls, isOpen, hhmm, encodePlan, decodePlan, parseSteps, mergeProgress,
+  routeUrls, isOpen, hhmm, encodePlan, decodePlan, parseSteps, mergeProgress, embedUrl,
 } from '../../app/core.js';
 import { dietMatch, hasEgg, cost2 } from '../../app/foodinfo.js';
 import { STR } from '../../app/i18n.js';
@@ -250,4 +250,23 @@ test('My Pujo progress from two browsers merges without losing anything', () => 
   assert.equal(m.name, 'Rina'); assert.equal(m.goal, 12000); assert.equal(m.myMoments, 3);
   assert.deepEqual(m.myRatings, { x: { stars: 5 } });
   assert.deepEqual(mergeProgress(m, m), mergeProgress(m, {}), 'merging the same backup again changes nothing');
+});
+
+test('Pujo Reels: only Instagram, Facebook and YouTube links get a player, each through its official embed', () => {
+  assert.equal(embedUrl('https://www.instagram.com/reel/Cx12abc_D-/?igsh=abc'), 'https://www.instagram.com/reel/Cx12abc_D-/embed/');
+  assert.equal(embedUrl('https://www.instagram.com/p/Cx12abcD/'), 'https://www.instagram.com/p/Cx12abcD/embed/');
+  assert.equal(embedUrl('https://www.youtube.com/shorts/dQw4w9WgXcQ'), 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&playsinline=1&rel=0');
+  assert.match(embedUrl('https://www.facebook.com/watch/?v=123'), /^https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=https%3A%2F%2Fwww\.facebook\.com%2Fwatch%2F%3Fv%3D123&/);
+  for (const bad of ['http://www.instagram.com/reel/Cx12abc/', 'https://evil.example/reel/Cx12abc/', 'javascript:alert(1)', '', null,
+    'https://www.instagram.com/reel/Cx12abc/"><script>', 'https://www.facebook.com/x" onload="alert(1)']) {
+    const u = embedUrl(bad);
+    assert.ok(u === null || !/["<> ]/.test(u), String(bad));
+  }
+  assert.equal(embedUrl('https://evil.example/reel/Cx12abc/'), null);
+});
+
+test('Pujo Reels feed file: every reel the deploy publishes can be played', () => {
+  const f = JSON.parse(readFileSync(new URL('../../app/data/reels.json', import.meta.url)));
+  assert.ok(Array.isArray(f.reels));
+  for (const r of f.reels) assert.ok(embedUrl(r.url), r.url);
 });

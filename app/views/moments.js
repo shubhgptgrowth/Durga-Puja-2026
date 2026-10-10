@@ -1,9 +1,10 @@
-/* Moments: this year's community photos/videos (filterable by area and on-site verification), then the pujo
+/* Moments: Pujo Reels (reels.js), this year's community photos/videos (filterable by area and on-site verification), then the pujo
  * archive: real Durga Puja photos from Wikimedia Commons by year, each credited, so the tab is never empty. */
 import { S, G, idx, t, community, zs, esc, icon, nm } from '../state.js';
 import { $, registerView } from '../ui.js';
 import { thumbHtml, momentSheet, momentCache, uploadSheet, photoSheet } from '../sheets.js';
 import { areaChipsHtml, handleAreaClick, inArea } from '../filters.js';
+import { loadReels, reelsGridHtml, reelsClick } from '../reels.js';
 
 const PAGE = 30, AR_PAGE = 24;
 let pending = 0;
@@ -56,10 +57,12 @@ function paint() {
     ${m.items.length ? `<div class="grid-photos">${m.items.map(thumbHtml).join('')}</div>` : m.loading ? '' : `<div class="first-moment">${icon('camera')}<div><b>${m.error ? t('m.offline') : t('m.firstTitle')}</b><span>${t('m.firstSub')}</span></div><button class="btn primary sm" id="firstMoment">${t('m.add')}</button></div>`}
     <div class="center" style="margin:12px">${m.loading ? `<span class="fine">${t('m.loading')}</span>` : !m.done && m.items.length ? `<button class="btn sm" id="moreMoments">${t('m.more')}</button>` : ''}</div>`;
   el.innerHTML = `<div class="view-title"><h2>${t('m.title')}</h2><p>${t('m.subtitle')}</p></div>
+    ${reelsGridHtml()}
     <div style="margin-top:12px">${areaChipsHtml(m)}</div>
     <section class="this-year"><div class="section-head"><h2>${t('m.thisYear')}</h2></div>${live}</section>
     ${archiveHtml()}`;
   el.onclick = (e) => {
+    if (reelsClick(e)) return;
     if (handleAreaClick(e, m)) { ar.shown = AR_PAGE; return community.enabled ? load(true) : paint(); }
     const y = e.target.closest('[data-ary]')?.dataset.ary; if (y) { ar.year = y; ar.shown = AR_PAGE; return paint(); }
     if (e.target.closest('#arMore')) { ar.shown += AR_PAGE; return paint(); }
@@ -73,6 +76,7 @@ function paint() {
 
 function render() {
   loadArchive();
+  loadReels(() => { if (S.view === 'moments') paint(); });
   paint();
   if (community.enabled && !S.moments.items.length && !S.moments.loading) load(true);
   community.pendingMoments().then((list) => { if (list.length !== pending) { pending = list.length; paint(); } }).catch(() => {});
