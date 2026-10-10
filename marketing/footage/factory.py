@@ -131,9 +131,46 @@ PHOTO_OR_FILM_FROM = "2026-10-11"  # from this day every post is a photograph or
 TEXT_RENDERS = ("cards", "routes", "cards_reel", "route")
 
 
+FRESH_DAYS = 14  # a photo or clip shown on one day is not shown again for this many days
+
+
+def visuals(plan):
+    """What a plan puts on screen: footage clip ids and photo files (by URL). Music beds are not counted."""
+    clips = plan.get("clips") or {}
+    seen = set()
+    for it in plan.get("items", []):
+        for s in it.get("segments") or []:
+            seen.add(clips[s[0]]["url"] if s[0] in clips and clips[s[0]].get("url") else s[0])
+        for ph in it.get("photos") or []:
+            seen.add(ph["src"])
+        for sl in it.get("slides") or []:
+            if (sl.get("photo") or {}).get("src"):
+                seen.add(sl["photo"]["src"])
+    return seen
+
+
+def repeats(plan, plans_dir=None):
+    """Visuals this plan shares with the plans of the previous FRESH_DAYS days."""
+    import datetime
+    d0 = datetime.date.fromisoformat(plan["date"])
+    mine, out = visuals(plan), {}
+    for f in sorted(Path(plans_dir or ROOT / "marketing/daily").glob("2*.json")):
+        try:
+            d = datetime.date.fromisoformat(f.stem)
+        except ValueError:
+            continue
+        if 0 < (d0 - d).days <= FRESH_DAYS:
+            for v in mine & visuals(json.load(open(f, encoding="utf-8"))):
+                out.setdefault(v, f.stem)
+    return out
+
+
 def check(plan, idx):
     """Every clip exists and every cut fits inside its clip, before anything is downloaded."""
     errs = []
+    if plan.get("date", "") >= PHOTO_OR_FILM_FROM:
+        for v, d in repeats(plan).items():
+            errs.append(f"{v.rsplit('/', 1)[-1][:70]} was already shown on {d}: pick something fresh")
     for it in plan["items"]:
         if plan.get("date", "") >= PHOTO_OR_FILM_FROM and it.get("render") in TEXT_RENDERS:
             errs.append(f"{it['id']}: '{it['render']}' is a text/graphic post; posts are photographs or footage now")
