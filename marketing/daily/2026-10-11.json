@@ -1,6 +1,151 @@
 {
  "date": "2026-10-11",
- "note": "Bonedi bari cards (09:30), South Kolkata 2026 themes (15:30), Gariahat route reel (18:30). Every post carries our own words or data: Instagram keeps plain reposts of others' photos out of recommendations (2026). Stories: countdown 10:30, new-post teaser 15:35, the route reel 18:35, a reply question 20:30 (backup voice: Higgsfield credits ran out). Cards re-rendered 8 Oct: rule and subtitles placed from the title's measured bottom. Format test (owner, 8 Oct): the day's carousels also go out as reels (cards_reel) to see which format this audience takes to. 19:45 footage reel in the style that has done best so far (feeling-led hooks: 118, 40, 39 likes vs 1-3 for guides).",
+ "clips": {
+  "q105": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Sculpture_workshop_in_Kumortuli,_Kolkata_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Bernard Gagnon",
+   "label": "Sculpture_workshop_in_Kumortuli,_Kolkata_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sculpture_workshop_in_Kumortuli,_Kolkata_02.jpg"
+  },
+  "q129": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Victoria_Memorial,_Kolkata_at_night.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Dlinemedia",
+   "label": "Victoria_Memorial,_Kolkata_at_night.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Victoria_Memorial,_Kolkata_at_night.jpg"
+  },
+  "q14": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Haridevpur_41_Pally_Durga_Puja_2019.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "Haridevpur_41_Pally_Durga_Puja_2019.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Haridevpur_41_Pally_Durga_Puja_2019.jpg"
+  },
+  "q19": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/SHADOW_OF_MAKING.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Duppu Pal",
+   "label": "SHADOW_OF_MAKING.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:SHADOW_OF_MAKING.jpg"
+  },
+  "q20": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Sculpture_workshop_in_Kumortuli,_Kolkata_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Bernard Gagnon",
+   "label": "Sculpture_workshop_in_Kumortuli,_Kolkata_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sculpture_workshop_in_Kumortuli,_Kolkata_01.jpg"
+  },
+  "q24": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/%E0%A6%8F_.%E0%A6%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F_-%E0%A7%A8_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%AE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AA%E0%A7%87%E0%A6%B0_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "এ_.ই._ব্লক_পার্ট_-২_সল্টলেক_দূর্গা_পুজো_২০১৮_-_মণ্ডপের_ঝাড়ল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%8F_.%E0%A6%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F_-%E0%A7%A8_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%AE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AA%E0%A7%87%E0%A6%B0_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8.jpg"
+  },
+  "q26": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%80_%E0%A6%AC%E0%A7%8B%E0%A6%B8_%E0%A6%B2%E0%A7%87%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "কাশী_বোস_লেন_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%80_%E0%A6%AC%E0%A7%8B%E0%A6%B8_%E0%A6%B2%E0%A7%87%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q30": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_-_%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%82_%E0%A6%B6%E0%A6%BE%E0%A6%B0%E0%A6%A6_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_-_শ্রীভূমি_স্পোর্টিং_শারদ_দুর্গোৎসব_২০১৭.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_-_%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%82_%E0%A6%B6%E0%A6%BE%E0%A6%B0%E0%A6%A6_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q31": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95,_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_বি._যে._ব্লক,_লবণহ্রদ,_কলিকাতা_দুর্গাপুজো_২০১৭.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95,_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q32": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC,_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF,_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC,_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF,_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "q34": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "তেলেঙ্গাবাগান_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%A4%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q36": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%AC%E0%A6%BE%E0%A6%A4%E0%A6%BF.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "বাগবাজার_দূর্গা_পুজো_২০১৮_-_ঝাড়বাতি.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_-_%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%AC%E0%A6%BE%E0%A6%A4%E0%A6%BF.jpg"
+  },
+  "q41": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/19/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%B0_%E0%A6%B6%E0%A6%B0%E0%A7%80%E0%A6%B0%E0%A7%87_%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%80%E0%A6%B0_%E0%A6%86%E0%A6%97%E0%A6%AE%E0%A6%A8.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Srijitdutta.10",
+   "label": "মাটির_শরীরে_দেবীর_আগমন.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%B0_%E0%A6%B6%E0%A6%B0%E0%A7%80%E0%A6%B0%E0%A7%87_%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%80%E0%A6%B0_%E0%A6%86%E0%A6%97%E0%A6%AE%E0%A6%A8.jpg"
+  },
+  "q42": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%A4%E0%A6%B2%E0%A6%BE_%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AC.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "মানিকতলা_চালতাবাগান_দূর্গা_পূজা_২০১৬.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%A4%E0%A6%B2%E0%A6%BE_%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%82%E0%A6%9C%E0%A6%BE_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AC.jpg"
+  },
+  "q44": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/%E0%A6%B2%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A7%80_%E0%A6%8F%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%9F_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "লাবনী_এস্টেট_সল্টলেক_দূর্গাপুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%B2%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A7%80_%E0%A6%8F%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%9F_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q46": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mandap_in_North_Kolkata,_2016.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mand",
+   "page": "https://commons.wikimedia.org/wiki/File:A_common_low_height_electric_chandelier_in_a_Durga_Puja_Mandap_in_North_Kolkata,_2016.jpg"
+  },
+  "q52": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/%E0%A6%8F.%E0%A6%AC%E0%A6%BF._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "এ.বি._ব্লক_সল্টলেক_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%8F.%E0%A6%AC%E0%A6%BF._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%B8%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%B2%E0%A7%87%E0%A6%95_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "q59": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/%22Goddess_of_war_%22makeup_(2).jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "TAPAS KUMAR HALDER",
+   "label": "\"Goddess_of_war_\"makeup_(2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%22Goddess_of_war_%22makeup_(2).jpg"
+  }
+ },
  "items": [
   {
    "id": "p1",
@@ -8,568 +153,332 @@
    "at": "09:30",
    "photos": [
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
-     "cx": 0.5,
-     "cy": 0.35
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0_-_%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B0_%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0_-_%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B0_%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B.jpg",
      "cx": 0.5,
      "cy": 0.45
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
-     "artist": "Indrajit Das",
-     "license": "CC BY-SA 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/a/ab/BG_Block_Saltlake_Durgapujo_2020.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:BG_Block_Saltlake_Durgapujo_2020.jpg",
      "cx": 0.5,
      "cy": 0.45
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E0%A6%AC%E0%A6%BF._%E0%A6%87._(%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE)_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._(%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE)_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
      "cx": 0.5,
-     "cy": 0.35
+     "cy": 0.45
     },
     {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/c/cf/%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._(%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6),_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._(%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6),_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6,_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/c/c5/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_(%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0).jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/A_low_angle_shot_of_Goddess_Durga_in_A_Mandap_in_North_Kolkata,_2017.jpg",
+     "artist": "Subhrajyoti07",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:A_low_angle_shot_of_Goddess_Durga_in_A_Mandap_in_North_Kolkata,_2017.jpg",
+     "cx": 0.5,
+     "cy": 0.45
+    },
+    {
+     "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
+     "artist": "Pramanikshreya",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
      "cx": 0.5,
      "cy": 0.45
     }
    ],
    "caption": {
-    "en": "Durga Puja the old way in Kolkata and Howrah: inside the bonedi bari, the old family homes 🪔\n\nSwipe: Sovabazar Rajbari in north Kolkata, where the pujo goes back to 1757 (1 to 3), and Sushil Dhar Estate in Howrah (4 and 5). No theme and no queue, just a thakurdalan, a protima in daaker saaj, and rituals a family has kept for generations.\n\nKnow a bonedi bari pujo we should feature? Drop the name in the comments 👇",
+    "en": "Kolkata Durga Puja, in close-up: seven faces of Maa from seven pandals 🪔\n\nSwipe slowly. A south Kolkata pujo, BG Block, BE (West) Block and AE Block in Salt Lake, Bagbazar Sarbojanin, a north Kolkata mandap and one from last year. Every one of them was made by hand in Kumartuli.\n\nWhich one would you stand in the queue for? 👇",
     "keywords": [
-     "bonedi bari durga puja",
-     "rajbari durga puja",
-     "howrah durga puja",
+     "kolkata durga puja",
      "durga puja 2026",
-     "bengali heritage"
+     "durga idol",
+     "bagbazar sarbojanin",
+     "salt lake durga puja",
+     "kolkata pandals"
     ],
-    "tags": "#BonediBari #DurgaPuja2026 #BengaliCulture"
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
    }
   },
   {
    "id": "s1",
    "type": "story",
    "at": "10:30",
+   "bn": {
+    "segs": [
+     "আর সাত দিন"
+    ]
+   },
    "segments": [
     [
-     "f06",
-     2,
-     5.0,
-     "6 days to Shashthi"
+     "q59",
+     0,
+     6.0,
+     "7 days to go"
     ]
    ],
-   "vo": {
-    "engine": "edge:bn-IN-TanishaaNeural",
-    "credit": "AI voice (Microsoft Azure neural TTS)",
-    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
-    "lines": [
-     "আর মাত্র ছ'দিন… তারপরই ঠাকুর দেখা!"
+   "music": [
+    "f22",
+    30
+   ]
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "12:30",
+   "hook": "Nobody looks up in a Kolkata pandal. You should.",
+   "bn": {
+    "hook": "কলকাতার প্যান্ডেলে কেউ ওপরে তাকায় না। একবার তাকান",
+    "segs": [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
     ],
-    "en": [
-     "Just six more days... then pandal hopping!"
+    "end": "কোনটায় চোখ আটকে গেল?"
+   },
+   "segments": [
+    [
+     "q24",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "q30",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q31",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q32",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q36",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "q46",
+     0,
+     3.6,
+     ""
     ]
+   ],
+   "end": [
+    "Which one stops you?",
+    "Six pandals, six chandeliers"
+   ],
+   "music": [
+    "f20",
+    40
+   ],
+   "caption": {
+    "en": "Kolkata Durga Puja pandals: look up 🪔\n\nThe jhaarbati (chandeliers) of AE Block, Sreebhumi, BJ Block, Baguiati's Sports Council Club, Bagbazar and a north Kolkata mandap. Half the crowd never looks up. Don't be half the crowd.\n\nWhich one stops you? 👇",
+    "keywords": [
+     "kolkata durga puja",
+     "durga puja 2026",
+     "pandal chandelier",
+     "jhaarbati",
+     "sreebhumi",
+     "bagbazar"
+    ],
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
    }
   },
   {
    "id": "r2",
    "type": "reel",
-   "at": "12:30",
-   "hook": "Nobody outside Kolkata believes this pujo is 269 years old",
+   "at": "18:30",
+   "hook": "Seven nights from now, this is Kolkata",
    "bn": {
-    "hook": "এই পুজোর বয়স ২৬৯ বছর",
+    "hook": "আর সাত রাত, তারপর এই কলকাতা",
     "segs": [
      "",
-     "শোভাবাজার রাজবাড়ি",
-     "ঠাকুরদালান",
-     "সুশীল ধর এস্টেট, হাওড়া",
-     "একই নিয়ম, প্রজন্মের পর প্রজন্ম"
+     "চালতাবাগান",
+     "লাবণী এস্টেট",
+     "কাশী বোস লেন",
+     "তেলেঙ্গাবাগান",
+     "হরিদেবপুর ৪১ পল্লি"
     ],
-    "end": "আপনার চেনা কোনো বনেদি বাড়ির পুজো আছে?"
+    "end": "প্রথমে কোন প্যান্ডেল?"
    },
    "segments": [
     [
-     "ph-bon1",
+     "q129",
      0,
-     3.4,
+     4.0,
      ""
     ],
     [
-     "ph-bon2",
+     "q42",
      0,
-     3.0,
-     "Sovabazar Rajbari, north Kolkata"
+     3.6,
+     "Chaltabagan"
     ],
     [
-     "ph-bon3",
+     "q44",
      0,
-     3.0,
-     "The thakurdalan"
+     3.6,
+     "Labony Estate"
     ],
     [
-     "ph-bon4",
+     "q26",
      0,
-     3.0,
-     "Sushil Dhar Estate, Howrah"
+     3.6,
+     "Kashi Bose Lane"
     ],
     [
-     "ph-bon5",
+     "q34",
      0,
-     3.0,
-     "Same rituals, generation after generation"
+     3.6,
+     "Telengabagan"
+    ],
+    [
+     "q14",
+     0,
+     3.6,
+     "Haridevpur 41 Pally"
     ]
    ],
    "end": [
-    "Know a bonedi bari pujo?",
-    "Tell us in the comments"
+    "Which pandal first?",
+    "Shashthi is 17 October"
    ],
    "music": [
-    "f21",
-    20
+    "f23",
+    15
    ],
    "caption": {
-    "en": "Bonedi bari Durga Puja in Kolkata and Howrah: no theme, no queue 🪔\n\nSovabazar Rajbari, where the pujo goes back to 1757, and Sushil Dhar Estate in Howrah, where families have kept the same rituals for generations.\n\nKnow a bonedi bari pujo we should feature? Comment the name 👇",
+    "en": "Kolkata Durga Puja nights, seven days from now ✨\n\nVictoria at night, then Chaltabagan, Labony Estate, Kashi Bose Lane, Telengabagan and Haridevpur 41 Pally. Every route between them is in the free guide (link in bio).\n\nWhich pandal is first on your list? 👇",
     "keywords": [
-     "bonedi bari durga puja",
-     "rajbari durga puja",
-     "howrah durga puja",
-     "durga puja 2026"
+     "kolkata durga puja",
+     "durga puja 2026",
+     "chaltabagan",
+     "kashi bose lane",
+     "telengabagan",
+     "pandal hopping"
     ],
-    "tags": "#BonediBari #DurgaPuja2026 #BengaliCulture"
-   }
-  },
-  {
-   "id": "p3",
-   "type": "photo",
-   "at": "15:30",
-   "photos": [
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/6/61/Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    },
-    {
-     "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
-     "artist": "Biswarup Ganguly",
-     "license": "CC BY 3.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
-     "cx": 0.5,
-     "cy": 0.45
-    }
-   ],
-   "caption": {
-    "en": "Durga Puja 2026 themes in South Kolkata, from Ekdalia to Behala 🎨\n\nThe frames are Ekdalia Evergreen and Singhi Park in earlier years. This year Ekdalia Evergreen builds Gujarat's Somnath Temple, Singhi Park turns to Bastar's art, Samaj Sebi wraps its pandal in posters from all 208 Uttam Kumar films, and Thakurpukur SB Park takes you 20 feet down a Raniganj coal mine. Ballygunge Cultural, Suruchi Sangha, Behala Notun Dal and Behala Club are in the guide too, each with the nearest station and the walk (link in bio).\n\nSend this to your South Kolkata pujo gang 👇",
-    "keywords": [
-     "durga puja 2026 theme",
-     "south kolkata pandals 2026",
-     "ekdalia evergreen 2026",
-     "singhi park 2026 theme",
-     "samaj sebi 2026",
-     "suruchi sangha 2026",
-     "behala durga puja 2026",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#DurgaPuja2026 #SouthKolkata #KolkataDurgaPuja"
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
    }
   },
   {
    "id": "s2",
    "type": "story",
-   "at": "15:35",
-   "segments": [
-    [
-     "f11",
-     1,
-     5.0,
-     "2026 themes, South Kolkata: new post on our page"
-    ]
-   ],
-   "vo": {
-    "engine": "edge:bn-IN-TanishaaNeural",
-    "credit": "AI voice (Microsoft Azure neural TTS)",
-    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
-    "lines": [
-     "দক্ষিণ কলকাতার এবারের থিম, এক পোস্টে!"
-    ],
-    "en": [
-     "South Kolkata's themes this year, in one post!"
-    ]
-   }
-  },
-  {
-   "id": "r1",
-   "type": "reel",
-   "at": "18:30",
-   "hook": "If you grew up in South Kolkata, you can hear this",
+   "at": "19:00",
    "bn": {
-    "hook": "দক্ষিণ কলকাতায় বড় হলে, এই শব্দটা চেনা",
     "segs": [
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    "end": "আপনার পাড়ার পুজো কোনটা?"
+     "আপনার পাড়ার পুজোর নাম লিখুন"
+    ]
    },
    "segments": [
     [
-     "f04",
-     1,
-     3.4,
-     ""
-    ],
-    [
-     "f06",
-     4,
-     3.0,
-     ""
-    ],
-    [
-     "f11",
-     2,
-     3.0,
-     ""
-    ],
-    [
-     "f05",
-     16,
-     3.0,
-     ""
-    ],
-    [
-     "f08",
-     10,
-     3.2,
-     ""
+     "q52",
+     0,
+     6.0,
+     "Reply with your para's pujo"
     ]
-   ],
-   "end": [
-    "Your para's pujo?",
-    "Tell us in the comments"
    ],
    "music": [
-    "f19",
-    4
-   ],
-   "caption": {
-    "en": "Gariahat and Ballygunge pandal hopping, Kolkata Durga Puja 2026: 13 pandals, one night 🚶\n\nStart at Ballygunge station. Ekdalia Evergreen, Singhi Park, Hindustan Park and Jodhpur Park are on one walking route: 13 pujos, about 11.5 km and 16,700 steps, with Gariahat's shops in the middle. The full route is in the free guide (link in bio).\n\nWhich para's pujo is yours? Tell us 👇",
-    "keywords": [
-     "south kolkata pandals",
-     "ekdalia evergreen",
-     "singhi park",
-     "hindustan park",
-     "jodhpur park durga puja",
-     "gariahat",
-     "pandal hopping route",
-     "durga puja 2026"
-    ],
-    "tags": "#DurgaPuja2026 #PandalHopping #KolkataDurgaPuja"
-   }
-  },
-  {
-   "id": "s3",
-   "type": "story",
-   "at": "18:35",
-   "video_url": "https://pujoparikramaguide.in/kit/reels/2026-10-11/1011-r1.mp4"
-  },
-  {
-   "id": "r4",
-   "type": "reel",
-   "at": "19:45",
-   "hook": "Turn the sound up: this is pujo",
-   "bn": {
-    "hook": "সাউন্ড বাড়ান: এটাই পুজো",
-    "segs": [
-     "",
-     "আলোয় ভাসা শহর",
-     "আরতির ঢাক",
-     "দশমীর সিঁদুর খেলা",
-     "আর মাত্র ৬ দিন"
-    ],
-    "end": "কোন আওয়াজ শুনলে মনে হয় পুজো এসে গেছে?"
-   },
-   "segments": [
-    [
-     "f05",
-     24,
-     3.4,
-     ""
-    ],
-    [
-     "f13",
-     8,
-     3.0,
-     "The whole city lit up"
-    ],
-    [
-     "f15",
-     14,
-     3.0,
-     "Dhak at aarti"
-    ],
-    [
-     "f25",
-     2,
-     3.0,
-     "Sindoor on Dashami"
-    ],
-    [
-     "f02",
-     20,
-     3.2,
-     "6 days to go"
-    ]
-   ],
-   "end": [
-    "Which sound means pujo to you?",
-    "Dhak, shankh or ulu?"
-   ],
-   "music": [
-    "f23",
-    0
-   ],
-   "caption": {
-    "en": "Turn the sound up: this is Durga Puja in Kolkata 🥁\n\nThe dhak at aarti, a whole city lit up, sindoor on Dashami. Six days to go.\n\nDhak, shankh or ulu: which sound means pujo to you? 👇",
-    "keywords": [
-     "kolkata durga puja",
-     "durga puja 2026",
-     "dhak",
-     "pujo vibes",
-     "sindoor khela"
-    ],
-    "tags": "#DurgaPuja2026 #KolkataPujo #Dhak"
-   }
-  },
-  {
-   "id": "s4",
-   "type": "story",
-   "at": "20:30",
-   "segments": [
-    [
-     "f05",
-     16,
-     5.0,
-     "Saptami, Ashtami or Navami: which night is yours? Reply"
-    ]
-   ],
-   "vo": {
-    "engine": "edge:bn-IN-TanishaaNeural",
-    "credit": "AI voice (Microsoft Azure neural TTS)",
-    "voice": "Microsoft · Tanishaa (fallback: Higgsfield credits ran out)",
-    "lines": [
-     "আপনার প্রিয় রাত কোনটা? সপ্তমী, অষ্টমী না নবমী? রিপ্লাই করুন!"
-    ],
-    "en": [
-     "Which night is your favourite: Saptami, Ashtami or Navami? Reply!"
-    ]
-   }
+    "f21",
+    60
+   ]
   },
   {
    "id": "r3",
    "type": "reel",
    "at": "21:00",
-   "hook": "South Kolkata's 2026 themes, before anyone sees them",
+   "hook": "Before the pandal, there's Kumartuli",
    "bn": {
-    "hook": "দক্ষিণ কলকাতার এবারের থিম, প্যান্ডেল খোলার আগেই",
+    "hook": "প্যান্ডেলের আগে কুমোরটুলি",
     "segs": [
      "",
-     "একডালিয়া এভারগ্রিন · সোমনাথ মন্দির",
-     "সমাজসেবী · উত্তমকুমারের ২০৮ ছবি",
-     "সিংহী পার্ক · বস্তারের শিল্প",
-     "ঠাকুরপুকুর · কয়লাখনির ভেতরে"
+     "কুমোরটুলি",
+     "খড়, মাটি, হাত",
+     "মাটির শরীরে দেবীর আগমন"
     ],
-    "end": "কোনটা আগে দেখবেন?"
+    "end": "কুমোরটুলি গেছেন কখনও?"
    },
    "segments": [
     [
-     "ph-south2",
+     "q19",
      0,
-     3.4,
+     4.0,
      ""
     ],
     [
-     "ph-south1",
+     "q20",
      0,
-     3.0,
-     "Ekdalia Evergreen: Somnath Temple"
+     3.6,
+     "Kumartuli, north Kolkata"
     ],
     [
-     "ph-south3",
+     "q105",
      0,
-     3.0,
-     "Samaj Sebi: 208 Uttam Kumar films"
+     3.6,
+     "Straw, clay, hands"
     ],
     [
-     "ph-south5",
+     "q41",
      0,
-     3.0,
-     "Singhi Park: Bastar's art"
-    ],
-    [
-     "ph-south6",
-     0,
-     3.0,
-     "Thakurpukur SB Park: down a coal mine"
+     3.6,
+     "Maa arrives in clay"
     ]
    ],
    "end": [
-    "Which one first?",
-    "Photos: earlier years. Themes: 2026"
+    "Have you been to Kumartuli?",
+    "Five minutes from Sovabazar Metro"
    ],
    "music": [
-    "f23",
-    40
+    "f21",
+    10
    ],
    "caption": {
-    "en": "South Kolkata Durga Puja 2026 themes, before the pandals open 🎨\n\nSomnath at Ekdalia, Bastar at Singhi Park, 208 Uttam Kumar posters at Samaj Sebi and a coal mine at Thakurpukur SB Park. The photos are from earlier years; the themes are this year's.\n\nSend this to your South Kolkata pujo gang.",
+    "en": "Kumartuli, Kolkata: where every Durga Puja begins 🪔\n\nStraw, clay from the Ganga and months of work in the lanes by the river, five minutes from Sovabazar Metro. Go before Shashthi and you'll see Maa before the pandals do.\n\nHave you ever been? 👇",
     "keywords": [
-     "durga puja 2026 theme",
-     "south kolkata pandals 2026",
-     "ekdalia evergreen 2026",
-     "singhi park 2026",
-     "kolkata durga puja 2026"
+     "kumartuli",
+     "kumortuli",
+     "kolkata durga puja",
+     "durga idol making",
+     "durga puja 2026",
+     "sovabazar metro"
     ],
-    "tags": "#DurgaPuja2026 #SouthKolkata #KolkataDurgaPuja"
+    "tags": "#DurgaPuja2026 #KolkataDurgaPuja #PandalHopping"
    }
   }
- ],
- "clips": {
-  "ph-bon1": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_-_Sovabazar_Royal_Palace_-_Kolkata_2014-10-03_9196.jpg"
-  },
-  "ph-bon2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_in_Temple_-_Sovabazar_Royal_Palace_-_Kolkata_2012-10-20_0991.JPG"
-  },
-  "ph-bon3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg"
-  },
-  "ph-bon4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Idol_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1246.jpg"
-  },
-  "ph-bon5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_-_Sushil_Dhar_Estate_-_Howrah_2012-10-24_1248.JPG"
-  },
-  "ph-south1": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3344-3345.JPG"
-  },
-  "ph-south2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG"
-  },
-  "ph-south3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road",
-   "page": "https://commons.wikimedia.org/wiki/File:Asura_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4116.JPG"
-  },
-  "ph-south4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_",
-   "page": "https://commons.wikimedia.org/wiki/File:Saraswati_-_Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4123.JPG"
-  },
-  "ph-south5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3440-3442.JPG"
-  },
-  "ph-south6": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Porch_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2013-10-11_3412-3413.JPG"
-  }
- }
+ ]
 }
