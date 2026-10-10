@@ -1,38 +1,6 @@
 {
  "date": "2026-10-22",
  "clips": {
-  "fx-74d985b1": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9219.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
-   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209219.jpg"
-  },
-  "fx-54b42620": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9221.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
-   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209221.jpg"
-  },
-  "fx-bdb3d42f": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9227.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
-   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209227.jpg"
-  },
-  "fx-6771bed7": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9229.jpg",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
-   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209229.jpg"
-  },
   "fx-411bb78a": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6578.JPG",
@@ -254,53 +222,53 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "A 269-year-old goodbye",
+   "hook": "The walk no one wants to end",
    "bn": {
-    "hook": "২৬৯ বছরের বিদায়",
+    "hook": "যে পথ কেউ শেষ করতে চায় না",
     "segs": [
      "",
-     "শোভাবাজার রাজবাড়ি",
-     "বাগবাজার ঘাট",
-     "আসছে বছর আবার হবে"
+     "শোভাযাত্রা",
+     "ঢাকের তালে",
+     "গঙ্গার দিকে"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-74d985b1",
+     "fx-411bb78a",
      0,
      4.0,
      ""
     ],
     [
-     "fx-54b42620",
+     "fx-b3d0c71d",
      0,
      3.6,
-     "Sovabazar Rajbari"
+     "The procession"
     ],
     [
-     "fx-bdb3d42f",
+     "fx-125db1f9",
      0,
      3.6,
-     "Baghbazar Ghat"
+     "Dhak all the way"
     ],
     [
-     "fx-6771bed7",
+     "fx-7705df50",
      0,
      3.6,
-     "Asche bochor abar hobe"
+     "To the river"
     ]
    ],
    "end": [
-    "A 269-year-old goodbye",
-    "Have you ever watched a bisarjan at the ghat? Tell us"
+    "The walk no one wants to end",
+    "Does your para dance all the way to the ghat? Tell us"
    ],
    "music": [
     "f23",
     90
    ],
    "caption": {
-    "en": "Sovabazar Rajbari's Durga Puja immersion at Baghbazar Ghat, Kolkata 🙏\n\nThe royal family's protima goes to the Hooghly the old way, carried down to the river. These photos are from 2014.\n\nHave you ever watched a bisarjan at the ghat? Tell us 👇",
+    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -320,15 +288,15 @@
    },
    "segments": [
     [
-     "fx-54b42620",
+     "fx-b3d0c71d",
      0,
      6.0,
      "Asche bochor abar hobe"
     ]
    ],
    "music": [
-    "f23",
-    50
+    "f20",
+    30
    ]
   },
   {
@@ -466,7 +434,7 @@
    "zone": "central",
    "hook": "10 pandals. 10 km. One night.",
    "caption": {
-    "en": "College Street & Sealdah pandal hopping route for Durga Puja 2026 in Kolkata: 10 pandals, 10 km, one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the numbers. This is the walking order through 10 pandals in College Street & Sealdah, from Chaltabagan Lohapatty and Simla Byayam Samity to Park Street Allen Park Puja: about 10 km and 14,090 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "en": "College Street & Sealdah pandal hopping route for Durga Puja 2026 in Kolkata: 10 pandals, 10 km, one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the numbers. This is the walking order through 10 pandals in College Street & Sealdah, from Chaltabagan Lohapatty and Simla Byayam Samity to Park Street Allen Park Puja: about 10 km and 14,090 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "college street & sealdah durga puja",
      "pandal hopping route kolkata",
@@ -560,53 +528,53 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "The walk no one wants to end",
+   "hook": "Kolkata's hardest goodbye",
    "bn": {
-    "hook": "যে পথ কেউ শেষ করতে চায় না",
+    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
     "segs": [
      "",
-     "শোভাযাত্রা",
-     "ঢাকের তালে",
-     "গঙ্গার দিকে"
+     "বাজা কদমতলা ঘাট",
+     "",
+     "বিসর্জন"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-411bb78a",
+     "fx-6a7c4367",
      0,
      4.0,
      ""
     ],
     [
-     "fx-b3d0c71d",
+     "fx-1e576a95",
      0,
      3.6,
-     "The procession"
+     "Baja Kadamtala Ghat"
     ],
     [
-     "fx-125db1f9",
+     "fx-9ce6f7cb",
      0,
      3.6,
-     "Dhak all the way"
+     ""
     ],
     [
-     "fx-7705df50",
+     "fx-e68a45ca",
      0,
      3.6,
-     "To the river"
+     "Bisarjan"
     ]
    ],
    "end": [
-    "The walk no one wants to end",
-    "Does your para dance all the way to the ghat? Tell us"
+    "Kolkata's hardest goodbye",
+    "Who do you miss the most when pujo ends? Tell us"
    ],
    "music": [
     "f22",
     20
    ],
    "caption": {
-    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
+    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -626,15 +594,15 @@
    },
    "segments": [
     [
-     "fx-6771bed7",
+     "fx-7705df50",
      0,
      6.0,
      "Which pandal are you going to?"
     ]
    ],
    "music": [
-    "f22",
-    120
+    "f23",
+    50
    ]
   },
   {
@@ -883,243 +851,6 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "Kolkata's hardest goodbye",
-   "bn": {
-    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
-    "segs": [
-     "",
-     "বাজা কদমতলা ঘাট",
-     "",
-     "বিসর্জন"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
-   "segments": [
-    [
-     "fx-6a7c4367",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "fx-1e576a95",
-     0,
-     3.6,
-     "Baja Kadamtala Ghat"
-    ],
-    [
-     "fx-9ce6f7cb",
-     0,
-     3.6,
-     ""
-    ],
-    [
-     "fx-e68a45ca",
-     0,
-     3.6,
-     "Bisarjan"
-    ]
-   ],
-   "end": [
-    "Kolkata's hardest goodbye",
-    "Who do you miss the most when pujo ends? Tell us"
-   ],
-   "music": [
-    "f21",
-    80
-   ],
-   "caption": {
-    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
-    "keywords": [
-     "durga puja 2026",
-     "kolkata durga puja",
-     "bijoya dashami kolkata"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
-   }
-  },
-  {
-   "id": "s3",
-   "type": "story",
-   "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
-   "segments": [
-    [
-     "fx-125db1f9",
-     0,
-     6.0,
-     "North or South this year?"
-    ]
-   ],
-   "music": [
-    "f20",
-    140
-   ]
-  },
-  {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
-   "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bhowanipore",
-     "title": "Maddox Square",
-     "bn": "ম্যাডক্স স্কোয়ার",
-     "sub": "Pictured: 2017",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3958-3962.tif",
-      "artist": "gangulybiswarup",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Kolkata's favourite adda ground. A traditional idol and the city's best people-watching."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Least crowded: 9 pm to 1 am",
-       "সবচেয়ে কম ভিড়"
-      ],
-      [
-       "Metro: Jatin Das Park, 21 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Eat nearby: Bojangles, Ammini",
-       "কাছেই খাওয়া"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Maddox Square, 2017"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nOur crowd model says it's least crowded around 9 pm to 1 am, and it's 21 minutes' walk from Jatin Das Park Metro.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "maddox square durga puja 2026",
-     "maddox square pandal",
-     "bhowanipore & elgin pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
-   "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Lake Market",
-     "title": "Deshapriya Park",
-     "bn": "দেশপ্রিয় পার্ক",
-     "sub": "Pictured: 2017",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4506-4508.tif",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Once famous for the biggest Durga idol in the world, it now runs grand themes."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ],
-      [
-       "Metro: Kalighat, 20 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Since 1938",
-       "প্রতিষ্ঠা"
-      ],
-      [
-       "Eat nearby: Lake Market Telebhaja Stalls",
-       "কাছেই খাওয়া"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4501.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Deshapriya Park, 2017"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Deshapriya Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nOnce famous for the biggest Durga idol in the world, it now runs grand themes.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 20 minutes' walk from Kalighat Metro.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "deshapriya park durga puja 2026",
-     "deshapriya park pandal",
-     "lake market & kalighat pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
-   "id": "r6",
-   "type": "reel",
-   "at": "22:00",
    "hook": "How a royal family says goodbye",
    "bn": {
     "hook": "রাজবাড়ির বিদায়",
@@ -1162,8 +893,8 @@
     "Save this, and tell us your para's bisarjan story"
    ],
    "music": [
-    "f20",
-    30
+    "f21",
+    80
    ],
    "caption": {
     "en": "Sovabazar Rajbari's bisarjan, the traditional way, Kolkata 🙏\n\nBefore the immersion the protima is readied at Baghbazar Ghat. These photos are from 2014.\n\nSave this, and tell us your para's bisarjan story 👇",
@@ -1173,6 +904,260 @@
      "bijoya dashami kolkata"
     ],
     "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "19:05",
+   "bn": {
+    "segs": [
+     "উত্তর না দক্ষিণ?"
+    ]
+   },
+   "segments": [
+    [
+     "fx-9ce6f7cb",
+     0,
+     6.0,
+     "North or South this year?"
+    ]
+   ],
+   "music": [
+    "f22",
+    120
+   ]
+  },
+  {
+   "id": "p6",
+   "type": "photo",
+   "render": "editorial",
+   "at": "19:40",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Bhowanipore",
+     "title": "Maddox Square",
+     "bn": "ম্যাডক্স স্কোয়ার",
+     "sub": "Pictured: 2017",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Kolkata's favourite adda ground. A traditional idol and the city's best people-watching."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 9 pm to 1 am",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Jatin Das Park, 21 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Bojangles, Ammini",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/8/85/Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3973.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Maddox Square, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nOur crowd model says it's least crowded around 9 pm to 1 am, and it's 21 minutes' walk from Jatin Das Park Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "maddox square durga puja 2026",
+     "maddox square pandal",
+     "bhowanipore & elgin pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "p7",
+   "type": "photo",
+   "render": "editorial",
+   "at": "20:50",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Lake Market",
+     "title": "Deshapriya Park",
+     "bn": "দেশপ্রিয় পার্ক",
+     "sub": "Pictured: 2017",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4501.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Once famous for the biggest Durga idol in the world, it now runs grand themes."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Kalighat, 20 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Since 1938",
+       "প্রতিষ্ঠা"
+      ],
+      [
+       "Eat nearby: Lake Market Telebhaja Stalls",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Durga_Puja_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4519.JPG",
+      "artist": "Biswarup Ganguly",
+      "license": "CC BY 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Deshapriya Park, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "Deshapriya Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nOnce famous for the biggest Durga idol in the world, it now runs grand themes.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 20 minutes' walk from Kalighat Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "deshapriya park durga puja 2026",
+     "deshapriya park pandal",
+     "lake market & kalighat pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "p8",
+   "type": "photo",
+   "render": "editorial",
+   "at": "22:00",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Gariahat",
+     "title": "Hindustan Club",
+     "bn": "হিন্দুস্থান ক্লাব",
+     "sub": "Pictured: 2020",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/6/63/Hindustan_club.jpg",
+      "artist": "Priyankasingha1811",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "A well-known theme puja in Gariahat. Location from OpenStreetMap."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Ballygunge Junction (Suburban), 29 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Bhojohori Manna 6",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/8/85/DurgaPuja2017_-_Pandal_of_Hindustan_Park_01.jpg",
+      "artist": "Indrajit Das",
+      "license": "CC BY-SA 3.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Hindustan Club, 2017"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "Hindustan Club, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA well-known theme puja in Gariahat. Location from OpenStreetMap.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 29 minutes' walk from Ballygunge Junction (Suburban) Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "hindustan club durga puja 2026",
+     "hindustan club pandal",
+     "gariahat & ballygunge pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
    }
   },
   {
@@ -1186,15 +1171,15 @@
    },
    "segments": [
     [
-     "fx-1e576a95",
+     "fx-895b5194",
      0,
      6.0,
      "Who are you going with?"
     ]
    ],
    "music": [
-    "f21",
-    150
+    "f20",
+    140
    ]
   }
  ]

@@ -200,6 +200,8 @@ def check(plan, idx):
                 errs.append(f"{it['id']}: unknown clip {s[0]}")
             elif e.get("license") == "used with permission" and not (e.get("permission") and e.get("url")):
                 errs.append(f"{it['id']}: {s[0]} ({e['artist']}) has no recorded permission or file yet")
+            elif Path((e.get("url") or "").split("?")[0]).suffix.lower() in (".tif", ".tiff", ".gif", ".svg", ".webp"):
+                errs.append(f"{it['id']}: {s[0]} is a {Path(e['url'].split('?')[0]).suffix} file; reels take .jpg/.png stills or video")
             elif e.get("dur") and s[1] + s[2] > e["dur"] + 0.05:
                 errs.append(f"{it['id']}: {s[0]} is {e['dur']}s, cut ends at {s[1] + s[2]}s")
             for a, b, why in e.get("avoid") or [] if e else []:  # stretches of a clip we must not show (footage.json)

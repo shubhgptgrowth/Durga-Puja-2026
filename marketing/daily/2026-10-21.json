@@ -1,70 +1,6 @@
 {
  "date": "2026-10-21",
  "clips": {
-  "fx-f23d7f35": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg"
-  },
-  "fx-1db4e0bb": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg"
-  },
-  "fx-a95e13e2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg"
-  },
-  "fx-3c0b4e02": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg"
-  },
-  "fx-cdd7623d": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Subhrajyoti07",
-   "label": "বি._ই._(পশ্চিম)_ব্লক_বিধান_নগর_দূর্গা_পুজো_২০১৮_(মুখ্য_দূর্গ",
-   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg"
-  },
-  "fx-cfc01b95": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._%28%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6%29%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Subhrajyoti07",
-   "label": "ব্লক_-_এ._ই._(দ্বিতীয়_অংশ),_লবন_হ্রদ,_কলিকাতা_(মুখ্য_দূর্গা",
-   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._%28%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6%29%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg"
-  },
-  "fx-46b41fdc": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Subhrajyoti07",
-   "label": "ঝাড়লণ্ঠন_বি._যে._ব্লক,_লবণহ্রদ,_কলিকাতা_দুর্গাপুজো_২০১৭.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
-  },
-  "fx-676bb36d": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Subhrajyoti07",
-   "label": "বি._ই._(পশ্চিম)_ব্লক_বিধান_নগর_দূর্গা_পুজো_২০১৮.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
-  },
   "fx-c571f664": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg",
@@ -128,6 +64,70 @@
    "artist": "Subhrajyoti07",
    "label": "ঝাড়লণ্ঠন_স্পোর্টস_কাউন্সিল_ক্লাব,_দেশবন্ধু_নগর_বাগুইআটি,_কল",
    "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%B8_%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%B2_%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AC%2C_%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%81%E0%A6%87%E0%A6%86%E0%A6%9F%E0%A6%BF%2C_%E0%A6%95%E0%A6%B2%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "fx-698e8911": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Sindur_Khela_in_Durga_Puja_Kolkata_2024_118.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_118.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_118.jpg"
+  },
+  "fx-af5c9921": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sindur_Khela_in_Durga_Puja_Kolkata_2024_35.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_35.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_35.jpg"
+  },
+  "fx-e462c34d": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sindur_Khela_in_Durga_Puja_Kolkata_2024_46.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_46.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_46.jpg"
+  },
+  "fx-554dd767": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Sindur_Khela_in_Durga_Puja_Kolkata_2024_113.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_113.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_113.jpg"
+  },
+  "fx-74d985b1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9219.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209219.jpg"
+  },
+  "fx-54b42620": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9221.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209221.jpg"
+  },
+  "fx-bdb3d42f": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9227.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209227.jpg"
+  },
+  "fx-6771bed7": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Sovabazar_Royal_Durga_Idol_Immersion_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9229.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209229.jpg"
   }
  },
  "items": [
@@ -225,53 +225,53 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "The last morning of pujo",
+   "hook": "Look her in the eyes",
    "bn": {
-    "hook": "পুজোর শেষ সকাল",
+    "hook": "মায়ের চোখের দিকে তাকান",
     "segs": [
      "",
-     "বরণ",
-     "সিঁদুর",
-     "মিষ্টিমুখ"
+     "বাগবাজার",
+     "",
+     "কলকাতা"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-f23d7f35",
+     "fx-c571f664",
      0,
      4.0,
      ""
     ],
     [
-     "fx-1db4e0bb",
+     "fx-ab29ee98",
      0,
      3.6,
-     "Boron"
+     "Bagbazar, 2018"
     ],
     [
-     "fx-a95e13e2",
+     "fx-94f14c14",
      0,
      3.6,
-     "Sindoor"
+     ""
     ],
     [
-     "fx-3c0b4e02",
+     "fx-6089f5d7",
      0,
      3.6,
-     "Mishti"
+     "Kolkata, 2018"
     ]
    ],
    "end": [
-    "The last morning of pujo",
-    "What does Dashami morning mean to you? Tell us"
+    "Look her in the eyes",
+    "Which pujo's protima do you miss most? Tell us"
    ],
    "music": [
     "f23",
     90
    ],
    "caption": {
-    "en": "Bijoya Dashami morning in Kolkata: boron and sindoor khela 🪔\n\nSweets to her lips, sindoor on her forehead, and a promise to come back. Photos from Durga Puja 2024.\n\nWhat does Dashami morning mean to you? Tell us 👇",
+    "en": "Kolkata Durga Puja: Maa, up close 🙏\n\nFaces of Maa from Kolkata's pujas, past years. Asche bochor abar hobe.\n\nWhich pujo's protima do you miss most? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -291,7 +291,7 @@
    },
    "segments": [
     [
-     "fx-1db4e0bb",
+     "fx-ab29ee98",
      0,
      6.0,
      "Shubho Bijoya"
@@ -415,7 +415,7 @@
    "zone": "south_lakemarket",
    "hook": "15 pandals. 13 km. One night.",
    "caption": {
-    "en": "Lake Market & Kalighat pandal hopping route for Durga Puja 2026 in Kolkata: 15 pandals, 13 km, one night 🚶\n\nGet off at Kalighat Metro and follow the numbers. This is the walking order through 15 pandals in Lake Market & Kalighat, from Badamtala Ashar Sangha and 64 Pally Durga Pujo to Tollygunge Santi Pally: about 13 km and 18,913 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "en": "Lake Market & Kalighat pandal hopping route for Durga Puja 2026 in Kolkata: 15 pandals, 13 km, one night 🚶\n\nGet off at Kalighat Metro and follow the numbers. This is the walking order through 15 pandals in Lake Market & Kalighat, from Badamtala Ashar Sangha and 64 Pally Durga Pujo to Tollygunge Santi Pally: about 13 km and 18,913 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "lake market & kalighat durga puja",
      "pandal hopping route kolkata",
@@ -512,53 +512,53 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Salt Lake does pujo block by block",
+   "hook": "Pujo doesn't end at the city limits",
    "bn": {
-    "hook": "সল্টলেকের পুজো, ব্লকে ব্লকে",
+    "hook": "পুজো শুধু শহরে নয়",
     "segs": [
      "",
-     "বিই ব্লক",
-     "এই ব্লক",
-     "বিজে ব্লকের ঝাড়লণ্ঠন"
+     "বর্ধমান",
+     "বর্ধমান",
+     "বাগুইআটি"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-cdd7623d",
+     "fx-363ad4e8",
      0,
      4.0,
      ""
     ],
     [
-     "fx-cfc01b95",
+     "fx-330ac5ac",
      0,
      3.6,
-     "BE Block"
+     "Bardhaman"
     ],
     [
-     "fx-46b41fdc",
+     "fx-09c9bc1b",
      0,
      3.6,
-     "AE Block"
+     "Bardhaman"
     ],
     [
-     "fx-676bb36d",
+     "fx-8e8e3553",
      0,
      3.6,
-     "BJ Block chandelier"
+     "Baguiati"
     ]
    ],
    "end": [
-    "Salt Lake does pujo block by block",
-    "Which block is yours? Tell us"
+    "Pujo doesn't end at the city limits",
+    "Where is your hometown pujo? Tell us"
    ],
    "music": [
     "f22",
     20
    ],
    "caption": {
-    "en": "Salt Lake Durga Puja, Kolkata: the block pujas 🪔\n\nEvery block in Salt Lake has its own pujo. These photos are from 2017 and 2018.\n\nWhich block is yours? Tell us 👇",
+    "en": "Durga Puja beyond Kolkata: Bardhaman and Baguiati 🪔\n\nPujo in Bengal's towns and the city's edges, from past years.\n\nWhere is your hometown pujo? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -578,7 +578,7 @@
    },
    "segments": [
     [
-     "fx-3c0b4e02",
+     "fx-6089f5d7",
      0,
      6.0,
      "Which pandal are you going to?"
@@ -824,53 +824,53 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "Look her in the eyes",
+   "hook": "The colour of goodbye",
    "bn": {
-    "hook": "মায়ের চোখের দিকে তাকান",
+    "hook": "বিদায়ের রং",
     "segs": [
      "",
-     "বাগবাজার",
-     "",
-     "কলকাতা"
+     "বিজয়া",
+     "সিঁদুর",
+     "আসছে বছর আবার হবে"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-c571f664",
+     "fx-698e8911",
      0,
      4.0,
      ""
     ],
     [
-     "fx-ab29ee98",
+     "fx-af5c9921",
      0,
      3.6,
-     "Bagbazar, 2018"
+     "Bijoya"
     ],
     [
-     "fx-94f14c14",
+     "fx-e462c34d",
      0,
      3.6,
-     ""
+     "Sindoor"
     ],
     [
-     "fx-6089f5d7",
+     "fx-554dd767",
      0,
      3.6,
-     "Kolkata, 2018"
+     "Asche bochor abar hobe"
     ]
    ],
    "end": [
-    "Look her in the eyes",
-    "Which pujo's protima do you miss most? Tell us"
+    "The colour of goodbye",
+    "Who did you play sindoor with this year? Tell us"
    ],
    "music": [
     "f21",
     80
    ],
    "caption": {
-    "en": "Kolkata Durga Puja: Maa, up close 🙏\n\nFaces of Maa from Kolkata's pujas, past years. Asche bochor abar hobe.\n\nWhich pujo's protima do you miss most? Tell us 👇",
+    "en": "After Bijoya Dashami in Kolkata: the sindoor stays a little longer ❤️\n\nFaces after sindoor khela, Durga Puja 2024. The pujo ends, the red stays for a day.\n\nWho did you play sindoor with this year? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -890,7 +890,7 @@
    },
    "segments": [
     [
-     "fx-46b41fdc",
+     "fx-09c9bc1b",
      0,
      6.0,
      "North or South this year?"
@@ -992,11 +992,11 @@
      "kicker": "Pandal guide · Gariahat",
      "title": "Jodhpur Park",
      "bn": "যোধপুর পার্ক",
-     "sub": "Pictured: 2017",
+     "sub": "Pictured: 2010",
      "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/7/79/Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4067-4070.tif",
-      "artist": "gangulybiswarup",
-      "license": "CC BY 3.0",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
+      "artist": "Kinjal bose 78",
+      "license": "CC BY-SA 4.0",
       "cx": 0.5,
       "cy": 0.42
      }
@@ -1031,13 +1031,13 @@
     {
      "t": "photo",
      "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4098-4102.tif",
-      "artist": "gangulybiswarup",
-      "license": "CC BY 3.0",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/54/5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
+      "artist": "Mukerjee",
+      "license": "CC BY-SA 3.0",
       "cx": 0.5,
       "cy": 0.45
      },
-     "line": "Jodhpur Park, 2017"
+     "line": "Jodhpur Park, 2007"
     },
     {
      "t": "end",
@@ -1061,53 +1061,53 @@
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "Pujo doesn't end at the city limits",
+   "hook": "A 269-year-old goodbye",
    "bn": {
-    "hook": "পুজো শুধু শহরে নয়",
+    "hook": "২৬৯ বছরের বিদায়",
     "segs": [
      "",
-     "বর্ধমান",
-     "বর্ধমান",
-     "বাগুইআটি"
+     "শোভাবাজার রাজবাড়ি",
+     "বাগবাজার ঘাট",
+     "আসছে বছর আবার হবে"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-363ad4e8",
+     "fx-74d985b1",
      0,
      4.0,
      ""
     ],
     [
-     "fx-330ac5ac",
+     "fx-54b42620",
      0,
      3.6,
-     "Bardhaman"
+     "Sovabazar Rajbari"
     ],
     [
-     "fx-09c9bc1b",
+     "fx-bdb3d42f",
      0,
      3.6,
-     "Bardhaman"
+     "Baghbazar Ghat"
     ],
     [
-     "fx-8e8e3553",
+     "fx-6771bed7",
      0,
      3.6,
-     "Baguiati"
+     "Asche bochor abar hobe"
     ]
    ],
    "end": [
-    "Pujo doesn't end at the city limits",
-    "Where is your hometown pujo? Tell us"
+    "A 269-year-old goodbye",
+    "Have you ever watched a bisarjan at the ghat? Tell us"
    ],
    "music": [
     "f20",
     30
    ],
    "caption": {
-    "en": "Durga Puja beyond Kolkata: Bardhaman and Baguiati 🪔\n\nPujo in Bengal's towns and the city's edges, from past years.\n\nWhere is your hometown pujo? Tell us 👇",
+    "en": "Sovabazar Rajbari's Durga Puja immersion at Baghbazar Ghat, Kolkata 🙏\n\nThe royal family's protima goes to the Hooghly the old way, carried down to the river. These photos are from 2014.\n\nHave you ever watched a bisarjan at the ghat? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -1127,7 +1127,7 @@
    },
    "segments": [
     [
-     "fx-ab29ee98",
+     "fx-af5c9921",
      0,
      6.0,
      "Who are you going with?"

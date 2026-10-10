@@ -25,13 +25,13 @@
    "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_39.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_39.jpg"
   },
-  "pp-jodhpur_park-2": {
+  "pp-hindustan_club-2": {
    "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4085-4089.tif",
-   "license": "CC BY 3.0",
-   "artist": "gangulybiswarup",
-   "label": "Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4085-4",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Jodhpur_Park_-_Kolkata_2017-09-26_4085-4089.tif"
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg"
   },
   "pp-kashi_bose_lane-2": {
    "source": "Wikimedia Commons",
@@ -65,14 +65,6 @@
    "label": "Jagat_Mukherjee_Park_Durga_Puja_2025_34.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_34.jpg"
   },
-  "pp-thakurpukur_sb_park-2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_10.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
-   "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_10.jpg"
-  },
   "pp-haridevpur_ajeya-2": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_06.jpg",
@@ -96,6 +88,14 @@
    "artist": "Biswarup Ganguly",
    "label": "Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_201",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_2015-10-21_6518.JPG"
+  },
+  "pp-behala_notun_dal-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Behala_Notun_Dal_Durga_puja_2025_11.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Behala_Notun_Dal_Durga_puja_2025_11.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Behala_Notun_Dal_Durga_puja_2025_11.jpg"
   },
   "pp-deshapriya_park-2": {
    "source": "Wikimedia Commons",
@@ -228,7 +228,7 @@
      "",
      "সিংহী পার্ক",
      "হিন্দুস্থান পার্ক সার্বজনীন",
-     "যোধপুর পার্ক"
+     "হিন্দুস্থান ক্লাব"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
@@ -252,10 +252,10 @@
      "Hindustan Park Sarbojanin"
     ],
     [
-     "pp-jodhpur_park-2",
+     "pp-hindustan_club-2",
      0,
      3.6,
-     "Jodhpur Park"
+     "Hindustan Club"
     ]
    ],
    "end": [
@@ -267,7 +267,7 @@
     80
    ],
    "caption": {
-    "en": "Only Kolkata builds this for four days: Ekdalia Evergreen, Singhi Park and more Durga Puja pandals 🪔\n\nEkdalia Evergreen, Singhi Park, Hindustan Park Sarbojanin and Jodhpur Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Only Kolkata builds this for four days: Ekdalia Evergreen, Singhi Park and more Durga Puja pandals 🪔\n\nEkdalia Evergreen, Singhi Park, Hindustan Park Sarbojanin and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
      "ekdalia evergreen",
@@ -429,7 +429,7 @@
    "zone": "salt_lake",
    "hook": "7 pandals. 8 km. One night.",
    "caption": {
-    "en": "Salt Lake pandal hopping route for Durga Puja 2026 in Kolkata: 7 pandals, 8 km, one night 🚶\n\nGet off at City Centre Metro and follow the numbers. This is the walking order through 7 pandals in Salt Lake, from AE Block Salt Lake and FD Block Salt Lake to CK Block Salt Lake: about 8 km and 11,576 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "en": "Salt Lake pandal hopping route for Durga Puja 2026 in Kolkata: 7 pandals, 8 km, one night 🚶\n\nGet off at City Centre Metro and follow the numbers. This is the walking order through 7 pandals in Salt Lake, from AE Block Salt Lake and FD Block Salt Lake to CK Block Salt Lake: about 8 km and 11,576 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "salt lake durga puja",
      "pandal hopping route kolkata",
@@ -593,7 +593,7 @@
    },
    "segments": [
     [
-     "pp-jodhpur_park-2",
+     "pp-hindustan_club-2",
      0,
      6.0,
      "Which pandal are you going to?"
@@ -832,24 +832,18 @@
     "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
     "segs": [
      "",
-     "হরিদেবপুর অজেয় সংহতি",
      "বেহালা ক্লাব",
-     "সুরুচি সংঘ"
+     "সুরুচি সংঘ",
+     "বেহালা নতুন দল"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-thakurpukur_sb_park-2",
+     "pp-haridevpur_ajeya-2",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-haridevpur_ajeya-2",
-     0,
-     3.6,
-     "Haridevpur Ajeya Sanghati"
     ],
     [
      "pp-behala_club-2",
@@ -862,6 +856,12 @@
      0,
      3.6,
      "Suruchi Sangha"
+    ],
+    [
+     "pp-behala_notun_dal-3",
+     0,
+     3.6,
+     "Behala Notun Dal"
     ]
    ],
    "end": [
@@ -873,10 +873,10 @@
     120
    ],
    "caption": {
-    "en": "Is your para's pujo in here? Thakurpukur SB Park Sarbojanin, Haridevpur Ajeya Sanghati and more Kolkata Durga Puja pandals 🪔\n\nThakurpukur SB Park Sarbojanin, Haridevpur Ajeya Sanghati, Behala Club and Suruchi Sangha. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Is your para's pujo in here? Haridevpur Ajeya Sanghati, Behala Club and more Kolkata Durga Puja pandals 🪔\n\nHaridevpur Ajeya Sanghati, Behala Club, Suruchi Sangha and Behala Notun Dal. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "behala & new alipore durga puja",
-     "thakurpukur sb park sarbojanin",
+     "haridevpur ajeya sanghati",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -1166,7 +1166,7 @@
    },
    "segments": [
     [
-     "pp-haridevpur_ajeya-2",
+     "pp-behala_club-2",
      0,
      6.0,
      "Who are you going with?"

@@ -65,14 +65,6 @@
    "label": "Samaj_Sebi_Sangha_Durga_Puja_in_South_Kolkata_(Lake_View_Roa",
    "page": "https://commons.wikimedia.org/wiki/File:Samaj_Sebi_Sangha_Durga_Puja_in_South_Kolkata_%28Lake_View_Road%29_14.jpg"
   },
-  "pp-suruchi_sangha-2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_2015-10-21_6486-6487.tif",
-   "license": "CC BY 3.0",
-   "artist": "gangulybiswarup",
-   "label": "Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_201",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_2015-10-21_6486-6487.tif"
-  },
   "pp-behala_notun_dal-2": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Behala_Notun_Dal_Durga_puja_2025_03.jpg",
@@ -96,6 +88,14 @@
    "artist": "Sumita Roy Dutta",
    "label": "Barisha_club_Durga_Puja_2016_Sumita_RoyDutta_03.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Barisha_club_Durga_Puja_2016_Sumita_RoyDutta_03.jpg"
+  },
+  "pp-thakurpukur_sb_park-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_10.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
+   "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_10.jpg"
   },
   "pp-md_ali_park-2": {
    "source": "Wikimedia Commons",
@@ -438,7 +438,7 @@
    "zone": "southwest",
    "hook": "16 pandals. 20 km. One night.",
    "caption": {
-    "en": "Behala & New Alipore pandal hopping route for Durga Puja 2026 in Kolkata: 16 pandals, 20 km, one night 🚶\n\nGet off at Behala Bazar Metro and follow the numbers. This is the walking order through 16 pandals in Behala & New Alipore, from Behala 11 Pally Club and Behala Young Men's Association to Suruchi Sangha: about 20 km and 29,716 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "en": "Behala & New Alipore pandal hopping route for Durga Puja 2026 in Kolkata: 16 pandals, 20 km, one night 🚶\n\nGet off at Behala Bazar Metro and follow the numbers. This is the walking order through 16 pandals in Behala & New Alipore, from Behala 11 Pally Club and Behala Young Men's Association to Suruchi Sangha: about 20 km and 29,716 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "behala & new alipore durga puja",
      "pandal hopping route kolkata",
@@ -505,8 +505,8 @@
     {
      "t": "photo",
      "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_2015-10-21_6500-6501.tif",
-      "artist": "gangulybiswarup",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Durga_Puja_Pandal_-_New_Alipore_Suruchi_Sangha_-_Kolkata_2015-10-21_6518.JPG",
+      "artist": "Biswarup Ganguly",
       "license": "CC BY 3.0",
       "cx": 0.5,
       "cy": 0.45
@@ -828,24 +828,18 @@
     "hook": "দশে কত দেবেন?",
     "segs": [
      "",
-     "বেহালা নতুন দল",
      "বেহালা ফ্রেন্ডস",
-     "বড়িশা ক্লাব"
+     "বড়িশা ক্লাব",
+     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-suruchi_sangha-2",
+     "pp-behala_notun_dal-2",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-behala_notun_dal-2",
-     0,
-     3.6,
-     "Behala Notun Dal"
     ],
     [
      "pp-behala_friends-2",
@@ -858,6 +852,12 @@
      0,
      3.6,
      "Barisha Club"
+    ],
+    [
+     "pp-thakurpukur_sb_park-2",
+     0,
+     3.6,
+     "Thakurpukur SB Park Sarbojanin"
     ]
    ],
    "end": [
@@ -869,10 +869,10 @@
     50
    ],
    "caption": {
-    "en": "Rate Suruchi Sangha, Behala Notun Dal and more out of 10: Kolkata Durga Puja pandals 🪔\n\nSuruchi Sangha, Behala Notun Dal, Behala Friends and Barisha Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Rate Behala Notun Dal, Behala Friends and more out of 10: Kolkata Durga Puja pandals 🪔\n\nBehala Notun Dal, Behala Friends, Barisha Club and Thakurpukur SB Park Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "behala & new alipore durga puja",
-     "suruchi sangha",
+     "behala notun dal",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -1133,7 +1133,7 @@
    },
    "segments": [
     [
-     "pp-behala_notun_dal-2",
+     "pp-behala_friends-2",
      0,
      6.0,
      "Who are you going with?"

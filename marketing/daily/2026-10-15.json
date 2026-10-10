@@ -129,14 +129,6 @@
    "label": "Mudiali_Club_Durga_Puja_2025_01.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Mudiali_Club_Durga_Puja_2025_01.jpg"
   },
-  "pp-behala_notun_dal-3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Behala_Notun_Dal_Durga_puja_2025_11.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Behala_Notun_Dal_Durga_puja_2025_11.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Behala_Notun_Dal_Durga_puja_2025_11.jpg"
-  },
   "pp-behala_friends-3": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Behala_Friends_Durga_puja_2025_16.jpg",
@@ -160,6 +152,14 @@
    "artist": "Goutam1962",
    "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
    "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_04.jpg"
+  },
+  "pp-haridevpur_ajeya-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_33.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Ajeya_Sanghati_Club_(Haridevpur)_Durga_Puja_2025_33.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_33.jpg"
   }
  },
  "items": [
@@ -490,7 +490,7 @@
    "zone": "lake_town_dumdum",
    "hook": "7 pandals. 7 km. One night.",
    "caption": {
-    "en": "Lake Town & Dum Dum pandal hopping route for Durga Puja 2026 in Kolkata: 7 pandals, 7 km, one night 🚶\n\nGet off at City Centre Metro and follow the numbers. This is the walking order through 7 pandals in Lake Town & Dum Dum, from Sreebhumi Sporting Club and Lake Town Adhibasi Brinda to Arjunpur Amra Sabai Club: about 7 km and 10,277 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nWhich pandal would you start with? Tell us 👇",
+    "en": "Lake Town & Dum Dum pandal hopping route for Durga Puja 2026 in Kolkata: 7 pandals, 7 km, one night 🚶\n\nGet off at City Centre Metro and follow the numbers. This is the walking order through 7 pandals in Lake Town & Dum Dum, from Sreebhumi Sporting Club and Lake Town Adhibasi Brinda to Arjunpur Amra Sabai Club: about 7 km and 10,277 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "lake town & dum dum durga puja",
      "pandal hopping route kolkata",
@@ -1113,24 +1113,18 @@
     "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
     "segs": [
      "",
-     "বেহালা ফ্রেন্ডস",
      "বড়িশা ক্লাব",
-     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন"
+     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
+     "হরিদেবপুর অজেয় সংহতি"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-behala_notun_dal-3",
+     "pp-behala_friends-3",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-behala_friends-3",
-     0,
-     3.6,
-     "Behala Friends"
     ],
     [
      "pp-barisha_club-3",
@@ -1143,6 +1137,12 @@
      0,
      3.6,
      "Thakurpukur SB Park Sarbojanin"
+    ],
+    [
+     "pp-haridevpur_ajeya-3",
+     0,
+     3.6,
+     "Haridevpur Ajeya Sanghati"
     ]
    ],
    "end": [
@@ -1154,10 +1154,10 @@
     150
    ],
    "caption": {
-    "en": "Is your para's pujo in here? Behala Notun Dal, Behala Friends and more Kolkata Durga Puja pandals 🪔\n\nBehala Notun Dal, Behala Friends, Barisha Club and Thakurpukur SB Park Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Is your para's pujo in here? Behala Friends, Barisha Club and more Kolkata Durga Puja pandals 🪔\n\nBehala Friends, Barisha Club, Thakurpukur SB Park Sarbojanin and Haridevpur Ajeya Sanghati. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "behala & new alipore durga puja",
-     "behala notun dal",
+     "behala friends",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
