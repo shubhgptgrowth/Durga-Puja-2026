@@ -1,14 +1,6 @@
 {
  "date": "2026-10-17",
  "clips": {
-  "pp-haridevpur_ajeya-3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_33.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Ajeya_Sanghati_Club_(Haridevpur)_Durga_Puja_2025_33.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_33.jpg"
-  },
   "pp-behala_club-3": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Behala_Friends_Club_Durga_Puja_2025_44.jpg",
@@ -32,6 +24,14 @@
    "artist": "Goutam1962",
    "label": "Behala_Notun_Dal_Durga_puja_2025_05.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Behala_Notun_Dal_Durga_puja_2025_05.jpg"
+  },
+  "pp-behala_friends-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Behala_Friends_Durga_puja_2025_07.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Behala_Friends_Durga_puja_2025_07.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Behala_Friends_Durga_puja_2025_07.jpg"
   },
   "pp-tridhara-4": {
    "source": "Wikimedia Commons",
@@ -226,24 +226,18 @@
     "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
     "segs": [
      "",
-     "বেহালা ক্লাব",
      "সুরুচি সংঘ",
-     "বেহালা নতুন দল"
+     "বেহালা নতুন দল",
+     "বেহালা ফ্রেন্ডস"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-haridevpur_ajeya-3",
+     "pp-behala_club-3",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-behala_club-3",
-     0,
-     3.6,
-     "Behala Club"
     ],
     [
      "pp-suruchi_sangha-4",
@@ -256,6 +250,12 @@
      0,
      3.6,
      "Behala Notun Dal"
+    ],
+    [
+     "pp-behala_friends-4",
+     0,
+     3.6,
+     "Behala Friends"
     ]
    ],
    "end": [
@@ -267,10 +267,10 @@
     50
    ],
    "caption": {
-    "en": "Only Kolkata builds this for four days: Haridevpur Ajeya Sanghati, Behala Club and more Durga Puja pandals 🪔\n\nHaridevpur Ajeya Sanghati, Behala Club, Suruchi Sangha and Behala Notun Dal. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Only Kolkata builds this for four days: Behala Club, Suruchi Sangha and more Durga Puja pandals 🪔\n\nBehala Club, Suruchi Sangha, Behala Notun Dal and Behala Friends. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "behala & new alipore durga puja",
-     "haridevpur ajeya sanghati",
+     "behala club",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -288,7 +288,7 @@
    },
    "segments": [
     [
-     "pp-behala_club-3",
+     "pp-suruchi_sangha-4",
      0,
      6.0,
      "Shashthi: Bodhon tonight"
@@ -581,7 +581,7 @@
    },
    "segments": [
     [
-     "pp-behala_notun_dal-4",
+     "pp-behala_friends-4",
      0,
      6.0,
      "Which pandal are you going to?"

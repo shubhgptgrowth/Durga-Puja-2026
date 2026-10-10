@@ -33,14 +33,6 @@
    "label": "Durga_Puja_2025_at_Chorbagan_Sarbojanin_08.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_08.jpg"
   },
-  "pp-hindustan_club-2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_10.jpg"
-  },
   "pp-ekdalia-3": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3324-2225.JPG",
@@ -49,14 +41,6 @@
    "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3324-2225.JPG"
   },
-  "pp-singhi_park-3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Durga_Family_-_Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6208-6210.tif",
-   "license": "CC BY 3.0",
-   "artist": "gangulybiswarup",
-   "label": "Durga_Family_-_Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_",
-   "page": "https://commons.wikimedia.org/wiki/File:Durga_Family_-_Durga_Puja_Pandal_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6208-6210.tif"
-  },
   "pp-hindustan_park-3": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Hindustan_Park_Sarbojanin_Durga_Puja_2025_24.jpg",
@@ -64,6 +48,22 @@
    "artist": "Goutam1962",
    "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_24.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_24.jpg"
+  },
+  "pp-jodhpur_park-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kinjal bose 78",
+   "label": "Jodhpur_Park.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jodhpur_Park.jpg"
+  },
+  "pp-hindustan_club-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg"
   },
   "pp-bagbazar-4": {
    "source": "Wikimedia Commons",
@@ -464,36 +464,36 @@
     "hook": "দশে কত দেবেন?",
     "segs": [
      "",
-     "একডালিয়া এভারগ্রিন",
-     "সিংহী পার্ক",
-     "হিন্দুস্থান পার্ক সার্বজনীন"
+     "হিন্দুস্থান পার্ক সার্বজনীন",
+     "যোধপুর পার্ক",
+     "হিন্দুস্থান ক্লাব"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-hindustan_club-2",
+     "pp-ekdalia-3",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-ekdalia-3",
-     0,
-     3.6,
-     "Ekdalia Evergreen"
-    ],
-    [
-     "pp-singhi_park-3",
-     0,
-     3.6,
-     "Singhi Park"
     ],
     [
      "pp-hindustan_park-3",
      0,
      3.6,
      "Hindustan Park Sarbojanin"
+    ],
+    [
+     "pp-jodhpur_park-3",
+     0,
+     3.6,
+     "Jodhpur Park"
+    ],
+    [
+     "pp-hindustan_club-3",
+     0,
+     3.6,
+     "Hindustan Club"
     ]
    ],
    "end": [
@@ -505,10 +505,10 @@
     120
    ],
    "caption": {
-    "en": "Rate Hindustan Club, Ekdalia Evergreen and more out of 10: Kolkata Durga Puja pandals 🪔\n\nHindustan Club, Ekdalia Evergreen, Singhi Park and Hindustan Park Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Rate Ekdalia Evergreen, Hindustan Park Sarbojanin and more out of 10: Kolkata Durga Puja pandals 🪔\n\nEkdalia Evergreen, Hindustan Park Sarbojanin, Jodhpur Park and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
-     "hindustan club",
+     "ekdalia evergreen",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -795,7 +795,7 @@
    },
    "segments": [
     [
-     "pp-singhi_park-3",
+     "pp-jodhpur_park-3",
      0,
      6.0,
      "North or South this year?"

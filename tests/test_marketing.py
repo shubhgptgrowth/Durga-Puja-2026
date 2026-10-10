@@ -459,3 +459,12 @@ class RedesignTest(unittest.TestCase):
         for at in ("08:00", "12:59", "13:00", "17:59", "18:00", "23:00"):
             self.assertEqual(sum(in_window(at, w) for w in ("am", "pm", "night")), 1, at)
         self.assertTrue(in_window("12:40", "am") and in_window("13:20", "pm") and in_window("22:40", "night"))
+
+    def test_factory_rejects_tif_stills_in_reels(self):
+        from marketing.footage import factory
+        plan = {"date": "2026-10-01", "clips": {}, "items": [
+            {"id": "r1", "type": "reel", "at": "10:00", "segments": [["x", 0, 3.0, ""]]}]}
+        idx = {"x": {"url": "https://upload.wikimedia.org/a/b/Pandal.tif", "license": "CC BY 3.0", "artist": "a"}}
+        with self.assertRaises(SystemExit) as e:
+            factory.check(plan, idx)
+        self.assertIn(".tif file", str(e.exception))

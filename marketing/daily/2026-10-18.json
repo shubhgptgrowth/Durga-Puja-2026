@@ -33,14 +33,6 @@
    "label": "Rudraksh_Shivlinga_Decoration_At_Chetla_Agrani_Club,_Durga_P",
    "page": "https://commons.wikimedia.org/wiki/File:Rudraksh_Shivlinga_Decoration_At_Chetla_Agrani_Club%2C_Durga_Puja_2025.jpg"
   },
-  "pp-behala_friends-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Behala_Friends_Durga_puja_2025_07.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Behala_Friends_Durga_puja_2025_07.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Behala_Friends_Durga_puja_2025_07.jpg"
-  },
   "pp-barisha_club-4": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Barisha_club_Durga_Puja_2016_Sumita_RoyDutta_07.jpg",
@@ -64,6 +56,14 @@
    "artist": "Goutam1962",
    "label": "Ajeya_Sanghati_Club_(Haridevpur)_Durga_Puja_2025_41.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_41.jpg"
+  },
+  "pp-behala_club-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Behala_Friends_Club_Durga_Puja_2025_04.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Behala_Friends_Club_Durga_Puja_2025_04.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Behala_Friends_Club_Durga_Puja_2025_04.jpg"
   },
   "pp-simla_byayam-3": {
    "source": "Wikimedia Commons",
@@ -97,22 +97,6 @@
    "label": "Durga_Puja_2025_at_Chorbagan_Sarbojanin_16.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_2025_at_Chorbagan_Sarbojanin_16.jpg"
   },
-  "pp-jodhpur_park-3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Kinjal bose 78",
-   "label": "Jodhpur_Park.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Jodhpur_Park.jpg"
-  },
-  "pp-hindustan_club-3": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_02.jpg"
-  },
   "pp-ekdalia-4": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3313.JPG",
@@ -128,6 +112,22 @@
    "artist": "Biswarup Ganguly",
    "label": "Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_20",
    "page": "https://commons.wikimedia.org/wiki/File:Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2014-10-02_8933.JPG"
+  },
+  "pp-hindustan_park-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg"
+  },
+  "pp-jodhpur_park-4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Mukerjee",
+   "label": "5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg"
   }
  },
  "items": [
@@ -506,24 +506,18 @@
     "hook": "সবটাই কয়েক গলির মধ্যে",
     "segs": [
      "",
-     "বড়িশা ক্লাব",
      "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
-     "হরিদেবপুর অজেয় সংহতি"
+     "হরিদেবপুর অজেয় সংহতি",
+     "বেহালা ক্লাব"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-behala_friends-4",
+     "pp-barisha_club-4",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-barisha_club-4",
-     0,
-     3.6,
-     "Barisha Club"
     ],
     [
      "pp-thakurpukur_sb_park-4",
@@ -536,6 +530,12 @@
      0,
      3.6,
      "Haridevpur Ajeya Sanghati"
+    ],
+    [
+     "pp-behala_club-4",
+     0,
+     3.6,
+     "Behala Club"
     ]
    ],
    "end": [
@@ -547,10 +547,10 @@
     140
    ],
    "caption": {
-    "en": "Behala Friends, Barisha Club and more: Kolkata Durga Puja pandals a few lanes apart 🪔\n\nBehala Friends, Barisha Club, Thakurpukur SB Park Sarbojanin and Haridevpur Ajeya Sanghati. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Barisha Club, Thakurpukur SB Park Sarbojanin and more: Kolkata Durga Puja pandals a few lanes apart 🪔\n\nBarisha Club, Thakurpukur SB Park Sarbojanin, Haridevpur Ajeya Sanghati and Behala Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "behala & new alipore durga puja",
-     "behala friends",
+     "barisha club",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -864,7 +864,7 @@
    },
    "segments": [
     [
-     "pp-thakurpukur_sb_park-4",
+     "pp-haridevpur_ajeya-4",
      0,
      6.0,
      "North or South this year?"
@@ -1099,36 +1099,36 @@
     "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
     "segs": [
      "",
-     "হিন্দুস্থান ক্লাব",
-     "একডালিয়া এভারগ্রিন",
-     "সিংহী পার্ক"
+     "সিংহী পার্ক",
+     "হিন্দুস্থান পার্ক সার্বজনীন",
+     "যোধপুর পার্ক"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-jodhpur_park-3",
+     "pp-ekdalia-4",
      0,
      4.0,
      ""
-    ],
-    [
-     "pp-hindustan_club-3",
-     0,
-     3.6,
-     "Hindustan Club"
-    ],
-    [
-     "pp-ekdalia-4",
-     0,
-     3.6,
-     "Ekdalia Evergreen"
     ],
     [
      "pp-singhi_park-4",
      0,
      3.6,
      "Singhi Park"
+    ],
+    [
+     "pp-hindustan_park-4",
+     0,
+     3.6,
+     "Hindustan Park Sarbojanin"
+    ],
+    [
+     "pp-jodhpur_park-4",
+     0,
+     3.6,
+     "Jodhpur Park"
     ]
    ],
    "end": [
@@ -1140,10 +1140,10 @@
     20
    ],
    "caption": {
-    "en": "Save Jodhpur Park, Hindustan Club and more for your Kolkata Durga Puja night 🪔\n\nJodhpur Park, Hindustan Club, Ekdalia Evergreen and Singhi Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Save Ekdalia Evergreen, Singhi Park and more for your Kolkata Durga Puja night 🪔\n\nEkdalia Evergreen, Singhi Park, Hindustan Park Sarbojanin and Jodhpur Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
-     "jodhpur park",
+     "ekdalia evergreen",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],

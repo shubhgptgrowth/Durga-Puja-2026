@@ -1,54 +1,6 @@
 {
  "date": "2026-10-20",
  "clips": {
-  "pp-simla_byayam-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Simla_Byayam_Samity_Durga_Puja_2024_02.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Simla_Byayam_Samity_Durga_Puja_2024_02.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Simla_Byayam_Samity_Durga_Puja_2024_02.jpg"
-  },
-  "pp-md_ali_park-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Mohammad_Ali_Park_03.jpg"
-  },
-  "pp-college_square-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Chandelier_College_Square_Arnab_Dutta_2011.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Jonoikobangali",
-   "label": "Chandelier_College_Square_Arnab_Dutta_2011.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Chandelier_College_Square_Arnab_Dutta_2011.jpg"
-  },
-  "pp-chaltabagan-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Chaltabagan_Durga_puja_2023_04.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Tarunsamanta",
-   "label": "Chaltabagan_Durga_puja_2023_04.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_04.jpg"
-  },
-  "pp-hindustan_park-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg",
-   "license": "CC BY-SA 4.0",
-   "artist": "Goutam1962",
-   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_38.jpg"
-  },
-  "pp-jodhpur_park-4": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Mukerjee",
-   "label": "5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg"
-  },
   "pp-hindustan_club-4": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/DurgaPuja2017_-_Pandal_of_Hindustan_Park_06.jpg",
@@ -81,22 +33,6 @@
    "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_03.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_03.jpg"
   },
-  "pp-jodhpur_park-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Pratitimajumdar",
-   "label": "Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Chandelier_at_Jodhpur_Park_Durga_Puja.jpg"
-  },
-  "pp-hindustan_club-5": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
-   "license": "CC BY-SA 3.0",
-   "artist": "Indrajit Das",
-   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg"
-  },
   "fx-2d1ee1f7": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Sindur_Khela_in_Durga_Puja_Kolkata_2024_08.jpg",
@@ -128,6 +64,70 @@
    "artist": "Goutam1962",
    "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_47.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_47.jpg"
+  },
+  "fx-f23d7f35": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_48.jpg"
+  },
+  "fx-1db4e0bb": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_54.jpg"
+  },
+  "fx-a95e13e2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_75.jpg"
+  },
+  "fx-3c0b4e02": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sindur_Khela_in_Durga_Puja_Kolkata_2024_85.jpg"
+  },
+  "fx-cdd7623d": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "বি._ই._(পশ্চিম)_ব্লক_বিধান_নগর_দূর্গা_পুজো_২০১৮_(মুখ্য_দূর্গ",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg"
+  },
+  "fx-cfc01b95": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._%28%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6%29%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ব্লক_-_এ._ই._(দ্বিতীয়_অংশ),_লবন_হ্রদ,_কলিকাতা_(মুখ্য_দূর্গা",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_-_%E0%A6%8F._%E0%A6%87._%28%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC_%E0%A6%85%E0%A6%82%E0%A6%B6%29%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A8_%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%28%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%9F_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0%29.jpg"
+  },
+  "fx-46b41fdc": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "ঝাড়লণ্ঠন_বি._যে._ব্লক,_লবণহ্রদ,_কলিকাতা_দুর্গাপুজো_২০১৭.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%9D%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%B2%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A6%A8_%E0%A6%AC%E0%A6%BF._%E0%A6%AF%E0%A7%87._%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95%2C_%E0%A6%B2%E0%A6%AC%E0%A6%A3%E0%A6%B9%E0%A7%8D%E0%A6%B0%E0%A6%A6%2C_%E0%A6%95%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A4%E0%A6%BE_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AD.jpg"
+  },
+  "fx-676bb36d": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "বি._ই._(পশ্চিম)_ব্লক_বিধান_নগর_দূর্গা_পুজো_২০১৮.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
   }
  },
  "items": [
@@ -226,40 +226,40 @@
     "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
     "segs": [
      "",
-     "মহম্মদ আলি পার্ক",
-     "কলেজ স্কোয়ার সার্বজনীন",
-     "চালতাবাগান লোহাপট্টি"
+     "একডালিয়া এভারগ্রিন",
+     "সিংহী পার্ক",
+     "হিন্দুস্থান পার্ক সার্বজনীন"
     ],
     "end": "কোনটা সেরা? কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-simla_byayam-4",
+     "pp-hindustan_club-4",
      0,
      4.0,
      ""
     ],
     [
-     "pp-md_ali_park-5",
+     "pp-ekdalia-5",
      0,
      3.6,
-     "Mohammad Ali Park"
+     "Ekdalia Evergreen"
     ],
     [
-     "pp-college_square-5",
+     "pp-singhi_park-5",
      0,
      3.6,
-     "College Square Sarbojanin"
+     "Singhi Park"
     ],
     [
-     "pp-chaltabagan-5",
+     "pp-hindustan_park-5",
      0,
      3.6,
-     "Chaltabagan Lohapatty"
+     "Hindustan Park Sarbojanin"
     ]
    ],
    "end": [
-    "College Street & Sealdah: four pujas, past y",
+    "Gariahat & Ballygunge: four pujas, past year",
     "Which one's your favourite? Tell us"
    ],
    "music": [
@@ -267,10 +267,10 @@
     150
    ],
    "caption": {
-    "en": "Only Kolkata builds this for four days: Simla Byayam Samity, Mohammad Ali Park and more Durga Puja pandals 🪔\n\nSimla Byayam Samity, Mohammad Ali Park, College Square Sarbojanin and Chaltabagan Lohapatty. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Only Kolkata builds this for four days: Hindustan Club, Ekdalia Evergreen and more Durga Puja pandals 🪔\n\nHindustan Club, Ekdalia Evergreen, Singhi Park and Hindustan Park Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
-     "college street & sealdah durga puja",
-     "simla byayam samity",
+     "gariahat & ballygunge durga puja",
+     "hindustan club",
      "kolkata pandals",
      "durga puja 2026 kolkata"
     ],
@@ -288,7 +288,7 @@
    },
    "segments": [
     [
-     "pp-md_ali_park-5",
+     "pp-ekdalia-5",
      0,
      6.0,
      "Maha Navami"
@@ -514,60 +514,59 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Save this for your pujo night",
+   "hook": "Red till next year",
    "bn": {
-    "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
+    "hook": "লাল রঙে বিদায়",
     "segs": [
      "",
-     "যোধপুর পার্ক",
-     "হিন্দুস্থান ক্লাব",
-     "একডালিয়া এভারগ্রিন"
+     "সিঁদুর খেলা",
+     "শুভ বিজয়া",
+     "আসছে বছর আবার হবে"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-hindustan_park-4",
+     "fx-2d1ee1f7",
      0,
      4.0,
      ""
     ],
     [
-     "pp-jodhpur_park-4",
+     "fx-3c2c1baa",
      0,
      3.6,
-     "Jodhpur Park"
+     "Sindoor khela"
     ],
     [
-     "pp-hindustan_club-4",
+     "fx-de0f38dc",
      0,
      3.6,
-     "Hindustan Club"
+     "Shubho Bijoya"
     ],
     [
-     "pp-ekdalia-5",
+     "fx-c486f0d6",
      0,
      3.6,
-     "Ekdalia Evergreen"
+     "Asche bochor abar hobe"
     ]
    ],
    "end": [
-    "Gariahat & Ballygunge: four pujas, past year",
-    "Which one's your favourite? Tell us"
+    "Red till next year",
+    "Are you playing sindoor this year? Tell us"
    ],
    "music": [
     "f23",
     90
    ],
    "caption": {
-    "en": "Save Hindustan Park Sarbojanin, Jodhpur Park and more for your Kolkata Durga Puja night 🪔\n\nHindustan Park Sarbojanin, Jodhpur Park, Hindustan Club and Ekdalia Evergreen. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Sindoor khela, Bijoya Dashami in Kolkata 🔴\n\nOn Dashami married women smear sindoor on each other and bid Maa farewell, wishing each other a long, happy married life. These photos are from 2024.\n\nAre you playing sindoor this year? Tell us 👇",
     "keywords": [
-     "gariahat & ballygunge durga puja",
-     "hindustan park sarbojanin",
-     "kolkata pandals",
-     "durga puja 2026 kolkata"
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
    }
   },
   {
@@ -581,7 +580,7 @@
    },
    "segments": [
     [
-     "pp-chaltabagan-5",
+     "pp-hindustan_park-5",
      0,
      6.0,
      "Which pandal are you going to?"
@@ -756,60 +755,59 @@
    "id": "r5",
    "type": "reel",
    "at": "18:30",
-   "hook": "Is your para's pujo in here?",
+   "hook": "The last morning of pujo",
    "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
+    "hook": "পুজোর শেষ সকাল",
     "segs": [
      "",
-     "হিন্দুস্থান পার্ক সার্বজনীন",
-     "যোধপুর পার্ক",
-     "হিন্দুস্থান ক্লাব"
+     "বরণ",
+     "সিঁদুর",
+     "মিষ্টিমুখ"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "pp-singhi_park-5",
+     "fx-f23d7f35",
      0,
      4.0,
      ""
     ],
     [
-     "pp-hindustan_park-5",
+     "fx-1db4e0bb",
      0,
      3.6,
-     "Hindustan Park Sarbojanin"
+     "Boron"
     ],
     [
-     "pp-jodhpur_park-5",
+     "fx-a95e13e2",
      0,
      3.6,
-     "Jodhpur Park"
+     "Sindoor"
     ],
     [
-     "pp-hindustan_club-5",
+     "fx-3c0b4e02",
      0,
      3.6,
-     "Hindustan Club"
+     "Mishti"
     ]
    ],
    "end": [
-    "Gariahat & Ballygunge: four pujas, past year",
-    "Which one's your favourite? Tell us"
+    "The last morning of pujo",
+    "What does Dashami morning mean to you? Tell us"
    ],
    "music": [
     "f21",
     80
    ],
    "caption": {
-    "en": "Is your para's pujo in here? Singhi Park, Hindustan Park Sarbojanin and more Kolkata Durga Puja pandals 🪔\n\nSinghi Park, Hindustan Park Sarbojanin, Jodhpur Park and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Bijoya Dashami morning in Kolkata: boron and sindoor khela 🪔\n\nSweets to her lips, sindoor on her forehead, and a promise to come back. Photos from Durga Puja 2024.\n\nWhat does Dashami morning mean to you? Tell us 👇",
     "keywords": [
-     "gariahat & ballygunge durga puja",
-     "singhi park",
-     "kolkata pandals",
-     "durga puja 2026 kolkata"
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
    }
   },
   {
@@ -823,7 +821,7 @@
    },
    "segments": [
     [
-     "pp-hindustan_club-4",
+     "fx-de0f38dc",
      0,
      6.0,
      "North or South this year?"
@@ -1049,53 +1047,53 @@
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "Red till next year",
+   "hook": "Salt Lake does pujo block by block",
    "bn": {
-    "hook": "লাল রঙে বিদায়",
+    "hook": "সল্টলেকের পুজো, ব্লকে ব্লকে",
     "segs": [
      "",
-     "সিঁদুর খেলা",
-     "শুভ বিজয়া",
-     "আসছে বছর আবার হবে"
+     "বিই ব্লক",
+     "এই ব্লক",
+     "বিজে ব্লকের ঝাড়লণ্ঠন"
     ],
     "end": "কমেন্টে লিখুন"
    },
    "segments": [
     [
-     "fx-2d1ee1f7",
+     "fx-cdd7623d",
      0,
      4.0,
      ""
     ],
     [
-     "fx-3c2c1baa",
+     "fx-cfc01b95",
      0,
      3.6,
-     "Sindoor khela"
+     "BE Block"
     ],
     [
-     "fx-de0f38dc",
+     "fx-46b41fdc",
      0,
      3.6,
-     "Shubho Bijoya"
+     "AE Block"
     ],
     [
-     "fx-c486f0d6",
+     "fx-676bb36d",
      0,
      3.6,
-     "Asche bochor abar hobe"
+     "BJ Block chandelier"
     ]
    ],
    "end": [
-    "Red till next year",
-    "Are you playing sindoor this year? Tell us"
+    "Salt Lake does pujo block by block",
+    "Which block is yours? Tell us"
    ],
    "music": [
     "f20",
     30
    ],
    "caption": {
-    "en": "Sindoor khela, Bijoya Dashami in Kolkata 🔴\n\nOn Dashami married women smear sindoor on each other and bid Maa farewell, wishing each other a long, happy married life. These photos are from 2024.\n\nAre you playing sindoor this year? Tell us 👇",
+    "en": "Salt Lake Durga Puja, Kolkata: the block pujas 🪔\n\nEvery block in Salt Lake has its own pujo. These photos are from 2017 and 2018.\n\nWhich block is yours? Tell us 👇",
     "keywords": [
      "durga puja 2026",
      "kolkata durga puja",
@@ -1115,7 +1113,7 @@
    },
    "segments": [
     [
-     "pp-hindustan_park-5",
+     "fx-1db4e0bb",
      0,
      6.0,
      "Who are you going with?"
