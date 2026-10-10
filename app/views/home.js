@@ -1,6 +1,6 @@
 /* Home: a simple start screen. "What would you like to do?" tasks, areas to pick, and ready-made routes. */
-import { hav, fmtCount, searchEntries } from '../core.js';
-import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits, loc, plain,
+import { hav, fmtCount, searchEntries, ashtamiDue } from '../core.js';
+import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits, loc, plain, ampm,
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
@@ -123,6 +123,22 @@ function promiseHtml() {
 // How to use the app, in order: each step opens that part of it.
 const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
 
+/* Ashtami anjali and Sandhi Puja times by each panjika (data/raw/panjika_2026.toml), from ten days before Ashtami
+ * until noon on the day. The two almanacs disagree this year, so both are shown with the advice to ask at your pandal. */
+const clock = (s) => { const [h, m] = s.split(':').map(Number), a = ampm(h), mm = String(m).padStart(2, '0');
+  return !m ? a : a.includes('টা') ? a.replace('টা', `টা ${mm}`) : a.replace(/^(\d+)/, `$1:${mm}`); };
+function ashtamiHtml() {
+  const pj = G.data.panjika, day = pj && idx.day[pj.day];
+  if (!day || !pj.panjika?.length || !ashtamiDue(day.date)) return '';
+  const date = new Date(day.date + 'T00:00:00').toLocaleDateString(loc(), { day: 'numeric', month: 'long' });
+  return `<section class="section ashtami-card" aria-label="${t('sa.title', { date })}"><div class="sa-box">
+    <h2>🪔 ${t('sa.title', { date })}</h2><p class="sub">${t('sa.sub')}</p>
+    <ul class="sa-rows">${pj.panjika.map((x) => `<li><b>${esc(S.prefs.lang === 'bn' ? x.name_bn || x.name : x.name)}</b>
+      <span class="sa-t">${t('sa.sandhi', { from: clock(x.sandhi_start), to: clock(x.sandhi_end) })}</span>
+      <small>${esc(S.prefs.lang === 'bn' ? x.anjali_bn || x.anjali : x.anjali)}</small></li>`).join('')}</ul>
+    <a class="link-btn" href="guide/dates/#sandhi">${t('sa.more')}</a></div></section>`;
+}
+
 function render() {
   const el = $('#view-home');
   const st = community.enabled ? community.stats.byPlace : {};
@@ -140,6 +156,7 @@ function render() {
     ${heroHtml()}
     ${promiseHtml()}
     ${liveHtml()}
+    ${ashtamiHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>

@@ -1,6 +1,6 @@
-# Build report — 2026-10-07T20:16:34+00:00
+# Build report — 2026-10-10T10:33:30+00:00
 
-Bundle version `0bbae29f065e`
+Bundle version `829e67e3adea`
 
 | Entity | Count |
 |---|---|
@@ -12,6 +12,8 @@ Bundle version `0bbae29f065e`
 | transit | 56 |
 | itineraries | 6 |
 | dish_photos | 46 |
+| awards | 2 |
+| panjika | 4 |
 
 ## Zones
 

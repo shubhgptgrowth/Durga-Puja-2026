@@ -1,11 +1,11 @@
 /* Explore (the Map tab): Pandals / Food / Parking, one row of filters, and a full-screen map or a list. */
-import { hav, isOpen } from '../core.js';
+import { hav, isOpen, pandalFilter, stationOptions } from '../core.js';
 import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { offerChip, featuredFirst } from '../offers.js';
-import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle } from '../sheets.js';
+import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle, awardPill } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
 import { carCardHtml, carClick } from '../car.js';
@@ -60,7 +60,7 @@ function pandalItem(p) {
     <div class="side"><span class="score">${icon('star', 'sm fill')}${p.popularity}</span>${statsHtml(p.id, { compact: true })}</div>
     <div class="meta">${esc(zs(z))}${S.me ? ` · ${dist(hav(S.me, ll(p)))}` : ''} · ${icon('metro', 'sm')} ${esc(p.nearest_metro.name)}</div>
     ${p.theme_2026 ? `<div class="theme-line"><b>${t('p.theme2026')}</b>${esc(themeTitle(p.theme_2026))}</div>` : ''}
-    <div class="status">${crowdPill(c)}<span class="pill" title="${t('card.bestHint')}">${icon('clock', 'sm')} ${t('card.best', { slot: t('slot.' + p.best_slot) })}</span></div>
+    <div class="status">${crowdPill(c)}<span class="pill" title="${t('card.bestHint')}">${icon('clock', 'sm')} ${t('card.best', { slot: t('slot.' + p.best_slot) })}</span>${awardPill(p)}</div>
   </li>`;
 }
 function foodItem(f) {
@@ -87,7 +87,8 @@ function foodItem(f) {
 
 
 function pandalList(e) {
-  const list = G.data.pandals.filter((p) => inArea(e, p.zone));
+  const year = G.data.meta.year;
+  const list = G.data.pandals.filter((p) => inArea(e, p.zone) && pandalFilter(p, e, year));
   if (e.sort === 'popular') list.sort((a, b) => b.popularity - a.popularity || crowdNow(a) - crowdNow(b));
   if (e.sort === 'quiet') list.sort((a, b) => crowdNow(a) - crowdNow(b) || b.popularity - a.popularity);
   if (e.sort === 'near' && S.me) list.sort((a, b) => hav(S.me, ll(a)) - hav(S.me, ll(b)));
@@ -120,11 +121,18 @@ function barHtml(e) {
     <div class="filter-row ${e.seg}">${areaSelectHtml(e, 'areaSelect')}${extra}</div>`;
 }
 
+/** Pandals only: heritage and award chips plus a metro station picker. In the list, not the sticky bar, so it scrolls away. */
+const moreFiltersHtml = (e) => `<div class="filter-row pandals2">
+      ${['heritage', 'award'].map((k) => `<button class="chip sm" data-only="${k}" aria-pressed="${e.only.has(k)}">${t('ff.' + k)}</button>`).join('')}
+      <select id="stationSelect" aria-label="${t('st.label')}"><option value="all">${t('st.all')}</option>${stationOptions(G.data.pandals).map((m) => `<option value="${m.id}" ${e.station === m.id ? 'selected' : ''}>${esc(m.name)} (${m.n})</option>`).join('')}</select></div>`;
+
 function listHtml(e, list) {
   if (e.seg === 'pandals') {
     const z = e.area !== 'all' ? zoneOf(e.area) : null;
     return `${z ? `<div class="notice ${z.car_advisory}"><b>${esc(zn(z))}</b><span>${esc(z.vibe)}</span><span>${t('car.' + z.car_advisory)} · ${esc(z.walk_tip)}</span></div>` : ''}
-      <div class="toolbar"><span>${t('list.count', { n: list.length })}</span></div>
+      ${moreFiltersHtml(e)}
+      <div class="toolbar"><span>${t('list.count', { n: list.length })}</span>${e.station !== 'all' || e.only.size ? `<button class="link-btn" data-clear>${t('ff.clear')}</button>` : ''}</div>
+      ${list.length ? '' : `<p class="empty">${t('ff.none')}</p>`}
       <details class="more" ${S.hour !== new Date().getHours() || moreOpen ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
         <div class="time-row"><label for="crowdDay">${t('f.day')}</label><select id="crowdDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))}</option>`).join('')}</select></div>
         <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>
@@ -175,6 +183,9 @@ function wire(view) {
   view.onclick = (ev) => {
     const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; track('filter', { d: 'seg:' + seg }); return render(); }
     if (ev.target.closest('#modeBtn')) { S.explore.mode = S.explore.mode === 'map' ? 'list' : 'map'; track('filter', { d: 'mode:' + S.explore.mode }); window.scrollTo(0, 0); return render(); }
+    const only = ev.target.closest('[data-only]')?.dataset.only;
+    if (only) { S.explore.only.has(only) ? S.explore.only.delete(only) : S.explore.only.add(only); track('filter', { d: 'only:' + only }); return render(); }
+    if (ev.target.closest('[data-clear]')) { S.explore.only.clear(); S.explore.station = 'all'; return render(); }
     const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); track('filter', { d: 'food:' + f }); return render(); }
     const place = ev.target.closest('#explorePanel [data-place]')?.dataset.place; if (place) return openPlace(place);
     if (carClick(ev, render)) return;
@@ -185,6 +196,8 @@ function wire(view) {
   if (hr) hr.oninput = () => { S.hour = +hr.value; const y = window.scrollY; render(); window.scrollTo(0, y); $('#hourRange')?.focus(); };
   const cd = $('#crowdDay', view);
   if (cd) cd.onchange = () => { moreOpen = true; S.day = cd.value; const y = window.scrollY; render(); window.scrollTo(0, y); };
+  const ss = $('#stationSelect', view);
+  if (ss) ss.onchange = () => { S.explore.station = ss.value; track('filter', { d: 'station:' + ss.value }); render(); };
   const so = $('#sortSelect', view);
   if (so) so.onchange = () => {
     S.explore.sort = so.value; track('filter', { d: 'sort:' + so.value });

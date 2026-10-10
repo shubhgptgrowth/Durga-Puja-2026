@@ -179,3 +179,55 @@ class AuditApplyTests(unittest.TestCase):
         tri = next(p for p in data["pandals"] if p["id"] == "tridhara")
         self.assertEqual(tri["geo_source"], "osm")
         self.assertEqual(tri["checkin_radius_m"], config.CHECKIN_RADIUS_OSM_M)
+
+
+class AwardsPanjikaHelpTests(unittest.TestCase):
+    def write(self, text):
+        d = tempfile.mkdtemp()
+        f = Path(d) / "x.toml"
+        f.write_text(text, encoding="utf-8")
+        return f
+
+    AWARD = '[[award]]\nid = "apss"\nname = "Asian Paints Sharad Shamman"\nshort = "Sharad Shamman"\nurl = "https://x.in/"\n'
+
+    def test_awards_file_is_valid_and_sourced(self):
+        from pipeline.enrich import load_awards
+        ids = {p["id"] for p in ingest(config.RAW_DIR)["pandals"]}
+        winners, awards = load_awards(pandal_ids=ids)
+        self.assertTrue(awards)
+        for pid, ws in winners.items():
+            self.assertIn(pid, ids)
+            self.assertEqual(ws, sorted(ws, key=lambda w: -w["year"]))   # newest first, for the app's badge
+            self.assertTrue(all(w["source"].startswith("https://") for w in ws))
+
+    def test_awards_reject_unknown_pandal_and_missing_source(self):
+        from pipeline.enrich import load_awards
+        ok = self.AWARD + '[[winner]]\naward = "apss"\nyear = 2025\ncategory = "Best Puja"\npandal = "bagbazar"\nsource = "https://x.in/w"\n'
+        self.assertIn("bagbazar", load_awards(self.write(ok), {"bagbazar"})[0])
+        with self.assertRaises(ValueError):
+            load_awards(self.write(ok), {"somewhere_else"})
+        with self.assertRaises(ValueError):
+            load_awards(self.write(ok.replace('source = "https://x.in/w"', 'source = "x.in"')), {"bagbazar"})
+        with self.assertRaises(ValueError):
+            load_awards(self.write(ok.replace('award = "apss"\nyear', 'award = "nope"\nyear')), {"bagbazar"})
+
+    def test_panjika_times(self):
+        from pipeline.enrich import load_panjika
+        pj = load_panjika()
+        self.assertEqual(pj["day"], "ashtami")
+        self.assertGreaterEqual(len(pj["panjika"]), 2)   # both almanacs, since they disagree
+        bad = self.write('day = "ashtami"\n[[panjika]]\nid = "g"\nsandhi_start = "8:13"\nsandhi_end = "07:25"\nsource = "https://x.in/"\n')
+        with self.assertRaises(ValueError):
+            load_panjika(bad)
+
+    def test_help_near_picks_the_nearest_within_reach(self):
+        from pipeline.enrich import help_near
+        pt = (22.5726, 88.3639)
+        places = {"toilets": [{"lat": 22.5730, "lng": 88.3640, "name": "Near"}, {"lat": 22.5800, "lng": 88.3700, "name": "Far"}],
+                  "hospitals": [{"lat": 22.6200, "lng": 88.4000, "name": "Too far"}],
+                  "police": [{"lat": 22.5740, "lng": 88.3650, "name:en": "Thana", "name": "থানা"}]}
+        h = help_near(pt, places)
+        self.assertEqual(h["toilets"]["name"], "Near")
+        self.assertNotIn("hospitals", h)   # beyond 3 km
+        self.assertEqual(h["police"]["name"], "Thana")
+        self.assertLess(h["toilets"]["distance_m"], 100)

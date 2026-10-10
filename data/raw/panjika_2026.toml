@@ -1,0 +1,41 @@
+# Ashtami timings from the two almanacs (panjika) Kolkata's pujas follow, shown on /guide/dates/, the rituals
+# article and the app's Home card on Saptami and Ashtami. Every time comes from the source listed with it; when a
+# panjika or an outlet corrects a time, change it here and the next deploy carries it. Facts only: each pandal's
+# priest decides the exact time, so the pages always say to check at your pandal.
+
+checked = "2026-10-10"
+day = "ashtami"            # the guide's day id these timings belong to (19 October)
+
+[[panjika]]
+id = "gupta"
+name = "Gupta Press"
+name_bn = "গুপ্তপ্রেস"
+sandhi_start = "07:25"
+sandhi_end = "08:13"
+anjali = "Finish Ashtami pushpanjali by 7:15 am, before Sandhi Puja begins."
+anjali_bn = "সন্ধিপুজো শুরুর আগে, সকাল ৭টা ১৫ মিনিটের মধ্যে অষ্টমীর অঞ্জলি।"
+source = "https://www.sangbadpratidin.in/religion/durga-puja-2026-know-the-time-for-ashtami-anjali-and-sandhi-puja/pid/1350148/"
+source_name = "Sangbad Pratidin"
+source_date = "2026-10-10"
+
+[[panjika]]
+id = "bisuddha"
+name = "Bisuddha Siddhanta"
+name_bn = "বিশুদ্ধ সিদ্ধান্ত"
+sandhi_start = "10:28"
+sandhi_end = "11:16"
+anjali = "Ashtami pushpanjali usually between 9:30 and 10:15 am."
+anjali_bn = "অষ্টমীর অঞ্জলি সাধারণত সকাল ৯টা ৩০ থেকে ১০টা ১৫ মিনিটের মধ্যে।"
+follows = "Belur Math and pujas that follow it"
+source = "https://media.belurmath.org/sri-sri-durga-puja-2026-programme-details-25017/"
+source_name = "Belur Math"
+source_date = "2026-10-08"
+
+# Belur Math's own Ashtami programme (Vishuddha Siddhanta), from the page above.
+[belur_math]
+puja_begins = "05:40"
+kumari_puja = "09:00"
+sandhi_start = "10:28"
+sandhi_end = "11:16"
+anjali = "After the midday bhog arati on Saptami, Ashtami and Navami (18 to 20 October); bring flowers and bel leaves."
+source = "https://media.belurmath.org/sri-sri-durga-puja-2026-programme-details-25017/"

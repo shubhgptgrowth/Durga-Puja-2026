@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       what:
-        description: "pandals, transit, food, photos, archive (comma-separated; food:howrah+<pandal_id> limits food to those zones/pandals)"
+        description: "pandals, transit, food, photos, archive, help (comma-separated; food:howrah+<pandal_id> limits food to those zones/pandals)"
         default: "pandals,transit,photos"
 
 permissions:
@@ -32,8 +32,8 @@ jobs:
           done
           echo "FAILED=$failed" >> "$GITHUB_ENV"
           if [ -n "$failed" ]; then echo "::warning::discover failed for:$failed (previous data kept)"; fi
-      - name: Rebuild photos into the app
-        if: contains(inputs.what || 'photos,archive', 'photos') || contains(inputs.what || 'photos,archive', 'archive')
+      - name: Rebuild photos and help places into the app
+        if: contains(inputs.what || 'photos,archive', 'photos') || contains(inputs.what || 'photos,archive', 'archive') || contains(inputs.what || '', 'help')
         run: python -m pipeline
       - name: Commit results
         env:

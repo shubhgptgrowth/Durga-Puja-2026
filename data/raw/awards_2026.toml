@@ -1,0 +1,69 @@
+# Puja awards, shown on /guide/award-winning-pandals-2026/, on each winner's pandal page and as a badge in the app.
+# Add the 2026 winners the day each award announces them (usually around Panchami), with the link you read them in.
+# Only pandals that are in the guide (data/raw/pandals.csv) can be listed; facts only, from the award's own site
+# or a news report.
+
+[[award]]
+id = "apss"
+name = "Asian Paints Sharad Shamman"
+short = "Sharad Shamman"
+url = "https://sharadshamman.asianpaints.com/winners.htm"
+announce = "Asian Paints usually announces its winners during the pujas, around Panchami and Shashthi."
+
+[[award]]
+id = "bbss"
+name = "Biswa Bangla Sharad Samman"
+short = "Biswa Bangla"
+url = "https://icad.wb.gov.in/awards-and-sammans.php"
+announce = "The West Bengal government's awards; the winners are announced during the pujas."
+
+# --- 2025 winners (last year's results, so visitors can see which pujas the juries rated) ---
+
+[[winner]]
+award = "apss"
+year = 2025
+category = "Best Puja"
+pandal = "behala_friends"
+theme = "Nobanno"
+source = "https://sharadshamman.asianpaints.com/winners.htm"
+
+[[winner]]
+award = "apss"
+year = 2025
+category = "Best Puja"
+pandal = "kashi_bose_lane"
+theme = "Pakdondi (twisted path)"
+source = "https://sharadshamman.asianpaints.com/winners.htm"
+
+[[winner]]
+award = "apss"
+year = 2025
+category = "Best Puja"
+pandal = "purbachal_shakti_sangha"
+theme = "Mathkhodai Kathkhodai"
+source = "https://sharadshamman.asianpaints.com/winners.htm"
+
+[[winner]]
+award = "apss"
+year = 2025
+category = "Best Puja"
+pandal = "samaj_sebi"
+theme = "Pather Panchali (1946)"
+source = "https://sharadshamman.asianpaints.com/winners.htm"
+
+[[winner]]
+award = "apss"
+year = 2025
+category = "Best Puja"
+pandal = "tala_prattoy"
+theme = "Beej Angan (Seed Courtyard)"
+source = "https://sharadshamman.asianpaints.com/winners.htm"
+
+# --- 2026 winners: add them here as they are announced ---
+# [[winner]]
+# award = "apss"
+# year = 2026
+# category = "Best Puja"
+# pandal = "<pandal id>"
+# theme = "<theme>"
+# source = "<link>"
