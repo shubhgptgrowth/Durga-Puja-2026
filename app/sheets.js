@@ -203,6 +203,24 @@ function gettingThereHtml(p, parks = []) {
     ${auto ? `<p class="fine" style="margin-top:6px">${t('tr.autoNote')}</p>` : ''}`;
 }
 
+/* Puja awards (data/raw/awards_2026.toml): "🏆 Sharad Shamman 2025", the newest win first. */
+export function awardPill(p) {
+  const w = p.awards?.[0];
+  if (!w) return '';
+  const a = (G.data.awards || []).find((x) => x.id === w.award);
+  return `<span class="pill award" title="${esc(`${a?.name || ''} ${w.year}, ${w.category}`)}">🏆 ${esc(a?.short || '')} ${w.year}</span>`;
+}
+
+/* Help nearby (OpenStreetMap): the nearest public toilet, hospital and police station, each a tap away from directions. */
+const HELP = [['toilets', '🚻'], ['hospitals', '🏥'], ['police', '👮']];
+function helpHtml(p) {
+  const hp = p.help || {};
+  const rows = HELP.filter(([k]) => hp[k]).map(([k, em]) => { const h = hp[k];
+    return `<li><a class="help-a" target="_blank" rel="noopener" href="${dirUrl([h.lat, h.lng])}"><span>${em} <b>${t('help.' + k)}</b>${h.name ? `<br><small>${esc(h.name)}${h.emergency ? ` · ${t('help.er')}` : ''}</small>` : ''}</span>
+      <small>${t('p.walkMin', { n: h.walk_min })}</small></a></li>`; }).join('');
+  return rows ? `<h3 class="sh">${t('p.help')}</h3><ul class="mini-list">${rows}</ul><p class="fine" style="margin-top:6px">${t('help.note')}</p>` : '';
+}
+
 /* This year's theme, with the report it came from (data/raw/themes_2026.csv). */
 export const themeTitle = (th) => (S.prefs.lang === 'bn' && th.title_bn) || th.title;
 const host = (u) => { try { return new URL(u).hostname.replace(/^(www|m)\./, ''); } catch { return ''; } };
@@ -230,7 +248,7 @@ export function pandalSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
-    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
+    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${awardPill(p)}${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
     ${themeHtml(p.theme_2026)}
     ${galleryHtml(p.photos)}
     ${dayToggleHtml()}
@@ -244,6 +262,7 @@ export function pandalSheet(id) {
 
     ${gettingThereHtml(p, parks)}
     ${z.car_advisory !== 'ok' ? `<p class="fine" style="margin-top:6px">${esc(z.walk_tip)}</p>` : ''}
+    ${helpHtml(p)}
 
     <h3 class="sh">${t('p.eat')}</h3>
     <ul class="mini-list">${foods.map((f) => `<li data-food="${f.id}" ${btn()}><span><b>${esc(f.name)}</b>${sponsoredTag(f.id)}<br><small>${esc(f.dishes.slice(0, 2).join(' · '))}</small></span><small>${t('p.walkMin', { n: f.walk_min })}</small></li>`).join('') || `<li>${t('p.noeat')}</li>`}</ul>

@@ -1,9 +1,77 @@
 """Stage 3: derive zone geometry, nearest metro/parking/food, and crowd windows."""
+import json
+import re
+import tomllib
+
 from . import config
 from .discovered import attach_photos, attach_transit, build_archive, transit_bundle, transit_index
 from .geo import centroid, haversine_m, walk_m
 
 THEMES = config.RAW_DIR / "themes_2026.csv"
+AWARDS = config.RAW_DIR / "awards_2026.toml"
+PANJIKA = config.RAW_DIR / "panjika_2026.toml"
+HELP = config.ROOT / "data" / "discovered" / "help.json"
+# How far to look for each kind of help (a hospital is worth a short ride; a toilet has to be close).
+HELP_MAX_M = {"toilets": 1000, "hospitals": 3000, "police": 1500}
+
+
+def load_awards(path=AWARDS, pandal_ids=None):
+    """Award winners by pandal id, newest first, plus the list of awards (data/raw/awards_2026.toml)."""
+    if not path.exists():
+        return {}, []
+    d = tomllib.loads(path.read_text(encoding="utf-8"))
+    awards = {a["id"]: {k: a[k] for k in ("id", "name", "short", "url", "announce") if a.get(k)} for a in d.get("award", [])}
+    out = {}
+    for w in d.get("winner", []):
+        where = f"awards_2026.toml: winner {w.get('pandal')!r}"
+        if w.get("award") not in awards:
+            raise ValueError(f"{where} has an unknown award {w.get('award')!r}")
+        if not str(w.get("source", "")).startswith("https://") or not w.get("category") or not isinstance(w.get("year"), int):
+            raise ValueError(f"{where} needs a year, a category and an https source")
+        if pandal_ids is not None and w["pandal"] not in pandal_ids:
+            raise ValueError(f"{where} is not a pandal in the guide")
+        out.setdefault(w["pandal"], []).append({"award": w["award"], "year": w["year"], "category": w["category"],
+                                                **({"theme": w["theme"]} if w.get("theme") else {}), "source": w["source"]})
+    for v in out.values():
+        v.sort(key=lambda x: -x["year"])
+    return out, list(awards.values())
+
+
+def load_panjika(path=PANJIKA):
+    """Ashtami anjali and Sandhi Puja times from each panjika (data/raw/panjika_2026.toml), or None."""
+    if not path.exists():
+        return None
+    d = tomllib.loads(path.read_text(encoding="utf-8"))
+    hhmm = re.compile(r"^([01]\d|2[0-3]):[0-5]\d$")
+    for p in d.get("panjika", []):
+        if not (hhmm.match(p.get("sandhi_start", "")) and hhmm.match(p.get("sandhi_end", ""))) or not p.get("source", "").startswith("https://"):
+            raise ValueError(f"panjika_2026.toml: {p.get('id')!r} needs sandhi_start/sandhi_end as HH:MM and an https source")
+        if p["sandhi_end"] <= p["sandhi_start"]:
+            raise ValueError(f"panjika_2026.toml: {p['id']!r} Sandhi Puja ends before it starts")
+    if d.get("day") not in {x["id"] for x in config.PUJA_DAYS}:
+        raise ValueError(f"panjika_2026.toml: unknown day {d.get('day')!r}")
+    return d
+
+
+def load_help(path=HELP):
+    """Public toilets, hospitals and police stations from OpenStreetMap (python -m pipeline.discover help)."""
+    if not path.exists():
+        return None
+    d = json.loads(path.read_text(encoding="utf-8"))
+    return {k: d.get(k, []) for k in HELP_MAX_M}
+
+
+def help_near(pt, places):
+    """The nearest place of each kind within reach: {kind: {name, lat, lng, distance_m, walk_min}}."""
+    out = {}
+    for kind, max_m in HELP_MAX_M.items():
+        best = min(((haversine_m(pt, (h["lat"], h["lng"])), h) for h in places.get(kind, [])), key=lambda x: x[0], default=None)
+        if best and best[0] <= max_m:
+            h = best[1]
+            out[kind] = {"name": h.get("name:en") or h.get("name") or "", "lat": h["lat"], "lng": h["lng"],
+                         "distance_m": round(best[0]), "walk_min": _walk_min(best[0]),
+                         **({"emergency": True} if h.get("emergency") == "yes" else {})}
+    return out
 
 
 def load_themes(path=THEMES):
@@ -57,6 +125,8 @@ def enrich(data):
     transit, parking, food = data["transit"], data["parking"], data["food"]
     pandals = []
     themes = load_themes()
+    winners, awards = load_awards(pandal_ids={p["id"] for p in data["pandals"]})
+    help_places = load_help()
 
     for p in data["pandals"]:
         pt = (p["lat"], p["lng"])
@@ -81,6 +151,10 @@ def enrich(data):
         e["best_slot_label"] = config.SLOTS[p["best_slot"]]["label"]
         if p["id"] in themes:
             e["theme_2026"] = themes[p["id"]]
+        if p["id"] in winners:
+            e["awards"] = winners[p["id"]]
+        if help_places:
+            e["help"] = help_near(pt, help_places)
         pandals.append(e)
 
     for zid, z in zones.items():
@@ -116,6 +190,8 @@ def enrich(data):
         extra["transit_bundle"] = transit_bundle(T)
     extra["dish_photos"] = attach_photos(pandals, food)
     extra["photo_archive"] = build_archive(pandals)
+    extra["awards"] = awards
+    extra["panjika"] = load_panjika()
     for f in food:
         f.pop("_archive", None)
 

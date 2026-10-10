@@ -24,7 +24,7 @@ export const S = {
   history: store.get('history', {}),     // YYYY-MM-DD -> {m, ms, steps, pandals: [], foods: []}
   car: store.get('car', null),
   plan: store.get('activePlan', null),
-  explore: { seg: 'pandals', region: 'all', area: 'all', sort: 'popular', food: new Set(), mode: 'list' },
+  explore: { seg: 'pandals', region: 'all', area: 'all', sort: 'popular', food: new Set(), only: new Set(), station: 'all', mode: 'list' },
   moments: { region: 'all', area: 'all', onSite: false, items: [], done: false, loading: false },
   walk: null,
 };

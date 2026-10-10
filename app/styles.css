@@ -1028,3 +1028,18 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .reel-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .reel-actions .btn { flex: 1 1 auto; }
 .reels-all .section-head .fine { white-space: nowrap; }
+
+/* Awards, help nearby, Explore's second filter row and the Ashtami timings card */
+.pill.award { color: var(--gold); background: var(--gold-soft); }
+.mini-list li .help-a { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; color: inherit; text-decoration: none; }
+.mini-list li:has(.help-a) { padding: 0; }
+.mini-list li .help-a { padding: 11px 13px; }
+.filter-row.pandals2 { padding-top: 12px; padding-bottom: 4px; }
+.filter-row.pandals2 select { flex: 0 0 auto; max-width: 56vw; }
+.ashtami-card .sa-box { background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold-2) 45%, transparent); border-radius: var(--radius); padding: 14px 16px; }
+.ashtami-card h2 { font-size: 17px; margin: 0 0 4px; }
+.ashtami-card .sub { margin: 0 0 10px; }
+.sa-rows { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.sa-rows li { background: var(--surface); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; font-size: 13.5px; }
+.sa-rows .sa-t { font-weight: 650; color: var(--brand); }
+.sa-rows small { color: var(--ink-3); }

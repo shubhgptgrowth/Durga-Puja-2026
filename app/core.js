@@ -291,3 +291,29 @@ export function embedUrl(url) {
   }
   return null;
 }
+
+/* Explore's extra pandal filters: by nearest metro station, heritage (75+ years) and award winners. */
+export const HERITAGE_YEARS = 75;
+export function pandalFilter(p, { station = 'all', only = new Set() } = {}, year = new Date().getFullYear()) {
+  if (station !== 'all' && p.nearest_metro?.id !== station) return false;
+  if (only.has('heritage') && !(p.est_year && year - p.est_year >= HERITAGE_YEARS)) return false;
+  if (only.has('award') && !p.awards?.length) return false;
+  return true;
+}
+/** Stations that are some pandal's nearest metro, A to Z, each with how many pandals it serves. */
+export function stationOptions(pandals) {
+  const by = new Map();
+  for (const p of pandals) {
+    const m = p.nearest_metro; if (!m) continue;
+    const o = by.get(m.id) || { id: m.id, name: m.name, line: m.line, n: 0 };
+    o.n += 1; by.set(m.id, o);
+  }
+  return [...by.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/** The Ashtami timings card shows from ten days before Ashtami until noon on the day itself (local time). */
+export function ashtamiDue(dateISO, now = new Date()) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateISO || '')) return false;
+  const noon = new Date(dateISO + 'T12:00:00');
+  return now < noon && noon - now <= 10.5 * 864e5;
+}

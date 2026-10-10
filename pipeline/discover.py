@@ -4,6 +4,7 @@
     python -m pipeline.discover transit   # OSM bus/share-auto routes and stops, taxi/auto stands, auto-route endpoints
     python -m pipeline.discover food      # OSM restaurants, sweet shops, cafes, street food near each pandal
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
+    python -m pipeline.discover help      # OSM public toilets, hospitals and police stations ("Help nearby")
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
 `python -m pipeline` merges it with the review rules in pipeline/merge_discovered.py.
@@ -307,6 +308,30 @@ def discover_food(only=""):
     print(f"{len(out)} eateries ({failed} batches failed)", file=sys.stderr)
 
 
+# ---------------------------------------------------------------- help nearby
+HELP_KINDS = {"toilets": "toilets", "hospital": "hospitals", "police": "police"}
+
+
+def discover_help():
+    """Public toilets, hospitals and police stations across the city, for the "Help nearby" list on each pandal.
+    Private or customers-only toilets are left out."""
+    els = overpass(f'[out:json][timeout:180];(nwr["amenity"~"^(toilets|hospital|police)$"]({BBOX_Q}););out center tags;')
+    out = {v: [] for v in HELP_KINDS.values()}
+    for e in els:
+        tags = e.get("tags", {})
+        lat, lng = center(e)
+        kind = HELP_KINDS.get(tags.get("amenity"))
+        if not kind or lat is None or tags.get("disused") or tags.get("access") in ("private", "customers", "no"):
+            continue
+        keep = {k: tags[k] for k in ("name", "name:en", "name:bn", "emergency", "fee", "opening_hours", "wheelchair") if k in tags}
+        out[kind].append({"osm": f"{e['type']}/{e['id']}", "lat": round(lat, 6), "lng": round(lng, 6), **keep})
+    if not any(out.values()):
+        raise RuntimeError("no help places fetched")
+    write("help", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"), **out})
+    print(", ".join(f"{len(v)} {k}" for k, v in out.items()), file=sys.stderr)
+
+
 if __name__ == "__main__":
-    fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos}[sys.argv[1]]
+    fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
+          "help": discover_help}[sys.argv[1]]
     fn(*sys.argv[2:3])

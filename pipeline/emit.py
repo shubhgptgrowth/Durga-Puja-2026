@@ -26,7 +26,10 @@ def build_bundle(data):
         "zones": data["zones"], "pandals": data["pandals"], "food": data["food"],
         "parking": data["parking"], "transit": data["transit"], "itineraries": data["itineraries"],
         "dish_photos": data.get("dish_photos", {}),
+        "awards": data.get("awards", []),
     }
+    if data.get("panjika"):
+        body["panjika"] = data["panjika"]
     digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()[:12]
     meta = {
         "name": "Pujo Parikrama", "year": config.YEAR, "version": digest,

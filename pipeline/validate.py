@@ -89,6 +89,14 @@ def validate(data):
         if it["start"] not in {t["id"] for t in data["transit"]}:
             errors.append(f"itinerary {it['id']}: unknown start station '{it['start']}'")
 
+    # Hand-kept files with sources: awards (pandal ids must exist) and the panjika timings.
+    from .enrich import load_awards, load_panjika
+    for check in (lambda: load_awards(pandal_ids={p["id"] for p in data["pandals"]}), load_panjika):
+        try:
+            check()
+        except (ValueError, KeyError) as e:
+            errors.append(str(e))
+
     if errors:
         raise ValidationError(errors)
     return warnings

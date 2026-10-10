@@ -270,3 +270,30 @@ test('Pujo Reels feed file: every reel the deploy publishes can be played', () =
   assert.ok(Array.isArray(f.reels));
   for (const r of f.reels) assert.ok(embedUrl(r.url), r.url);
 });
+
+test('explore filters: heritage, award winners and metro station', async () => {
+  const { pandalFilter, stationOptions, HERITAGE_YEARS } = await import('../../app/core.js');
+  const old = { nearest_metro: { id: 'shyambazar' }, est_year: 1918, awards: [{ award: 'apss', year: 2025 }] };
+  const young = { nearest_metro: { id: 'kalighat' }, est_year: 2000 };
+  assert.ok(pandalFilter(old, { only: new Set(['heritage', 'award']) }, 2026));
+  assert.ok(!pandalFilter(young, { only: new Set(['heritage']) }, 2026));
+  assert.ok(!pandalFilter({ nearest_metro: { id: 'x' } }, { only: new Set(['heritage']) }, 2026));   // no year known: not heritage
+  assert.ok(!pandalFilter(young, { only: new Set(['award']) }, 2026));
+  assert.ok(pandalFilter(young, { station: 'kalighat' }, 2026) && !pandalFilter(old, { station: 'kalighat' }, 2026));
+  assert.equal(HERITAGE_YEARS, 75);
+  const st = stationOptions(G.pandals);
+  assert.equal(st.reduce((n, s) => n + s.n, 0), G.pandals.length);   // every pandal sits under exactly one station
+  assert.deepEqual(st.map((s) => s.name), [...st.map((s) => s.name)].sort((a, b) => a.localeCompare(b)));
+  assert.ok(G.pandals.some((p) => p.awards?.length), 'award winners reach the app');
+});
+
+test('Ashtami timings card: ten days before Ashtami until noon on the day', async () => {
+  const { ashtamiDue } = await import('../../app/core.js');
+  const day = G.meta.days.find((d) => d.id === (G.panjika?.day || 'ashtami')).date;
+  assert.ok(ashtamiDue(day, new Date(day + 'T07:00:00')));
+  assert.ok(!ashtamiDue(day, new Date(day + 'T13:00:00')));
+  const before = new Date(day + 'T12:00:00'); before.setDate(before.getDate() - 12);
+  assert.ok(!ashtamiDue(day, before));
+  assert.ok(!ashtamiDue('', new Date()));
+  for (const p of G.panjika.panjika) assert.match(p.sandhi_start, /^\d\d:\d\d$/);
+});

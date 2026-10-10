@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_seo  # noqa: E402
 from seo.knowledge import CONTENT, Article  # noqa: E402
-from seo.common import esc  # noqa: E402
+from seo.common import clock, esc  # noqa: E402
 from seo.markdown import render  # noqa: E402
 from seo.metro import FAR_MIN, MIN_PANDALS, NEAR_MIN, load_notices, metro_stations, walk  # noqa: E402
 
@@ -80,6 +80,7 @@ class BuildSeoTest(unittest.TestCase):
         want += sum(1 for r in g["regions"] if any(z["id"] in r["zone_ids"] and z["pandal_ids"] for z in g["zones"]))   # + a page per region
         want += 1 + len(metro_stations(g)) + 1   # + the metro hub, a page per station with pandals in walking distance, late night
         want += 1 if self.site.parikrama else 0   # + WBTC Puja Parikrama
+        want += 1 if g.get("awards") else 0   # + award winners
         stories = len(list((self.tmp / "stories").glob("*/index.html"))) if (self.tmp / "stories").exists() else 0
         if stories:   # every guide has a photo story (hand-written in stories.toml, or made from the guide's own text)
             self.assertEqual(stories, len(self.articles) + len(self.site.data_stories_list))   # + the data stories (themes, metro)
@@ -381,6 +382,33 @@ class BuildSeoTest(unittest.TestCase):
         self.assertIn("wbtconline.in", html)
         self.assertIn("wbtc-puja-parikrama/", (self.tmp / "guide" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("wbtc-puja-parikrama/", (self.tmp / "guide" / "metro" / "index.html").read_text(encoding="utf-8"))
+
+    def test_awards(self):
+        html = (self.tmp / f"guide/award-winning-pandals-{self.g['meta']['year']}" / "index.html").read_text(encoding="utf-8")
+        winners = [(p, w) for p in self.g["pandals"] for w in p.get("awards", [])]
+        self.assertTrue(winners)
+        for p, w in winners:   # each winner is linked, sourced, and its own page says it won
+            with self.subTest(pandal=p["id"]):
+                self.assertIn(f"pandals/{p['id']}/", html)
+                self.assertTrue(w["source"].startswith("https://"))
+                page = (self.tmp / "guide" / "pandals" / p["id"] / "index.html").read_text(encoding="utf-8")
+                self.assertIn("It won the", page)
+                self.assertIn("award-winning-pandals-", page)
+        if not any(w["year"] == self.g["meta"]["year"] for _, w in winners):
+            self.assertIn("haven't been announced yet", html)   # never implies last year's winners are this year's
+        self.assertIn("award-winning-pandals-", (self.tmp / "guide" / "index.html").read_text(encoding="utf-8"))
+
+    def test_sandhi_times(self):
+        pj = self.g["panjika"]
+        html = (self.tmp / "guide" / "dates" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="sandhi"', html)
+        for x in pj["panjika"]:   # both almanacs, each with its source
+            with self.subTest(panjika=x["id"]):
+                self.assertIn(clock(x["sandhi_start"]), html)
+                self.assertIn(clock(x["sandhi_end"]), html)
+                self.assertIn(esc(x["source"]), html)
+        self.assertIn("What time is Sandhi Puja", html)
+        self.assertIn("ask at your pandal", html)
 
     def test_quiz(self):
         from seo.quiz import QUESTIONS, TYPES
