@@ -733,56 +733,87 @@
    }
   },
   {
-   "hook": "Kolkata on a pujo night, sped up",
-   "bn": {
-    "hook": "পুজোর রাতের কলকাতা, এক নিঃশ্বাসে",
-    "segs": [
-     "",
-     "",
-     ""
-    ],
-    "end": "আজ পঞ্চমী। কোথায় যাচ্ছেন?"
-   },
-   "segments": [
-    [
-     "cm-387fc0",
-     2,
-     4.0,
-     ""
-    ],
-    [
-     "cm-387fc0",
-     9,
-     3.6,
-     ""
-    ],
-    [
-     "cm-387fc0",
-     16,
-     3.6,
-     ""
-    ]
-   ],
-   "end": [
-    "Panchami tonight. Where are you going?",
-    "Tell us in the comments"
-   ],
-   "music": [
-    "f23",
-    20
+   "id": "p8",
+   "type": "photo",
+   "render": "editorial",
+   "at": "18:30",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
+     "title": "Nalin Sarkar Street",
+     "bn": "নলিন সরকার স্ট্রিট",
+     "sub": "Pictured: 2024",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Nalin_Sarkar_Street_Durga_puja_2024_12.jpg",
+      "artist": "Tarunsamanta",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Theme 2026",
+     "title": "Jalalipi",
+     "bn": "জললিপি",
+     "body": "Rivers as the script of civilisation: the Ganga's flow, its pollution and eroding banks. As reported; themes can change before the puja."
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "A famous Hatibagan theme puja tucked into a narrow lane."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Shyambazar, 16 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Bhojohori Manna, New Madras Tiffin",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Nalin_Sarkar_Street_Durga_puja_2024_13.jpg",
+      "artist": "Tarunsamanta",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Nalin Sarkar Street, 2024"
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
    ],
    "caption": {
-    "en": "Kolkata Durga Puja nights in time-lapse: Panchami is tonight 🌃\n\nThe pandals are lit and the city is waking up for the pujo. This is a past year's pujo night, sped up.\n\nWhere are you going tonight? Tell us 👇",
+    "en": "Nalin Sarkar Street, Kolkata Durga Puja 2026: the theme is Jalalipi 🪔\n\nRivers as the script of civilisation: the Ganga's flow, its pollution and eroding banks. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 16 minutes' walk from Shyambazar Metro.\n\nAre you going this year? Tell us 👇",
     "keywords": [
-     "kolkata durga puja night",
-     "panchami 2026",
-     "durga puja 2026 kolkata"
+     "nalin sarkar street durga puja 2026",
+     "nalin sarkar street theme",
+     "kumartuli, bagbazar & hatibagan pandals",
+     "kolkata durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #kolkata #pandalhopping"
-   },
-   "id": "r5",
-   "type": "reel",
-   "at": "18:30"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
   },
   {
    "id": "s3",

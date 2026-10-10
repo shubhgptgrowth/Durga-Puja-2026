@@ -9,14 +9,6 @@
    "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
    "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2013-10-11_3317.JPG"
   },
-  "pp-singhi_park-2": {
-   "source": "Wikimedia Commons",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6197.JPG",
-   "license": "CC BY 3.0",
-   "artist": "Biswarup Ganguly",
-   "label": "Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2",
-   "page": "https://commons.wikimedia.org/wiki/File:Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6197.JPG"
-  },
   "pp-hindustan_park-2": {
    "source": "Wikimedia Commons",
    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Hindustan_Park_Sarbojanin_Durga_Puja_2025_39.jpg",
@@ -128,6 +120,14 @@
    "artist": "Goutam1962",
    "label": "Asura's_At_Chetla_Agrani_Club,_Durga_Puja_25.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Asura%27s_At_Chetla_Agrani_Club%2C_Durga_Puja_25.jpg"
+  },
+  "pp-jodhpur_park-5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Pratitimajumdar",
+   "label": "Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Chandelier_at_Jodhpur_Park_Durga_Puja.jpg"
   }
  },
  "items": [
@@ -226,7 +226,7 @@
     "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
     "segs": [
      "",
-     "সিংহী পার্ক",
+     "যোধপুর পার্ক",
      "হিন্দুস্থান পার্ক সার্বজনীন",
      "হিন্দুস্থান ক্লাব"
     ],
@@ -240,10 +240,10 @@
      ""
     ],
     [
-     "pp-singhi_park-2",
+     "pp-jodhpur_park-5",
      0,
      3.6,
-     "Singhi Park"
+     "Jodhpur Park"
     ],
     [
      "pp-hindustan_park-2",
@@ -267,7 +267,7 @@
     80
    ],
    "caption": {
-    "en": "Only Kolkata builds this for four days: Ekdalia Evergreen, Singhi Park and more Durga Puja pandals 🪔\n\nEkdalia Evergreen, Singhi Park, Hindustan Park Sarbojanin and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Only Kolkata builds this for four days: Ekdalia Evergreen, Jodhpur Park and more Durga Puja pandals 🪔\n\nEkdalia Evergreen, Jodhpur Park, Hindustan Park Sarbojanin and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
      "ekdalia evergreen",
@@ -288,7 +288,7 @@
    },
    "segments": [
     [
-     "pp-singhi_park-2",
+     "pp-jodhpur_park-5",
      0,
      6.0,
      "3 days to Shashthi"
