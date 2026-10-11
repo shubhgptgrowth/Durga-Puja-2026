@@ -589,62 +589,83 @@
    "slides": [
     {
      "t": "cover",
-     "kicker": "Durga Puja 2026 · Skip the queue",
-     "title": "Every Kolkata pandal has a quiet hour",
-     "bn": "প্রতিটা প্যান্ডেলের ফাঁকা সময় আছে",
-     "sub": "Pictured: Sovabazar Rajbari, 2025",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
+     "title": "Hatibagan Sarbojanin",
+     "bn": "হাতিবাগান সার্বজনীন",
+     "sub": "Pictured: 2023",
      "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/47/Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750_00001.jpg",
-      "artist": "Kinjal bose 78",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Hatibagan_Sarbojanin_Durga_Puja_2023_02.jpg",
+      "artist": "Tarunsamanta",
       "license": "CC BY-SA 4.0",
       "cx": 0.5,
-      "cy": 0.45,
-      "year": 2019
+      "cy": 0.42
      }
     },
     {
-     "t": "app",
-     "kicker": "Explore",
-     "num": 1,
-     "title": "Find the least crowded time",
-     "bn": "সবচেয়ে কম ভিড় কখন",
-     "body": "Every pandal in the list shows its least crowded window. Sort by area or by how famous it is.",
-     "shot": "repo:marketing/app-shots/explore.jpg"
+     "t": "step",
+     "kicker": "Theme 2026",
+     "title": "Chhannachhara",
+     "bn": "ছন্নছাড়া",
+     "body": "'Unruly': chaos explored through abstract, asymmetrical design. As reported; themes can change before the puja."
     },
     {
-     "t": "app",
-     "kicker": "Any pandal",
-     "num": 2,
-     "title": "Busy now, quiet later",
-     "bn": "এখন ভিড়, পরে ফাঁকা",
-     "body": "Open a pandal to see how busy it usually is and the hours that are calmer, day by day from Panchami to Dashami.",
-     "shot": "repo:marketing/app-shots/place.jpg"
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "Right at the Hatibagan crossing. Easy to combine with street shopping."
     },
     {
-     "t": "app",
-     "kicker": "Beat the crowd",
-     "num": 3,
-     "title": "Or go at dawn",
-     "bn": "ভোরের পুজো",
-     "body": "Central Blockbusters at Dawn: 7 pandals from 5:30 am, before the queues wake up.",
-     "shot": "repo:marketing/app-shots/central_blockbusters.jpg"
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Metro: Shyambazar, 18 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Hop next: Nalin Sarkar Street, 2 min walk",
+       "পরের প্যান্ডেল"
+      ],
+      [
+       "Eat nearby: Chowman Gouribari, Bhojohori Manna",
+       "কাছেই খাওয়া"
+      ],
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ]
+     ]
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/8/86/Hatibagan_Sarbojanin_Durga_Puja_2023_01.jpg",
+      "artist": "Tarunsamanta",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Hatibagan Sarbojanin, 2023"
     },
     {
      "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "bn": "লাইনে দাঁড়ানোর আগে দেখে নিন",
-     "ask": "Save it for pujo week"
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
     }
    ],
    "caption": {
-    "en": "Kolkata Durga Puja 2026: how to skip the pandal queues 🕰️\n\nEvery pandal in our free guide shows its least crowded hours, from Panchami to Dashami. They're estimates from a crowd model, not live counts, but they'll steer you away from the worst of it. Or do what the regulars do and go at dawn.\n\nSave this for pujo week, and tell us: which pandal's queue do you dread most? 👇",
+    "en": "Hatibagan Sarbojanin, Kolkata Durga Puja 2026: the theme is Chhannachhara 🪔\n\n'Unruly': chaos explored through abstract, asymmetrical design. Themes are as reported and can change before the puja.\n\nIt's 18 minutes' walk from Shyambazar Metro, and Nalin Sarkar Street is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
-     "durga puja 2026 kolkata",
-     "avoid crowd durga puja",
-     "kolkata pandal quiet hours",
-     "pandal hopping tips"
+     "hatibagan sarbojanin durga puja 2026",
+     "hatibagan sarbojanin theme",
+     "kumartuli, bagbazar & hatibagan pandals",
+     "kolkata durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
    }
   },
   {
@@ -909,7 +930,7 @@
    "zone": "south_gariahat",
    "hook": "13 pandals. 11 km. One night.",
    "caption": {
-    "en": "Gariahat & Ballygunge pandal hopping route for Durga Puja 2026 in Kolkata: 13 pandals, 11 km, one night 🚶\n\nGet off at Ballygunge Junction (Suburban) Metro and follow the numbers. This is the walking order through 13 pandals in Gariahat & Ballygunge, from Gariahat Sarbojanin Durgotsab and Ekdalia Evergreen to 71 Pally Baishakhi Sarbojanin: about 11 km and 16,724 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Gariahat & Ballygunge pandal hopping route for Durga Puja 2026 in Kolkata: 13 pandals, 11 km, one night 🚶\n\nGet off at Ballygunge Junction (Suburban) Metro and follow the numbers. This is the walking order through 13 pandals in Gariahat & Ballygunge, from Gariahat Sarbojanin Durgotsab and Ekdalia Evergreen to 71 Pally Baishakhi Sarbojanin: about 11 km and 16,724 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
      "pandal hopping route kolkata",
