@@ -16,7 +16,7 @@ import glob, json, os, re, subprocess, sys
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 W, H, FPS, XF = 1080, 1920, 30, 0.3
-HANDLE = "@pujoparikrama.guide"
+HANDLE = "@pujoparikramaguide.in"
 FONTS = next((d for d in ("fonts", os.path.join(os.path.dirname(__file__), "fonts")) if os.path.isdir(d)), "fonts")
 font = lambda w, s: ImageFont.truetype(os.path.join(FONTS, f"Poppins-{w}.ttf"), s)
 # Bengali needs raqm shaping; Galada for display lines, Hind Siliguri for the rest (fonts/ from run3.sh)

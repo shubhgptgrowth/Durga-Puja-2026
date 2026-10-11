@@ -15,7 +15,7 @@ from pathlib import Path
 from .photos import ROOT, UA, Library
 
 SPEC = ROOT / "marketing" / "posts4" / "spec4.json"
-HANDLE = "@pujoparikrama.guide"
+HANDLE = "@pujoparikramaguide.in"
 DEFAULT = {"cta": "p186", "list": "p088", "bingo": "p087", "versus": "p107"}
 # Hi-res picks per slide (1-based) from the 6 Oct review: "make it more culturally fit and hi-res"
 PICKS = {"w01-bangla-words": {1: "ai-53", 2: "ai-52", 3: "ai-39", 4: "ai-41", 5: "ai-54", 6: "ai-09", 7: "ai-14",

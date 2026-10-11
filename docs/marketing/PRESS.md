@@ -58,7 +58,7 @@ knows Sreebhumi is calmer at dawn, they spend the evening somewhere else, and th
 
 The 2026 puja runs from Shashthi on 17 October to Dashami on 21 October. Mahalaya is on 10 October.
 
-**Link:** pujoparikramaguide.in · **Instagram:** @pujoparikrama.guide · **Contact:** pujoparikramaguide.in/contact/
+**Link:** pujoparikramaguide.in · **Instagram:** @pujoparikramaguide.in · **Contact:** pujoparikramaguide.in/contact/
 
 ## প্রেস বিজ্ঞপ্তি (বাংলা)
 
@@ -108,7 +108,7 @@ The 2026 puja runs from Shashthi on 17 October to Dashami on 21 October. Mahalay
 > The press note and screenshots are below. Happy to arrange a walkthrough, or to share crowd-pattern data for a
 > pandal-hopping piece.
 >
-> Pujo Parikrama team · @pujoparikrama.guide
+> Pujo Parikrama team · @pujoparikramaguide.in
 
 **Follow-up (9 Oct, Mahalaya eve):** one line plus a new hook: "Ahead of Mahalaya tomorrow: the app now lists the
 announced 2026 themes, pandal by pandal" (once the themes page has 15+ themes).
@@ -121,11 +121,11 @@ Record each in TRACKER.md §3 with its `press_<code>`.
 
 ## Creator DM (short, Bengali first)
 
-> নমস্কার {name}! আমরা @pujoparikrama.guide, কলকাতার ঠাকুর দেখার একটা ফ্রি গাইড: ১০৭টা প্যান্ডেলে কখন ভিড় কম, মেট্রো-অটো
+> নমস্কার {name}! আমরা @pujoparikramaguide.in, কলকাতার ঠাকুর দেখার একটা ফ্রি গাইড: ১০৭টা প্যান্ডেলে কখন ভিড় কম, মেট্রো-অটো
 > রুট আর কাছের খাবার। এবারের পুজোয় একবার ব্যবহার করে একটা Collab রিল করবেন? বিনিময়ে আমাদের কার্ড ও স্টোরিতে আপনার নাম,
 > আর পুজোর পরে জানাব আপনার লিংক থেকে কতজন এসেছেন। আপনার লিংক: pujoparikramaguide.in/?src=creator_{handle} 🙏
 >
-> Hi {name}! We're @pujoparikrama.guide, a free Kolkata pandal-hopping guide: quiet hours for 107 pandals, metro and
+> Hi {name}! We're @pujoparikramaguide.in, a free Kolkata pandal-hopping guide: quiet hours for 107 pandals, metro and
 > auto routes, food nearby. Would you use it on one pujo outing and do a Collab Reel? In return, credit on our cards
 > and stories, and after the pujas, how many people your link brought. Your link: pujoparikramaguide.in/?src=creator_{handle}
 

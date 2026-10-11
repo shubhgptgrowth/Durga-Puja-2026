@@ -181,7 +181,7 @@ def end_frame(pl, t):
     for k, s in enumerate(["for all 9 area routes,", "the Metro stops and live quiet hours"]):
         d.text((W // 2 - 70, 930 + k * 60), s, font=F("semi", 44), fill=INK + (int(255 * a),), anchor="mm")
     d.text((W // 2 - 70, 1080), "কমেন্টে লিখুন “পুজো”, রুট পাঠিয়ে দেব!", font=F("bnb", 50), fill=RED + (int(255 * a),), anchor="mm")
-    d.text((W // 2 - 70, 1250), "@pujoparikrama.guide", font=F("semi", 40), fill=MUTE + (int(255 * a),), anchor="mm")
+    d.text((W // 2 - 70, 1250), "@pujoparikramaguide.in", font=F("semi", 40), fill=MUTE + (int(255 * a),), anchor="mm")
     d.text((W // 2 - 70, 1700), AUDIO_CREDIT, font=F("med", 24), fill=MUTE + (int(200 * a),), anchor="mm")
     return im
 

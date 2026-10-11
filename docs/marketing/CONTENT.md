@@ -1,4 +1,4 @@
-# Instagram content playbook (@pujoparikrama.guide)
+# Instagram content playbook (@pujoparikramaguide.in)
 
 **The bar for every post:** would a Bengali send it to their family group or their probashi cousin? If not, don't post it. Utility (routes, quiet hours) belongs in stories, the app and the daily kit card. The feed is for identity, nostalgia and debate.
 

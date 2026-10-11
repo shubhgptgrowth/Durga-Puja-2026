@@ -1,4 +1,4 @@
-"""Instagram carousels for @pujoparikrama.guide: saveable, shareable, text-first slides (1080×1350).
+"""Instagram carousels for @pujoparikramaguide.in: saveable, shareable, text-first slides (1080×1350).
 
     python -m marketing.carousels --out <dir>        # writes <dir>/carousels.json, <nn-slug>/caption.txt, index.md
     node marketing/carousels.mjs <dir>               # renders <nn-slug>/slide-01.jpg …
@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-HANDLE = "@pujoparikrama.guide"
+HANDLE = "@pujoparikramaguide.in"
 BASE_TAGS = ["#DurgaPuja2026", "#KolkataDurgaPuja", "#DurgaPujo", "#PandalHopping", "#Kolkata", "#PujoParikrama", "#দুর্গাপুজো", "#পুজো"]
 CTA_EN = f"Save this 📌 · Plan your pujo free → link in bio · {HANDLE}"
 LINE_ICON = {"blue": "🚇", "green": "🚇", "purple": "🚇", "orange": "🚇", "suburban": "🚆"}

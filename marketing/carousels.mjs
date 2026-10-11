@@ -12,7 +12,7 @@ import path from 'node:path';
 
 const dir = path.resolve(process.argv[2] || 'content/carousels');
 const spec = JSON.parse(readFileSync(path.join(dir, spec_name()), 'utf8'));
-const HANDLE = spec.handle || '@pujoparikrama.guide';
+const HANDLE = spec.handle || '@pujoparikramaguide.in';
 const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // Emoji read as clip-art on a photo; the words carry the meaning.
 const plain = (s = '') => String(s).replace(/[\u{1F000}-\u{1FFFF}☀-➿️‍\u{1FA70}-\u{1FAFF}]/gu, '').replace(/^\s*👉\s*/, '').replace(/\s{2,}/g, ' ').trim();

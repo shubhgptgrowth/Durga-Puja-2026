@@ -1,4 +1,4 @@
-# voice.md · @pujoparikrama.guide
+# voice.md · @pujoparikramaguide.in
 
 The voice profile the ig-* skills read (`.claude/skills/ig-*`, from
 github.com/Jakeschincariol/instagram-agent-skill, MIT). A session start hook copies it to
@@ -7,7 +7,7 @@ github.com/Jakeschincariol/instagram-agent-skill, MIT). A session start hook cop
 ## Who we are
 
 - **Name:** Pujo Parikrama 2026
-- **Handle:** @pujoparikrama.guide
+- **Handle:** @pujoparikramaguide.in
 - **What we do, in one sentence:** A free Kolkata Durga Puja pandal-hopping guide: area-wise walking routes from
   the nearest Metro station, and live quiet hours for every pandal, at https://pujoparikramaguide.in/
 - **Who we are talking to:** Kolkata and Bengal pujo-goers aged 18 to 35 planning their nights for 17 to 21 October

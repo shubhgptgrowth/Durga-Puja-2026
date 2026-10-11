@@ -24,7 +24,7 @@ const FFMPEG = process.env.FFMPEG || 'ffmpeg';
 const raw = path.join(out, 'raw'), tmp = path.join(raw, 'overlays');
 for (const d of ['reels', 'carousel', 'story', tmp]) mkdirSync(path.isAbsolute(d) ? d : path.join(out, d), { recursive: true });
 
-const HANDLE = '@pujoparikrama.guide';
+const HANDLE = '@pujoparikramaguide.in';
 const W = 1080, H = 1920;
 // Phone screen placement inside the 1080×1920 reel (the recording is 1170×2280).
 const SCR = { w: 600, h: Math.round(600 * 2280 / 1170 / 2) * 2, x: 240, y: 560, r: 44, bezel: 14 };

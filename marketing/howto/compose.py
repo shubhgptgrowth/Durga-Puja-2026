@@ -22,7 +22,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 W, H, FPS = 1080, 1920, 30
 RED, GOLD, CREAM, MAROON, INK = (178, 24, 38), (232, 178, 58), (251, 243, 228), (74, 10, 20), (43, 20, 16)
 SITE = "pujoparikramaguide.in"
-IG = "@pujoparikrama.guide"
+IG = "@pujoparikramaguide.in"
 
 # Phone frame: the 780×1688 recording scaled into this box.
 PH_H = 1440

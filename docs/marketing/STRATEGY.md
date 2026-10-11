@@ -60,7 +60,7 @@ distribution and 20 % product, and the product work should only be things that m
 * **Lead with the queue, never with features.** Every post, poster and press line opens with time saved or the queue skipped. The step tracker, badges, radio and narration stay in the app as delights. They never lead.
 * **Honest about the model.** Before live check-ins, the crowd times are estimates. Say "usually quiet at 7 am", never "empty at 7 am". A promise broken in a queue on Ashtami kills word of mouth.
 * **Voice:** a warm, witty Kolkata dada or didi. Bengali first, English second. The same "laal-paar" look as now.
-* **One name everywhere:** Pujo Parikrama · pujoparikramaguide.in · @pujoparikrama.guide.
+* **One name everywhere:** Pujo Parikrama · pujoparikramaguide.in · @pujoparikramaguide.in.
 
 ---
 

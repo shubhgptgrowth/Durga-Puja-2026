@@ -24,7 +24,7 @@ Sponsored. It never changes crowd times, routes or pandal order, and the app nev
 | Package | Price | Notes |
 |---|---|---|
 | **Featured, the puja days** (start date to Dashami, 21 Oct) | **₹1,999 until 12 Oct**, then ₹2,999 | The early price gives a reason to decide this week. Change `featured.priceInr` in `app/config.js` on 13 Oct |
-| **Featured + Instagram** | ₹4,999 | Featured, plus one story on @pujoparikrama.guide and a mention in a daily food card, at our choice of day |
+| **Featured + Instagram** | ₹4,999 | Featured, plus one story on @pujoparikramaguide.in and a mention in a daily food card, at our choice of day |
 | First 5 eateries that say yes | Featured at ₹1,499 | Use it to close the first ones fast and get logos for "already featured" |
 
 Prices cover the 5 puja days. An offer may start earlier (from Mahalaya) at the same price.

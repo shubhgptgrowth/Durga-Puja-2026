@@ -7,7 +7,7 @@ from .routes import F, INK, WHITE, YEL, W, H, cover_fit, fit, text, wrap
 
 BG = (16, 10, 8)
 RED = (178, 24, 38)
-HANDLE = "@pujoparikrama.guide"
+HANDLE = "@pujoparikramaguide.in"
 
 
 def lines(x):

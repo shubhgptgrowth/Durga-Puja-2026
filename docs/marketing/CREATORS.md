@@ -1,7 +1,7 @@
 # Creator collabs: who to ask, what to send (8–14 Oct)
 
 > **Marketing track**, STRATEGY.md §4.2. Unpaid only: barter and credit, no money, no boosts (owner decision 6).
-> Send from @pujoparikrama.guide. Instagram's API can't send a first message to someone who hasn't messaged us, so
+> Send from @pujoparikramaguide.in. Instagram's API can't send a first message to someone who hasn't messaged us, so
 > these go by hand. That's about 20 minutes for the whole list.
 
 **Why this matters:**
@@ -62,29 +62,29 @@ reply.
 
 **Food creators**
 
-> নমস্কার! আপনার {one dish/place from their recent post}-এর রিলটা দারুণ 🙏 আমরা @pujoparikrama.guide, কলকাতার ঠাকুর দেখার
+> নমস্কার! আপনার {one dish/place from their recent post}-এর রিলটা দারুণ 🙏 আমরা @pujoparikramaguide.in, কলকাতার ঠাকুর দেখার
 > একটা ফ্রি গাইড: কোন প্যান্ডেলে কখন ভিড় কম, পাশে কী খাবেন, আর রাত বারোটার পরে কোথায় খাবার পাবেন।
 > এবারের পুজোয় একটা "ঠাকুর দেখা + খাওয়া" রিল করবেন? আমাদের স্টোরি আর ডেইলি কার্ডে আপনার নাম থাকবে, আর পুজোর পরে
 > জানাব আপনার লিংক থেকে কতজন এসেছেন। আপনার লিংক: {link}
 >
-> Hi! Loved your {dish/place} reel 🙏 We're @pujoparikrama.guide, a free Kolkata pandal-hopping guide: when each pandal
+> Hi! Loved your {dish/place} reel 🙏 We're @pujoparikramaguide.in, a free Kolkata pandal-hopping guide: when each pandal
 > is quiet, what to eat next to it, and what's open after midnight. Would you do one "pandals + food" reel this pujo?
 > You'd get credit in our stories and daily card, and after the pujas we'll tell you how many people your link brought.
 > Your link: {link}
 
 **Pujo pages and photographers**
 
-> নমস্কার! আপনার {pandal} ছবিটা অসাধারণ 🙏 আমরা @pujoparikrama.guide। এ বছরের যে থিমগুলো ঘোষণা হয়েছে, কোন মেট্রো থেকে
+> নমস্কার! আপনার {pandal} ছবিটা অসাধারণ 🙏 আমরা @pujoparikramaguide.in। এ বছরের যে থিমগুলো ঘোষণা হয়েছে, কোন মেট্রো থেকে
 > কোন প্যান্ডেল কত মিনিট হাঁটা, আর কখন ভিড় কম (ফাঁকা ফ্রেমের জন্য ভোর ৪টে–৭টা) সব এক জায়গায়। আপনার ফলোয়ারদের কাজে লাগতে পারে।
 > শেয়ার করলে আমাদের স্টোরিতে আপনার ছবি ক্রেডিট দিয়ে দেব। আপনার লিংক: {link}
 >
-> Hi! Your {pandal} frame is stunning 🙏 We're @pujoparikrama.guide: the 2026 themes announced so far, which metro
+> Hi! Your {pandal} frame is stunning 🙏 We're @pujoparikramaguide.in: the 2026 themes announced so far, which metro
 > station each pandal is near, and when each is quietest (4–7 am for empty frames). Your followers might find it useful. If you
 > share it, we'll feature your photo in our stories with credit. Your link: {link}
 
 **Lifestyle and travel**
 
-> Hi! We're @pujoparikrama.guide, a free Kolkata pandal-hopping guide. This year there's a late-night plan: when the
+> Hi! We're @pujoparikramaguide.in, a free Kolkata pandal-hopping guide. This year there's a late-night plan: when the
 > crowds thin after midnight, an all-night route north to south, and food that's open late. Would you try it for one
 > night of your pujo and do a Collab reel? Credit in our stories, and the number of people your link brought after
 > the pujas. Your link: {link}
