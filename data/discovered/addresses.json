@@ -1,0 +1,2029 @@
+{
+ "source": "OpenStreetMap contributors (ODbL), via Nominatim",
+ "fetched": "2026-10-11",
+ "failed": 0,
+ "places": {
+  "bagbazar": {
+   "lat": 22.604699,
+   "lng": 88.366135,
+   "approx": false,
+   "address": "Bagbazar Street, Chitpur North, Kolkata 700004"
+  },
+  "kumartuli_park": {
+   "lat": 22.6006,
+   "lng": 88.3608,
+   "approx": false,
+   "address": "Bag Bazar, Kolkata 700003"
+  },
+  "kumartuli_sarbojanin": {
+   "lat": 22.5994,
+   "lng": 88.3617,
+   "approx": false,
+   "address": "Bag Bazar, Kolkata 700003"
+  },
+  "ahiritola": {
+   "lat": 22.594838,
+   "lng": 88.357193,
+   "approx": false,
+   "address": "BK Pal Avenue, Shobha Bazar, Kolkata 700003"
+  },
+  "ahiritola_jubak": {
+   "lat": 22.5964,
+   "lng": 88.36,
+   "approx": false,
+   "address": "Shobha Bazar, Kolkata 700003"
+  },
+  "sovabazar_rajbari": {
+   "lat": 22.596826,
+   "lng": 88.367193,
+   "approx": false,
+   "address": "Raja Nabakrishna Street, Shyam Bazar, Kolkata 700003"
+  },
+  "kashi_bose_lane": {
+   "lat": 22.591006,
+   "lng": 88.368965,
+   "approx": false,
+   "address": "Bidhan Sarani, Shobha Bazar East, Kolkata 700006"
+  },
+  "nalin_sarkar": {
+   "lat": 22.595346,
+   "lng": 88.373396,
+   "approx": false,
+   "address": "Nalani Sarkar Street, Shyam Bazar, Kolkata 700004"
+  },
+  "hatibagan": {
+   "lat": 22.5947,
+   "lng": 88.3742,
+   "approx": false,
+   "address": "Shyam Bazar, Kolkata 700004"
+  },
+  "hatibagan_nabinpally": {
+   "lat": 22.5926,
+   "lng": 88.3752,
+   "approx": false,
+   "address": "Acharya Prafulla Chandra Bose Road, Simla, Kolkata 700006"
+  },
+  "jagat_mukherjee": {
+   "lat": 22.601311,
+   "lng": 88.366647,
+   "approx": false,
+   "address": "Bag Bazar, Kolkata 700004"
+  },
+  "tala_prattoy": {
+   "lat": 22.608923,
+   "lng": 88.382266,
+   "approx": false,
+   "address": "Tara Sankar Sarani, Paikpara, Kolkata 700037"
+  },
+  "md_ali_park": {
+   "lat": 22.57724,
+   "lng": 88.360737,
+   "approx": false,
+   "address": "Chittaranjan Avenue, Tiretta Bazaar, Central Avenue 2, Kolkata 700073"
+  },
+  "chaltabagan": {
+   "lat": 22.5852,
+   "lng": 88.3676,
+   "approx": false,
+   "address": "Sealdah North, Kolkata 700006"
+  },
+  "simla_byayam": {
+   "lat": 22.5878,
+   "lng": 88.3664,
+   "approx": false,
+   "address": "M Ghosh Ln, Girish Park, Kolkata 700003"
+  },
+  "college_square": {
+   "lat": 22.574525,
+   "lng": 88.364464,
+   "approx": false,
+   "address": "Bankim Chatterjee Street, Bow Bazar North, Kolkata 700073"
+  },
+  "santosh_mitra": {
+   "lat": 22.565863,
+   "lng": 88.365539,
+   "approx": false,
+   "address": "Hidaram Banerjee Ln, Chandni Chowk East, Kolkata 700009"
+  },
+  "sealdah_rac": {
+   "lat": 22.5645,
+   "lng": 88.372,
+   "approx": false,
+   "address": "Parikshit Roy Lane, Sealdah, Kolkata 700009"
+  },
+  "ekdalia": {
+   "lat": 22.521253,
+   "lng": 88.36596,
+   "approx": false,
+   "address": "Suren Tagore Road, Ballygunge, Kolkata 700029"
+  },
+  "singhi_park": {
+   "lat": 22.521224,
+   "lng": 88.363011,
+   "approx": false,
+   "address": "16 Dover Lane, Ballygunge, Kolkata 700029"
+  },
+  "ballygunge_cultural": {
+   "lat": 22.515884,
+   "lng": 88.355817,
+   "approx": false,
+   "address": "Lake View Road, Manoharpukur, Kolkata 700029"
+  },
+  "hindustan_park": {
+   "lat": 22.5155,
+   "lng": 88.3606,
+   "approx": false,
+   "address": "P 459/B Jatin Bagchi Road, Jodhpur Park, Kolkata 700029"
+  },
+  "jodhpur_park": {
+   "lat": 22.5085,
+   "lng": 88.367,
+   "approx": false,
+   "address": "Dhakuria, Kolkata 700031"
+  },
+  "babubagan": {
+   "lat": 22.5087,
+   "lng": 88.3734,
+   "approx": false,
+   "address": "Dhakuria, Kolkata 700031"
+  },
+  "bosepukur_sitala": {
+   "lat": 22.519163,
+   "lng": 88.384741,
+   "approx": false,
+   "address": "Rash Behari Avenue Connector, Ruby Park East, Kushtia, Kolkata 700039"
+  },
+  "bosepukur_talbagan": {
+   "lat": 22.5146,
+   "lng": 88.3912,
+   "approx": false,
+   "address": "Rash Behari Avenue Connector, Ruby Park East, Kasbah North, Kolkata 700107"
+  },
+  "maddox_square": {
+   "lat": 22.526296,
+   "lng": 88.354656,
+   "approx": false,
+   "address": "Palit Street, Hazra, Kolkata 700026"
+  },
+  "samaj_sebi": {
+   "lat": 22.514736,
+   "lng": 88.355999,
+   "approx": false,
+   "address": "Dr Sarat Banerjee Road, Manoharpukur, Kolkata 700029"
+  },
+  "shib_mandir": {
+   "lat": 22.5196,
+   "lng": 88.3546,
+   "approx": false,
+   "address": "Manohar Pukur Road, Hazra, Kolkata 700001"
+  },
+  "deshapriya_park": {
+   "lat": 22.518435,
+   "lng": 88.353515,
+   "approx": false,
+   "address": "Motilal Nehru Road, Manoharpukur, Kolkata 700026"
+  },
+  "tridhara": {
+   "lat": 22.519576,
+   "lng": 88.355349,
+   "approx": false,
+   "address": "Aswini Dutta Road, Manoharpukur, Kolkata 700029"
+  },
+  "66_pally": {
+   "lat": 22.515,
+   "lng": 88.3512,
+   "approx": false,
+   "address": "Sardar Sankar Road, Kalighat, Kolkata 700026"
+  },
+  "mudiali": {
+   "lat": 22.510075,
+   "lng": 88.346626,
+   "approx": false,
+   "address": "SR Das Road, Kalighat, Kolkata 700033"
+  },
+  "badamtala": {
+   "lat": 22.517927,
+   "lng": 88.344165,
+   "approx": false,
+   "address": "Nepal Battacharjee Street, Kalighat, Kolkata 700026"
+  },
+  "chetla_agrani": {
+   "lat": 22.516451,
+   "lng": 88.337126,
+   "approx": false,
+   "address": "Peary Mohan Roy Road, Alipore, Kolkata 700053"
+  },
+  "suruchi_sangha": {
+   "lat": 22.509097,
+   "lng": 88.334183,
+   "approx": false,
+   "address": "Station Road, New Alipore, Kolkata 700053"
+  },
+  "behala_notun_dal": {
+   "lat": 22.4985,
+   "lng": 88.3165,
+   "approx": false,
+   "address": "Behala, Kolkata 700034"
+  },
+  "behala_friends": {
+   "lat": 22.5035,
+   "lng": 88.3185,
+   "approx": false,
+   "address": "Panchanantala Lane, Behala, Kolkata 700034"
+  },
+  "sahajatri": {
+   "lat": 22.4935,
+   "lng": 88.315,
+   "approx": false,
+   "address": "Kolkata 700034"
+  },
+  "barisha_club": {
+   "lat": 22.480715,
+   "lng": 88.312953,
+   "approx": false,
+   "address": "James Long Sarani, Thakurpukur, Kolkata 700008"
+  },
+  "fd_block": {
+   "lat": 22.5878,
+   "lng": 88.41,
+   "approx": false,
+   "address": "2nd Cross Road, EC Block, Sector I, Bidhannagar 700064"
+  },
+  "bj_block": {
+   "lat": 22.581,
+   "lng": 88.416,
+   "approx": false,
+   "address": "FE Block, Sector III, Bidhannagar 700106"
+  },
+  "ae_block": {
+   "lat": 22.592,
+   "lng": 88.4135,
+   "approx": false,
+   "address": "CE Block, Sector I, Bidhannagar 700064"
+  },
+  "sreebhumi": {
+   "lat": 22.600318,
+   "lng": 88.40259,
+   "approx": false,
+   "address": "AD Block, Lake Town, South Dumdum 700089"
+  },
+  "lake_town_adhibasi": {
+   "lat": 22.6045,
+   "lng": 88.4045,
+   "approx": false,
+   "address": "Lake Town, South Dumdum 700089"
+  },
+  "dumdum_bharat_chakra": {
+   "lat": 22.6185,
+   "lng": 88.414,
+   "approx": false,
+   "address": "Nagerbazar, South Dumdum 700080"
+  },
+  "dumdum_tarun_sangha": {
+   "lat": 22.6168,
+   "lng": 88.4118,
+   "approx": false,
+   "address": "Nagerbazar, South Dumdum 700074"
+  },
+  "dumdum_sarbojanin": {
+   "lat": 22.6155,
+   "lng": 88.4152,
+   "approx": false,
+   "address": "Nagerbazar, South Dumdum 700074"
+  },
+  "bhowanipore_75pally": {
+   "lat": 22.532596,
+   "lng": 88.345442,
+   "approx": false,
+   "address": "Ashutosh Mukhejee Road, Bhowanipore, Kolkata 700025"
+  },
+  "telengabagan": {
+   "lat": 22.6038,
+   "lng": 88.3878,
+   "approx": false,
+   "address": "Ultadanga, Kolkata 700037"
+  },
+  "lalabagan_nabankur": {
+   "lat": 22.6048,
+   "lng": 88.3768,
+   "approx": false,
+   "address": "Chitpur North, Kolkata 700004"
+  },
+  "rajdanga_naba_uday": {
+   "lat": 22.511,
+   "lng": 88.3936,
+   "approx": false,
+   "address": "P Majumdar Road, Kasbah North, Kolkata 700107"
+  },
+  "ajeya_sanghati": {
+   "lat": 22.4888,
+   "lng": 88.3098,
+   "approx": false,
+   "address": "Behala, Kolkata 700008"
+  },
+  "chorbagan": {
+   "lat": 22.583511,
+   "lng": 88.363163,
+   "approx": false,
+   "address": "Radhamadhav Shaw Ln, Machua Bazar North, Kolkata 700007"
+  },
+  "beleghata_33_pally": {
+   "lat": 22.56857,
+   "lng": 88.391247,
+   "approx": true,
+   "address": "Narkeldanga, Kolkata 700010"
+  },
+  "chakraberia": {
+   "lat": 22.533573,
+   "lng": 88.352198,
+   "approx": false,
+   "address": "Chakrabaria Road (North), Bhowanipore, Kolkata 700020"
+  },
+  "bakulbagan": {
+   "lat": 22.526819,
+   "lng": 88.347954,
+   "approx": false,
+   "address": "Bakul Bagan Road, Bhowanipore, Kolkata 700025"
+  },
+  "kalighat_milan_sangha": {
+   "lat": 22.524509,
+   "lng": 88.341076,
+   "approx": false,
+   "address": "Harish Chatterjee Road, Bhowanipore, Kolkata 700026"
+  },
+  "hindustan_club": {
+   "lat": 22.519509,
+   "lng": 88.360593,
+   "approx": false,
+   "address": "Ramani Chatterji Road, Ballygunge, Kolkata 700029"
+  },
+  "santoshpur_lake_pally": {
+   "lat": 22.491427,
+   "lng": 88.383691,
+   "approx": true,
+   "address": "Baghajatin, Kolkata 700075"
+  },
+  "naktala_udayan": {
+   "lat": 22.474491,
+   "lng": 88.366575,
+   "approx": false,
+   "address": "Nagtala Road, Bansdroni, Bijoygarh, Kolkata 700047"
+  },
+  "behala_club": {
+   "lat": 22.505368,
+   "lng": 88.314285,
+   "approx": false,
+   "address": "Banamali Naskar Road, Behala, Kolkata 700060"
+  },
+  "salt_lake_ck": {
+   "lat": 22.585925,
+   "lng": 88.426757,
+   "approx": true,
+   "address": "CK Block, Sector II, Bidhannagar 700091"
+  },
+  "salt_lake_ee": {
+   "lat": 22.580125,
+   "lng": 88.42366,
+   "approx": true,
+   "address": "EE Block, Sector V, Bidhannagar 700091"
+  },
+  "salt_lake_ia": {
+   "lat": 22.572882,
+   "lng": 88.410768,
+   "approx": true,
+   "address": "Sector III, Bidhannagar 700097"
+  },
+  "gariahat_sarbojanin_durgotsab": {
+   "lat": 22.517351,
+   "lng": 88.366752,
+   "approx": false,
+   "address": "Fern Road, Dhakuria, Kolkata 700019"
+  },
+  "gouribari_sarbojanin": {
+   "lat": 22.594579,
+   "lng": 88.379144,
+   "approx": false,
+   "address": "Bidhan Nagar Road, Ultadanga, Kolkata 700004"
+  },
+  "taltala_sarbojanin": {
+   "lat": 22.554545,
+   "lng": 88.362175,
+   "approx": false,
+   "address": "Ripon Sq, Tal Tala, Kolkata 700014"
+  },
+  "adi_sammilati_sarbojanin": {
+   "lat": 22.546751,
+   "lng": 88.369107,
+   "approx": false,
+   "address": "Gora Chand Rd, Mallick Bazaar, Beniapukur, Kolkata 700017"
+  },
+  "hazra_park_durgotsab": {
+   "lat": 22.524838,
+   "lng": 88.346141,
+   "approx": false,
+   "address": "Shyama Prasad Mukherjee Road, Bhowanipore, Kolkata 700025"
+  },
+  "bhowanipore_durgotsab": {
+   "lat": 22.526289,
+   "lng": 88.351521,
+   "approx": false,
+   "address": "Naresh Mitra Sarani, Bhowanipore, Kolkata 700026"
+  },
+  "adi_ballygunge_sarbojanin": {
+   "lat": 22.531728,
+   "lng": 88.372075,
+   "approx": false,
+   "address": "Bibhuti Bandopadhyay Sarani, Ballygunge, Kolkata 700019"
+  },
+  "64_pally_durga_pujo": {
+   "lat": 22.520603,
+   "lng": 88.347451,
+   "approx": false,
+   "address": "Nakuleshwar Bhattacherjee Road, Manoharpukur, Kolkata 700026"
+  },
+  "rupchand_mukherjee_sarbojanin": {
+   "lat": 22.527449,
+   "lng": 88.345151,
+   "approx": false,
+   "address": "Rupchand Mukherjee Lane, Bhowanipore, Kolkata 700025"
+  },
+  "sanghati_puja_samiti": {
+   "lat": 22.502811,
+   "lng": 88.359434,
+   "approx": false,
+   "address": "Prince Anwar Shah Road, Lake Gardens, Jodhpur Park, Kolkata 700068"
+  },
+  "golmath_durga_puja_samiti": {
+   "lat": 22.526931,
+   "lng": 88.349544,
+   "approx": false,
+   "address": "Rakhal Mukherjee Road, Bhowanipore, Kolkata 700025"
+  },
+  "alipore_sarbojanin": {
+   "lat": 22.519627,
+   "lng": 88.333657,
+   "approx": false,
+   "address": "Alipore Road, Alipore, Kolkata 700027"
+  },
+  "r_k_chatterjee_sarbojanin": {
+   "lat": 22.517684,
+   "lng": 88.378263,
+   "approx": false,
+   "address": "Banku Bihari Chatterjee Road, Ruby Park, Kasbah North, Kolkata 700042"
+  },
+  "purbachal_sarbojanin": {
+   "lat": 22.506087,
+   "lng": 88.39853,
+   "approx": false,
+   "address": "Kalitala Road North, Kasbah North, Kolkata 700107"
+  },
+  "madhya_garfa_sarbojanin": {
+   "lat": 22.502581,
+   "lng": 88.385356,
+   "approx": false,
+   "address": "Kalikapur Road (Prince Anwar Shah Bypass Connector), Kasbah North, Kolkata 700078"
+  },
+  "dhakuria_sarbojanin": {
+   "lat": 22.510028,
+   "lng": 88.371987,
+   "approx": false,
+   "address": "Dr Nagen Ghosh Lane, Dhakuria, Kolkata 700031"
+  },
+  "shahidnagar_sarbojanin": {
+   "lat": 22.504606,
+   "lng": 88.37334,
+   "approx": false,
+   "address": "Selimpur Road, Dhakuria, Kolkata 700031"
+  },
+  "mukundapur_sarbojanin": {
+   "lat": 22.491794,
+   "lng": 88.404764,
+   "approx": false,
+   "address": "Budherhat Main Road, Mukundapur, Kolkata 700099"
+  },
+  "poddar_nagar_sarbojanin": {
+   "lat": 22.498238,
+   "lng": 88.369253,
+   "approx": false,
+   "address": "Raja Subodh Chandra Mullick Road, Jadavpur, Kolkata 700032"
+  },
+  "pallishree_sarbojanin": {
+   "lat": 22.485342,
+   "lng": 88.36539,
+   "approx": false,
+   "address": "Raipur Road East, Bijoygarh, Kolkata 700032"
+  },
+  "rabindra_pally_sarbojanin": {
+   "lat": 22.482534,
+   "lng": 88.382409,
+   "approx": false,
+   "address": "Baghajatin Station Road, Baghajatin, Kolkata 700086"
+  },
+  "patyuli_sarbojanin": {
+   "lat": 22.472309,
+   "lng": 88.381175,
+   "approx": false,
+   "address": "Garia Main Road, Baghajatin, Kolkata 700086"
+  },
+  "sahapur_sarbojanin": {
+   "lat": 22.51163,
+   "lng": 88.328018,
+   "approx": false,
+   "address": "Shapur Sarani, New Alipore, Kolkata 700053"
+  },
+  "naskarpur_sarbojanin": {
+   "lat": 22.507105,
+   "lng": 88.312287,
+   "approx": false,
+   "address": "Pathakpara Road, Behala, Kolkata 700060"
+  },
+  "bakultala_sarbojanin": {
+   "lat": 22.484073,
+   "lng": 88.299267,
+   "approx": false,
+   "address": "Biren Roy Road West, Sarsuna, Kolkata 700141"
+  },
+  "notunpara_sarbojanin": {
+   "lat": 22.484426,
+   "lng": 88.306742,
+   "approx": false,
+   "address": "Biren Roy Road West, Behala, Kolkata 700008"
+  },
+  "bhola_maheshwartala_sarbojanin": {
+   "lat": 22.480845,
+   "lng": 88.308844,
+   "approx": false,
+   "address": "Narayan Rd, Thakurpukur, Kolkata 700008"
+  },
+  "kidderpore_sarbojanin": {
+   "lat": 22.538423,
+   "lng": 88.324918,
+   "approx": false,
+   "address": "Manastala Lane, Watganj, Kolkata 700023"
+  },
+  "durga_pujo_ground": {
+   "lat": 22.584193,
+   "lng": 88.404134,
+   "approx": false,
+   "address": "Sector III, Bidhannagar 700097"
+  },
+  "kashipur_durga_utshab_committee": {
+   "lat": 22.605757,
+   "lng": 88.310231,
+   "approx": false,
+   "address": "Howrah 711105"
+  },
+  "bansdroni_sarbojaneen_durgotsav_park": {
+   "lat": 22.474364,
+   "lng": 88.358132,
+   "approx": false,
+   "address": "Purba Putiary, Shanti Nagar, Kolkata 700070"
+  },
+  "ultadanga_sangrami": {
+   "lat": 22.596128,
+   "lng": 88.385283,
+   "approx": true,
+   "address": "Ultadanga, Kolkata 700067"
+  },
+  "dumdum_tarun_dal": {
+   "lat": 22.611424,
+   "lng": 88.41019,
+   "approx": true,
+   "address": "Nagerbazar, South Dumdum 700074"
+  },
+  "arjunpur_amra_sabai": {
+   "lat": 22.619963,
+   "lng": 88.424808,
+   "approx": true,
+   "address": "Baguiati, Bidhannagar 700080"
+  },
+  "sanghasree": {
+   "lat": 22.515331,
+   "lng": 88.347705,
+   "approx": true,
+   "address": "Kalighat, Kolkata 700026"
+  },
+  "jodhpur_park_95": {
+   "lat": 22.505606,
+   "lng": 88.363674,
+   "approx": true,
+   "address": "Lake Gardens, Jodhpur Park, Kolkata 700068"
+  },
+  "selimpur_pally": {
+   "lat": 22.505351,
+   "lng": 88.381208,
+   "approx": true,
+   "address": "Kasbah North, Kolkata 700078"
+  },
+  "santoshpur_trikon_park": {
+   "lat": 22.496048,
+   "lng": 88.38223,
+   "approx": true,
+   "address": "Santoshpur, Jadavpur, Kolkata 700075"
+  },
+  "purbachal_shakti_sangha": {
+   "lat": 22.502355,
+   "lng": 88.396738,
+   "approx": true,
+   "address": "Mukundapur, Kolkata 700078"
+  },
+  "thakurpukur_sb_park": {
+   "lat": 22.462537,
+   "lng": 88.315526,
+   "approx": true,
+   "address": "Thakurpukur, Kolkata 700063"
+  },
+  "haridevpur_ajeya": {
+   "lat": 22.465295,
+   "lng": 88.331128,
+   "approx": true,
+   "address": "Haridevpur, Kolkata 700082"
+  },
+  "shibpur_mandirtala": {
+   "lat": 22.569708,
+   "lng": 88.317636,
+   "approx": true,
+   "address": "Howrah Maidan, Howrah 711102"
+  },
+  "shyam_square": {
+   "lat": 22.600828,
+   "lng": 88.368332,
+   "approx": true,
+   "address": "Shyam Bazar, Kolkata 700004"
+  },
+  "young_boys_club": {
+   "lat": 22.578883,
+   "lng": 88.356965,
+   "approx": false,
+   "address": "Armenian Street, Tiretta Bazaar, Tiretta, Kolkata 700073"
+  },
+  "baguiati_rail_pukur": {
+   "lat": 22.609668,
+   "lng": 88.427683,
+   "approx": true,
+   "address": "AF Block, Baguiati, Bidhannagar 700101"
+  },
+  "allen_park": {
+   "lat": 22.547115,
+   "lng": 88.360503,
+   "approx": true,
+   "address": "Mallick Bazaar, Ripon Street, Kolkata 700017"
+  },
+  "behala_11_pally": {
+   "lat": 22.499917,
+   "lng": 88.32215,
+   "approx": false,
+   "address": "James Long Sarani, Behala, Kolkata 700034"
+  },
+  "behala_yma": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
+  },
+  "71_pally_baishakhi": {
+   "lat": 22.528034,
+   "lng": 88.365908,
+   "approx": true,
+   "address": "Ballygunge, Kolkata 700019"
+  },
+  "obosor_sarbojanin": {
+   "lat": 22.532584,
+   "lng": 88.345443,
+   "approx": true,
+   "address": "Bhowanipore, Kolkata 700025"
+  },
+  "lake_gardens_peoples": {
+   "lat": 22.505968,
+   "lng": 88.356109,
+   "approx": false,
+   "address": "Lake Garden Road, Lake Gardens, Charu Market Area, Kolkata 700045"
+  },
+  "tollygunge_santi_pally": {
+   "lat": 22.498636,
+   "lng": 88.345391,
+   "approx": true,
+   "address": "Tollygunge, Kolkata 700033"
+  },
+  "barisha_sarbojanin": {
+   "lat": 22.479989,
+   "lng": 88.308078,
+   "approx": false,
+   "address": "Narayan Rd, Thakurpukur, Kolkata 700008"
+  },
+  "belur_math": {
+   "lat": 22.6325,
+   "lng": 88.356,
+   "approx": true,
+   "address": "Howrah 712258"
+  },
+  "kendua_shanti_sangha": {
+   "lat": 22.468,
+   "lng": 88.382,
+   "approx": true,
+   "address": "Baghajatin, Kolkata 700084"
+  },
+  "bally_deshbandhu": {
+   "lat": 22.646958,
+   "lng": 88.343612,
+   "approx": true,
+   "address": "Bally 712258"
+  },
+  "bally_pal_para": {
+   "lat": 22.6485,
+   "lng": 88.3455,
+   "approx": true,
+   "address": "Bally 712258"
+  },
+  "liluah_siy": {
+   "lat": 22.620903,
+   "lng": 88.339404,
+   "approx": true,
+   "address": "Howrah 711107"
+  },
+  "ihe_housing_puja": {
+   "lat": 22.563894,
+   "lng": 88.288606,
+   "approx": true,
+   "address": "BAKULTALA, Shibpur, Howrah 700024"
+  },
+  "salkia_61_pally": {
+   "lat": 22.5975,
+   "lng": 88.351,
+   "approx": true,
+   "address": "Howrah 711101"
+  },
+  "mitra_cafe": {
+   "lat": 22.5945,
+   "lng": 88.366,
+   "approx": false,
+   "address": "Abhay Guha Lane, Shobha Bazar East, Kolkata 700003"
+  },
+  "girish_nakur": {
+   "lat": 22.5928,
+   "lng": 88.3642,
+   "approx": false,
+   "address": "Shobha Bazar, Kolkata 700003"
+  },
+  "chittaranjan": {
+   "lat": 22.6001,
+   "lng": 88.3716,
+   "approx": false,
+   "address": "Shyam Bazar, Kolkata 700004"
+  },
+  "golbari": {
+   "lat": 22.6003,
+   "lng": 88.3728,
+   "approx": false,
+   "address": "Bidhan Sarani, Shyam Bazar, Kolkata 700004"
+  },
+  "allens_kitchen": {
+   "lat": 22.5938,
+   "lng": 88.3648,
+   "approx": false,
+   "address": "Shobha Bazar, Kolkata 700003"
+  },
+  "royal_indian": {
+   "lat": 22.5793,
+   "lng": 88.3556,
+   "approx": false,
+   "address": "Rupchand Roy St, Tiretta Bazaar, Bara Bazar, Kolkata 700007"
+  },
+  "putiram": {
+   "lat": 22.5745,
+   "lng": 88.3628,
+   "approx": false,
+   "address": "Anagarika Dharmapal Street, Tiretta Bazaar, Central Avenue 2, Kolkata 700073"
+  },
+  "paramount": {
+   "lat": 22.5753,
+   "lng": 88.3644,
+   "approx": false,
+   "address": "Bow Bazar North, Kolkata 700073"
+  },
+  "coffee_house": {
+   "lat": 22.576097,
+   "lng": 88.363891,
+   "approx": false,
+   "address": "15 Bankim Chatterjee Street, Bow Bazar North, Kolkata 700073"
+  },
+  "bhim_nag": {
+   "lat": 22.568,
+   "lng": 88.3605,
+   "approx": false,
+   "address": "Hidaram Banerjee Ln, Chandni Chowk East, Kolkata 700013"
+  },
+  "aminia": {
+   "lat": 22.56,
+   "lng": 88.3521,
+   "approx": false,
+   "address": "Humayun Place, Dharmatala, Kolkata 700087"
+  },
+  "nizams": {
+   "lat": 22.562144,
+   "lng": 88.353538,
+   "approx": false,
+   "address": "22-23 Hogg St, Dharmatala, Kolkata 700087"
+  },
+  "vivekananda_park_phuchka": {
+   "lat": 22.5195,
+   "lng": 88.359,
+   "approx": false,
+   "address": "Mahanirban Road, Manoharpukur, Kolkata 700029"
+  },
+  "lake_market_stalls": {
+   "lat": 22.519,
+   "lng": 88.353,
+   "approx": false,
+   "address": "Lansdowne Road (Sarat Bose Road), Manoharpukur, Kolkata 700026"
+  },
+  "balwant_singh": {
+   "lat": 22.537783,
+   "lng": 88.344129,
+   "approx": false,
+   "address": "10/B Harish Mukherjee Road, Bhowanipore, Kolkata 700025"
+  },
+  "kewpies": {
+   "lat": 22.538,
+   "lng": 88.3505,
+   "approx": false,
+   "address": "10/4D Elgin Road (Lala Lajpatrai Sarani), Bhowanipore, Kolkata 700020"
+  },
+  "gariahat_stalls": {
+   "lat": 22.5185,
+   "lng": 88.3665,
+   "approx": false,
+   "address": "Fern Road, Ballygunge, Kolkata 700029"
+  },
+  "bhojohori_manna": {
+   "lat": 22.5168,
+   "lng": 88.3702,
+   "approx": false,
+   "address": "Dhakuria, Kolkata 700042"
+  },
+  "ballygunge_place": {
+   "lat": 22.527799,
+   "lng": 88.368637,
+   "approx": false,
+   "address": "53/1/3 Hazra Road, Ballygunge, Kolkata 700019"
+  },
+  "arsalan": {
+   "lat": 22.543872,
+   "lng": 88.365952,
+   "approx": false,
+   "address": "Monaranjan Roychoudhury Rd, Mallick Bazaar, Beniapukur, Kolkata 700017"
+  },
+  "suruchi_stalls": {
+   "lat": 22.497,
+   "lng": 88.3415,
+   "approx": false,
+   "address": "Tollygunge, Kolkata 700033"
+  },
+  "behala_chowrasta": {
+   "lat": 22.499,
+   "lng": 88.318,
+   "approx": false,
+   "address": "Diamond Harbour Road, Behala, Kolkata 700034"
+  },
+  "city_centre_food": {
+   "lat": 22.5885,
+   "lng": 88.4083,
+   "approx": false,
+   "address": "2nd Cross Road, DC Block, Sector I, Bidhannagar 700064"
+  },
+  "central_park_stalls": {
+   "lat": 22.585,
+   "lng": 88.417,
+   "approx": false,
+   "address": "4th Avenue, FE Block, Sector III, Bidhannagar 700106"
+  },
+  "lake_town_stalls": {
+   "lat": 22.603,
+   "lng": 88.403,
+   "approx": false,
+   "address": "Lake Town, South Dumdum 700089"
+  },
+  "dumdum_park_stalls": {
+   "lat": 22.6175,
+   "lng": 88.4135,
+   "approx": false,
+   "address": "Nagerbazar, South Dumdum 700074"
+  },
+  "bosepukur_stalls": {
+   "lat": 22.514,
+   "lng": 88.3902,
+   "approx": false,
+   "address": "Ruby Park East, Kasbah North, Kolkata 700107"
+  },
+  "sakherbazar_stalls": {
+   "lat": 22.481515,
+   "lng": 88.313553,
+   "approx": false,
+   "address": "Behala, Kolkata 700008"
+  },
+  "naktala_stalls": {
+   "lat": 22.475191,
+   "lng": 88.367075,
+   "approx": false,
+   "address": "Bijoygarh, Kolkata 700047"
+  },
+  "sen_mahasay": {
+   "lat": 22.599,
+   "lng": 88.3718,
+   "approx": false,
+   "address": "KR Bose St, Shyam Bazar, Kolkata 700004"
+  },
+  "laxmi_narayan_shaw": {
+   "lat": 22.5918,
+   "lng": 88.3688,
+   "approx": false,
+   "address": "Hari Ghose Street, Shobha Bazar East, Kolkata 700003"
+  },
+  "nobin_chandra_das": {
+   "lat": 22.6038,
+   "lng": 88.3665,
+   "approx": false,
+   "address": "Bagbazar Street, Chitpur North, Kolkata 700004"
+  },
+  "dilkhusha_cabin": {
+   "lat": 22.5738,
+   "lng": 88.3622,
+   "approx": false,
+   "address": "Madan Mohan Sen Street, Tiretta Bazaar, Central Avenue 2, Kolkata 700073"
+  },
+  "favourite_cabin": {
+   "lat": 22.5733,
+   "lng": 88.3655,
+   "approx": false,
+   "address": "Surya Sen Street, Baithakkhana, Kolkata 700073"
+  },
+  "swadhin_bharat_hindu_hotel": {
+   "lat": 22.5743,
+   "lng": 88.3651,
+   "approx": false,
+   "address": "Bankim Chatterjee Street, Bow Bazar North, Kolkata 700073"
+  },
+  "anadi_cabin": {
+   "lat": 22.5627,
+   "lng": 88.3522,
+   "approx": false,
+   "address": "Esplanade, Kolkata 700001"
+  },
+  "kc_das_esplanade": {
+   "lat": 22.564,
+   "lng": 88.351,
+   "approx": false,
+   "address": "Chowringhee Road, Esplanade, Kolkata 700001"
+  },
+  "chitto_babur_dokan": {
+   "lat": 22.5648,
+   "lng": 88.3492,
+   "approx": false,
+   "address": "Rani Rashmoni Avenue, Esplanade, Kolkata 700001"
+  },
+  "sabir_hotel": {
+   "lat": 22.566851,
+   "lng": 88.356025,
+   "approx": false,
+   "address": "3,5 Biplap Anukul Chandra Street, Chandni Chowk, Kolkata 700072"
+  },
+  "haji_allauddin": {
+   "lat": 22.5795,
+   "lng": 88.3566,
+   "approx": false,
+   "address": "Rabindra Sarani, Tiretta Bazaar, Tiretta, Kolkata 700073"
+  },
+  "adams_kabab": {
+   "lat": 22.5792,
+   "lng": 88.3555,
+   "approx": false,
+   "address": "Rupchand Roy St, Tiretta Bazaar, Bara Bazar, Kolkata 700007"
+  },
+  "tiretta_bazaar_breakfast": {
+   "lat": 22.5733,
+   "lng": 88.3528,
+   "approx": false,
+   "address": "Radha Bazar Street, Tiretta Bazaar, B. B. D. Bagh, Kolkata 700069"
+  },
+  "nahoums": {
+   "lat": 22.560164,
+   "lng": 88.352978,
+   "approx": false,
+   "address": "Fenwick Bazar Street, Dharmatala, Kolkata 700087"
+  },
+  "peter_cat": {
+   "lat": 22.5527,
+   "lng": 88.3527,
+   "approx": false,
+   "address": "57 Park Street, Dharmatala, Kolkata 700016"
+  },
+  "mocambo": {
+   "lat": 22.553,
+   "lng": 88.3536,
+   "approx": false,
+   "address": "Mirza Ghalib Street, Dharmatala, Kolkata 700087"
+  },
+  "flurys": {
+   "lat": 22.5531,
+   "lng": 88.3513,
+   "approx": false,
+   "address": "Anandi Lal Poddar Sarani, Ho Chi Minh Sarani, Kolkata 700071"
+  },
+  "kusum_rolls": {
+   "lat": 22.5535,
+   "lng": 88.3529,
+   "approx": false,
+   "address": "27-B Park Street, Dharmatala, Kolkata 700016"
+  },
+  "shiraz_golden": {
+   "lat": 22.5476,
+   "lng": 88.3635,
+   "approx": false,
+   "address": "185/1 AJC Bose Road, Mallick Bazaar, Ripon Street, Kolkata 700017"
+  },
+  "dollys_tea_shop": {
+   "lat": 22.509,
+   "lng": 88.3645,
+   "approx": false,
+   "address": "Dhakuria, Kolkata 700068"
+  },
+  "south_city_food": {
+   "lat": 22.5017,
+   "lng": 88.3618,
+   "approx": false,
+   "address": "375 Prince Anwar Shah Road, Katju Nagar, Kolkata 700068"
+  },
+  "zeeshan": {
+   "lat": 22.541328,
+   "lng": 88.365897,
+   "approx": false,
+   "address": "17 Syed Amir Ali Avenue, Park Circus, Kolkata 700017"
+  },
+  "balaram_mullick": {
+   "lat": 22.5297,
+   "lng": 88.3481,
+   "approx": false,
+   "address": "Bhowanipore, Kolkata 700025"
+  },
+  "sri_hari_mistanna": {
+   "lat": 22.532,
+   "lng": 88.3463,
+   "approx": false,
+   "address": "Bhowanipore, Kolkata 700025"
+  },
+  "forum_mall_food": {
+   "lat": 22.5368,
+   "lng": 88.352,
+   "approx": false,
+   "address": "Bhowanipore, Kolkata 700020"
+  },
+  "lake_mall_food": {
+   "lat": 22.517,
+   "lng": 88.3505,
+   "approx": false,
+   "address": "Rash Behari Avenue, Kalighat, Kolkata 700026"
+  },
+  "acropolis_food": {
+   "lat": 22.5147,
+   "lng": 88.3932,
+   "approx": false,
+   "address": "1858 Rajdanga Main Road, Ruby Park East, Kasbah North, Kolkata 700107"
+  },
+  "beijing_tangra": {
+   "lat": 22.546521,
+   "lng": 88.387096,
+   "approx": false,
+   "address": "105 Topsia North Road, Tangra North, Kolkata 700046"
+  },
+  "big_boss_tangra": {
+   "lat": 22.5546,
+   "lng": 88.397,
+   "approx": false,
+   "address": "Tapuriaghat, Kolkata 700105"
+  },
+  "pawan_putra": {
+   "lat": 22.568492,
+   "lng": 88.39118,
+   "approx": false,
+   "address": "Hem Chandra Naskar Road, Narkeldanga, Kolkata 700010"
+  },
+  "mio_amore": {
+   "lat": 22.615857,
+   "lng": 88.41189,
+   "approx": false,
+   "address": "507/1 Jessore Road, Nagerbazar, Kolkata 700055"
+  },
+  "arsalan_restaurant_caterar": {
+   "lat": 22.612332,
+   "lng": 88.41114,
+   "approx": false,
+   "address": "123 Jessore Road, Bangur, Kolkata 700055"
+  },
+  "swastineer_canteen": {
+   "lat": 22.580968,
+   "lng": 88.424852,
+   "approx": false,
+   "address": "EE Block, Sector V, Bidhannagar 700091"
+  },
+  "oudh_1590": {
+   "lat": 22.592121,
+   "lng": 88.411819,
+   "approx": false,
+   "address": "86 2nd Avenue, CE Block, Sector I, Kolkata 700064"
+  },
+  "punjabee_rasoi": {
+   "lat": 22.515896,
+   "lng": 88.392403,
+   "approx": false,
+   "address": "196 Nabapally Road, Kasbah North, Kolkata 700107"
+  },
+  "aminia_lake_town_dumdum": {
+   "lat": 22.61509,
+   "lng": 88.411974,
+   "approx": false,
+   "address": "166 Jessore Road, Bangur, Kolkata 700055"
+  },
+  "benfish": {
+   "lat": 22.607235,
+   "lng": 88.382856,
+   "approx": false,
+   "address": "Tala Park Path, Paikpara, Kolkata 700037"
+  },
+  "la_komida": {
+   "lat": 22.503656,
+   "lng": 88.37517,
+   "approx": false,
+   "address": "Kalikapur Road (Prince Anwar Shah Bypass Connector), Dhakuria, Kolkata 700031"
+  },
+  "the_fat_monk": {
+   "lat": 22.589468,
+   "lng": 88.408905,
+   "approx": false,
+   "address": "2nd Cross Road, DC Block, Sector I, Bidhannagar 700064"
+  },
+  "momo_huy": {
+   "lat": 22.607677,
+   "lng": 88.38391,
+   "approx": false,
+   "address": "Tara Sankar Sarani, Paikpara, Kolkata 700037"
+  },
+  "flame_and_grill": {
+   "lat": 22.50143,
+   "lng": 88.361054,
+   "approx": false,
+   "address": "375 Prince Anwar Shah Road, Katju Nagar, Kolkata 700068"
+  },
+  "cfc": {
+   "lat": 22.605728,
+   "lng": 88.386139,
+   "approx": false,
+   "address": "Radha Gobinda Kar Road, Paikpara, Kolkata 700037"
+  },
+  "india_restaurant": {
+   "lat": 22.538844,
+   "lng": 88.322208,
+   "approx": false,
+   "address": "34 Karl Marx Sarani, Watganj, Kolkata 700023"
+  },
+  "ubuntu_eat": {
+   "lat": 22.508335,
+   "lng": 88.336896,
+   "approx": false,
+   "address": "603/1B Station Road, New Alipore, Kolkata 700053"
+  },
+  "bhojohori_manna_north": {
+   "lat": 22.594063,
+   "lng": 88.370835,
+   "approx": false,
+   "address": "Bidhan Sarani, Shobha Bazar East, Kolkata 700006"
+  },
+  "momo_i_am": {
+   "lat": 22.590474,
+   "lng": 88.408261,
+   "approx": false,
+   "address": "CD18 2nd Cross Road, CD Block, Sector I, Kolkata 700064"
+  },
+  "tasty_corner": {
+   "lat": 22.524535,
+   "lng": 88.366953,
+   "approx": false,
+   "address": "8 Mandeville Gardens, Ballygunge, Kolkata 700019"
+  },
+  "royal_biryani": {
+   "lat": 22.605252,
+   "lng": 88.384432,
+   "approx": false,
+   "address": "Radha Gobinda Kar Road, Paikpara, Kolkata 700037"
+  },
+  "aminia_restaurant": {
+   "lat": 22.598857,
+   "lng": 88.372672,
+   "approx": false,
+   "address": "94 Bidhan Sarani, Shyam Bazar, Kolkata 700004"
+  },
+  "akram_s_biriyani": {
+   "lat": 22.622569,
+   "lng": 88.412906,
+   "approx": false,
+   "address": "Dum Dum Road, Chhatakal, Nagerbazar, South Dumdum 700074"
+  },
+  "tandoor": {
+   "lat": 22.517281,
+   "lng": 88.367051,
+   "approx": false,
+   "address": "Fern Road, Dhakuria, Kolkata 700029"
+  },
+  "kowloon": {
+   "lat": 22.509093,
+   "lng": 88.333749,
+   "approx": false,
+   "address": "Station Road, New Alipore, Kolkata 700053"
+  },
+  "aminia_south_gariahat": {
+   "lat": 22.516815,
+   "lng": 88.36687,
+   "approx": false,
+   "address": "Fern Road, Dhakuria, Kolkata 700029"
+  },
+  "harvey_s": {
+   "lat": 22.514517,
+   "lng": 88.390321,
+   "approx": false,
+   "address": "Joginder Garden Lane, Ruby Park East, Kasbah North, Kolkata 700078"
+  },
+  "panna_sweets": {
+   "lat": 22.499211,
+   "lng": 88.317066,
+   "approx": false,
+   "address": "Brahmo Samaj Road, Behala, Kolkata 700034"
+  },
+  "alibaba": {
+   "lat": 22.516568,
+   "lng": 88.36601,
+   "approx": false,
+   "address": "Gol Park, Dhakuria, Kolkata 700029"
+  },
+  "tandor_house": {
+   "lat": 22.515804,
+   "lng": 88.348797,
+   "approx": false,
+   "address": "Parasar Road, Kalighat, Kolkata 700026"
+  },
+  "dawntown_cafe": {
+   "lat": 22.533162,
+   "lng": 88.353368,
+   "approx": false,
+   "address": "42 Sarat Bose Road, Hazra, Kolkata 700020"
+  },
+  "naushijaan": {
+   "lat": 22.515235,
+   "lng": 88.389897,
+   "approx": false,
+   "address": "Rash Behari Avenue Connector, Ruby Park East, Kushtia, Kolkata 700039"
+  },
+  "cheese_cherry_pineapple": {
+   "lat": 22.514424,
+   "lng": 88.35255,
+   "approx": false,
+   "address": "32B Dr Sarat Banerjee Road, Kalighat, Kolkata 700029"
+  },
+  "haji_saheb": {
+   "lat": 22.499746,
+   "lng": 88.317319,
+   "approx": false,
+   "address": "Diamond Harbour Road, Behala, Kolkata 700034"
+  },
+  "blue_plum": {
+   "lat": 22.581298,
+   "lng": 88.424613,
+   "approx": false,
+   "address": "Street Number 13, DL Block, Sector V, Bidhannagar 700091"
+  },
+  "tak_heng": {
+   "lat": 22.514891,
+   "lng": 88.357593,
+   "approx": false,
+   "address": "Raja Basanta Road, Manoharpukur, Kolkata 700029"
+  },
+  "chowman_gouribari": {
+   "lat": 22.594514,
+   "lng": 88.377385,
+   "approx": false,
+   "address": "118 Raja Dinendra Street, Simla, Kolkata 700004"
+  },
+  "new_rajkumar_sweets": {
+   "lat": 22.620153,
+   "lng": 88.413501,
+   "approx": false,
+   "address": "Nagendra Nath Road, Nagerbazar, Kolkata 700028"
+  },
+  "icy_fusion": {
+   "lat": 22.58587,
+   "lng": 88.405242,
+   "approx": false,
+   "address": "1st Cross Road, DB Block, Sector III, Bidhannagar 700048"
+  },
+  "my_big_fat_belly": {
+   "lat": 22.534969,
+   "lng": 88.353786,
+   "approx": false,
+   "address": "Chakrabaria Road (North), Ho Chi Minh Sarani, Kolkata 700020"
+  },
+  "oudh_1590_south_gariahat": {
+   "lat": 22.515208,
+   "lng": 88.35835,
+   "approx": false,
+   "address": "Kavi Barathi Road, Manoharpukur, Kolkata 700029"
+  },
+  "banana_leaf": {
+   "lat": 22.517004,
+   "lng": 88.349319,
+   "approx": false,
+   "address": "Rash Behari Avenue, Kalighat, Kolkata 700026"
+  },
+  "mirch_masala": {
+   "lat": 22.523206,
+   "lng": 88.36471,
+   "approx": false,
+   "address": "Garcha 1st Lane, Ballygunge, Kolkata 700019"
+  },
+  "ikura_flavours_of_pan_asia": {
+   "lat": 22.517163,
+   "lng": 88.334755,
+   "approx": false,
+   "address": "33/33 CIT Market Chetla Central Road, Alipore, Kolkata 700027"
+  },
+  "tero_parbon": {
+   "lat": 22.516777,
+   "lng": 88.362768,
+   "approx": false,
+   "address": "Purna Das Road, Dhakuria, Kolkata 700029"
+  },
+  "mrs_baker": {
+   "lat": 22.586138,
+   "lng": 88.402401,
+   "approx": false,
+   "address": "DA 19 2nd Avenue, DA Block, Sector I, Bidhannagar 700048"
+  },
+  "6_ballygunge_place": {
+   "lat": 22.590242,
+   "lng": 88.409238,
+   "approx": false,
+   "address": "2nd Avenue, DC Block, Sector I, Bidhannagar 700064"
+  },
+  "mio_amore_lake_town_dumdum": {
+   "lat": 22.601897,
+   "lng": 88.405687,
+   "approx": false,
+   "address": "Lake Town Road, AD Block, Lake Town, South Dumdum 700089"
+  },
+  "sen_sweets": {
+   "lat": 22.564061,
+   "lng": 88.367959,
+   "approx": false,
+   "address": "120B/1A AJC Bose Road, Chandni Chowk East, Kolkata 700014"
+  },
+  "healthy_and_tasty_kitchen": {
+   "lat": 22.620601,
+   "lng": 88.421538,
+   "approx": false,
+   "address": "Gorakshabasi Rd, Nagerbazar, South Dumdum 700080"
+  },
+  "tasty_bites": {
+   "lat": 22.617031,
+   "lng": 88.425872,
+   "approx": false,
+   "address": "Gorakshabasi Rd, Baguiati, Bidhannagar 700080"
+  },
+  "kewpie_s": {
+   "lat": 22.536589,
+   "lng": 88.350951,
+   "approx": false,
+   "address": "2 Elgin Lane, Bhowanipore, Kolkata 700020"
+  },
+  "banzara_a_c_restaurant": {
+   "lat": 22.494935,
+   "lng": 88.369827,
+   "approx": false,
+   "address": "86 Ibrahimpur Road, Jadavpur, Kolkata 700032"
+  },
+  "shiv_sai_hotel_south_indian_restaura": {
+   "lat": 22.574728,
+   "lng": 88.414063,
+   "approx": false,
+   "address": "Block HA Sector 3, HA Block, Sector III, Bidhannagar 700097"
+  },
+  "7th_mandeville_multi_cuisine_restro": {
+   "lat": 22.524909,
+   "lng": 88.366276,
+   "approx": false,
+   "address": "8 Mandeville Gardens, Ballygunge, Kolkata 700019"
+  },
+  "bohemian": {
+   "lat": 22.529494,
+   "lng": 88.368797,
+   "approx": false,
+   "address": "Old Balligunge 1st Lane, Ballygunge, Kolkata 700019"
+  },
+  "golden_city": {
+   "lat": 22.580358,
+   "lng": 88.411745,
+   "approx": false,
+   "address": "1st A Cross Road, GC Block, Sector III, Bidhannagar 700097"
+  },
+  "combo_kolkata": {
+   "lat": 22.616396,
+   "lng": 88.42786,
+   "approx": false,
+   "address": "Railpukur Road, Baguiati, Bidhannagar 700059"
+  },
+  "baati_chokha": {
+   "lat": 22.583178,
+   "lng": 88.409396,
+   "approx": false,
+   "address": "FC Block, Sector III, Kolkata 700097"
+  },
+  "loading_tummy": {
+   "lat": 22.537073,
+   "lng": 88.343674,
+   "approx": false,
+   "address": "11A Beninandan Street, Bhowanipore, Kolkata 700025"
+  },
+  "suchali_s_artisan_bakehouse": {
+   "lat": 22.514785,
+   "lng": 88.347707,
+   "approx": false,
+   "address": "Janak Road, Kalighat, Kolkata 700026"
+  },
+  "armaan_s_cafe": {
+   "lat": 22.516443,
+   "lng": 88.360684,
+   "approx": false,
+   "address": "P 459/B Jatin Bagchi Road, Jodhpur Park, Kolkata 700029"
+  },
+  "sharma_snacks": {
+   "lat": 22.603502,
+   "lng": 88.404122,
+   "approx": false,
+   "address": "Lake Town Road, AD Block, Lake Town, South Dumdum 700089"
+  },
+  "radu_babu_s": {
+   "lat": 22.516341,
+   "lng": 88.348303,
+   "approx": false,
+   "address": "Janak Road, Kalighat, Kolkata 700026"
+  },
+  "sampa_snacks": {
+   "lat": 22.518021,
+   "lng": 88.37679,
+   "approx": false,
+   "address": "262 Banku Bihari Chatterjee Road, Kasbah North, Kolkata 700042"
+  },
+  "apanjan": {
+   "lat": 22.519311,
+   "lng": 88.345238,
+   "approx": false,
+   "address": "Sadananda Road, Kalighat, Kolkata 700026"
+  },
+  "bengali_sweets": {
+   "lat": 22.533141,
+   "lng": 88.347228,
+   "approx": false,
+   "address": "Abhoy Sarkar Lane, Bhowanipore, Kolkata 700025"
+  },
+  "wtf_where_s_the_food": {
+   "lat": 22.614893,
+   "lng": 88.411587,
+   "approx": false,
+   "address": "Jessore Road, Nagerbazar, Kolkata 700055"
+  },
+  "prema_vilas": {
+   "lat": 22.517212,
+   "lng": 88.34889,
+   "approx": false,
+   "address": "63/1 Rash Behari Avenue, Kalighat, Kolkata 700026"
+  },
+  "mystic_yoga_cafe": {
+   "lat": 22.517588,
+   "lng": 88.359441,
+   "approx": false,
+   "address": "Purna Das Road, Manoharpukur, Kolkata 700029"
+  },
+  "fatso_s_roll": {
+   "lat": 22.588787,
+   "lng": 88.369664,
+   "approx": false,
+   "address": "Urquhart Square, Sealdah North, Kolkata 700006"
+  },
+  "the_tasty_bytes": {
+   "lat": 22.519276,
+   "lng": 88.380424,
+   "approx": false,
+   "address": "Rash Behari Avenue Connector, Kushtia, Kolkata 700042"
+  },
+  "jan_aahar_sealdah_station": {
+   "lat": 22.566955,
+   "lng": 88.370945,
+   "approx": false,
+   "address": "Bepin Behari Ganguly Street, Sealdah, Kolkata 700009"
+  },
+  "hindustan_sweets": {
+   "lat": 22.501787,
+   "lng": 88.362231,
+   "approx": false,
+   "address": "375 Prince Anwar Shah Road, Katju Nagar, Kolkata 700068"
+  },
+  "bojangles": {
+   "lat": 22.525531,
+   "lng": 88.357591,
+   "approx": false,
+   "address": "Deodar Street, Ballygunge, Kolkata 700019"
+  },
+  "balaram_mullick_and_radharaman_mulli": {
+   "lat": 22.502231,
+   "lng": 88.356023,
+   "approx": false,
+   "address": "Prince Anwar Shah Road, Rajendra Prasad Colony, Kolkata 700045"
+  },
+  "kookie_jar": {
+   "lat": 22.522201,
+   "lng": 88.33128,
+   "approx": false,
+   "address": "Alipore Road, Alipore, Kolkata 700027"
+  },
+  "banyan_tree_pure_veg_green_kitchen": {
+   "lat": 22.601449,
+   "lng": 88.407121,
+   "approx": false,
+   "address": "Lake Town Road, AD Block, Lake Town, South Dumdum 700089"
+  },
+  "a1_fast_food_centre": {
+   "lat": 22.470009,
+   "lng": 88.377767,
+   "approx": false,
+   "address": "Raja Subodh Chandra Mullick Road, Baghajatin, Kolkata 700084"
+  },
+  "dough_as_you_like": {
+   "lat": 22.572061,
+   "lng": 88.389068,
+   "approx": false,
+   "address": "Narkeldanga Main Road, Phoolbagan, Narkeldanga, Kolkata 700011"
+  },
+  "kolkata_tram_world": {
+   "lat": 22.5253,
+   "lng": 88.365438,
+   "approx": false,
+   "address": "Gariahat Road, Ballygunge, Kolkata 700019"
+  },
+  "celestial_cafe": {
+   "lat": 22.484681,
+   "lng": 88.314407,
+   "approx": false,
+   "address": "James Long Sarani, Thakurpukur, Kolkata 700008"
+  },
+  "aqua_java_air": {
+   "lat": 22.601263,
+   "lng": 88.407547,
+   "approx": false,
+   "address": "188, Block - B Lake Town Road, AD Block, Sector I, Kolkata 700089"
+  },
+  "annapurna_sweets": {
+   "lat": 22.57728,
+   "lng": 88.410307,
+   "approx": false,
+   "address": "1st Cross Road, HA Block, Sector III, Bidhannagar 700097"
+  },
+  "rajdarbar_sweet_shop": {
+   "lat": 22.476811,
+   "lng": 88.381469,
+   "approx": false,
+   "address": "Ganguly Bagan Estate Road, Baghajatin, Kolkata 700086"
+  },
+  "tutupie_caf": {
+   "lat": 22.564009,
+   "lng": 88.390044,
+   "approx": false,
+   "address": "Beleghata Main Road, Tangra North, Kolkata 700010"
+  },
+  "annapurna_sweets_salt_lake": {
+   "lat": 22.588267,
+   "lng": 88.401297,
+   "approx": false,
+   "address": "1st Cross Road, CA Block, Sector I, Bidhannagar 700064"
+  },
+  "mukharuchi": {
+   "lat": 22.564274,
+   "lng": 88.388619,
+   "approx": false,
+   "address": "Beleghata Main Road, Tangra North, Kolkata 700010"
+  },
+  "basanti": {
+   "lat": 22.622281,
+   "lng": 88.410277,
+   "approx": false,
+   "address": "Dum Dum Road, Chhatakal, Nagerbazar, South Dumdum 700074"
+  },
+  "the_bengal_rowing_club_brc": {
+   "lat": 22.509554,
+   "lng": 88.354789,
+   "approx": false,
+   "address": "13/2 Lake Gardens Road, Lake Gardens, Charu Market Area, Kolkata 700029"
+  },
+  "the_bhawanipur_house": {
+   "lat": 22.526113,
+   "lng": 88.347801,
+   "approx": false,
+   "address": "Naresh Mitra Sarani, Bhowanipore, Kolkata 700026"
+  },
+  "bhojohori_manna_6": {
+   "lat": 22.520208,
+   "lng": 88.36086,
+   "approx": false,
+   "address": "18/1 Hindustan Road, Ballygunge, Kolkata 700029"
+  },
+  "fillers": {
+   "lat": 22.514673,
+   "lng": 88.360649,
+   "approx": false,
+   "address": "Jatin Bagchi Road, Jodhpur Park, Kolkata 700029"
+  },
+  "the_teapot_boiler": {
+   "lat": 22.516344,
+   "lng": 88.361325,
+   "approx": false,
+   "address": "Hindustan Park Road, Jodhpur Park, Kolkata 700029"
+  },
+  "forkstruck": {
+   "lat": 22.503073,
+   "lng": 88.358298,
+   "approx": false,
+   "address": "Gobindapur Road, Lake Gardens, Rajendra Prasad Colony, Kolkata 700045"
+  },
+  "the_daily": {
+   "lat": 22.515951,
+   "lng": 88.351952,
+   "approx": false,
+   "address": "Satyen Dutta Road, Kalighat, Kolkata 700026"
+  },
+  "cafe_hq": {
+   "lat": 22.509209,
+   "lng": 88.345324,
+   "approx": false,
+   "address": "Sadananda Road, Kalighat, Kolkata 700033"
+  },
+  "steak_factory": {
+   "lat": 22.510964,
+   "lng": 88.348225,
+   "approx": false,
+   "address": "Lake Place, Kalighat, Kolkata 700033"
+  },
+  "diner_49b": {
+   "lat": 22.507683,
+   "lng": 88.365278,
+   "approx": false,
+   "address": "Rahim Ostagar Lane, Dhakuria, Kolkata 700068"
+  },
+  "tandoor_park": {
+   "lat": 22.506554,
+   "lng": 88.367319,
+   "approx": false,
+   "address": "4 Gariahat Road, Dhakuria, Kolkata 700031"
+  },
+  "ammini": {
+   "lat": 22.520888,
+   "lng": 88.352851,
+   "approx": false,
+   "address": "Manohar Pukur Road, Hazra, Kolkata 700026"
+  },
+  "kasturi_ac_resturant": {
+   "lat": 22.496409,
+   "lng": 88.367938,
+   "approx": false,
+   "address": "Jadavpur Central Road, Jadavpur, Kolkata 700032"
+  },
+  "potboiler_coffee_house": {
+   "lat": 22.517541,
+   "lng": 88.357803,
+   "approx": false,
+   "address": "Purna Das Road, Manoharpukur, Kolkata 700029"
+  },
+  "eatelicious": {
+   "lat": 22.501343,
+   "lng": 88.320021,
+   "approx": false,
+   "address": "James Long Sarani, Behala, Kolkata 700034"
+  },
+  "cafe_kathmandu": {
+   "lat": 22.511536,
+   "lng": 88.348968,
+   "approx": false,
+   "address": "LT Tapan Chowdhury Avenue, Kalighat, Kolkata 700033"
+  },
+  "shree_ram_dhaba": {
+   "lat": 22.579331,
+   "lng": 88.358935,
+   "approx": false,
+   "address": "Mahatma Gandhi Road, Tiretta Bazaar, Bara Bazar, Kolkata 700007"
+  },
+  "new_madras_tiffin": {
+   "lat": 22.596747,
+   "lng": 88.370901,
+   "approx": false,
+   "address": "Shyampukur St., Shyam Bazar, Kolkata 700004"
+  },
+  "spice_of_joy": {
+   "lat": 22.503754,
+   "lng": 88.376128,
+   "approx": false,
+   "address": "Kalikapur Road (Prince Anwar Shah Bypass Connector), Dhakuria, Kolkata 700031"
+  },
+  "sienna_store_cafe": {
+   "lat": 22.517556,
+   "lng": 88.362955,
+   "approx": false,
+   "address": "Hindustan Park, Ballygunge, Kolkata 700029"
+  },
+  "bb_s": {
+   "lat": 22.577125,
+   "lng": 88.425681,
+   "approx": false,
+   "address": "Salt Lake Bypass, EM Block, Sector V, Bidhannagar 700091"
+  },
+  "rose": {
+   "lat": 22.601239,
+   "lng": 88.406309,
+   "approx": false,
+   "address": "Lake Town Road, AD Block, Lake Town, South Dumdum 700089"
+  },
+  "stadel_poolside_restaurant": {
+   "lat": 22.568798,
+   "lng": 88.411023,
+   "approx": false,
+   "address": "Broadway Road, JC Block, Sector IV, Bidhannagar 700098"
+  },
+  "national_economic_restaurant": {
+   "lat": 22.601704,
+   "lng": 88.373869,
+   "approx": false,
+   "address": "State Highway 1, Chitpur North, Kolkata 700004"
+  },
+  "shiraz": {
+   "lat": 22.577151,
+   "lng": 88.410858,
+   "approx": false,
+   "address": "1st Cross Road, HA Block, Sector III, Bidhannagar 700097"
+  },
+  "katheleen": {
+   "lat": 22.476637,
+   "lng": 88.381888,
+   "approx": false,
+   "address": "Ganguly Bagan Estate Road, Baghajatin, Kolkata 700086"
+  },
+  "chowman": {
+   "lat": 22.489294,
+   "lng": 88.316895,
+   "approx": false,
+   "address": "James Long Sarani, Behala, Kolkata 700034"
+  },
+  "sitala_cafe": {
+   "lat": 22.478037,
+   "lng": 88.38133,
+   "approx": false,
+   "address": "Ganguly Bagan Estate Road, Baghajatin, Kolkata 700086"
+  },
+  "baba_tea": {
+   "lat": 22.543876,
+   "lng": 88.364997,
+   "approx": false,
+   "address": "Jannagar Crematorium Street, Mallick Bazaar, Park Circus, Kolkata 700017"
+  },
+  "brothers_kitchen": {
+   "lat": 22.477243,
+   "lng": 88.381762,
+   "approx": false,
+   "address": "Ganguly Bagan Estate Road, Baghajatin, Kolkata 700086"
+  },
+  "dhaba": {
+   "lat": 22.528216,
+   "lng": 88.365789,
+   "approx": false,
+   "address": "Gariahat Road, Ballygunge, Kolkata 700019"
+  },
+  "student_canteen": {
+   "lat": 22.631778,
+   "lng": 88.354365,
+   "approx": false,
+   "address": "Grand Trunk Road, Howrah 711202"
+  },
+  "ozora": {
+   "lat": 22.515362,
+   "lng": 88.393415,
+   "approx": false,
+   "address": "1858 Rajdanga Main Road, Ruby Park East, Kasbah North, Kolkata 700107"
+  },
+  "vip_sweets": {
+   "lat": 22.612868,
+   "lng": 88.429162,
+   "approx": false,
+   "address": "Kazi Nazrul Islam Avenue, Baguiati, Bidhannagar 700101"
+  },
+  "misti_mukh": {
+   "lat": 22.513659,
+   "lng": 88.392752,
+   "approx": false,
+   "address": "Rajdanga Main Road, Ruby Park East, Kasbah North, Kolkata 700078"
+  },
+  "afraa": {
+   "lat": 22.587297,
+   "lng": 88.40781,
+   "approx": false,
+   "address": "2nd Avenue, DC Block, Sector I, Bidhannagar 700064"
+  },
+  "thali": {
+   "lat": 22.515756,
+   "lng": 88.38901,
+   "approx": false,
+   "address": "Rash Behari Avenue Connector, Ruby Park East, Kushtia, Kolkata 700039"
+  },
+  "the_lighthouse_cafe": {
+   "lat": 22.505952,
+   "lng": 88.359076,
+   "approx": false,
+   "address": "Gobindapur Road, Lake Gardens, Jodhpur Park, Kolkata 700045"
+  },
+  "the_chocolate_room": {
+   "lat": 22.543995,
+   "lng": 88.358333,
+   "approx": false,
+   "address": "Rawdon Street, Mallick Bazaar, Ripon Street, Kolkata 700017"
+  },
+  "hondo_s_burgers": {
+   "lat": 22.502161,
+   "lng": 88.354042,
+   "approx": false,
+   "address": "Prince Anwar Shah Road, Rajendra Prasad Colony, Kolkata 700045"
+  },
+  "the_delhi_durbar_restaurant": {
+   "lat": 22.594874,
+   "lng": 88.341462,
+   "approx": false,
+   "address": "51 Grand Trunk Road, Howrah Maidan, Howrah 711106"
+  },
+  "chai_break_foreshoreroad": {
+   "lat": 22.56387,
+   "lng": 88.326997,
+   "approx": false,
+   "address": "99 Raj Narayan Roychowdhury Lane, Howrah Maidan, Howrah 711102"
+  },
+  "aminia_jadavpur_santoshpur": {
+   "lat": 22.465529,
+   "lng": 88.376712,
+   "approx": false,
+   "address": "Netaji Subhash Chandra Bose Road, Bansdroni, Shanti Nagar, Kolkata 700047"
+  },
+  "amiyo_snacks": {
+   "lat": 22.477512,
+   "lng": 88.377245,
+   "approx": false,
+   "address": "Raja Subodh Chandra Mullick Road, Baghajatin, Kolkata 700086"
+  },
+  "machhranga_airconditioned_multi_cuis": {
+   "lat": 22.471423,
+   "lng": 88.389165,
+   "approx": false,
+   "address": "EM Bypass, Baghajatin, Kolkata 700094"
+  },
+  "chowman_jadavpur_santoshpur": {
+   "lat": 22.45897,
+   "lng": 88.383978,
+   "approx": false,
+   "address": "Garia Garden Bottala Road, Barhans Fartabad, Rajpur Sonarpur 700150"
+  },
+  "lamprini_cafe": {
+   "lat": 22.594499,
+   "lng": 88.364574,
+   "approx": false,
+   "address": "37/1 Jatinda Mohan Avenue, Shobha Bazar, Kolkata 700006"
+  },
+  "i_snax": {
+   "lat": 22.477564,
+   "lng": 88.376769,
+   "approx": false,
+   "address": "Raja Subodh Chandra Mullick Road, Baghajatin, Kolkata 700086"
+  },
+  "mio_amore_tolly_naktala": {
+   "lat": 22.477825,
+   "lng": 88.376179,
+   "approx": false,
+   "address": "Raja Subodh Chandra Mullick Road, Baghajatin, Kolkata 700086"
+  },
+  "sip_n_bite_s_chinese_fast_food": {
+   "lat": 22.592916,
+   "lng": 88.341756,
+   "approx": false,
+   "address": "Grand Trunk Road, Howrah Maidan, Howrah 711106"
+  },
+  "sushma_tea_stall": {
+   "lat": 22.464385,
+   "lng": 88.377468,
+   "approx": false,
+   "address": "Narkel Bagan, Baghajatin, Kolkata 700084"
+  },
+  "noapara_metro": {
+   "lat": 22.64,
+   "lng": 88.394,
+   "approx": false,
+   "address": "A K Mukherjee Road, Dunlop, Baranagar 700090"
+  },
+  "dumdum_metro": {
+   "lat": 22.6215,
+   "lng": 88.3915,
+   "approx": false,
+   "address": "Paikpara, Kolkata 700030"
+  },
+  "hatibagan_paypark": {
+   "lat": 22.596,
+   "lng": 88.3735,
+   "approx": false,
+   "address": "Ganenda Mitra Lane, Shyam Bazar, Kolkata 700004"
+  },
+  "sealdah_station": {
+   "lat": 22.5672,
+   "lng": 88.3705,
+   "approx": false,
+   "address": "Bepin Behari Ganguly Street, Sealdah, Kolkata 700009"
+  },
+  "new_market_mlcp": {
+   "lat": 22.5598,
+   "lng": 88.3515,
+   "approx": false,
+   "address": "Eat Street, Dharmatala, Kolkata 700087"
+  },
+  "lake_mall": {
+   "lat": 22.516501,
+   "lng": 88.348851,
+   "approx": false,
+   "address": "Rash Behari Avenue, Kalighat, Kolkata 700026"
+  },
+  "forum_mall": {
+   "lat": 22.539,
+   "lng": 88.3518,
+   "approx": false,
+   "address": "Lee Road (OC Ganguly Street), Bhowanipore, Kolkata 700020"
+  },
+  "quest_mall": {
+   "lat": 22.539027,
+   "lng": 88.365656,
+   "approx": false,
+   "address": "Syed Amir Ali Avenue, Park Circus, Kolkata 700017"
+  },
+  "south_city": {
+   "lat": 22.501584,
+   "lng": 88.36171,
+   "approx": false,
+   "address": "375 Prince Anwar Shah Road, Katju Nagar, Kolkata 700068"
+  },
+  "behala_bazar_metro": {
+   "lat": 22.492,
+   "lng": 88.317,
+   "approx": false,
+   "address": "Behala, Kolkata 700034"
+  },
+  "new_alipore_street": {
+   "lat": 22.499,
+   "lng": 88.338,
+   "approx": false,
+   "address": "Behala, Kolkata 700053"
+  },
+  "city_centre_parking": {
+   "lat": 22.5888,
+   "lng": 88.4078,
+   "approx": false,
+   "address": "2nd Avenue, DC Block, Sector I, Bidhannagar 700064"
+  },
+  "central_park_parking": {
+   "lat": 22.586,
+   "lng": 88.416,
+   "approx": false,
+   "address": "4th Avenue, FE Block, Sector III, Bidhannagar 700106"
+  },
+  "diamond_plaza": {
+   "lat": 22.615493,
+   "lng": 88.412466,
+   "approx": false,
+   "address": "68 Jessore Road, Bangur, Kolkata 700055"
+  },
+  "howrah_station_parking": {
+   "lat": 22.5829,
+   "lng": 88.3425,
+   "approx": false,
+   "address": "Old Cab Road, Howrah Maidan, Howrah 711106"
+  },
+  "avani_riverside_mall": {
+   "lat": 22.566,
+   "lng": 88.323,
+   "approx": false,
+   "address": "Shibpur Road, Howrah Maidan, Howrah 711102"
+  }
+ }
+}
