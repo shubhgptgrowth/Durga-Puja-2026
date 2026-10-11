@@ -221,16 +221,16 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "Is your para's pujo in here?",
+   "hook": "Bagbazar or Tala Prattoy? Pick one",
    "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
+    "hook": "বাগবাজার না টালা প্রত্যয়? একটাই বাছুন",
     "segs": [
      "",
      "টালা প্রত্যয়",
      "কুমোরটুলি সার্বজনীন",
      "আহিরীটোলা সার্বজনীন"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -259,15 +259,15 @@
     ]
    ],
    "end": [
-    "Kumartuli, Bagbazar & Hatibagan: four pujas,",
-    "Which one's your favourite? Tell us"
+    "Bagbazar or Tala Prattoy?",
+    "One name in the comments"
    ],
    "music": [
     "f22",
     20
    ],
    "caption": {
-    "en": "Is your para's pujo in here? Bagbazar Sarbojanin, Tala Prattoy and more Kolkata Durga Puja pandals 🪔\n\nBagbazar Sarbojanin, Tala Prattoy, Kumartuli Sarbojanin and Ahiritola Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Bagbazar Sarbojanin or Tala Prattoy? Kolkata Durga Puja 2026, pick one 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Kumartuli Sarbojanin, Ahiritola Sarbojanin. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "kumartuli, bagbazar & hatibagan durga puja",
      "bagbazar sarbojanin",
@@ -535,16 +535,16 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Which one are you seeing first?",
+   "hook": "Which wins: Tridhara or Chetla Agrani?",
    "bn": {
-    "hook": "কোনটা সবার আগে দেখবেন?",
+    "hook": "কে জিতবে: ত্রিধারা না চেতলা অগ্রণী?",
     "segs": [
      "",
      "চেতলা অগ্রণী ক্লাব",
      "বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন",
      "সমাজসেবী সংঘ"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -573,15 +573,15 @@
     ]
    ],
    "end": [
-    "Lake Market & Kalighat: four pujas, past yea",
-    "Which one's your favourite? Tell us"
+    "Tridhara or Chetla Agrani?",
+    "One name in the comments"
    ],
    "music": [
     "f21",
     80
    ],
    "caption": {
-    "en": "Tridhara Sammilani or Chetla Agrani Club? Lake Market & Kalighat Durga Puja pandals to see first, Kolkata 🪔\n\nTridhara Sammilani, Chetla Agrani Club, Ballygunge Cultural Association and Samaj Sebi Sangha. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Which wins this year, Tridhara Sammilani or Chetla Agrani Club? A Kolkata Durga Puja debate 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Ballygunge Cultural Association, Samaj Sebi Sangha. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "lake market & kalighat durga puja",
      "tridhara sammilani",
@@ -820,63 +820,92 @@
    }
   },
   {
-   "id": "r5",
-   "type": "reel",
+   "id": "p7",
+   "type": "photo",
+   "render": "editorial",
    "at": "18:30",
-   "hook": "Rate these pandals out of 10",
-   "bn": {
-    "hook": "দশে কত দেবেন?",
-    "segs": [
-     "",
-     "বেহালা ফ্রেন্ডস",
-     "বড়িশা ক্লাব",
-     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
-   "segments": [
-    [
-     "pp-behala_notun_dal-2",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "pp-behala_friends-2",
-     0,
-     3.6,
-     "Behala Friends"
-    ],
-    [
-     "pp-barisha_club-2",
-     0,
-     3.6,
-     "Barisha Club"
-    ],
-    [
-     "pp-thakurpukur_sb_park-2",
-     0,
-     3.6,
-     "Thakurpukur SB Park Sarbojanin"
-    ]
-   ],
-   "end": [
-    "Behala & New Alipore: four pujas, past years",
-    "Which one's your favourite? Tell us"
-   ],
-   "music": [
-    "f23",
-    50
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Kolkata · Kumartuli",
+     "title": "How a Durga idol is made at Kumartuli",
+     "bn": "কুমোরটুলিতে ঠাকুর গড়া",
+     "sub": "Bamboo, straw, river clay and, last of all, the eyes",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Idol_making_at_Kumortuli%2C_Kolkata4.jpg",
+      "artist": "Pinakpani",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Step 1",
+     "num": 1,
+     "title": "The frame and the straw",
+     "bn": "কাঠামো আর খড়",
+     "body": "Work starts months ahead. A kathamo of bamboo and planks carries the weight; in an ekchala image the goddess, her four children, the lion and Mahishasura share one frame. Tied straw sets the posture."
+    },
+    {
+     "t": "step",
+     "kicker": "Step 2",
+     "num": 2,
+     "title": "Clay from the Hooghly",
+     "bn": "গঙ্গার মাটি",
+     "body": "The straw is covered in clay from the Hooghly, the local stretch of the Ganga, mixed with rice husk or chopped straw so it doesn't crack. Once dry, a smoother coat of finer clay goes on."
+    },
+    {
+     "t": "step",
+     "kicker": "Step 3",
+     "num": 3,
+     "title": "Punya mati",
+     "bn": "পুণ্য মাটি",
+     "body": "By tradition the clay includes soil from several places, among them a handful from the doorstep of a sex worker's home. Many image-makers still follow it, though not all, and its meaning is debated."
+    },
+    {
+     "t": "photo",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Creation_of_Durga_Idol_at_kumartuli.jpg",
+      "artist": "Ishani Nath",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.45
+     },
+     "line": "Faces usually come from moulds, many of them family heirlooms"
+    },
+    {
+     "t": "step",
+     "kicker": "Step 4",
+     "num": 4,
+     "title": "Chokkhu daan, the eyes",
+     "bn": "চক্ষুদান",
+     "body": "The last brushstrokes are the eyes, traditionally on or around Mahalaya, often by the senior artisan. Until then the image is unfinished. Then come the sari, jute hair and sholar or daker saaj."
+    },
+    {
+     "t": "step",
+     "kicker": "Visiting",
+     "title": "Walk the lanes",
+     "bn": "কুমোরটুলির গলিতে",
+     "body": "The four weeks before the puja are the most rewarding. Take the Metro to Shobhabazar Sutanuti and walk west to the river. Go in the morning, wear closed shoes, ask before photographing anyone, don't touch the images."
+    },
+    {
+     "t": "end",
+     "title": "Have you walked Kumartuli's lanes?",
+     "bn": "কুমোরটুলির গলিতে হেঁটেছেন?",
+     "ask": "Tell us in the comments"
+    }
    ],
    "caption": {
-    "en": "Rate Behala Notun Dal, Behala Friends and more out of 10: Kolkata Durga Puja pandals 🪔\n\nBehala Notun Dal, Behala Friends, Barisha Club and Thakurpukur SB Park Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Kumartuli, Kolkata: how a Durga idol is made, from straw to chokkhu daan 🎨\n\nBamboo and planks for the frame. Rice straw for the bodies. Then layers of clay from the Hooghly. Faces are usually made in moulds, many of them family heirlooms, and the eyes, chokkhu daan, are traditionally painted around Mahalaya.\n\nKumartuli is the potters' quarter of north Kolkata, on the river between Sovabazar and Bagbazar. If you can, walk its lanes in the weeks before the puja; by Shashthi most images have left for their pandals.\n\nHave you been? Tell us in the comments 👇",
     "keywords": [
-     "behala & new alipore durga puja",
-     "behala notun dal",
-     "kolkata pandals",
-     "durga puja 2026 kolkata"
+     "kumartuli",
+     "kumartuli idol making",
+     "how durga idols are made",
+     "chokkhu daan",
+     "durga puja kolkata"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+    "tags": "#Kumartuli #KolkataDurgaPuja #DurgaPuja2026"
    }
   },
   {
@@ -974,108 +1003,79 @@
    }
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r5",
+   "type": "reel",
    "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Kolkata · Kumartuli",
-     "title": "How a Durga idol is made at Kumartuli",
-     "bn": "কুমোরটুলিতে ঠাকুর গড়া",
-     "sub": "Bamboo, straw, river clay and, last of all, the eyes",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Idol_making_at_Kumortuli%2C_Kolkata4.jpg",
-      "artist": "Pinakpani",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Step 1",
-     "num": 1,
-     "title": "The frame and the straw",
-     "bn": "কাঠামো আর খড়",
-     "body": "Work starts months ahead. A kathamo of bamboo and planks carries the weight; in an ekchala image the goddess, her four children, the lion and Mahishasura share one frame. Tied straw sets the posture."
-    },
-    {
-     "t": "step",
-     "kicker": "Step 2",
-     "num": 2,
-     "title": "Clay from the Hooghly",
-     "bn": "গঙ্গার মাটি",
-     "body": "The straw is covered in clay from the Hooghly, the local stretch of the Ganga, mixed with rice husk or chopped straw so it doesn't crack. Once dry, a smoother coat of finer clay goes on."
-    },
-    {
-     "t": "step",
-     "kicker": "Step 3",
-     "num": 3,
-     "title": "Punya mati",
-     "bn": "পুণ্য মাটি",
-     "body": "By tradition the clay includes soil from several places, among them a handful from the doorstep of a sex worker's home. Many image-makers still follow it, though not all, and its meaning is debated."
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Creation_of_Durga_Idol_at_kumartuli.jpg",
-      "artist": "Ishani Nath",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Faces usually come from moulds, many of them family heirlooms"
-    },
-    {
-     "t": "step",
-     "kicker": "Step 4",
-     "num": 4,
-     "title": "Chokkhu daan, the eyes",
-     "bn": "চক্ষুদান",
-     "body": "The last brushstrokes are the eyes, traditionally on or around Mahalaya, often by the senior artisan. Until then the image is unfinished. Then come the sari, jute hair and sholar or daker saaj."
-    },
-    {
-     "t": "step",
-     "kicker": "Visiting",
-     "title": "Walk the lanes",
-     "bn": "কুমোরটুলির গলিতে",
-     "body": "The four weeks before the puja are the most rewarding. Take the Metro to Shobhabazar Sutanuti and walk west to the river. Go in the morning, wear closed shoes, ask before photographing anyone, don't touch the images."
-    },
-    {
-     "t": "end",
-     "title": "Have you walked Kumartuli's lanes?",
-     "bn": "কুমোরটুলির গলিতে হেঁটেছেন?",
-     "ask": "Tell us in the comments"
-    }
+   "hook": "First stop: Behala Notun Dal or Behala Friends?",
+   "bn": {
+    "hook": "প্রথমে কোথায়: বেহালা নতুন দল না বেহালা ফ্রেন্ডস?",
+    "segs": [
+     "",
+     "বেহালা ফ্রেন্ডস",
+     "বড়িশা ক্লাব",
+     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন"
+    ],
+    "end": "কমেন্টে একটা নাম লিখুন"
+   },
+   "segments": [
+    [
+     "pp-behala_notun_dal-2",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-behala_friends-2",
+     0,
+     3.6,
+     "Behala Friends"
+    ],
+    [
+     "pp-barisha_club-2",
+     0,
+     3.6,
+     "Barisha Club"
+    ],
+    [
+     "pp-thakurpukur_sb_park-2",
+     0,
+     3.6,
+     "Thakurpukur SB Park Sarbojanin"
+    ]
+   ],
+   "end": [
+    "Behala Notun Dal or Behala Friends?",
+    "One name in the comments"
+   ],
+   "music": [
+    "f23",
+    50
    ],
    "caption": {
-    "en": "Kumartuli, Kolkata: how a Durga idol is made, from straw to chokkhu daan 🎨\n\nBamboo and planks for the frame. Rice straw for the bodies. Then layers of clay from the Hooghly. Faces are usually made in moulds, many of them family heirlooms, and the eyes, chokkhu daan, are traditionally painted around Mahalaya.\n\nKumartuli is the potters' quarter of north Kolkata, on the river between Sovabazar and Bagbazar. If you can, walk its lanes in the weeks before the puja; by Shashthi most images have left for their pandals.\n\nHave you been? Tell us in the comments 👇",
+    "en": "First stop this pujo, Behala Notun Dal or Behala Friends? Kolkata Durga Puja 2026 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Barisha Club, Thakurpukur SB Park Sarbojanin. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
-     "kumartuli",
-     "kumartuli idol making",
-     "how durga idols are made",
-     "chokkhu daan",
-     "durga puja kolkata"
+     "behala & new alipore durga puja",
+     "behala notun dal",
+     "kolkata pandals",
+     "durga puja 2026 kolkata"
     ],
-    "tags": "#Kumartuli #KolkataDurgaPuja #DurgaPuja2026"
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
    }
   },
   {
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "All of this, a few lanes apart",
+   "hook": "An hour's queue: Chaltabagan Lohapatty or Chorbagan?",
    "bn": {
-    "hook": "সবটাই কয়েক গলির মধ্যে",
+    "hook": "এক ঘণ্টার লাইন: চালতাবাগান লোহাপট্টি না চোরবাগান?",
     "segs": [
      "",
      "কলেজ স্কোয়ার সার্বজনীন",
      "চালতাবাগান লোহাপট্টি",
      "চোরবাগান সার্বজনীন"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -1104,15 +1104,15 @@
     ]
    ],
    "end": [
-    "College Street & Sealdah: four pujas, past y",
-    "Which one's your favourite? Tell us"
+    "Chaltabagan Lohapatty or Chorbagan?",
+    "One name in the comments"
    ],
    "music": [
     "f22",
     120
    ],
    "caption": {
-    "en": "Mohammad Ali Park, College Square Sarbojanin and more: Kolkata Durga Puja pandals a few lanes apart 🪔\n\nMohammad Ali Park, College Square Sarbojanin, Chaltabagan Lohapatty and Chorbagan Sarbojanin. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Kolkata Durga Puja: would you queue an hour for Chaltabagan Lohapatty or Chorbagan Sarbojanin? 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Mohammad Ali Park, College Square Sarbojanin. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "college street & sealdah durga puja",
      "mohammad ali park",
