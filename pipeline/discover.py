@@ -5,6 +5,7 @@
     python -m pipeline.discover food      # OSM restaurants, sweet shops, cafes, street food near each pandal
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
     python -m pipeline.discover help      # OSM public toilets, hospitals and police stations ("Help nearby")
+    python -m pipeline.discover addresses # street address of every pandal, eatery and car park (Nominatim reverse)
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
 `python -m pipeline` merges it with the review rules in pipeline/merge_discovered.py.
@@ -346,7 +347,61 @@ def discover_help():
     write("help", {"source": "OpenStreetMap contributors (ODbL)", "fetched": time.strftime("%Y-%m-%d"), "failed_batches": failed, **out})
     print(", ".join(f"{len(v)} {k}" for k, v in out.items()) + f" ({failed} batches failed)", file=sys.stderr)
 
+# ---------------------------------------------------------------- addresses
+REVERSE = "https://nominatim.openstreetmap.org/reverse"
+
+
+def _short_address(a, approx):
+    """A readable one-line address from Nominatim's parts; locality only when the pin itself is approximate."""
+    road = a.get("road") or a.get("pedestrian") or a.get("footway")
+    street = " ".join(x for x in (a.get("house_number"), road) if x) if road and not approx else ""
+    area = a.get("neighbourhood") or a.get("quarter") or a.get("suburb") or a.get("city_district")
+    city = a.get("city") or a.get("town") or a.get("municipality") or a.get("village") or a.get("county")
+    parts = []
+    for x in (street, area, a.get("suburb") if a.get("suburb") != area else None, city):
+        if x and all(x.lower() != q.lower() for q in parts):
+            parts.append(x)
+    line = ", ".join(parts)
+    pc = a.get("postcode")
+    return f"{line} {pc}".strip() if pc and line else line
+
+
+def discover_addresses():
+    """Reverse-geocode each place's pin (one request a second, the Nominatim policy). Places whose pin has not moved
+    keep the address found earlier, so a re-run only asks about new or moved pins."""
+    prev_path = OUT / "addresses.json"
+    prev = json.loads(prev_path.read_text(encoding="utf-8")).get("places", {}) if prev_path.exists() else {}
+    rows = []
+    for name in ("pandals", "food", "parking"):
+        rows += list(csv.DictReader(open(config.RAW_DIR / f"{name}.csv", encoding="utf-8")))
+    out, asked, failed = {}, 0, 0
+    for r in rows:
+        lat, lng, approx = float(r["lat"]), float(r["lng"]), r.get("geo_source") == "osm-approx"
+        old = prev.get(r["id"])
+        if old and abs(old["lat"] - lat) < 1e-5 and abs(old["lng"] - lng) < 1e-5 and old.get("approx") == approx:
+            out[r["id"]] = old
+            continue
+        q = urllib.parse.urlencode({"lat": lat, "lon": lng, "format": "jsonv2", "zoom": 18, "addressdetails": 1,
+                                    "accept-language": "en"})
+        try:
+            with urllib.request.urlopen(urllib.request.Request(f"{REVERSE}?{q}", headers={"User-Agent": UA}), timeout=30) as resp:
+                a = json.load(resp).get("address", {})
+            addr = _short_address(a, approx)
+            if addr:
+                out[r["id"]] = {"lat": lat, "lng": lng, "approx": approx, "address": addr}
+        except Exception as ex:
+            failed += 1
+            print(f"reverse failed for {r['id']}: {ex}", file=sys.stderr)
+        asked += 1
+        if asked % 25 == 0:
+            print(f"addresses: {asked} asked, {len(out)} known", file=sys.stderr)
+        time.sleep(1.1)
+    write("addresses", {"source": "OpenStreetMap contributors (ODbL), via Nominatim", "fetched": time.strftime("%Y-%m-%d"),
+                        "failed": failed, "places": out})
+    print(f"{len(out)} addresses ({asked} looked up, {failed} failed)", file=sys.stderr)
+
+
 if __name__ == "__main__":
     fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
-          "help": discover_help}[sys.argv[1]]
+          "help": discover_help, "addresses": discover_addresses}[sys.argv[1]]
     fn(*sys.argv[2:3])
