@@ -8,8 +8,8 @@ github.com/Jakeschincariol/instagram-agent-skill, MIT). A session start hook cop
 
 - **Name:** Pujo Parikrama 2026
 - **Handle:** @pujoparikramaguide.in
-- **What we do, in one sentence:** A free Kolkata Durga Puja pandal-hopping guide: area-wise walking routes from
-  the nearest Metro station, and live quiet hours for every pandal, at https://pujoparikramaguide.in/
+- **What we do, in one sentence:** A free Kolkata Durga Puja pandal-hopping guide: walk pandal to pandal from the
+  nearest Metro station, with every 2026 theme and food on the way, at https://pujoparikramaguide.in/
 - **Who we are talking to:** Kolkata and Bengal pujo-goers aged 18 to 35 planning their nights for 17 to 21 October
   2026, plus Bengalis outside Kolkata who follow pujo from afar. They speak Bengali at home and read English on
   their phones.
@@ -50,17 +50,42 @@ github.com/Jakeschincariol/instagram-agent-skill, MIT). A session start hook cop
 - Other people's photos or videos without the creator's permission. Credit alone is not permission.
 - Paid-promotion language: we have no sponsors.
 
+## USP hierarchy (owner's call, 11 Oct: lead with the pandal-hopping vibe, not quiet hours)
+
+Lead with the first one that fits the post; never open with a lower one when a higher one fits.
+
+1. **Pandal to pandal on foot:** area routes from a Metro station, and "Hop next" on every pandal.
+2. **Every 2026 theme in one list.**
+3. **Food on the way, plus Metro, bus and auto routes.**
+4. **Free, no sign-up, English and বাংলা.**
+
+Crowd times stay in the app as a detail. They never lead a post, a bio or a press line.
+
+## Instagram bio (132 characters)
+
+Name field (30 characters, searched by Instagram): `Pandal Hopping Kolkata 2026`
+
+```
+Walk pandal to pandal from the Metro 🚶
+Every 2026 theme in one list 🎭
+Food on the way, metro + autos 🛺
+Free · no sign-up · বাংলা too
+```
+
+Link: https://pujoparikramaguide.in/?src=ig_bio
+
 ## Proof we can use
 
 - 9 area routes, each starting at a Metro station, with distance, walking time and steps (the guide's route data).
-- Live quiet hours for every pandal in the guide.
+- "Hop next" on every pandal: the three closest pandals on foot, with walking minutes.
+- Every announced 2026 theme, with its source.
 - Free, no sign-up, works on a phone.
 - Pujo 2026 dates: Mahalaya Saturday 10 October; Shashthi to Dashami, 17 to 21 October.
 
 ## The ask
 
 - **Keyword CTA:** PUJO (also matches পুজো, route, রুট)
-- **What the keyword sends them:** a private reply with the area-wise route guide and live quiet hours
+- **What the keyword sends them:** a private reply with the area-wise route guide and the 2026 themes
   (https://pujoparikramaguide.in/?src=ig_dm) and a public "DM-এ পাঠিয়ে দিলাম 💛" under their comment.
 - **Where the link goes:** the bio link, https://pujoparikramaguide.in/
 - **One ask per post.** Comment PUJO on route and planning posts; a question to answer on photo and story posts.

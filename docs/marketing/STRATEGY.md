@@ -45,19 +45,19 @@ distribution and 20 % product, and the product work should only be things that m
 
 ## 2. Positioning
 
-**One promise:** ***ভিড় এড়িয়ে ঠাকুর দেখুন।*** *See every pandal. Skip the queue.*
+**One promise:** ***আরও বেশি ঠাকুর দেখুন, কিছু বাদ যাবে না।*** *Hop more pandals. Miss nothing.* (Changed on 11 Oct from "Skip the queue": quiet hours are not the moat; the pandal-hopping vibe is. USP order in `marketing/voice.md`.)
 
 | | |
 |---|---|
 | **For** | Kolkata families, college groups and probashi Bengalis coming home, planning pandal hopping |
 | **Who are tired of** | 2-hour queues, zig-zagging across the city, and "kothay jabo aaj?" fights in the family group |
-| **Pujo Parikrama is** | the free pujo planner that tells you **when** each pandal is quiet, **how** to get there by metro or auto, and **what** to eat next door |
+| **Pujo Parikrama is** | the free pujo planner that walks you **pandal to pandal** from the Metro, shows **every 2026 theme**, and what to **eat on the way** |
 | **Unlike** | listicles from news sites (no timing, no route) and Google Maps (no pujo knowledge) |
-| **Proof** | 107 pandals, quiet hours hour by hour, a 3-tap route, works in Bengali, no sign-up |
+| **Proof** | 125 pandals, "Hop next" on every one, every announced 2026 theme, a 3-tap route, works in Bengali, no sign-up |
 
 **Rules that come with it**
 
-* **Lead with the queue, never with features.** Every post, poster and press line opens with time saved or the queue skipped. The step tracker, badges, radio and narration stay in the app as delights. They never lead.
+* **Lead with the hop, never with features.** Every post, poster and press line opens with the route, the themes or the next pandal on foot. Crowd times stay inside the app as a detail. The step tracker, badges, radio and narration stay in the app as delights. They never lead.
 * **Honest about the model.** Before live check-ins, the crowd times are estimates. Say "usually quiet at 7 am", never "empty at 7 am". A promise broken in a queue on Ashtami kills word of mouth.
 * **Voice:** a warm, witty Kolkata dada or didi. Bengali first, English second. The same "laal-paar" look as now.
 * **One name everywhere:** Pujo Parikrama · pujoparikramaguide.in · @pujoparikramaguide.in.
