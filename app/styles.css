@@ -871,6 +871,8 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .sheet.open { transform: none; }
 .sheet-grip { width: 38px; height: 4px; border-radius: 9px; background: var(--line-2); margin: 2px auto 10px; }
 .sheet-close { position: absolute; top: 18px; right: 14px; z-index: 4; border: 1px solid var(--line); background: var(--surface); width: 34px; height: 34px; border-radius: 50%; font-size: 19px; line-height: 1; cursor: pointer; color: var(--ink-2); }
+.sheet .addr { display: flex; gap: 6px; align-items: flex-start; margin: 6px 0 2px; font-size: 13px; line-height: 1.4; color: var(--ink-2); user-select: text; }
+.sheet .addr .ic { flex: none; margin-top: 2px; color: var(--brand); }
 .sheet .eyebrow { display: flex; gap: 7px; align-items: center; color: var(--gold); font-size: 11px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
 .sheet .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; }
 .sheet h2.title { margin: 6px 44px 2px 0; font-family: var(--serif); font-size: 27px; font-weight: 540; line-height: 1.12; letter-spacing: -.015em; font-variation-settings: "opsz" 72, "SOFT" 30; }
