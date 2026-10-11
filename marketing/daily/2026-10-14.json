@@ -221,16 +221,16 @@
    "id": "r1",
    "type": "reel",
    "at": "09:10",
-   "hook": "Only Kolkata builds this for four days",
+   "hook": "Ekdalia Evergreen or Jodhpur Park? Pick one",
    "bn": {
-    "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
+    "hook": "একডালিয়া এভারগ্রিন না যোধপুর পার্ক? একটাই বাছুন",
     "segs": [
      "",
      "যোধপুর পার্ক",
      "হিন্দুস্থান পার্ক সার্বজনীন",
      "হিন্দুস্থান ক্লাব"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -259,15 +259,15 @@
     ]
    ],
    "end": [
-    "Gariahat & Ballygunge: four pujas, past year",
-    "Which one's your favourite? Tell us"
+    "Ekdalia Evergreen or Jodhpur Park?",
+    "One name in the comments"
    ],
    "music": [
     "f21",
     80
    ],
    "caption": {
-    "en": "Only Kolkata builds this for four days: Ekdalia Evergreen, Jodhpur Park and more Durga Puja pandals 🪔\n\nEkdalia Evergreen, Jodhpur Park, Hindustan Park Sarbojanin and Hindustan Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Ekdalia Evergreen or Jodhpur Park? Kolkata Durga Puja 2026, pick one 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Hindustan Park Sarbojanin, Hindustan Club. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "gariahat & ballygunge durga puja",
      "ekdalia evergreen",
@@ -526,16 +526,16 @@
    "id": "r3",
    "type": "reel",
    "at": "13:50",
-   "hook": "Save this for your pujo night",
+   "hook": "Which wins: Kashi Bose Lane or Nalin Sarkar?",
    "bn": {
-    "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
+    "hook": "কে জিতবে: কাশী বোস লেন না নলিন সরকার?",
     "segs": [
      "",
      "নলিন সরকার স্ট্রিট",
      "হাতিবাগান সার্বজনীন",
      "জগৎ মুখার্জি পার্ক"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -564,15 +564,15 @@
     ]
    ],
    "end": [
-    "Kumartuli, Bagbazar & Hatibagan: four pujas,",
-    "Which one's your favourite? Tell us"
+    "Kashi Bose Lane or Nalin Sarkar?",
+    "One name in the comments"
    ],
    "music": [
     "f20",
     30
    ],
    "caption": {
-    "en": "Save Kashi Bose Lane, Nalin Sarkar Street and more for your Kolkata Durga Puja night 🪔\n\nKashi Bose Lane, Nalin Sarkar Street, Hatibagan Sarbojanin and Jagat Mukherjee Park. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Which wins this year, Kashi Bose Lane or Nalin Sarkar Street? A Kolkata Durga Puja debate 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Hatibagan Sarbojanin, Jagat Mukherjee Park. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "kumartuli, bagbazar & hatibagan durga puja",
      "kashi bose lane",
@@ -824,164 +824,10 @@
    }
   },
   {
-   "id": "r5",
-   "type": "reel",
-   "at": "18:30",
-   "hook": "Is your para's pujo in here?",
-   "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
-    "segs": [
-     "",
-     "বেহালা ক্লাব",
-     "সুরুচি সংঘ",
-     "বেহালা নতুন দল"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
-   "segments": [
-    [
-     "pp-haridevpur_ajeya-2",
-     0,
-     4.0,
-     ""
-    ],
-    [
-     "pp-behala_club-2",
-     0,
-     3.6,
-     "Behala Club"
-    ],
-    [
-     "pp-suruchi_sangha-3",
-     0,
-     3.6,
-     "Suruchi Sangha"
-    ],
-    [
-     "pp-behala_notun_dal-3",
-     0,
-     3.6,
-     "Behala Notun Dal"
-    ]
-   ],
-   "end": [
-    "Behala & New Alipore: four pujas, past years",
-    "Which one's your favourite? Tell us"
-   ],
-   "music": [
-    "f22",
-    120
-   ],
-   "caption": {
-    "en": "Is your para's pujo in here? Haridevpur Ajeya Sanghati, Behala Club and more Kolkata Durga Puja pandals 🪔\n\nHaridevpur Ajeya Sanghati, Behala Club, Suruchi Sangha and Behala Notun Dal. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
-    "keywords": [
-     "behala & new alipore durga puja",
-     "haridevpur ajeya sanghati",
-     "kolkata pandals",
-     "durga puja 2026 kolkata"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
-   "id": "s3",
-   "type": "story",
-   "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
-   "segments": [
-    [
-     "pp-hatibagan-2",
-     0,
-     6.0,
-     "North or South this year?"
-    ]
-   ],
-   "music": [
-    "f22",
-    20
-   ]
-  },
-  {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
-   "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Kashi Bose Lane",
-     "bn": "কাশী বোস লেন",
-     "sub": "Pictured: 2024",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Warli",
-     "bn": "ওরলি",
-     "body": "The Warli folk art of Maharashtra. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A lane-side puja that keeps winning art awards."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ],
-      [
-       "Metro: Sovabazar Sutanuti, 16 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Eat nearby: Laxmi Narayan Shaw & Sons",
-       "কাছেই খাওয়া"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Kashi Bose Lane, Kolkata Durga Puja 2026: the theme is Warli 🪔\n\nThe Warli folk art of Maharashtra. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 16 minutes' walk from Sovabazar Sutanuti Metro.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "kashi bose lane durga puja 2026",
-     "kashi bose lane theme",
-     "kumartuli, bagbazar & hatibagan pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
    "id": "p7",
    "type": "photo",
    "render": "editorial",
-   "at": "20:50",
+   "at": "18:30",
    "slides": [
     {
      "t": "cover",
@@ -1096,19 +942,173 @@
    }
   },
   {
+   "id": "s3",
+   "type": "story",
+   "at": "19:05",
+   "bn": {
+    "segs": [
+     "উত্তর না দক্ষিণ?"
+    ]
+   },
+   "segments": [
+    [
+     "pp-hatibagan-2",
+     0,
+     6.0,
+     "North or South this year?"
+    ]
+   ],
+   "music": [
+    "f22",
+    20
+   ]
+  },
+  {
+   "id": "p6",
+   "type": "photo",
+   "render": "editorial",
+   "at": "19:40",
+   "slides": [
+    {
+     "t": "cover",
+     "kicker": "Pandal guide · Bagbazar & Hatibagan",
+     "title": "Kashi Bose Lane",
+     "bn": "কাশী বোস লেন",
+     "sub": "Pictured: 2024",
+     "photo": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg",
+      "artist": "Tarunsamanta",
+      "license": "CC BY-SA 4.0",
+      "cx": 0.5,
+      "cy": 0.42
+     }
+    },
+    {
+     "t": "step",
+     "kicker": "Theme 2026",
+     "title": "Warli",
+     "bn": "ওরলি",
+     "body": "The Warli folk art of Maharashtra. As reported; themes can change before the puja."
+    },
+    {
+     "t": "step",
+     "kicker": "Why go",
+     "title": "What it's known for",
+     "bn": "কেন যাবেন",
+     "body": "A lane-side puja that keeps winning art awards."
+    },
+    {
+     "t": "list",
+     "kicker": "Plan your visit",
+     "title": "Before you go",
+     "bn": "যাওয়ার আগে",
+     "items": [
+      [
+       "Least crowded: 5 to 9 pm",
+       "সবচেয়ে কম ভিড়"
+      ],
+      [
+       "Metro: Sovabazar Sutanuti, 16 min walk",
+       "নিকটতম মেট্রো"
+      ],
+      [
+       "Eat nearby: Laxmi Narayan Shaw & Sons",
+       "কাছেই খাওয়া"
+      ]
+     ]
+    },
+    {
+     "t": "end",
+     "title": "Is it on your list this year?",
+     "bn": "এবার যাচ্ছেন?",
+     "ask": "Save it · tell us if you're going"
+    }
+   ],
+   "caption": {
+    "en": "Kashi Bose Lane, Kolkata Durga Puja 2026: the theme is Warli 🪔\n\nThe Warli folk art of Maharashtra. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 5 to 9 pm, and it's 16 minutes' walk from Sovabazar Sutanuti Metro.\n\nAre you going this year? Tell us 👇",
+    "keywords": [
+     "kashi bose lane durga puja 2026",
+     "kashi bose lane theme",
+     "kumartuli, bagbazar & hatibagan pandals",
+     "kolkata durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r5",
+   "type": "reel",
+   "at": "20:50",
+   "hook": "First stop: Behala Club or Suruchi?",
+   "bn": {
+    "hook": "প্রথমে কোথায়: বেহালা ক্লাব না সুরুচি?",
+    "segs": [
+     "",
+     "বেহালা ক্লাব",
+     "সুরুচি সংঘ",
+     "বেহালা নতুন দল"
+    ],
+    "end": "কমেন্টে একটা নাম লিখুন"
+   },
+   "segments": [
+    [
+     "pp-haridevpur_ajeya-2",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-behala_club-2",
+     0,
+     3.6,
+     "Behala Club"
+    ],
+    [
+     "pp-suruchi_sangha-3",
+     0,
+     3.6,
+     "Suruchi Sangha"
+    ],
+    [
+     "pp-behala_notun_dal-3",
+     0,
+     3.6,
+     "Behala Notun Dal"
+    ]
+   ],
+   "end": [
+    "Behala Club or Suruchi?",
+    "One name in the comments"
+   ],
+   "music": [
+    "f22",
+    120
+   ],
+   "caption": {
+    "en": "First stop this pujo, Behala Club or Suruchi Sangha? Kolkata Durga Puja 2026 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Haridevpur Ajeya Sanghati, Behala Notun Dal. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
+    "keywords": [
+     "behala & new alipore durga puja",
+     "haridevpur ajeya sanghati",
+     "kolkata pandals",
+     "durga puja 2026 kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
    "id": "r6",
    "type": "reel",
    "at": "22:00",
-   "hook": "Which one are you seeing first?",
+   "hook": "An hour's queue: Deshapriya Park or Mudiali?",
    "bn": {
-    "hook": "কোনটা সবার আগে দেখবেন?",
+    "hook": "এক ঘণ্টার লাইন: দেশপ্রিয় পার্ক না মুদিয়ালি?",
     "segs": [
      "",
      "মুদিয়ালি ক্লাব",
      "ত্রিধারা সম্মিলনী",
      "চেতলা অগ্রণী ক্লাব"
     ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
+    "end": "কমেন্টে একটা নাম লিখুন"
    },
    "segments": [
     [
@@ -1137,15 +1137,15 @@
     ]
    ],
    "end": [
-    "Lake Market & Kalighat: four pujas, past yea",
-    "Which one's your favourite? Tell us"
+    "Deshapriya Park or Mudiali?",
+    "One name in the comments"
    ],
    "music": [
     "f20",
     140
    ],
    "caption": {
-    "en": "Deshapriya Park or Mudiali Club? Lake Market & Kalighat Durga Puja pandals to see first, Kolkata 🪔\n\nDeshapriya Park, Mudiali Club, Tridhara Sammilani and Chetla Agrani Club. These photos are from past years; every pandal's quiet hours and nearest Metro are free in our guide.\n\nWhich one would you go to first? Tell us in the comments 👇",
+    "en": "Kolkata Durga Puja: would you queue an hour for Deshapriya Park or Mudiali Club? 🪔\n\nTwo of the pujas in this reel, from past years. Also in it: Tridhara Sammilani, Chetla Agrani Club. Every pandal's quiet hours and nearest Metro are free in our guide.\n\nPick one in the comments 👇",
     "keywords": [
      "lake market & kalighat durga puja",
      "deshapriya park",
