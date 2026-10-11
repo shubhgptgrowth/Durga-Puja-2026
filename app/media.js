@@ -11,15 +11,52 @@ export function fitWithin(w, h, max) {
   return [Math.max(1, Math.round(w * s)), Math.max(1, Math.round(h * s))];
 }
 
-async function decode(file) {
+const HEIC_NAME = /\.(heic|heif)$/i, VIDEO_NAME = /\.(mp4|m4v|mov|webm|3gp|3gpp|mkv)$/i;
+const err = (code) => Object.assign(new Error(code), { code });
+
+/** HEIC/HEIF, by type, name or the file's own header ("ftyp" + heic/heix/mif1/msf1...). Phone pickers often send no type. */
+async function isHeic(file) {
+  if (/image\/hei[cf]/i.test(file.type) || HEIC_NAME.test(file.name || '')) return true;
+  if (file.type && !/octet-stream/.test(file.type)) return false;
+  try {
+    const b = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+    const tag = String.fromCharCode(...b.slice(4, 12));
+    return tag.startsWith('ftyp') && /^(heic|heix|hevc|hevx|heim|heis|mif1|msf1|avif)/.test(tag.slice(4));
+  } catch { return false; }
+}
+
+let heicLib = null;
+/** The HEIC decoder (app/vendor/heic2any.min.js, about 1.3 MB) loads only the first time it is needed. */
+function loadHeic() {
+  return (heicLib ||= new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = new URL('vendor/heic2any.min.js', document.baseURI).href;
+    s.onload = () => (window.heic2any ? res(window.heic2any) : rej(err('heic')));
+    s.onerror = () => { heicLib = null; s.remove(); rej(err('heic')); };
+    document.head.append(s);
+  }));
+}
+
+async function decodeNative(file) {
   if ('createImageBitmap' in window) {
-    try { return await createImageBitmap(file, { imageOrientation: 'from-image' }); } catch { /* fall through */ }
+    try { return await createImageBitmap(file, { imageOrientation: 'from-image' }); } catch { /* try the next way */ }
+    // Very large camera photos can run out of memory at full size: decode straight to a smaller size instead.
+    try { return await createImageBitmap(file, { imageOrientation: 'from-image', resizeWidth: FULL_PX * 2, resizeQuality: 'high' }); } catch { /* next */ }
   }
   const url = URL.createObjectURL(file);
   try {
     const img = new Image(); img.decoding = 'async'; img.src = url; await img.decode();
     return img;
   } finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
+}
+
+async function decode(file) {
+  try { return await decodeNative(file); } catch { /* Safari opens HEIC itself; Chrome and most Android browsers do not */ }
+  if (!(await isHeic(file))) throw err('unsupported');
+  const heic2any = await loadHeic();
+  let jpg;
+  try { jpg = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 }); } catch { throw err('unsupported'); }
+  return decodeNative(Array.isArray(jpg) ? jpg[0] : jpg);
 }
 
 function toJpeg(src, sw, sh, max, quality) {
@@ -49,9 +86,10 @@ export async function prepareVideo(file, { maxSec = 30, maxMB = 20 } = {}) {
     v.currentTime = Math.min(0.5, (v.duration || 1) / 2);
     await new Promise((res) => { v.onseeked = res; setTimeout(res, 3000); });
     const thumb = await toJpeg(v, v.videoWidth || 640, v.videoHeight || 360, THUMB_PX, 0.72);
-    const ext = (file.type.split('/')[1] || 'mp4').replace('quicktime', 'mov');
+    const ext = ((file.type.split('/')[1] || (file.name || '').split('.').pop() || 'mp4').toLowerCase()).replace('quicktime', 'mov');
     return { mediaType: 'video', full: file, thumb, ext, duration: v.duration, previewUrl: URL.createObjectURL(thumb) };
   } finally { URL.revokeObjectURL(url); }
 }
 
-export const prepareMedia = (file, opts) => (file.type.startsWith('video/') ? prepareVideo(file, opts) : prepareImage(file));
+const isVideo = (f) => f.type.startsWith('video/') || (!f.type.startsWith('image/') && VIDEO_NAME.test(f.name || ''));
+export const prepareMedia = (file, opts) => (isVideo(file) ? prepareVideo(file, opts) : prepareImage(file));
