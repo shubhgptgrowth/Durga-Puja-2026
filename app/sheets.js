@@ -1,5 +1,5 @@
 /* Detail sheets: pandal, eatery, parking, moment viewer, and the upload flow. */
-import { hav, fmtCount, isOpen, hoursOf, nearest, timeAgo } from './core.js';
+import { hav, fmtCount, isOpen, hoursOf, nearest, timeAgo, vibeOf } from './core.js';
 import {
   S, G, idx, t, store, community, ll, M, nm, zn, dn, zoneOf, placeOf, placeKind, esc, km, dist, ampm,
   crowdIndex, crowdWord, crowdColor, crowdLevel, dayFactor, btn, icon, savePrefs,
@@ -211,6 +211,23 @@ export function awardPill(p) {
   return `<span class="pill award" title="${esc(`${a?.name || ''} ${w.year}, ${w.category}`)}">🏆 ${esc(a?.short || '')} ${w.year}</span>`;
 }
 
+/* The pandal's vibe in one pill: "💥 Blockbuster", "🏛️ Heritage", "🎭 Theme puja"… */
+export function vibePill(p) {
+  const v = vibeOf(p);
+  return v ? `<span class="pill vibe">${t('vibe.' + v)}</span>` : '';
+}
+
+/* Hop next: the three closest pandals on foot, so every pandal leads to the next one. */
+function hopNextHtml(p) {
+  const speed = (M().walk_kmh_crowd * 1000) / 60;
+  const near = nearest(ll(p), G.data.pandals.filter((q) => q.id !== p.id), { maxM: 2500, limit: 3 });
+  if (!near.length) return '';
+  return `<h3 class="sh">${t('p.hopNext')}</h3><p class="fine" style="margin:-4px 0 8px">${t('p.hopNextSub')}</p>
+    <ul class="mini-list">${near.map(({ place: q, distance }) => { const v = vibeOf(q);
+      return `<li data-hop="${q.id}" ${btn()}><span><b>${esc(nm(q))}</b><br><small>${q.theme_2026 ? '🎭 ' + esc(themeTitle(q.theme_2026)) : v ? t('vibe.' + v) : esc(zn(zoneOf(q.zone)))}</small></span>
+        <small>${t('p.walkMin', { n: Math.max(1, Math.round((distance * M().detour) / speed)) })}</small></li>`; }).join('')}</ul>`;
+}
+
 /* Help nearby (OpenStreetMap): the nearest public toilet, hospital and police station, each a tap away from directions. */
 const HELP = [['toilets', '🚻'], ['hospitals', '🏥'], ['police', '👮']];
 function helpHtml(p) {
@@ -248,24 +265,27 @@ export function pandalSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
-    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${awardPill(p)}${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
+    <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span>${vibePill(p)}${awardPill(p)}${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
     ${themeHtml(p.theme_2026)}
     ${galleryHtml(p.photos)}
     ${dayToggleHtml()}
     ${statsHtml(id)}
     <p class="lead">${esc(p.highlight)}</p>
+    <p class="small muted" style="margin:4px 0 0">${t('p.inside', { n: p.visit_min })}</p>
 
-    <h3 class="sh">${t('p.when', { day: dn(idx.day[S.day]) })}</h3>
-    <div class="hours" role="img" aria-label="${t('p.crowdChart')}">${hours.map((c, h) => `<i class="${h === S.hour ? 'now' : ''}" style="height:${Math.max(c, 4)}%;background:${crowdColor(c)}" title="${ampm(h)}: ${crowdWord(c)}"></i>`).join('')}</div>
-    <div class="hours-axis" aria-hidden="true"><span>12a</span><span>6a</span><span>12p</span><span>6p</span><span>11p</span></div>
-    <p class="small muted" style="margin:6px 0 0">${t('p.quietest')}: <b>${p.quiet_hours[S.day].map(ampm).join(', ')}</b> · ${t('p.inside', { n: p.visit_min })}</p>
+    ${hopNextHtml(p)}
 
     ${gettingThereHtml(p, parks)}
     ${z.car_advisory !== 'ok' ? `<p class="fine" style="margin-top:6px">${esc(z.walk_tip)}</p>` : ''}
-    ${helpHtml(p)}
 
     <h3 class="sh">${t('p.eat')}</h3>
     <ul class="mini-list">${foods.map((f) => `<li data-food="${f.id}" ${btn()}><span><b>${esc(f.name)}</b>${sponsoredTag(f.id)}<br><small>${esc(f.dishes.slice(0, 2).join(' · '))}</small></span><small>${t('p.walkMin', { n: f.walk_min })}</small></li>`).join('') || `<li>${t('p.noeat')}</li>`}</ul>
+    ${helpHtml(p)}
+
+    <details class="crowd-more"><summary>${icon('clock', 'sm')} ${t('p.crowdMore', { day: dn(idx.day[S.day]) })}</summary>
+      <div class="hours" role="img" aria-label="${t('p.crowdChart')}">${hours.map((c, h) => `<i class="${h === S.hour ? 'now' : ''}" style="height:${Math.max(c, 4)}%;background:${crowdColor(c)}" title="${ampm(h)}: ${crowdWord(c)}"></i>`).join('')}</div>
+      <div class="hours-axis" aria-hidden="true"><span>12a</span><span>6a</span><span>12p</span><span>6p</span><span>11p</span></div>
+      <p class="small muted" style="margin:6px 0 0">${t('p.quietest')}: <b>${p.quiet_hours[S.day].map(ampm).join(', ')}</b></p></details>
 
     ${community.enabled ? `<h3 class="sh" style="display:flex;justify-content:space-between;align-items:center">${t('m.here')}<button class="link-btn" id="addMomentBtn">${icon('camera', 'sm')} ${t('m.add')}</button></h3><div data-moments><p class="fine">${t('m.loading')}</p></div>` : ''}
     <p class="fine" style="margin-top:16px">${t('p.disclaimer')}</p>
@@ -275,6 +295,7 @@ export function pandalSheet(id) {
     wireGallery(el, p.photos || [], () => pandalSheet(id)); wireShareCta(el, id);
     el.querySelectorAll('[data-food]').forEach((li) => (li.onclick = () => foodSheet(li.dataset.food)));
     el.querySelectorAll('[data-park]').forEach((li) => (li.onclick = () => parkSheet(li.dataset.park)));
+    el.querySelectorAll('[data-hop]').forEach((li) => (li.onclick = () => { track('hop_next', { from: id, to: li.dataset.hop }); pandalSheet(li.dataset.hop); }));
     const add = $('#addMomentBtn', el); if (add) add.onclick = () => uploadSheet({ placeId: id });
     placeMoments(el, id);
   });

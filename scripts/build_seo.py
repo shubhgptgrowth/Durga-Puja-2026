@@ -34,7 +34,7 @@ from seo.common import (CAR, FOOD_TYPE, LINE, MAIN_DAYS, NAME, TAGS, ampm, clock
 from seo.awards import AwardsMixin
 from seo.extras import ExtrasMixin
 from seo.knowledge import SECTIONS, KnowledgeMixin
-from seo.metro import MetroMixin
+from seo.metro import MetroMixin, walk
 from seo.panjika import PanjikaMixin
 from seo.parikrama import ParikramaMixin
 from seo.quiz import QuizMixin
@@ -100,7 +100,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
             {"@type": "ListItem", "position": i + 1, "name": n, "item": self.url(p)} for i, (n, p) in enumerate((("Pujo Parikrama", ""),) + tuple(crumbs))]}
         nav = " › ".join(f'<a href="{up}{p}">{esc(n)}</a>' for n, p in (("Home", ""),) + tuple(crumbs[:-1])) + (f" › <span>{esc(crumbs[-1][0])}</span>" if crumbs else "")
         src = src_code(path)   # ?src= tells the reach report which kind of page brought someone into the app
-        cta_text = "Going pandal hopping? See when each pandal is quiet →" if app_link == "" else f"Open in the {NAME} app →"
+        cta_text = "Going pandal hopping? Plan your route in the app →" if app_link == "" else f"Open in the {NAME} app →"
         cta = f'<a class="cta" href="{up}?src={src}{app_link}">{cta_text}</a>' if app_link is not None else ""
         doc = f"""<!doctype html>
 <html lang="en">
@@ -189,13 +189,13 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         quiet = p["quiet_hours"]
         known = ", ".join(TAGS.get(t, t) for t in p["tags"])
         est = f", established in {p['est_year']}" if p.get("est_year") else ""
-        quiet_ash = hrange(quiet["ashtami"])
+        hops = self.hop_next(p)
         lead = (f"<b>{esc(p['name'])}</b> ({esc(p.get('name_bn', ''))}) is a Durga Puja pandal in {esc(z['name'])}, Kolkata{est}. "
                 f"{esc(p['highlight'])} In {self.year} the puja runs from Panchami, {nice_date(self.start)}, to Dashami, {nice_date(self.end)}. "
-                f"Our crowd model suggests visiting {esc(p['best_slot_label'])}; on Ashtami, the busiest day, the quietest window is {quiet_ash}. "
                 + (f"There is no metro within walking distance: the nearest station, {esc(m['name'])}, is {km(m['distance_m'])} away, so take an auto, bus or cab. " if far else
                    f"The nearest metro station is {esc(m['name'])} on the {LINE.get(m['line'], m['line'] + ' line')}, about {m['walk_min']} minutes' walk ({km(m['distance_m'])}). ")
-                + f"Plan about {p['visit_min']} minutes inside."
+                + f"Plan about {p['visit_min']} minutes inside"
+                + (f", then walk on to {esc(hops[0][2]['name'])}, about {hops[0][1]} minutes away." if hops else ".")
                 + (f" It won the {esc(self.award_text(p['awards'][0]))}." if p.get("awards") else ""))
         th = p.get("theme_2026")
         theme_html = ""
@@ -235,6 +235,9 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
                                        + (" (emergency department)" if hp[k].get("emergency") else "") + "</li>"
                                        for k, lab in (("toilets", "Public toilet"), ("hospitals", "Hospital"), ("police", "Police station")) if k in hp)
                      + "</ul><p><small>From OpenStreetMap, the nearest of each; opening hours aren't checked, so for an emergency call 112.</small></p>") if hp else ""
+        hop_html = ("<h2>Hop next</h2><p>The closest pandals on foot from here:</p><ul>" + "".join(
+            f"<li>{self.link_pandal(q['id'], up)}: {w} min walk ({km(m)})" + (f" · theme: {esc(q['theme_2026']['title'])}" if q.get("theme_2026") else "") + "</li>"
+            for m, w, q in hops) + "</ul>") if hops else ""
         gallery, imgs = self.photos(p.get("photos"), f"{p['name']} Durga Puja")
         qa = [
             (f"What is the best time to visit {p['name']}?", f"{esc(p['best_slot_label'])} is the best slot. On Saptami, Ashtami and Navami the quietest window is {hrange(quiet['saptami'])}; evenings from 6 pm to midnight are the busiest."),
@@ -249,19 +252,20 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         body = f"""<article>
 <h1>{esc(p['name'])} Durga Puja {self.year}: theme, best time, how to reach</h1>
 <p class="lead">{lead}</p>
-<p><a class="cta" href="{up}?src={src_code('guide/pandals/')}#p={p['id']}">Open in the app: crowd by the hour, directions, check in →</a></p>
+<p><a class="cta" href="{up}?src={src_code('guide/pandals/')}#p={p['id']}">Open in the app: walking route, directions, check in →</a></p>
 {theme_html}
 {gallery}
 <h2>Key facts</h2>
 {facts}
-<h2>Crowds by day ({self.year})</h2>
-{days_tbl}
+{hop_html}
 <h2>Food nearby</h2>
 {food_html}
 <h2>Parking</h2>
 {park_html}
 {f'<h2>Help nearby</h2>{help_html}' if help_html else ''}
 {f'<h2>More pandals in {esc(z["name"])}</h2><p>{near_html}</p>' if near_html else ''}
+<h2>Best time to visit, by day ({self.year})</h2>
+{days_tbl}
 {faq_html}
 </article>"""
         place = {"@context": "https://schema.org", "@type": "TouristAttraction", "@id": self.url(f"guide/pandals/{p['id']}/#place"), "name": p["name"],
@@ -277,12 +281,17 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
                  "address": place["address"], "geo": place["geo"]}}
         if imgs:
             event["image"] = imgs
-        desc = (f"{p['name']} {self.year} theme: {th['title']}. " if th else "") + f"{p['name']}, {z['name']}: best time to visit ({p['best_slot_label']}), quiet hours, nearest metro ({m['name']}), food and parking for Durga Puja {self.year}."
+        desc = (f"{p['name']} {self.year} theme: {th['title']}. " if th else "") + f"{p['name']}, {z['name']}: what to see, the next pandals on foot, nearest metro ({m['name']}), best time, food and parking for Durga Puja {self.year}."
         self.page(f"guide/pandals/{p['id']}/", f"{p['name']} Durga Puja {self.year}: Theme, Best Time, Metro", desc, body,
                   ld=(place, event, faq_ld), crumbs=(("Durga Puja guide", "guide/"), (z["name"], f"guide/areas/{z['id']}/"), (p["name"], f"guide/pandals/{p['id']}/")),
                   priority=0.8 if p["popularity"] >= 4 else 0.6, summary=re.sub(r"<[^>]+>", "", lead), app_link=f"#p={p['id']}", images=imgs,
                   og_image=imgs[0] if imgs else None, og_alt=f"{p['name']} Durga Puja" if imgs else "")
         self.full.append(f"### {p['name']} ({z['name']})\n{re.sub(r'<[^>]+>', '', lead)}\nKnown for: {known}. Food nearby: {', '.join(self.food[x['id']]['name'] for x in foods) or 'none listed'}. Page: {self.url('guide/pandals/' + p['id'] + '/')}\n")
+
+    def hop_next(self, p, limit=3, max_m=2500):
+        """The closest other pandals on foot, as (metres, minutes, pandal), nearest first; the app's "Hop next" list."""
+        far = ((*walk((p["lat"], p["lng"]), (q["lat"], q["lng"])), q) for q in self.g["pandals"] if q["id"] != p["id"])
+        return sorted((x for x in far if x[0] <= max_m), key=lambda x: x[0])[:limit]
 
     # ------------------------------------------------------------------ food
     def food_page(self, f):
@@ -471,7 +480,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
 <p class="lead">{lead}</p>
 {''.join(sections) or '<p>No themes have been announced yet. Check back after Mahalaya.</p>'}
 {f'<h2>Not announced yet</h2><p>{", ".join(self.link_pandal(p["id"], up) for p in waiting)}</p>' if waiting else ''}
-<p>Each pandal page has its quiet hours, nearest metro and food nearby. <a href="{up}guide/">All {len(self.g['pandals'])} pandals</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
+<p>Each pandal page has its nearest metro, the next pandals on foot and food nearby. <a href="{up}guide/">All {len(self.g['pandals'])} pandals</a> · <a href="{up}guide/dates/">Durga Puja {self.year} dates</a></p>
 </article>"""
         items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Kolkata Durga Puja {self.year} themes", "numberOfItems": len(withs),
                  "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": f"{p['name']}: {p['theme_2026']['title']}", "url": self.url(f"guide/pandals/{p['id']}/")} for i, p in enumerate(withs)]}
@@ -486,17 +495,16 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         return f" <small>Theme {self.year}: {esc(th['title'])}</small>" if th else ""
 
     def best_pandals_page(self):
-        """The 25 best-known pandals with their theme, quietest window and metro, for 'best pandals in Kolkata <year>'."""
+        """The 25 best-known pandals with their theme, what each is known for and metro, for 'best pandals in Kolkata <year>'."""
         up = "../../"
         path = f"guide/best-pandals-{self.year}/"
         top = sorted(self.g["pandals"], key=lambda p: (-p["popularity"], -p["crowd_base"], p["name"]))[:25]
         lead = (f"The 25 best-known Durga Puja pandals in Kolkata for {self.year}, from Bagbazar and Kumartuli in the north to Sreebhumi in the "
-                f"east and Behala in the south, with each one's {self.year} theme where it has been announced, the quietest time to go on "
-                f"Saptami and the nearest metro. The puja runs from Panchami, {nice_date(self.start, True)}, to Dashami, {nice_date(self.end, True)}. "
-                f"Crowd times are estimates from our crowd model, not live counts.")
+                f"east and Behala in the south, with each one's {self.year} theme where it has been announced, what it is known for "
+                f"and the nearest metro. The puja runs from Panchami, {nice_date(self.start, True)}, to Dashami, {nice_date(self.end, True)}.")
         rows = "".join(
             f"<li>{self.link_pandal(p['id'], up)} <small>({esc(self.zone[p['zone']]['name'])})</small>: {esc(p['highlight'])}{self.theme_note(p)}"
-            f"<br><small>Quietest on Saptami: {hrange(p['quiet_hours']['saptami'])} · Metro: {esc(p['nearest_metro']['name'])}, {p['nearest_metro']['walk_min']} min walk</small></li>"
+            f"<br><small>Known for: {esc(', '.join(TAGS.get(t, t) for t in p['tags']))} · Metro: {esc(p['nearest_metro']['name'])}, {p['nearest_metro']['walk_min']} min walk</small></li>"
             for p in top)
         body = f"""<article>
 <h1>Best Durga Puja pandals in Kolkata {self.year}: the top 25</h1>
@@ -507,7 +515,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         items = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Best Durga Puja pandals in Kolkata {self.year}", "numberOfItems": len(top),
                  "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, p in enumerate(top)]}
         self.page(path, f"Best Durga Puja Pandals in Kolkata {self.year}: Top 25",
-                  f"The 25 best-known Kolkata Durga Puja pandals for {self.year}, with themes, the quietest time to visit and the nearest metro.",
+                  f"The 25 best-known Kolkata Durga Puja pandals for {self.year}, with themes, what each is known for and the nearest metro.",
                   body, ld=(items,), crumbs=(("Durga Puja guide", "guide/"), (f"Best pandals {self.year}", path)), priority=0.95,
                   summary=re.sub(r"<[^>]+>", "", lead), app_link="")
 
@@ -523,10 +531,10 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         top = sorted(ps, key=lambda p: (-p["popularity"], p["name"]))
         lead = (f"{len(ps)} Durga Puja pandals in {name} for {self.year}, in {len(zones)} {'area' if len(zones) == 1 else 'areas'}: "
                 f"{esc(', '.join(z['name'] for z in zones))}. The best known are {esc(', '.join(p['name'] for p in top[:5]))}. "
-                f"Each area below is a walkable cluster; the pandal pages give the quietest hours and the nearest metro.")
+                f"Each area below is a walkable cluster; the pandal pages give the nearest metro and the next pandals on foot.")
         sections = "".join(
             f"<h2><a href='{up}guide/areas/{z['id']}/'>{esc(z['name'])}</a></h2>{('<p>' + esc(z['vibe']) + '</p>') if z.get('vibe') else ''}<ul>"
-            + "".join(f"<li>{self.link_pandal(p['id'], up)}: best {esc(p['best_slot_label'])} · metro {esc(p['nearest_metro']['name'])}{self.theme_note(p)}</li>"
+            + "".join(f"<li>{self.link_pandal(p['id'], up)}: metro {esc(p['nearest_metro']['name'])}{self.theme_note(p)}</li>"
                       for p in sorted((self.pandal[i] for i in z["pandal_ids"] if i in self.pandal), key=lambda p: (-p["popularity"], p["name"])))
             + "</ul>" for z in zones)
         trails = [t for t in self.g["itineraries"] if any(seg.get("zone") in r["zone_ids"] for seg in t["segments"])]

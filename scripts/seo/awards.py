@@ -63,7 +63,7 @@ class AwardsMixin:
         stops = list(dict.fromkeys(p["id"] for p, _ in (this or last)))
         if stops:
             route = (f"<h2>Visit the winners</h2><p>The winners are spread across the city, so pick two or three in one area. "
-                     f"<a href='{up}?src=seo_guide#plan'>Plan a route in the app</a>, or see each pandal's quietest hours: "
+                     f"<a href='{up}?src=seo_guide#plan'>Plan a route in the app</a>, or open each pandal: "
                      + ", ".join(self.link_pandal(x, up) for x in stops) + ".</p>")
         qa = [(f"Which pandals won the Sharad Samman in {self.year}?",
                (", ".join(f"{p['name']} ({self.award_info(w['award'])['short']}, {w['category']})" for p, w in this) + ".") if this

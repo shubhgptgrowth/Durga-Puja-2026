@@ -1043,3 +1043,18 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .sa-rows li { background: var(--surface); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; font-size: 13.5px; }
 .sa-rows .sa-t { font-weight: 650; color: var(--brand); }
 .sa-rows small { color: var(--ink-3); }
+
+/* Pujo VIP pass card (Home), vibe pills and the folded crowd chart (pandal sheet) */
+.pass-card .pc-box { background: var(--brand-soft); border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent); border-radius: var(--radius); padding: 14px 16px; }
+.pass-card h2 { font-size: 17px; margin: 0 0 4px; }
+.pass-card .sub { margin: 0 0 10px; }
+.pc-rows { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.pc-rows li { background: var(--surface); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; font-size: 13.5px; }
+.pc-rows .pc-t { font-weight: 650; color: var(--brand); }
+.pc-rows small, .pass-card .fine { color: var(--ink-3); }
+.pc-pick { font-size: 13.5px; margin: 0 0 6px; }
+.pass-card .fine { margin: 6px 0 0; }
+.pill.vibe { color: var(--brand); background: var(--brand-soft); }
+details.crowd-more { margin-top: 18px; }
+details.crowd-more > summary { cursor: pointer; font-weight: 650; font-size: 14px; color: var(--ink-2); list-style-position: inside; }
+details.crowd-more[open] > summary { margin-bottom: 8px; }

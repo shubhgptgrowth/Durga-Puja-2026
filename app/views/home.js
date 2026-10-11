@@ -12,6 +12,7 @@ import { liveHtml } from '../livecount.js';
 import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
 import { loadReels, reelsStripHtml, reelsClick, showAllReels } from '../reels.js';
+import { passCardHtml } from '../passes.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -39,7 +40,7 @@ let slide = 0, slideTimer = null;
 
 const span = () => { const o = { day: 'numeric' }, a = new Date(idx.day.shashthi.date + 'T00:00:00'), b = new Date(idx.day.dashami.date + 'T00:00:00');
   return `${a.toLocaleDateString(loc(), o)}–${b.toLocaleDateString(loc(), { day: 'numeric', month: 'short' })}`; };
-/* The banner: greeting, the puja dates, and the one crowd tip that matters. */
+/* The banner: greeting, the puja dates, and the promise with its "Plan my pujo" button. */
 function heroHtml() {
   const SLIDES = slides();
   const today = G.data.meta.days.find((d) => d.date === todayKey());
@@ -110,7 +111,7 @@ const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
 
 /* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
- * pandal and when it's quiet, and the facts behind the promise in one line. */
+ * pandal, and the facts behind the promise in one line. */
 function promiseHtml() {
   return `<div class="search" role="search">
       ${icon('search')}
@@ -157,6 +158,7 @@ function render() {
     ${promiseHtml()}
     ${liveHtml()}
     ${ashtamiHtml()}
+    ${passCardHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
