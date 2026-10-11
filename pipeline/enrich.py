@@ -142,13 +142,35 @@ def load_addresses(path=ADDRESSES):
     return json.loads(path.read_text(encoding="utf-8")).get("places", {})
 
 
-def attach_address(rec, addresses):
-    """Give a place its address, but only if it was found for this pin: a moved pin waits for the next lookup."""
+SEEDS = config.ROOT / "data" / "seeds" / "pandal_seeds.csv"
+
+
+def load_localities(path=SEEDS):
+    """The locality each hand-added pandal was searched under ("Salkia, Howrah" -> "Salkia"), by pandal id."""
+    if not path.exists():
+        return {}
+    import csv
+    out = {}
+    for r in csv.DictReader(open(path, encoding="utf-8")):
+        loc = (r.get("locality") or "").split("|")[0].split(",")[0].strip()
+        if loc:
+            out[r["id"]] = loc
+    return out
+
+
+def attach_address(rec, addresses, localities=None):
+    """Give a place its address, but only if it was found for this pin: a moved pin waits for the next lookup.
+    An approximate pin's address is only its area, so it leads with the locality the pandal is known by."""
     a = addresses.get(rec["id"])
-    if a and haversine_m((a["lat"], a["lng"]), (rec["lat"], rec["lng"])) < 30:
-        rec["address"] = a["address"]
-        if a.get("approx"):
-            rec["address_approx"] = True
+    if not a or haversine_m((a["lat"], a["lng"]), (rec["lat"], rec["lng"])) >= 30:
+        return
+    addr = re.sub(r"\b[A-Z]{4,}\b", lambda m: m.group(0).title(), a["address"])
+    loc = (localities or {}).get(rec["id"])
+    if a.get("approx") and loc and loc.lower() not in addr.lower():
+        addr = f"{loc}, {addr}"
+    rec["address"] = addr
+    if a.get("approx"):
+        rec["address_approx"] = True
 
 
 def enrich(data):
@@ -159,7 +181,7 @@ def enrich(data):
     themes = load_themes()
     winners, awards = load_awards(pandal_ids={p["id"] for p in data["pandals"]})
     help_places = load_help()
-    addresses = load_addresses()
+    addresses, localities = load_addresses(), load_localities()
     for r in food + parking:
         attach_address(r, addresses)
 
@@ -190,7 +212,7 @@ def enrich(data):
             e["awards"] = winners[p["id"]]
         if help_places:
             e["help"] = help_near(pt, help_places)
-        attach_address(e, addresses)
+        attach_address(e, addresses, localities)
         pandals.append(e)
 
     for zid, z in zones.items():
