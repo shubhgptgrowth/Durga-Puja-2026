@@ -63,6 +63,23 @@ def src_code(path):
     return next((code for prefix, code in SRC_BY_PREFIX if path.startswith(prefix)), "seo_page")
 
 
+
+def postal(x):
+    """schema.org PostalAddress from the place's looked-up address (street only when the pin is exact)."""
+    a = x.get("address", "")
+    pc = re.search(r"\b7\d{5}\b", a)
+    out = {"@type": "PostalAddress", "addressLocality": "Howrah" if "Howrah" in a else "Kolkata", "addressRegion": "West Bengal", "addressCountry": "IN"}
+    if a and not x.get("address_approx"):
+        out["streetAddress"] = re.sub(r",?\s*(Kolkata|Howrah)?\s*7\d{5}$", "", a).strip(", ")
+    if pc:
+        out["postalCode"] = pc.group(0)
+    return out
+
+
+def address_row(x):
+    a = x.get("address")
+    return ("Address", esc(a) + (" (area only; the exact address is not confirmed)" if x.get("address_approx") else "")) if a else None
+
 class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, ParikramaMixin, AwardsMixin, PanjikaMixin):
     def __init__(self, g, base, out, verify="", strict=True, adsense=""):
         self.g, self.base, self.out, self.strict, self.adsense = g, base.rstrip("/") + "/", Path(out), strict, adsense.strip()
@@ -210,6 +227,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         same = [q for q in z["pandal_ids"] if q != p["id"] and q in self.pandal][:8]
         rows = [(f"Theme {self.year}", f"{esc(th['title'])}" + (f" ({esc(th['title_bn'])})" if th.get("title_bn") else "") if th
                  else f"Not announced yet. See <a href='{up}guide/themes-{self.year}/'>all {self.year} themes</a>"),
+                address_row(p),
                 ("Area", f'<a href="{up}guide/areas/{z["id"]}/">{esc(z["name"])}</a> ({esc(self.region[z["region"]]["name"])} Kolkata)'),
                 ("Known for", esc(known)),
                 ("Established", esc(p["est_year"])) if p.get("est_year") else None,
@@ -267,7 +285,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         place = {"@context": "https://schema.org", "@type": "TouristAttraction", "@id": self.url(f"guide/pandals/{p['id']}/#place"), "name": p["name"],
                  "alternateName": p.get("name_bn"), "description": p["highlight"], "url": self.url(f"guide/pandals/{p['id']}/"),
                  "geo": {"@type": "GeoCoordinates", "latitude": p["lat"], "longitude": p["lng"]},
-                 "address": {"@type": "PostalAddress", "addressLocality": "Kolkata", "addressRegion": "West Bengal", "addressCountry": "IN"},
+                 "address": postal(p),
                  "containedInPlace": {"@type": "Place", "name": f"{z['name']}, Kolkata"}, "isAccessibleForFree": True, "touristType": "Durga Puja pandal hopping"}
         if imgs:
             place["image"] = imgs
@@ -299,7 +317,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
                 + (f" and is open {clock(h.group(1))} to {clock(h.group(2))}" if h else "") + ". "
                 + (f"{esc(f['note'])} " if f.get("note") else "")
                 + (f"It is within walking distance of {', '.join(esc(self.pandal[q]['name']) for q in near[:3])}." if near else ""))
-        rows = [("Area", f'<a href="{up}guide/areas/{z["id"]}/">{esc(z["name"])}</a>'), ("Type", esc(FOOD_TYPE.get(f["type"], f["type"]))),
+        rows = [address_row(f) or (None, None), ("Area", f'<a href="{up}guide/areas/{z["id"]}/">{esc(z["name"])}</a>'), ("Type", esc(FOOD_TYPE.get(f["type"], f["type"]))),
                 ("Must try", esc(", ".join(f["dishes"]))), ("Cost for two", rupees(c2) + ("" if f.get("cost2") else " (estimate)")),
                 ("Food", diet), ("Hours", f"{clock(h.group(1))} – {clock(h.group(2))} (puja timings can differ)" if h else None),
                 ("Nearest metro", f"{esc(m['name'])} · {km(m['distance_m'])}, {m['walk_min']} min walk") if m else None]
@@ -327,7 +345,7 @@ class Site(KnowledgeMixin, StoriesMixin, ExtrasMixin, MetroMixin, QuizMixin, Par
         rest = {"@context": "https://schema.org", "@type": "Restaurant" if f["type"] in ("restaurant", "cabin") else "FoodEstablishment", "name": f["name"],
                 "url": self.url(f"guide/food/{f['id']}/"), "servesCuisine": ["Bengali", "Indian"], "priceRange": "₹" * min(max(f.get("price") or 2, 1), 3),
                 "geo": {"@type": "GeoCoordinates", "latitude": f["lat"], "longitude": f["lng"]},
-                "address": {"@type": "PostalAddress", "addressLocality": "Kolkata", "addressRegion": "West Bengal", "addressCountry": "IN"},
+                "address": postal(f),
                 "description": f"{FOOD_TYPE.get(f['type'], 'Eatery')} in {z['name']}, known for {', '.join(f['dishes'])}."}
         if h:
             rest["openingHours"] = f"Mo-Su {h.group(1)}-{h.group(2)}"

@@ -11,6 +11,7 @@ THEMES = config.RAW_DIR / "themes_2026.csv"
 AWARDS = config.RAW_DIR / "awards_2026.toml"
 PANJIKA = config.RAW_DIR / "panjika_2026.toml"
 HELP = config.ROOT / "data" / "discovered" / "help.json"
+ADDRESSES = config.ROOT / "data" / "discovered" / "addresses.json"
 # How far to look for each kind of help (a hospital is worth a short ride; a toilet has to be close).
 HELP_MAX_M = {"toilets": 1000, "hospitals": 3000, "police": 1500}
 
@@ -134,6 +135,22 @@ def checkin_radius(r):
     return config.CHECKIN_RADIUS_UNVERIFIED_M
 
 
+def load_addresses(path=ADDRESSES):
+    """Street addresses by place id (pipeline.discover addresses), each tied to the pin it was looked up for."""
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8")).get("places", {})
+
+
+def attach_address(rec, addresses):
+    """Give a place its address, but only if it was found for this pin: a moved pin waits for the next lookup."""
+    a = addresses.get(rec["id"])
+    if a and haversine_m((a["lat"], a["lng"]), (rec["lat"], rec["lng"])) < 30:
+        rec["address"] = a["address"]
+        if a.get("approx"):
+            rec["address_approx"] = True
+
+
 def enrich(data):
     used = {p["zone"] for p in data["pandals"]}
     zones = {z["id"]: dict(z) for z in data["zones"] if z["id"] in used}
@@ -142,6 +159,9 @@ def enrich(data):
     themes = load_themes()
     winners, awards = load_awards(pandal_ids={p["id"] for p in data["pandals"]})
     help_places = load_help()
+    addresses = load_addresses()
+    for r in food + parking:
+        attach_address(r, addresses)
 
     for p in data["pandals"]:
         pt = (p["lat"], p["lng"])
@@ -170,6 +190,7 @@ def enrich(data):
             e["awards"] = winners[p["id"]]
         if help_places:
             e["help"] = help_near(pt, help_places)
+        attach_address(e, addresses)
         pandals.append(e)
 
     for zid, z in zones.items():

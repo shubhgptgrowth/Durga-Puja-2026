@@ -237,6 +237,10 @@ function themeHtml(th) {
 }
 
 /* ---------------- pandal ---------------- */
+/** The place's street address (from its map pin), with a note when the pin is only locality-level. */
+const addrHtml = (x) => x.address
+  ? `<p class="addr">${icon('pin', 'sm')}<span>${esc(x.address)}${x.address_approx ? ` <small>· ${t('p.addrApprox')}</small>` : ''}</span></p>` : '';
+
 export function pandalSheet(id) {
   placeOpened(id, 'pandal');
   const p = idx.pandal[id], z = zoneOf(p.zone), df = dayFactor();
@@ -248,6 +252,7 @@ export function pandalSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))}${away}</div>
     ${titleRow(id, nm(p), `<div class="fine">${S.prefs.lang === 'bn' ? esc(p.name) : esc(p.name_bn || '')}</div>`)}
+    ${addrHtml(p)}
     <div class="btn-row" style="margin-top:8px">${crowdPill(now)}<span class="pill">${icon('star', 'sm fill')} ${p.popularity}/5</span><span class="pill">${icon('clock', 'sm')} ${t('slot.' + p.best_slot)}</span>${awardPill(p)}${p.geo_source === 'osm-approx' ? `<span class="pill">${icon('pin', 'sm')} ${t('p.approx')}</span>` : ''}</div>
     ${themeHtml(p.theme_2026)}
     ${galleryHtml(p.photos)}
@@ -288,6 +293,7 @@ export function foodSheet(id) {
   openSheet(`
     <div class="eyebrow"><span class="dot" style="background:${z.color}"></span>${esc(zn(z))} · ${t('type.' + f.type)}${away}</div>
     ${titleRow(id, f.name)}
+    ${addrHtml(f)}
     <div class="food-facts">${openHtml(f, { long: true })}${costHtml(f)}${f.veg === 'veg' ? `<span class="diet-l">${dietMarks({ ...f, dishes: [] })} ${t('diet.veg')}</span>` : ''}${hasEgg(f) ? `<span class="diet-l"><span class="egg-mark" aria-hidden="true">🥚</span> ${t('diet.egg')}</span>` : ''}</div>
     ${galleryHtml(f.photos)}
     ${offersHtml(id)}
@@ -347,6 +353,7 @@ export function parkSheet(id) {
   const pandals = nearest(ll(p), G.data.pandals, { maxM: 2000, limit: 5 });
   openSheet(`<div class="eyebrow">${icon('car', 'sm')} ${t('kind.' + p.kind)}</div>
     <h2 class="title">${esc(p.name)}</h2>
+    ${addrHtml(p)}
     <p class="lead">${esc(p.note)}</p>
     <div class="park-facts"><span class="park-cost big"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span><span class="pill">${t('cap.' + p.capacity)}</span></div>
     <div class="btn-row" style="margin-top:12px"><a class="btn primary" target="_blank" rel="noopener" href="${dirUrl(ll(p), 'driving')}">${icon('car')} ${t('park.drive')}</a></div>
