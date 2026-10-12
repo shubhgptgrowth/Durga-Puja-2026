@@ -417,7 +417,7 @@
    "zone": "howrah",
    "hook": "8 pandals. 27 km. One night.",
    "caption": {
-    "en": "Howrah: Shibpur, Salkia & Liluah pandal hopping route for Durga Puja 2026 in Kolkata: 8 pandals, 27 km, one night 🚶\n\nGet off at Liluah (Suburban) Metro and follow the numbers. This is the walking order through 8 pandals in Howrah: Shibpur, Salkia & Liluah, from Liluah Social Institution of Youth and Bally Deshbandhu Club to IHE Housing Complex Puja (Botanical Garden): about 27 km and 39,125 steps.\n\nEvery pandal's quiet hours and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Howrah: Shibpur, Salkia & Liluah pandal hopping route for Durga Puja 2026 in Kolkata: 8 pandals, 27 km, one night 🚶\n\nGet off at Liluah (Suburban) Metro and follow the numbers. This is the walking order through 8 pandals in Howrah: Shibpur, Salkia & Liluah, from Liluah Social Institution of Youth and Bally Deshbandhu Club to IHE Housing Complex Puja (Botanical Garden): about 27 km and 39,125 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
      "howrah durga puja",
      "pandal hopping route kolkata",
@@ -468,12 +468,12 @@
      "bn": "যাওয়ার আগে",
      "items": [
       [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ],
-      [
        "Metro: Kalighat, 26 min walk",
        "নিকটতম মেট্রো"
+      ],
+      [
+       "Hop next: Ballygunge Cultural Association, 2 min",
+       "পরের প্যান্ডেল"
       ],
       [
        "Since 1945",
@@ -482,6 +482,10 @@
       [
        "Eat nearby: Tak Heng, Oudh 1590",
        "কাছেই খাওয়া"
+      ],
+      [
+       "Least crowded: 12 to 5 pm",
+       "সবচেয়ে কম ভিড়"
       ]
      ]
     },
@@ -504,7 +508,7 @@
     }
    ],
    "caption": {
-    "en": "Samaj Sebi Sangha, Kolkata Durga Puja 2026: the theme is Mahapujoy Mahanayak 🪔\n\nUttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 12 to 5 pm, and it's 26 minutes' walk from Kalighat Metro.\n\nAre you going this year? Tell us 👇",
+    "en": "Samaj Sebi Sangha, Kolkata Durga Puja 2026: the theme is Mahapujoy Mahanayak 🪔\n\nUttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films. Themes are as reported and can change before the puja.\n\nIt's 26 minutes' walk from Kalighat Metro, and Ballygunge Cultural Association is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "samaj sebi sangha durga puja 2026",
      "samaj sebi sangha theme",
@@ -899,16 +903,20 @@
      "bn": "যাওয়ার আগে",
      "items": [
       [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ],
-      [
        "Metro: Kalighat, 25 min walk",
        "নিকটতম মেট্রো"
       ],
       [
+       "Hop next: Samaj Sebi Sangha, 2 min walk",
+       "পরের প্যান্ডেল"
+      ],
+      [
        "Eat nearby: Tak Heng, Oudh 1590",
        "কাছেই খাওয়া"
+      ],
+      [
+       "Least crowded: 12 to 5 pm",
+       "সবচেয়ে কম ভিড়"
       ]
      ]
     },
@@ -920,7 +928,7 @@
     }
    ],
    "caption": {
-    "en": "Ballygunge Cultural Association, Kolkata Durga Puja 2026: the theme is Jojon 🪔\n\n'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. Themes are as reported and can change before the puja.\n\nOur crowd model says it's least crowded around 12 to 5 pm, and it's 25 minutes' walk from Kalighat Metro.\n\nAre you going this year? Tell us 👇",
+    "en": "Ballygunge Cultural Association, Kolkata Durga Puja 2026: the theme is Jojon 🪔\n\n'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. Themes are as reported and can change before the puja.\n\nIt's 25 minutes' walk from Kalighat Metro, and Samaj Sebi Sangha is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "ballygunge cultural association durga puja 2026",
      "ballygunge cultural association theme",
