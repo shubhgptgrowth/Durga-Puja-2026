@@ -29,7 +29,7 @@ IVORY, PAPER2 = (247, 240, 228), (240, 230, 212)
 INK, MUTED = (40, 22, 18), (112, 88, 74)
 MAROON, SINDOOR, GOLD = (104, 18, 30), (176, 26, 40), (184, 142, 66)
 NIGHT = (44, 10, 12)
-HANDLE = "@pujoparikrama.guide"
+HANDLE = "@pujoparikramaguide.in"
 ROOT = Path(__file__).resolve().parents[1]
 FONT_DIRS = [ROOT / "fonts", Path("fonts"), ROOT / "marketing" / "reels" / "fonts"]
 

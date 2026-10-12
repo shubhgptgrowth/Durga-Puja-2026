@@ -1,4 +1,4 @@
-# Social Media Content Calendar: Pujo Parikrama (@pujoparikrama.guide)
+# Social Media Content Calendar: Pujo Parikrama (@pujoparikramaguide.in)
 
 **Date:** 10 October 2026  
 **Period:** 13 October to 11 November 2026 (30 days)  

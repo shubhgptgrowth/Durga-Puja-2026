@@ -295,7 +295,7 @@ def cover(g, cache, hero_url):
     text(d, (W // 2, y + 20), "এলোমেলো ঘুরে রাত নষ্ট নয়!", F("bn", 70), anchor="mm", stroke=3)
     d.rounded_rectangle((W // 2 - 420, y + 95, W // 2 + 420, y + 185), 45, fill=YEL)
     text(d, (W // 2, y + 140), "Save these area-wise routes", F("bold", 44), fill=INK, anchor="mm")
-    text(d, (W // 2, 90), "@pujoparikrama.guide", F("semi", 38), anchor="mm", stroke=2)
+    text(d, (W // 2, 90), "@pujoparikramaguide.in", F("semi", 38), anchor="mm", stroke=2)
     return im
 
 

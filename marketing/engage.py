@@ -1,4 +1,4 @@
-"""Engagement helpers for @pujoparikrama.guide, through the official Graph API only (no bots, no scraping).
+"""Engagement helpers for @pujoparikramaguide.in, through the official Graph API only (no bots, no scraping).
 
     python -m marketing.engage scan --out engage/2026-10-07.json      # read-only: our comments + creators' new posts
     python -m marketing.engage reply marketing/engage/replies/2026-10-07.json [--dry-run]   # post approved replies

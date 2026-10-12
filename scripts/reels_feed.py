@@ -3,7 +3,7 @@
     IG_USER_ID=… IG_ACCESS_TOKEN=… python scripts/reels_feed.py --out app
 
 Sources, newest first:
-  1. Videos on @pujoparikrama.guide's own Instagram grid (our reels and the creator clips we repost with permission),
+  1. Videos on @pujoparikramaguide.in's own Instagram grid (our reels and the creator clips we repost with permission),
      read through the official Graph API with the same token marketing/publish_ig.py posts with. No scraping.
   2. data/raw/reels_2026.toml: links the owner adds by hand (Instagram reposts that aren't on the grid, Facebook or
      YouTube videos).
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 EXTRA = ROOT / "data/raw/reels_2026.toml"
 GUIDE = ROOT / "app/data/guide.json"
 MAX_REELS = 60
-OUR_HANDLE = "@pujoparikrama.guide"
+OUR_HANDLE = "@pujoparikramaguide.in"
 
 # The only links the app will embed (app/reels.js accepts the same ones).
 IG = re.compile(r"^https://(?:www\.)?instagram\.com/(?:[A-Za-z0-9_.]+/)?(reels?|p|tv)/([A-Za-z0-9_-]{5,})")

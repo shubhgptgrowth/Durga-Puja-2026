@@ -106,14 +106,14 @@ class MetroMixin:
         lead = (f"{len(near)} Durga Puja pandals are within a {NEAR_MIN}-minute walk of {esc(label)} on the {esc(line)}. "
                 f"The closest is {esc(first[2]['name'])}, about {first[0]} minutes on foot ({km(first[1])}). "
                 f"In {self.year} the puja runs from Panchami, {nice_date(self.start, True)}, to Dashami, {nice_date(self.end, True)}. "
-                f"Walking times assume festival crowds; the quiet hours are estimates from our crowd model, not live counts.")
+                f"Walking times assume festival crowds.")
         rows = "".join(
             f"<li>{self.link_pandal(p['id'], up)}: <b>{w} min walk</b> ({km(m)}){self.theme_note(p)}"
-            f"<br><small>{esc(p['highlight'])} Best time: {esc(p['best_slot_label'])}; quietest on Ashtami: {hrange(p['quiet_hours']['ashtami'])}.</small></li>"
+            f"<br><small>{esc(p['highlight'])}</small></li>"
             for w, m, p in near)
         wa = (f"Durga Puja {self.year}: pandals near {label}\n"
               + "\n".join(f"• {p['name']} ({w} min walk)" for w, _, p in near[:6])
-              + f"\n\nQuiet hours and directions: {self.url(path)}?src=wa_metro")
+              + f"\n\nWalking times and directions: {self.url(path)}?src=wa_metro")
         same_line = [x for x, _ in self.metro if x["line"] == s["line"] and x["id"] != s["id"]]
         others = " · ".join(self.link_station(x["id"], up) for x in same_line)
         top = max(near, key=lambda x: (x[2]["popularity"], -x[0]))[2]
@@ -138,7 +138,7 @@ class MetroMixin:
                  "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": self.url(f"guide/pandals/{p['id']}/"), "name": p["name"]} for i, (_, _, p) in enumerate(near)]}
         title_name = name if s["line"] != "suburban" else f"{name} Station"
         self.page(path, f"Durga Puja Pandals Near {title_name}{' Metro' if s['line'] != 'suburban' else ''} {self.year}",
-                  f"{len(near)} Durga Puja pandals within a {NEAR_MIN}-minute walk of {label}: walking times, {self.year} themes and the quietest hours. "
+                  f"{len(near)} Durga Puja pandals within a {NEAR_MIN}-minute walk of {label}: walking times and {self.year} themes. "
                   f"Closest: {first[2]['name']}.",
                   body, ld=(items, faq_ld), crumbs=(("Durga Puja guide", "guide/"), ("By metro", "guide/metro/"), (name, path)),
                   priority=0.8, summary=re.sub(r"<[^>]+>", "", lead), app_link="#plan")
@@ -188,7 +188,7 @@ class MetroMixin:
                  f"about {km(p['nearest_metro']['distance_m'])} away, roughly {p['nearest_metro']['walk_min']} minutes on foot.") for p in top]]
         faq_html, faq_ld = self.faq(qa)
         wa = (f"Durga Puja {self.year} by metro: which pandals are walkable from each Kolkata metro station, nearest first, "
-              f"with the quiet hours.\n{self.url(path)}?src=wa_metro")
+              f"with walking times.\n{self.url(path)}?src=wa_metro")
         body = f"""<article>
 <h1>Kolkata Durga Puja {self.year} by metro: pandals near every station</h1>
 <p class="lead">{lead}</p>

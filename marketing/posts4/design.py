@@ -17,7 +17,7 @@ if not features.check("raqm"):
 W = 1080
 SIZES = {"post": (1080, 1350), "story": (1080, 1920)}
 RED, GOLD, CREAM, INK, MAROON = (179, 18, 46), (232, 176, 75), (255, 244, 224), (58, 34, 22), (122, 16, 32)
-HANDLE, BRAND_BN = "@pujoparikrama.guide", "পুজো পরিক্রমা"
+HANDLE, BRAND_BN = "@pujoparikramaguide.in", "পুজো পরিক্রমা"
 FONT = {
     "callig": "Galada-Regular.ttf", "bn": "TiroBangla-Regular.ttf", "bn_b": "HindSiliguri-Bold.ttf",
     "bn_m": "HindSiliguri-SemiBold.ttf", "serif_i": "DMSerifDisplay-Italic.ttf", "serif": "DMSerifDisplay-Regular.ttf",

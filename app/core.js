@@ -317,3 +317,14 @@ export function ashtamiDue(dateISO, now = new Date()) {
   const noon = new Date(dateISO + 'T12:00:00');
   return now < noon && noon - now <= 10.5 * 864e5;
 }
+
+/** The tag that best sums up a pandal's vibe, most distinctive first ('theme' and 'neighbourhood' are the common ones). */
+export const VIBES = ['blockbuster', 'heritage', 'bonedi', 'art', 'lights', 'replica', 'grand', 'traditional', 'theme', 'neighbourhood'];
+export const vibeOf = (p) => VIBES.find((v) => p.tags?.includes(v)) || null;
+
+/** The VIP pass card: 'open' until the last collection day, 'late' after it, and null once the passes stop being valid. */
+export function passPhase({ lastCollect, until }, now = new Date()) {
+  const day = (iso) => new Date(iso + 'T23:59:59');
+  if (now > day(until)) return null;
+  return now > day(lastCollect) ? 'late' : 'open';
+}

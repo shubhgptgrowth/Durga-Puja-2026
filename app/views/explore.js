@@ -5,7 +5,7 @@ import {
 } from '../state.js';
 import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
 import { offerChip, featuredFirst } from '../offers.js';
-import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle, awardPill } from '../sheets.js';
+import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle, awardPill, vibePill } from '../sheets.js';
 import { visitedToday } from '../actions.js';
 import { track } from '../analytics.js';
 import { carCardHtml, carClick } from '../car.js';
@@ -60,7 +60,7 @@ function pandalItem(p) {
     <div class="side"><span class="score">${icon('star', 'sm fill')}${p.popularity}</span>${statsHtml(p.id, { compact: true })}</div>
     <div class="meta">${esc(zs(z))}${S.me ? ` · ${dist(hav(S.me, ll(p)))}` : ''} · ${icon('metro', 'sm')} ${esc(p.nearest_metro.name)}</div>
     ${p.theme_2026 ? `<div class="theme-line"><b>${t('p.theme2026')}</b>${esc(themeTitle(p.theme_2026))}</div>` : ''}
-    <div class="status">${crowdPill(c)}<span class="pill" title="${t('card.bestHint')}">${icon('clock', 'sm')} ${t('card.best', { slot: t('slot.' + p.best_slot) })}</span>${awardPill(p)}</div>
+    <div class="status">${vibePill(p)}${awardPill(p)}${crowdPill(c)}</div>
   </li>`;
 }
 function foodItem(f) {
@@ -110,7 +110,7 @@ const parkList = (e) => G.data.parking.filter((p) => inArea(e, p.zone) || (idx.z
 function barHtml(e) {
   const segs = [['pandals', 'star', t('seg.pandals')], ['food', 'food', t('seg.food')], ['parking', 'car', t('seg.parking')]];
   const extra = e.seg === 'pandals'
-    ? `<select id="sortSelect" aria-label="${t('sort.label')}">${['popular', 'quiet', 'near', ...(community.enabled ? ['live'] : [])].map((k) => `<option value="${k}" ${e.sort === k ? 'selected' : ''}>${t('sort.' + k)}</option>`).join('')}</select>`
+    ? `<select id="sortSelect" aria-label="${t('sort.label')}">${['popular', 'near', ...(community.enabled ? ['live'] : []), 'quiet'].map((k) => `<option value="${k}" ${e.sort === k ? 'selected' : ''}>${t('sort.' + k)}</option>`).join('')}</select>`
     : e.seg === 'food' ? [...DIETS, 'sweets', 'street', 'open'].map((k) => `<button class="chip sm" data-f="${k}" aria-pressed="${e.food.has(k)}">${k === 'veg' ? '<span class="veg-mark sm" aria-hidden="true"></span>' : ''}${t('ff.' + k)}</button>`).join('') : '';
   const n = { pandals: G.data.pandals.length, food: G.data.food.length, parking: G.data.parking.length };
   const em = { pandals: '🛕', food: '🍛', parking: '🅿️' };
@@ -133,10 +133,10 @@ function listHtml(e, list) {
       ${moreFiltersHtml(e)}
       <div class="toolbar"><span>${t('list.count', { n: list.length })}</span>${e.station !== 'all' || e.only.size ? `<button class="link-btn" data-clear>${t('ff.clear')}</button>` : ''}</div>
       ${list.length ? '' : `<p class="empty">${t('ff.none')}</p>`}
+      <ul class="list">${list.map(pandalItem).join('')}</ul>
       <details class="more" ${S.hour !== new Date().getHours() || moreOpen ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
         <div class="time-row"><label for="crowdDay">${t('f.day')}</label><select id="crowdDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))}</option>`).join('')}</select></div>
-        <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>
-      <ul class="list">${list.map(pandalItem).join('')}</ul>`;
+        <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>`;
   }
   if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
   const car = S.car, zl = areasOf(e).map(zoneOf), ids = zl.flatMap((z) => z.pandal_ids);

@@ -139,7 +139,7 @@ test('bundle has Bengali names for every pandal, zone and day', () => {
 });
 
 /* ---------------- community-era helpers ---------------- */
-import { fmtCount, timeAgo, searchEntries, nearest } from '../../app/core.js';
+import { fmtCount, timeAgo, searchEntries, nearest, VIBES, vibeOf, passPhase } from '../../app/core.js';
 import { readdirSync } from 'node:fs';
 
 test('fmtCount compacts large numbers', () => {
@@ -203,6 +203,7 @@ test('every translation key used in the app exists in both languages', () => {
     'ff.': ['veg', 'nonveg', 'egg', 'sweets', 'street', 'open'], 'hs.ios': ['1', '2', '3', '4'],
     'rt.': ['tasty', 'value', 'quick', 'clean', 'friendly', 'crowded', 'pricey', 'slow'], 'm.err.': ['too_big', 'too_long', 'unsupported', 'server'],
     'b.': ['first', 'five', 'fifteen', 'thirty', 'zone', 'k10', 'ashtami', 'dawn', 'owl', 'foodie', 'ns', 'goal', 'lens'],
+    'vibe.': VIBES, 'pass.': ['collect', 'deliver'],
   };
   for (const [prefix, ids] of Object.entries(families)) for (const id of ids) used.add(prefix + id);
   const missing = [...used].filter((k) => !STR.en[k] || !STR.bn[k] || !STR.hi[k]);
@@ -296,4 +297,21 @@ test('Ashtami timings card: ten days before Ashtami until noon on the day', asyn
   assert.ok(!ashtamiDue(day, before));
   assert.ok(!ashtamiDue('', new Date()));
   for (const p of G.panjika.panjika) assert.match(p.sandhi_start, /^\d\d:\d\d$/);
+});
+
+test('each pandal shows its most distinctive vibe', () => {
+  assert.equal(vibeOf({ tags: ['theme', 'heritage'] }), 'heritage', 'heritage beats the common theme tag');
+  assert.equal(vibeOf({ tags: ['neighbourhood', 'theme'] }), 'theme');
+  assert.equal(vibeOf({ tags: ['adda'] }), null);
+  const shown = G.pandals.filter((p) => vibeOf(p)).length;
+  assert.ok(shown / G.pandals.length > 0.9, `most pandals get a vibe pill (${shown}/${G.pandals.length})`);
+});
+
+test('the VIP pass card changes after collection closes and goes after Navami', () => {
+  const w = { lastCollect: '2026-10-14', until: '2026-10-20' };
+  assert.equal(passPhase(w, new Date('2026-10-11T10:00:00')), 'open');
+  assert.equal(passPhase(w, new Date('2026-10-14T20:00:00')), 'open');
+  assert.equal(passPhase(w, new Date('2026-10-15T09:00:00')), 'late');
+  assert.equal(passPhase(w, new Date('2026-10-20T23:00:00')), 'late');
+  assert.equal(passPhase(w, new Date('2026-10-21T08:00:00')), null);
 });

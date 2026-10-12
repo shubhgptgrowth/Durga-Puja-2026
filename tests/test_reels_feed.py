@@ -25,7 +25,7 @@ class ReelsFeedTest(unittest.TestCase):
         self.assertEqual(rf.source_of("https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=3")[0], "yt")
         self.assertEqual(rf.source_of("https://www.facebook.com/watch/?v=123")[0], "fb")
         for bad in ("http://www.instagram.com/reel/Cx12abc/", "https://evil.example/reel/Cx12abc/", "javascript:alert(1)", "", None,
-                    "https://www.instagram.com/pujoparikrama.guide/"):
+                    "https://www.instagram.com/pujoparikramaguide.in/"):
             self.assertIsNone(rf.source_of(bad), bad)
 
     def test_pandal_from_caption(self):

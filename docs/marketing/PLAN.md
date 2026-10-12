@@ -52,8 +52,8 @@ These are owned by the product track as P0-1 to P0-3 in [ROADMAP.md](../product/
 
 ## 3. One-time setup (about an hour)
 
-1. **Instagram:** create a **professional (Creator or Business) account**: [`@pujoparikrama.guide`](https://www.instagram.com/pujoparikrama.guide/). Display name: "Pujo Parikrama 2026 | Kolkata Pandal Guide" (the name field is searchable).
-   * Bio: "Kolkata pandal-hopping guide 2026 · quiet hours · food · routes · ফ্রি".
+1. **Instagram:** create a **professional (Creator or Business) account**: [`@pujoparikramaguide.in`](https://www.instagram.com/pujoparikramaguide.in/). Display name: "Pujo Parikrama 2026 | Kolkata Pandal Guide" (the name field is searchable).
+   * Bio and name field: see `marketing/voice.md` → "Instagram bio" (updated 11 Oct, routes and themes first).
    * Bio link: `https://shubhgptgrowth.github.io/Durga-Puja-2026/?src=ig_bio`.
    * Make 4 Highlights: North, South, Food, How to use.
 2. **Meta Business Suite** (free, on the web or the app): connect the Instagram account. It lets you **schedule posts and stories days ahead**, which is the easiest way to run the calendar without auto-posting.

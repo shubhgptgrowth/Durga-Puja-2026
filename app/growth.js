@@ -1,10 +1,11 @@
 /* Growth: which link brought someone (?src=), an anonymous once-per-boot open count, deep links to
  * places (#p=<id>), WhatsApp/share buttons, and shareable 1080×1920 story cards for Instagram and
  * WhatsApp Status. See docs/marketing/PLAN.md for the link codes. */
-import { S, G, idx, t, store, community, nm, fmt, km, dn, todayKey } from './state.js';
+import { S, idx, t, store, community, nm, fmt, km, dn, todayKey } from './state.js';
 import { toast } from './ui.js';
 import { daySteps, dayDist, earned } from './actions.js';
 import { track } from './analytics.js';
+import { vibeOf } from './core.js';
 
 const SRC_RE = /^[a-z0-9_]{1,40}$/;
 const BASE = () => location.origin + location.pathname;
@@ -102,13 +103,16 @@ export function myCard() {
   };
 }
 
+/* This year's theme if it's been announced, else the pandal's vibe ("🏛️ Heritage"). */
+const vibeLine = (p) => (p.theme_2026 ? `🎭 ${(S.prefs.lang === 'bn' && p.theme_2026.title_bn) || p.theme_2026.title}` : vibeOf(p) ? t('vibe.' + vibeOf(p)) : '');
+
 export function placeCard(id) {
   const p = idx.pandal[id], z = idx.zone[p.zone], day = idx.day[S.day];
   const live = community.stats.byPlace?.[id];
   return {
     kicker: `${dn(day)} · ${z ? (S.prefs.lang === 'bn' && z.short_bn) || z.short : ''}`, title: nm(p), big: true,
     stats: [['★'.repeat(p.popularity), t('g.cardFame')], ...(live?.today ? [[fmt(live.today), t('g.cardHereToday')]] : [])],
-    lines: [p.highlight, '', t('g.cardQuiet', { slot: G.data.meta.slots[p.best_slot]?.label || '' }), `🚇 ${p.nearest_metro.name}`],
+    lines: [p.highlight, '', vibeLine(p), `🚇 ${p.nearest_metro.name}`].filter((x, i) => x || i === 1),
     foot: myName() ? t('g.cardAtPandalName', { name: myName() }) : t('g.cardAtPandal'),
   };
 }
