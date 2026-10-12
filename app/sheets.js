@@ -256,7 +256,24 @@ function themeHtml(th) {
 /* ---------------- pandal ---------------- */
 /** The place's street address (from its map pin), with a note when the pin is only locality-level. */
 const addrHtml = (x) => x.address
-  ? `<p class="addr">${icon('pin', 'sm')}<span>${esc(x.address)}${x.address_approx ? ` <small>· ${t('p.addrApprox')}</small>` : ''}</span></p>` : '';
+  ? `<p class="addr">${icon('pin', 'sm')}<span>${esc(x.address)}${x.address_approx ? ` <small>· ${t('p.addrApprox')}</small>` : ''}</span>
+    <button type="button" class="addr-copy" data-copy-addr="${esc(x.address)}" aria-label="${t('p.copyAddr')}" title="${t('p.copyAddr')}">${icon('copy', 'sm')}<span>${t('p.copy')}</span></button></p>` : '';
+
+// One listener for every sheet: copy the address and confirm with a toast.
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-copy-addr]');
+  if (!b) return;
+  const text = b.dataset.copyAddr;
+  const done = () => toast(t('p.addrCopied'));
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text) && done());
+  else if (fallbackCopy(text)) done();
+});
+function fallbackCopy(text) {
+  const ta = Object.assign(document.createElement('textarea'), { value: text, readOnly: true });
+  ta.style.cssText = 'position:fixed;opacity:0;top:0'; document.body.append(ta); ta.select();
+  let ok = false; try { ok = document.execCommand('copy'); } catch { /* not allowed */ }
+  ta.remove(); return ok;
+}
 
 export function pandalSheet(id) {
   placeOpened(id, 'pandal');

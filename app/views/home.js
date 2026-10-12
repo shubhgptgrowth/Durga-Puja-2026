@@ -141,7 +141,6 @@ function render() {
     ${heroHtml()}
     ${promiseHtml()}
     ${liveHtml()}
-    ${passCardHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
@@ -176,7 +175,8 @@ function render() {
         <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
         <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
 
-    <div id="homeCar">${carCardHtml()}</div>`;
+    <div id="homeCar">${carCardHtml()}</div>
+    ${passCardHtml()}`;
   $('#homeFoot', el).innerHTML = `
     <section class="section"><div class="section-head"><div><h2>${plain(t('kn.title'))}</h2><p class="sub">${t('kn.sub')}</p></div><a class="link-btn" href="durga-puja/">${t('h.seeAll')}</a></div>
       <div class="learn">${LEARN.map(([path, key, ic]) => `<a class="learn-card" href="${path}"><span aria-hidden="true">${icon(ic)}</span><b>${t('kn.' + key)}</b></a>`).join('')}</div></section>
