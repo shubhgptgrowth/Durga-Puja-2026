@@ -29,3 +29,7 @@ enable_anonymous_sign_ins = true
 # Collects Kolkata Traffic Police puja notices; called by pg_cron, pinned to Mumbai (see the function header).
 [functions.traffic-fetch]
 verify_jwt = false
+
+# Instagram comment-to-DM; called by pg_cron every 5 minutes with the x-cron-secret header (see the function header).
+[functions.ig-dm]
+verify_jwt = false

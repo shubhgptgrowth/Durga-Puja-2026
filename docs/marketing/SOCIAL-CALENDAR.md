@@ -1225,7 +1225,7 @@ Other sources worth putting through this: the 6 ready-made routes (H3), the quie
 - **Debates (1 to 2 a week):** Panchami vs Saptami (13 Oct), North vs South result (17 Oct), the juries' picks (26 Oct), pradip vs tuni (3 Nov).
 - **Storytelling (1 to 2 a week):** dhakis who travel to play (14 Oct), Bodhon (17 Oct), one day on foot in North Kolkata (27 Oct), how the crowd model works (28 Oct).
 - **Add Yours stickers:** Ashtami anjali (19 Oct), Lakshmi Puja alpana (25 Oct), Kali Puja lamps (8 Nov), Bhai Phonta plate (11 Nov). Reshare with credit; ask before featuring in the feed.
-- **Comment-to-DM:** every PUJO comment gets the DM with `?src=ig_dm` and a public "DM-এ পাঠিয়ে দিলাম 💛". "Write your pandal" comments get its quiet hours from the app.
+- **Comment-to-DM:** every PUJO comment gets the DM with `?src=ig_dm` and a public "DM-এ পাঠিয়ে দিলাম 💛", within about 5 minutes. The `ig-dm` Edge Function on Supabase sends it (set up, re-armed after a token renewal, or stopped with the `ig-dm-backend` workflow). The GitHub `engage` run is a fallback; GitHub's cron ran only every 4–10 hours. "Write your pandal" comments get its quiet hours from the app.
 - **First hour after posting:** reply to every comment, ideally with a question back; pin the best one; repost the funniest answers to Stories, tagged.
 - **Collabs:** invite the creators from `marketing/creators/` as Collab co-authors on the Reels marked with creator footage (barter only, no payment, no change to routes or pandal order).
 

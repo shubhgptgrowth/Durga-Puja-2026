@@ -374,6 +374,16 @@ class RedesignTest(unittest.TestCase):
         cfg = json.loads((Path(__file__).resolve().parents[1] / "marketing/engage/config.json").read_text(encoding="utf-8"))
         self.assertIn("dm", cfg)
 
+    def test_edge_function_dm_matches_the_fallback(self):
+        # supabase/functions/ig-dm is the main sender; marketing/engage.py `dm` is the fallback. Same words, same keywords.
+        from marketing import engage
+        ts = (Path(__file__).resolve().parents[1] / "supabase/functions/ig-dm/index.ts").read_text(encoding="utf-8")
+        flat = re.sub(r"[\"']\s*\+\s*[\"']", "", ts)  # join the string literals split across lines
+        for s in (engage.DM_BN, engage.DM_EN, engage.GUIDE, *engage.KEYWORDS):
+            self.assertIn(s, flat, s[:30])
+        self.assertNotIn("quiet", engage.DM_EN + flat)
+        self.assertIn(engage.ALREADY, ts)
+
     def test_creator_clip_needs_permission(self):
         from marketing.footage import factory
         idx = factory.footage_index(None)

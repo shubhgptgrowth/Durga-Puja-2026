@@ -147,10 +147,12 @@ def reply(path, dry):
 
 
 KEYWORDS = ("pujo", "পুজো", "পূজো", "route", "রুট")
-DM_BN = ("নমস্কার! 🙏 এই নিন আপনার পুজোর রুট গাইড: এলাকা ধরে হাঁটার রুট, কোন মেট্রো স্টেশনে নামবেন, "
-         "আর কোন ঠাকুর কখন ফাঁকা থাকে, সব এক জায়গায়, একদম ফ্রি।")
-DM_EN = ("Here's your Durga Puja 2026 route guide: area-wise walking routes, the Metro stop for each, and live "
-         "quiet hours for every pandal. Free, no sign-up:")
+# Same text as supabase/functions/ig-dm (the main sender since 13 Oct; this is the fallback).
+DM_BN = ("নমস্কার! 🙏 এই নিন আপনার পুজোর গাইড: মেট্রো থেকে নেমে প্যান্ডেল থেকে প্যান্ডেলে হাঁটার রুট, "
+         "২০২৬-এর সব থিম এক জায়গায়, আর পথে কোথায় খাবেন। একদম ফ্রি।")
+DM_EN = ("Here's your Durga Puja 2026 guide: walk pandal to pandal from the nearest Metro, every 2026 theme in "
+         "one list, and food on the way. Free, no sign-up:")
+ALREADY = "2534023"  # Graph error_subcode: "The comment that you are trying to reply to already has a reply."
 GUIDE = "https://pujoparikramaguide.in/?src=ig_dm"
 
 
@@ -182,6 +184,10 @@ def dm(ledger_path, dry, days=7):
         msg = json.dumps({"text": f"{DM_BN}\n\n{DM_EN}\n{GUIDE}"}, ensure_ascii=False)
         r, e = safe(graph, "POST", f"{page or user}/messages", send,
                     recipient=json.dumps({"comment_id": c["comment_id"]}), message=msg)
+        if e and ALREADY in e:  # answered privately already (by the Edge Function or by hand): stop retrying it
+            sent.add(c["comment_id"])
+            print(f"@{c['from']} already has a private reply", flush=True)
+            continue
         if e:
             print(f"DM to @{c['from']} failed: {e}", flush=True)
             continue
