@@ -128,6 +128,22 @@
    "artist": "Mukerjee",
    "label": "5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg"
+  },
+  "pr-jagat_mukherjee-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Jagat_Mukherjee_Park_Durga_Puja_2025_26.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Jagat_Mukherjee_Park_Durga_Puja_2025_26.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_26.jpg"
+  },
+  "pr-jagat_mukherjee-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Jagat_Mukherjee_Park_Durga_Puja_2025_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Jagat_Mukherjee_Park_Durga_Puja_2025_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jagat_Mukherjee_Park_Durga_Puja_2025_01.jpg"
   }
  },
  "items": [
@@ -880,65 +896,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Jagat Mukherjee Park",
-     "bn": "জগৎ মুখার্জি পার্ক",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Jagat_Mukherjee_Park_Durga_Puja_2025_26.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Uday Shankar",
-     "bn": "উদয়শঙ্কর",
-     "body": "A tribute to the dancer Uday Shankar. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Park-based theme puja near Shyambazar."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Shyambazar, 15 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Shyam Square Sarbojanin, 3 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Jagat Mukherjee Park, 2026: Uday Shankar",
+   "bn": {
+    "hook": "জগৎ মুখার্জি পার্ক, ২০২৬: উদয়শঙ্কর",
+    "segs": [
+     "",
+     "থিম ২০২৬: উদয়শঙ্কর",
+     "কেন যাবেন",
+     "মেট্রো থেকে ১৫ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৩ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-jagat_mukherjee-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-jagat_mukherjee-1",
+     0,
+     3.4,
+     "Theme 2026: Uday Shankar",
+     0.5
+    ],
+    [
+     "pr-jagat_mukherjee-0",
+     0,
+     3.4,
+     "Park-based theme puja near Shyambazar",
+     0.68
+    ],
+    [
+     "pr-jagat_mukherjee-1",
+     0,
+     3.4,
+     "15 min walk from Shyambazar Metro",
+     0.32
+    ],
+    [
+     "pr-jagat_mukherjee-0",
+     0,
+     3.4,
+     "Hop next: Shyam Square Sarbojanin, 3 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    40
    ],
    "caption": {
     "en": "Jagat Mukherjee Park, Kolkata Durga Puja 2026: the theme is Uday Shankar 🪔\n\nA tribute to the dancer Uday Shankar. Themes are as reported and can change before the puja.\n\nIt's 15 minutes' walk from Shyambazar Metro, and Shyam Square Sarbojanin is 3 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1096,6 +1112,59 @@
      "kolkata durga puja bhog"
     ],
     "tags": "#BhogerKhichuri #DurgaPuja2026 #BengaliFood"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Can you do the dhunuchi naach?",
+   "bn": {
+    "hook": "ধুনুচি নাচ পারেন?",
+    "segs": [
+     "",
+     "ধুনুচি নাচ, সমাজসেবী সংঘ",
+     "সপ্তমী থেকে নবমীর সন্ধ্যা"
+    ],
+    "end": "সেরা ধুনুচি নাচিয়েকে ট্যাগ করুন"
+   },
+   "segments": [
+    [
+     "cm-9b953c",
+     0.3,
+     4.0,
+     ""
+    ],
+    [
+     "cm-9b953c",
+     15.5,
+     3.8,
+     "Dhunuchi naach, Samaj Sebi Sangha"
+    ],
+    [
+     "cm-9b953c",
+     24.5,
+     4.0,
+     "Saptami to Navami evenings"
+    ]
+   ],
+   "end": [
+    "Tag the best dhunuchi dancer you know",
+    "Tag them"
+   ],
+   "music": [
+    "f19",
+    20
+   ],
+   "caption": {
+    "en": "Dhunuchi naach at Kolkata Durga Puja: can you do it? 🔥\n\nSmoke, dhak and a clay dhunuchi of burning coconut husk and dhuno, at Samaj Sebi Sangha in Lake Market. It happens at evening aarti from Saptami to Navami.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nTag the best dhunuchi dancer you know 👇",
+    "keywords": [
+     "dhunuchi naach",
+     "saptami 2026 kolkata",
+     "samaj sebi sangha durga puja",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

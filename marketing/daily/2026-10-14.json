@@ -128,6 +128,22 @@
    "artist": "Pratitimajumdar",
    "label": "Chandelier_at_Jodhpur_Park_Durga_Puja.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Chandelier_at_Jodhpur_Park_Durga_Puja.jpg"
+  },
+  "pr-kashi_bose_lane-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg"
+  },
+  "pr-kashi_bose_lane-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Kashi_Bose_Lane_Durga_Utsav_committee_2024_02.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kashi_Bose_Lane_Durga_Utsav_committee_2024_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kashi_Bose_Lane_Durga_Utsav_committee_2024_02.jpg"
   }
  },
  "items": [
@@ -968,69 +984,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Kashi Bose Lane",
-     "bn": "কাশী বোস লেন",
-     "sub": "Pictured: 2024",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Kashi_Bose_Lane_Durga_Utsav_committee_2024_05.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Warli",
-     "bn": "ওরলি",
-     "body": "The Warli folk art of Maharashtra. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A lane-side puja that keeps winning art awards."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Sovabazar Sutanuti, 16 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Simla Byayam Samity, 8 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Laxmi Narayan Shaw & Sons",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Kashi Bose Lane, 2026: Warli",
+   "bn": {
+    "hook": "কাশী বোস লেন, ২০২৬: ওরলি",
+    "segs": [
+     "",
+     "থিম ২০২৬: ওরলি",
+     "কেন যাবেন",
+     "মেট্রো থেকে ১৬ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-kashi_bose_lane-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-kashi_bose_lane-1",
+     0,
+     3.4,
+     "Theme 2026: Warli",
+     0.5
+    ],
+    [
+     "pr-kashi_bose_lane-0",
+     0,
+     3.4,
+     "A lane-side puja that keeps winning art aw",
+     0.68
+    ],
+    [
+     "pr-kashi_bose_lane-1",
+     0,
+     3.4,
+     "16 min walk from Sovabazar Metro",
+     0.32
+    ],
+    [
+     "pr-kashi_bose_lane-0",
+     0,
+     3.4,
+     "Hop next: Simla Byayam Samity, 8 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    40
    ],
    "caption": {
     "en": "Kashi Bose Lane, Kolkata Durga Puja 2026: the theme is Warli 🪔\n\nThe Warli folk art of Maharashtra. Themes are as reported and can change before the puja.\n\nIt's 16 minutes' walk from Sovabazar Sutanuti Metro, and Simla Byayam Samity is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1101,6 +1113,66 @@
      "durga puja 2026 kolkata"
     ],
     "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Walk into a Kolkata pandal with us",
+   "bn": {
+    "hook": "চলুন, একটা প্যান্ডেলে ঢুকি",
+    "segs": [
+     "",
+     "তারপর মা",
+     "প্রতিটা পাড়া নিজের জগৎ গড়ে",
+     "আমাদের গাইডে ১২৫টা প্যান্ডেল"
+    ],
+    "end": "প্রথম কোন প্যান্ডেল? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-7ac057",
+     0.5,
+     4.0,
+     ""
+    ],
+    [
+     "cm-7ac057",
+     6.6,
+     4.0,
+     "Then you see her"
+    ],
+    [
+     "cm-d40251",
+     4.0,
+     3.8,
+     "Every para builds its own world"
+    ],
+    [
+     "cm-7aa2a5",
+     1.5,
+     3.8,
+     "125 pandals in our guide"
+    ]
+   ],
+   "end": [
+    "Which pandal is first for you?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    40
+   ],
+   "caption": {
+    "en": "Walk into a Kolkata Durga Puja pandal with us 🪔\n\nThe gate, the queue, and then Maa. These clips are from pujo 2023 in Kolkata.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nWhich pandal is your first stop this year? 👇",
+    "keywords": [
+     "kolkata durga puja pandal",
+     "durga puja 2026 kolkata",
+     "pandal hopping kolkata",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

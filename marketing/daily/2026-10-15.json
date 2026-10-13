@@ -160,6 +160,38 @@
    "artist": "Goutam1962",
    "label": "Ajeya_Sanghati_Club_(Haridevpur)_Durga_Puja_2025_33.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ajeya_Sanghati_Club_%28Haridevpur%29_Durga_Puja_2025_33.jpg"
+  },
+  "pr-hindustan_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Hindustan_Park_Sarbojanin_Durga_Puja_2025_49.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_49.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_49.jpg"
+  },
+  "pr-hindustan_park-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg"
+  },
+  "pr-dumdum_bharat_chakra-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Dum_Dum_Park_Bharat_Chakra_2022.jpg",
+   "license": "CC0",
+   "artist": "Soumava2002",
+   "label": "Dum_Dum_Park_Bharat_Chakra_2022.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dum_Dum_Park_Bharat_Chakra_2022.jpg"
+  },
+  "pr-dumdum_bharat_chakra-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/DurgaPuja2016_-_Durga_Idol_of_Bharat_Chakra_Dum_Dum_Park_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2016_-_Durga_Idol_of_Bharat_Chakra_Dum_Dum_Park_02.",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Durga_Idol_of_Bharat_Chakra_Dum_Dum_Park_02.jpg"
   }
  },
  "items": [
@@ -868,73 +900,57 @@
    }
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r7v",
+   "type": "reel",
    "at": "18:30",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Gariahat",
-     "title": "Hindustan Park Sarbojanin",
-     "bn": "হিন্দুস্থান পার্ক সার্বজনীন",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/7/78/Hindustan_Park_Sarbojanin_Durga_Puja_2025_49.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "An art-college aesthetic, with fewer crowds than its neighbours."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Ballygunge Junction (Suburban), 30 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Hindustan Club, 8 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Fillers, Armaan's Cafe",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/0/06/Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Hindustan Park Sarbojanin, 2025"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Hindustan Park this year?",
+   "bn": {
+    "hook": "এবার হিন্দুস্থান পার্ক সার্বজনীন যাচ্ছেন?",
+    "segs": [
+     "",
+     "",
+     "মেট্রো থেকে ৩০ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-hindustan_park-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-hindustan_park-1",
+     0,
+     3.4,
+     "An art-college aesthetic, with fewer crowd",
+     0.5
+    ],
+    [
+     "pr-hindustan_park-0",
+     0,
+     3.4,
+     "30 min walk from Ballygunge Junction (Subu",
+     0.68
+    ],
+    [
+     "pr-hindustan_park-1",
+     0,
+     3.4,
+     "Hop next: Hindustan Club, 8 min",
+     0.32
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f23",
+    10
    ],
    "caption": {
     "en": "Hindustan Park Sarbojanin, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nAn art-college aesthetic, with fewer crowds than its neighbours.\n\nIt's 30 minutes' walk from Ballygunge Junction (Suburban) Metro, and Hindustan Club is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -970,80 +986,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Dum Dum",
-     "title": "Dum Dum Park Bharat Chakra",
-     "bn": "দমদম পার্ক ভারতচক্র",
-     "sub": "Pictured: 2022",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/46/Dum_Dum_Park_Bharat_Chakra_2022.jpg",
-      "artist": "Soumava2002",
-      "license": "CC0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Banglar Rath",
-     "bn": "বাংলার রথের ঐতিহ্য",
-     "body": "Bengal's chariot (rath) tradition, in the puja's 26th year. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Part of the Dum Dum Park theme row, known for art installations."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Dum Dum, 53 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Dum Dum Park Tarun Sangha, 5 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Dum Dum Park Puja Stalls",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/a/a4/DurgaPuja2016_-_Durga_Idol_of_Bharat_Chakra_Dum_Dum_Park_02.jpg",
-      "artist": "Indrajit Das",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Dum Dum Park Bharat Chakra, 2016"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Dum Dum Park Bharat Chakra this year?",
+   "bn": {
+    "hook": "এবার দমদম পার্ক ভারতচক্র যাচ্ছেন?",
+    "segs": [
+     "",
+     "থিম ২০২৬: বাংলার রথের ঐতিহ্য",
+     "কেন যাবেন",
+     "মেট্রো থেকে ৫৩ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-dumdum_bharat_chakra-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-dumdum_bharat_chakra-1",
+     0,
+     3.4,
+     "Theme 2026: Banglar Rath",
+     0.5
+    ],
+    [
+     "pr-dumdum_bharat_chakra-0",
+     0,
+     3.4,
+     "Part of the Dum Dum Park theme row, known ",
+     0.68
+    ],
+    [
+     "pr-dumdum_bharat_chakra-1",
+     0,
+     3.4,
+     "53 min walk from Dum Dum Metro",
+     0.32
+    ],
+    [
+     "pr-dumdum_bharat_chakra-0",
+     0,
+     3.4,
+     "Hop next: Dum Dum Park Tarun Sangha, 5 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f20",
+    60
    ],
    "caption": {
     "en": "Dum Dum Park Bharat Chakra, Kolkata Durga Puja 2026: the theme is Banglar Rath 🪔\n\nBengal's chariot (rath) tradition, in the puja's 26th year. Themes are as reported and can change before the puja.\n\nIt's 53 minutes' walk from Dum Dum Metro, and Dum Dum Park Tarun Sangha is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1114,6 +1115,66 @@
      "durga puja 2026 kolkata"
     ],
     "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Pujo night in Kolkata looks like this",
+   "bn": {
+    "hook": "কলকাতার পুজোর রাত এরকমই",
+    "segs": [
+     "",
+     "ফাল্গুনী সংঘ, ২০১৩",
+     "সিংহী পার্ক, ২০১৩",
+     "প্রতি গলিতে আলাদা জগৎ"
+    ],
+    "end": "এবার কে সঙ্গে যাচ্ছে? ট্যাগ করুন"
+   },
+   "segments": [
+    [
+     "cm-7a4ac0",
+     1.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-7a4ac0",
+     9.0,
+     3.6,
+     "Falguni Sangha, 2013"
+    ],
+    [
+     "cm-548c60",
+     1.0,
+     3.8,
+     "Singhi Park, 2013"
+    ],
+    [
+     "cm-548c60",
+     6.5,
+     3.8,
+     "A different world in every lane"
+    ]
+   ],
+   "end": [
+    "Who's coming with you this year?",
+    "Tag them"
+   ],
+   "music": [
+    "f23",
+    10
+   ],
+   "caption": {
+    "en": "Pujo night in Kolkata looks like this ✨\n\nFalguni Sangha's lit gate and the Singhi Park crowd, filmed in 2013. Two days to Shashthi.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nTag the person you're going pandal hopping with 👇",
+    "keywords": [
+     "kolkata durga puja night",
+     "singhi park durga puja",
+     "durga puja 2026 kolkata",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

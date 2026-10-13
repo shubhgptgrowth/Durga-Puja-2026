@@ -96,6 +96,46 @@
    "artist": "Tarunsamanta",
    "label": "Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_06.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_06.jpg"
+  },
+  "pr-nalin_sarkar-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Nalin_Sarkar_Street_Durga_puja_2024_12.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Nalin_Sarkar_Street_Durga_puja_2024_12.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Nalin_Sarkar_Street_Durga_puja_2024_12.jpg"
+  },
+  "pr-nalin_sarkar-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Nalin_Sarkar_Street_Durga_puja_2024_13.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Nalin_Sarkar_Street_Durga_puja_2024_13.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Nalin_Sarkar_Street_Durga_puja_2024_13.jpg"
+  },
+  "pr-singhi_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6195.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_20",
+   "page": "https://commons.wikimedia.org/wiki/File:Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6195.JPG"
+  },
+  "pr-singhi_park-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6196.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2",
+   "page": "https://commons.wikimedia.org/wiki/File:Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6196.JPG"
+  },
+  "pr-singhi_park-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6197.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2",
+   "page": "https://commons.wikimedia.org/wiki/File:Gateways_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6197.JPG"
   }
  },
  "items": [
@@ -737,80 +777,65 @@
    }
   },
   {
-   "id": "p8",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r8v",
+   "type": "reel",
    "at": "18:30",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Nalin Sarkar Street",
-     "bn": "নলিন সরকার স্ট্রিট",
-     "sub": "Pictured: 2024",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Nalin_Sarkar_Street_Durga_puja_2024_12.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Jalalipi",
-     "bn": "জললিপি",
-     "body": "Rivers as the script of civilisation: the Ganga's flow, its pollution and eroding banks. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A famous Hatibagan theme puja tucked into a narrow lane."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Shyambazar, 16 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Hatibagan Sarbojanin, 2 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Bhojohori Manna, New Madras Tiffin",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Nalin_Sarkar_Street_Durga_puja_2024_13.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Nalin Sarkar Street, 2024"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Nalin Sarkar Street, 2026: Jalalipi",
+   "bn": {
+    "hook": "নলিন সরকার স্ট্রিট, ২০২৬: জললিপি",
+    "segs": [
+     "",
+     "থিম ২০২৬: জললিপি",
+     "কেন যাবেন",
+     "মেট্রো থেকে ১৬ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ২ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-nalin_sarkar-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-nalin_sarkar-1",
+     0,
+     3.4,
+     "Theme 2026: Jalalipi",
+     0.5
+    ],
+    [
+     "pr-nalin_sarkar-0",
+     0,
+     3.4,
+     "A famous Hatibagan theme puja tucked into ",
+     0.68
+    ],
+    [
+     "pr-nalin_sarkar-1",
+     0,
+     3.4,
+     "16 min walk from Shyambazar Metro",
+     0.32
+    ],
+    [
+     "pr-nalin_sarkar-0",
+     0,
+     3.4,
+     "Hop next: Hatibagan Sarbojanin, 2 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f22",
+    70
    ],
    "caption": {
     "en": "Nalin Sarkar Street, Kolkata Durga Puja 2026: the theme is Jalalipi 🪔\n\nRivers as the script of civilisation: the Ganga's flow, its pollution and eroding banks. Themes are as reported and can change before the puja.\n\nIt's 16 minutes' walk from Shyambazar Metro, and Hatibagan Sarbojanin is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -846,69 +871,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Gariahat",
-     "title": "Singhi Park",
-     "bn": "সিংহী পার্ক",
-     "sub": "Pictured: 2015",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Gateway_-_Durga_Puja_-_Singhi_Park_-_Dover_Lane_-_Kolkata_2015-10-21_6195.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Bastar",
-     "bn": "বস্তারিও",
-     "body": "Inspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Grand traditional puja just off Gariahat Road."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Ballygunge Junction (Suburban), 23 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Ekdalia Evergreen, 5 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Bhojohori Manna 6, Mirch Masala",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 9 am to 12 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Singhi Park, 2026: Bastar",
+   "bn": {
+    "hook": "সিংহী পার্ক, ২০২৬: বস্তারিও",
+    "segs": [
+     "",
+     "থিম ২০২৬: বস্তারিও",
+     "কেন যাবেন",
+     "মেট্রো থেকে ২৩ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-singhi_park-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-singhi_park-1",
+     0,
+     3.4,
+     "Theme 2026: Bastar",
+     0.5
+    ],
+    [
+     "pr-singhi_park-2",
+     0,
+     3.4,
+     "Grand traditional puja just off Gariahat R",
+     0.5
+    ],
+    [
+     "pr-singhi_park-0",
+     0,
+     3.4,
+     "23 min walk from Ballygunge Junction (Subu",
+     0.32
+    ],
+    [
+     "pr-singhi_park-1",
+     0,
+     3.4,
+     "Hop next: Ekdalia Evergreen, 5 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    20
    ],
    "caption": {
     "en": "Singhi Park, Kolkata Durga Puja 2026: the theme is Bastar 🪔\n\nInspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year. Themes are as reported and can change before the puja.\n\nIt's 23 minutes' walk from Ballygunge Junction (Suburban) Metro, and Ekdalia Evergreen is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1037,6 +1058,73 @@
      "sovabazar rajbari 1757"
     ],
     "tags": "#DurgaPujaHistory #KolkataDurgaPuja #DurgaPuja2026"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "From Kumartuli clay to the pandal",
+   "bn": {
+    "hook": "কুমোরটুলির মাটি থেকে প্যান্ডেলে",
+    "segs": [
+     "",
+     "কুমোরটুলি, কয়েক সপ্তাহ আগে",
+     "তারপর প্যান্ডেল: আহিরীটোলা, ২০১৮",
+     "সবটাই হাতে গড়া",
+     "আজ পঞ্চমী"
+    ],
+    "end": "কুমোরটুলির গলিতে হেঁটেছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-9a6de9",
+     6.0,
+     3.6,
+     ""
+    ],
+    [
+     "cm-9a6de9",
+     21.0,
+     3.6,
+     "Kumartuli, weeks before"
+    ],
+    [
+     "cm-e9b568",
+     12.0,
+     4.0,
+     "Then the pandal: Ahiritola, 2018"
+    ],
+    [
+     "cm-e9b568",
+     38.0,
+     3.6,
+     "Every detail made by hand"
+    ],
+    [
+     "cm-e9b568",
+     47.0,
+     3.6,
+     "Panchami tonight"
+    ]
+   ],
+   "end": [
+    "Have you walked Kumartuli's lanes?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f20",
+    60
+   ],
+   "caption": {
+    "en": "From Kumartuli's clay to Ahiritola's pandal: Kolkata Durga Puja, made by hand 🙏\n\nThe idol-makers' lanes in North Kolkata, then the hall at Ahiritola Sarbojanin in 2018. Both are a short walk apart.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nHave you walked through Kumartuli? Tell us 👇",
+    "keywords": [
+     "kumartuli durga idol",
+     "ahiritola sarbojanin",
+     "north kolkata durga puja",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

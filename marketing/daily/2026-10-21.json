@@ -128,6 +128,38 @@
    "artist": "Biswarup Ganguly",
    "label": "Sovabazar Royal Durga Idol Immersion - River Hooghly - Baghb",
    "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209229.jpg"
+  },
+  "pr-sovabazar_rajbari-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750_00001.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kinjal bose 78",
+   "label": "Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750_00001.jpg"
+  },
+  "pr-sovabazar_rajbari-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/DurgaPuja2017_-_Durga_Puja_of_Sovabazar%27s_Nabokrishna_Deb_house_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Puja_of_Sovabazar's_Nabokrishna_Deb_ho",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Puja_of_Sovabazar%27s_Nabokrishna_Deb_house_02.jpg"
+  },
+  "pr-sovabazar_rajbari-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/DurgaPuja2017_-_Durga_Puja_of_Sovabazar%27s_Nabokrishna_Deb_house_04.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Puja_of_Sovabazar's_Nabokrishna_Deb_ho",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Puja_of_Sovabazar%27s_Nabokrishna_Deb_house_04.jpg"
+  },
+  "pr-sovabazar_rajbari-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg"
   }
  },
  "items": [
@@ -906,77 +938,57 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Sovabazar Rajbari",
-     "bn": "শোভাবাজার রাজবাড়ি",
-     "sub": "Pictured: 2019",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/47/Durga_Puja_of_Sovabazar_Rajbari-Kolkata-West_Bengal-DSC_4750_00001.jpg",
-      "artist": "Kinjal bose 78",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A bonedi bari puja started by Raja Nabakrishna Deb. The thakurdalan is stunning."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Sovabazar Sutanuti, 6 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Shyam Square Sarbojanin, 8 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Since 1757",
-       "প্রতিষ্ঠা"
-      ],
-      [
-       "Eat nearby: Mitra Cafe (Sovabazar)",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d5/DurgaPuja2017_-_Durga_Puja_of_Sovabazar%27s_Nabokrishna_Deb_house_02.jpg",
-      "artist": "Indrajit Das",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Sovabazar Rajbari, 2017"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Sovabazar Rajbari this year?",
+   "bn": {
+    "hook": "এবার শোভাবাজার রাজবাড়ি যাচ্ছেন?",
+    "segs": [
+     "",
+     "",
+     "মেট্রো থেকে ৬ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-sovabazar_rajbari-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-sovabazar_rajbari-1",
+     0,
+     3.4,
+     "A bonedi bari puja started by Raja Nabakri",
+     0.5
+    ],
+    [
+     "pr-sovabazar_rajbari-2",
+     0,
+     3.4,
+     "6 min walk from Sovabazar Metro",
+     0.5
+    ],
+    [
+     "pr-sovabazar_rajbari-3",
+     0,
+     3.4,
+     "Hop next: Shyam Square Sarbojanin, 8 min",
+     0.5
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f22",
+    70
    ],
    "caption": {
     "en": "Sovabazar Rajbari, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA bonedi bari puja started by Raja Nabakrishna Deb. The thakurdalan is stunning.\n\nIt's 6 minutes' walk from Sovabazar Sutanuti Metro, and Shyam Square Sarbojanin is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1067,6 +1079,66 @@
      "kolkata durga puja 2026"
     ],
     "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Dashami, 21 Oct: sindoor khela",
+   "bn": {
+    "hook": "সিঁদুর খেলা, শেষ বিকেল",
+    "segs": [
+     "",
+     "দেবীবরণ",
+     "তারপর সিঁদুর খেলা",
+     "শুভ বিজয়া"
+    ],
+    "end": "প্রথম বিজয়ার প্রণাম কাকে? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-137174",
+     1.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-137174",
+     13.0,
+     4.0,
+     "Devi boron: the goodbye"
+    ],
+    [
+     "cm-da6619",
+     1.0,
+     4.0,
+     "Then sindoor khela"
+    ],
+    [
+     "cm-974883",
+     6.0,
+     4.0,
+     "Shubho Bijoya"
+    ]
+   ],
+   "end": [
+    "Who are you sending Bijoya wishes to first?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f20",
+    20
+   ],
+   "caption": {
+    "en": "Sindoor khela, the last afternoon of Kolkata Durga Puja ❤️\n\nFirst devi boron, the goodbye with sweets and sindoor, then the sindoor khela. The boron was filmed at a Kolkata pujo in 2025.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nShubho Bijoya. Who gets your first pranam? 👇",
+    "keywords": [
+     "sindoor khela 2026",
+     "bijoya dashami kolkata",
+     "devi boron",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {
