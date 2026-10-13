@@ -873,6 +873,10 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .sheet-close { position: absolute; top: 18px; right: 14px; z-index: 4; border: 1px solid var(--line); background: var(--surface); width: 34px; height: 34px; border-radius: 50%; font-size: 19px; line-height: 1; cursor: pointer; color: var(--ink-2); }
 .sheet .addr { display: flex; gap: 6px; align-items: flex-start; margin: 6px 0 2px; font-size: 13px; line-height: 1.4; color: var(--ink-2); user-select: text; }
 .sheet .addr .ic { flex: none; margin-top: 2px; color: var(--brand); }
+.sheet .addr > span { flex: 1; min-width: 0; }
+.addr-copy { flex: none; display: inline-flex; align-items: center; gap: 4px; margin-top: -3px; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.addr-copy .ic { margin: 0; color: var(--brand); }
+.addr-copy:active { background: var(--brand-soft); }
 .sheet .eyebrow { display: flex; gap: 7px; align-items: center; color: var(--gold); font-size: 11px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
 .sheet .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; }
 .sheet h2.title { margin: 6px 44px 2px 0; font-family: var(--serif); font-size: 27px; font-weight: 540; line-height: 1.12; letter-spacing: -.015em; font-variation-settings: "opsz" 72, "SOFT" 30; }
@@ -1047,15 +1051,13 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 .sa-rows small { color: var(--ink-3); }
 
 /* Pujo VIP pass card (Home), vibe pills and the folded crowd chart (pandal sheet) */
-.pass-card .pc-box { background: var(--brand-soft); border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent); border-radius: var(--radius); padding: 14px 16px; }
-.pass-card h2 { font-size: 17px; margin: 0 0 4px; }
-.pass-card .sub { margin: 0 0 10px; }
-.pc-rows { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
-.pc-rows li { background: var(--surface); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; font-size: 13.5px; }
-.pc-rows .pc-t { font-weight: 650; color: var(--brand); }
-.pc-rows small, .pass-card .fine { color: var(--ink-3); }
-.pc-pick { font-size: 13.5px; margin: 0 0 6px; }
-.pass-card .fine { margin: 6px 0 0; }
+.pass-link-wrap { padding: 0 16px; }
+.pass-link { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink-2); text-decoration: none; }
+.pass-link .pl-ic { font-size: 18px; opacity: .8; }
+.pass-link .pl-tx { flex: 1; min-width: 0; display: grid; gap: 1px; font-size: 13.5px; }
+.pass-link .pl-tx b { font-weight: 600; color: var(--ink); }
+.pass-link .pl-tx small { color: var(--ink-3); font-size: 12px; }
+.pass-link .pl-go { color: var(--ink-3); font-size: 18px; }
 .pill.vibe { color: var(--brand); background: var(--brand-soft); }
 details.crowd-more { margin-top: 18px; }
 details.crowd-more > summary { cursor: pointer; font-weight: 650; font-size: 14px; color: var(--ink-2); list-style-position: inside; }
