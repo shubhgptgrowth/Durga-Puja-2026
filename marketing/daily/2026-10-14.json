@@ -993,7 +993,6 @@
     "segs": [
      "",
      "থিম ২০২৬: ওরলি",
-     "কেন যাবেন",
      "মেট্রো থেকে ১৬ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
     ],
@@ -1018,22 +1017,15 @@
      "pr-kashi_bose_lane-0",
      0,
      3.4,
-     "A lane-side puja that keeps winning art aw",
+     "16 min walk from Sovabazar Metro",
      0.68
     ],
     [
      "pr-kashi_bose_lane-1",
      0,
      3.4,
-     "16 min walk from Sovabazar Metro",
-     0.32
-    ],
-    [
-     "pr-kashi_bose_lane-0",
-     0,
-     3.4,
      "Hop next: Simla Byayam Samity, 8 min",
-     0.68
+     0.32
     ]
    ],
    "end": [

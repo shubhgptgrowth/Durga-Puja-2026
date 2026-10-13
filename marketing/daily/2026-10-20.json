@@ -483,7 +483,7 @@
      "kicker": "Why go",
      "title": "What it's known for",
      "bn": "কেন যাবেন",
-     "body": "A well-known puja in Behala. Location from OpenStreetMap."
+     "body": "A well-known puja in Behala."
     },
     {
      "t": "list",
@@ -870,9 +870,7 @@
     "segs": [
      "",
      "থিম ২০২৬: কোলিয়ারি",
-     "কেন যাবেন",
-     "মেট্রো থেকে ২১ মিনিট হাঁটা",
-     "পরের প্যান্ডেল ২৮ মিনিট হেঁটে"
+     "কেন যাবেন"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
    },
@@ -897,20 +895,6 @@
      3.4,
      "A well-known theme puja in Behala",
      0.5
-    ],
-    [
-     "pr-thakurpukur_sb_park-0",
-     0,
-     3.4,
-     "21 min walk from Thakurpukur Metro",
-     0.32
-    ],
-    [
-     "pr-thakurpukur_sb_park-1",
-     0,
-     3.4,
-     "Hop next: Haridevpur Ajeya Sanghati, 28 mi",
-     0.68
     ]
    ],
    "end": [
@@ -922,7 +906,7 @@
     60
    ],
    "caption": {
-    "en": "Thakurpukur SB Park Sarbojanin, Kolkata Durga Puja 2026: the theme is Colliery 🪔\n\nA Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. Themes are as reported and can change before the puja.\n\nIt's 21 minutes' walk from Thakurpukur Metro, and Haridevpur Ajeya Sanghati is 28 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Thakurpukur SB Park Sarbojanin, Kolkata Durga Puja 2026: the theme is Colliery 🪔\n\nA Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. Themes are as reported and can change before the puja.\n\nEvery 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "thakurpukur sb park sarbojanin durga puja 2026",
      "thakurpukur sb park sarbojanin theme",

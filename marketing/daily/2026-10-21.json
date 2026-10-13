@@ -946,7 +946,6 @@
     "hook": "এবার শোভাবাজার রাজবাড়ি যাচ্ছেন?",
     "segs": [
      "",
-     "",
      "মেট্রো থেকে ৬ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
     ],
@@ -964,18 +963,11 @@
      "pr-sovabazar_rajbari-1",
      0,
      3.4,
-     "A bonedi bari puja started by Raja Nabakri",
-     0.5
-    ],
-    [
-     "pr-sovabazar_rajbari-2",
-     0,
-     3.4,
      "6 min walk from Sovabazar Metro",
      0.5
     ],
     [
-     "pr-sovabazar_rajbari-3",
+     "pr-sovabazar_rajbari-2",
      0,
      3.4,
      "Hop next: Shyam Square Sarbojanin, 8 min",
