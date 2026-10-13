@@ -1,0 +1,83 @@
+name: ig-dm-backend
+# Sets up comment-to-DM on the Supabase project, so a "PUJO" comment gets the guide within about 5 minutes:
+#   1. applies supabase/migrations/*_ig_dm.sql (the ledger tables)
+#   2. copies IG_USER_ID / IG_ACCESS_TOKEN / IG_PAGE_ID into the function's secrets, with a fresh DM_CRON_SECRET
+#   3. deploys the `ig-dm` Edge Function
+#   4. schedules it with pg_cron + pg_net (every 5 minutes by default)
+#   5. runs it once and prints what it did (dry run by default: lists who it would message)
+# Re-run it after the Instagram token is renewed. Needs the SUPABASE_ACCESS_TOKEN repository secret.
+# To stop the DMs: run it with schedule "off".
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref: { description: "Project ref; empty = the only project", default: "" }
+      schedule: { description: "cron (UTC), or off", default: "*/5 * * * *" }
+      dry_run: { description: "first run only lists who would be messaged", type: boolean, default: true }
+permissions: { contents: read }
+jobs:
+  ig-dm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SBT: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      API: https://api.supabase.com/v1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve project
+        id: ref
+        run: |
+          ref="${{ inputs.project_ref }}"
+          [ -n "$ref" ] || ref=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects" | jq -r '.[0].ref')
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+      - name: Apply the ig_dm migration
+        run: |
+          jq -Rs '{query: .}' supabase/migrations/*_ig_dm.sql > /tmp/q.json
+          curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json \
+            "$API/projects/${{ steps.ref.outputs.ref }}/database/query" >/dev/null && echo "migration applied"
+      - name: Function secrets
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_PAGE_ID: ${{ secrets.IG_PAGE_ID }}
+        run: |
+          [ -n "$IG_USER_ID" ] && [ -n "$IG_ACCESS_TOKEN" ] || { echo "::error::IG_USER_ID / IG_ACCESS_TOKEN secrets are not set"; exit 1; }
+          cs=$(openssl rand -hex 24); echo "::add-mask::$cs"
+          echo "$cs" > /tmp/cron_secret
+          jq -n --arg u "$IG_USER_ID" --arg t "$IG_ACCESS_TOKEN" --arg p "$IG_PAGE_ID" --arg c "$cs" \
+            '[{name:"IG_USER_ID",value:$u},{name:"IG_ACCESS_TOKEN",value:$t},{name:"IG_PAGE_ID",value:$p},{name:"DM_CRON_SECRET",value:$c}]' > /tmp/s.json
+          curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/s.json \
+            "$API/projects/${{ steps.ref.outputs.ref }}/secrets" >/dev/null && echo "secrets set"
+          rm /tmp/s.json
+      - name: Deploy the Edge Function
+        # The CLI comes from npm: setup-cli's "latest" lookup hits GitHub's API rate limit.
+        run: npx --yes supabase@2 functions deploy ig-dm --project-ref ${{ steps.ref.outputs.ref }} --no-verify-jwt --use-api
+      - name: Run once
+        run: |
+          ref=${{ steps.ref.outputs.ref }}; cs=$(cat /tmp/cron_secret)
+          q=""; [ "${{ inputs.dry_run }}" = true ] && q="?dry=1"
+          out=$(curl -sS --max-time 150 -X POST -H "x-cron-secret: $cs" "https://$ref.supabase.co/functions/v1/ig-dm$q")
+          echo "$out" | jq . || echo "$out"
+          { echo "### ig-dm (dry run: ${{ inputs.dry_run }})"; echo '```json'; echo "$out" | jq . 2>/dev/null || echo "$out"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          echo "$out" | jq -e '.ok' >/dev/null
+      - name: Schedule it (pg_cron)
+        run: |
+          ref=${{ steps.ref.outputs.ref }}; cs=$(cat /tmp/cron_secret)
+          if [ "${{ inputs.schedule }}" = off ]; then
+            sql="select cron.unschedule(jobid) from cron.job where jobname = 'ig-dm'; select count(*) as ig_dm_jobs from cron.job where jobname = 'ig-dm';"
+          else
+            sql=$(cat <<SQL
+          select cron.unschedule(jobid) from cron.job where jobname = 'ig-dm';
+          select cron.schedule('ig-dm', '${{ inputs.schedule }}', \$cron\$
+            select net.http_post(
+              url := 'https://$ref.supabase.co/functions/v1/ig-dm',
+              headers := '{"Content-Type": "application/json", "x-cron-secret": "$cs"}'::jsonb,
+              body := '{}'::jsonb, timeout_milliseconds := 120000);
+          \$cron\$);
+          select jobname, schedule, active from cron.job where jobname = 'ig-dm';
+          SQL
+          )
+          fi
+          jq -n --arg q "$sql" '{query: $q}' > /tmp/q.json
+          curl -fsS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json "$API/projects/$ref/database/query" | jq .
+          rm /tmp/q.json /tmp/cron_secret

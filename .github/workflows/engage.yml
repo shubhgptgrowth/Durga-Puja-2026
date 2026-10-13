@@ -10,7 +10,9 @@ name: engage
 #   mode=check  read-only token check (account, comments, Page link, messages, Business Discovery); sends nothing
 #   mode=dm     comment-to-DM: whoever comments "PUJO" on a recent post gets the guide in a private reply, once
 #               (ledger: dm.json on engage-data). Also every 15 min on a schedule, only while
-#               marketing/engage/config.json has "dm": true.
+#               marketing/engage/config.json has "dm": true. GitHub ran that schedule only every 4-10 hours, so the
+#               main sender is now the `ig-dm` Edge Function on Supabase (every 5 min, ig-dm-backend.yml); this
+#               stays as a fallback. Instagram allows one private reply per comment, so the two never double-send.
 on:
   schedule:
     - cron: "7,22,37,52 * * * *"
@@ -76,8 +78,8 @@ jobs:
         if: env.MODE == 'scan' || env.MODE == 'dm' || env.MODE == 'stats'
         run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin engage-data && git checkout engage-data || git checkout --orphan engage-data
-          git rm -rq --cached . 2>/dev/null || true
+          # keep the branch's other files (each commit used to hold only its own file, so a stats run wiped dm.json)
+          git fetch origin engage-data && git checkout engage-data || { git checkout --orphan engage-data && git rm -rq --cached .; }
           if [ "$MODE" = dm ]; then f=dm.json; cp /tmp/dm.json dm.json
           elif [ "$MODE" = stats ]; then mkdir -p stats; f="stats/$DAY.json"; cp "/tmp/engage/stats/$DAY.json" "$f"
           else f="$DAY.json"; cp "/tmp/engage/$DAY.json" "$f"; fi
