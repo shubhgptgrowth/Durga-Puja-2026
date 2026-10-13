@@ -26,6 +26,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 from pathlib import Path
 
 from .publish_ig import graph
@@ -156,9 +157,21 @@ ALREADY = "2534023"  # Graph error_subcode: "The comment that you are trying to 
 GUIDE = "https://pujoparikramaguide.in/?src=ig_dm"
 
 
+# Words that may sit next to the keyword in a request ("PUJO pls", "send route"). Anything else makes it a normal
+# comment: "পুরোনো কলকাতার পুজো 🙌" is praise, not a request, and must not get a DM.
+FILLER = ("pls", "plz", "plss", "please", "pl", "send", "dm", "me", "link", "guide", "map", "the", "a",
+          "দিন", "দাও", "প্লিজ", "প্লীজ", "পাঠান", "পাঠাও", "গাইড", "লিংক")
+
+
+def words(text):
+    """Lower-cased words, keeping Bengali vowel signs (category M); emoji, digits and punctuation dropped."""
+    kept = "".join(ch if unicodedata.category(ch)[0] in "LM" else " " for ch in (text or "").lower())
+    return kept.split()
+
+
 def wants_guide(text):
-    t = (text or "").lower()
-    return any(k in t for k in KEYWORDS)
+    w = words(text)
+    return any(x in KEYWORDS for x in w) and all(x in KEYWORDS or x in FILLER for x in w)
 
 
 def dm(ledger_path, dry, days=7):

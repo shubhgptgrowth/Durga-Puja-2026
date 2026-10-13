@@ -27,7 +27,15 @@ const db = (path: string, init: RequestInit = {}) =>
 const upsert = (table: string, rows: unknown[]) =>
   db(table, { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates' }, body: JSON.stringify(rows) });
 
-export const wantsGuide = (text = '') => KEYWORDS.some((k) => text.toLowerCase().includes(k));
+// Words that may sit next to the keyword in a request ("PUJO pls", "send route"). Anything else makes it a normal
+// comment: "পুরোনো কলকাতার পুজো 🙌" is praise, not a request, and must not get a DM. Same as engage.py FILLER.
+const FILLER = ['pls', 'plz', 'plss', 'please', 'pl', 'send', 'dm', 'me', 'link', 'guide', 'map', 'the', 'a',
+  'দিন', 'দাও', 'প্লিজ', 'প্লীজ', 'পাঠান', 'পাঠাও', 'গাইড', 'লিংক'];
+const words = (text = '') => text.toLowerCase().replace(/[^\p{L}\p{M}]+/gu, ' ').trim().split(' ').filter(Boolean);
+export const wantsGuide = (text = '') => {
+  const w = words(text || '');
+  return w.some((x) => KEYWORDS.includes(x)) && w.every((x) => KEYWORDS.includes(x) || FILLER.includes(x));
+};
 
 class GraphError extends Error { constructor(public status: number, public body: any) { super(JSON.stringify(body).slice(0, 300)); } }
 

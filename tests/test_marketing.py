@@ -365,9 +365,11 @@ class RedesignTest(unittest.TestCase):
 
     def test_comment_keyword_for_the_dm(self):
         from marketing import engage
-        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?"):
+        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?", "Pujo!!", "#pujo", "send route please", "পুজো প্লিজ", "PUJO 2026"):
             self.assertTrue(engage.wants_guide(t), t)
-        for t in ("beautiful", "", None, "Durga maa 🙏"):
+        # praise that mentions pujo is not a request (a real 12 Oct comment), nor is a sentence about routes
+        for t in ("beautiful", "", None, "Durga maa 🙏", "পুরোনো কলকাতার পুজো 🙌❤️😍", "beautiful pujo",
+                  "which route is best?", "pujojo", "পুজোর শুভেচ্ছা"):
             self.assertFalse(engage.wants_guide(t), t)
         self.assertIn("pujoparikramaguide.in", engage.GUIDE)
         self.assertNotIn("github.io", engage.DM_EN + engage.GUIDE)
@@ -381,6 +383,9 @@ class RedesignTest(unittest.TestCase):
         flat = re.sub(r"[\"']\s*\+\s*[\"']", "", ts)  # join the string literals split across lines
         for s in (engage.DM_BN, engage.DM_EN, engage.GUIDE, *engage.KEYWORDS):
             self.assertIn(s, flat, s[:30])
+        for name, py in (("KEYWORDS", engage.KEYWORDS), ("FILLER", engage.FILLER)):
+            ts_list = re.search(rf"const {name} = \[(.*?)\];", ts, re.S).group(1)
+            self.assertEqual(re.findall(r"'([^']*)'", ts_list), list(py), name)
         self.assertNotIn("quiet", engage.DM_EN + flat)
         self.assertIn(engage.ALREADY, ts)
 
