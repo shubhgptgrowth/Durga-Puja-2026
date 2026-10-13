@@ -96,6 +96,62 @@
    "artist": "Biswarup Ganguly",
    "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
    "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209215.jpg"
+  },
+  "pr-maddox_square-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Sq",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG"
+  },
+  "pr-maddox_square-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3973.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3973.JPG"
+  },
+  "pr-maddox_square-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3967.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3967.JPG"
+  },
+  "pr-maddox_square-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2016_10-08_9716.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Sq",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2016_10-08_9716.JPG"
+  },
+  "pr-hindustan_club-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Hindustan_club.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Priyankasingha1811",
+   "label": "Hindustan_club.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_club.jpg"
+  },
+  "pr-hindustan_club-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/DurgaPuja2017_-_Pandal_of_Hindustan_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_01.jpg"
+  },
+  "pr-hindustan_club-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Pandal_of_Hindustan_Park_11.jpg"
   }
  },
  "items": [
@@ -933,73 +989,57 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bhowanipore",
-     "title": "Maddox Square",
-     "bn": "ম্যাডক্স স্কোয়ার",
-     "sub": "Pictured: 2017",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Kolkata's favourite adda ground. A traditional idol and the city's best people-watching."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Jatin Das Park, 21 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Bhowanipore Durgotsab, 6 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Bojangles, Ammini",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 9 pm to 1 am",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/85/Durga_Puja_Pandal_Interior_With_Visitors_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3973.JPG",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Maddox Square, 2017"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Maddox Square this year?",
+   "bn": {
+    "hook": "এবার ম্যাডক্স স্কোয়ার যাচ্ছেন?",
+    "segs": [
+     "",
+     "",
+     "মেট্রো থেকে ২১ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৬ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-maddox_square-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-maddox_square-1",
+     0,
+     3.4,
+     "Kolkata's favourite adda ground",
+     0.5
+    ],
+    [
+     "pr-maddox_square-2",
+     0,
+     3.4,
+     "21 min walk from Jatin Das Park Metro",
+     0.5
+    ],
+    [
+     "pr-maddox_square-3",
+     0,
+     3.4,
+     "Hop next: Bhowanipore Durgotsab, 6 min",
+     0.5
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    20
    ],
    "caption": {
     "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nIt's 21 minutes' walk from Jatin Das Park Metro, and Bhowanipore Durgotsab is 6 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1097,73 +1137,117 @@
    }
   },
   {
-   "id": "p8",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "The last goodbye, at the ghat",
+   "bn": {
+    "hook": "ঘাটে শেষ বিদায়",
+    "segs": [
+     "",
+     "বাজা কদমতলা ঘাট, দশমী ২০১২",
+     "",
+     "আসছে বছর আবার হবে"
+    ],
+    "end": "এ বছরের কোন মুহূর্তটা রেখে দেবেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-accc68",
+     8.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-107395",
+     12.0,
+     3.8,
+     "Baja Kadamtala Ghat, Dashami 2012"
+    ],
+    [
+     "cm-032c18",
+     4.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-35909d",
+     27.0,
+     3.8,
+     "Asche bochor abar hobe"
+    ]
+   ],
+   "end": [
+    "Which moment of this pujo will you keep?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    60
+   ],
+   "caption": {
+    "en": "Durga Puja immersion in Kolkata: the last goodbye, at the ghat. Asche bochor abar hobe 🙏\n\nDhak, dancing and the idol into the Hooghly at Baja Kadamtala Ghat on Dashami 2012.\n\nWhich moment of this pujo will you keep? Tell us 👇",
+    "keywords": [
+     "durga immersion kolkata",
+     "asche bochor abar hobe",
+     "bijoya dashami 2026",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
+   }
+  },
+  {
+   "id": "r8v",
+   "type": "reel",
    "at": "22:00",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Gariahat",
-     "title": "Hindustan Club",
-     "bn": "হিন্দুস্থান ক্লাব",
-     "sub": "Pictured: 2020",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/6/63/Hindustan_club.jpg",
-      "artist": "Priyankasingha1811",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A well-known theme puja in Gariahat. Location from OpenStreetMap."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Ballygunge Junction (Suburban), 29 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Singhi Park, 5 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Bhojohori Manna 6",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/85/DurgaPuja2017_-_Pandal_of_Hindustan_Park_01.jpg",
-      "artist": "Indrajit Das",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Hindustan Club, 2017"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Hindustan Club this year?",
+   "bn": {
+    "hook": "এবার হিন্দুস্থান ক্লাব যাচ্ছেন?",
+    "segs": [
+     "",
+     "",
+     "মেট্রো থেকে ২৯ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-hindustan_club-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-hindustan_club-1",
+     0,
+     3.4,
+     "A well-known theme puja in Gariahat",
+     0.5
+    ],
+    [
+     "pr-hindustan_club-2",
+     0,
+     3.4,
+     "29 min walk from Ballygunge Junction (Subu",
+     0.5
+    ],
+    [
+     "pr-hindustan_club-0",
+     0,
+     3.4,
+     "Hop next: Singhi Park, 5 min",
+     0.32
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    110
    ],
    "caption": {
     "en": "Hindustan Club, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA well-known theme puja in Gariahat. Location from OpenStreetMap.\n\nIt's 29 minutes' walk from Ballygunge Junction (Suburban) Metro, and Singhi Park is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",

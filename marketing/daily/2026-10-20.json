@@ -128,6 +128,30 @@
    "artist": "Subhrajyoti07",
    "label": "বি._ই._(পশ্চিম)_ব্লক_বিধান_নগর_দূর্গা_পুজো_২০১৮.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:%E0%A6%AC%E0%A6%BF._%E0%A6%87._%28%E0%A6%AA%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A6%BF%E0%A6%AE%29_%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A6%95_%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%A8%E0%A6%97%E0%A6%B0_%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE_%E0%A6%AA%E0%A7%81%E0%A6%9C%E0%A7%8B_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg"
+  },
+  "pr-thakurpukur_sb_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_03.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
+   "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_03.jpg"
+  },
+  "pr-thakurpukur_sb_park-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_06.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
+   "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_06.jpg"
+  },
+  "pr-thakurpukur_sb_park-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_05.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "State_Bank_Park_(SB_Park)_Thakurpukur_Sarbojanin_Durga_Puja_",
+   "page": "https://commons.wikimedia.org/wiki/File:State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_05.jpg"
   }
  },
  "items": [
@@ -837,65 +861,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Behala",
-     "title": "Thakurpukur SB Park Sarbojanin",
-     "bn": "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/41/State_Bank_Park_%28SB_Park%29_Thakurpukur_Sarbojanin_Durga_Puja_2025_03.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Colliery",
-     "bn": "কোলিয়ারি",
-     "body": "A Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A well-known theme puja in Behala. Pin is approximate (centre of Thakurpukur); ask locally for the exact lane."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Thakurpukur, 21 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Haridevpur Ajeya Sanghati, 28 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Thakurpukur SB Park, 2026: Colliery",
+   "bn": {
+    "hook": "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন, ২০২৬: কোলিয়ারি",
+    "segs": [
+     "",
+     "থিম ২০২৬: কোলিয়ারি",
+     "কেন যাবেন",
+     "মেট্রো থেকে ২১ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ২৮ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-thakurpukur_sb_park-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-thakurpukur_sb_park-1",
+     0,
+     3.4,
+     "Theme 2026: Colliery",
+     0.5
+    ],
+    [
+     "pr-thakurpukur_sb_park-2",
+     0,
+     3.4,
+     "A well-known theme puja in Behala",
+     0.5
+    ],
+    [
+     "pr-thakurpukur_sb_park-0",
+     0,
+     3.4,
+     "21 min walk from Thakurpukur Metro",
+     0.32
+    ],
+    [
+     "pr-thakurpukur_sb_park-1",
+     0,
+     3.4,
+     "Hop next: Haridevpur Ajeya Sanghati, 28 mi",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f20",
+    60
    ],
    "caption": {
     "en": "Thakurpukur SB Park Sarbojanin, Kolkata Durga Puja 2026: the theme is Colliery 🪔\n\nA Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. Themes are as reported and can change before the puja.\n\nIt's 21 minutes' walk from Thakurpukur Metro, and Haridevpur Ajeya Sanghati is 28 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1049,6 +1073,66 @@
      "kolkata durga puja bhog"
     ],
     "tags": "#Labra #DurgaPuja2026 #BengaliFood"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Navami night. She leaves tomorrow",
+   "bn": {
+    "hook": "নবমীর রাত। কাল মা ফিরবেন",
+    "segs": [
+     "",
+     "কাল বিজয়া দশমী",
+     "শোভাবাজার রাজবাড়ি, বাগবাজার ঘাট",
+     "আজ রাতেই দেখে আসুন"
+    ],
+    "end": "আজ রাতে কার সঙ্গে যাচ্ছেন? ট্যাগ করুন"
+   },
+   "segments": [
+    [
+     "cm-6688a2",
+     3.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-6688a2",
+     23.0,
+     3.8,
+     "Tomorrow is Bijoya Dashami"
+    ],
+    [
+     "cm-25c378",
+     8.0,
+     4.0,
+     "Sovabazar Rajbari, Baghbazar Ghat"
+    ],
+    [
+     "cm-25c378",
+     62.0,
+     3.8,
+     "Go see her tonight"
+    ]
+   ],
+   "end": [
+    "Who are you seeing her with tonight?",
+    "Tag them"
+   ],
+   "music": [
+    "f23",
+    60
+   ],
+   "caption": {
+    "en": "Navami night, Kolkata Durga Puja 2026. Tomorrow she leaves 🙏\n\nOn Dashami the idols go to the river: these clips are from Baghbazar Ghat, where Sovabazar Rajbari's idol goes by boat, and Baja Kadamtala Ghat.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nWho are you seeing her with tonight? 👇",
+    "keywords": [
+     "navami 2026 kolkata",
+     "durga immersion kolkata",
+     "sovabazar rajbari",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

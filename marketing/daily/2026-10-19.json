@@ -128,6 +128,22 @@
    "artist": "Tarunsamanta",
    "label": "Chaltabagan_Durga_puja_2023_04.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_04.jpg"
+  },
+  "pr-ballygunge_cultural-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005_221243_02.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sumita Roy Dutta",
+   "label": "Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005",
+   "page": "https://commons.wikimedia.org/wiki/File:Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005_221243_02.jpg"
+  },
+  "pr-ballygunge_cultural-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005_221243_21.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sumita Roy Dutta",
+   "label": "Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005",
+   "page": "https://commons.wikimedia.org/wiki/File:Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005_221243_21.jpg"
   }
  },
  "items": [
@@ -863,69 +879,65 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Lake Market",
-     "title": "Ballygunge Cultural Association",
-     "bn": "বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন",
-     "sub": "Pictured: 2019",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Ballygunge_Cultural_Association_Durga_Puja_2019_IMG_20191005_221243_02.jpg",
-      "artist": "Sumita Roy Dutta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Jojon",
-     "bn": "যোজন",
-     "body": "'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "Thoughtful art-led themes in a calm-ish setting."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Kalighat, 25 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Samaj Sebi Sangha, 2 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Tak Heng, Oudh 1590",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Ballygunge Cultural Association, 2026: Jojon",
+   "bn": {
+    "hook": "বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন, ২০২৬: যোজন",
+    "segs": [
+     "",
+     "থিম ২০২৬: যোজন",
+     "কেন যাবেন",
+     "মেট্রো থেকে ২৫ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ২ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-ballygunge_cultural-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-ballygunge_cultural-1",
+     0,
+     3.4,
+     "Theme 2026: Jojon",
+     0.5
+    ],
+    [
+     "pr-ballygunge_cultural-0",
+     0,
+     3.4,
+     "Thoughtful art-led themes in a calm-ish se",
+     0.68
+    ],
+    [
+     "pr-ballygunge_cultural-1",
+     0,
+     3.4,
+     "25 min walk from Kalighat Metro",
+     0.32
+    ],
+    [
+     "pr-ballygunge_cultural-0",
+     0,
+     3.4,
+     "Hop next: Samaj Sebi Sangha, 2 min",
+     0.68
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f23",
+    10
    ],
    "caption": {
     "en": "Ballygunge Cultural Association, Kolkata Durga Puja 2026: the theme is Jojon 🪔\n\n'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. Themes are as reported and can change before the puja.\n\nIt's 25 minutes' walk from Kalighat Metro, and Samaj Sebi Sangha is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1050,6 +1062,66 @@
      "navratri in kolkata"
     ],
     "tags": "#KanyaPujan #Navratri2026 #DurgaPuja2026"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Sandhi puja: 48 minutes, 108 lamps",
+   "bn": {
+    "hook": "সন্ধিপুজো: ৪৮ মিনিট, ১০৮ প্রদীপ",
+    "segs": [
+     "",
+     "বালিগঞ্জ কালচারাল, অষ্টমী ২০১৮",
+     "অষ্টমী যেখানে নবমীতে মেশে",
+     "১০৮ পদ্ম, ১০৮ প্রদীপ"
+    ],
+    "end": "কখনও সন্ধিপুজো দেখেছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-842948",
+     3.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-842948",
+     34.0,
+     3.8,
+     "Ballygunge Cultural, Ashtami 2018"
+    ],
+    [
+     "cm-842948",
+     45.0,
+     3.8,
+     "Where Ashtami meets Navami"
+    ],
+    [
+     "cm-842948",
+     54.0,
+     3.8,
+     "108 lotuses, 108 lamps"
+    ]
+   ],
+   "end": [
+    "Have you ever stayed up for Sandhi puja?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    110
+   ],
+   "caption": {
+    "en": "Sandhi puja at Kolkata Durga Puja: 48 minutes, 108 lamps 🪔\n\nThe puja held where Ashtami ends and Navami begins, filmed at Ballygunge Cultural Association in 2018. Its clock time changes every year, so check the panjika.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nHave you ever stayed up for Sandhi puja? 👇",
+    "keywords": [
+     "sandhi puja 2026",
+     "ashtami 2026 kolkata",
+     "ballygunge cultural association",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {

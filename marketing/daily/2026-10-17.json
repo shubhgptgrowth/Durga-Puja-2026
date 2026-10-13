@@ -128,6 +128,38 @@
    "artist": "Tarunsamanta",
    "label": "Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_07.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_07.jpg"
+  },
+  "pr-md_ali_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg"
+  },
+  "pr-md_ali_park-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg"
+  },
+  "pr-md_ali_park-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/DurgaPuja2017_-_Mohammad_Ali_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Mohammad_Ali_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Mohammad_Ali_Park_01.jpg"
+  },
+  "pr-md_ali_park-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/DurgaPuja2017_-_Mohammad_Ali_Park_02.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Mohammad_Ali_Park_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Mohammad_Ali_Park_02.jpg"
   }
  },
  "items": [
@@ -868,66 +900,57 @@
    ]
   },
   {
-   "id": "p6",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6v",
+   "type": "reel",
    "at": "19:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · College St",
-     "title": "Mohammad Ali Park",
-     "bn": "মহম্মদ আলি পার্ক",
-     "sub": "Pictured: 2017",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/1/16/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_03.jpg",
-      "artist": "Indrajit Das",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "bn": "কেন যাবেন",
-     "body": "A Central Avenue giant known for lavish replicas and theme pandals."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "bn": "যাওয়ার আগে",
-     "items": [
-      [
-       "Metro: Mahatma Gandhi Road, 10 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Young Boys Club, 7 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Since 1969",
-       "প্রতিষ্ঠা"
-      ],
-      [
-       "Eat nearby: Shree Ram Dhaba",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 am",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
-     "ask": "Save it · tell us if you're going"
-    }
+   "hook": "Going to Mohammad Ali Park this year?",
+   "bn": {
+    "hook": "এবার মহম্মদ আলি পার্ক যাচ্ছেন?",
+    "segs": [
+     "",
+     "",
+     "মেট্রো থেকে ১০ মিনিট হাঁটা",
+     "পরের প্যান্ডেল ৭ মিনিট হেঁটে"
+    ],
+    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "pr-md_ali_park-0",
+     0,
+     4.0,
+     "",
+     0.5
+    ],
+    [
+     "pr-md_ali_park-1",
+     0,
+     3.4,
+     "A Central Avenue giant known for lavish re",
+     0.5
+    ],
+    [
+     "pr-md_ali_park-2",
+     0,
+     3.4,
+     "10 min walk from Mahatma Gandhi Road Metro",
+     0.5
+    ],
+    [
+     "pr-md_ali_park-3",
+     0,
+     3.4,
+     "Hop next: Young Boys Club, 7 min",
+     0.5
+    ]
+   ],
+   "end": [
+    "Is it on your list this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f21",
+    110
    ],
    "caption": {
     "en": "Mohammad Ali Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA Central Avenue giant known for lavish replicas and theme pandals.\n\nIt's 10 minutes' walk from Mahatma Gandhi Road Metro, and Young Boys Club is 7 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
@@ -1085,6 +1108,66 @@
      "durga puja breakfast kolkata"
     ],
     "tags": "#LuchiAlurDom #DurgaPuja2026 #BengaliFood"
+   }
+  },
+  {
+   "id": "r9f",
+   "type": "reel",
+   "at": "21:25",
+   "hook": "Shashthi, 17 Oct. Turn the sound up",
+   "bn": {
+    "hook": "আজ ষষ্ঠী। সাউন্ড বাড়ান",
+    "segs": [
+     "",
+     "সন্ধ্যারতির ঢাক",
+     "সমাজসেবীর গ্রামের কোণ",
+     "পাঁচ দিন শুরু"
+    ],
+    "end": "আজ রাতে কোথায়? কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "cm-f74cd3",
+     1.0,
+     4.0,
+     ""
+    ],
+    [
+     "cm-f74cd3",
+     9.0,
+     3.6,
+     "The dhak at evening aarti"
+    ],
+    [
+     "cm-d8e3f8",
+     1.0,
+     4.0,
+     "Samaj Sebi's village corner"
+    ],
+    [
+     "cm-f74cd3",
+     19.0,
+     3.8,
+     "Five days start now"
+    ]
+   ],
+   "end": [
+    "Where are you tonight?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f22",
+    70
+   ],
+   "caption": {
+    "en": "Shashthi 2026 in Kolkata: turn the sound up for the dhak 🥁\n\nThe dhaki at evening aarti, and a dhenki, the old rice-husking tool, at Samaj Sebi Sangha's village corner.\n\nEvery 2026 theme, the walk from pandal to pandal and the Metro stops are free in our guide, link in bio.\n\nWhich pandal are you at tonight? 👇",
+    "keywords": [
+     "durga puja dhak",
+     "shashthi 2026 kolkata",
+     "samaj sebi sangha",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #durgapuja"
    }
   },
   {
