@@ -3,7 +3,7 @@
 import { decodePlan, parseSteps } from './core.js';
 import { S, G, idx, t, store, community, loadGuide, dn, todayKey, savePrefs, bnDigits, loc } from './state.js';
 import { dayRec, saveHistory } from './actions.js';
-import { $, $$, go, rerender, toast, setupSheet, setupA11y, VIEWS, sheetIsOpen, initVectorTiles, refreshBaseLayers } from './ui.js';
+import { $, $$, go, rerender, toast, setupSheet, setupA11y, VIEWS, sheetIsOpen} from './ui.js';
 import './views/home.js';
 import './views/explore.js';
 import { openSharedPlan, showTrail } from './views/plan.js';
@@ -75,7 +75,6 @@ async function boot() {
   startLiveCount();
   onCounts(() => applyStatic(false));
   initMini();
-  if (!S.prefs.lowData) initVectorTiles();
   if ('serviceWorker' in navigator) {
     // A new build takes over as soon as it is installed: reload once so people see it now, not on their next visit.
     const hadController = !!navigator.serviceWorker.controller;
@@ -107,7 +106,7 @@ function setupCommunity() {
 }
 
 function setupHeader() {
-  $('#langSelect').onchange = (e) => { S.prefs.lang = e.target.value; track('lang', { d: e.target.value }); savePrefs(); applyStatic(); rerender(); refreshBaseLayers(); };
+  $('#langSelect').onchange = (e) => { S.prefs.lang = e.target.value; track('lang', { d: e.target.value }); savePrefs(); applyStatic(); rerender(); };
 }
 
 /* Static text in index.html carries data-i18n keys; the views re-render themselves. */
@@ -119,7 +118,6 @@ function applyStatic(full = true) {
   $('#langSelect').setAttribute('aria-label', t('lang.aria'));
   $('#sheetClose').setAttribute('aria-label', t('sheet.close'));
   $('#fabAdd').setAttribute('aria-label', t('m.add'));
-  $('#locateBtn').setAttribute('aria-label', t('loc.me'));
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), dashami = new Date(idx.day.dashami.date + 'T00:00:00');
   const todayDay = G.data.meta.days.find((d) => d.date === todayKey()), diff = Math.round((shashthi - now) / 864e5);

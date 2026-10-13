@@ -1,9 +1,9 @@
-/* Explore (the Map tab): Pandals / Food / Parking, one row of filters, and a full-screen map or a list. */
+/* Explore: Pandals / Food / Parking, one row of filters, and the list. */
 import { hav, isOpen, pandalFilter, stationOptions } from '../core.js';
 import {
   S, G, idx, t, store, community, ll, nm, zn, zs, zoneOf, esc, dist, ampm, dn, crowdNow, btn, icon, loc,
 } from '../state.js';
-import { $, registerView, makeMap, pinIcon, getFix, toast } from '../ui.js';
+import { $, registerView, getFix, toast } from '../ui.js';
 import { offerChip, featuredFirst } from '../offers.js';
 import { openPlace, crowdPill, statsHtml, ratingHtml, dirUrl, openHtml, costHtml, dietMarks, themeTitle, awardPill, vibePill } from '../sheets.js';
 import { visitedToday } from '../actions.js';
@@ -11,47 +11,11 @@ import { track } from '../analytics.js';
 import { carCardHtml, carClick } from '../car.js';
 import { foodPhoto, tilePhoto, photoBg, photosOn } from '../photos.js';
 import { dietMatch, DIETS } from '../foodinfo.js';
-import { areaSelectHtml, setAreaValue, inArea, areasOf, bboxOf } from '../filters.js';
+import { areaSelectHtml, setAreaValue, inArea, areasOf } from '../filters.js';
 
-let map = null, layers = {}, meMarker = null, moreOpen = false;
-const LINE = { blue: '#2563EB', green: '#16A34A', purple: '#9333EA', orange: '#EA580C', suburban: '#57534E' };
+let moreOpen = false;
 
 export function setExplore(patch) { Object.assign(S.explore, patch); }
-
-function ensureMap() {
-  if (map || !$('#map')) return;
-  map = makeMap($('#map'));
-  if (!map) return;
-  layers = { pandals: L.layerGroup(), food: L.layerGroup(), parking: L.layerGroup(), transit: L.layerGroup() };
-  for (const p of G.data.pandals) L.marker(ll(p), { icon: pinIcon(zoneOf(p.zone).color, 14 + p.popularity * 3, p.popularity === 5 ? '★' : ''), title: p.name }).on('click', () => openPlace(p.id)).addTo(layers.pandals);
-  for (const f of G.data.food) L.marker(ll(f), { icon: pinIcon('#C2410C', 22, '🍴'), title: f.name }).on('click', () => openPlace(f.id)).addTo(layers.food);
-  for (const p of G.data.parking) L.marker(ll(p), { icon: pinIcon('#1D4ED8', 22, 'P', 'sq'), title: p.name }).on('click', () => openPlace(p.id)).addTo(layers.parking);
-  for (const s of G.data.transit) L.marker(ll(s), { icon: pinIcon(LINE[s.line], 18, 'M', 'sq'), title: s.name, keyboard: false }).bindTooltip(s.name).addTo(layers.transit);
-  layers.transit.addTo(map);
-  $('#locateBtn').onclick = () => getFix().then((f) => { drawMe(); map.setView([f.lat, f.lng], 15); render(); }).catch(() => toast(t('loc.fail')));
-}
-export function drawMe() {
-  if (!map || !S.me) return;
-  if (!meMarker) meMarker = L.marker(S.me, { icon: L.divIcon({ className: '', html: '<div class="me-dot"></div>', iconSize: [16, 16] }), zIndexOffset: 1000, keyboard: false }).addTo(map);
-  else meMarker.setLatLng(S.me);
-}
-function syncLayers() {
-  if (!map) return;
-  const seg = S.explore.seg;
-  layers.pandals.addTo(map);
-  seg === 'food' ? layers.food.addTo(map) : layers.food.remove();
-  seg === 'parking' ? layers.parking.addTo(map) : layers.parking.remove();
-}
-let lastFit = '';
-function fitZone(force = false) {
-  if (!map || S.explore.mode !== 'map') return;
-  const key = S.explore.region + '/' + S.explore.area;
-  if (key === lastFit && !force) return; lastFit = key;
-  const bb = bboxOf(S.explore);
-  if (!bb) map.setView([22.56, 88.37], 12);
-  else map.fitBounds(bb, { padding: [30, 30], maxZoom: 16 });
-}
-
 
 function pandalItem(p) {
   const z = zoneOf(p.zone), c = crowdNow(p);
@@ -155,34 +119,17 @@ function listHtml(e, list) {
     <p class="tiny-note">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
 }
 
-/** In map mode the map fills the space between the filter bar and the tab bar. */
-function sizeMap() {
-  const m = $('#map');
-  if (!m || S.explore.mode !== 'map' || S.view !== 'explore') return;
-  const tb = $('.tabbar')?.offsetHeight || 62;
-  m.style.height = Math.max(260, window.innerHeight - m.getBoundingClientRect().top - tb) + 'px';
-  map?.invalidateSize();
-}
-
 function render() {
   const e = S.explore, view = $('#view-explore');
-  const prevMode = view.dataset.mode;
-  view.dataset.mode = e.mode;
-  ensureMap(); syncLayers(); drawMe();
   const list = e.seg === 'pandals' ? pandalList(e) : e.seg === 'food' ? foodList(e) : parkList(e);
   $('#exploreBar').innerHTML = barHtml(e);
-  $('#explorePanel').innerHTML = e.mode === 'list' ? listHtml(e, list) : '';
-  const noun = t(e.seg === 'pandals' ? 'list.count' : e.seg === 'food' ? 'list.countFood' : 'list.countPark', { n: list.length });
-  $('#modeBtn').innerHTML = e.mode === 'map' ? `${icon('list', 'sm')} ${t('mode.list')} · ${noun}` : `${icon('map', 'sm')} ${t('mode.map')}`;
-  $('#modeBtn').dataset.to = e.mode === 'map' ? 'list' : 'map';
-  if (e.mode === 'map') { sizeMap(); fitZone(prevMode !== 'map'); }
+  $('#explorePanel').innerHTML = listHtml(e, list);
   wire(view);
 }
 
 function wire(view) {
   view.onclick = (ev) => {
     const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; track('filter', { d: 'seg:' + seg }); return render(); }
-    if (ev.target.closest('#modeBtn')) { S.explore.mode = S.explore.mode === 'map' ? 'list' : 'map'; track('filter', { d: 'mode:' + S.explore.mode }); window.scrollTo(0, 0); return render(); }
     const only = ev.target.closest('[data-only]')?.dataset.only;
     if (only) { S.explore.only.has(only) ? S.explore.only.delete(only) : S.explore.only.add(only); track('filter', { d: 'only:' + only }); return render(); }
     if (ev.target.closest('[data-clear]')) { S.explore.only.clear(); S.explore.station = 'all'; return render(); }
@@ -205,7 +152,5 @@ function wire(view) {
   };
 }
 
-addEventListener('resize', () => sizeMap());
-registerView('explore', { render, onShow: () => setTimeout(() => { sizeMap(); map?.invalidateSize(); }, 60) });
-export const exploreMap = () => map;
+registerView('explore', { render });
 export const refreshExplore = () => S.view === 'explore' && render();

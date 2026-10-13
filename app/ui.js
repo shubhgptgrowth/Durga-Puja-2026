@@ -1,6 +1,5 @@
 /* DOM plumbing: query helpers, router, toast, bottom sheet, map factory. */
 import { S, t, store } from './state.js';
-import { CONFIG } from './config.js';
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -82,62 +81,6 @@ export function setupA11y() {
     const el = e.target;
     if ((e.key === 'Enter' || e.key === ' ') && el.getAttribute?.('role') === 'button' && el.tagName !== 'BUTTON') { e.preventDefault(); el.click(); }
   });
-}
-
-/* ---------------- maps ---------------- */
-const isDark = () => document.documentElement.dataset.theme === 'dark' || (document.documentElement.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
-const liveMaps = new Set();
-let vector = null;   // {url, maxzoom, build} once the self-hosted vector tiles are confirmed readable
-
-/** Check the vector tile manifest and that the file answers range requests. Falls back to raster quietly. */
-export async function initVectorTiles() {
-  const mf = CONFIG.map.vectorManifest;
-  if (!mf || !window.protomapsL) return false;
-  try {
-    const m = await (await fetch(mf, { cache: 'no-cache' })).json();
-    if (!m.file) return false;
-    const url = new URL(m.file, new URL(mf, location.href)).href;
-    const head = await fetch(url, { headers: { Range: 'bytes=0-6' } });
-    const magic = new TextDecoder().decode((await head.arrayBuffer()).slice(0, 7));
-    if (!(head.status === 206 || head.status === 200) || magic !== 'PMTiles') return false;
-    vector = { url, maxzoom: m.maxzoom || 15, build: m.build };
-    refreshBaseLayers();
-    return true;
-  } catch { return false; }
-}
-export const mapEngine = () => (vector ? 'vector' : 'raster');
-
-function baseLayer() {
-  const c = CONFIG.map;
-  if (vector) {
-    return protomapsL.leafletLayer({ url: vector.url, flavor: isDark() ? 'dark' : 'light', lang: S.prefs.lang,
-      maxDataZoom: vector.maxzoom, maxZoom: c.maxZoom,
-      attribution: '<a href="https://protomaps.com">Protomaps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' });
-  }
-  return L.tileLayer(isDark() ? c.dark : c.light, { maxZoom: c.maxZoom, subdomains: c.subdomains, detectRetina: true, attribution: c.attribution });
-}
-
-/** Swap every live map's base layer (after the vector tiles load, or the language or theme changes). */
-export function refreshBaseLayers() {
-  for (const m of liveMaps) {
-    if (!m._container?.isConnected) { liveMaps.delete(m); continue; }
-    if (S.prefs.lowData) continue;
-    m._base?.remove(); m._base = baseLayer().addTo(m); m._base.bringToBack?.();
-  }
-}
-matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', refreshBaseLayers);
-
-export function makeMap(el, { center = [22.555, 88.37], zoom = 12, animate = true } = {}) {
-  if (!window.L) { el.innerHTML = `<p class="empty">${t('map.offline')}</p>`; return null; }
-  const m = L.map(el, { zoomControl: false, attributionControl: true, zoomAnimation: animate, fadeAnimation: animate, markerZoomAnimation: animate }).setView(center, zoom);
-  if (!S.prefs.lowData) m._base = baseLayer().addTo(m);
-  liveMaps.add(m);
-  m.on('unload', () => liveMaps.delete(m));
-  return m;
-}
-export function pinIcon(color, size, label = '', cls = '') {
-  return L.divIcon({ className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2],
-    html: `<div class="pin ${cls}" style="width:${size}px;height:${size}px;background:${color}">${label}</div>` });
 }
 
 /* ---------------- location ---------------- */

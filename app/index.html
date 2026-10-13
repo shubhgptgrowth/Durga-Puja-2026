@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Durga Puja 2026: Kolkata Pandals, Rituals &amp; Dates | Pujo Parikrama</title>
-  <meta name="description" content="The Durga Puja guide: rituals day by day, mantras, history, puja at home and Navratri, plus a live Kolkata 2026 pandal map with crowds, routes, food and parking.">
+  <meta name="description" content="The Durga Puja guide: rituals day by day, mantras, history, puja at home and Navratri, plus every Kolkata 2026 pandal with themes, walking routes from the Metro, food and parking.">
   <meta name="theme-color" content="#FFFDF9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1B1816" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
@@ -26,7 +26,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preload" href="fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/fraunces-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -89,14 +88,9 @@
   <!--seo:start--><!--seo:end-->
   <main id="main">
     <section id="view-home" class="view active" aria-labelledby="tab-home"></section>
-    <section id="view-explore" class="view" aria-labelledby="tab-explore" data-mode="map">
+    <section id="view-explore" class="view" aria-labelledby="tab-explore">
       <div class="explore-bar" id="exploreBar"></div>
-      <div class="map-wrap">
-        <div id="map" class="map" role="region" aria-label="Map"></div>
-        <button class="fab-sm" id="locateBtn" aria-label="Show my location"><svg class="ic"><use href="#i-locate"/></svg></button>
-      </div>
       <div class="panel" id="explorePanel"></div>
-      <button class="mode-pill" id="modeBtn" type="button"></button>
     </section>
     <section id="view-plan" class="view" aria-labelledby="tab-plan"></section>
     <section id="view-moments" class="view" aria-labelledby="tab-moments"></section>
@@ -124,8 +118,6 @@
   <input type="file" id="pickCamera" accept="image/*,video/*,.heic,.heif" capture="environment" hidden>
   <input type="file" id="pickGallery" accept="image/*,video/*,.heic,.heif" hidden>
 
-  <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="vendor/protomaps-leaflet/protomaps-leaflet.js"></script>
   <script src="app.js" type="module"></script>
 </body>
 </html>

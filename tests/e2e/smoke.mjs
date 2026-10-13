@@ -63,10 +63,10 @@ try {
   must(await count('.tasks .task') === 6, 'task buttons missing on home');
   must(await count('[data-hr]') === G.regions.length, 'area buttons missing on home');
   await shot('01-home');
-  // Home is a launcher: an area opens the map filtered to it; "Must-see" opens the famous list.
+  // Home is a launcher: an area opens Explore filtered to it; "Must-see" opens the famous list.
   await page.click('[data-hr="south"]');
-  await page.waitForSelector('#view-explore.active[data-mode="list"] #explorePanel .item[data-place]');
-  must(await page.locator('#areaSelect').inputValue() === 'r:south', 'home area button should filter the map to South');
+  await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
+  must(await page.locator('#areaSelect').inputValue() === 'r:south', 'home area button should filter Explore to South');
   await page.click('.tab[data-view="home"]');
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
@@ -144,15 +144,10 @@ try {
 
   // Too far: Bagbazar from Lake Market is refused publicly, but can be kept privately
   await page.click('.tab[data-view="explore"]');
-  // The Map tab: one filter row, and a pill that flips between a full-screen map and the list
+  // Explore is a list only: no in-app map
   await page.selectOption('#areaSelect', 'all');
-  await page.click('#modeBtn[data-to="map"]');
-  await page.waitForSelector('#view-explore[data-mode="map"] #map.leaflet-container');
-  must(await page.locator('#explorePanel').isHidden(), 'list should hide in map mode');
-  must(/107|\d+ pandals/.test(await page.locator('#modeBtn').innerText()), 'map pill should show the count');
-  await shot('03b-map-mode');
-  await page.click('#modeBtn[data-to="list"]');
-  await page.waitForSelector('#view-explore[data-mode="list"] #explorePanel .item');
+  await page.waitForSelector('#explorePanel .item');
+  must(await page.locator('#map, #modeBtn, .leaflet-container').count() === 0, 'Explore should have no map');
   await page.selectOption('#areaSelect', 'a:north');
   must(await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'area filter count');
   await page.click('#explorePanel .item[data-place="bagbazar"]');
