@@ -908,7 +908,6 @@
     "hook": "এবার মহম্মদ আলি পার্ক যাচ্ছেন?",
     "segs": [
      "",
-     "",
      "মেট্রো থেকে ১০ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৭ মিনিট হেঁটে"
     ],
@@ -926,22 +925,15 @@
      "pr-md_ali_park-1",
      0,
      3.4,
-     "A Central Avenue giant known for lavish re",
-     0.5
-    ],
-    [
-     "pr-md_ali_park-2",
-     0,
-     3.4,
      "10 min walk from Mahatma Gandhi Road Metro",
      0.5
     ],
     [
-     "pr-md_ali_park-3",
+     "pr-md_ali_park-0",
      0,
      3.4,
      "Hop next: Young Boys Club, 7 min",
-     0.5
+     0.68
     ]
    ],
    "end": [
@@ -1134,20 +1126,20 @@
     ],
     [
      "cm-f74cd3",
-     9.0,
+     9.5,
      3.6,
      "The dhak at evening aarti"
     ],
     [
      "cm-d8e3f8",
-     1.0,
+     4.5,
      4.0,
      "Samaj Sebi's village corner"
     ],
     [
      "cm-f74cd3",
-     19.0,
-     3.8,
+     5.5,
+     3.6,
      "Five days start now"
     ]
    ],

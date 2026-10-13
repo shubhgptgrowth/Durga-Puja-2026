@@ -786,7 +786,6 @@
     "segs": [
      "",
      "থিম ২০২৬: জললিপি",
-     "কেন যাবেন",
      "মেট্রো থেকে ১৬ মিনিট হাঁটা",
      "পরের প্যান্ডেল ২ মিনিট হেঁটে"
     ],
@@ -811,22 +810,15 @@
      "pr-nalin_sarkar-0",
      0,
      3.4,
-     "A famous Hatibagan theme puja tucked into ",
+     "16 min walk from Shyambazar Metro",
      0.68
     ],
     [
      "pr-nalin_sarkar-1",
      0,
      3.4,
-     "16 min walk from Shyambazar Metro",
-     0.32
-    ],
-    [
-     "pr-nalin_sarkar-0",
-     0,
-     3.4,
      "Hop next: Hatibagan Sarbojanin, 2 min",
-     0.68
+     0.32
     ]
    ],
    "end": [
@@ -880,8 +872,6 @@
     "segs": [
      "",
      "থিম ২০২৬: বস্তারিও",
-     "কেন যাবেন",
-     "মেট্রো থেকে ২৩ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -902,21 +892,7 @@
      0.5
     ],
     [
-     "pr-singhi_park-2",
-     0,
-     3.4,
-     "Grand traditional puja just off Gariahat R",
-     0.5
-    ],
-    [
      "pr-singhi_park-0",
-     0,
-     3.4,
-     "23 min walk from Ballygunge Junction (Subu",
-     0.32
-    ],
-    [
-     "pr-singhi_park-1",
      0,
      3.4,
      "Hop next: Ekdalia Evergreen, 5 min",
@@ -932,7 +908,7 @@
     20
    ],
    "caption": {
-    "en": "Singhi Park, Kolkata Durga Puja 2026: the theme is Bastar 🪔\n\nInspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year. Themes are as reported and can change before the puja.\n\nIt's 23 minutes' walk from Ballygunge Junction (Suburban) Metro, and Ekdalia Evergreen is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Singhi Park, Kolkata Durga Puja 2026: the theme is Bastar 🪔\n\nInspired by the art and heritage of Bastar in Chhattisgarh, in the puja's 85th year. Themes are as reported and can change before the puja.\n\nEkdalia Evergreen is 5 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "singhi park durga puja 2026",
      "singhi park theme",
