@@ -1,5 +1,7 @@
 # Which map to connect
 
+> **Status (13 Oct 2026): the in-app map is switched off.** Explore is list-only, and the deploy no longer builds `app/tiles/`. Directions still open Google Maps. To bring the map back, restore it from git history once a map provider is connected.
+
 The app needs four things from a map stack:
 
 1. **Base map tiles** that stay fast and affordable through puja-week traffic spikes, ideally with Bengali labels.

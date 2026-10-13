@@ -188,7 +188,6 @@ main { padding-top: calc(var(--top-h) + var(--safe-t) + 6px); padding-bottom: ca
 .btn.wa { background: #1FA855; border-color: #1FA855; color: #fff; }
 .btn.story-btn { background: var(--deep); border: 1px solid color-mix(in srgb, var(--gold-2) 50%, transparent); color: var(--on-deep); font-weight: 650; }
 .icon-btn { border: 0; background: var(--surface-2); color: var(--ink); width: 32px; height: 32px; border-radius: 50%; font-size: 18px; line-height: 1; cursor: pointer; }
-.fab-sm { position: absolute; right: 12px; bottom: 30px; z-index: 500; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); box-shadow: var(--shadow); display: grid; place-items: center; cursor: pointer; }
 
 /* ---------- controls ---------- */
 .seg { display: flex; margin: 0 16px 10px; background: var(--surface-2); border-radius: 12px; padding: 3px; }
@@ -566,16 +565,6 @@ html[lang="bn"] .how-lingo { font-family: var(--bn-serif); font-style: normal; }
 .car-btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .car-btns .btn.ghost { color: #fff; border-color: rgba(255,255,255,.45); background: transparent; }
 
-/* ---------- map ---------- */
-.map-wrap { position: relative; }
-.map { height: 40vh; min-height: 240px; background: var(--surface-2); position: relative; z-index: 0; isolation: isolate; }
-.map.short { height: 34vh; }
-.leaflet-container { font: inherit; background: var(--surface-2); }
-.leaflet-control-attribution { background: color-mix(in srgb, var(--surface) 80%, transparent) !important; color: var(--ink-3); font-size: 10px !important; }
-.leaflet-bar a { color: var(--ink) !important; }
-.pin { border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 11px; }
-.pin.sq { border-radius: 6px; font-size: 10px; }
-.me-dot { width: 16px; height: 16px; border-radius: 50%; background: #2F5FD0; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(47,95,208,.22); }
 .seq { background: var(--brand); color: #fff; border-radius: 50%; width: 26px; height: 26px; display: grid; place-items: center; font-weight: 700; font-size: 12px; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
 .panel { position: relative; margin-top: -16px; background: var(--bg); border-radius: 20px 20px 0 0; padding-top: 12px; z-index: 400; }
 
@@ -588,15 +577,7 @@ html[lang="bn"] .how-lingo { font-family: var(--bn-serif); font-style: normal; }
 .filter-row::-webkit-scrollbar { display: none; }
 .filter-row select { flex: 1 1 0; min-width: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); font-size: 14px; }
 .filter-row.food select { flex: 0 0 auto; max-width: 52vw; }
-#view-explore[data-mode="list"] .map-wrap { display: none; }
-#view-explore[data-mode="list"] .panel { margin-top: 0; border-radius: 0; padding-bottom: 60px; }
-#view-explore[data-mode="map"] .panel { display: none; }
-#view-explore[data-mode="map"] .map { min-height: 260px; }
-body:has(#view-explore.active[data-mode="map"]) main { padding-bottom: calc(var(--tabbar-h) + var(--safe-b)); }
-.mode-pill { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--tabbar-h) + var(--safe-b) + 16px); z-index: 850; border: 1px solid rgba(207,169,81,.4); border-radius: 999px; padding: 11px 20px;
-  background: var(--deep); color: var(--on-deep); font-weight: 600; font-size: 14px; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 10px 26px -8px rgba(20,8,6,.55); cursor: pointer; white-space: nowrap; }
-.mode-pill .ic { width: 18px; height: 18px; color: var(--gold-2); }
-body:has(#view-explore.active) .toast { bottom: calc(var(--tabbar-h) + var(--safe-b) + 76px); }
+#view-explore .panel { margin-top: 0; border-radius: 0; padding-bottom: 60px; }
 /* the Pandals / Food / Parking switcher: three framed photos */
 .seg.big { gap: 6px; padding: 5px; border-radius: 16px; background: var(--surface-2); border: 1px solid var(--line); }
 .seg.big button { flex-direction: column; gap: 1px; padding: 8px 4px 7px; border-radius: 12px; font-size: 14.5px; font-weight: 650; color: var(--ink-2); }

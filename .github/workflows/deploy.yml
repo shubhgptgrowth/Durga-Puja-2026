@@ -82,30 +82,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      # Self-hosted vector base map (docs/product/MAPS.md). Rebuilt weekly from the latest Protomaps build.
-      # If it can't be built or doesn't render, app/tiles is removed and the app falls back to raster tiles.
-      - name: Map tile cache key
-        id: tiles
-        run: echo "week=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v4
-        with:
-          path: app/tiles
-          key: tiles-${{ hashFiles('scripts/build_tiles.sh') }}-${{ steps.tiles.outputs.week }}
-          restore-keys: tiles-${{ hashFiles('scripts/build_tiles.sh') }}-
-      - name: Vector base map (app/tiles)
-        run: |
-          if scripts/build_tiles.sh app/tiles && node tests/e2e/map_tiles.mjs map-check; then
-            echo "::notice::Vector map: $(cat app/tiles/kolkata.json)"
-          else
-            echo "::warning::Vector map unavailable this deploy (see the step log); the app falls back to raster tiles."
-            rm -f app/tiles/*.pmtiles && git checkout -- app/tiles/kolkata.json
-          fi
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: map-check
-          path: map-check/
-          if-no-files-found: ignore
       - name: Content kit (/kit/) and link preview image
         continue-on-error: true
         run: |
@@ -220,20 +196,12 @@ jobs:
             echo "waiting for CDN ($live != $expected)"; sleep 10
           done
           [ "$live" = "$expected" ] || { echo "live data version $live != $expected"; exit 1; }
-          for p in "" index.html app.js core.js i18n.js sw.js manifest.webmanifest vendor/leaflet/leaflet.js; do
+          for p in "" index.html app.js core.js i18n.js sw.js manifest.webmanifest; do
             code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE}${p}")
             echo "$code /${p}"; [ "$code" = 200 ] || exit 1
           done
           curl -fsS "$SITE" | grep -q '<title>[^<]*Pujo Parikrama</title>'
           echo "Live: $SITE (data v$expected)"
-          file=$(curl -fsS "${SITE}tiles/kolkata.json?cb=$RANDOM" | python -c "import json,sys;print(json.load(sys.stdin).get('file') or '')" || true)
-          if [ -n "$file" ]; then
-            code=$(curl -s -o /tmp/head.bin -w '%{http_code}' -H 'Range: bytes=0-6' "${SITE}tiles/$file")
-            echo "vector tiles: $file → HTTP $code, magic $(head -c 7 /tmp/head.bin)"
-            [ "$code" = 206 ] && [ "$(head -c 7 /tmp/head.bin)" = PMTiles ] || { echo "::error::vector tiles not served with range support"; exit 1; }
-          else
-            echo "::warning::No vector tiles published; the map is on raster tiles."
-          fi
           # Crawlable guide: sitemap, robots, llms.txt, the hub and one pandal page, with its structured data
           key=$(python -c "import json;print(json.load(open('site.json')).get('indexnow_key',''))")
           for p in sitemap.xml robots.txt llms.txt llms-full.txt durga-puja/ durga-puja/index.md durga-puja/rituals/ navratri/ ${key:+$key.txt} guide/ guide/dates/ "guide/pandals/$(python -c "import json;print(json.load(open('app/data/guide.json'))['pandals'][0]['id'])")/"; do

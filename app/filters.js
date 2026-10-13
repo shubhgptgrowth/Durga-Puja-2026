@@ -42,14 +42,6 @@ export function handleAreaClick(e, sel) {
 /** Selection that shows a single area (for deep links from Home). */
 export const selectArea = (zoneId) => ({ region: regionOf(zoneId) || 'all', area: zoneId });
 
-/** Bounding box covering a selection, for fitting the map. */
-export function bboxOf(sel) {
-  const zs = areasOf(sel).map((id) => idx.zone[id]);
-  if (!zs.length || (sel.region === 'all')) return null;
-  return [[Math.min(...zs.map((z) => z.bbox[0][0])), Math.min(...zs.map((z) => z.bbox[0][1]))],
-    [Math.max(...zs.map((z) => z.bbox[1][0])), Math.max(...zs.map((z) => z.bbox[1][1]))]];
-}
-
 /** The whole region → area choice as one native dropdown: 'all', 'r:<region>' or 'a:<zone>'. */
 export const areaValue = (sel) => (sel.area !== 'all' ? 'a:' + sel.area : sel.region !== 'all' ? 'r:' + sel.region : 'all');
 export function areaSelectHtml(sel, id) {
