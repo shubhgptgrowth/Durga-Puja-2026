@@ -467,7 +467,7 @@ class RedesignTest(unittest.TestCase):
     def test_night_route_reel_lights_the_guide_route(self):
         from unittest import mock
         from marketing import night_route
-        pl = night_route.plan("north", area="North Kolkata", part=1, nxt="Central Kolkata")
+        pl = night_route.plan("north", area="North Kolkata", part=1, nxt="Central Kolkata", next_key="central")
         self.assertEqual(len(pl["xy"]), len(pl["order"]) + (1 if pl["station"] else 0))
         self.assertAlmostEqual(pl["km"][-1], pl["walk_m"] / 1000, places=1)
         x0, y0, x1, y1 = night_route.FIT
@@ -489,6 +489,27 @@ class RedesignTest(unittest.TestCase):
             self.assertEqual(night_route.frame(base, top, meds, pl, t).size, (night_route.W, night_route.H))
         self.assertEqual(night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "").size, (night_route.W, night_route.H))
         self.assertEqual(night_route.path_to(pl, 0)[1], pl["xy"][0])
+        self.assertEqual(night_route.path_to(pl, len(pl["order"]))[1], pl["xy"][-1])
+        self.assertEqual(night_route.camera(pl, 0.0), (0.0, 0.0, 1.0))  # the cover and the hold show the whole route
+        self.assertEqual(night_route.camera(pl, pl["t_hold"] + 1.0), (0.0, 0.0, 1.0))
+        self.assertAlmostEqual(night_route.camera(pl, (pl["t_draw"] + pl["t_hold"]) / 2)[2], night_route.ZOOM)
+        # the voiceover: five lines from the guide, and beats that stretch to fit the recorded lines
+        lines = night_route.script(pl)
+        self.assertEqual(len(lines), 5)
+        self.assertIn("১৭টা পুজো", lines[0][0])
+        self.assertIn("শোভাবাজার মেট্রো", lines[1][0])
+        self.assertIn("মধ্য কলকাতা", lines[4][0])
+        self.assertEqual(night_route.bn_hours(3.5), "সাড়ে তিন")
+        self.assertEqual(night_route.bn_hours(2.5), "আড়াই")
+        self.assertEqual(night_route.bn_of("সল্টলেক"), "সল্টলেকের")
+        long = night_route.plan("north", vo=[3.0, 4.0, 12.0, 4.0, 6.0])
+        cues = long["cues"]
+        self.assertGreaterEqual(cues[1], cues[0] + 3.0)
+        self.assertGreaterEqual(cues[2], cues[1] + 4.0)
+        self.assertGreaterEqual(long["t_hold"], cues[2] + 12.0)
+        self.assertGreaterEqual(long["t_end"], cues[3] + 4.0)
+        self.assertGreaterEqual(long["end_secs"], 6.0)
+        self.assertEqual(night_route.vo_files(None), [])
 
     def test_download_percent_encodes_bengali_file_names(self):
         from unittest import mock
