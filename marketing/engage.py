@@ -27,6 +27,7 @@ import re
 import sys
 import time
 import unicodedata
+import urllib.request
 from pathlib import Path
 
 from .publish_ig import graph
@@ -61,11 +62,23 @@ def safe(fn, *a, **k):
 
 def own_comments(user, token, days=7, me=None):
     since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)
-    media, err = safe(graph, "GET", f"{user}/media", token, fields="id,caption,permalink,timestamp,comments_count", limit="25")
+    # every post from the window, not just the newest 25: at 10+ posts a day that was only two days
+    page, err = safe(graph, "GET", f"{user}/media", token, fields="id,caption,permalink,timestamp,comments_count", limit="50")
     if err:
         return [], err
+    posts = list(page.get("data", []))
+    for _ in range(5):
+        nxt = (page.get("paging") or {}).get("next")
+        if not nxt or not posts or dt.datetime.fromisoformat(posts[-1]["timestamp"].replace("+0000", "+00:00")) < since:
+            break
+        try:
+            with urllib.request.urlopen(nxt, timeout=60) as r:
+                page = json.load(r)
+        except OSError:
+            break
+        posts += page.get("data", [])
     out = []
-    for m in media.get("data", []):
+    for m in posts:
         if dt.datetime.fromisoformat(m["timestamp"].replace("+0000", "+00:00")) < since or not m.get("comments_count"):
             continue
         cs, err = safe(graph, "GET", f"{m['id']}/comments", token,
