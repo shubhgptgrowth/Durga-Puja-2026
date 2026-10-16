@@ -442,11 +442,53 @@ class RedesignTest(unittest.TestCase):
         x0, y0, x1, y1 = route_reel.MAP
         for x, y in pl["xy"]:  # every stop inside the map, clear of the action rail and the caption
             self.assertTrue(x0 <= x <= x1 and y0 <= y <= y1)
-        im = route_reel.frame(route_reel.backdrop(pl), pl, pl["t_hold"] - 0.1)
+        from unittest import mock
+        with mock.patch("marketing.basemap.draw", side_effect=OSError("offline")):  # no network in tests: paper map
+            im = route_reel.frame(route_reel.backdrop(pl), pl, pl["t_hold"] - 0.1)
         self.assertEqual(im.size, (route_reel.W, route_reel.H))
+        # a themed route: pandal ids and a title, starting at the nearest Metro, nearest-next order
+        ids = ["ballygunge_cultural", "hindustan_park", "bosepukur_sitala", "66_pally"]
+        th = route_reel.plan(None, ids=ids, title="South Art Route", hook="4 pandals. 3 km. One evening.")
+        self.assertEqual(sorted(p["id"] for p in th["order"]), sorted(ids))
+        self.assertIsNotNone(th["station"])
+        self.assertEqual(th["line3"], "ONE EVENING.")
+        self.assertGreater(th["walk_m"], 1000)
+        self.assertEqual(len(th["labels"]), len(ids))
+        self.assertEqual(route_reel.hook_line3(None), "ONE NIGHT.")
+        self.assertEqual(route_reel.short_name({"name": "AE Block Salt Lake"}, "Salt Lake"), "AE Block")
+        self.assertEqual(route_reel.short_name({"name": "Bagbazar Sarbojanin"}), "Bagbazar")
+        with self.assertRaises(SystemExit):
+            route_reel.plan(None, ids=["no_such_pandal"], title="x")
         cap = route_reel.caption({"en": "English", "keywords": ["durga puja 2026"], "tags": "#DurgaPuja2026"})
         self.assertNotIn("Sumita Roy Dutta", cap)  # the dhak credit is on the end frame
         self.assertEqual(cap, "English\n\n(durga puja 2026)\n\n#DurgaPuja2026")
+
+    @unittest.skipUnless(__import__("importlib.util").util.find_spec("PIL"), "the night route reel needs Pillow")
+    def test_night_route_reel_lights_the_guide_route(self):
+        from unittest import mock
+        from marketing import night_route
+        pl = night_route.plan("north", area="North Kolkata", part=1, nxt="Central Kolkata")
+        self.assertEqual(len(pl["xy"]), len(pl["order"]) + (1 if pl["station"] else 0))
+        self.assertAlmostEqual(pl["km"][-1], pl["walk_m"] / 1000, places=1)
+        x0, y0, x1, y1 = night_route.FIT
+        for x, y in pl["xy"]:  # every stop under the header, clear of the action rail and the card
+            self.assertTrue(x0 - 1 <= x <= x1 + 1 and y0 - 1 <= y <= y1 + 1)
+        self.assertTrue(pl["lit"] and len(pl["lit"]) <= 5)
+        self.assertTrue(all(night_route.photo_of(pl["order"][i]) for i in pl["lit"]))
+        self.assertLess(pl["t_dim"], pl["t_draw"])
+        self.assertLess(pl["t_draw"], pl["t_hold"])
+        self.assertLess(pl["t_hold"], pl["t_end"])
+        # offline: no map tiles, no Commons photos; the frames still draw (plain night field, lamps for every stop)
+        with mock.patch("marketing.basemap.draw", side_effect=OSError("offline")), \
+                mock.patch("marketing.night_route.fetch", side_effect=OSError("offline")), \
+                mock.patch("marketing.night_route.time.sleep"):
+            base, credit = night_route.backdrop(pl)
+            top, meds, credits = night_route.overlay(pl)
+        self.assertEqual((meds, credits, credit), ([], [], ""))
+        for t in (0.0, pl["t_draw"] + 1.0, pl["t_hold"] + 0.5):
+            self.assertEqual(night_route.frame(base, top, meds, pl, t).size, (night_route.W, night_route.H))
+        self.assertEqual(night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "").size, (night_route.W, night_route.H))
+        self.assertEqual(night_route.path_to(pl, 0)[1], pl["xy"][0])
 
     def test_download_percent_encodes_bengali_file_names(self):
         from unittest import mock

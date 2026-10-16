@@ -417,19 +417,24 @@
    }
   },
   {
-   "id": "r2",
+   "id": "r3n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
-   "zone": "jadavpur_santoshpur",
-   "hook": "9 pandals. 13 km. One night.",
+   "style": "night",
+   "zone": "south_lakemarket",
+   "area": "Lake Market & Kalighat",
+   "part": 3,
+   "next": "Gariahat & Ballygunge",
+   "hook": "১৫টা পুজো · ১ রাতে: Lake Market & Kalighat Master Route",
    "caption": {
-    "en": "Jadavpur & Santoshpur pandal hopping route for Durga Puja 2026 in Kolkata: 9 pandals, 13 km, one night 🚶\n\nGet off at Kavi Nazrul Metro and follow the numbers. This is the walking order through 9 pandals in Jadavpur & Santoshpur, from Kendua Shanti Sangha and Rabindra Pally Sarbojanin to Mukundapur Sarbojanin: about 13 km and 18,846 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Lake Market & Kalighat Durga Puja 2026 route, Part 3: 15 pandals in one night 🚶\n\nGet off at Kalighat Metro and follow the red line: Badamtala Ashar Sangha first, Tollygunge Santi Pally last. About 13.0 km and 18,913 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Heavyweight pujas close together.\n\nPart 4: Gariahat & Ballygunge, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "লেক মার্কেট ও কালীঘাট: ১৫টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "jadavpur & santoshpur durga puja",
+     "lake market durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "kavi nazrul metro"
+     "kalighat metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
@@ -728,89 +733,26 @@
    }
   },
   {
-   "id": "p5",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r4n",
+   "type": "reel",
    "at": "17:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Themes 2026 · আরও থিম",
-     "title": "More Kolkata themes 2026",
-     "bn": "আরও থিম",
-     "sub": "Pictured: Sreebhumi Sporting Club, a past year",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/85/Sreebhumi_sporting_club_2023.jpg",
-      "artist": "Soumava2002",
-      "license": "CC0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Sreebhumi Sporting Club",
-     "num": 1,
-     "title": "Hawa Mahal",
-     "bn": "হাওয়া মহল",
-     "body": "A replica of Jaipur's Hawa Mahal."
-    },
-    {
-     "t": "step",
-     "kicker": "Dum Dum Park Bharat Chakra",
-     "num": 2,
-     "title": "Banglar Rath",
-     "bn": "বাংলার রথের ঐতিহ্য",
-     "body": "Bengal's chariot (rath) tradition, in the puja's 26th year."
-    },
-    {
-     "t": "step",
-     "kicker": "FD Block Salt Lake",
-     "num": 3,
-     "title": "Gond art",
-     "bn": "",
-     "body": "A walk through the world of Gond tribal art, as a large 3D installation."
-    },
-    {
-     "t": "step",
-     "kicker": "Shahidnagar Sarbojanin",
-     "num": 4,
-     "title": "Maha Milan",
-     "bn": "মহামিলন",
-     "body": "'The Great Union', inspired by the bond of Radha and Krishna, in the puja's 77th year."
-    },
-    {
-     "t": "step",
-     "kicker": "Kendua Shanti Sangha",
-     "num": 5,
-     "title": "Aishwaryi",
-     "bn": "ঐশ্বর্যী",
-     "body": "The puja's 53rd year."
-    },
-    {
-     "t": "step",
-     "kicker": "IHE Housing Complex Puja (Botanical Garden)",
-     "num": 6,
-     "title": "Ati Uttam",
-     "bn": "অতি উত্তম",
-     "body": "Uttam Kumar's centenary: his film posters line the way to a traditional protima."
-    },
-    {
-     "t": "end",
-     "title": "Save this for your pujo night",
-     "bn": "কোনটা আগে দেখবেন?",
-     "ask": "Save it · tell us your first stop"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "south_gariahat",
+   "area": "Gariahat & Ballygunge",
+   "part": 4,
+   "next": "Behala & New Alipore",
+   "hook": "১৩টা পুজো · ১ রাতে: Gariahat & Ballygunge Master Route",
    "caption": {
-    "en": "Durga Puja 2026 themes, Kolkata: More Kolkata 🎨\n\nSreebhumi Sporting Club, Dum Dum Park Bharat Chakra, FD Block Salt Lake, Shahidnagar Sarbojanin, Kendua Shanti Sangha and IHE Housing Complex Puja (Botanical Garden). Every theme here is as reported by the committees and the press, and they can still change before the puja.\n\nWhich one is your first stop? Tell us 👇",
+    "en": "Gariahat & Ballygunge Durga Puja 2026 route, Part 4: 13 pandals in one night 🚶\n\nGet off at Ballygunge Junction station and follow the red line: Gariahat Sarbojanin Durgotsab first, 71 Pally Baishakhi Sarbojanin last. About 11.5 km and 16,724 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Ekdalia, Singhi Park, shopping.\n\nPart 5: Behala & New Alipore, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "গড়িয়াহাট ও বালিগঞ্জ: ১৩টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "kolkata durga puja 2026 themes",
-     "pandal themes 2026",
-     "sreebhumi sporting club theme 2026",
-     "dum dum park bharat chakra theme 2026"
+     "gariahat durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "ballygunge junction station"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {

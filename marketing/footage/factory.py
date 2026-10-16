@@ -191,8 +191,8 @@ def check(plan, idx):
                 errs.append(f"{it['id']}: a cards reel needs an earlier photo post in 'from' and a caption")
             continue
         if it.get("render") == "route":  # animated route reel drawn from the guide (marketing/route_reel.py)
-            if not (it.get("zone") and (it.get("caption") or {}).get("en")):
-                errs.append(f"{it['id']}: a route reel needs a zone and a caption")
+            if not ((it.get("zone") or (it.get("ids") and it.get("title"))) and (it.get("caption") or {}).get("en")):
+                errs.append(f"{it['id']}: a route reel needs a zone (or pandal ids and a title) and a caption")
             continue
         for s in it["segments"]:
             e = idx.get(s[0])
@@ -297,12 +297,19 @@ def main(argv=None):
             print(f"built {fid} cards reel from {it['from']} ({len(slides)} slides) {secs:.1f}s", flush=True)
         elif it.get("render") == "route":
             from .. import route_reel
-            secs, _ = route_reel.render(it["zone"], out / f"{fid}.mp4")
+            if it.get("style") == "night":  # the dark glowing map with lit pandal photos (marketing/night_route.py)
+                from .. import night_route
+                secs, _ = night_route.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                             title_bn=it.get("title_bn"), area=it.get("area"), part=it.get("part"),
+                                             nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False))
+            else:
+                secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                            title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))
             cap = route_reel.caption(it["caption"])
             (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
             entry.update(video_url=base + f"{fid}.mp4", caption=cap)
             qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
-            print(f"built {fid} route reel {it['zone']} {secs:.1f}s", flush=True)
+            print(f"built {fid} route reel {it.get('zone') or it.get('title')} {secs:.1f}s", flush=True)
         else:
             music = [it["music"]] if it.get("music") and not it.get("vo") else []
             for s in it["segments"] + music + ([it["end_clip"]] if it.get("end_clip") else []):
