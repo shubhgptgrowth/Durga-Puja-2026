@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-10-16T13:35:29+00:00",
+ "taken_at": "2026-10-16T17:47:17+00:00",
  "posts": [
   {
    "media": "18215420653364738",
@@ -31,7 +31,7 @@
    "media": "17868680694660391",
    "at": "15:00",
    "type": "REELS",
-   "likes": 2,
+   "likes": 4,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/DejNvynkkEs/",
    "first_line": "Navratri Day 5 of the Durga Puja 2026 countdown: Maa Skandamata, with her mantra 🙏",
@@ -132,7 +132,7 @@
    "media": "18467749567142705",
    "at": "22:00",
    "type": "REELS",
-   "likes": 2,
+   "likes": 3,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/Dehmvh2kTJE/",
    "first_line": "Behala Friends or Barisha Club? Kolkata Durga Puja 2026, pick one 🪔",
@@ -497,7 +497,7 @@
    "at": "11:30",
    "type": "REELS",
    "likes": 3,
-   "comments": 0,
+   "comments": 1,
    "permalink": "https://www.instagram.com/reel/DebHbumFRgh/",
    "first_line": "Behala & New Alipore pandal hopping route for Durga Puja 2026 in Kolkata: 16 pandals, 20 k",
    "date": "2026-10-13",
@@ -654,18 +654,18 @@
   },
   "reel (from carousel)": {
    "posts": 4,
-   "likes": 17,
+   "likes": 19,
    "comments": 0
   },
   "reel (footage)": {
    "posts": 19,
-   "likes": 219,
+   "likes": 220,
    "comments": 4
   },
   "reel (route map)": {
    "posts": 4,
    "likes": 17,
-   "comments": 0
+   "comments": 1
   },
   "unplanned": {
    "posts": 2,
@@ -673,5 +673,5 @@
    "comments": 0
   }
  },
- "insights_error": "Graph API 18215420653364738/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AFDJhtC9_Kykd-QoAR7DAx1\"}}"
+ "insights_error": "Graph API 18215420653364738/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AeVNtZ9ykzUih2QJUY0OwMn\"}}"
 }
