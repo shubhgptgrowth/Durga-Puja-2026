@@ -297,8 +297,14 @@ def main(argv=None):
             print(f"built {fid} cards reel from {it['from']} ({len(slides)} slides) {secs:.1f}s", flush=True)
         elif it.get("render") == "route":
             from .. import route_reel
-            secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
-                                        title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))
+            if it.get("style") == "night":  # the dark glowing map with lit pandal photos (marketing/night_route.py)
+                from .. import night_route
+                secs, _ = night_route.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                             title_bn=it.get("title_bn"), area=it.get("area"), part=it.get("part"),
+                                             nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False))
+            else:
+                secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                            title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))
             cap = route_reel.caption(it["caption"])
             (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
             entry.update(video_url=base + f"{fid}.mp4", caption=cap)
