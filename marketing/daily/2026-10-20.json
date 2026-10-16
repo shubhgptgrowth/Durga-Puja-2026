@@ -434,22 +434,28 @@
    }
   },
   {
-   "id": "r2",
+   "id": "r7n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
-   "zone": "tolly_naktala",
-   "hook": "4 pandals. 6 km. One night.",
+   "style": "night",
+   "zone": "bhowanipore",
+   "area": "Bhowanipore & Elgin",
+   "part": 7,
+   "next": "Salt Lake",
+   "hook": "১২টা পুজো · ১ রাতে: Bhowanipore & Elgin Master Route",
    "caption": {
-    "en": "Tollygunge & Naktala pandal hopping route for Durga Puja 2026 in Kolkata: 4 pandals, 6 km, one night 🚶\n\nGet off at Masterda Surya Sen (Bansdroni) Metro and follow the numbers. This is the walking order through 4 pandals in Tollygunge & Naktala, from Bansdroni Sarbojaneen Durgotsav Park and Pallishree Sarbojanin to Patyuli Sarbojanin: about 6 km and 8,425 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Bhowanipore & Elgin Durga Puja 2026 route, Part 7: 12 pandals in one night 🚶\n\nGet off at Netaji Bhavan Metro and follow the red line: Bhowanipore 75 Pally first, Adi Sammilati Sarbojanin last. About 12.4 km and 18,045 steps on foot, roughly 3.9 hours of walking, plus the queues.\n\nBest for: Classic neighbourhood pujas.\n\nPart 8: Salt Lake, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "ভবানীপুর ও এলগিন: ১২টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "tollygunge & naktala durga puja",
+     "bhowanipore durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "masterda surya sen (bansdroni) metro"
+     "netaji bhavan metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "salt_lake"
   },
   {
    "id": "p3",
@@ -483,7 +489,7 @@
      "kicker": "Why go",
      "title": "What it's known for",
      "bn": "কেন যাবেন",
-     "body": "A well-known puja in Behala. Location from OpenStreetMap."
+     "body": "A well-known puja in Behala."
     },
     {
      "t": "list",
@@ -727,54 +733,24 @@
    }
   },
   {
-   "id": "p5",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r8n",
+   "type": "reel",
    "at": "17:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Ready-made pujo night",
-     "title": "South Heavyweights",
-     "bn": "দক্ষিণের হেভিওয়েট",
-     "sub": "17 pandals, from 2 pm",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Howrah_Bridge-Rabindra_Setu.jpg",
-      "artist": "Ovjtphoto",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The route",
-     "title": "What you'll see",
-     "bn": "কী কী দেখবেন",
-     "body": "Chetla, Tridhara, 66 Pally and Maddox, then over to Ekdalia and Singhi Park. Phuchka on the way."
-    },
-    {
-     "t": "app",
-     "kicker": "In the app",
-     "num": 1,
-     "title": "Open it, start walking",
-     "bn": "খুলুন, হাঁটা শুরু",
-     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
-     "shot": "repo:marketing/app-shots/south_classic.jpg"
-    },
-    {
-     "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
-     "ask": "Tag who you're going with"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "salt_lake",
+   "area": "Salt Lake",
+   "part": 8,
+   "next": null,
+   "hook": "৭টা পুজো · ১ রাতে: Salt Lake Master Route",
    "caption": {
-    "en": "South Heavyweights: a ready-made Kolkata Durga Puja 2026 route, 17 pandals from 2 pm 🗺️\n\nChetla, Tridhara, 66 Pally and Maddox, then over to Ekdalia and Singhi Park. Phuchka on the way.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
+    "en": "Salt Lake Durga Puja 2026 route, Part 8: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: AE Block Salt Lake first, CK Block Salt Lake last. About 7.9 km and 11,576 steps on foot, roughly 2.5 hours of walking, plus the queues.\n\nBest for: Block pujas, open space.\n\nThat's all eight areas.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "সল্টলেক: ৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "south heavyweights",
-     "kolkata durga puja route 2026",
-     "pandal hopping route kolkata"
+     "salt lake durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "city centre metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
@@ -870,9 +846,7 @@
     "segs": [
      "",
      "থিম ২০২৬: কোলিয়ারি",
-     "কেন যাবেন",
-     "মেট্রো থেকে ২১ মিনিট হাঁটা",
-     "পরের প্যান্ডেল ২৮ মিনিট হেঁটে"
+     "কেন যাবেন"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
    },
@@ -897,20 +871,6 @@
      3.4,
      "A well-known theme puja in Behala",
      0.5
-    ],
-    [
-     "pr-thakurpukur_sb_park-0",
-     0,
-     3.4,
-     "21 min walk from Thakurpukur Metro",
-     0.32
-    ],
-    [
-     "pr-thakurpukur_sb_park-1",
-     0,
-     3.4,
-     "Hop next: Haridevpur Ajeya Sanghati, 28 mi",
-     0.68
     ]
    ],
    "end": [
@@ -922,7 +882,7 @@
     60
    ],
    "caption": {
-    "en": "Thakurpukur SB Park Sarbojanin, Kolkata Durga Puja 2026: the theme is Colliery 🪔\n\nA Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. Themes are as reported and can change before the puja.\n\nIt's 21 minutes' walk from Thakurpukur Metro, and Haridevpur Ajeya Sanghati is 28 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Thakurpukur SB Park Sarbojanin, Kolkata Durga Puja 2026: the theme is Colliery 🪔\n\nA Raniganj coal mine you walk about 20 feet down into; the goddess stands for the miners. Themes are as reported and can change before the puja.\n\nEvery 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "thakurpukur sb park sarbojanin durga puja 2026",
      "thakurpukur sb park sarbojanin theme",

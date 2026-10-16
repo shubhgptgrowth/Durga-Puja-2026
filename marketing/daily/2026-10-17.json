@@ -442,22 +442,28 @@
    }
   },
   {
-   "id": "r2",
+   "id": "r1n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
-   "zone": "kasba",
-   "hook": "5 pandals. 4 km. One night.",
+   "style": "night",
+   "zone": "north",
+   "area": "North Kolkata",
+   "part": 1,
+   "next": "Central Kolkata",
+   "hook": "১৭টা পুজো · ১ রাতে: North Kolkata Master Route",
    "caption": {
-    "en": "Kasba & Bosepukur pandal hopping route for Durga Puja 2026 in Kolkata: 5 pandals, 4 km, one night 🚶\n\nGet off at Kavi Sukanta Metro and follow the numbers. This is the walking order through 5 pandals in Kasba & Bosepukur, from Purbachal Sarbojanin and Purbachal Shakti Sangha to Bosepukur Sitala Mandir: about 4 km and 5,774 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "North Kolkata Durga Puja 2026 route, Part 1: 17 pandals in one night 🚶\n\nGet off at Sovabazar Metro and follow the red line: Ahiritola Sarbojanin first, Lalabagan Nabankur last. About 11.3 km and 16,467 steps on foot, roughly 3.5 hours of walking, plus the queues.\n\nBest for: Heritage, bonedi bari, Kumartuli.\n\nPart 2: Central Kolkata, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "কুমোরটুলি, বাগবাজার ও হাতিবাগান: ১৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "kasba & bosepukur durga puja",
+     "north kolkata durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "kavi sukanta metro"
+     "sovabazar metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "central"
   },
   {
    "id": "p3",
@@ -765,57 +771,28 @@
    }
   },
   {
-   "id": "p5",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r2n",
+   "type": "reel",
    "at": "17:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Ready-made pujo night",
-     "title": "The All-Nighter: North → South",
-     "bn": "সারা রাত: উত্তর থেকে দক্ষিণ",
-     "sub": "10 pandals, from 10 pm",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lighting_Idol_People_during_Durga_Puja_Festival_2023_in_Behala_Kolkata_44.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The route",
-     "title": "What you'll see",
-     "bn": "কী কী দেখবেন",
-     "body": "Only the five-star pandals. Ride the Blue Line between clusters and walk till dawn."
-    },
-    {
-     "t": "app",
-     "kicker": "In the app",
-     "num": 1,
-     "title": "Open it, start walking",
-     "bn": "খুলুন, হাঁটা শুরু",
-     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
-     "shot": "repo:marketing/app-shots/all_nighter.jpg"
-    },
-    {
-     "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
-     "ask": "Tag who you're going with"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "central",
+   "area": "Central Kolkata",
+   "part": 2,
+   "next": "Lake Market & Kalighat",
+   "hook": "১০টা পুজো · ১ রাতে: Central Kolkata Master Route",
    "caption": {
-    "en": "The All-Nighter: North → South: a ready-made Kolkata Durga Puja 2026 route, 10 pandals from 10 pm 🗺️\n\nOnly the five-star pandals. Ride the Blue Line between clusters and walk till dawn.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
+    "en": "Central Kolkata Durga Puja 2026 route, Part 2: 10 pandals in one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the red line: Chaltabagan Lohapatty first, Park Street Allen Park Puja last. About 9.6 km and 14,090 steps on foot, roughly 3.0 hours of walking, plus the queues.\n\nBest for: Theme blockbusters, big crowds.\n\nPart 3: Lake Market & Kalighat, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "কলেজ স্ট্রিট ও শিয়ালদহ: ১০টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "the all-nighter: north → south",
-     "kolkata durga puja route 2026",
-     "pandal hopping route kolkata"
+     "central kolkata durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "mahatma gandhi road metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "south_lakemarket"
   },
   {
    "id": "r5",
@@ -908,7 +885,6 @@
     "hook": "এবার মহম্মদ আলি পার্ক যাচ্ছেন?",
     "segs": [
      "",
-     "",
      "মেট্রো থেকে ১০ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৭ মিনিট হেঁটে"
     ],
@@ -926,22 +902,15 @@
      "pr-md_ali_park-1",
      0,
      3.4,
-     "A Central Avenue giant known for lavish re",
-     0.5
-    ],
-    [
-     "pr-md_ali_park-2",
-     0,
-     3.4,
      "10 min walk from Mahatma Gandhi Road Metro",
      0.5
     ],
     [
-     "pr-md_ali_park-3",
+     "pr-md_ali_park-0",
      0,
      3.4,
      "Hop next: Young Boys Club, 7 min",
-     0.5
+     0.68
     ]
    ],
    "end": [
@@ -1134,20 +1103,20 @@
     ],
     [
      "cm-f74cd3",
-     9.0,
+     9.5,
      3.6,
      "The dhak at evening aarti"
     ],
     [
      "cm-d8e3f8",
-     1.0,
+     4.5,
      4.0,
      "Samaj Sebi's village corner"
     ],
     [
      "cm-f74cd3",
-     19.0,
-     3.8,
+     5.5,
+     3.6,
      "Five days start now"
     ]
    ],

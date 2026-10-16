@@ -426,22 +426,28 @@
    }
   },
   {
-   "id": "r2",
+   "id": "r5n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
-   "zone": "howrah",
-   "hook": "8 pandals. 27 km. One night.",
+   "style": "night",
+   "zone": "southwest",
+   "area": "Behala & New Alipore",
+   "part": 5,
+   "next": "Lake Town & Dum Dum",
+   "hook": "১৬টা পুজো · ১ রাতে: Behala & New Alipore Master Route",
    "caption": {
-    "en": "Howrah: Shibpur, Salkia & Liluah pandal hopping route for Durga Puja 2026 in Kolkata: 8 pandals, 27 km, one night 🚶\n\nGet off at Liluah (Suburban) Metro and follow the numbers. This is the walking order through 8 pandals in Howrah: Shibpur, Salkia & Liluah, from Liluah Social Institution of Youth and Bally Deshbandhu Club to IHE Housing Complex Puja (Botanical Garden): about 27 km and 39,125 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Behala & New Alipore Durga Puja 2026 route, Part 5: 16 pandals in one night 🚶\n\nGet off at Behala Bazar Metro and follow the red line: Behala 11 Pally Club first, Suruchi Sangha last. About 20.3 km and 29,716 steps on foot, roughly 6.4 hours of walking, plus the queues.\n\nBest for: Behala's art-trail pujas.\n\nPart 6: Lake Town & Dum Dum, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "বেহালা ও নিউ আলিপুর: ১৬টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "howrah durga puja",
+     "behala durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "liluah (suburban) metro"
+     "behala bazar metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "lake_town_dumdum"
   },
   {
    "id": "p3",
@@ -744,57 +750,28 @@
    }
   },
   {
-   "id": "p5",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6n",
+   "type": "reel",
    "at": "17:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Ready-made pujo night",
-     "title": "Central Blockbusters at Dawn",
-     "bn": "ভোরের মধ্য কলকাতা",
-     "sub": "7 pandals, from 5:30 am",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Insane_Durga_Puja_crowd_in_Behala%2C_Kolkata.jpg",
-      "artist": "Snehangshu36",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The route",
-     "title": "What you'll see",
-     "bn": "কী কী দেখবেন",
-     "body": "Md. Ali Park and Santosh Mitra Square before the queues wake up, then kochuri at Putiram."
-    },
-    {
-     "t": "app",
-     "kicker": "In the app",
-     "num": 1,
-     "title": "Open it, start walking",
-     "bn": "খুলুন, হাঁটা শুরু",
-     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
-     "shot": "repo:marketing/app-shots/central_blockbusters.jpg"
-    },
-    {
-     "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
-     "ask": "Tag who you're going with"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "lake_town_dumdum",
+   "area": "Lake Town & Dum Dum",
+   "part": 6,
+   "next": "Bhowanipore & Elgin",
+   "hook": "৭টা পুজো · ১ রাতে: Lake Town & Dum Dum Master Route",
    "caption": {
-    "en": "Central Blockbusters at Dawn: a ready-made Kolkata Durga Puja 2026 route, 7 pandals from 5:30 am 🗺️\n\nMd. Ali Park and Santosh Mitra Square before the queues wake up, then kochuri at Putiram.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
+    "en": "Lake Town & Dum Dum Durga Puja 2026 route, Part 6: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: Sreebhumi Sporting Club first, Arjunpur Amra Sabai Club last. About 7.0 km and 10,277 steps on foot, roughly 2.2 hours of walking, plus the queues.\n\nBest for: Sreebhumi and the north-east giants.\n\nPart 7: Bhowanipore & Elgin, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "bn": "লেক টাউন ও দমদম: ৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
-     "central blockbusters at dawn",
-     "kolkata durga puja route 2026",
-     "pandal hopping route kolkata"
+     "lake town durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "city centre metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "bhowanipore"
   },
   {
    "id": "r5",
@@ -888,8 +865,6 @@
     "segs": [
      "",
      "থিম ২০২৬: যোজন",
-     "কেন যাবেন",
-     "মেট্রো থেকে ২৫ মিনিট হাঁটা",
      "পরের প্যান্ডেল ২ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -913,20 +888,6 @@
      "pr-ballygunge_cultural-0",
      0,
      3.4,
-     "Thoughtful art-led themes in a calm-ish se",
-     0.68
-    ],
-    [
-     "pr-ballygunge_cultural-1",
-     0,
-     3.4,
-     "25 min walk from Kalighat Metro",
-     0.32
-    ],
-    [
-     "pr-ballygunge_cultural-0",
-     0,
-     3.4,
      "Hop next: Samaj Sebi Sangha, 2 min",
      0.68
     ]
@@ -940,7 +901,7 @@
     10
    ],
    "caption": {
-    "en": "Ballygunge Cultural Association, Kolkata Durga Puja 2026: the theme is Jojon 🪔\n\n'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. Themes are as reported and can change before the puja.\n\nIt's 25 minutes' walk from Kalighat Metro, and Samaj Sebi Sangha is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Ballygunge Cultural Association, Kolkata Durga Puja 2026: the theme is Jojon 🪔\n\n'Connection': between people, generations and nature. A zero-waste puja with a traditional protima. Themes are as reported and can change before the puja.\n\nSamaj Sebi Sangha is 2 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "ballygunge cultural association durga puja 2026",
      "ballygunge cultural association theme",

@@ -908,8 +908,7 @@
     "hook": "এবার হিন্দুস্থান পার্ক সার্বজনীন যাচ্ছেন?",
     "segs": [
      "",
-     "",
-     "মেট্রো থেকে ৩০ মিনিট হাঁটা",
+     "কেন যাবেন",
      "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -926,22 +925,15 @@
      "pr-hindustan_park-1",
      0,
      3.4,
-     "An art-college aesthetic, with fewer crowd",
+     "An art-college aesthetic",
      0.5
     ],
     [
      "pr-hindustan_park-0",
      0,
      3.4,
-     "30 min walk from Ballygunge Junction (Subu",
-     0.68
-    ],
-    [
-     "pr-hindustan_park-1",
-     0,
-     3.4,
      "Hop next: Hindustan Club, 8 min",
-     0.32
+     0.68
     ]
    ],
    "end": [
@@ -953,7 +945,7 @@
     10
    ],
    "caption": {
-    "en": "Hindustan Park Sarbojanin, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nAn art-college aesthetic, with fewer crowds than its neighbours.\n\nIt's 30 minutes' walk from Ballygunge Junction (Suburban) Metro, and Hindustan Club is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Hindustan Park Sarbojanin, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nAn art-college aesthetic.\n\nHindustan Club is 8 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "hindustan park sarbojanin durga puja 2026",
      "hindustan park sarbojanin pandal",
@@ -996,7 +988,6 @@
      "",
      "থিম ২০২৬: বাংলার রথের ঐতিহ্য",
      "কেন যাবেন",
-     "মেট্রো থেকে ৫৩ মিনিট হাঁটা",
      "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -1020,22 +1011,15 @@
      "pr-dumdum_bharat_chakra-0",
      0,
      3.4,
-     "Part of the Dum Dum Park theme row, known ",
+     "Part of the Dum Dum Park theme row",
      0.68
     ],
     [
      "pr-dumdum_bharat_chakra-1",
      0,
      3.4,
-     "53 min walk from Dum Dum Metro",
-     0.32
-    ],
-    [
-     "pr-dumdum_bharat_chakra-0",
-     0,
-     3.4,
      "Hop next: Dum Dum Park Tarun Sangha, 5 min",
-     0.68
+     0.32
     ]
    ],
    "end": [
@@ -1047,7 +1031,7 @@
     60
    ],
    "caption": {
-    "en": "Dum Dum Park Bharat Chakra, Kolkata Durga Puja 2026: the theme is Banglar Rath 🪔\n\nBengal's chariot (rath) tradition, in the puja's 26th year. Themes are as reported and can change before the puja.\n\nIt's 53 minutes' walk from Dum Dum Metro, and Dum Dum Park Tarun Sangha is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Dum Dum Park Bharat Chakra, Kolkata Durga Puja 2026: the theme is Banglar Rath 🪔\n\nBengal's chariot (rath) tradition, in the puja's 26th year. Themes are as reported and can change before the puja.\n\nDum Dum Park Tarun Sangha is 5 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "dum dum park bharat chakra durga puja 2026",
      "dum dum park bharat chakra theme",

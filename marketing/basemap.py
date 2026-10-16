@@ -28,6 +28,13 @@ STYLE = {  # fill colours on the paper; roads are (casing, fill, width at z15)
     "medium_road": ((222, 206, 180), (255, 250, 240), 9), "minor_road": (None, (238, 225, 204), 5),
     "path": (None, (240, 230, 214), 2), "rail": (None, (168, 150, 132), 3),
 }
+NIGHT_PAPER = (9, 11, 20)
+NIGHT = {  # the night-map look (marketing/night_route.py): dark land, ink-blue river, faint roads
+    "water": (14, 30, 54), "park": (13, 24, 22), "grass": (13, 24, 22), "cemetery": (16, 20, 24),
+    "highway": ((20, 22, 34), (70, 58, 74), 15), "major_road": ((18, 20, 32), (52, 54, 72), 12),
+    "medium_road": ((16, 18, 30), (40, 42, 60), 9), "minor_road": (None, (29, 31, 46), 5),
+    "path": (None, (23, 25, 38), 2), "rail": (None, (64, 54, 78), 3),
+}
 PARKS = {"park", "grass", "garden", "cemetery", "village_green", "golf_course", "meadow", "pitch", "forest", "wood"}
 
 
@@ -115,8 +122,10 @@ def pick_zoom(bounds):
     return 11
 
 
-def draw(size, to_px, from_px, tiles=None):
-    """The basemap for a frame of size (w, h). to_px/from_px convert between (lat, lng) and frame pixels."""
+def draw(size, to_px, from_px, tiles=None, style=None, paper=None):
+    """The basemap for a frame of size (w, h). to_px/from_px convert between (lat, lng) and frame pixels.
+    style/paper swap the colours (NIGHT, NIGHT_PAPER for the night map)."""
+    STYLE_, PAPER_ = style or STYLE, paper or PAPER
     w, h = size
     corners = [from_px(0, 0), from_px(w, 0), from_px(0, h), from_px(w, h)]
     la0, la1 = min(c[0] for c in corners), max(c[0] for c in corners)
@@ -125,7 +134,7 @@ def draw(size, to_px, from_px, tiles=None):
     x0, y0 = map(int, tile_of(la1, lo0, z))
     x1, y1 = map(int, tile_of(la0, lo1, z))
     tiles = tiles or Tiles()
-    im = Image.new("RGB", (w, h), PAPER)
+    im = Image.new("RGB", (w, h), PAPER_)
     d = ImageDraw.Draw(im)
     zs = 0.55 + 0.45 * (z - 11) / 4  # thinner roads when zoomed out
     polys, roads, places = [], [], []
@@ -142,25 +151,25 @@ def draw(size, to_px, from_px, tiles=None):
                     roads.append(("river", conv(ln)))
             for f in layers.get("roads", {}).get("features", []):
                 k = f["properties"].get("kind")
-                if k in STYLE:
+                if k in STYLE_:
                     roads += [(k, conv(ln)) for ln in _lines(f["geometry"]) if len(ln) > 1]
             for f in layers.get("places", {}).get("features", []):
                 p = f["properties"]
                 if p.get("kind") in ("neighbourhood", "locality", "macrohood") and f["geometry"]["type"] == "Point" and p.get("name"):
                     places.append((p.get("name:en") or p["name"], to_px(*lnglat(z, tx, ty, *f["geometry"]["coordinates"]))))
     for kind, pts in polys:
-        d.polygon(pts, fill=STYLE["water"] if kind == "water" else STYLE["park"])
+        d.polygon(pts, fill=STYLE_["water"] if kind == "water" else STYLE_["park"])
     for _, pts in (r for r in roads if r[0] == "river"):
-        d.line(pts, fill=STYLE["water"], width=max(2, int(6 * zs)))
+        d.line(pts, fill=STYLE_["water"], width=max(2, int(6 * zs)))
     order = ["path", "minor_road", "rail", "medium_road", "major_road", "highway"]
     for k in order:  # casings first, then fills, so junctions read as one road
-        casing, fill, wd = STYLE[k]
+        casing, fill, wd = STYLE_[k]
         if casing:
             for kk, pts in roads:
                 if kk == k:
                     d.line(pts, fill=casing, width=max(2, int((wd + 4) * zs)), joint="curve")
     for k in order:
-        casing, fill, wd = STYLE[k]
+        casing, fill, wd = STYLE_[k]
         for kk, pts in roads:
             if kk == k:
                 d.line(pts, fill=fill, width=max(1, int(wd * zs)), joint="curve")

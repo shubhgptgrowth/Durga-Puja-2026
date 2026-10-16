@@ -997,8 +997,7 @@
     "hook": "এবার ম্যাডক্স স্কোয়ার যাচ্ছেন?",
     "segs": [
      "",
-     "",
-     "মেট্রো থেকে ২১ মিনিট হাঁটা",
+     "কেন যাবেন",
      "পরের প্যান্ডেল ৬ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -1022,13 +1021,6 @@
      "pr-maddox_square-2",
      0,
      3.4,
-     "21 min walk from Jatin Das Park Metro",
-     0.5
-    ],
-    [
-     "pr-maddox_square-3",
-     0,
-     3.4,
      "Hop next: Bhowanipore Durgotsab, 6 min",
      0.5
     ]
@@ -1042,7 +1034,7 @@
     20
    ],
    "caption": {
-    "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nIt's 21 minutes' walk from Jatin Das Park Metro, and Bhowanipore Durgotsab is 6 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Maddox Square, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nKolkata's favourite adda ground. A traditional idol and the city's best people-watching.\n\nBhowanipore Durgotsab is 6 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "maddox square durga puja 2026",
      "maddox square pandal",
@@ -1205,8 +1197,7 @@
     "hook": "এবার হিন্দুস্থান ক্লাব যাচ্ছেন?",
     "segs": [
      "",
-     "",
-     "মেট্রো থেকে ২৯ মিনিট হাঁটা",
+     "কেন যাবেন",
      "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
     ],
     "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
@@ -1230,15 +1221,8 @@
      "pr-hindustan_club-2",
      0,
      3.4,
-     "29 min walk from Ballygunge Junction (Subu",
-     0.5
-    ],
-    [
-     "pr-hindustan_club-0",
-     0,
-     3.4,
      "Hop next: Singhi Park, 5 min",
-     0.32
+     0.5
     ]
    ],
    "end": [
@@ -1250,7 +1234,7 @@
     110
    ],
    "caption": {
-    "en": "Hindustan Club, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA well-known theme puja in Gariahat. Location from OpenStreetMap.\n\nIt's 29 minutes' walk from Ballygunge Junction (Suburban) Metro, and Singhi Park is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Hindustan Club, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA well-known theme puja in Gariahat.\n\nSinghi Park is 5 minutes on foot from here. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
     "keywords": [
      "hindustan club durga puja 2026",
      "hindustan club pandal",
