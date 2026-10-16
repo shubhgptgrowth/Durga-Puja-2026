@@ -462,7 +462,8 @@
      "sovabazar metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "central"
   },
   {
    "id": "p3",
@@ -790,7 +791,8 @@
      "mahatma gandhi road metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "south_lakemarket"
   },
   {
    "id": "r5",

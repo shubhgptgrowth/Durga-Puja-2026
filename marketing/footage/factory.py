@@ -301,7 +301,8 @@ def main(argv=None):
                 from .. import night_route
                 secs, _ = night_route.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
                                              title_bn=it.get("title_bn"), area=it.get("area"), part=it.get("part"),
-                                             nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False))
+                                             nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False),
+                                             next_key=it.get("next_zone"))
             else:
                 secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
                                             title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))

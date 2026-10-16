@@ -446,7 +446,8 @@
      "behala bazar metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "lake_town_dumdum"
   },
   {
    "id": "p3",
@@ -769,7 +770,8 @@
      "city centre metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "next_zone": "bhowanipore"
   },
   {
    "id": "r5",
