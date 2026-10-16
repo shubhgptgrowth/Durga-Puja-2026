@@ -365,14 +365,38 @@ class RedesignTest(unittest.TestCase):
 
     def test_comment_keyword_for_the_dm(self):
         from marketing import engage
-        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?"):
+        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?", "Pujo!!", "#pujo", "send route please", "পুজো প্লিজ", "PUJO 2026"):
             self.assertTrue(engage.wants_guide(t), t)
-        for t in ("beautiful", "", None, "Durga maa 🙏"):
+        # praise that mentions pujo is not a request (a real 12 Oct comment), nor is a sentence about routes
+        for t in ("beautiful", "", None, "Durga maa 🙏", "পুরোনো কলকাতার পুজো 🙌❤️😍", "beautiful pujo",
+                  "which route is best?", "pujojo", "পুজোর শুভেচ্ছা"):
             self.assertFalse(engage.wants_guide(t), t)
         self.assertIn("pujoparikramaguide.in", engage.GUIDE)
         self.assertNotIn("github.io", engage.DM_EN + engage.GUIDE)
         cfg = json.loads((Path(__file__).resolve().parents[1] / "marketing/engage/config.json").read_text(encoding="utf-8"))
         self.assertIn("dm", cfg)
+
+    def test_dm_reads_every_post_in_the_window(self):
+        # at 10+ posts a day the newest 25 covered two days: comments on older posts in the 7-day window were missed
+        import io
+        from unittest import mock
+        from marketing import engage
+        now = dt.datetime.now(dt.timezone.utc)
+        ts = lambda h: (now - dt.timedelta(hours=h)).strftime("%Y-%m-%dT%H:%M:%S+0000")
+        page1 = {"data": [{"id": f"m{i}", "timestamp": ts(i), "comments_count": 0, "permalink": "p"} for i in range(50)],
+                 "paging": {"next": "https://graph.facebook.com/next"}}
+        page2 = {"data": [{"id": "old", "timestamp": ts(80), "comments_count": 1, "permalink": "p"},
+                          {"id": "too_old", "timestamp": ts(200), "comments_count": 1, "permalink": "p"}]}
+
+        def graph(method, path, token, **kw):
+            if path.endswith("/media"):
+                return page1
+            return {"data": [{"id": "c_" + path.split("/")[0], "text": "PUJO", "username": "u", "timestamp": ts(70)}]}
+        with mock.patch.object(engage, "graph", graph), \
+                mock.patch("urllib.request.urlopen", return_value=io.BytesIO(json.dumps(page2).encode())):
+            got, err = engage.own_comments("1", "t", me="me")
+        self.assertIsNone(err)
+        self.assertEqual([c["comment_id"] for c in got], ["c_old"])
 
     def test_edge_function_dm_matches_the_fallback(self):
         # supabase/functions/ig-dm is the main sender; marketing/engage.py `dm` is the fallback. Same words, same keywords.
@@ -381,6 +405,9 @@ class RedesignTest(unittest.TestCase):
         flat = re.sub(r"[\"']\s*\+\s*[\"']", "", ts)  # join the string literals split across lines
         for s in (engage.DM_BN, engage.DM_EN, engage.GUIDE, *engage.KEYWORDS):
             self.assertIn(s, flat, s[:30])
+        for name, py in (("KEYWORDS", engage.KEYWORDS), ("FILLER", engage.FILLER)):
+            ts_list = re.search(rf"const {name} = \[(.*?)\];", ts, re.S).group(1)
+            self.assertEqual(re.findall(r"'([^']*)'", ts_list), list(py), name)
         self.assertNotIn("quiet", engage.DM_EN + flat)
         self.assertIn(engage.ALREADY, ts)
 
