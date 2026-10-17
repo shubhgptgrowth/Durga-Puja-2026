@@ -36,6 +36,7 @@ CINE_GRADE = ("unsharp=5:5:0.35,colorbalance=rs=-0.05:gs=-0.01:bs=0.05:rm=0.02:b
 WIN_W, WIN_H, WIN_Y = 1080, 1350, 400  # the 4:5 window: text goes in the 400 px bar above it, clear of the Reels
 # header and of the caption and buttons Instagram lays over the bottom fifth
 CINE_SERIF, CINE_BN = "Marcellus-Regular.ttf", "TiroBangla-Regular.ttf"
+BN_RE = re.compile("[\u0980-\u09ff]")  # Bengali script: lines without it are set in the Latin serif
 
 
 def run(*a):
@@ -229,11 +230,22 @@ def cine_png(path, frame, hook=None, line=None, end=None):
     d, sd = ImageDraw.Draw(im), ImageDraw.Draw(sh)
     win = frame == "window"
 
+    # A reel with no Bengali (English first for route and pandal posts, 17 Oct) puts its English where the Bengali
+    # would be: the big serif line, not the small caps under it.
+    latin = False
+    if hook and not hook[0] and hook[1]:
+        hook, latin = (hook[1], ""), True
+    if line and not line[0] and line[1]:
+        line, latin = (line[1], ""), True
+    if end and not BN_RE.search(end[0] or ""):
+        latin = True
+    face = (lambda size: cfont(CINE_SERIF, size)) if latin else (lambda size: cfont(CINE_BN, size, bn=True))
+
     def fit(text, size, n=2, floor=40):
         """The largest size (stepping down from size) at which the whole line fits in n lines: never cut a line short."""
-        while size > floor and len(wrap(d, text, cfont(CINE_BN, size, bn=True), W - 150)) > n:
+        while size > floor and len(wrap(d, text, face(size), W - 150)) > n:
             size -= 6
-        return cfont(CINE_BN, size, bn=True)
+        return face(size)
 
     def efit(text, size, n, track):
         """English caps: step the size down until the line fits in n lines, then never cut it (at most one extra line)."""
@@ -262,7 +274,7 @@ def cine_png(path, frame, hook=None, line=None, end=None):
         spaced(d, (W / 2, y + (14 if win else 40)), "Free pandal guide  ·  link in bio", cfont(CINE_SERIF, 26 if win else 30),
                (255, 255, 255, 235), track=0.16, layer=sd)
     elif hook:
-        fb = fit(hook[0], 62 if win else 96) if hook[0] else cfont(CINE_BN, 62, bn=True)
+        fb = fit(hook[0], 62 if win else 96) if hook[0] else face(62)
         lines = wrap(d, hook[0], fb, W - 150)[:2] if hook[0] else []
         step = int(fb.size * 1.25)
         y = (115 if len(lines) > 1 else 180) if win else 1060 - (len(lines) - 1) * step // 2
@@ -285,14 +297,16 @@ def cine_png(path, frame, hook=None, line=None, end=None):
 
 
 def cine_end_png(path, bn, en, credits):
-    """Closing card: black, পুজো পরিক্রমা in the serif Bengali face, one line, the guide and the credits, small."""
+    """Closing card: black, পুজো পরিক্রমা in the serif Bengali face (Pujo Parikrama in the Latin serif when the reel
+    has no Bengali), one line, the guide and the credits, small."""
     im = Image.new("RGB", (W, H), (8, 6, 6)); d = ImageDraw.Draw(im)
-    f = cfont(CINE_BN, 84, bn=True)
-    t = "পুজো পরিক্রমা"
+    latin = not BN_RE.search(bn or "")
+    f = cfont(CINE_SERIF, 84) if latin else cfont(CINE_BN, 84, bn=True)
+    t = "Pujo Parikrama" if latin else "পুজো পরিক্রমা"
     d.text(((W - d.textlength(t, font=f)) / 2, 560), t, font=f, fill=(240, 222, 186))
     d.line((W / 2 - 60, 710, W / 2 + 60, 710), fill=(178, 34, 52), width=3)
     y = 770
-    fb = cfont(CINE_BN, 50, bn=True)
+    fb = cfont(CINE_SERIF, 50) if latin else cfont(CINE_BN, 50, bn=True)
     for ln in wrap(d, bn or "", fb, W - 200)[:2]:
         d.text(((W - d.textlength(ln, font=fb)) / 2, y), ln, font=fb, fill=(255, 250, 240)); y += 70
     if en:
