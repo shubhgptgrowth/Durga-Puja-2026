@@ -1,53 +1,118 @@
-id,name,name_bn,area_hint,popularity,query,locality
-chorbagan,Chorbagan Sarbojanin,চোরবাগান সার্বজনীন,central,4,Chorbagan Sarbojanin,
-sikdarbagan,Sikdarbagan Sarbojanin,সিকদারবাগান সার্বজনীন,north,3,Sikdar Bagan Sarbojanin,"Sikdar Bagan Street, Kolkata"
-pathuriaghata_5,Pathuriaghata Panchar Pally,পাথুরিয়াঘাটা পাঁচের পল্লী,north,3,Pathuriaghata Panchar Pally,"Pathuriaghata Street, Kolkata"
-darjipara,Darjipara Sarbojanin,দর্জিপাড়া সার্বজনীন,north,3,Darjipara Sarbojanin,"Darjipara, Kolkata"
-ultadanga_sangrami,Ultadanga Sangrami,উল্টোডাঙা সংগ্রামী,north,3,Ultadanga Sangrami,"Ultadanga, Kolkata"
-dumdum_tarun_dal,Dum Dum Park Tarun Dal,দমদম পার্ক তরুণ দল,north,3,Dum Dum Park Tarun Dal,"Dum Dum Park, Kolkata"
-arjunpur_amra_sabai,Arjunpur Amra Sabai Club,অর্জুনপুর আমরা সবাই ক্লাব,north,4,Arjunpur Amra Sabai,"Arjunpur, Kolkata"
-kestopur_prafulla_kanan,Kestopur Prafulla Kanan,কেষ্টপুর প্রফুল্লকানন,north,3,Prafulla Kanan Kestopur,"Prafulla Kanan, Kolkata"
-beleghata_33_pally,Beleghata 33 Pally,বেলেঘাটা ৩৩ পল্লী,east,3,33 Pally Beleghata,
-chakraberia,Chakraberia Sarbojanin,চক্রবেড়িয়া সার্বজনীন,south,3,Chakraberia Sarbojanin,
-bakulbagan,Bakulbagan Sarbojanin,বকুলবাগান সার্বজনীন,south,4,Bakul Bagan Sarbojanin,
-sanghasree,Kalighat Sanghasree,কালীঘাট সংঘশ্রী,south,3,Sanghasree Kalighat,"Kalighat, Kolkata"
-kalighat_milan_sangha,Kalighat Milan Sangha,কালীঘাট মিলন সংঘ,south,3,Kalighat Milan Sangha,
-hindustan_club,Hindustan Club,হিন্দুস্থান ক্লাব,south,4,Hindusthan Club Durga Puja,
-jodhpur_park_95,Jodhpur Park 95 Pally,যোধপুর পার্ক ৯৫ পল্লী,south,4,95 Pally Jodhpur Park,"Jodhpur Park, Kolkata"
-selimpur_pally,Selimpur Pally,সেলিমপুর পল্লী,south,4,Selimpur Pally,"Selimpur, Kolkata"
-santoshpur_lake_pally,Santoshpur Lake Pally,সন্তোষপুর লেক পল্লী,south,4,Santoshpur Lake Pally,
-santoshpur_trikon_park,Santoshpur Trikon Park,সন্তোষপুর ত্রিকোণ পার্ক,south,4,Trikon Park Santoshpur,"Santoshpur, Kolkata"
-purbachal_shakti_sangha,Purbachal Shakti Sangha,পূর্বাচল শক্তি সংঘ,south,3,Purbachal Shakti Sangha,"Purbachal, Kolkata"
-naktala_udayan,Naktala Udayan Sangha,নাকতলা উদয়ন সংঘ,south,5,Naktala Udayan Sangha,
-thakurpukur_sb_park,Thakurpukur SB Park Sarbojanin,ঠাকুরপুকুর এসবি পার্ক সার্বজনীন,south,4,SB Park Thakurpukur,"Thakurpukur, Kolkata"
-behala_club,Behala Club,বেহালা ক্লাব,south,3,Behala Club Durga Puja,
-haridevpur_ajeya,Haridevpur Ajeya Sanghati,হরিদেবপুর অজেয় সংহতি,south,4,Ajeya Sanghati Haridevpur,"Haridevpur, Kolkata"
-salt_lake_ck,CK Block Salt Lake,সিকে ব্লক সল্টলেক,east,3,CK Block Salt Lake Durga Puja,
-salt_lake_ee,EE Block Salt Lake,ইই ব্লক সল্টলেক,east,3,EE Block Salt Lake Durga Puja,
-salt_lake_ia,IA Block Salt Lake,আইএ ব্লক সল্টলেক,east,3,IA Block Salt Lake Durga Puja,
-salt_lake_cl,CL Block Salt Lake,সিএল ব্লক সল্টলেক,east,3,CL Block Salt Lake Durga Puja,
-shibpur_mandirtala,Shibpur Mandirtala Sarbojanin,শিবপুর মন্দিরতলা সার্বজনীন,howrah,3,Mandirtala Shibpur Durga Puja,"Mandirtala, Howrah|Shibpur, Howrah"
-salkia_sarbojanin,Salkia Sarbojanin,সালকিয়া সার্বজনীন,howrah,3,Salkia Sarbojanin,"Salkia, Howrah"
-shyam_square,Shyam Square Sarbojanin,শ্যাম স্কোয়ার সার্বজনীন,north,3,Shyam Square Durga Puja,"Shyam Square, Kolkata|Shyampukur, Kolkata"
-young_boys_club,Young Boys Club,ইয়ং বয়েজ ক্লাব,central,4,Young Boys Club Durga Puja,"Tara Chand Dutta Street, Kolkata"
-baguiati_rail_pukur,Baguiati Rail Pukur United Club,বাগুইআটি রেলপুকুর ইউনাইটেড ক্লাব,east,3,Rail Pukur United Club Baguiati,"Baguiati, Kolkata"
-allen_park,Park Street Allen Park Puja,পার্ক স্ট্রিট অ্যালেন পার্ক,central,3,Allen Park Park Street,"Allen Park, Kolkata|Park Street, Kolkata"
-barisha_sarbojanin,Barisha Sarbojanin,বড়িশা সর্বজনীন,south,4,Barisha Sarbojanin Durgotsab,"Sabarna Para, Barisha, Kolkata|Barisha, Kolkata"
-behala_11_pally,Behala 11 Pally Club,বেহালা ১১ পল্লী,south,3,11 Pally Behala,"Behala, Kolkata"
-behala_yma,Behala Young Men's Association,বেহালা ইয়ং মেনস অ্যাসোসিয়েশন,south,3,Behala Young Mens Association,"Behala, Kolkata"
-71_pally_baishakhi,71 Pally Baishakhi Sarbojanin,৭১ পল্লী বৈশাখী সর্বজনীন,south,3,71 Pally Ballygunge,"Ballygunge, Kolkata"
-obosor_sarbojanin,Obosor Sarbojanin,অবসর সর্বজনীন,south,3,Abasar Sarbojanin Bhowanipore,"Bhowanipore, Kolkata"
-kendua_shanti_sangha,Kendua Shanti Sangha,কেন্দুয়া শান্তি সংঘ,south,3,Kendua Shanti Sangha Durga Puja,"Kendua Main Road, Kolkata|Kendua, Kolkata|Garia, Kolkata"
-lake_gardens_peoples,Lake Gardens Peoples Association,লেক গার্ডেন্স পিপলস অ্যাসোসিয়েশন,south,3,Lake Gardens Peoples Association,"Lake Gardens, Kolkata"
-tollygunge_santi_pally,Tollygunge Santi Pally,টালিগঞ্জ শান্তিপল্লী,south,3,Santi Pally Tollygunge,"Tollygunge, Kolkata"
-belur_math,Belur Math Durga Puja,বেলুড় মঠের দুর্গাপুজো,howrah,5,Belur Math,"Belur Math, Howrah"
-ihe_housing_puja,IHE Housing Complex Puja (Botanical Garden),আইএইচই আবাসনের পুজো,howrah,3,IHE Housing Complex Shibpur,"Botanical Garden, Howrah|Shibpur, Howrah"
-salkia_61_pally,Salkia 61 Pally Sarbojanin,সালকিয়া ৬১ পল্লী সর্বজনীন,howrah,4,61 Pally Salkia,"Salkia, Howrah"
-salkia_barowari,Salkia Durgotsav Barowari,সালকিয়া দুর্গোৎসব বারোয়ারি,howrah,3,Salkia Barowari Durga Puja,"Salkia, Howrah"
-howrah_saraswat_club,Howrah Saraswat Club,হাওড়া সারস্বত ক্লাব,howrah,3,Saraswat Club Howrah,"Kailash Banerjee Lane, Howrah|Kadamtala, Howrah"
-chittaranjan_smriti_mandir,Chittaranjan Smriti Mandir,চিত্তরঞ্জন স্মৃতি মন্দির,howrah,3,Chittaranjan Smriti Mandir Howrah,"Kadamtala, Howrah"
-ghasbagan_sporting,Ghasbagan Sporting Club,ঘাসবাগান স্পোর্টিং ক্লাব,howrah,3,Ghasbagan Sporting Club Howrah,"Ghasbagan, Howrah|Shibpur, Howrah"
-bally_deshbandhu,Bally Deshbandhu Club,বালি দেশবন্ধু ক্লাব,howrah,3,Deshbandhu Club Bally,"Bally, Howrah"
-bally_pal_para,Bally Pal Para Puja,বালি পাল পাড়ার পুজো,howrah,3,Pal Para Bally Durga Puja,"Pal Para, Bally|Bally, Howrah"
-liluah_siy,Liluah Social Institution of Youth,লিলুয়া সোশ্যাল ইনস্টিটিউশন অব ইয়ুথ,howrah,3,Social Institution of Youth Liluah,"Liluah, Howrah"
-bhattanagar_rk_sangha,Bhattanagar Ramkrishna Sangha,ভট্টনগর রামকৃষ্ণ সংঘ,howrah,3,Bhattanagar Ramkrishna Sangha,"Bhattanagar, Howrah|Liluah, Howrah"
+id,name,name_bn,area_hint,popularity,query,locality,source
+chorbagan,Chorbagan Sarbojanin,চোরবাগান সার্বজনীন,central,4,Chorbagan Sarbojanin,,
+sikdarbagan,Sikdarbagan Sarbojanin,সিকদারবাগান সার্বজনীন,north,3,Sikdar Bagan Sarbojanin,"Sikdar Bagan Street, Kolkata",
+pathuriaghata_5,Pathuriaghata Panchar Pally,পাথুরিয়াঘাটা পাঁচের পল্লী,north,3,Pathuriaghata Panchar Pally,"Pathuriaghata Street, Kolkata",
+darjipara,Darjipara Sarbojanin,দর্জিপাড়া সার্বজনীন,north,3,Darjipara Sarbojanin,"Darjipara, Kolkata",
+ultadanga_sangrami,Ultadanga Sangrami,উল্টোডাঙা সংগ্রামী,north,3,Ultadanga Sangrami,"Ultadanga, Kolkata",
+dumdum_tarun_dal,Dum Dum Park Tarun Dal,দমদম পার্ক তরুণ দল,north,3,Dum Dum Park Tarun Dal,"Dum Dum Park, Kolkata",
+arjunpur_amra_sabai,Arjunpur Amra Sabai Club,অর্জুনপুর আমরা সবাই ক্লাব,north,4,Arjunpur Amra Sabai,"Arjunpur, Kolkata",
+kestopur_prafulla_kanan,Kestopur Prafulla Kanan,কেষ্টপুর প্রফুল্লকানন,north,3,Prafulla Kanan Kestopur,"Prafulla Kanan, Kolkata",
+beleghata_33_pally,Beleghata 33 Pally,বেলেঘাটা ৩৩ পল্লী,east,3,33 Pally Beleghata,,
+chakraberia,Chakraberia Sarbojanin,চক্রবেড়িয়া সার্বজনীন,south,3,Chakraberia Sarbojanin,,
+bakulbagan,Bakulbagan Sarbojanin,বকুলবাগান সার্বজনীন,south,4,Bakul Bagan Sarbojanin,,
+sanghasree,Kalighat Sanghasree,কালীঘাট সংঘশ্রী,south,3,Sanghasree Kalighat,"Kalighat, Kolkata",
+kalighat_milan_sangha,Kalighat Milan Sangha,কালীঘাট মিলন সংঘ,south,3,Kalighat Milan Sangha,,
+hindustan_club,Hindustan Club,হিন্দুস্থান ক্লাব,south,4,Hindusthan Club Durga Puja,,
+jodhpur_park_95,Jodhpur Park 95 Pally,যোধপুর পার্ক ৯৫ পল্লী,south,4,95 Pally Jodhpur Park,"Jodhpur Park, Kolkata",
+selimpur_pally,Selimpur Pally,সেলিমপুর পল্লী,south,4,Selimpur Pally,"Selimpur, Kolkata",
+santoshpur_lake_pally,Santoshpur Lake Pally,সন্তোষপুর লেক পল্লী,south,4,Santoshpur Lake Pally,,
+santoshpur_trikon_park,Santoshpur Trikon Park,সন্তোষপুর ত্রিকোণ পার্ক,south,4,Trikon Park Santoshpur,"Santoshpur, Kolkata",
+purbachal_shakti_sangha,Purbachal Shakti Sangha,পূর্বাচল শক্তি সংঘ,south,3,Purbachal Shakti Sangha,"Purbachal, Kolkata",
+naktala_udayan,Naktala Udayan Sangha,নাকতলা উদয়ন সংঘ,south,5,Naktala Udayan Sangha,,
+thakurpukur_sb_park,Thakurpukur SB Park Sarbojanin,ঠাকুরপুকুর এসবি পার্ক সার্বজনীন,south,4,SB Park Thakurpukur,"Thakurpukur, Kolkata",
+behala_club,Behala Club,বেহালা ক্লাব,south,3,Behala Club Durga Puja,,
+haridevpur_ajeya,Haridevpur Ajeya Sanghati,হরিদেবপুর অজেয় সংহতি,south,4,Ajeya Sanghati Haridevpur,"Haridevpur, Kolkata",
+salt_lake_ck,CK Block Salt Lake,সিকে ব্লক সল্টলেক,east,3,CK Block Salt Lake Durga Puja,,
+salt_lake_ee,EE Block Salt Lake,ইই ব্লক সল্টলেক,east,3,EE Block Salt Lake Durga Puja,,
+salt_lake_ia,IA Block Salt Lake,আইএ ব্লক সল্টলেক,east,3,IA Block Salt Lake Durga Puja,,
+salt_lake_cl,CL Block Salt Lake,সিএল ব্লক সল্টলেক,east,3,CL Block Salt Lake Durga Puja,,
+shibpur_mandirtala,Shibpur Mandirtala Sarbojanin,শিবপুর মন্দিরতলা সার্বজনীন,howrah,3,Mandirtala Shibpur Durga Puja,"Mandirtala, Howrah|Shibpur, Howrah",
+salkia_sarbojanin,Salkia Sarbojanin,সালকিয়া সার্বজনীন,howrah,3,Salkia Sarbojanin,"Salkia, Howrah",
+shyam_square,Shyam Square Sarbojanin,শ্যাম স্কোয়ার সার্বজনীন,north,3,Shyam Square Durga Puja,"Shyam Square, Kolkata|Shyampukur, Kolkata",
+young_boys_club,Young Boys Club,ইয়ং বয়েজ ক্লাব,central,4,Young Boys Club Durga Puja,"Tara Chand Dutta Street, Kolkata",
+baguiati_rail_pukur,Baguiati Rail Pukur United Club,বাগুইআটি রেলপুকুর ইউনাইটেড ক্লাব,east,3,Rail Pukur United Club Baguiati,"Baguiati, Kolkata",
+allen_park,Park Street Allen Park Puja,পার্ক স্ট্রিট অ্যালেন পার্ক,central,3,Allen Park Park Street,"Allen Park, Kolkata|Park Street, Kolkata",
+barisha_sarbojanin,Barisha Sarbojanin,বড়িশা সর্বজনীন,south,4,Barisha Sarbojanin Durgotsab,"Sabarna Para, Barisha, Kolkata|Barisha, Kolkata",
+behala_11_pally,Behala 11 Pally Club,বেহালা ১১ পল্লী,south,3,11 Pally Behala,"Behala, Kolkata",
+behala_yma,Behala Young Men's Association,বেহালা ইয়ং মেনস অ্যাসোসিয়েশন,south,3,Behala Young Mens Association,"Behala, Kolkata",
+71_pally_baishakhi,71 Pally Baishakhi Sarbojanin,৭১ পল্লী বৈশাখী সর্বজনীন,south,3,71 Pally Ballygunge,"Ballygunge, Kolkata",
+obosor_sarbojanin,Obosor Sarbojanin,অবসর সর্বজনীন,south,3,Abasar Sarbojanin Bhowanipore,"Bhowanipore, Kolkata",
+kendua_shanti_sangha,Kendua Shanti Sangha,কেন্দুয়া শান্তি সংঘ,south,3,Kendua Shanti Sangha Durga Puja,"Kendua Main Road, Kolkata|Kendua, Kolkata|Garia, Kolkata",
+lake_gardens_peoples,Lake Gardens Peoples Association,লেক গার্ডেন্স পিপলস অ্যাসোসিয়েশন,south,3,Lake Gardens Peoples Association,"Lake Gardens, Kolkata",
+tollygunge_santi_pally,Tollygunge Santi Pally,টালিগঞ্জ শান্তিপল্লী,south,3,Santi Pally Tollygunge,"Tollygunge, Kolkata",
+belur_math,Belur Math Durga Puja,বেলুড় মঠের দুর্গাপুজো,howrah,5,Belur Math,"Belur Math, Howrah",
+ihe_housing_puja,IHE Housing Complex Puja (Botanical Garden),আইএইচই আবাসনের পুজো,howrah,3,IHE Housing Complex Shibpur,"Botanical Garden, Howrah|Shibpur, Howrah",
+salkia_61_pally,Salkia 61 Pally Sarbojanin,সালকিয়া ৬১ পল্লী সর্বজনীন,howrah,4,61 Pally Salkia,"Salkia, Howrah",
+salkia_barowari,Salkia Durgotsav Barowari,সালকিয়া দুর্গোৎসব বারোয়ারি,howrah,3,Salkia Barowari Durga Puja,"Salkia, Howrah",
+howrah_saraswat_club,Howrah Saraswat Club,হাওড়া সারস্বত ক্লাব,howrah,3,Saraswat Club Howrah,"Kailash Banerjee Lane, Howrah|Kadamtala, Howrah",
+chittaranjan_smriti_mandir,Chittaranjan Smriti Mandir,চিত্তরঞ্জন স্মৃতি মন্দির,howrah,3,Chittaranjan Smriti Mandir Howrah,"Kadamtala, Howrah",
+ghasbagan_sporting,Ghasbagan Sporting Club,ঘাসবাগান স্পোর্টিং ক্লাব,howrah,3,Ghasbagan Sporting Club Howrah,"Ghasbagan, Howrah|Shibpur, Howrah",
+bally_deshbandhu,Bally Deshbandhu Club,বালি দেশবন্ধু ক্লাব,howrah,3,Deshbandhu Club Bally,"Bally, Howrah",
+bally_pal_para,Bally Pal Para Puja,বালি পাল পাড়ার পুজো,howrah,3,Pal Para Bally Durga Puja,"Pal Para, Bally|Bally, Howrah",
+liluah_siy,Liluah Social Institution of Youth,লিলুয়া সোশ্যাল ইনস্টিটিউশন অব ইয়ুথ,howrah,3,Social Institution of Youth Liluah,"Liluah, Howrah",
+bhattanagar_rk_sangha,Bhattanagar Ramkrishna Sangha,ভট্টনগর রামকৃষ্ণ সংঘ,howrah,3,Bhattanagar Ramkrishna Sangha,"Bhattanagar, Howrah|Liluah, Howrah",
+tala_barowari,Tala Barowari Durgotsav,টালা বারোয়ারি,north,4,Tala Barowari Durgotsav,"Tala, Kolkata|Belgachia, Kolkata",https://t2online.in/events/events-1/the-telegraph-puja-premier-league-at-tala-barowari-durgotsav-celebrates-satyajit-ray/1171133
+beadon_street_durgotsav,Beadon Street Sarbojanin Durgotsav,,north,3,Beadon Street Sarbojanin Durgotsav,"Beadon Street, Kolkata|Hatibagan, Kolkata",https://t2online.in/events/events-1/beadon-street-durgotsav-marks-its-85th-year-with-ishaa-saha-joining-the-telegraph-puja-premier-league/2001374
+uttar_kolkata_sarbojanin,Uttar Kolkata Sarbojanin,,north,3,Uttar Kolkata Sarbojanin Durgotsav,"Bidhan Sarani, Kolkata|Shyambazar, Kolkata",https://www.millenniumpost.in/bengal/themes-of-heritage-and-spirituality-to-take-centre-stage-in-this-years-puja-627144
+bagmari_kabiraj_bagan,Kabiraj Bagan Sarbojanin Durgotsav (Bagmari),,north,3,Kabiraj Bagan Sarbojanin Durgotsav,"Bagmari, Kolkata|Maniktala, Kolkata",https://www.millenniumpost.in/bengal/myanmars-hsinbyume-pagoda-digha-dham-to-feature-as-durga-puja-themes-614403
+maniktala_vivekananda_sporting,Maniktala Vivekananda Sporting Association,,north,3,Vivekananda Sporting Association Maniktala,"Maniktala, Kolkata|Kankurgachi, Kolkata",https://www.millenniumpost.in/kolkata/old-barowari-pujas-of-north-kolkata-turning-to-theme-262406
+shyambazar_nabin_sangha,Shyambazar Nabin Sangha,,north,3,Shyambazar Nabin Sangha,"Shyambazar, Kolkata|Bagbazar, Kolkata",https://www.millenniumpost.in/kolkata/old-barowari-pujas-of-north-kolkata-turning-to-theme-262406
+talapark_panero_pally,Tala Park Panero Pally,,north,3,Tala Park Panero Pally,"Tala Park, Kolkata|Belgachia, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+ultadanga_bidhan_sangha,Ultadanga Bidhan Sangha,,north,3,Ultadanga Bidhan Sangha,"Ultadanga, Kolkata|Bidhannagar Road, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492
+shibkrishna_daw_bari,Jorasanko Shib Krishna Daw Bari,শিবকৃষ্ণ দাঁ বাড়ি,north,4,Shib Krishna Daw Lane Jorasanko,"Jorasanko, Kolkata|Burrabazar, Kolkata",https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past
+chhatu_latu_babu_bari,Chhatu Babu Latu Babu Bari (Ramdulal Nibas),ছাতুবাবু লাটুবাবুর বাড়ি,north,4,Ramdulal Nibas Beadon Street,"Beadon Street, Kolkata|Girish Park, Kolkata",https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past
+khelat_ghosh_bari,Pathuriaghata Khelat Ghosh Bari,খেলাত ঘোষ বাড়ি,north,3,Khelat Ghosh Bari Pathuriaghata Street,"Pathuriaghata, Kolkata|Jorabagan, Kolkata",https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past
+darjipara_mitra_bari,Darjipara Mitra Bari,দর্জিপাড়া মিত্র বাড়ি,north,3,Nilmani Mitra Street Darjipara,"Darjipara, Kolkata|Shyambazar, Kolkata",https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past
+pathuriaghata_rajbari,Pathuriaghata Rajbari,,north,3,Pathuriaghata Rajbari,"Pathuriaghata, Kolkata|Jorabagan, Kolkata",https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata
+thanthania_dutta_bari,Thanthania Dutta Bari,ঠনঠনিয়া দত্ত বাড়ি,north,3,Thanthania Dutta Bari Bidhan Sarani,"College Street, Kolkata|Thanthania, Kolkata",https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata
+colootola_dhar_bari,Colootola Dhar Bari,,north,3,Debendra Mullick Road Dhar Bari,"Tiretta Bazar, Kolkata|Colootola, Kolkata",https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata
+laha_bari,Laha Bari (Thanthania),লাহা বাড়ি,north,3,Laha Bari Thanthania,"Thanthania, Kolkata|College Street, Kolkata",https://www.outlooktraveller.com/explore/hot-lists/durga-puja-at-traditional-homes-in-kolkata
+badan_chandra_roy_bari,Badan Chandra Roy Family Puja (Colootola),,north,3,Gopal Chandra Lane Colootola,"Colootola, Kolkata|Bowbazar, Kolkata",https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja
+thanthania_chandra_bari,Chandra Family Puja (Thanthania),,north,3,Bechu Chatterjee Street,"Thanthania, Kolkata|College Street, Kolkata",https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja
+rani_rashmoni_bari,Rani Rashmoni Bari (Janbazar),রানি রাসমণির বাড়ি,central,4,Rani Rashmoni House Janbazar,"Janbazar, Kolkata|Taltala, Kolkata",https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja
+bowbazar_47_palli,47 Palli Milanshri Welfare Society,,central,3,47 Palli Bowbazar,"Bowbazar, Kolkata|Sealdah, Kolkata",https://www.millenniumpost.in/kolkata/crowd-puller-durga-pujas-witness-huge-footfall-494576
+entally_14_pally,Entally 14 Pally,,central,3,14 Pally Entally,"Entally, Kolkata|Padmapukur, Kolkata",https://www.millenniumpost.in/bengal/jagadhatri-puja-in-chandannagar-set-to-resurrect-3-community-pujas-of-kolkata-583283
+tangra_ghol_para,Tangra Ghol Para Sarbojanin,,east,3,Tangra Ghol Para Sarbojanin,"Tangra, Kolkata|Topsia, Kolkata",https://t2online.in/events/events-1/vikram-chatterjee-visits-tangra-ghol-para-sarbojanin-with-the-telegraph-premier-league--as-the-puja-celebrates-its-106th-year-/2001312
+mitali_kankurgachi,Kankurgachi Mitali,কাঁকুড়গাছি মিতালি,east,4,Mitali Kankurgachi Durga Puja,"Kankurgachi, Kolkata|Phoolbagan, Kolkata",https://www.millenniumpost.in/bengal/kolkatas-durga-puja-pandals-celebrate-uttam-kumar-at-100-674559
+kankurgachi_chalantika,Kankurgachi Chalantika Club,,east,3,Chalantika Club Kankurgachi,"Kankurgachi, Kolkata|Phoolbagan, Kolkata",https://www.millenniumpost.in/bengal/durga-puja-remembers-bengals-matinee-idol-uttam-kumar-629189
+saltlake_ak_block,Salt Lake AK Block Association,,east,4,AK Block Durga Puja Salt Lake,"AK Block, Salt Lake, Kolkata|Sector 2, Salt Lake, Kolkata",https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545
+saltlake_ec_block,Salt Lake EC Block Residents' Association,,east,3,EC Block Durga Puja Salt Lake,"EC Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545
+saltlake_bc_block,Salt Lake BC Block Residents' Association,,east,3,BC Block Durga Puja Salt Lake,"BC Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545
+saltlake_aj_block,Salt Lake AJ Block Durga Puja,,east,3,AJ Block Durga Puja Salt Lake,"AJ Block, Salt Lake, Kolkata|Sector 2, Salt Lake, Kolkata",https://www.millenniumpost.in/city-of-blinding-lights-263000
+saltlake_ce_block,Salt Lake CE Block Welfare Association,,east,3,CE Block Durga Puja Salt Lake,"CE Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",https://www.millenniumpost.in/bengal/preserving-the-sundarbans-reviving-letters-durga-puja-with-purpose-536060
+saltlake_fe_block,Salt Lake FE Block Residents' Association,,east,3,FE Block Durga Puja Salt Lake,"FE Block, Salt Lake, Kolkata|Sector 3, Salt Lake, Kolkata",https://www.millenniumpost.in/bengal/fe-blocks-durga-puja-is-all-about-tradition-582299
+saltlake_ca_block,Salt Lake CA Block Durgotsav Committee,,east,3,CA Block Durga Puja Salt Lake,"CA Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",https://www.millenniumpost.in/kolkata/crowd-puller-durga-pujas-witness-huge-footfall-494576
+labony_estate,Labony Estate Durgotsav Committee,,east,3,Labony Estate Salt Lake,"Labony, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",https://www.millenniumpost.in/puja-special/artsy-affair-536871
+newtown_sarbojanin,New Town Sarbojanin Durgotsav Samiti,,east,4,New Town Sarbojanin Durgotsav,"New Town, Kolkata|Action Area I, New Town, Kolkata",https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424
+newtown_ae_block,New Town AE Block Puja Committee,,east,3,AE Block New Town Durga Puja,"Action Area I, New Town, Kolkata|New Town, Kolkata",https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424
+newtown_ce_block,New Town CE Block Cultural Association,,east,3,CE Block New Town Durga Puja,"Action Area I, New Town, Kolkata|New Town, Kolkata",https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424
+newtown_db_block,New Town DB Block Sarbojanin,,east,3,DB Block New Town Durga Puja,"Action Area I, New Town, Kolkata|New Town, Kolkata",https://www.millenniumpost.in/bengal/new-town-set-to-give-tough-competition-to-north-and-south-kolkata-pujas-536059
+balaka_abasan,Balaka Abasan Puja Committee,,east,3,Balaka Abasan New Town,"New Town, Kolkata|Action Area I, New Town, Kolkata",https://www.millenniumpost.in/city-of-blinding-lights-263000
+aswininagar_bandhumahal,Aswininagar Bandhumahal Club,,east,3,Aswininagar Bandhumahal Club,"Aswini Nagar, Baguiati, Kolkata|Baguiati, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+dakshindari_youth,Dakshindari Youths,,north,4,Dakshindari Youth Durga Puja,"Dakshindari, Kolkata|South Dum Dum, Kolkata",https://curlytales.com/india/experiences/durga-puja-unique-pandals-in-kolkata-with-themes-that-will-make-you-think/amp/
+dakhin_bediapara,Dakshin Bediapara Sarbojanin (Dum Dum),,north,3,Dakshin Bediapara Durga Puja Dum Dum,"Bediapara, Dum Dum, Kolkata|Dum Dum, Kolkata",https://www.millenniumpost.in/bengal/durga-puja-remembers-bengals-matinee-idol-uttam-kumar-629189
+belgharia_17_palli,Belgharia 17 Palli,,north,3,17 Palli Belgharia,"Belgharia, Kolkata|Rathtala, Belgharia, Kolkata",https://www.millenniumpost.in/puja-special/artsy-affair-536871
+baranagar_netaji_colony,Baranagar Netaji Colony Durga Puja,,north,3,Netaji Colony Lowland Baranagar,"Baranagar, Kolkata|Netaji Colony, Baranagar, Kolkata",https://www.millenniumpost.in/bengal/4-puja-pandals-bag-guvs-durga-ratna-awards-537991
+baranagar_bandhudal,Baranagar Bandhudal Sporting Club,,north,3,Bandhudal Sporting Club Baranagar,"Baranagar, Kolkata|Bonhooghly, Kolkata",https://www.millenniumpost.in/bengal/4-puja-pandals-bag-guvs-durga-ratna-awards-537991
+sodepur_bijoypur,Bijoypur Sarbojanin Durgotsav (HB Town),,north,3,Bijoypur Sarbojanin HB Town Sodepur,"HB Town, Sodepur|Sodepur, Kolkata",https://www.millenniumpost.in/bengal/from-ram-temple-to-vande-mataram-kolkata-durga-pujas-draw-on-heritage-nationalism-for-inspiration-680170
+pratapaditya_tricon_park,Pratapaditya Road Tricon Park,,south,4,Pratapaditya Road Tricon Park Durgotsav,"Kalighat, Kolkata|Bhowanipore, Kolkata",https://www.indiablooms.com/phoenix/server.php/life/hatibagan-pratapaditya-road-top-picks-in-sharod-srijoni-samman-publicity-awards/details
+hazra_udayan_sangha,Hazra Udayan Sangha,,south,3,Hazra Udayan Sangha,"Hazra, Kolkata|Kalighat, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492
+bhowanipore_sanatan_dharmotsahini,Bhowanipore Sanatan Dharmotsahini Sabha,,south,3,Balaram Basu Ghat Road Durga Puja,"Bhowanipore, Kolkata|Kalighat, Kolkata",https://en.wikipedia.org/wiki/Durga_Puja_in_Kolkata
+mallick_bari_bhowanipore,Mallick Bari (Bhowanipore),মল্লিক বাড়ি,south,3,Mallick Bari Mohini Mohan Road,"Bhowanipore, Kolkata|Jadu Babur Bazar, Kolkata",https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata
+bhukailash_rajbari,Bhukailash Rajbari (Kidderpore),ভূকৈলাস রাজবাড়ি,south,3,Bhukailash Rajbari,"Kidderpore, Kolkata|Khidirpur, Kolkata",https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja
+sabarna_roy_choudhury_bari,Sabarna Roy Choudhury Atchala Bari (Barisha),সাবর্ণ রায়চৌধুরী পরিবার,south,4,Sabarna Roy Choudhury Atchala Barisha,"Barisha, Kolkata|Sakherbazar, Kolkata",https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past
+north_tridhara,North Tridhara Sarbojanin Durgotsav,,south,3,North Tridhara Sarbojanin,"Rashbehari, Kolkata|Lake Market, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492
+ballygunge_ekush_pally,Ballygunge Ekush Pally Sarbojanin,,south,3,Ekush Pally Ballygunge,"Ballygunge, Kolkata|Gariahat, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+santoshpur_avenue_south,Santoshpur Avenue South Club,,south,3,Santoshpur Avenue South Club,"Santoshpur, Kolkata|Survey Park, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+garia_mitali_sangha,Garia Mitali Sangha,,south,3,Garia Mitali Sangha,"Garia, Kolkata|Kamalgazi, Kolkata",https://t2online.in/events/events-1/the-telegraph-puja-premier-league-at-garia-mitali-sangha-was-about-upholding-the-tradition/1172226
+haridevpur_41_pally,Haridevpur 41 Pally Club,,south,4,41 Pally Club Haridevpur,"Haridevpur, Kolkata|Paschim Putiary, Kolkata",https://curlytales.com/india/experiences/durga-puja-unique-pandals-in-kolkata-with-themes-that-will-make-you-think/amp/
+haridevpur_new_sporting,Haridevpur New Sporting Club,,south,3,Haridevpur New Sporting Club,"Haridevpur, Kolkata|Thakurpukur, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+parnasree_south_block,Parnasree South Block Club,,south,3,Parnasree South Block Club,"Parnasree, Behala, Kolkata|Behala, Kolkata",https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491
+behala_east_sabuj_sangha,Behala East Sabuj Sangha,,south,3,Sabuj Sangha Behala,"Behala, Kolkata|Sakherbazar, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530
+joyrampur_sarbojanin,Joyrampur Sarbojanin,,south,3,Joyrampur Sarbojanin Durgotsav,"Joyrampur, Behala, Kolkata|Behala, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530
+nandana_yuba_sangha,Nandana Yuba Sangha,,south,3,Nandana Yuba Sangha,"Behala, Kolkata|Nandana Park, Kolkata",https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530
+behala_buroshibtala,Behala Buroshibtala Sarbojanin,,south,3,Buroshibtala Behala,"Behala, Kolkata|Sakherbazar, Kolkata",https://www.millenniumpost.in/puja-special/artsy-affair-536871
+barisha_players_corner,Barisha Players' Corner,,south,3,Barisha Players Corner,"Barisha, Kolkata|Behala, Kolkata",https://etvbharat.com/english/bharat/bharat-news/kolkata-famous-barishas-pandal-prayers-to-go-virtual/na20201017190748848
+howrah_swamijee_sporting,Swamijee Sporting Club,,howrah,3,Swamijee Sporting Club Howrah,"Baruipara, Howrah|Belur, Howrah",https://lbb.in/kolkata/durga-puja-pandals-in-howrah/
+howrah_6er_pally,Howrah 6-er Pally,,howrah,3,6er Pally Howrah,"Bandhaghat, Howrah|Kadamtala, Howrah",https://lbb.in/kolkata/durga-puja-pandals-in-howrah/
+howrah_subal_smriti_sangha,Subal Smriti Sangha,,howrah,3,Subal Smriti Sangha Tikiapara,"Tikiapara, Howrah|Kadamtala, Howrah",https://lbb.in/kolkata/durga-puja-pandals-in-howrah/
