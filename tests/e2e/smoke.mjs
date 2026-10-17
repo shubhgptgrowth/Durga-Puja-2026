@@ -107,6 +107,8 @@ try {
   {   // the plan goes to WhatsApp with its stops in the message and a link that opens the same route
     const wa = decodeURIComponent(await page.locator('#planWa').getAttribute('href'));
     must(wa.startsWith('https://wa.me/?text=') && /src=wa_plan#(plan|trail)=/.test(wa) && (wa.match(/^• \d\d:\d\d /gm) || []).length >= 4, 'WhatsApp plan message: ' + wa.slice(0, 200));
+    // the same message again at the end of the route, after the stops and directions
+    must(decodeURIComponent(await page.locator('#planWaEnd').getAttribute('href')) === wa, 'end-of-route WhatsApp button sends the same plan');
   }
   await shot('01c-dayplan');
   await page.click('#planNew');

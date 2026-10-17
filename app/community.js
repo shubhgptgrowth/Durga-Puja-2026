@@ -181,7 +181,10 @@ export class Community {
     for (const r of await res.json()) byPlace[r.place_id] = r;
     const rr = await fetch(`${this.url}/rest/v1/place_rating_stats?select=place_id,rating,ratings,top_tags`, { headers: this._headers(false) }).catch(() => null);
     const ratings = rr?.ok ? Object.fromEntries((await rr.json()).map((r) => [r.place_id, r])) : this.stats.ratings || {};
-    this.stats = { at: Date.now(), byPlace, ratings };
+    // Most opened pandals this week (people, not opens): Home shows them while nobody has checked in yet.
+    const pr = await fetch(`${this.url}/rest/v1/place_popular?select=place_id,people_7d`, { headers: this._headers(false) }).catch(() => null);
+    const popular = pr?.ok ? await pr.json() : this.stats.popular || [];
+    this.stats = { at: Date.now(), byPlace, ratings, popular };
     lsSet('community.stats', this.stats);
     this.emit('stats', this.stats);
     return this.stats;

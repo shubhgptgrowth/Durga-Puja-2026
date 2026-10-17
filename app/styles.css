@@ -722,6 +722,8 @@ html[lang="bn"] .how-lingo { font-family: var(--bn-serif); font-style: normal; }
 .mode-chips button { flex: none; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font-size: 13px; font-weight: 600; cursor: pointer; }
 .mode-chips button[aria-checked="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .route-dirs { margin-top: 20px; }
+.plan-send { margin: 22px 16px 8px; padding: 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); text-align: center; }
+.plan-send p { margin: 0 0 12px; }
 .dir-legs { display: grid; gap: 8px; margin: 8px 16px 0; }
 .dir-leg { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 13px 15px; border-radius: 14px; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .dir-leg b { font-size: 13.5px; white-space: nowrap; color: var(--brand); }

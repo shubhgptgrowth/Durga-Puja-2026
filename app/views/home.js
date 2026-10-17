@@ -130,6 +130,8 @@ function render() {
   const busy = Object.values(st).filter((s) => s.last_hour > 0 || s.today > 0)
     .sort((a, b) => b.last_hour - a.last_hour || b.today - a.today).slice(0, 8)
     .map((s) => idx.pandal[s.place_id]).filter(Boolean);
+  const popular = busy.length ? [] : ((community.enabled && community.stats.popular) || [])
+    .filter((x) => idx.pandal[x.place_id]).slice(0, 8);
 
   // The radio card is built once and moved in, never re-rendered, so its player keeps playing.
   if (!$('#homeTop', el)) el.innerHTML = '<div id="homeTop"></div><div id="homeRest"></div><div id="radioSlot"></div><div id="homeFoot"></div>';
@@ -166,6 +168,9 @@ function render() {
       <div class="hscroll">${busy.map((p) => { const s = st[p.id]; return miniPandal(p, s.last_hour
         ? `<span class="pill live"><span class="dot"></span>${t('c.liveN', { n: fmtCount(s.last_hour) })}</span>`
         : `<span class="pill">${icon('people', 'sm')} ${t('c.todayN', { n: fmtCount(s.today) })}</span>`); }).join('')}</div></section>` : ''}
+    ${popular.length ? `<section class="section"><div class="section-head"><div><h2>${plain(t('h.popular'))}</h2><p class="sub">${t('h.popularSub')}</p></div></div>
+      <div class="hscroll">${popular.map((x) => miniPandal(idx.pandal[x.place_id],
+        `<span class="pill">${icon('people', 'sm')} ${t('c.lookedN', { n: fmtCount(x.people_7d) })}</span>`)).join('')}</div></section>` : ''}
 
     <section class="section" id="dayPlans"><div class="section-head"><div><h2>${plain(t('dp.title'))}</h2><p class="sub">${t('dp.sub')}</p></div></div>
       ${dayPlanHtml()}</section>

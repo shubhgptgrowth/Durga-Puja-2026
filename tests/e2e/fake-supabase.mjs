@@ -201,6 +201,12 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       .map(({ phone, status, wants_featured, featured_until, ...o }) => ({ ...o, featured: !!featured_until && featured_until >= istDay() })));
     if (p === '/rest/v1/place_stats') return json(res, 200, stats());
     if (p === '/rest/v1/place_rating_stats') return json(res, 200, ratingStats());
+    if (p === '/rest/v1/place_popular') {   // like the view: pandals opened by 5+ different devices, most first
+      const by = new Map();
+      for (const e of db.events) if (e.name === 'place_open' && e.kind === 'pandal' && e.place) by.set(e.place, (by.get(e.place) || new Set()).add(e.device));
+      return json(res, 200, [...by].map(([place_id, d]) => ({ place_id, people_7d: d.size })).filter((x) => x.people_7d >= 5)
+        .sort((a, b) => b.people_7d - a.people_7d).slice(0, 12));
+    }
     if (p === '/rest/v1/traffic_notices') return json(res, 200, [{ title: 'Traffic arrangements for Durga Puja 2026', url: 'https://kolkatatrafficpolice.gov.in/puja2026.pdf', first_seen: '2026-10-10T06:00:00Z' }]);
     if (p === '/rest/v1/photos_feed') {
       const uid = uidOf(req); let rows = db.photos.filter((x) => !x.hidden);
