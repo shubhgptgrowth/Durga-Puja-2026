@@ -98,6 +98,7 @@ function listHtml(e, list) {
       <div class="toolbar"><span>${t('list.count', { n: list.length })}</span>${e.station !== 'all' || e.only.size ? `<button class="link-btn" data-clear>${t('ff.clear')}</button>` : ''}</div>
       ${list.length ? '' : `<p class="empty">${t('ff.none')}</p>`}
       <ul class="list">${list.map(pandalItem).join('')}</ul>
+      <button type="button" class="suggest-row" data-suggest>${t('sg.cta')}</button>
       <details class="more" ${S.hour !== new Date().getHours() || moreOpen ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
         <div class="time-row"><label for="crowdDay">${t('f.day')}</label><select id="crowdDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))}</option>`).join('')}</select></div>
         <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>`;

@@ -618,6 +618,24 @@ try {
   await page.goBack(); await page.waitForTimeout(300);
   must(await page.locator('#view-home.active').count() === 1 && page.url().startsWith(base), 'Back should return to Home: ' + page.url());
 
+  // Add a missing pujo: from the bottom of the pandal list; stored as pending, no contact details asked
+  await page.click('.tab[data-view="explore"]');
+  await page.click('#exploreBar [data-seg="pandals"]');
+  await page.click('#explorePanel .suggest-row');
+  await page.waitForSelector('.sheet.open #sgForm');
+  must(!(await count('.sheet.open input[type="tel"], .sheet.open input[type="email"]')), 'the suggestion form must not ask for a phone or e-mail');
+  await page.fill('#sgName', 'Netaji Sangha Sarbojanin');
+  await page.fill('#sgArea', 'Behala');
+  await page.fill('#sgLandmark', 'Near Behala Chowrasta');
+  await shot('11c-suggest');
+  await page.click('#sgForm [type="submit"]');
+  await waitToast(/Thank you|check it/i, 'suggestion thanks');
+  if (fake) {
+    const st = await (await fetch(`${fake.url}/__state`)).json();
+    must(st.suggestions.length === 1 && st.suggestions[0].name === 'Netaji Sangha Sarbojanin' && st.suggestions[0].status === 'pending', 'suggestion not stored as pending');
+  }
+  await closeSheet();
+
   // Bengali, dark mode, offline reload
   await page.selectOption('#langSelect', 'bn');
   must((await page.locator('#tab-home span').innerText()) === 'হোম', 'tabs not translated');

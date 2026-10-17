@@ -12,7 +12,7 @@ const istDay = (d = new Date()) => new Date(d.getTime() + 5.5 * 3600e3).toISOStr
 export function startFakeSupabase({ guidePath, port = 0 }) {
   const g = JSON.parse(readFileSync(guidePath, 'utf8'));
   const places = new Map([...g.pandals.map((p) => [p.id, { ...p, kind: 'pandal' }]), ...g.food.map((f) => [f.id, { ...f, kind: 'food' }])]);
-  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), offers: [], events: [], presence: new Map(), offline: false, google: null };
+  const db = { tokens: new Map(), visits: [], photos: [], likes: new Set(), reports: new Set(), files: new Map(), opens: new Map(), ratings: new Map(), profiles: new Map(), progress: new Map(), members: new Map(), offers: [], suggestions: [], events: [], presence: new Map(), offline: false, google: null };
 
   const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'application/json', ...cors }); res.end(JSON.stringify(body)); };
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'apikey, authorization, content-type, x-upsert, cache-control, prefer', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS' };
@@ -121,6 +121,17 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
       db.offers.push(o);
       return { status: 'pending', id: o.id };
     },
+    suggest_pujo(uid, a) {
+      if (String(a.p_name || '').trim().length < 3) return { status: 'bad_name' };
+      if (String(a.p_area || '').trim().length < 2) return { status: 'bad_area' };
+      if (db.suggestions.filter((x) => x.uid === uid).length >= 10) return { status: 'rate_limited' };
+      const ok = (v, lo, hi) => typeof v === 'number' && v >= lo && v <= hi;
+      const here = ok(a.p_lat, 21.5, 23.5) && ok(a.p_lng, 87.5, 89.5);
+      const o = { id: randomUUID(), uid, name: a.p_name.trim(), area: a.p_area.trim(), landmark: a.p_landmark || null, note: a.p_note || null,
+        lat: here ? a.p_lat : null, lng: here ? a.p_lng : null, status: 'pending' };
+      db.suggestions.push(o);
+      return { status: 'pending', id: o.id };
+    },
     delete_my_data(uid) {
       const code = db.members.get(uid);
       if (code) { db.progress.delete(code); for (const [u, c] of db.members) if (c === code) db.members.delete(u); }
@@ -163,7 +174,7 @@ export function startFakeSupabase({ guidePath, port = 0 }) {
     if (db.offline && !url.pathname.startsWith('/__')) { req.socket.destroy(); return; }
     const p = url.pathname;
     if (p === '/__crowd') { db.extraLive = +url.searchParams.get('live') || 0; db.extraPeople = +url.searchParams.get('people') || 0; return json(res, 200, {}); }
-    if (p === '/__state') return json(res, 200, { offers: db.offers, progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
+    if (p === '/__state') return json(res, 200, { offers: db.offers, suggestions: db.suggestions, progress: Object.fromEntries(db.progress), events: db.events, ratings: db.ratings.size, profiles: [...db.profiles.values()], visits: db.visits.length, photos: db.photos.length, files: db.files.size, opens: [...db.opens.values()] });
     // The Google consent screen, answered at once: link the guest, or sign in to the account it's linked to.
     if (p === '/__google') {
       const back = url.searchParams.get('redirect_to'), uid = url.searchParams.get('uid');

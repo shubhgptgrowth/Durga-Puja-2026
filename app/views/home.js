@@ -233,7 +233,7 @@ function wire(el) {
       const name = r.kind === 'zone' ? zn(p) : r.kind === 'pandal' ? nm(p) : p.name;
       const meta = r.kind === 'zone' ? t('z.pandals', { n: p.pandal_ids.length }) : `${t('kindLabel.' + r.kind)} · ${esc(zs(idx.zone[p.zone]))}`;
       return `<li data-result="${r.id}" data-kind="${r.kind}" ${btn()}><span class="kind">${icon(kindIcon[r.kind], 'sm')}</span><span><div class="nm">${esc(name)}</div><div class="meta">${meta}</div></span></li>`;
-    }).join('') || (input.value.trim().length >= 2 ? `<li class="muted">${t('h.noResults')}</li>` : '');
+    }).join('') || (input.value.trim().length >= 2 ? `<li class="muted">${t('h.noResults')} <button type="button" class="link-btn" data-suggest data-name="${esc(input.value.trim())}">${t('sg.short')}</button></li>` : '');
   };
 }
 function pickResult(kind, id) {

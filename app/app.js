@@ -18,6 +18,7 @@ import { startLiveCount, counts, onCounts } from './livecount.js';
 import { initCelebrations } from './celebrate.js';
 import { startSync, claimCode } from './sync.js';
 import { loadOffers } from './offers.js';
+import './suggest.js';
 
 function syncSteps(s) {
   const r = parseSteps(s, todayKey());
