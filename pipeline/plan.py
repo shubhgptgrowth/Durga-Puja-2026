@@ -59,7 +59,9 @@ def plan(data):
 
     # A default evening walk for each zone, starting at its entry station.
     for z in data["zones"]:
-        members = [by_id[i] for i in z["pandal_ids"]]
+        # Locality-centre pins (route = "skip") stay on the map but out of walks.
+        members = ([by_id[i] for i in z["pandal_ids"] if by_id[i].get("route") != "skip"]
+                   or [by_id[i] for i in z["pandal_ids"]])
         start = _entry_station(data["transit"], members)
         r = build_route(start, members)
         z["route"] = {"start": start["id"], "order": [s["pandal"] for s in r["stops"]],
@@ -76,7 +78,7 @@ def plan(data):
         last_pt = None
         for zi, zid in enumerate(spec["zones"]):
             members = [p for p in data["pandals"]
-                       if p["zone"] == zid and p["popularity"] >= spec["min_popularity"]]
+                       if p["zone"] == zid and p["popularity"] >= spec["min_popularity"] and p.get("route") != "skip"]
             if not members:
                 continue
             seg_start = start if zi == 0 else _entry_station(data["transit"], members)

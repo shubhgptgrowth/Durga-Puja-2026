@@ -118,8 +118,10 @@ class EnrichPlanTests(unittest.TestCase):
         self.assertTrue({"putiram", "paramount"} <= food_ids)
 
     def test_zone_route_covers_all_pandals(self):
+        by_id = {p["id"]: p for p in self.data["pandals"]}
         for z in self.data["zones"]:
-            self.assertEqual(sorted(z["route"]["order"]), sorted(z["pandal_ids"]))
+            routed = [i for i in z["pandal_ids"] if by_id[i].get("route") != "skip"] or z["pandal_ids"]
+            self.assertEqual(sorted(z["route"]["order"]), sorted(routed))
             self.assertGreater(z["route"]["steps"], 0)
 
     def test_itineraries(self):

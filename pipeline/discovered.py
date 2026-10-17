@@ -49,7 +49,9 @@ def apply_pandals(dry_run=False):
         sys.exit("data/discovered/pandals.json missing: run the discover workflow first")
     raw = config.RAW_DIR
     rows = list(csv.DictReader(open(raw / "pandals.csv", encoding="utf-8")))
-    fields = list(rows[0].keys())
+    fields = list(rows[0].keys()) + [f for f in ("route",) if f not in rows[0]]
+    # Bengali names added to the seeds after the discover run still apply.
+    seed_bn = {r["id"]: r["name_bn"] for r in csv.DictReader(open(SEEDS, encoding="utf-8")) if r.get("name_bn")} if SEEDS.exists() else {}
     zones = {z["id"]: z for z in csv.DictReader(open(raw / "zones.csv", encoding="utf-8"))}
     centers = _zone_centers(zones.values())
     have = [(float(r["lat"]), float(r["lng"]), r["name"]) for r in rows]
@@ -81,11 +83,18 @@ def apply_pandals(dry_run=False):
         if not zone:
             skipped.append((s["id"], "outside every area")); continue
         pop = int(s["popularity"])
-        add({**base, "id": s["id"], "name": s["name"], "name_bn": s["name_bn"], "zone": zone, "lat": f"{pt[0]:.6f}", "lng": f"{pt[1]:.6f}",
-             "geo_source": "osm-approx" if approx else "osm", "tags": "theme" if pop >= 4 else "neighbourhood", "popularity": str(pop), "crowd_base": str(max(2, pop - 1 if pop < 5 else 5)),
-             "best_slot": "early_morning" if pop >= 5 else "evening", "visit_min": "20" if pop >= 4 else "15", "est_year": "",
-             "highlight": (f"A well-known {'theme ' if pop >= 4 else ''}puja in {zones[zone]['short']}. "
-                           + (f"Pin is approximate (centre of {m['name'] or m['query']}); ask locally for the exact lane." if loc else "Location from OpenStreetMap.")),
+        bonedi = bool(re.search(r"\b(raj)?bari\b|family puja", s["name"], re.I))
+        # New listings join the map and lists but not the walking routes ("route" = skip): the routes are
+        # published for the festival (voiceovers, carousels), and nobody should be walked to a locality centre.
+        # Clear the field by hand once a pin is checked to bring a pandal into its zone's route.
+        add({**base, "id": s["id"], "name": s["name"], "name_bn": s["name_bn"] or seed_bn.get(s["id"], ""), "zone": zone,
+             "lat": f"{pt[0]:.6f}", "lng": f"{pt[1]:.6f}", "geo_source": "osm-approx" if approx else "osm",
+             "tags": "bonedi|traditional" if bonedi else "neighbourhood", "popularity": str(pop), "crowd_base": str(max(2, pop - 1 if pop < 5 else 5)),
+             "best_slot": "early_morning" if pop >= 5 else "evening", "visit_min": "20" if pop >= 4 or bonedi else "15", "est_year": "",
+             "highlight": (f"A bonedi bari (family) puja in {zones[zone]['short']}. " if bonedi
+                           else f"A {'well-known ' if pop >= 4 else ''}puja in {zones[zone]['short']}. ")
+                          + (f"Pin is approximate (centre of {m['name'] or m['query']}); ask locally for the exact lane." if loc else "Location from OpenStreetMap."),
+             "route": "skip",
              "verified": "false"}, pt)
 
     for c in disc["candidates"]:
