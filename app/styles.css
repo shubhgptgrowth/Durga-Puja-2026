@@ -581,9 +581,9 @@ html[lang="bn"] .how-lingo { font-family: var(--bn-serif); font-style: normal; }
 
 /* ---------- Explore ---------- */
 #view-explore { overflow-x: clip; }
-.explore-bar { position: sticky; top: calc(var(--top-h) + var(--safe-t)); z-index: 600; background: color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding-top: 14px; border-bottom: 1px solid var(--line); }
+.explore-bar { position: sticky; top: calc(var(--top-h) + var(--safe-t)); z-index: 600; background: color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding-top: 12px; border-bottom: 1px solid var(--line); }
 .explore-bar .seg { margin-bottom: 10px; }
-.ex-title { margin: 2px 16px 12px; font-family: var(--serif); font-size: 22px; font-weight: 560; letter-spacing: -.012em; line-height: 1.2; }
+.ex-title { margin: 16px 16px 0; font-family: var(--serif); font-size: 22px; font-weight: 560; letter-spacing: -.012em; line-height: 1.2; }
 .filter-row { display: flex; gap: 8px; align-items: center; overflow-x: auto; padding: 0 16px 12px; scrollbar-width: none; }
 .filter-row::-webkit-scrollbar { display: none; }
 .filter-row select { flex: 1 1 0; min-width: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); font-size: 14px; }
@@ -1056,3 +1056,12 @@ button.badge-tile.got small { color: var(--gold); font-weight: 600; }
 details.crowd-more { margin-top: 18px; }
 details.crowd-more > summary { cursor: pointer; font-weight: 650; font-size: 14px; color: var(--ink-2); list-style-position: inside; }
 details.crowd-more[open] > summary { margin-bottom: 8px; }
+
+/* Explore search: sits under the Pandals / Food / Parking tabs. */
+.ex-search { position: relative; margin: 0 16px 10px; }
+.ex-search input { width: 100%; height: 44px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 0 40px 0 42px; font-size: 15px; color: var(--ink); }
+.ex-search input::placeholder { color: var(--ink-3); }
+.ex-search input:focus { outline: none; border-color: var(--gold-2); }
+.ex-search input::-webkit-search-cancel-button { display: none; }
+.ex-search > .ic { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+.ex-search-x { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: var(--ink-3); font-size: 20px; line-height: 1; cursor: pointer; }

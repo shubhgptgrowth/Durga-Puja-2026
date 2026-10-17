@@ -221,6 +221,27 @@ try {
   must(await count('#explorePanel .item'), 'no parking listed');
   await shot('06-parking');
 
+  // Search on Explore: looks across the whole city (the area picker is North), keeps focus while typing, and clears
+  await page.click('#exploreBar [data-seg="pandals"]');
+  await page.selectOption('#areaSelect', 'a:north');
+  await page.click('#exSearch');
+  await page.keyboard.type('tridha');
+  await page.waitForSelector('#explorePanel .item[data-place="tridhara"]');
+  must(await page.evaluate(() => document.activeElement?.id) === 'exSearch', 'search box lost focus while typing');
+  must(await count('#explorePanel .item') < 5, 'pandal search did not narrow the list');
+  await page.keyboard.type('zzzz');
+  await page.waitForSelector('#explorePanel .empty');
+  await shot('06b-search');
+  await page.click('#exploreBar [data-qclear]');
+  must(await page.inputValue('#exSearch') === '' && await count('#explorePanel .item') === G.zones.find((z) => z.id === 'north').pandal_ids.length, 'clearing search did not restore the area list');
+  const dish = G.food[0].dishes[0];
+  await page.click('#exploreBar [data-seg="food"]');
+  await page.fill('#exSearch', dish);
+  const dishN = await count('#explorePanel .item');
+  must(dishN > 0 && dishN < G.food.length, 'food dish search did not narrow the list');
+  await page.fill('#exSearch', '');
+  await page.click('#exploreBar [data-seg="parking"]');
+
   // Moments: upload a photo at Tridhara (on-site), then like it
   await ctx.setGeolocation(at('tridhara'));
   await page.click('.tab[data-view="moments"]');

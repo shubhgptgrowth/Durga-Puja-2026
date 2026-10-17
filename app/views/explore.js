@@ -50,9 +50,20 @@ function foodItem(f) {
 }
 
 
+/* The search box: every word typed must appear somewhere in the place's text (name in any script, area, metro,
+ * address, dishes, theme). A search looks across the whole city, so the area picker doesn't hide a match. */
+const words = (q) => q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+const hay = (x) => {
+  const z = idx.zone[x.zone];
+  return [x.name, x.name_bn, x.address, z && z.name, z && z.short, z && z.name_bn, z && z.short_bn, x.nearest_metro?.name,
+    ...(x.tags || []), ...(x.dishes || []), x.type, x.note, x.theme_2026?.title, x.theme_2026?.title_bn].filter(Boolean).join(' ').toLowerCase();
+};
+const matches = (x, w) => { const h = hay(x); return w.every((t) => h.includes(t)); };
+const inScope = (e, x) => (e.q.trim() ? matches(x, words(e.q)) : inArea(e, x.zone));
+
 function pandalList(e) {
   const year = G.data.meta.year;
-  const list = G.data.pandals.filter((p) => inArea(e, p.zone) && pandalFilter(p, e, year));
+  const list = G.data.pandals.filter((p) => inScope(e, p) && pandalFilter(p, e, year));
   if (e.sort === 'popular') list.sort((a, b) => b.popularity - a.popularity || crowdNow(a) - crowdNow(b));
   if (e.sort === 'quiet') list.sort((a, b) => crowdNow(a) - crowdNow(b) || b.popularity - a.popularity);
   if (e.sort === 'near' && S.me) list.sort((a, b) => hav(S.me, ll(a)) - hav(S.me, ll(b)));
@@ -61,14 +72,15 @@ function pandalList(e) {
 }
 function foodList(e) {
   const F = e.food;
-  const list = G.data.food.filter((f) => inArea(e, f.zone)
+  const list = G.data.food.filter((f) => inScope(e, f)
     && dietMatch(f, F)
     && (!F.has('sweets') || f.type === 'sweets' || f.type === 'drinks') && (!F.has('street') || f.type === 'street')
     && (!F.has('open') || isOpen(f.hours)));
   if (S.me) list.sort((a, b) => hav(S.me, ll(a)) - hav(S.me, ll(b)));
   return featuredFirst(list);   // paid featured offers first, labelled "Sponsored" on the tile
 }
-const parkList = (e) => G.data.parking.filter((p) => inArea(e, p.zone) || (idx.zone[p.zone] == null && e.region === 'all'));
+const parkList = (e) => G.data.parking.filter((p) => (e.q.trim() ? matches(p, words(e.q))
+  : inArea(e, p.zone) || (idx.zone[p.zone] == null && e.region === 'all')));
 
 /** Section tabs plus ONE row of filters: the area dropdown, then sort (pandals) or diet/price chips (food). */
 function barHtml(e) {
@@ -79,9 +91,11 @@ function barHtml(e) {
   const n = { pandals: G.data.pandals.length, food: G.data.food.length, parking: G.data.parking.length };
   const em = { pandals: '🛕', food: '🍛', parking: '🅿️' };
   const img = photosOn() ? { pandals: 'img/hero-1.jpg', food: tilePhoto('food'), parking: tilePhoto('parking') } : {}; // saved in the app, so they show on weak networks
-  return `<h2 class="ex-title">${t('ex.title')}</h2>
-    <div class="seg photo-seg" role="tablist">${segs.map(([k, , label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}" class="${img[k] ? 'has-img' : ''}">
+  return `<div class="seg photo-seg" role="tablist">${segs.map(([k, , label]) => `<button role="tab" data-seg="${k}" aria-selected="${e.seg === k}" class="${img[k] ? 'has-img' : ''}">
       ${photoBg(img[k], 'seg-img')}<span class="seg-em" aria-hidden="true">${em[k]}</span><span class="seg-l">${label}</span><span class="seg-n">${n[k]}</span></button>`).join('')}</div>
+    <div class="ex-search" role="search">${icon('search')}
+      <input id="exSearch" type="search" autocomplete="off" enterkeyhint="search" value="${esc(e.q)}" placeholder="${t('exs.' + e.seg)}" aria-label="${t('exs.' + e.seg)}">
+      ${e.q ? `<button type="button" class="ex-search-x" data-qclear aria-label="${t('exs.clear')}">×</button>` : ''}</div>
     <div class="filter-row ${e.seg}">${areaSelectHtml(e, 'areaSelect')}${extra}</div>`;
 }
 
@@ -96,14 +110,14 @@ function listHtml(e, list) {
     return `${z ? `<div class="notice ${z.car_advisory}"><b>${esc(zn(z))}</b><span>${esc(z.vibe)}</span><span>${t('car.' + z.car_advisory)} · ${esc(z.walk_tip)}</span></div>` : ''}
       ${moreFiltersHtml(e)}
       <div class="toolbar"><span>${t('list.count', { n: list.length })}</span>${e.station !== 'all' || e.only.size ? `<button class="link-btn" data-clear>${t('ff.clear')}</button>` : ''}</div>
-      ${list.length ? '' : `<p class="empty">${t('ff.none')}</p>`}
+      ${list.length ? '' : `<p class="empty">${e.q.trim() ? t('exs.none', { q: esc(e.q.trim()) }) : t('ff.none')}</p>`}
       <ul class="list">${list.map(pandalItem).join('')}</ul>
-      <button type="button" class="suggest-row" data-suggest>${t('sg.cta')}</button>
+      <button type="button" class="suggest-row" data-suggest data-name="${esc(list.length ? '' : e.q.trim())}">${t('sg.cta')}</button>
       <details class="more" ${S.hour !== new Date().getHours() || moreOpen ? 'open' : ''}><summary>${icon('clock', 'sm')} ${t('crowd.other')}</summary>
         <div class="time-row"><label for="crowdDay">${t('f.day')}</label><select id="crowdDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))}</option>`).join('')}</select></div>
         <div class="time-row"><label for="hourRange">${t('crowd.at')}</label><input type="range" id="hourRange" min="0" max="23" value="${S.hour}"><strong>${ampm(S.hour)}</strong></div></details>`;
   }
-  if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${t('food.none')}</li>`}</ul>`;
+  if (e.seg === 'food') return `<ul class="list">${list.map(foodItem).join('') || `<li class="empty">${e.q.trim() ? t('exs.none', { q: esc(e.q.trim()) }) : t('food.none')}</li>`}</ul>`;
   const car = S.car, zl = areasOf(e).map(zoneOf), ids = zl.flatMap((z) => z.pandal_ids);
   const near = e.region === 'all' ? G.data.transit : G.data.transit.filter((s) => ids.some((id) => hav(ll(s), ll(idx.pandal[id])) < 2500));
   return `${carCardHtml()}
@@ -114,17 +128,29 @@ function listHtml(e, list) {
       <div class="main"><h3 class="nm">${esc(p.name)}</h3>
         <div class="meta">${t('kind.' + p.kind)} · ${t('cap.' + p.capacity)}</div>
         <div class="fine">${esc(p.note)}</div></div>
-      <div class="side"><span class="park-cost"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span></div></li>`).join('') || `<li class="empty">${t('park.none')}</li>`}</ul>
+      <div class="side"><span class="park-cost"><b>${esc(p.rate_hint)}</b><small>${t('park.costLbl')}</small></span></div></li>`).join('') || `<li class="empty">${e.q.trim() ? t('exs.none', { q: esc(e.q.trim()) }) : t('park.none')}</li>`}</ul>
     <div class="section-head" style="margin-top:16px"><h2>${t('h.transit')}</h2></div>
     <div class="metro-chips">${near.map((s) => `<span class="mc"><span class="line-${s.line}">●</span> ${esc(s.name)}</span>`).join('')}</div>
     <p class="tiny-note">${t('park.fine', { link: `<a href="https://kolkatatrafficpolice.gov.in/" target="_blank" rel="noopener">${t('park.kp')}</a>` })}</p>`;
 }
 
+const listFor = (e) => (e.seg === 'pandals' ? pandalList(e) : e.seg === 'food' ? foodList(e) : parkList(e));
+
 function render() {
   const e = S.explore, view = $('#view-explore');
-  const list = e.seg === 'pandals' ? pandalList(e) : e.seg === 'food' ? foodList(e) : parkList(e);
   $('#exploreBar').innerHTML = barHtml(e);
-  $('#explorePanel').innerHTML = listHtml(e, list);
+  $('#explorePanel').innerHTML = listHtml(e, listFor(e));
+  wire(view);
+}
+
+/* Typing only redraws the list, so the search box keeps its focus and caret. */
+let qTimer = null;
+function renderList() {
+  const e = S.explore, view = $('#view-explore');
+  $('#explorePanel').innerHTML = listHtml(e, listFor(e));
+  const x = $('.ex-search-x', view), box = $('.ex-search', view);
+  if (e.q && !x) box.insertAdjacentHTML('beforeend', `<button type="button" class="ex-search-x" data-qclear aria-label="${t('exs.clear')}">×</button>`);
+  if (!e.q && x) x.remove();
   wire(view);
 }
 
@@ -133,10 +159,16 @@ function wire(view) {
     const seg = ev.target.closest('[data-seg]')?.dataset.seg; if (seg) { S.explore.seg = seg; track('filter', { d: 'seg:' + seg }); return render(); }
     const only = ev.target.closest('[data-only]')?.dataset.only;
     if (only) { S.explore.only.has(only) ? S.explore.only.delete(only) : S.explore.only.add(only); track('filter', { d: 'only:' + only }); return render(); }
+    if (ev.target.closest('[data-qclear]')) { S.explore.q = ''; render(); return $('#exSearch')?.focus(); }
     if (ev.target.closest('[data-clear]')) { S.explore.only.clear(); S.explore.station = 'all'; return render(); }
     const f = ev.target.closest('[data-f]')?.dataset.f; if (f) { S.explore.food.has(f) ? S.explore.food.delete(f) : S.explore.food.add(f); track('filter', { d: 'food:' + f }); return render(); }
     const place = ev.target.closest('#explorePanel [data-place]')?.dataset.place; if (place) return openPlace(place);
     if (carClick(ev, render)) return;
+  };
+  const qs = $('#exSearch', view);
+  if (qs) qs.oninput = () => {
+    S.explore.q = qs.value; renderList();
+    clearTimeout(qTimer); qTimer = setTimeout(() => S.explore.q.trim().length > 1 && track('search', { d: S.explore.seg }), 1200);
   };
   const as = $('#areaSelect', view);
   if (as) as.onchange = () => { setAreaValue(S.explore, as.value); track('filter', { d: 'area:' + as.value }); render(); };
