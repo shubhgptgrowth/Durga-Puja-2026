@@ -451,7 +451,7 @@
    "area": "North Kolkata",
    "part": 1,
    "next": "Central Kolkata",
-   "hook": "১৭টা পুজো · ১ রাতে: North Kolkata Master Route",
+   "hook": "17 pandals · 1 night: North Kolkata Master Route",
    "caption": {
     "en": "North Kolkata Durga Puja 2026 route, Part 1: 17 pandals in one night 🚶\n\nGet off at Sovabazar Metro and follow the red line: Ahiritola Sarbojanin first, Lalabagan Nabankur last. About 11.3 km and 16,467 steps on foot, roughly 3.5 hours of walking, plus the queues.\n\nBest for: Heritage, bonedi bari, Kumartuli.\n\nPart 2: Central Kolkata, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "bn": "কুমোরটুলি, বাগবাজার ও হাতিবাগান: ১৭টা পুজো, এক রাতে, পায়ে হেঁটে",
@@ -780,10 +780,9 @@
    "area": "Central Kolkata",
    "part": 2,
    "next": "Lake Market & Kalighat",
-   "hook": "১০টা পুজো · ১ রাতে: Central Kolkata Master Route",
+   "hook": "10 pandals · 1 night: Central Kolkata Master Route",
    "caption": {
     "en": "Central Kolkata Durga Puja 2026 route, Part 2: 10 pandals in one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the red line: Chaltabagan Lohapatty first, Park Street Allen Park Puja last. About 9.6 km and 14,090 steps on foot, roughly 3.0 hours of walking, plus the queues.\n\nBest for: Theme blockbusters, big crowds.\n\nPart 3: Lake Market & Kalighat, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "কলেজ স্ট্রিট ও শিয়ালদহ: ১০টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "central kolkata durga puja route",
      "pandal hopping route kolkata",
@@ -799,16 +798,6 @@
    "type": "reel",
    "at": "18:30",
    "hook": "Is your para's pujo in here?",
-   "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
-    "segs": [
-     "",
-     "নলিন সরকার স্ট্রিট",
-     "হাতিবাগান সার্বজনীন",
-     "জগৎ মুখার্জি পার্ক"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-kashi_bose_lane-4",
@@ -858,11 +847,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "pp-ballygunge_cultural-4",
@@ -881,15 +865,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Going to Mohammad Ali Park this year?",
-   "bn": {
-    "hook": "এবার মহম্মদ আলি পার্ক যাচ্ছেন?",
-    "segs": [
-     "",
-     "মেট্রো থেকে ১০ মিনিট হাঁটা",
-     "পরের প্যান্ডেল ৭ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-md_ali_park-0",
@@ -1144,16 +1119,6 @@
    "type": "reel",
    "at": "22:00",
    "hook": "Which one are you seeing first?",
-   "bn": {
-    "hook": "কোনটা সবার আগে দেখবেন?",
-    "segs": [
-     "",
-     "শোভাবাজার রাজবাড়ি",
-     "কুমোরটুলি সার্বজনীন",
-     "আহিরীটোলা সার্বজনীন"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-bagbazar-5",
@@ -1203,11 +1168,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-nalin_sarkar-4",

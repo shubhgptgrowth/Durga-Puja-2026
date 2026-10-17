@@ -246,16 +246,6 @@
    "type": "reel",
    "at": "09:10",
    "hook": "Only Kolkata builds this for four days",
-   "bn": {
-    "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
-    "segs": [
-     "",
-     "একডালিয়া এভারগ্রিন",
-     "সিংহী পার্ক",
-     "হিন্দুস্থান পার্ক সার্বজনীন"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-hindustan_club-4",
@@ -443,10 +433,9 @@
    "area": "Bhowanipore & Elgin",
    "part": 7,
    "next": "Salt Lake",
-   "hook": "১২টা পুজো · ১ রাতে: Bhowanipore & Elgin Master Route",
+   "hook": "12 pandals · 1 night: Bhowanipore & Elgin Master Route",
    "caption": {
     "en": "Bhowanipore & Elgin Durga Puja 2026 route, Part 7: 12 pandals in one night 🚶\n\nGet off at Netaji Bhavan Metro and follow the red line: Bhowanipore 75 Pally first, Adi Sammilati Sarbojanin last. About 12.4 km and 18,045 steps on foot, roughly 3.9 hours of walking, plus the queues.\n\nBest for: Classic neighbourhood pujas.\n\nPart 8: Salt Lake, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "ভবানীপুর ও এলগিন: ১২টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "bhowanipore durga puja route",
      "pandal hopping route kolkata",
@@ -467,7 +456,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Behala",
      "title": "Behala Club",
-     "bn": "বেহালা ক্লাব",
      "sub": "Pictured: 2025",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/1/19/Behala_Friends_Club_Durga_Puja_2025_32.jpg",
@@ -481,21 +469,18 @@
      "t": "step",
      "kicker": "Theme 2026",
      "title": "Tel",
-     "bn": "তেল",
      "body": "'Oil': leaders' tussles over oil, and people's endless struggle for it. As reported; themes can change before the puja."
     },
     {
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "A well-known puja in Behala."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Taratala, 17 min walk",
@@ -529,7 +514,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -607,11 +591,6 @@
    "id": "s2",
    "type": "story",
    "at": "14:25",
-   "bn": {
-    "segs": [
-     "কোন প্যান্ডেলে যাচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-hindustan_park-5",
@@ -742,10 +721,9 @@
    "area": "Salt Lake",
    "part": 8,
    "next": null,
-   "hook": "৭টা পুজো · ১ রাতে: Salt Lake Master Route",
+   "hook": "7 pandals · 1 night: Salt Lake Master Route",
    "caption": {
     "en": "Salt Lake Durga Puja 2026 route, Part 8: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: AE Block Salt Lake first, CK Block Salt Lake last. About 7.9 km and 11,576 steps on foot, roughly 2.5 hours of walking, plus the queues.\n\nBest for: Block pujas, open space.\n\nThat's all eight areas.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "সল্টলেক: ৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "salt lake durga puja route",
      "pandal hopping route kolkata",
@@ -818,11 +796,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "fx-de0f38dc",
@@ -841,15 +814,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Thakurpukur SB Park, 2026: Colliery",
-   "bn": {
-    "hook": "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন, ২০২৬: কোলিয়ারি",
-    "segs": [
-     "",
-     "থিম ২০২৬: কোলিয়ারি",
-     "কেন যাবেন"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-thakurpukur_sb_park-0",
@@ -1100,16 +1064,6 @@
    "type": "reel",
    "at": "22:00",
    "hook": "Salt Lake does pujo block by block",
-   "bn": {
-    "hook": "সল্টলেকের পুজো, ব্লকে ব্লকে",
-    "segs": [
-     "",
-     "বিই ব্লক",
-     "এই ব্লক",
-     "বিজে ব্লকের ঝাড়লণ্ঠন"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "fx-cdd7623d",
@@ -1158,11 +1112,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "fx-1db4e0bb",

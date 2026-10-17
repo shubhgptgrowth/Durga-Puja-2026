@@ -445,7 +445,7 @@
    "at": "11:30",
    "render": "route",
    "zone": "south_lakemarket",
-   "hook": "15 pandals. 13 km. One night.",
+   "hook": "15 pandals · 1 night: Lake Market & Kalighat Master Route",
    "caption": {
     "en": "Lake Market & Kalighat pandal hopping route for Durga Puja 2026 in Kolkata: 15 pandals, 13 km, one night 🚶\n\nGet off at Kalighat Metro and follow the numbers. This is the walking order through 15 pandals in Lake Market & Kalighat, from Badamtala Ashar Sangha and 64 Pally Durga Pujo to Tollygunge Santi Pally: about 13 km and 18,913 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
@@ -455,7 +455,9 @@
      "kalighat metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "style": "night",
+   "area": "Lake Market & Kalighat"
   },
   {
    "id": "p3",
@@ -467,7 +469,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Bagbazar Sarbojanin",
-     "bn": "বাগবাজার সার্বজনীন",
      "sub": "Pictured: 2025",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg",
@@ -481,21 +482,18 @@
      "t": "step",
      "kicker": "This year",
      "title": "No theme, by choice",
-     "bn": "থিম নয়, ঐতিহ্য",
      "body": "No theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair."
     },
     {
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "One of the oldest sarbojanin pujas. Traditional daker saaj idol, plus a riverside fair."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Shyambazar, 18 min walk",
@@ -529,7 +527,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -549,16 +546,6 @@
    "type": "reel",
    "at": "13:50",
    "hook": "Pujo doesn't end at the city limits",
-   "bn": {
-    "hook": "পুজো শুধু শহরে নয়",
-    "segs": [
-     "",
-     "বর্ধমান",
-     "বর্ধমান",
-     "বাগুইআটি"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "fx-363ad4e8",
@@ -607,11 +594,6 @@
    "id": "s2",
    "type": "story",
    "at": "14:25",
-   "bn": {
-    "segs": [
-     "কোন প্যান্ডেলে যাচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "fx-6089f5d7",
@@ -813,7 +795,6 @@
      "t": "cover",
      "kicker": "Ready-made pujo night",
      "title": "Salt Lake + Lake Town Hop",
-     "bn": "সল্টলেক + লেক টাউন",
      "sub": "13 pandals, from 4 pm",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Maa_Durga_Pandal_Bengal_Culture_Theme.jpg",
@@ -827,7 +808,6 @@
      "t": "step",
      "kicker": "The route",
      "title": "What you'll see",
-     "bn": "কী কী দেখবেন",
      "body": "Family-friendly blocks, then the Sreebhumi spectacle once the evening rush thins."
     },
     {
@@ -835,14 +815,12 @@
      "kicker": "In the app",
      "num": 1,
      "title": "Open it, start walking",
-     "bn": "খুলুন, হাঁটা শুরু",
      "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
      "shot": "repo:marketing/app-shots/east_hop.jpg"
     },
     {
      "t": "end",
      "title": "Free. No sign-up. Link in bio.",
-     "bn": "কাকে সঙ্গে নেবেন? ট্যাগ করুন",
      "ask": "Tag who you're going with"
     }
    ],
@@ -919,11 +897,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "fx-09c9bc1b",
@@ -942,15 +915,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Going to Sovabazar Rajbari this year?",
-   "bn": {
-    "hook": "এবার শোভাবাজার রাজবাড়ি যাচ্ছেন?",
-    "segs": [
-     "",
-     "মেট্রো থেকে ৬ মিনিট হাঁটা",
-     "পরের প্যান্ডেল ৮ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-sovabazar_rajbari-0",
@@ -1003,7 +967,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Gariahat",
      "title": "Jodhpur Park",
-     "bn": "যোধপুর পার্ক",
      "sub": "Pictured: 2010",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
@@ -1017,14 +980,12 @@
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "Big theme pandal in a residential para."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Ballygunge Junction (Suburban), 32 min walk",
@@ -1058,7 +1019,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -1196,11 +1156,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "fx-af5c9921",
