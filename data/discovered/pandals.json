@@ -1026,6 +1026,7 @@
    "popularity": "4",
    "query": "Chorbagan Sarbojanin",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Chorbagan Sarbojanin",
     "lat": 22.5835113,
@@ -1043,6 +1044,7 @@
    "popularity": "3",
    "query": "Sikdar Bagan Sarbojanin",
    "locality": "Sikdar Bagan Street, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10082038827",
     "name": "Chorbagan Sarbojanin",
@@ -1062,6 +1064,7 @@
    "popularity": "3",
    "query": "Pathuriaghata Panchar Pally",
    "locality": "Pathuriaghata Street, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/9602553317",
     "name": "Maa Durga pharmacy",
@@ -1081,6 +1084,7 @@
    "popularity": "3",
    "query": "Darjipara Sarbojanin",
    "locality": "Darjipara, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10083413842",
     "name": "Dhakuria Sarbojanin",
@@ -1100,6 +1104,7 @@
    "popularity": "3",
    "query": "Ultadanga Sangrami",
    "locality": "Ultadanga, Kolkata",
+   "source": "",
    "match": {
     "name": "SANGRAMI",
     "lat": 22.5904187,
@@ -1124,6 +1129,7 @@
    "popularity": "3",
    "query": "Dum Dum Park Tarun Dal",
    "locality": "Dum Dum Park, Kolkata",
+   "source": "",
    "match": {
     "osm": "way/841413829",
     "name": "Apu Durga Park",
@@ -1150,6 +1156,7 @@
    "popularity": "4",
    "query": "Arjunpur Amra Sabai",
    "locality": "Arjunpur, Kolkata",
+   "source": "",
    "match": {
     "osm": "way/841643502",
     "name": "Kashipur durga utshab committee",
@@ -1176,6 +1183,7 @@
    "popularity": "3",
    "query": "Prafulla Kanan Kestopur",
    "locality": "Prafulla Kanan, Kolkata",
+   "source": "",
    "match": {
     "name": "Prafulla Kanan Deshapriya Vidyamandir",
     "lat": 22.6029505,
@@ -1193,10 +1201,11 @@
    "popularity": "3",
    "query": "33 Pally Beleghata",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Beleghata 33 Pally",
-    "lat": 22.5685699,
-    "lng": 88.3912469,
+    "lat": 22.568632,
+    "lng": 88.3913559,
     "class": "highway:bus_stop",
     "src": "nominatim"
    },
@@ -1210,6 +1219,7 @@
    "popularity": "3",
    "query": "Chakraberia Sarbojanin",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Chakraberia Sarbojanin",
     "lat": 22.5335735,
@@ -1227,6 +1237,7 @@
    "popularity": "4",
    "query": "Bakul Bagan Sarbojanin",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Bakulbagan Sarbojanin",
     "lat": 22.5268187,
@@ -1244,6 +1255,7 @@
    "popularity": "3",
    "query": "Sanghasree Kalighat",
    "locality": "Kalighat, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10081965664",
     "name": "Nabin Sarkar Street Sarbojanin",
@@ -1270,6 +1282,7 @@
    "popularity": "3",
    "query": "Kalighat Milan Sangha",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Kalighat Milan Sangha",
     "lat": 22.5245094,
@@ -1287,6 +1300,7 @@
    "popularity": "4",
    "query": "Hindusthan Club Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Hindustan Club",
     "lat": 22.503988,
@@ -1304,6 +1318,7 @@
    "popularity": "4",
    "query": "95 Pally Jodhpur Park",
    "locality": "Jodhpur Park, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1330,6 +1345,7 @@
    "popularity": "4",
    "query": "Selimpur Pally",
    "locality": "Selimpur, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10083540463",
     "name": "Rabindra Pally Sarbojanin",
@@ -1356,6 +1372,7 @@
    "popularity": "4",
    "query": "Santoshpur Lake Pally",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Santoshpur Lake",
     "lat": 22.4914272,
@@ -1373,6 +1390,7 @@
    "popularity": "4",
    "query": "Trikon Park Santoshpur",
    "locality": "Santoshpur, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1399,6 +1417,7 @@
    "popularity": "3",
    "query": "Purbachal Shakti Sangha",
    "locality": "Purbachal, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10083371976",
     "name": "Purbachal Sarbojanin",
@@ -1410,10 +1429,10 @@
    },
    "similarity": 0.72,
    "locality_match": {
-    "name": "Purbachal Road",
-    "lat": 22.5079064,
-    "lng": 88.3876669,
-    "class": "highway:tertiary",
+    "name": "Purbachal Main Road",
+    "lat": 22.502355,
+    "lng": 88.3967382,
+    "class": "highway:residential",
     "query": "Purbachal, Kolkata"
    }
   },
@@ -1425,6 +1444,7 @@
    "popularity": "5",
    "query": "Naktala Udayan Sangha",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Naktala Udayan Sangha",
     "lat": 22.4744913,
@@ -1442,6 +1462,7 @@
    "popularity": "4",
    "query": "SB Park Thakurpukur",
    "locality": "Thakurpukur, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/11274488316",
     "name": "Jodhpur Park Sarbojanin",
@@ -1468,6 +1489,7 @@
    "popularity": "3",
    "query": "Behala Club Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "Behala Club",
     "lat": 22.5053684,
@@ -1485,6 +1507,7 @@
    "popularity": "4",
    "query": "Ajeya Sanghati Haridevpur",
    "locality": "Haridevpur, Kolkata",
+   "source": "",
    "match": {
     "osm": "way/636399668",
     "name": "Dakshinpara Durga Mandir",
@@ -1511,6 +1534,7 @@
    "popularity": "3",
    "query": "CK Block Salt Lake Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "CK Block",
     "lat": 22.5859248,
@@ -1528,6 +1552,7 @@
    "popularity": "3",
    "query": "EE Block Salt Lake Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "EE Block",
     "lat": 22.5801249,
@@ -1545,6 +1570,7 @@
    "popularity": "3",
    "query": "IA Block Salt Lake Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "IA Block",
     "lat": 22.5728823,
@@ -1562,6 +1588,7 @@
    "popularity": "3",
    "query": "CL Block Salt Lake Durga Puja",
    "locality": "",
+   "source": "",
    "match": {
     "name": "CL Block",
     "lat": 22.5833745,
@@ -1579,6 +1606,7 @@
    "popularity": "3",
    "query": "Mandirtala Shibpur Durga Puja",
    "locality": "Mandirtala, Howrah|Shibpur, Howrah",
+   "source": "",
    "match": {
     "osm": "way/636399668",
     "name": "Dakshinpara Durga Mandir",
@@ -1605,6 +1633,7 @@
    "popularity": "3",
    "query": "Salkia Sarbojanin",
    "locality": "Salkia, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10083413842",
     "name": "Dhakuria Sarbojanin",
@@ -1624,6 +1653,7 @@
    "popularity": "3",
    "query": "Shyam Square Durga Puja",
    "locality": "Shyam Square, Kolkata|Shyampukur, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10084831369",
     "name": "Sahapur Sarbojanin",
@@ -1650,6 +1680,7 @@
    "popularity": "4",
    "query": "Young Boys Club Durga Puja",
    "locality": "Tara Chand Dutta Street, Kolkata",
+   "source": "",
    "match": {
     "name": "Young Boys Club",
     "lat": 22.5788831,
@@ -1667,6 +1698,7 @@
    "popularity": "3",
    "query": "Rail Pukur United Club Baguiati",
    "locality": "Baguiati, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10083307836",
     "name": "Sanghati Puja Samiti",
@@ -1693,6 +1725,7 @@
    "popularity": "3",
    "query": "Allen Park Park Street",
    "locality": "Allen Park, Kolkata|Park Street, Kolkata",
+   "source": "",
    "match": {
     "name": "Allen Park",
     "lat": 22.5503797,
@@ -1703,8 +1736,8 @@
    "similarity": 0.54,
    "locality_match": {
     "name": "Park Street",
-    "lat": 22.5493489,
-    "lng": 88.3566862,
+    "lat": 22.5471151,
+    "lng": 88.3605028,
     "class": "highway:secondary",
     "query": "Park Street, Kolkata"
    }
@@ -1717,6 +1750,7 @@
    "popularity": "4",
    "query": "Barisha Sarbojanin Durgotsab",
    "locality": "Sabarna Para, Barisha, Kolkata|Barisha, Kolkata",
+   "source": "",
    "match": {
     "name": "Barisha Sarbojanin",
     "lat": 22.4799885,
@@ -1734,6 +1768,7 @@
    "popularity": "3",
    "query": "11 Pally Behala",
    "locality": "Behala, Kolkata",
+   "source": "",
    "match": {
     "name": "Behalla 11 Pally",
     "lat": 22.4999169,
@@ -1751,6 +1786,7 @@
    "popularity": "3",
    "query": "Behala Young Mens Association",
    "locality": "Behala, Kolkata",
+   "source": "",
    "match": {
     "osm": "way/1093618347",
     "name": "Sabuj Chakra Club & Durgabari Samiti",
@@ -1777,6 +1813,7 @@
    "popularity": "3",
    "query": "71 Pally Ballygunge",
    "locality": "Ballygunge, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10083540461",
     "name": "Pallishree Sarbojanin",
@@ -1803,6 +1840,7 @@
    "popularity": "3",
    "query": "Abasar Sarbojanin Bhowanipore",
    "locality": "Bhowanipore, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10081941251",
     "name": "Gouribari Sarbojanin",
@@ -1829,6 +1867,7 @@
    "popularity": "3",
    "query": "Kendua Shanti Sangha Durga Puja",
    "locality": "Kendua Main Road, Kolkata|Kendua, Kolkata|Garia, Kolkata",
+   "source": "",
    "match": {
     "osm": "way/191145359",
     "name": "Durga Bari",
@@ -1848,6 +1887,7 @@
    "popularity": "3",
    "query": "Lake Gardens Peoples Association",
    "locality": "Lake Gardens, Kolkata",
+   "source": "",
    "match": {
     "name": "Lake Gardens Peoples Association",
     "lat": 22.5059678,
@@ -1865,6 +1905,7 @@
    "popularity": "3",
    "query": "Santi Pally Tollygunge",
    "locality": "Tollygunge, Kolkata",
+   "source": "",
    "match": {
     "osm": "node/10082383698",
     "name": "Adi Ballygunge Sarbojanin",
@@ -1891,6 +1932,7 @@
    "popularity": "5",
    "query": "Belur Math",
    "locality": "Belur Math, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10083344095",
     "name": "Golmath Durga Puja Samiti",
@@ -1910,6 +1952,7 @@
    "popularity": "3",
    "query": "IHE Housing Complex Shibpur",
    "locality": "Botanical Garden, Howrah|Shibpur, Howrah",
+   "source": "",
    "match": {
     "osm": "way/1367274136",
     "name": "Durga Pujo groud",
@@ -1936,6 +1979,7 @@
    "popularity": "4",
    "query": "61 Pally Salkia",
    "locality": "Salkia, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10081941249",
     "name": "Sovabazar 9 Pally Sarbojanin",
@@ -1955,6 +1999,7 @@
    "popularity": "3",
    "query": "Salkia Barowari Durga Puja",
    "locality": "Salkia, Howrah",
+   "source": "",
    "match": {
     "osm": "node/6395309585",
     "name": "Gariahat Sarbojanin Durgotsab",
@@ -1974,6 +2019,7 @@
    "popularity": "3",
    "query": "Saraswat Club Howrah",
    "locality": "Kailash Banerjee Lane, Howrah|Kadamtala, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10084831387",
     "name": "Bhola Maheshwartala Sarbojanin",
@@ -1993,6 +2039,7 @@
    "popularity": "3",
    "query": "Chittaranjan Smriti Mandir Howrah",
    "locality": "Kadamtala, Howrah",
+   "source": "",
    "match": {
     "osm": "way/636399668",
     "name": "Dakshinpara Durga Mandir",
@@ -2012,6 +2059,7 @@
    "popularity": "3",
    "query": "Ghasbagan Sporting Club Howrah",
    "locality": "Ghasbagan, Howrah|Shibpur, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10082038827",
     "name": "Chorbagan Sarbojanin",
@@ -2038,6 +2086,7 @@
    "popularity": "3",
    "query": "Deshbandhu Club Bally",
    "locality": "Bally, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10082383693",
     "name": "Bakulbagan Sarbojanin",
@@ -2064,6 +2113,7 @@
    "popularity": "3",
    "query": "Pal Para Bally Durga Puja",
    "locality": "Pal Para, Bally|Bally, Howrah",
+   "source": "",
    "match": {
     "osm": "node/10082383709",
     "name": "64 Pally Durga Pujo",
@@ -2090,6 +2140,7 @@
    "popularity": "3",
    "query": "Social Institution of Youth Liluah",
    "locality": "Liluah, Howrah",
+   "source": "",
    "match": {
     "osm": "node/11271732101",
     "name": "Nalin Sarkar Street Durgotsav",
@@ -2109,6 +2160,7 @@
    "popularity": "3",
    "query": "Bhattanagar Ramkrishna Sangha",
    "locality": "Bhattanagar, Howrah|Liluah, Howrah",
+   "source": "",
    "match": {
     "osm": "way/612041735",
     "name": "Basunagar Durga Mandap",
@@ -2119,6 +2171,1671 @@
     "src": "overpass"
    },
    "similarity": 0.59
+  },
+  {
+   "id": "tala_barowari",
+   "name": "Tala Barowari Durgotsav",
+   "name_bn": "টালা বারোয়ারি",
+   "area_hint": "north",
+   "popularity": "4",
+   "query": "Tala Barowari Durgotsav",
+   "locality": "Tala, Kolkata|Belgachia, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-puja-premier-league-at-tala-barowari-durgotsav-celebrates-satyajit-ray/1171133",
+   "match": {
+    "osm": "node/10082383714",
+    "name": "Badamtala Ashar Sangha Durgotsav",
+    "name_bn": "",
+    "lat": 22.517927,
+    "lng": 88.344165,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.71,
+   "locality_match": {
+    "name": "Tal Tala",
+    "lat": 22.5589558,
+    "lng": 88.3627981,
+    "class": "place:suburb",
+    "query": "Tala, Kolkata"
+   }
+  },
+  {
+   "id": "beadon_street_durgotsav",
+   "name": "Beadon Street Sarbojanin Durgotsav",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Beadon Street Sarbojanin Durgotsav",
+   "locality": "Beadon Street, Kolkata|Hatibagan, Kolkata",
+   "source": "https://t2online.in/events/events-1/beadon-street-durgotsav-marks-its-85th-year-with-ishaa-saha-joining-the-telegraph-puja-premier-league/2001374",
+   "match": {
+    "osm": "node/11271732101",
+    "name": "Nalin Sarkar Street Durgotsav",
+    "name_bn": "",
+    "lat": 22.595346,
+    "lng": 88.373396,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.73
+  },
+  {
+   "id": "uttar_kolkata_sarbojanin",
+   "name": "Uttar Kolkata Sarbojanin",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Uttar Kolkata Sarbojanin Durgotsav",
+   "locality": "Bidhan Sarani, Kolkata|Shyambazar, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/themes-of-heritage-and-spirituality-to-take-centre-stage-in-this-years-puja-627144",
+   "match": {
+    "osm": "node/10081941251",
+    "name": "Gouribari Sarbojanin",
+    "name_bn": "",
+    "lat": 22.594579,
+    "lng": 88.379144,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.43,
+   "locality_match": {
+    "name": "Bidhan Sarani",
+    "lat": 22.5822981,
+    "lng": 88.3662869,
+    "class": "highway:secondary",
+    "query": "Bidhan Sarani, Kolkata"
+   }
+  },
+  {
+   "id": "bagmari_kabiraj_bagan",
+   "name": "Kabiraj Bagan Sarbojanin Durgotsav (Bagmari)",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Kabiraj Bagan Sarbojanin Durgotsav",
+   "locality": "Bagmari, Kolkata|Maniktala, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/myanmars-hsinbyume-pagoda-digha-dham-to-feature-as-durga-puja-themes-614403",
+   "match": {
+    "osm": "node/10082374506",
+    "name": "Hazra Park Durgotsab",
+    "name_bn": "",
+    "lat": 22.524838,
+    "lng": 88.346141,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.59,
+   "locality_match": {
+    "name": "Bagmari Road",
+    "lat": 22.5841134,
+    "lng": 88.3854071,
+    "class": "highway:residential",
+    "query": "Bagmari, Kolkata"
+   }
+  },
+  {
+   "id": "maniktala_vivekananda_sporting",
+   "name": "Maniktala Vivekananda Sporting Association",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Vivekananda Sporting Association Maniktala",
+   "locality": "Maniktala, Kolkata|Kankurgachi, Kolkata",
+   "source": "https://www.millenniumpost.in/kolkata/old-barowari-pujas-of-north-kolkata-turning-to-theme-262406",
+   "match": {
+    "osm": "way/359030948",
+    "name": "Naktala Udayan Sangha Durga Puja",
+    "name_bn": "",
+    "lat": 22.47435,
+    "lng": 88.36653,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.42,
+   "locality_match": {
+    "name": "Maniktala",
+    "lat": 22.5880896,
+    "lng": 88.3852834,
+    "class": "place:suburb",
+    "query": "Maniktala, Kolkata"
+   }
+  },
+  {
+   "id": "shyambazar_nabin_sangha",
+   "name": "Shyambazar Nabin Sangha",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Shyambazar Nabin Sangha",
+   "locality": "Shyambazar, Kolkata|Bagbazar, Kolkata",
+   "source": "https://www.millenniumpost.in/kolkata/old-barowari-pujas-of-north-kolkata-turning-to-theme-262406",
+   "match": {
+    "name": "Shyambazar Nabin Sangha",
+    "lat": 22.5986937,
+    "lng": 88.3755006,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "talapark_panero_pally",
+   "name": "Tala Park Panero Pally",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Tala Park Panero Pally",
+   "locality": "Tala Park, Kolkata|Belgachia, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "node/10081941249",
+    "name": "Sovabazar 9 Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.595794,
+    "lng": 88.369361,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.56
+  },
+  {
+   "id": "ultadanga_bidhan_sangha",
+   "name": "Ultadanga Bidhan Sangha",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Ultadanga Bidhan Sangha",
+   "locality": "Ultadanga, Kolkata|Bidhannagar Road, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492",
+   "match": {
+    "osm": "way/142358774",
+    "name": "Durga Das Lane",
+    "name_bn": "",
+    "lat": 22.541739,
+    "lng": 88.325378,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Ultadanga",
+    "lat": 22.5961275,
+    "lng": 88.3852833,
+    "class": "place:suburb",
+    "query": "Ultadanga, Kolkata"
+   }
+  },
+  {
+   "id": "shibkrishna_daw_bari",
+   "name": "Jorasanko Shib Krishna Daw Bari",
+   "name_bn": "শিবকৃষ্ণ দাঁ বাড়ি",
+   "area_hint": "north",
+   "popularity": "4",
+   "query": "Shib Krishna Daw Lane Jorasanko",
+   "locality": "Jorasanko, Kolkata|Burrabazar, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past",
+   "match": {
+    "osm": "way/636399668",
+    "name": "Dakshinpara Durga Mandir",
+    "name_bn": "",
+    "lat": 22.56498,
+    "lng": 88.313219,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Jorasanko",
+    "lat": 22.5834141,
+    "lng": 88.3562514,
+    "class": "place:suburb",
+    "query": "Jorasanko, Kolkata"
+   }
+  },
+  {
+   "id": "chhatu_latu_babu_bari",
+   "name": "Chhatu Babu Latu Babu Bari (Ramdulal Nibas)",
+   "name_bn": "ছাতুবাবু লাটুবাবুর বাড়ি",
+   "area_hint": "north",
+   "popularity": "4",
+   "query": "Ramdulal Nibas Beadon Street",
+   "locality": "Beadon Street, Kolkata|Girish Park, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past",
+   "match": {
+    "osm": "way/1093618347",
+    "name": "Sabuj Chakra Club & Durgabari Samiti",
+    "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+    "lat": 22.692889,
+    "lng": 88.444008,
+    "class": "building:",
+    "src": "overpass"
+   },
+   "similarity": 0.42,
+   "locality_match": {
+    "name": "Girish Park",
+    "lat": 22.5869942,
+    "lng": 88.3640062,
+    "class": "place:suburb",
+    "query": "Girish Park, Kolkata"
+   }
+  },
+  {
+   "id": "khelat_ghosh_bari",
+   "name": "Pathuriaghata Khelat Ghosh Bari",
+   "name_bn": "খেলাত ঘোষ বাড়ি",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Khelat Ghosh Bari Pathuriaghata Street",
+   "locality": "Pathuriaghata, Kolkata|Jorabagan, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past",
+   "match": {
+    "osm": "node/11449358469",
+    "name": "Tala Prattoy - Durga Puja Art",
+    "name_bn": "",
+    "lat": 22.608923,
+    "lng": 88.382266,
+    "class": "tourism:attraction",
+    "src": "overpass"
+   },
+   "similarity": 0.4
+  },
+  {
+   "id": "darjipara_mitra_bari",
+   "name": "Darjipara Mitra Bari",
+   "name_bn": "দর্জিপাড়া মিত্র বাড়ি",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Nilmani Mitra Street Darjipara",
+   "locality": "Darjipara, Kolkata|Shyambazar, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past",
+   "match": {
+    "osm": "way/101994129",
+    "name": "Durgacharan Mitra Street",
+    "name_bn": "",
+    "lat": 22.593013,
+    "lng": 88.362487,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.59
+  },
+  {
+   "id": "pathuriaghata_rajbari",
+   "name": "Pathuriaghata Rajbari",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Pathuriaghata Rajbari",
+   "locality": "Pathuriaghata, Kolkata|Jorabagan, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata",
+   "match": {
+    "osm": "way/191145359",
+    "name": "Durga Bari",
+    "name_bn": "",
+    "lat": 22.525392,
+    "lng": 88.369556,
+    "class": "amenity:theatre",
+    "src": "overpass"
+   },
+   "similarity": 0.58
+  },
+  {
+   "id": "thanthania_dutta_bari",
+   "name": "Thanthania Dutta Bari",
+   "name_bn": "ঠনঠনিয়া দত্ত বাড়ি",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Thanthania Dutta Bari Bidhan Sarani",
+   "locality": "College Street, Kolkata|Thanthania, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata",
+   "match": {
+    "osm": "way/191145359",
+    "name": "Durga Bari",
+    "name_bn": "",
+    "lat": 22.525392,
+    "lng": 88.369556,
+    "class": "amenity:theatre",
+    "src": "overpass"
+   },
+   "similarity": 0.52,
+   "locality_match": {
+    "name": "College Street",
+    "lat": 22.5672157,
+    "lng": 88.3601335,
+    "class": "highway:secondary",
+    "query": "College Street, Kolkata"
+   }
+  },
+  {
+   "id": "colootola_dhar_bari",
+   "name": "Colootola Dhar Bari",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Debendra Mullick Road Dhar Bari",
+   "locality": "Tiretta Bazar, Kolkata|Colootola, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata",
+   "match": {
+    "osm": "node/10082374507",
+    "name": "Chakraberia Sarbojanin",
+    "name_bn": "",
+    "lat": 22.533573,
+    "lng": 88.352198,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Tiretta Bazaar",
+    "lat": 22.574821,
+    "lng": 88.356306,
+    "class": "place:neighbourhood",
+    "query": "Tiretta Bazar, Kolkata"
+   }
+  },
+  {
+   "id": "laha_bari",
+   "name": "Laha Bari (Thanthania)",
+   "name_bn": "লাহা বাড়ি",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Laha Bari Thanthania",
+   "locality": "Thanthania, Kolkata|College Street, Kolkata",
+   "source": "https://www.outlooktraveller.com/explore/hot-lists/durga-puja-at-traditional-homes-in-kolkata",
+   "match": {
+    "osm": "node/10082383700",
+    "name": "Durgabari Pratisthan",
+    "name_bn": "",
+    "lat": 22.52572,
+    "lng": 88.369579,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "College Street",
+    "lat": 22.5672157,
+    "lng": 88.3601335,
+    "class": "highway:secondary",
+    "query": "College Street, Kolkata"
+   }
+  },
+  {
+   "id": "badan_chandra_roy_bari",
+   "name": "Badan Chandra Roy Family Puja (Colootola)",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Gopal Chandra Lane Colootola",
+   "locality": "Colootola, Kolkata|Bowbazar, Kolkata",
+   "source": "https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja",
+   "match": {
+    "osm": "node/11449358469",
+    "name": "Tala Prattoy - Durga Puja Art",
+    "name_bn": "",
+    "lat": 22.608923,
+    "lng": 88.382266,
+    "class": "tourism:attraction",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Colootola Street",
+    "lat": 22.5764255,
+    "lng": 88.3557385,
+    "class": "highway:secondary",
+    "query": "Colootola, Kolkata"
+   }
+  },
+  {
+   "id": "thanthania_chandra_bari",
+   "name": "Chandra Family Puja (Thanthania)",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Bechu Chatterjee Street",
+   "locality": "Thanthania, Kolkata|College Street, Kolkata",
+   "source": "https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja",
+   "match": {
+    "osm": "way/379065386",
+    "name": "Jagaddhatri Puja Mandap",
+    "name_bn": "জগদ্ধাত্রী পূজা মন্ডপ",
+    "lat": 22.568881,
+    "lng": 88.320812,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.49,
+   "locality_match": {
+    "name": "College Street",
+    "lat": 22.5672157,
+    "lng": 88.3601335,
+    "class": "highway:secondary",
+    "query": "College Street, Kolkata"
+   }
+  },
+  {
+   "id": "rani_rashmoni_bari",
+   "name": "Rani Rashmoni Bari (Janbazar)",
+   "name_bn": "রানি রাসমণির বাড়ি",
+   "area_hint": "central",
+   "popularity": "4",
+   "query": "Rani Rashmoni House Janbazar",
+   "locality": "Janbazar, Kolkata|Taltala, Kolkata",
+   "source": "https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja",
+   "match": {
+    "osm": "way/961846342",
+    "name": "Bansdroni Sarbojaneen Durgotsav Park",
+    "name_bn": "",
+    "lat": 22.474364,
+    "lng": 88.358132,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.48,
+   "locality_match": {
+    "name": "Taltala bazar",
+    "lat": 22.5563202,
+    "lng": 88.3583221,
+    "class": "highway:bus_stop",
+    "query": "Taltala, Kolkata"
+   }
+  },
+  {
+   "id": "bowbazar_47_palli",
+   "name": "47 Palli Milanshri Welfare Society",
+   "name_bn": "",
+   "area_hint": "central",
+   "popularity": "3",
+   "query": "47 Palli Bowbazar",
+   "locality": "Bowbazar, Kolkata|Sealdah, Kolkata",
+   "source": "https://www.millenniumpost.in/kolkata/crowd-puller-durga-pujas-witness-huge-footfall-494576",
+   "match": {
+    "osm": "node/10083540461",
+    "name": "Pallishree Sarbojanin",
+    "name_bn": "",
+    "lat": 22.485342,
+    "lng": 88.36539,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.45,
+   "locality_match": {
+    "name": "Bowbazar",
+    "lat": 22.5704924,
+    "lng": 88.3615602,
+    "class": "place:suburb",
+    "query": "Bowbazar, Kolkata"
+   }
+  },
+  {
+   "id": "entally_14_pally",
+   "name": "Entally 14 Pally",
+   "name_bn": "",
+   "area_hint": "central",
+   "popularity": "3",
+   "query": "14 Pally Entally",
+   "locality": "Entally, Kolkata|Padmapukur, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/jagadhatri-puja-in-chandannagar-set-to-resurrect-3-community-pujas-of-kolkata-583283",
+   "match": {
+    "osm": "node/10083540463",
+    "name": "Rabindra Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.482534,
+    "lng": 88.382409,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.53
+  },
+  {
+   "id": "tangra_ghol_para",
+   "name": "Tangra Ghol Para Sarbojanin",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Tangra Ghol Para Sarbojanin",
+   "locality": "Tangra, Kolkata|Topsia, Kolkata",
+   "source": "https://t2online.in/events/events-1/vikram-chatterjee-visits-tangra-ghol-para-sarbojanin-with-the-telegraph-premier-league--as-the-puja-celebrates-its-106th-year-/2001312",
+   "match": {
+    "osm": "node/9602553317",
+    "name": "Maa Durga pharmacy",
+    "name_bn": "",
+    "lat": 22.586023,
+    "lng": 88.391901,
+    "class": "amenity:pharmacy",
+    "src": "overpass"
+   },
+   "similarity": 0.53,
+   "locality_match": {
+    "name": "Tangra North",
+    "lat": 22.5565107,
+    "lng": 88.3795946,
+    "class": "place:suburb",
+    "query": "Tangra, Kolkata"
+   }
+  },
+  {
+   "id": "mitali_kankurgachi",
+   "name": "Kankurgachi Mitali",
+   "name_bn": "কাঁকুড়গাছি মিতালি",
+   "area_hint": "east",
+   "popularity": "4",
+   "query": "Mitali Kankurgachi Durga Puja",
+   "locality": "Kankurgachi, Kolkata|Phoolbagan, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/kolkatas-durga-puja-pandals-celebrate-uttam-kumar-at-100-674559",
+   "match": {
+    "name": "Mitali Kankurgachi",
+    "lat": 22.5800311,
+    "lng": 88.3944125,
+    "class": "amenity:place_of_worship",
+    "src": "nominatim"
+   },
+   "similarity": 0.61,
+   "locality_match": {
+    "name": "Kankurgachi",
+    "lat": 22.5799405,
+    "lng": 88.3904444,
+    "class": "highway:bus_stop",
+    "query": "Kankurgachi, Kolkata"
+   }
+  },
+  {
+   "id": "kankurgachi_chalantika",
+   "name": "Kankurgachi Chalantika Club",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Chalantika Club Kankurgachi",
+   "locality": "Kankurgachi, Kolkata|Phoolbagan, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/durga-puja-remembers-bengals-matinee-idol-uttam-kumar-629189",
+   "match": {
+    "osm": "way/142358774",
+    "name": "Durga Das Lane",
+    "name_bn": "",
+    "lat": 22.541739,
+    "lng": 88.325378,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "Kankurgachi",
+    "lat": 22.5799405,
+    "lng": 88.3904444,
+    "class": "highway:bus_stop",
+    "query": "Kankurgachi, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_ak_block",
+   "name": "Salt Lake AK Block Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "4",
+   "query": "AK Block Durga Puja Salt Lake",
+   "locality": "AK Block, Salt Lake, Kolkata|Sector 2, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545",
+   "match": {
+    "osm": "node/10082383693",
+    "name": "Bakulbagan Sarbojanin",
+    "name_bn": "",
+    "lat": 22.526819,
+    "lng": 88.347954,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.4,
+   "locality_match": {
+    "name": "AK Block",
+    "lat": 22.5884012,
+    "lng": 88.4313494,
+    "class": "place:neighbourhood",
+    "query": "AK Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_ec_block",
+   "name": "Salt Lake EC Block Residents' Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "EC Block Durga Puja Salt Lake",
+   "locality": "EC Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545",
+   "match": {
+    "osm": "node/10082383692",
+    "name": "Bhowanipore Durgotsab",
+    "name_bn": "",
+    "lat": 22.526289,
+    "lng": 88.351521,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.31,
+   "locality_match": {
+    "name": "EC Block",
+    "lat": 22.5855384,
+    "lng": 88.4098381,
+    "class": "place:neighbourhood",
+    "query": "EC Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_bc_block",
+   "name": "Salt Lake BC Block Residents' Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "BC Block Durga Puja Salt Lake",
+   "locality": "BC Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/golden-jubilee-durga-pujas-add-special-glow-to-salt-lake-679545",
+   "match": {
+    "osm": "way/961846342",
+    "name": "Bansdroni Sarbojaneen Durgotsav Park",
+    "name_bn": "",
+    "lat": 22.474364,
+    "lng": 88.358132,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.33,
+   "locality_match": {
+    "name": "BC Block",
+    "lat": 22.5928367,
+    "lng": 88.4045903,
+    "class": "place:neighbourhood",
+    "query": "BC Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_aj_block",
+   "name": "Salt Lake AJ Block Durga Puja",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "AJ Block Durga Puja Salt Lake",
+   "locality": "AJ Block, Salt Lake, Kolkata|Sector 2, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/city-of-blinding-lights-263000",
+   "match": {
+    "osm": "node/10082383709",
+    "name": "64 Pally Durga Pujo",
+    "name_bn": "",
+    "lat": 22.520603,
+    "lng": 88.347451,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.63,
+   "locality_match": {
+    "name": "AJ Block",
+    "lat": 22.5919871,
+    "lng": 88.4293431,
+    "class": "place:neighbourhood",
+    "query": "AJ Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_ce_block",
+   "name": "Salt Lake CE Block Welfare Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "CE Block Durga Puja Salt Lake",
+   "locality": "CE Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/preserving-the-sundarbans-reviving-letters-durga-puja-with-purpose-536060",
+   "match": {
+    "osm": "way/1093618347",
+    "name": "Sabuj Chakra Club & Durgabari Samiti",
+    "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+    "lat": 22.692889,
+    "lng": 88.444008,
+    "class": "building:",
+    "src": "overpass"
+   },
+   "similarity": 0.34,
+   "locality_match": {
+    "name": "CE Block",
+    "lat": 22.5944334,
+    "lng": 88.4134432,
+    "class": "place:neighbourhood",
+    "query": "CE Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_fe_block",
+   "name": "Salt Lake FE Block Residents' Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "FE Block Durga Puja Salt Lake",
+   "locality": "FE Block, Salt Lake, Kolkata|Sector 3, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/fe-blocks-durga-puja-is-all-about-tradition-582299",
+   "match": {
+    "osm": "node/11271732101",
+    "name": "Nalin Sarkar Street Durgotsav",
+    "name_bn": "",
+    "lat": 22.595346,
+    "lng": 88.373396,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.3,
+   "locality_match": {
+    "name": "FE Block",
+    "lat": 22.5812336,
+    "lng": 88.4174088,
+    "class": "place:neighbourhood",
+    "query": "FE Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "saltlake_ca_block",
+   "name": "Salt Lake CA Block Durgotsav Committee",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "CA Block Durga Puja Salt Lake",
+   "locality": "CA Block, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/kolkata/crowd-puller-durga-pujas-witness-huge-footfall-494576",
+   "match": {
+    "osm": "way/841643502",
+    "name": "Kashipur durga utshab committee",
+    "name_bn": "",
+    "lat": 22.605757,
+    "lng": 88.310231,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.64,
+   "locality_match": {
+    "name": "CA Block",
+    "lat": 22.5869725,
+    "lng": 88.4010659,
+    "class": "place:neighbourhood",
+    "query": "CA Block, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "labony_estate",
+   "name": "Labony Estate Durgotsav Committee",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Labony Estate Salt Lake",
+   "locality": "Labony, Salt Lake, Kolkata|Sector 1, Salt Lake, Kolkata",
+   "source": "https://www.millenniumpost.in/puja-special/artsy-affair-536871",
+   "match": {
+    "osm": "way/841643502",
+    "name": "Kashipur durga utshab committee",
+    "name_bn": "",
+    "lat": 22.605757,
+    "lng": 88.310231,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.62,
+   "locality_match": {
+    "name": "Labony",
+    "lat": 22.5829732,
+    "lng": 88.4056169,
+    "class": "highway:bus_stop",
+    "query": "Labony, Salt Lake, Kolkata"
+   }
+  },
+  {
+   "id": "newtown_sarbojanin",
+   "name": "New Town Sarbojanin Durgotsav Samiti",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "4",
+   "query": "New Town Sarbojanin Durgotsav",
+   "locality": "New Town, Kolkata|Action Area I, New Town, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424",
+   "match": {
+    "osm": "node/10083344095",
+    "name": "Golmath Durga Puja Samiti",
+    "name_bn": "",
+    "lat": 22.526931,
+    "lng": 88.349544,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.56,
+   "locality_match": {
+    "name": "New Town",
+    "lat": 22.5882834,
+    "lng": 88.4734476,
+    "class": "place:city",
+    "query": "New Town, Kolkata"
+   }
+  },
+  {
+   "id": "newtown_ae_block",
+   "name": "New Town AE Block Puja Committee",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "AE Block New Town Durga Puja",
+   "locality": "Action Area I, New Town, Kolkata|New Town, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424",
+   "match": {
+    "osm": "way/841643502",
+    "name": "Kashipur durga utshab committee",
+    "name_bn": "",
+    "lat": 22.605757,
+    "lng": 88.310231,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.44,
+   "locality_match": {
+    "name": "Action Area I",
+    "lat": 22.5807042,
+    "lng": 88.4623797,
+    "class": "place:suburb",
+    "query": "Action Area I, New Town, Kolkata"
+   }
+  },
+  {
+   "id": "newtown_ce_block",
+   "name": "New Town CE Block Cultural Association",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "CE Block New Town Durga Puja",
+   "locality": "Action Area I, New Town, Kolkata|New Town, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/ancient-drama-clay-work-artifacts-from-across-state-marks-new-town-puja-themes-582424",
+   "match": {
+    "osm": "way/1093618347",
+    "name": "Sabuj Chakra Club & Durgabari Samiti",
+    "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+    "lat": 22.692889,
+    "lng": 88.444008,
+    "class": "building:",
+    "src": "overpass"
+   },
+   "similarity": 0.35,
+   "locality_match": {
+    "name": "Action Area I",
+    "lat": 22.5807042,
+    "lng": 88.4623797,
+    "class": "place:suburb",
+    "query": "Action Area I, New Town, Kolkata"
+   }
+  },
+  {
+   "id": "newtown_db_block",
+   "name": "New Town DB Block Sarbojanin",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "DB Block New Town Durga Puja",
+   "locality": "Action Area I, New Town, Kolkata|New Town, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/new-town-set-to-give-tough-competition-to-north-and-south-kolkata-pujas-536059",
+   "match": {
+    "osm": "way/106086742",
+    "name": "Durgan Charan Dr Rd",
+    "name_bn": "",
+    "lat": 22.559159,
+    "lng": 88.365666,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.33,
+   "locality_match": {
+    "name": "Action Area I",
+    "lat": 22.5807042,
+    "lng": 88.4623797,
+    "class": "place:suburb",
+    "query": "Action Area I, New Town, Kolkata"
+   }
+  },
+  {
+   "id": "balaka_abasan",
+   "name": "Balaka Abasan Puja Committee",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Balaka Abasan New Town",
+   "locality": "New Town, Kolkata|Action Area I, New Town, Kolkata",
+   "source": "https://www.millenniumpost.in/city-of-blinding-lights-263000",
+   "match": {
+    "osm": "way/841643502",
+    "name": "Kashipur durga utshab committee",
+    "name_bn": "",
+    "lat": 22.605757,
+    "lng": 88.310231,
+    "class": "leisure:park",
+    "src": "overpass"
+   },
+   "similarity": 0.51,
+   "locality_match": {
+    "name": "New Town",
+    "lat": 22.5882834,
+    "lng": 88.4734476,
+    "class": "place:city",
+    "query": "New Town, Kolkata"
+   }
+  },
+  {
+   "id": "aswininagar_bandhumahal",
+   "name": "Aswininagar Bandhumahal Club",
+   "name_bn": "",
+   "area_hint": "east",
+   "popularity": "3",
+   "query": "Aswininagar Bandhumahal Club",
+   "locality": "Aswini Nagar, Baguiati, Kolkata|Baguiati, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "way/612041735",
+    "name": "Basunagar Durga Mandap",
+    "name_bn": "",
+    "lat": 22.697104,
+    "lng": 88.4626,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.53,
+   "locality_match": {
+    "name": "Baguiati",
+    "lat": 22.609668,
+    "lng": 88.4276832,
+    "class": "place:suburb",
+    "query": "Baguiati, Kolkata"
+   }
+  },
+  {
+   "id": "dakshindari_youth",
+   "name": "Dakshindari Youths",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "4",
+   "query": "Dakshindari Youth Durga Puja",
+   "locality": "Dakshindari, Kolkata|South Dum Dum, Kolkata",
+   "source": "https://curlytales.com/india/experiences/durga-puja-unique-pandals-in-kolkata-with-themes-that-will-make-you-think/amp/",
+   "match": {
+    "osm": "node/10082383707",
+    "name": "Dakshin Kolkata Sarbojanin",
+    "name_bn": "",
+    "lat": 22.518604,
+    "lng": 88.353481,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.56,
+   "locality_match": {
+    "name": "Dakshindari Road",
+    "lat": 22.5998736,
+    "lng": 88.4008791,
+    "class": "highway:tertiary",
+    "query": "Dakshindari, Kolkata"
+   }
+  },
+  {
+   "id": "dakhin_bediapara",
+   "name": "Dakshin Bediapara Sarbojanin (Dum Dum)",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Dakshin Bediapara Durga Puja Dum Dum",
+   "locality": "Bediapara, Dum Dum, Kolkata|Dum Dum, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/durga-puja-remembers-bengals-matinee-idol-uttam-kumar-629189",
+   "match": {
+    "osm": "way/636399668",
+    "name": "Dakshinpara Durga Mandir",
+    "name_bn": "",
+    "lat": 22.56498,
+    "lng": 88.313219,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.65
+  },
+  {
+   "id": "belgharia_17_palli",
+   "name": "Belgharia 17 Palli",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "17 Palli Belgharia",
+   "locality": "Belgharia, Kolkata|Rathtala, Belgharia, Kolkata",
+   "source": "https://www.millenniumpost.in/puja-special/artsy-affair-536871",
+   "match": {
+    "osm": "node/10081941249",
+    "name": "Sovabazar 9 Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.595794,
+    "lng": 88.369361,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.51,
+   "locality_match": {
+    "name": "Belgharia",
+    "lat": 22.6656371,
+    "lng": 88.3980035,
+    "class": "place:suburb",
+    "query": "Belgharia, Kolkata"
+   }
+  },
+  {
+   "id": "baranagar_netaji_colony",
+   "name": "Baranagar Netaji Colony Durga Puja",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Netaji Colony Lowland Baranagar",
+   "locality": "Baranagar, Kolkata|Netaji Colony, Baranagar, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/4-puja-pandals-bag-guvs-durga-ratna-awards-537991",
+   "match": {
+    "osm": "way/612041735",
+    "name": "Basunagar Durga Mandap",
+    "name_bn": "",
+    "lat": 22.697104,
+    "lng": 88.4626,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.54,
+   "locality_match": {
+    "name": "Baranagar",
+    "lat": 22.6341693,
+    "lng": 88.3710911,
+    "class": "place:city",
+    "query": "Baranagar, Kolkata"
+   }
+  },
+  {
+   "id": "baranagar_bandhudal",
+   "name": "Baranagar Bandhudal Sporting Club",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Bandhudal Sporting Club Baranagar",
+   "locality": "Baranagar, Kolkata|Bonhooghly, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/4-puja-pandals-bag-guvs-durga-ratna-awards-537991",
+   "match": {
+    "osm": "way/357685222",
+    "name": "Basunagar Durga Mondoph Stage",
+    "name_bn": "",
+    "lat": 22.697046,
+    "lng": 88.462479,
+    "class": "amenity:community_centre",
+    "src": "overpass"
+   },
+   "similarity": 0.56,
+   "locality_match": {
+    "name": "Baranagar",
+    "lat": 22.6341693,
+    "lng": 88.3710911,
+    "class": "place:city",
+    "query": "Baranagar, Kolkata"
+   }
+  },
+  {
+   "id": "sodepur_bijoypur",
+   "name": "Bijoypur Sarbojanin Durgotsav (HB Town)",
+   "name_bn": "",
+   "area_hint": "north",
+   "popularity": "3",
+   "query": "Bijoypur Sarbojanin HB Town Sodepur",
+   "locality": "HB Town, Sodepur|Sodepur, Kolkata",
+   "source": "https://www.millenniumpost.in/bengal/from-ram-temple-to-vande-mataram-kolkata-durga-pujas-draw-on-heritage-nationalism-for-inspiration-680170",
+   "match": {
+    "osm": "node/10082383692",
+    "name": "Bhowanipore Durgotsab",
+    "name_bn": "",
+    "lat": 22.526289,
+    "lng": 88.351521,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.6,
+   "locality_match": {
+    "name": "Sodepur",
+    "lat": 22.6971753,
+    "lng": 88.3805627,
+    "class": "place:suburb",
+    "query": "Sodepur, Kolkata"
+   }
+  },
+  {
+   "id": "pratapaditya_tricon_park",
+   "name": "Pratapaditya Road Tricon Park",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Pratapaditya Road Tricon Park Durgotsav",
+   "locality": "Kalighat, Kolkata|Bhowanipore, Kolkata",
+   "source": "https://www.indiablooms.com/phoenix/server.php/life/hatibagan-pratapaditya-road-top-picks-in-sharod-srijoni-samman-publicity-awards/details",
+   "match": {
+    "osm": "node/10083645574",
+    "name": "Diamond Park Sarbojanin",
+    "name_bn": "",
+    "lat": 22.448792,
+    "lng": 88.303927,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.49,
+   "locality_match": {
+    "name": "Kalighat",
+    "lat": 22.5153313,
+    "lng": 88.3477052,
+    "class": "place:suburb",
+    "query": "Kalighat, Kolkata"
+   }
+  },
+  {
+   "id": "hazra_udayan_sangha",
+   "name": "Hazra Udayan Sangha",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Hazra Udayan Sangha",
+   "locality": "Hazra, Kolkata|Kalighat, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492",
+   "match": {
+    "osm": "way/142358774",
+    "name": "Durga Das Lane",
+    "name_bn": "",
+    "lat": 22.541739,
+    "lng": 88.325378,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.54,
+   "locality_match": {
+    "name": "Hazra",
+    "lat": 22.5227232,
+    "lng": 88.3499241,
+    "class": "place:suburb",
+    "query": "Hazra, Kolkata"
+   }
+  },
+  {
+   "id": "bhowanipore_sanatan_dharmotsahini",
+   "name": "Bhowanipore Sanatan Dharmotsahini Sabha",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Balaram Basu Ghat Road Durga Puja",
+   "locality": "Bhowanipore, Kolkata|Kalighat, Kolkata",
+   "source": "https://en.wikipedia.org/wiki/Durga_Puja_in_Kolkata",
+   "match": {
+    "osm": "node/10082383692",
+    "name": "Bhowanipore Durgotsab",
+    "name_bn": "",
+    "lat": 22.526289,
+    "lng": 88.351521,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.63,
+   "locality_match": {
+    "name": "Bhowanipore",
+    "lat": 22.5325844,
+    "lng": 88.3454429,
+    "class": "place:suburb",
+    "query": "Bhowanipore, Kolkata"
+   }
+  },
+  {
+   "id": "mallick_bari_bhowanipore",
+   "name": "Mallick Bari (Bhowanipore)",
+   "name_bn": "মল্লিক বাড়ি",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Mallick Bari Mohini Mohan Road",
+   "locality": "Bhowanipore, Kolkata|Jadu Babur Bazar, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata",
+   "match": {
+    "osm": "node/10082383692",
+    "name": "Bhowanipore Durgotsab",
+    "name_bn": "",
+    "lat": 22.526289,
+    "lng": 88.351521,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.49,
+   "locality_match": {
+    "name": "Bhowanipore",
+    "lat": 22.5325844,
+    "lng": 88.3454429,
+    "class": "place:suburb",
+    "query": "Bhowanipore, Kolkata"
+   }
+  },
+  {
+   "id": "bhukailash_rajbari",
+   "name": "Bhukailash Rajbari (Kidderpore)",
+   "name_bn": "ভূকৈলাস রাজবাড়ি",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Bhukailash Rajbari",
+   "locality": "Kidderpore, Kolkata|Khidirpur, Kolkata",
+   "source": "https://www.outlooktraveller.com/explore/culture/top-10-bonedi-bari-durga-puja",
+   "match": {
+    "osm": "node/10084950337",
+    "name": "Kidderpore Sarbojanin",
+    "name_bn": "",
+    "lat": 22.538423,
+    "lng": 88.324918,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.51,
+   "locality_match": {
+    "name": "Kidderpore",
+    "lat": 22.53538,
+    "lng": 88.3206094,
+    "class": "place:suburb",
+    "query": "Kidderpore, Kolkata"
+   }
+  },
+  {
+   "id": "sabarna_roy_choudhury_bari",
+   "name": "Sabarna Roy Choudhury Atchala Bari (Barisha)",
+   "name_bn": "সাবর্ণ রায়চৌধুরী পরিবার",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "Sabarna Roy Choudhury Atchala Barisha",
+   "locality": "Barisha, Kolkata|Sakherbazar, Kolkata",
+   "source": "https://www.outlooktraveller.com/experiences/heritage/6-bonedi-bari-durga-pujas-in-kolkata-that-take-you-through-the-citys-aristocratic-past",
+   "match": {
+    "osm": "way/1093618347",
+    "name": "Sabuj Chakra Club & Durgabari Samiti",
+    "name_bn": "সবুজ চক্র ক্লাব এবং দুর্গাবাড়ি সমিতি",
+    "lat": 22.692889,
+    "lng": 88.444008,
+    "class": "building:",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Purba Barisha",
+    "lat": 22.4562288,
+    "lng": 88.3071623,
+    "class": "place:suburb",
+    "query": "Barisha, Kolkata"
+   }
+  },
+  {
+   "id": "north_tridhara",
+   "name": "North Tridhara Sarbojanin Durgotsav",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "North Tridhara Sarbojanin",
+   "locality": "Rashbehari, Kolkata|Lake Market, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2024/1178492",
+   "match": {
+    "osm": "node/10082383703",
+    "name": "Singhi Park Durgotsav",
+    "name_bn": "",
+    "lat": 22.521224,
+    "lng": 88.363011,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.67,
+   "locality_match": {
+    "name": "Rashbehari",
+    "lat": 22.5171723,
+    "lng": 88.3455638,
+    "class": "highway:bus_stop",
+    "query": "Rashbehari, Kolkata"
+   }
+  },
+  {
+   "id": "ballygunge_ekush_pally",
+   "name": "Ballygunge Ekush Pally Sarbojanin",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Ekush Pally Ballygunge",
+   "locality": "Ballygunge, Kolkata|Gariahat, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "node/10082383698",
+    "name": "Adi Ballygunge Sarbojanin",
+    "name_bn": "",
+    "lat": 22.531728,
+    "lng": 88.372075,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.56,
+   "locality_match": {
+    "name": "Ballygunge",
+    "lat": 22.5280337,
+    "lng": 88.3659084,
+    "class": "place:suburb",
+    "query": "Ballygunge, Kolkata"
+   }
+  },
+  {
+   "id": "santoshpur_avenue_south",
+   "name": "Santoshpur Avenue South Club",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Santoshpur Avenue South Club",
+   "locality": "Santoshpur, Kolkata|Survey Park, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "node/10083307836",
+    "name": "Sanghati Puja Samiti",
+    "name_bn": "",
+    "lat": 22.502811,
+    "lng": 88.359434,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Santoshpur",
+    "lat": 22.4960484,
+    "lng": 88.3822296,
+    "class": "place:neighbourhood",
+    "query": "Santoshpur, Kolkata"
+   }
+  },
+  {
+   "id": "garia_mitali_sangha",
+   "name": "Garia Mitali Sangha",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Garia Mitali Sangha",
+   "locality": "Garia, Kolkata|Kamalgazi, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-puja-premier-league-at-garia-mitali-sangha-was-about-upholding-the-tradition/1172226",
+   "match": {
+    "name": "Garia Mitali Sangha",
+    "lat": 22.4616268,
+    "lng": 88.3781677,
+    "class": "landuse:recreation_ground",
+    "src": "nominatim"
+   },
+   "similarity": 1.0
+  },
+  {
+   "id": "haridevpur_41_pally",
+   "name": "Haridevpur 41 Pally Club",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "4",
+   "query": "41 Pally Club Haridevpur",
+   "locality": "Haridevpur, Kolkata|Paschim Putiary, Kolkata",
+   "source": "https://curlytales.com/india/experiences/durga-puja-unique-pandals-in-kolkata-with-themes-that-will-make-you-think/amp/",
+   "match": {
+    "osm": "node/10081941249",
+    "name": "Sovabazar 9 Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.595794,
+    "lng": 88.369361,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "Haridevpur",
+    "lat": 22.4652952,
+    "lng": 88.3311283,
+    "class": "place:suburb",
+    "query": "Haridevpur, Kolkata"
+   }
+  },
+  {
+   "id": "haridevpur_new_sporting",
+   "name": "Haridevpur New Sporting Club",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Haridevpur New Sporting Club",
+   "locality": "Haridevpur, Kolkata|Thakurpukur, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "node/10084950337",
+    "name": "Kidderpore Sarbojanin",
+    "name_bn": "",
+    "lat": 22.538423,
+    "lng": 88.324918,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.42,
+   "locality_match": {
+    "name": "Haridevpur",
+    "lat": 22.4652952,
+    "lng": 88.3311283,
+    "class": "place:suburb",
+    "query": "Haridevpur, Kolkata"
+   }
+  },
+  {
+   "id": "parnasree_south_block",
+   "name": "Parnasree South Block Club",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Parnasree South Block Club",
+   "locality": "Parnasree, Behala, Kolkata|Behala, Kolkata",
+   "source": "https://t2online.in/events/events-1/the-telegraph-true-spirit-puja-captured-the-true-essence-of-durga-puja/615491",
+   "match": {
+    "osm": "way/102004649",
+    "name": "Durga Das Mukherjee St",
+    "name_bn": "",
+    "lat": 22.594563,
+    "lng": 88.367797,
+    "class": ":",
+    "src": "overpass"
+   },
+   "similarity": 0.42,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "behala_east_sabuj_sangha",
+   "name": "Behala East Sabuj Sangha",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Sabuj Sangha Behala",
+   "locality": "Behala, Kolkata|Sakherbazar, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530",
+   "match": {
+    "osm": "node/10082374506",
+    "name": "Hazra Park Durgotsab",
+    "name_bn": "",
+    "lat": 22.524838,
+    "lng": 88.346141,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.49,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "joyrampur_sarbojanin",
+   "name": "Joyrampur Sarbojanin",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Joyrampur Sarbojanin Durgotsav",
+   "locality": "Joyrampur, Behala, Kolkata|Behala, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530",
+   "match": {
+    "osm": "node/10084831369",
+    "name": "Sahapur Sarbojanin",
+    "name_bn": "",
+    "lat": 22.51163,
+    "lng": 88.328018,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.5,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "nandana_yuba_sangha",
+   "name": "Nandana Yuba Sangha",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Nandana Yuba Sangha",
+   "locality": "Behala, Kolkata|Nandana Park, Kolkata",
+   "source": "https://t2online.in/events/events-1/moods-and-moments-from-cesc-the-telegraph-true-spirit-puja-2025--powered-by-the-bhawanipur-education-society-college/2001530",
+   "match": {
+    "osm": "node/10083645566",
+    "name": "Naba Durga",
+    "name_bn": "",
+    "lat": 22.462484,
+    "lng": 88.380916,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.55,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "behala_buroshibtala",
+   "name": "Behala Buroshibtala Sarbojanin",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Buroshibtala Behala",
+   "locality": "Behala, Kolkata|Sakherbazar, Kolkata",
+   "source": "https://www.millenniumpost.in/puja-special/artsy-affair-536871",
+   "match": {
+    "osm": "node/10084831387",
+    "name": "Bhola Maheshwartala Sarbojanin",
+    "name_bn": "",
+    "lat": 22.480845,
+    "lng": 88.308844,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.58,
+   "locality_match": {
+    "name": "Behala",
+    "lat": 22.501572,
+    "lng": 88.3209435,
+    "class": "place:suburb",
+    "query": "Behala, Kolkata"
+   }
+  },
+  {
+   "id": "barisha_players_corner",
+   "name": "Barisha Players' Corner",
+   "name_bn": "",
+   "area_hint": "south",
+   "popularity": "3",
+   "query": "Barisha Players Corner",
+   "locality": "Barisha, Kolkata|Behala, Kolkata",
+   "source": "https://etvbharat.com/english/bharat/bharat-news/kolkata-famous-barishas-pandal-prayers-to-go-virtual/na20201017190748848",
+   "match": {
+    "osm": "node/10084831384",
+    "name": "Barisha Sarbojanin",
+    "name_bn": "",
+    "lat": 22.479989,
+    "lng": 88.308078,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.47,
+   "locality_match": {
+    "name": "Purba Barisha",
+    "lat": 22.4562288,
+    "lng": 88.3071623,
+    "class": "place:suburb",
+    "query": "Barisha, Kolkata"
+   }
+  },
+  {
+   "id": "howrah_swamijee_sporting",
+   "name": "Swamijee Sporting Club",
+   "name_bn": "",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Swamijee Sporting Club Howrah",
+   "locality": "Baruipara, Howrah|Belur, Howrah",
+   "source": "https://lbb.in/kolkata/durga-puja-pandals-in-howrah/",
+   "match": {
+    "osm": "node/10082383700",
+    "name": "Durgabari Pratisthan",
+    "name_bn": "",
+    "lat": 22.52572,
+    "lng": 88.369579,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.43
+  },
+  {
+   "id": "howrah_6er_pally",
+   "name": "Howrah 6-er Pally",
+   "name_bn": "",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "6er Pally Howrah",
+   "locality": "Bandhaghat, Howrah|Kadamtala, Howrah",
+   "source": "https://lbb.in/kolkata/durga-puja-pandals-in-howrah/",
+   "match": {
+    "osm": "node/10083540463",
+    "name": "Rabindra Pally Sarbojanin",
+    "name_bn": "",
+    "lat": 22.482534,
+    "lng": 88.382409,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.58
+  },
+  {
+   "id": "howrah_subal_smriti_sangha",
+   "name": "Subal Smriti Sangha",
+   "name_bn": "",
+   "area_hint": "howrah",
+   "popularity": "3",
+   "query": "Subal Smriti Sangha Tikiapara",
+   "locality": "Tikiapara, Howrah|Kadamtala, Howrah",
+   "source": "https://lbb.in/kolkata/durga-puja-pandals-in-howrah/",
+   "match": {
+    "osm": "node/10083307836",
+    "name": "Sanghati Puja Samiti",
+    "name_bn": "",
+    "lat": 22.502811,
+    "lng": 88.359434,
+    "class": "amenity:place_of_worship",
+    "src": "overpass"
+   },
+   "similarity": 0.56
   }
  ]
 }
