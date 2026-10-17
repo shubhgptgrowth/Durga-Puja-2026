@@ -19,7 +19,9 @@ test('JS route order matches the Python pipeline for every zone', () => {
   const P = Object.fromEntries(G.pandals.map((p) => [p.id, p]));
   const T = Object.fromEntries(G.transit.map((s) => [s.id, s]));
   for (const z of G.zones) {
-    const members = z.pandal_ids.map((id) => P[id]);
+    const all = z.pandal_ids.map((id) => P[id]);
+    const routed = all.filter((p) => p.route !== 'skip'); // new listings stay out of the walks (pipeline/plan.py)
+    const members = routed.length ? routed : all;
     const order = orderRoute(ll(T[z.route.start]), members.map(ll)).map((i) => members[i].id);
     assert.deepEqual(order, z.route.order, z.id);
   }
