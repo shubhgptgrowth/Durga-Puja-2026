@@ -60,8 +60,13 @@ def safe(fn, *a, **k):
         return None, str(e)[:300]
 
 
-def own_comments(user, token, days=7, me=None):
-    since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)
+def own_comments(user, token, days=7, me=None, post_days=None):
+    """Comments from the last `days` days on our posts from the last `post_days` (default: the same). A comment can
+    arrive long after its post (the 8 Oct route post still gets "PUJO" a week later): to answer those, read older
+    posts too, and keep only the comments still inside Instagram's 7-day private-reply window."""
+    now = dt.datetime.now(dt.timezone.utc)
+    since = now - dt.timedelta(days=max(days, post_days or 0))
+    c_since = now - dt.timedelta(days=days)
     # every post from the window, not just the newest 25: at 10+ posts a day that was only two days
     page, err = safe(graph, "GET", f"{user}/media", token, fields="id,caption,permalink,timestamp,comments_count", limit="50")
     if err:
@@ -87,6 +92,8 @@ def own_comments(user, token, days=7, me=None):
             return out, err
         for c in cs.get("data", []):
             if c.get("username") == me:
+                continue
+            if c.get("timestamp") and dt.datetime.fromisoformat(c["timestamp"].replace("+0000", "+00:00")) < c_since:
                 continue
             answered = any(r.get("username") == me for r in (c.get("replies") or {}).get("data", []))
             out.append({"comment_id": c["id"], "media": m["permalink"], "post": (m.get("caption") or "")[:120],
@@ -173,7 +180,13 @@ GUIDE = "https://pujoparikramaguide.in/?src=ig_dm"
 # Words that may sit next to the keyword in a request ("PUJO pls", "send route"). Anything else makes it a normal
 # comment: "পুরোনো কলকাতার পুজো 🙌" is praise, not a request, and must not get a DM.
 FILLER = ("pls", "plz", "plss", "please", "pl", "send", "dm", "me", "link", "guide", "map", "the", "a",
-          "দিন", "দাও", "প্লিজ", "প্লীজ", "পাঠান", "পাঠাও", "গাইড", "লিংক")
+          "দিন", "দাও", "প্লিজ", "প্লীজ", "পাঠান", "পাঠাও", "গাইড", "লিংক",
+          # words people put round the keyword in real requests ("PUJO route for south kolkata pls", "I want the
+          # pujo route", "pujo list please"): none of them turns praise into a request
+          "for", "of", "to", "in", "my", "i", "want", "need", "can", "you", "u", "us", "routes", "list", "plan",
+          "details", "info", "share", "pandal", "pandals", "hopping", "area", "kolkata", "hi", "hello", "thanks",
+          "thank", "yes", "interested", "da", "dada", "di", "didi", "bhai", "bro",
+          "চাই", "আমাকে", "আমায়", "একটু", "লিস্ট", "দয়া", "করে", "ধন্যবাদ", "হ্যাঁ")
 
 
 def words(text):
@@ -187,7 +200,7 @@ def wants_guide(text):
     return any(x in KEYWORDS for x in w) and all(x in KEYWORDS or x in FILLER for x in w)
 
 
-def dm(ledger_path, dry, days=7):
+def dm(ledger_path, dry, days=7, post_days=30):
     """Comment-to-DM (the owner asked for it, 7 Oct): whoever comments the keyword ("PUJO") on one of our recent posts
     gets one private reply with the guide (Instagram's Private Replies API: one message per comment, within 7 days of
     it) and a short public reply. The ledger of answered comment ids lives on the engage-data branch, so nobody is
@@ -196,7 +209,7 @@ def dm(ledger_path, dry, days=7):
     me = graph("GET", user, token, fields="username").get("username")
     ledger = json.loads(Path(ledger_path).read_text(encoding="utf-8")) if Path(ledger_path).exists() else {"sent": []}
     sent = set(ledger["sent"])
-    comments, err = own_comments(user, token, days=days, me=me)
+    comments, err = own_comments(user, token, days=days, me=me, post_days=post_days)
     if err:
         raise SystemExit(f"cannot read comments: {err}")
     todo = [c for c in comments if wants_guide(c["text"]) and c["comment_id"] not in sent]
@@ -225,6 +238,25 @@ def dm(ledger_path, dry, days=7):
     ledger["sent"] = sorted(sent)
     Path(ledger_path).write_text(json.dumps(ledger, indent=1), encoding="utf-8")
     print(f"{done} DMs sent, {len(todo) - done} pending, {len(sent)} in ledger")
+
+
+def comments_report(days=30):
+    """Read-only: every comment on our posts from the last `days` days, whether it reads as a "PUJO" request, whether
+    we replied in public, and whether Instagram still allows a private reply (comments under 7 days old)."""
+    user, token = creds()
+    me = graph("GET", user, token, fields="username").get("username")
+    cs, err = own_comments(user, token, days=days, me=me)
+    if err:
+        print(f"cannot read comments: {err}")
+    now = dt.datetime.now(dt.timezone.utc)
+    reqs = [c for c in cs if wants_guide(c["text"])]
+    print(f"{len(cs)} comments on posts from the last {days} days; {len(reqs)} read as requests; "
+          f"{sum(1 for c in reqs if not c['answered'])} requests with no public reply from us")
+    for c in sorted(cs, key=lambda c: c.get("at") or "", reverse=True):
+        age = (now - dt.datetime.fromisoformat(c["at"].replace("+0000", "+00:00"))).days if c.get("at") else -1
+        flag = "REQUEST" if wants_guide(c["text"]) else "other  "
+        print(f"{(c.get('at') or '')[:16]} {flag} {'replied' if c['answered'] else 'NO REPLY'} "
+              f"{'dm-ok ' if 0 <= age < 7 else 'expired'} @{c['from']}: {(c.get('text') or '')[:80]!r} {c['media']}")
 
 
 def check():
@@ -353,11 +385,15 @@ def main(argv=None):
     r.add_argument("file")
     r.add_argument("--dry-run", action="store_true")
     sub.add_parser("check")
+    cr = sub.add_parser("comments")
+    cr.add_argument("--days", type=int, default=30)
     st = sub.add_parser("stats")
     st.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     if a.cmd == "check":
         return check()
+    if a.cmd == "comments":
+        return comments_report(a.days)
     if a.cmd == "stats":
         return stats(a.out)
     if a.cmd == "scan":
