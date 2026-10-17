@@ -1,0 +1,35 @@
+name: ig-dm-report
+# Read-only health check of comment-to-DM on Supabase (the `ig-dm` Edge Function, set up by ig-dm-backend.yml):
+# what the ledger holds, whether the pg_cron job is scheduled and running, and what the function answered on its
+# last calls. Sends nothing, changes nothing. Needs the SUPABASE_ACCESS_TOKEN repository secret.
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref: { description: "Project ref; empty = the only project", default: "" }
+permissions: { contents: read }
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SBT: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      API: https://api.supabase.com/v1
+    steps:
+      - name: Query
+        run: |
+          ref="${{ inputs.project_ref }}"
+          [ -n "$ref" ] || ref=$(curl -fsS -H "Authorization: Bearer $SBT" "$API/projects" | jq -r '.[0].ref')
+          q() {  # run one read-only query, print it as a table
+            jq -n --arg q "$1" '{query: $q}' > /tmp/q.json
+            echo "### $2"
+            curl -sS -X POST -H "Authorization: Bearer $SBT" -H "Content-Type: application/json" --data @/tmp/q.json \
+              "$API/projects/$ref/database/query" | jq -r '(if type == "array" then .[] else . end) | tostring' | cut -c1-600
+          }
+          {
+            q "select status, count(*) as n, max(at) as last from public.ig_dm_sent group by status" "DMs in the ledger"
+            q "select username, status, at from public.ig_dm_sent order by at desc limit 15" "Latest DMs"
+            q "select count(*) as posts_seen, max(at) as last_read from public.ig_dm_media" "Posts whose comments were read"
+            q "select jobid, jobname, schedule, active from cron.job where jobname = 'ig-dm'" "pg_cron job"
+            q "select status, return_message, start_time from cron.job_run_details where jobid in (select jobid from cron.job where jobname = 'ig-dm') order by start_time desc limit 8" "Last cron runs"
+            q "select id, status_code, timed_out, error_msg, left(content, 400) as content, created from net._http_response order by created desc limit 8" "Last function responses"
+          } | tee -a "$GITHUB_STEP_SUMMARY"

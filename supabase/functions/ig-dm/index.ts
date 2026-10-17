@@ -9,8 +9,8 @@
 //
 // pg_cron calls this every 5 minutes (the `ig-dm-backend` workflow sets that up and the secrets below).
 // Only people who asked by commenting are ever messaged, and each comment at most once (public.ig_dm_sent).
-// Instagram allows one private reply per comment, within 7 days of it, so every post from the last 7 days is read
-// (the account posts 10+ a day; the first 30 only went back two days).
+// Instagram allows one private reply per comment, within 7 days of the comment, so every post from the last 30 days
+// is read (the account posts 10+ a day; the first 30 only went back two days) and its comments from the last 7.
 //
 // Secrets: IG_USER_ID, IG_ACCESS_TOKEN, IG_PAGE_ID (Facebook-Login tokens send through the Page), DM_CRON_SECRET.
 // Deployed with --no-verify-jwt; callers must send the header `x-cron-secret: $DM_CRON_SECRET`.
@@ -25,7 +25,9 @@ const SITE = 'https://pujoparikramaguide.in/';
 const GUIDE = 'https://pujoparikramaguide.in/?src=ig_dm';
 const PUBLIC_REPLY = 'DM-এ পাঠিয়ে দিলাম 💛 Sent to your DMs!';
 const ALREADY = 2534023;   // "The comment that you are trying to reply to already has a reply."
-const DAYS = 7, MAX_SENDS = 20, MAX_MEDIA_PAGES = 6;
+// Comments are answered while Instagram allows (7 days from the comment), on posts from the last POST_DAYS: a
+// "PUJO" can land on a post long after it went up (the 8 Oct route post kept getting them a week later).
+const DAYS = 7, POST_DAYS = 30, MAX_SENDS = 20, MAX_MEDIA_PAGES = 6;
 
 const SB = Deno.env.get('SUPABASE_URL')!;
 const KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -37,7 +39,11 @@ const upsert = (table: string, rows: unknown[]) =>
 // Words that may sit next to the keyword in a request ("PUJO pls", "send route"). Anything else makes it a normal
 // comment: "পুরোনো কলকাতার পুজো 🙌" is praise, not a request, and must not get a DM. Same as engage.py FILLER.
 const FILLER = ['pls', 'plz', 'plss', 'please', 'pl', 'send', 'dm', 'me', 'link', 'guide', 'map', 'the', 'a',
-  'দিন', 'দাও', 'প্লিজ', 'প্লীজ', 'পাঠান', 'পাঠাও', 'গাইড', 'লিংক'];
+  'দিন', 'দাও', 'প্লিজ', 'প্লীজ', 'পাঠান', 'পাঠাও', 'গাইড', 'লিংক',
+  'for', 'of', 'to', 'in', 'my', 'i', 'want', 'need', 'can', 'you', 'u', 'us', 'routes', 'list', 'plan',
+  'details', 'info', 'share', 'pandal', 'pandals', 'hopping', 'area', 'kolkata', 'hi', 'hello', 'thanks',
+  'thank', 'yes', 'interested', 'da', 'dada', 'di', 'didi', 'bhai', 'bro',
+  'চাই', 'আমাকে', 'আমায়', 'একটু', 'লিস্ট', 'দয়া', 'করে', 'ধন্যবাদ', 'হ্যাঁ'];
 const words = (text = '') => text.toLowerCase().replace(/[^\p{L}\p{M}]+/gu, ' ').trim().split(' ').filter(Boolean);
 /** A request has a keyword, and every other word is filler or part of an area or pandal name ("PUJO Behala"). */
 export const wantsGuide = (text = '', areaWords: Set<string> = new Set()) => {
@@ -163,7 +169,7 @@ Deno.serve(async (req) => {
   try {
     const me = (await graph('GET', user, token, { fields: 'username' })).username;
     const since = Date.now() - DAYS * 864e5;
-    const media = await recentMedia(user, token, since);
+    const media = await recentMedia(user, token, Date.now() - POST_DAYS * 864e5);
     const seen = new Map<string, number>(((await (await db('ig_dm_media?select=media_id,comments_count')).json()) || [])
       .map((m: any) => [m.media_id, m.comments_count]));
     const done = new Set<string>(((await (await db('ig_dm_sent?select=comment_id')).json()) || []).map((r: any) => r.comment_id));

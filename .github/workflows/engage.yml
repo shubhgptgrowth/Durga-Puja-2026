@@ -8,6 +8,8 @@ name: engage
 #   mode=stats  read-only: every post's likes/comments (and insights when permitted), labelled by format; saved to
 #               engage-data as stats/<date>.json
 #   mode=check  read-only token check (account, comments, Page link, messages, Business Discovery); sends nothing
+#   mode=comments  read-only: every comment on our posts from the last 30 days, which read as "PUJO" requests,
+#               which have no reply, and which are still inside Instagram's 7-day private-reply window
 #   mode=dm     comment-to-DM: whoever comments "PUJO" on a recent post gets the guide in a private reply, once
 #               (ledger: dm.json on engage-data). Also every 15 min on a schedule, only while
 #               marketing/engage/config.json has "dm": true. GitHub ran that schedule only every 4-10 hours, so the
@@ -19,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "scan, reply, dm, stats or check"
+        description: "scan, reply, dm, stats, check or comments"
         default: scan
       date:
         description: "YYYY-MM-DD (default: today, IST)"
@@ -68,6 +70,8 @@ jobs:
             python -m marketing.engage stats --out "/tmp/engage/stats/$d.json" | tee -a "$GITHUB_STEP_SUMMARY"
           elif [ "$mode" = check ]; then
             python -m marketing.engage check | tee -a "$GITHUB_STEP_SUMMARY"
+          elif [ "$mode" = comments ]; then
+            python -m marketing.engage comments --days 30 | tee -a "$GITHUB_STEP_SUMMARY"
           elif [ "$mode" = reply ]; then
             args=(); [ "${{ inputs.dry_run }}" != false ] && args+=(--dry-run)
             python -m marketing.engage reply "marketing/engage/replies/$d.json" "${args[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

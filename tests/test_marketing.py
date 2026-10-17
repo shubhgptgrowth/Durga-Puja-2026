@@ -365,7 +365,8 @@ class RedesignTest(unittest.TestCase):
 
     def test_comment_keyword_for_the_dm(self):
         from marketing import engage
-        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?", "Pujo!!", "#pujo", "send route please", "পুজো প্লিজ", "PUJO 2026"):
+        for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?", "Pujo!!", "#pujo", "send route please", "পুজো প্লিজ", "PUJO 2026",
+                  "PUJO route for kolkata pls", "I want the pujo route", "pujo list please", "Pujo da", "পুজো রুট চাই"):
             self.assertTrue(engage.wants_guide(t), t)
         # praise that mentions pujo is not a request (a real 12 Oct comment), nor is a sentence about routes
         for t in ("beautiful", "", None, "Durga maa 🙏", "পুরোনো কলকাতার পুজো 🙌❤️😍", "beautiful pujo",
@@ -397,6 +398,17 @@ class RedesignTest(unittest.TestCase):
             got, err = engage.own_comments("1", "t", me="me")
         self.assertIsNone(err)
         self.assertEqual([c["comment_id"] for c in got], ["c_old"])
+        # a new "PUJO" on an older post (the 8 Oct route post, a week later) is still read when older posts are asked
+        # for, and a comment older than Instagram's 7-day private-reply window is dropped
+        def graph2(method, path, token, **kw):
+            if path.endswith("/media"):
+                return page1
+            return {"data": [{"id": "new_" + path.split("/")[0], "text": "PUJO", "username": "u", "timestamp": ts(5)},
+                             {"id": "stale_" + path.split("/")[0], "text": "PUJO", "username": "u", "timestamp": ts(190)}]}
+        with mock.patch.object(engage, "graph", graph2), \
+                mock.patch("urllib.request.urlopen", return_value=io.BytesIO(json.dumps(page2).encode())):
+            got, err = engage.own_comments("1", "t", me="me", post_days=30)
+        self.assertEqual(sorted(c["comment_id"] for c in got), ["new_old", "new_too_old"])
 
     def test_edge_function_dm_matches_the_fallback(self):
         # supabase/functions/ig-dm is the main sender; marketing/engage.py `dm` is the fallback. Same words, same keywords.
