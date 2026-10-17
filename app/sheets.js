@@ -235,8 +235,50 @@ function helpHtml(p) {
   const rows = HELP.filter(([k]) => hp[k]).map(([k, em]) => { const h = hp[k];
     return `<li><a class="help-a" target="_blank" rel="noopener" href="${dirUrl([h.lat, h.lng])}"><span>${em} <b>${t('help.' + k)}</b>${h.name ? `<br><small>${esc(h.name)}${h.emergency ? ` · ${t('help.er')}` : ''}</small>` : ''}</span>
       <small>${t('p.walkMin', { n: h.walk_min })}</small></a></li>`; }).join('');
-  return rows ? `<h3 class="sh">${t('p.help')}</h3><ul class="mini-list">${rows}</ul><p class="fine" style="margin-top:6px">${t('help.note')}</p>` : '';
+  return rows ? `<h3 class="sh">${t('p.help')}</h3><ul class="mini-list">${rows}</ul><p class="fine" style="margin-top:6px">${t('help.note')} <button type="button" class="link-btn" data-sos>${t('sos.open')}</button></p>` : '';
 }
+
+/* ---------------- SOS: one-tap emergency numbers, share where you are, and the help nearest to you ----------------
+ * National numbers only (they work across India); the nearest hospital, police station and toilet come from the
+ * pandal closest to you (data/discovered/help.json via the pipeline). */
+const SOS_NUMBERS = [['112', 'all'], ['100', 'police'], ['108', 'ambulance'], ['101', 'fire'], ['1091', 'women'], ['1098', 'child']];
+export function sosSheet() {
+  track('sos_open');
+  const near = S.me ? nearest(S.me, G.data.pandals, { limit: 1 })[0]?.place : null;
+  openSheet(`<div class="eyebrow">🆘 ${t('sos.eyebrow')}</div>
+    <h2 class="title">${t('sos.title')}</h2>
+    <a class="sos-main" href="tel:112">${t('sos.call112')}<small>${t('sos.call112Sub')}</small></a>
+    <ul class="sos-nums">${SOS_NUMBERS.slice(1).map(([n, k]) => `<li><a href="tel:${n}"><b>${n}</b><span>${t('sos.n.' + k)}</span></a></li>`).join('')}</ul>
+    <button type="button" class="btn block" id="sosShare">${icon('locate')} ${t('sos.share')}</button>
+    <p class="fine" style="margin:6px 0 0">${t('sos.shareSub')}</p>
+    <div id="sosNear">${near ? sosNearHtml(near) : `<button type="button" class="btn block" id="sosLocate" style="margin-top:14px">${icon('pin')} ${t('sos.findNear')}</button>`}</div>
+    <h3 class="sh">${t('sos.lostTitle')}</h3>
+    <ul class="sos-tips"><li>${t('sos.tip1')}</li><li>${t('sos.tip2')}</li><li>${t('sos.tip3')}</li></ul>`,
+  (el) => {
+    $('#sosShare', el).onclick = () => shareWhereIAm();
+    const loc = $('#sosLocate', el);
+    if (loc) loc.onclick = () => { loc.disabled = true; loc.textContent = t('sos.locating');
+      getFix({ timeout: 12000, maximumAge: 30000 }).then((f) => { S.me = [f.lat, f.lng];
+        const p = nearest(S.me, G.data.pandals, { limit: 1 })[0]?.place; $('#sosNear', el).innerHTML = p ? sosNearHtml(p) : ''; })
+        .catch(() => { loc.disabled = false; loc.textContent = t('sos.findNear'); toast(t('loc.fail')); }); };
+  });
+}
+function sosNearHtml(p) {
+  const hp = p.help || {};
+  const rows = [['hospitals', '🏥'], ['police', '👮'], ['toilets', '🚻']].filter(([k]) => hp[k]).map(([k, em]) => { const h = hp[k];
+    return `<li><a class="help-a" target="_blank" rel="noopener" href="${dirUrl([h.lat, h.lng])}"><span>${em} <b>${t('help.' + k)}</b>${h.name ? `<br><small>${esc(h.name)}${h.emergency ? ` · ${t('help.er')}` : ''}</small>` : ''}</span><small>${t('p.walkMin', { n: h.walk_min })}</small></a></li>`; }).join('');
+  return rows ? `<h3 class="sh">${t('sos.nearTitle', { name: nm(p) })}</h3><ul class="mini-list">${rows}</ul>` : '';
+}
+async function shareWhereIAm() {
+  let f;
+  try { f = await getFix({ timeout: 12000, maximumAge: 30000 }); } catch { return toast(t('loc.fail')); }
+  const url = `https://maps.google.com/?q=${f.lat.toFixed(6)},${f.lng.toFixed(6)}`;
+  const text = t('sos.shareText');
+  track('sos_share');
+  if (navigator.share) { try { await navigator.share({ text, url }); return; } catch (e) { if (e?.name === 'AbortError') return; } }
+  location.href = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`;
+}
+document.addEventListener('click', (e) => { if (e.target.closest('#sosBtn, [data-sos]')) { e.preventDefault(); sosSheet(); } });
 
 /* This year's theme, with the report it came from (data/raw/themes_2026.csv). */
 export const themeTitle = (th) => (S.prefs.lang === 'bn' && th.title_bn) || th.title;

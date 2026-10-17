@@ -133,6 +133,15 @@ h1, h2, h3, h4 { font-weight: 600; }
 .lang-pick select { appearance: none; -webkit-appearance: none; height: 36px; min-width: 44px; border: 1px solid var(--line); border-radius: 999px; padding: 0 11px;
   background: var(--surface); color: var(--ink-2); font-weight: 600; font-size: 12.5px; text-align: center; cursor: pointer; }
 .lang-pick option { color: #1E1814; }
+.sos-btn { flex: none; height: 36px; min-width: 44px; padding: 0 10px; border: 1px solid color-mix(in srgb, var(--bad) 45%, transparent); border-radius: 999px;
+  background: var(--surface); color: var(--bad); font: inherit; font-size: 12px; font-weight: 800; letter-spacing: .06em; cursor: pointer; }
+.sos-main { display: grid; gap: 2px; margin: 12px 0 10px; padding: 14px 16px; border-radius: 14px; background: var(--bad); color: #fff; text-decoration: none; font-size: 20px; font-weight: 750; }
+.sos-main small { font-size: 12.5px; font-weight: 500; opacity: .9; }
+.sos-nums { list-style: none; margin: 0 0 12px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sos-nums a { display: grid; gap: 1px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; }
+.sos-nums b { font-size: 17px; color: var(--bad); font-variant-numeric: tabular-nums; }
+.sos-nums span { font-size: 12px; color: var(--ink-2); }
+.sos-tips { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-2); display: grid; gap: 6px; }
 @media (max-width: 380px) { .greet { font-size: 19px; } .live-pill .lp-tx span { display: none; } }
 
 /* ---------- layout ---------- */
