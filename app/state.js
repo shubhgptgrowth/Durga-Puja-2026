@@ -80,6 +80,12 @@ export function ampm(h) {
   return `${part} ${h % 12 || 12}টা`;
 }
 export const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+/** The pujo day to greet people with today. A tithi can begin the day before its puja (Saptami from Saturday
+ * 17 Oct, its puja on Sunday), so a day with tithi_from counts from that date too; otherwise the day of that date. */
+export const greetDay = (days = G.data.meta.days) => {
+  const k = todayKey();
+  return days.find((d) => d.tithi_from && d.tithi_from <= k && k <= d.date) || days.find((d) => d.date === k) || null;
+};
 export const btn = (attrs = '') => `role="button" tabindex="0" ${attrs}`;
 // Headings are set in type, not emoji: strip any emoji a translation carries.
 export const plain = (s) => String(s).replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}]\uFE0F?/gu, '').replace(/\s{2,}/g, ' ').trim();
