@@ -1,6 +1,6 @@
 {
  "source": "OpenStreetMap contributors (ODbL), via Nominatim",
- "fetched": "2026-10-11",
+ "fetched": "2026-10-17",
  "failed": 0,
  "places": {
   "bagbazar": {
@@ -752,6 +752,270 @@
    "lng": 88.351,
    "approx": true,
    "address": "Howrah 711101"
+  },
+  "uttar_kolkata_sarbojanin": {
+   "lat": 22.582298,
+   "lng": 88.366287,
+   "approx": true,
+   "address": "Machua Bazar, Kolkata 700007"
+  },
+  "bagmari_kabiraj_bagan": {
+   "lat": 22.584113,
+   "lng": 88.385407,
+   "approx": true,
+   "address": "Maniktala, Kolkata 700011"
+  },
+  "maniktala_vivekananda_sporting": {
+   "lat": 22.58809,
+   "lng": 88.385283,
+   "approx": true,
+   "address": "Maniktala, Kolkata 700067"
+  },
+  "shyambazar_nabin_sangha": {
+   "lat": 22.598694,
+   "lng": 88.375501,
+   "approx": false,
+   "address": "Jadu Mitra Lane, Shyam Bazar, Kolkata 700004"
+  },
+  "ultadanga_bidhan_sangha": {
+   "lat": 22.596128,
+   "lng": 88.385283,
+   "approx": true,
+   "address": "Ultadanga, Kolkata 700067"
+  },
+  "shibkrishna_daw_bari": {
+   "lat": 22.583414,
+   "lng": 88.356251,
+   "approx": true,
+   "address": "Jorasanko, Kolkata 700007"
+  },
+  "chhatu_latu_babu_bari": {
+   "lat": 22.586994,
+   "lng": 88.364006,
+   "approx": true,
+   "address": "Girish Park, Kolkata 700003"
+  },
+  "colootola_dhar_bari": {
+   "lat": 22.574821,
+   "lng": 88.356306,
+   "approx": true,
+   "address": "Tiretta Bazaar, Central Avenue 2, Kolkata 700073"
+  },
+  "badan_chandra_roy_bari": {
+   "lat": 22.576425,
+   "lng": 88.355739,
+   "approx": true,
+   "address": "Tiretta Bazaar, Central Avenue 2, Kolkata 700073"
+  },
+  "rani_rashmoni_bari": {
+   "lat": 22.55632,
+   "lng": 88.358322,
+   "approx": true,
+   "address": "Tal Tala, Kolkata 700016"
+  },
+  "bowbazar_47_palli": {
+   "lat": 22.570492,
+   "lng": 88.36156,
+   "approx": true,
+   "address": "Bowbazar, Kolkata 700012"
+  },
+  "tangra_ghol_para": {
+   "lat": 22.556511,
+   "lng": 88.379595,
+   "approx": true,
+   "address": "Tangra North, Kolkata 700015"
+  },
+  "mitali_kankurgachi": {
+   "lat": 22.57994,
+   "lng": 88.390444,
+   "approx": true,
+   "address": "Phoolbagan, Maniktala, Kolkata 700054"
+  },
+  "kankurgachi_chalantika": {
+   "lat": 22.57994,
+   "lng": 88.390444,
+   "approx": true,
+   "address": "Phoolbagan, Maniktala, Kolkata 700054"
+  },
+  "saltlake_ak_block": {
+   "lat": 22.588401,
+   "lng": 88.431349,
+   "approx": true,
+   "address": "AK Block, Sector II, Bidhannagar 700102"
+  },
+  "saltlake_ec_block": {
+   "lat": 22.585538,
+   "lng": 88.409838,
+   "approx": true,
+   "address": "EC Block, Sector III, Bidhannagar 700097"
+  },
+  "saltlake_bc_block": {
+   "lat": 22.592837,
+   "lng": 88.40459,
+   "approx": true,
+   "address": "BC Block, Sector I, Bidhannagar 700064"
+  },
+  "saltlake_aj_block": {
+   "lat": 22.591987,
+   "lng": 88.429343,
+   "approx": true,
+   "address": "AJ Block, Sector II, Bidhannagar 700101"
+  },
+  "saltlake_ce_block": {
+   "lat": 22.594433,
+   "lng": 88.413443,
+   "approx": true,
+   "address": "CE Block, Sector I, Bidhannagar 700064"
+  },
+  "saltlake_fe_block": {
+   "lat": 22.581234,
+   "lng": 88.417409,
+   "approx": true,
+   "address": "FE Block, Sector III, Bidhannagar 700106"
+  },
+  "saltlake_ca_block": {
+   "lat": 22.586973,
+   "lng": 88.401066,
+   "approx": true,
+   "address": "CA Block, Sector I, Bidhannagar 700048"
+  },
+  "labony_estate": {
+   "lat": 22.582973,
+   "lng": 88.405617,
+   "approx": true,
+   "address": "FB Block, Sector III, Bidhannagar 700097"
+  },
+  "newtown_sarbojanin": {
+   "lat": 22.588283,
+   "lng": 88.473448,
+   "approx": true,
+   "address": "Action Area I, New Town 700162"
+  },
+  "newtown_ae_block": {
+   "lat": 22.580704,
+   "lng": 88.46238,
+   "approx": true,
+   "address": "Action Area I, New Town 700162"
+  },
+  "newtown_ce_block": {
+   "lat": 22.580704,
+   "lng": 88.46238,
+   "approx": true,
+   "address": "Action Area I, New Town 700162"
+  },
+  "newtown_db_block": {
+   "lat": 22.580704,
+   "lng": 88.46238,
+   "approx": true,
+   "address": "Action Area I, New Town 700162"
+  },
+  "balaka_abasan": {
+   "lat": 22.588283,
+   "lng": 88.473448,
+   "approx": true,
+   "address": "Action Area I, New Town 700162"
+  },
+  "aswininagar_bandhumahal": {
+   "lat": 22.609668,
+   "lng": 88.427683,
+   "approx": true,
+   "address": "AF Block, Baguiati, Bidhannagar 700101"
+  },
+  "dakshindari_youth": {
+   "lat": 22.599874,
+   "lng": 88.400879,
+   "approx": true,
+   "address": "AC Block, Lake Town, South Dumdum 700089"
+  },
+  "pratapaditya_tricon_park": {
+   "lat": 22.515331,
+   "lng": 88.347705,
+   "approx": true,
+   "address": "Kalighat, Kolkata 700026"
+  },
+  "hazra_udayan_sangha": {
+   "lat": 22.522723,
+   "lng": 88.349924,
+   "approx": true,
+   "address": "Hazra, Kolkata 700026"
+  },
+  "bhowanipore_sanatan_dharmotsahini": {
+   "lat": 22.532584,
+   "lng": 88.345443,
+   "approx": true,
+   "address": "Bhowanipore, Kolkata 700025"
+  },
+  "mallick_bari_bhowanipore": {
+   "lat": 22.532584,
+   "lng": 88.345443,
+   "approx": true,
+   "address": "Bhowanipore, Kolkata 700025"
+  },
+  "bhukailash_rajbari": {
+   "lat": 22.53538,
+   "lng": 88.320609,
+   "approx": true,
+   "address": "Kidderpore, Kolkata 700023"
+  },
+  "north_tridhara": {
+   "lat": 22.517172,
+   "lng": 88.345564,
+   "approx": true,
+   "address": "Kalighat, Kolkata 700026"
+  },
+  "ballygunge_ekush_pally": {
+   "lat": 22.528034,
+   "lng": 88.365908,
+   "approx": true,
+   "address": "Ballygunge, Kolkata 700019"
+  },
+  "santoshpur_avenue_south": {
+   "lat": 22.496048,
+   "lng": 88.38223,
+   "approx": true,
+   "address": "Santoshpur, Jadavpur, Kolkata 700075"
+  },
+  "haridevpur_41_pally": {
+   "lat": 22.465295,
+   "lng": 88.331128,
+   "approx": true,
+   "address": "Haridevpur, Kolkata 700082"
+  },
+  "haridevpur_new_sporting": {
+   "lat": 22.465295,
+   "lng": 88.331128,
+   "approx": true,
+   "address": "Haridevpur, Kolkata 700082"
+  },
+  "parnasree_south_block": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
+  },
+  "behala_east_sabuj_sangha": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
+  },
+  "joyrampur_sarbojanin": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
+  },
+  "nandana_yuba_sangha": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
+  },
+  "behala_buroshibtala": {
+   "lat": 22.501572,
+   "lng": 88.320943,
+   "approx": true,
+   "address": "Behala, Kolkata 700053"
   },
   "mitra_cafe": {
    "lat": 22.5945,
