@@ -39,7 +39,7 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Lake Market & Kalighat. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 3: Lake Market & Kalighat (`south_lakemarket/`, posts 18 Oct 11:30)
+## Part 3: Lake Market & Kalighat (`south_lakemarket/`, posts 17 Oct 19:40)
 
 1. 15 pujos in one night. The Lake Market & Kalighat master route.  
    _(over the cover)_
@@ -56,7 +56,7 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Gariahat & Ballygunge. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 4: Gariahat & Ballygunge (`south_gariahat/`, posts 18 Oct 17:20)
+## Part 4: Gariahat & Ballygunge (`south_gariahat/`, posts 17 Oct 20:50)
 
 1. 13 pujos in one night. The Gariahat & Ballygunge master route.  
    _(over the cover)_
@@ -73,9 +73,9 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Behala & New Alipore. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 5: Behala & New Alipore (`southwest/`, posts 19 Oct 11:30)
+## Part 5: Behala & New Alipore (`southwest/`, posts 18 Oct 11:30)
 
-1. 16 pujos in one night. The Behala & New Alipore master route.  
+1. 16 pujos in one day. The Behala & New Alipore master route.  
    _(over the cover)_
 
 2. Get off at Behala Bazar Metro, then just follow the red line.  
@@ -90,7 +90,7 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Lake Town & Dum Dum. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 6: Lake Town & Dum Dum (`lake_town_dumdum/`, posts 19 Oct 17:20)
+## Part 6: Lake Town & Dum Dum (`lake_town_dumdum/`, posts 18 Oct 12:40)
 
 1. 7 pujos in one night. The Lake Town & Dum Dum master route.  
    _(over the cover)_
@@ -107,7 +107,7 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Bhowanipore & Elgin. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 7: Bhowanipore & Elgin (`bhowanipore/`, posts 20 Oct 11:30)
+## Part 7: Bhowanipore & Elgin (`bhowanipore/`, posts 18 Oct 17:20)
 
 1. 12 pujos in one night. The Bhowanipore & Elgin master route.  
    _(over the cover)_
@@ -124,7 +124,7 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
 5. Save this route. Next up: Salt Lake. Comment PUJO and we'll send you every route.  
    _(over the end card)_
 
-## Part 8: Salt Lake (`salt_lake/`, posts 20 Oct 17:20)
+## Part 8: Salt Lake (`salt_lake/`, posts 18 Oct 20:50)
 
 1. 7 pujos in one night. The Salt Lake master route.  
    _(over the cover)_
@@ -136,6 +136,74 @@ Regenerate with `python -m marketing.night_route --zone <zone> --area "<Area>" -
    _(while the route draws)_
 
 4. About 8 kilometres in all, two and a half hours of walking.  
+   _(as it pulls back to the whole route)_
+
+5. Save this route. Next up: Kasba & Bosepukur. Comment PUJO and we'll send you every route.  
+   _(over the end card)_
+
+## Part 9: Kasba & Bosepukur (`kasba/`, posts 19 Oct 11:30)
+
+1. 5 pujos in one night. The Kasba & Bosepukur master route.  
+   _(over the cover)_
+
+2. Get off at Kavi Sukanta Metro, then just follow the red line.  
+   _(as the camera zooms in on the start)_
+
+3. Start at Purbachal. On the way, Bosepukur Talbagan. Last stop, Bosepukur Sitala Mandir.  
+   _(while the route draws)_
+
+4. About 4 kilometres in all, an hour of walking.  
+   _(as it pulls back to the whole route)_
+
+5. Save this route. Next up: Jadavpur & Santoshpur. Comment PUJO and we'll send you every route.  
+   _(over the end card)_
+
+## Part 10: Jadavpur & Santoshpur (`jadavpur_santoshpur/`, posts 19 Oct 17:20)
+
+1. 9 pujos in one night. The Jadavpur & Santoshpur master route.  
+   _(over the cover)_
+
+2. Get off at Kavi Nazrul Metro, then just follow the red line.  
+   _(as the camera zooms in on the start)_
+
+3. Start at Kendua Shanti Sangha. On the way, Selimpur Pally. Last stop, Mukundapur.  
+   _(while the route draws)_
+
+4. About 13 kilometres in all, four hours of walking.  
+   _(as it pulls back to the whole route)_
+
+5. Save this route. Next up: Tollygunge & Naktala. Comment PUJO and we'll send you every route.  
+   _(over the end card)_
+
+## Part 11: Tollygunge & Naktala (`tolly_naktala/`, posts 20 Oct 11:30)
+
+1. 4 pujos in one night. The Tollygunge & Naktala master route.  
+   _(over the cover)_
+
+2. Get off at Masterda Surya Sen (Bansdroni) Metro, then just follow the red line.  
+   _(as the camera zooms in on the start)_
+
+3. Start at Bansdroni Sarbojaneen Durgotsav Park, and finish at Patyuli.  
+   _(while the route draws)_
+
+4. About 6 kilometres in all, two hours of walking.  
+   _(as it pulls back to the whole route)_
+
+5. Save this route. Next up: Howrah. Comment PUJO and we'll send you every route.  
+   _(over the end card)_
+
+## Part 12: Howrah (`howrah/`, posts 20 Oct 17:20)
+
+1. 8 pujos in one day. The Howrah master route.  
+   _(over the cover)_
+
+2. Get off at Liluah station, then just follow the red line.  
+   _(as the camera zooms in on the start)_
+
+3. Start at Liluah Social Institution of Youth. On the way, Belur Math. Last stop, IHE Housing Complex Puja (Botanical Garden).  
+   _(while the route draws)_
+
+4. About 27 kilometres in all, eight and a half hours of walking.  
    _(as it pulls back to the whole route)_
 
 5. Save this route. Comment PUJO and we'll send you every route.  

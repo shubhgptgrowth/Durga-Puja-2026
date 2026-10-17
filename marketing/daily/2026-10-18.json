@@ -407,105 +407,50 @@
    }
   },
   {
-   "id": "r3n",
+   "id": "r5n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
    "style": "night",
-   "zone": "south_lakemarket",
-   "area": "Lake Market & Kalighat",
-   "part": 3,
-   "next": "Gariahat & Ballygunge",
-   "hook": "15 pandals · 1 night: Lake Market & Kalighat Master Route",
+   "zone": "southwest",
+   "area": "Behala & New Alipore",
+   "part": 5,
+   "next": "Lake Town & Dum Dum",
+   "hook": "16 pandals · 1 day: Behala & New Alipore Master Route",
    "caption": {
-    "en": "Lake Market & Kalighat Durga Puja 2026 route, Part 3: 15 pandals in one night 🚶\n\nGet off at Kalighat Metro and follow the red line: Badamtala Ashar Sangha first, Tollygunge Santi Pally last. About 13.0 km and 18,913 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Heavyweight pujas close together.\n\nPart 4: Gariahat & Ballygunge, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Behala & New Alipore Durga Puja 2026 route, Part 5: 16 pandals in one day 🚶\n\nGet off at Behala Bazar Metro and follow the red line: Behala 11 Pally Club first, Suruchi Sangha last. About 20.3 km and 29,716 steps on foot, roughly 6.4 hours of walking, plus the queues.\n\nBest for: Behala's art-trail pujas.\n\nPart 6: Lake Town & Dum Dum, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "lake market durga puja route",
+     "behala durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "kalighat metro"
+     "behala bazar metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    },
-   "next_zone": "south_gariahat"
+   "next_zone": "lake_town_dumdum"
   },
   {
-   "id": "p3",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r6n",
+   "type": "reel",
    "at": "12:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Ahiritola Sarbojanin",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/1/12/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_14.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Madhuri Maitrir Anweshane",
-     "body": "Bengal's sweets as carriers of harmony: the history and making of traditional mishti, in the puja's 87th year. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "body": "A riverside neighbourhood puja known for large-scale theme work."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "items": [
-      [
-       "Metro: Sovabazar Sutanuti, 20 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Ahiritola Jubak Brinda, 6 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/4/49/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_13.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Ahiritola Sarbojanin, 2025"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "lake_town_dumdum",
+   "area": "Lake Town & Dum Dum",
+   "part": 6,
+   "next": "Bhowanipore & Elgin",
+   "hook": "7 pandals · 1 night: Lake Town & Dum Dum Master Route",
    "caption": {
-    "en": "Ahiritola Sarbojanin, Kolkata Durga Puja 2026: the theme is Madhuri Maitrir Anweshane 🪔\n\nBengal's sweets as carriers of harmony: the history and making of traditional mishti, in the puja's 87th year. Themes are as reported and can change before the puja.\n\nIt's 20 minutes' walk from Sovabazar Sutanuti Metro, and Ahiritola Jubak Brinda is 6 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Lake Town & Dum Dum Durga Puja 2026 route, Part 6: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: Sreebhumi Sporting Club first, Arjunpur Amra Sabai Club last. About 7.0 km and 10,277 steps on foot, roughly 2.2 hours of walking, plus the queues.\n\nBest for: Sreebhumi and the north-east giants.\n\nPart 7: Bhowanipore & Elgin, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "ahiritola sarbojanin durga puja 2026",
-     "ahiritola sarbojanin theme",
-     "kumartuli, bagbazar & hatibagan pandals",
-     "kolkata durga puja 2026"
+     "lake town durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "city centre metro"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   },
+   "next_zone": "bhowanipore"
   },
   {
    "id": "r3",
@@ -703,27 +648,27 @@
    }
   },
   {
-   "id": "r4n",
+   "id": "r7n",
    "type": "reel",
    "at": "17:20",
    "render": "route",
    "style": "night",
-   "zone": "south_gariahat",
-   "area": "Gariahat & Ballygunge",
-   "part": 4,
-   "next": "Behala & New Alipore",
-   "hook": "13 pandals · 1 night: Gariahat & Ballygunge Master Route",
+   "zone": "bhowanipore",
+   "area": "Bhowanipore & Elgin",
+   "part": 7,
+   "next": "Salt Lake",
+   "hook": "12 pandals · 1 night: Bhowanipore & Elgin Master Route",
    "caption": {
-    "en": "Gariahat & Ballygunge Durga Puja 2026 route, Part 4: 13 pandals in one night 🚶\n\nGet off at Ballygunge Junction station and follow the red line: Gariahat Sarbojanin Durgotsab first, 71 Pally Baishakhi Sarbojanin last. About 11.5 km and 16,724 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Ekdalia, Singhi Park, shopping.\n\nPart 5: Behala & New Alipore, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Bhowanipore & Elgin Durga Puja 2026 route, Part 7: 12 pandals in one night 🚶\n\nGet off at Netaji Bhavan Metro and follow the red line: Bhowanipore 75 Pally first, Adi Sammilati Sarbojanin last. About 12.4 km and 18,045 steps on foot, roughly 3.9 hours of walking, plus the queues.\n\nBest for: Classic neighbourhood pujas.\n\nPart 8: Salt Lake, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "gariahat durga puja route",
+     "bhowanipore durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "ballygunge junction station"
+     "netaji bhavan metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    },
-   "next_zone": "southwest"
+   "next_zone": "salt_lake"
   },
   {
    "id": "r5",
@@ -854,151 +799,27 @@
    }
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r8n",
+   "type": "reel",
    "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Recipe · Serves 4",
-     "title": "Bhoger khichuri, like Ashtami bhog",
-     "bn": "ভোগের খিচুড়ি",
-     "sub": "Gobindobhog, roasted moong, ghee. No onion or garlic",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Khichuri_With_Fried_Vegitables_-_Kojagari_Lakshmi_Puja_Offering_-_Bengali_Brahman_Family_-_Howrah_20171005173513.jpg",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 1 of 2",
-     "title": "Rice, dal and spices",
-     "bn": "চাল, ডাল, মশলা",
-     "items": [
-      [
-       "¾ cup (150 g) yellow moong dal",
-       "মুগ ডাল"
-      ],
-      [
-       "1 cup (200 g) gobindobhog rice",
-       "গোবিন্দভোগ চাল"
-      ],
-      [
-       "4 tbsp ghee, divided",
-       "ঘি"
-      ],
-      [
-       "2 bay leaves",
-       "তেজপাতা"
-      ],
-      [
-       "1 tsp cumin seeds",
-       "গোটা জিরে"
-      ],
-      [
-       "2 dried red chillies",
-       "শুকনো লঙ্কা"
-      ],
-      [
-       "4 green cardamom, 4 cloves, 2-inch cinnamon",
-       "এলাচ, লবঙ্গ, দারচিনি"
-      ],
-      [
-       "1½ tbsp finely grated fresh ginger",
-       "কোরানো আদা"
-      ]
-     ]
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 2 of 2",
-     "title": "Vegetables and the rest",
-     "bn": "সবজি আর বাকিটা",
-     "items": [
-      [
-       "1 tsp turmeric and 1 tsp ground cumin",
-       "হলুদ আর জিরে গুঁড়ো"
-      ],
-      [
-       "1 medium potato (150 g), peeled, 2 cm cubes",
-       "আলু"
-      ],
-      [
-       "1½ cups (150 g) cauliflower florets",
-       "ফুলকপি"
-      ],
-      [
-       "½ cup green peas (optional)",
-       "কড়াইশুঁটি (ইচ্ছে হলে)"
-      ],
-      [
-       "2 green chillies, slit",
-       "চেরা কাঁচা লঙ্কা"
-      ],
-      [
-       "1½ tsp salt and 2 tsp sugar",
-       "নুন আর চিনি"
-      ],
-      [
-       "6 cups hot water",
-       "৬ কাপ গরম জল"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 1,
-     "title": "Roast, wash, rest",
-     "bn": "ডাল ভেজে নিন",
-     "body": "Dry-roast the moong dal over medium-low heat, stirring, for 6 to 8 minutes until light golden and nutty. Wash it with the rice in two or three changes of water, drain and rest 15 minutes."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 2,
-     "title": "Fry the veg, temper the spices",
-     "bn": "সবজি ভাজা, ফোড়ন",
-     "body": "Fry potato and cauliflower in 2 tbsp ghee with a pinch of turmeric and salt for 4 to 5 minutes; lift out. Add 1 tbsp ghee, then the bay leaves, cumin, red chillies and whole spices for 30 seconds."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 3,
-     "title": "Ginger, then rice and dal",
-     "bn": "চাল-ডাল মিশিয়ে দিন",
-     "body": "Add ginger and green chillies for 1 minute, then turmeric and ground cumin with 2 tbsp water for a minute. Stir in the rice and dal for 2 to 3 minutes. Add 5 cups hot water and the salt."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 4,
-     "title": "Simmer and finish",
-     "bn": "ফুটিয়ে, ঘি দিয়ে শেষ",
-     "body": "Boil, then simmer partly covered for 15 minutes. Add the vegetables, peas, sugar and last cup of hot water; cook 10 to 12 minutes. Off the heat, stir in the last 1 tbsp ghee and rest 5 minutes."
-    },
-    {
-     "t": "end",
-     "title": "Save this for Ashtami",
-     "bn": "অষ্টমীর জন্য সেভ করে রাখুন",
-     "ask": "Save it for your Ashtami bhog"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "salt_lake",
+   "area": "Salt Lake",
+   "part": 8,
+   "next": "Kasba & Bosepukur",
+   "hook": "7 pandals · 1 night: Salt Lake Master Route",
    "caption": {
-    "en": "Bhoger khichuri recipe: the Durga Puja Ashtami bhog, cooked at home for four 🍛\n\nGobindobhog rice and dry-roasted moong dal, simmered with ghee, ginger and whole spices. No onion, no garlic. You'll need about an hour.\n\nTwo things we'd tell any first-timer. Roast the dal only to light golden, because dark dal tastes bitter. And keep hot water by the stove: pandal-style khichuri should still flow off the spoon, and it firms up as it cools.\n\nSave this for Ashtami morning 🙏",
+    "en": "Salt Lake Durga Puja 2026 route, Part 8: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: AE Block Salt Lake first, CK Block Salt Lake last. About 7.9 km and 11,576 steps on foot, roughly 2.5 hours of walking, plus the queues.\n\nBest for: Block pujas, open space.\n\nPart 9: Kasba & Bosepukur, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "bhoger khichuri recipe",
-     "durga puja khichuri",
-     "khichuri bhog",
-     "ashtami bhog recipe",
-     "kolkata durga puja bhog"
+     "salt lake durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "city centre metro"
     ],
-    "tags": "#BhogerKhichuri #DurgaPuja2026 #BengaliFood"
-   }
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   },
+   "next_zone": "kasba"
   },
   {
    "id": "r9f",
