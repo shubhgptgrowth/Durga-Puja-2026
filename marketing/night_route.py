@@ -130,6 +130,11 @@ def en_hours(h):
     return "an hour" if whole == 1 else f"{EN_WORD.get(whole, whole)} hours"
 
 
+def long_walk(pl):
+    """Over 6 hours on foot (Howrah, Behala) is a day out, not a night: the reel and the voiceover say so."""
+    return (pl.get("walk_min") or 0) > 360
+
+
 def script(pl):
     """The five voiceover lines, one per beat: [(english, bengali), ...]. English is the voiceover (the owner's call
     for route and pandal posts, 17 Oct); the Bengali is kept alongside for reference. Facts from the guide only."""
@@ -137,7 +142,8 @@ def script(pl):
     zid = pl.get("key")
     area_bn = AREA_BN.get(zid) or pl.get("title_bn") or pl["area"]
     nbn = str(n).translate(BN_NUM)
-    lines = [(f"{n} pujos in one night. The {pl['area']} master route.", f"এক রাতে {nbn}টা পুজো। {bn_of(area_bn)} মাস্টার রুট।")]
+    span, span_bn = ("one day", "এক দিনে") if long_walk(pl) else ("one night", "এক রাতে")
+    lines = [(f"{n} pujos in {span}. The {pl['area']} master route.", f"{span_bn} {nbn}টা পুজো। {bn_of(area_bn)} মাস্টার রুট।")]
     if st:
         sbn = STATION_BN.get(st.get("id")) or st["name"].replace(" Sutanuti", "").replace(" (Suburban)", "")
         where = "মেট্রোয়" if st.get("line") in LINE_RGB else "স্টেশনে"
@@ -437,7 +443,7 @@ def header_layer(pl, art=None):
     d.text((W // 2, 226), brand, font=f, fill=GOLD, anchor="mm")
     d.line((W // 2 - bw / 2 - 90, 226, W // 2 - bw / 2 - 20, 226), fill=GOLD + (150,), width=2)
     d.line((W // 2 + bw / 2 + 20, 226, W // 2 + bw / 2 + 90, 226), fill=GOLD + (150,), width=2)
-    when = "EVENING" if "evening" in (pl.get("hook") or "").lower() else "NIGHT"
+    when = "EVENING" if "evening" in (pl.get("hook") or "").lower() else "DAY" if long_walk(pl) else "NIGHT"
     parts = [(f"{n}", RED), (" PANDALS · ", WHITE), ("1", RED), (f" {when}", WHITE)]  # English first (owner, 17 Oct)
     fb = F("display", 124)
     tw = sum(d.textlength(s, font=fb) for s, _ in parts)

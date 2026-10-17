@@ -416,27 +416,27 @@
    }
   },
   {
-   "id": "r5n",
+   "id": "r9n",
    "type": "reel",
    "at": "11:30",
    "render": "route",
    "style": "night",
-   "zone": "southwest",
-   "area": "Behala & New Alipore",
-   "part": 5,
-   "next": "Lake Town & Dum Dum",
-   "hook": "16 pandals · 1 night: Behala & New Alipore Master Route",
+   "zone": "kasba",
+   "area": "Kasba & Bosepukur",
+   "part": 9,
+   "next": "Jadavpur & Santoshpur",
+   "hook": "5 pandals · 1 night: Kasba & Bosepukur Master Route",
    "caption": {
-    "en": "Behala & New Alipore Durga Puja 2026 route, Part 5: 16 pandals in one night 🚶\n\nGet off at Behala Bazar Metro and follow the red line: Behala 11 Pally Club first, Suruchi Sangha last. About 20.3 km and 29,716 steps on foot, roughly 6.4 hours of walking, plus the queues.\n\nBest for: Behala's art-trail pujas.\n\nPart 6: Lake Town & Dum Dum, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Kasba & Bosepukur Durga Puja 2026 route, Part 9: 5 pandals in one night 🚶\n\nGet off at Kavi Sukanta Metro and follow the red line: Purbachal Sarbojanin first, Bosepukur Sitala Mandir last. About 4.0 km and 5,774 steps on foot, roughly 1.2 hours of walking, plus the queues.\n\nBest for: Bold theme pandals.\n\nPart 10: Jadavpur & Santoshpur, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "behala durga puja route",
+     "kasba durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "behala bazar metro"
+     "kavi sukanta metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    },
-   "next_zone": "lake_town_dumdum"
+   "next_zone": "jadavpur_santoshpur"
   },
   {
    "id": "p3",
@@ -719,27 +719,27 @@
    }
   },
   {
-   "id": "r6n",
+   "id": "r10n",
    "type": "reel",
    "at": "17:20",
    "render": "route",
    "style": "night",
-   "zone": "lake_town_dumdum",
-   "area": "Lake Town & Dum Dum",
-   "part": 6,
-   "next": "Bhowanipore & Elgin",
-   "hook": "7 pandals · 1 night: Lake Town & Dum Dum Master Route",
+   "zone": "jadavpur_santoshpur",
+   "area": "Jadavpur & Santoshpur",
+   "part": 10,
+   "next": "Tollygunge & Naktala",
+   "hook": "9 pandals · 1 night: Jadavpur & Santoshpur Master Route",
    "caption": {
-    "en": "Lake Town & Dum Dum Durga Puja 2026 route, Part 6: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: Sreebhumi Sporting Club first, Arjunpur Amra Sabai Club last. About 7.0 km and 10,277 steps on foot, roughly 2.2 hours of walking, plus the queues.\n\nBest for: Sreebhumi and the north-east giants.\n\nPart 7: Bhowanipore & Elgin, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "en": "Jadavpur & Santoshpur Durga Puja 2026 route, Part 10: 9 pandals in one night 🚶\n\nGet off at Kavi Nazrul Metro and follow the red line: Kendua Shanti Sangha first, Mukundapur Sarbojanin last. About 12.9 km and 18,846 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Quieter south-east pujas.\n\nPart 11: Tollygunge & Naktala, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "lake town durga puja route",
+     "jadavpur durga puja route",
      "pandal hopping route kolkata",
      "durga puja 2026 kolkata",
-     "city centre metro"
+     "kavi nazrul metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    },
-   "next_zone": "bhowanipore"
+   "next_zone": "tolly_naktala"
   },
   {
    "id": "r5",

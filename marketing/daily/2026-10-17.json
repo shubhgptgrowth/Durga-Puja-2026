@@ -454,7 +454,6 @@
    "hook": "17 pandals · 1 night: North Kolkata Master Route",
    "caption": {
     "en": "North Kolkata Durga Puja 2026 route, Part 1: 17 pandals in one night 🚶\n\nGet off at Sovabazar Metro and follow the red line: Ahiritola Sarbojanin first, Lalabagan Nabankur last. About 11.3 km and 16,467 steps on foot, roughly 3.5 hours of walking, plus the queues.\n\nBest for: Heritage, bonedi bari, Kumartuli.\n\nPart 2: Central Kolkata, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "কুমোরটুলি, বাগবাজার ও হাতিবাগান: ১৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "north kolkata durga puja route",
      "pandal hopping route kolkata",
@@ -861,198 +860,50 @@
    ]
   },
   {
-   "id": "r6v",
+   "id": "r3n",
    "type": "reel",
    "at": "19:40",
-   "hook": "Going to Mohammad Ali Park this year?",
-   "segments": [
-    [
-     "pr-md_ali_park-0",
-     0,
-     4.0,
-     "",
-     0.5
-    ],
-    [
-     "pr-md_ali_park-1",
-     0,
-     3.4,
-     "10 min walk from Mahatma Gandhi Road Metro",
-     0.5
-    ],
-    [
-     "pr-md_ali_park-0",
-     0,
-     3.4,
-     "Hop next: Young Boys Club, 7 min",
-     0.68
-    ]
-   ],
-   "end": [
-    "Is it on your list this year?",
-    "Tell us in the comments"
-   ],
-   "music": [
-    "f21",
-    110
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "south_lakemarket",
+   "area": "Lake Market & Kalighat",
+   "part": 3,
+   "next": "Gariahat & Ballygunge",
+   "hook": "15 pandals · 1 night: Lake Market & Kalighat Master Route",
    "caption": {
-    "en": "Mohammad Ali Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA Central Avenue giant known for lavish replicas and theme pandals.\n\nIt's 10 minutes' walk from Mahatma Gandhi Road Metro, and Young Boys Club is 7 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Lake Market & Kalighat Durga Puja 2026 route, Part 3: 15 pandals in one night 🚶\n\nGet off at Kalighat Metro and follow the red line: Badamtala Ashar Sangha first, Tollygunge Santi Pally last. About 13.0 km and 18,913 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Heavyweight pujas close together.\n\nPart 4: Gariahat & Ballygunge, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "mohammad ali park durga puja 2026",
-     "mohammad ali park pandal",
-     "college street & sealdah pandals",
-     "kolkata durga puja 2026"
+     "lake market durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "kalighat metro"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   },
+   "next_zone": "south_gariahat"
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "r4n",
+   "type": "reel",
    "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Recipe · Serves 4",
-     "title": "Luchi and alur dom for Ashtami morning",
-     "bn": "অষ্টমীর সকালে লুচি-আলুর দম",
-     "sub": "No onion, no garlic, about 20 luchi",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/89/Alur_dom_%26_luchi.jpg",
-      "artist": "Rocky Masum",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 1 of 2",
-     "title": "Dough, potatoes, oil",
-     "bn": "ময়দা, আলু, তেল",
-     "items": [
-      [
-       "2 cups (250 g) maida",
-       "ময়দা"
-      ],
-      [
-       "2 tbsp ghee or oil, for the dough",
-       "ময়ানের ঘি বা তেল"
-      ],
-      [
-       "½ tsp salt and ½ tsp sugar, for the dough",
-       "নুন আর চিনি"
-      ],
-      [
-       "About ½ cup (120 ml) water, plus 1 to 2 tbsp",
-       "জল"
-      ],
-      [
-       "Oil for deep-frying, about 2 to 3 cups",
-       "ভাজার তেল"
-      ],
-      [
-       "500 g baby potatoes (or 4 medium, quartered)",
-       "ছোট আলু"
-      ],
-      [
-       "3 tbsp mustard oil or neutral oil",
-       "সর্ষের তেল"
-      ],
-      [
-       "2 medium tomatoes, puréed (optional)",
-       "টমেটো (ইচ্ছে হলে)"
-      ]
-     ]
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 2 of 2",
-     "title": "The spices",
-     "bn": "মশলাপাতি",
-     "items": [
-      [
-       "1 tsp cumin seeds and 2 bay leaves",
-       "জিরে আর তেজপাতা"
-      ],
-      [
-       "2 dried red chillies and a pinch of hing",
-       "শুকনো লঙ্কা আর হিং"
-      ],
-      [
-       "1½ tbsp ginger paste, 2 green chillies, slit",
-       "আদা বাটা, কাঁচা লঙ্কা"
-      ],
-      [
-       "1 tsp each ground turmeric, cumin, coriander",
-       "হলুদ, জিরে, ধনে গুঁড়ো"
-      ],
-      [
-       "1 tsp Kashmiri red chilli powder",
-       "কাশ্মীরি লঙ্কা গুঁড়ো"
-      ],
-      [
-       "1 tsp salt and 1½ tsp sugar",
-       "নুন আর চিনি"
-      ],
-      [
-       "½ tsp garam masala powder and 1 tsp ghee",
-       "গরমমশলা আর ঘি"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 1,
-     "title": "A firm, rested dough",
-     "bn": "শক্ত করে ময়দা মাখুন",
-     "body": "Mix the maida, salt and sugar and rub in 2 tbsp ghee. Add water a little at a time and knead 5 to 6 minutes into a smooth, firm dough. Cover with a damp cloth and rest 30 minutes."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 2,
-     "title": "Boil and fry the potatoes",
-     "bn": "আলু সেদ্ধ করে ভাজুন",
-     "body": "Boil the potatoes 12 to 15 minutes, peel and prick. Fry in 3 tbsp oil with a pinch of turmeric for 5 to 6 minutes; lift out. Crackle the cumin, bay leaves, chillies and hing for 30 seconds."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 3,
-     "title": "Simmer the dom",
-     "bn": "দমে বসান",
-     "body": "Cook ginger, green chillies and the ground spices with 3 tbsp water for 3 to 4 minutes, till the oil separates. Add tomato if using. Add potatoes, salt, sugar, 1 cup hot water; simmer covered 10 minutes."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 4,
-     "title": "Roll and fry the luchi",
-     "bn": "লুচি বেলে ভাজুন",
-     "body": "Make 20 balls and roll each to about 10 cm and 2 mm, with oil, not dry flour. Fry one at a time at about 180°C, pressing it under the oil till it puffs. Keep it pale. Serve at once."
-    },
-    {
-     "t": "end",
-     "title": "After anjali, this is breakfast",
-     "bn": "অঞ্জলির পরে গরম লুচি",
-     "ask": "Save it for Ashtami morning"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "south_gariahat",
+   "area": "Gariahat & Ballygunge",
+   "part": 4,
+   "next": "Behala & New Alipore",
+   "hook": "13 pandals · 1 night: Gariahat & Ballygunge Master Route",
    "caption": {
-    "en": "Luchi and alur dom recipe, the Durga Puja Ashtami breakfast after anjali, with no onion or garlic 🪔\n\nMany families fast on Ashtami morning, offer pushpanjali, then come home to puffed white luchi and a ginger-spiced potato curry. It's festive and rice-free. That suits homes that avoid rice until the puja is done, though customs vary.\n\nWant luchi that puff? Keep the dough firm and rested, roll with oil instead of dry flour, and fry one at a time at about 180°C. Then eat them the moment they come out.\n\nSave this for Ashtami morning 🙏",
+    "en": "Gariahat & Ballygunge Durga Puja 2026 route, Part 4: 13 pandals in one night 🚶\n\nGet off at Ballygunge Junction station and follow the red line: Gariahat Sarbojanin Durgotsab first, 71 Pally Baishakhi Sarbojanin last. About 11.5 km and 16,724 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Ekdalia, Singhi Park, shopping.\n\nPart 5: Behala & New Alipore, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "luchi alur dom",
-     "luchi recipe",
-     "niramish alur dom",
-     "ashtami breakfast",
-     "durga puja breakfast kolkata"
+     "gariahat durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "ballygunge junction station"
     ],
-    "tags": "#LuchiAlurDom #DurgaPuja2026 #BengaliFood"
-   }
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   },
+   "next_zone": "southwest"
   },
   {
    "id": "r9f",
