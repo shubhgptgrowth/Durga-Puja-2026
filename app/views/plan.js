@@ -310,7 +310,9 @@ function resultHtml(plan) {
     </section>
     <div class="mode-row"><span class="mode-q">${t('mode.q')}</span>${modeChips()}</div>
     <ol class="timeline">${tl.join('')}</ol>
-    ${directionsHtml(plan)}`;
+    ${directionsHtml(plan)}
+    <section class="plan-send"><p>${t('plan.waEndQ')}</p>
+      <a class="btn wa block" id="planWaEnd" target="_blank" rel="noopener" href="${waUrl(waPlanText(plan))}">${t('plan.waSend')}</a></section>`;
 }
 
 /* Directions for the whole route: Google Maps with every stop in order. Google allows only 3 stops in between
@@ -366,6 +368,7 @@ function wire(el, plan) {
     if (e.target.closest('#planWalk')) { go('me'); if (!walking()) startWalk(); return; }
     if (e.target.closest('#planShare')) return share(plan);
     if (e.target.closest('#planWa')) track('share', { d: 'wa_plan' });
+    if (e.target.closest('#planWaEnd')) track('share', { d: 'wa_plan_end' });
   };
   const f = $('#planForm', el);
   if (f) {
