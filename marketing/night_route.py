@@ -6,13 +6,13 @@ map, with the area's best-known pandals lit up as photo medallions and a walker 
     python -m marketing.night_route --zone north --still 0 --out cover.jpg      # one frame (0 = the cover)
     python -m marketing.night_route --zone north --area "North Kolkata" --script  # the voiceover script, 5 lines
 
-Frame 1 is the cover: "১৭টা পুজো · ১ রাতে" (the count from the guide), "<Area> Master Route" over a faded pujo photo,
+Frame 1 is the cover: "17 PANDALS · 1 NIGHT" (the count from the guide), "<Area> Master Route" over a faded pujo photo,
 the whole route glowing from the Metro start, the medallions and the walker. The camera then zooms in on the Metro and
 follows the walker as the route redraws stop by stop along a smooth line (each stop ripples as it is reached, a card
 names it with its photo and the distance so far, a bar counts the stops), pulls back out to the full lit route with
 the walk's steps and hours, and ends on "Save this route" and "Comment PUJO" over the blurred map.
 
-Voiceover: five lines per reel (script() writes them, in Bengali with an English gloss), recorded one file per line as
+Voiceover: five lines per reel (script() writes them, in English, with the Bengali alongside for reference), recorded one file per line as
 marketing/vo/night/<zone>/1.m4a ... 5.m4a (mp3, wav, ogg and aac work too). When they are there, each beat lasts as
 long as its line and the dhak drops under the voice; without them the reel runs on the dhak alone. Every number comes
 from app/data/guide.json; the photos are the pandals' own Wikimedia Commons photos (credited on the end frame with the
@@ -118,40 +118,49 @@ def bn_hours(h):
     return BN_WORD.get(whole, str(whole).translate(BN_NUM))
 
 
+EN_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
+def en_hours(h):
+    """3.5 -> 'three and a half hours', 1.5 -> 'an hour and a half', 4 -> 'four hours' (said the way people say it)."""
+    whole, frac = int(h), h - int(h)
+    if 0.25 <= frac < 0.75:
+        return "an hour and a half" if whole == 1 else f"{EN_WORD.get(whole, whole)} and a half hours"
+    whole = max(1, round(h))
+    return "an hour" if whole == 1 else f"{EN_WORD.get(whole, whole)} hours"
+
+
 def script(pl):
-    """The five voiceover lines, one per beat: [(bengali, english gloss), ...]. Facts from the guide only."""
+    """The five voiceover lines, one per beat: [(english, bengali), ...]. English is the voiceover (the owner's call
+    for route and pandal posts, 17 Oct); the Bengali is kept alongside for reference. Facts from the guide only."""
     n, order, st = len(pl["order"]), pl["order"], pl["station"]
     zid = pl.get("key")
     area_bn = AREA_BN.get(zid) or pl.get("title_bn") or pl["area"]
     nbn = str(n).translate(BN_NUM)
-    lines = [(f"এক রাতে {nbn}টা পুজো। {bn_of(area_bn)} মাস্টার রুট।", f"{n} pujos in one night. The {pl['area']} master route.")]
+    lines = [(f"{n} pujos in one night. The {pl['area']} master route.", f"এক রাতে {nbn}টা পুজো। {bn_of(area_bn)} মাস্টার রুট।")]
     if st:
         sbn = STATION_BN.get(st.get("id")) or st["name"].replace(" Sutanuti", "").replace(" (Suburban)", "")
-        if st.get("line") in LINE_RGB:
-            lines.append((f"{sbn} মেট্রোয় নেমে পড়ুন, তারপর শুধু লাল লাইনটা ধরে হাঁটুন।",
-                          f"Get off at {station_name(st)}, then just follow the red line."))
-        else:
-            lines.append((f"{sbn} স্টেশনে নেমে পড়ুন, তারপর শুধু লাল লাইনটা ধরে হাঁটুন।",
-                          f"Get off at {station_name(st)}, then just follow the red line."))
+        where = "মেট্রোয়" if st.get("line") in LINE_RGB else "স্টেশনে"
+        lines.append((f"Get off at {station_name(st)}, then just follow the red line.",
+                      f"{sbn} {where} নেমে পড়ুন, তারপর শুধু লাল লাইনটা ধরে হাঁটুন।"))
     else:
-        lines.append(("শুধু লাল লাইনটা ধরে হাঁটুন।", "Just follow the red line."))
+        lines.append(("Just follow the red line.", "শুধু লাল লাইনটা ধরে হাঁটুন।"))
     mid = [order[i] for i in pl["lit"] if 0 < i < n - 1][:3]
     first, last = order[0], order[-1]
     if mid:
         mids_bn = ", ".join(bn_name(p) for p in mid[:-1]) + (" আর " if len(mid) > 1 else "") + bn_name(mid[-1])
         mids_en = ", ".join(short_name(p) for p in mid[:-1]) + (" and " if len(mid) > 1 else "") + short_name(mid[-1])
-        lines.append((f"শুরু {bn_name(first)} দিয়ে। পথে {mids_bn}। শেষ স্টপ {bn_name(last)}।",
-                      f"Start at {short_name(first)}. On the way, {mids_en}. Last stop, {short_name(last)}."))
+        lines.append((f"Start at {short_name(first)}. On the way, {mids_en}. Last stop, {short_name(last)}.",
+                      f"শুরু {bn_name(first)} দিয়ে। পথে {mids_bn}। শেষ স্টপ {bn_name(last)}।"))
     else:
-        lines.append((f"শুরু {bn_name(first)} দিয়ে, শেষে {bn_name(last)}।", f"Start at {short_name(first)}, finish at {short_name(last)}."))
+        lines.append((f"Start at {short_name(first)}, and finish at {short_name(last)}.", f"শুরু {bn_name(first)} দিয়ে, শেষে {bn_name(last)}।"))
     km = round(pl["walk_m"] / 1000)
-    lines.append((f"সব মিলিয়ে প্রায় {str(km).translate(BN_NUM)} কিলোমিটার, {bn_hours(pl['walk_min'] / 60)} ঘণ্টার হাঁটা।",
-                  f"About {km} km in all, {round(pl['walk_min'] / 60, 1):g} hours of walking."))
+    lines.append((f"About {km} kilometres in all, {en_hours(pl['walk_min'] / 60)} of walking.",
+                  f"সব মিলিয়ে প্রায় {str(km).translate(BN_NUM)} কিলোমিটার, {bn_hours(pl['walk_min'] / 60)} ঘণ্টার হাঁটা।"))
     nxt = pl.get("next")
     nxt_bn = AREA_BN.get(pl.get("next_key")) if pl.get("next_key") else None
-    tail = f" পরের পার্টে {nxt_bn}।" if nxt_bn else ""
-    lines.append((f"রুটটা সেভ করে রাখুন।{tail} কমেন্টে ‘পুজো’ লিখুন, সব রুট পাঠিয়ে দেব।",
-                  "Save this route." + (f" Next part: {nxt}." if nxt else "") + " Comment PUJO and we'll send you every route."))
+    lines.append(("Save this route." + (f" Next up: {nxt}." if nxt else "") + " Comment PUJO and we'll send you every route.",
+                  "রুটটা সেভ করে রাখুন।" + (f" পরের পার্টে {nxt_bn}।" if nxt_bn else "") + " কমেন্টে ‘পুজো’ লিখুন, সব রুট পাঠিয়ে দেব।"))
     return lines
 
 
@@ -428,12 +437,12 @@ def header_layer(pl, art=None):
     d.text((W // 2, 226), brand, font=f, fill=GOLD, anchor="mm")
     d.line((W // 2 - bw / 2 - 90, 226, W // 2 - bw / 2 - 20, 226), fill=GOLD + (150,), width=2)
     d.line((W // 2 + bw / 2 + 20, 226, W // 2 + bw / 2 + 90, 226), fill=GOLD + (150,), width=2)
-    when = "সন্ধ্যায়" if "evening" in (pl.get("hook") or "").lower() else "রাতে"
-    parts = [(f"{n}".translate(BN_NUM), RED), ("টা পুজো · ", WHITE), ("১", RED), (f" {when}", WHITE)]
-    fb = F("bnb", 118)
+    when = "EVENING" if "evening" in (pl.get("hook") or "").lower() else "NIGHT"
+    parts = [(f"{n}", RED), (" PANDALS · ", WHITE), ("1", RED), (f" {when}", WHITE)]  # English first (owner, 17 Oct)
+    fb = F("display", 124)
     tw = sum(d.textlength(s, font=fb) for s, _ in parts)
     while tw > 920:
-        fb = F("bnb", fb.size - 4)
+        fb = F("display", fb.size - 4)
         tw = sum(d.textlength(s, font=fb) for s, _ in parts)
     x = (W - tw) / 2
     for s, c in parts:
@@ -679,7 +688,7 @@ def end_frame(pl, t, credits, map_credit, under=None):
     cx = W // 2 - 50
     d.text((cx, 520), "SAVE THIS", font=F("display", 150), fill=WHITE + (a,), anchor="mm")
     d.text((cx, 680), "ROUTE", font=F("display", 150), fill=RED + (a,), anchor="mm")
-    d.text((cx, 820), "সেভ করে রাখুন, পুজোয় কাজে লাগবে", font=F("bnb", 46), fill=CREAM + (a,), anchor="mm")
+    d.text((cx, 820), "Screenshot it for pujo night", font=F("semi", 44), fill=CREAM + (a,), anchor="mm")
     y = 940
     if pl.get("next"):
         nx = f"Part {(pl.get('part') or 1) + 1}: {pl['next']}, next"

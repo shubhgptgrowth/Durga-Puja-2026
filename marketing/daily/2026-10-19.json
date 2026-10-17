@@ -238,16 +238,6 @@
    "type": "reel",
    "at": "09:10",
    "hook": "Is your para's pujo in here?",
-   "bn": {
-    "hook": "এর মধ্যে আপনার পাড়ার পুজো আছে?",
-    "segs": [
-     "",
-     "নলিন সরকার স্ট্রিট",
-     "হাতিবাগান সার্বজনীন",
-     "জগৎ মুখার্জি পার্ক"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-kashi_bose_lane-5",
@@ -435,10 +425,9 @@
    "area": "Behala & New Alipore",
    "part": 5,
    "next": "Lake Town & Dum Dum",
-   "hook": "১৬টা পুজো · ১ রাতে: Behala & New Alipore Master Route",
+   "hook": "16 pandals · 1 night: Behala & New Alipore Master Route",
    "caption": {
     "en": "Behala & New Alipore Durga Puja 2026 route, Part 5: 16 pandals in one night 🚶\n\nGet off at Behala Bazar Metro and follow the red line: Behala 11 Pally Club first, Suruchi Sangha last. About 20.3 km and 29,716 steps on foot, roughly 6.4 hours of walking, plus the queues.\n\nBest for: Behala's art-trail pujas.\n\nPart 6: Lake Town & Dum Dum, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "বেহালা ও নিউ আলিপুর: ১৬টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "behala durga puja route",
      "pandal hopping route kolkata",
@@ -459,7 +448,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Lake Market",
      "title": "Samaj Sebi Sangha",
-     "bn": "সমাজসেবী সংঘ",
      "sub": "Pictured: 2025",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Samaj_Sebi_Sangha_Durga_Puja_in_South_Kolkata_%28Lake_View_Road%29_21.jpg",
@@ -473,21 +461,18 @@
      "t": "step",
      "kicker": "Theme 2026",
      "title": "Mahapujoy Mahanayak",
-     "bn": "মহাপুজোয় মহানায়ক",
      "body": "Uttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films. As reported; themes can change before the puja."
     },
     {
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "An elegant puja on Lake View Road with a long cultural legacy."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Kalighat, 26 min walk",
@@ -525,7 +510,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -545,16 +529,6 @@
    "type": "reel",
    "at": "13:50",
    "hook": "Which one are you seeing first?",
-   "bn": {
-    "hook": "কোনটা সবার আগে দেখবেন?",
-    "segs": [
-     "",
-     "বেহালা নতুন দল",
-     "বেহালা ফ্রেন্ডস",
-     "বড়িশা ক্লাব"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-suruchi_sangha-5",
@@ -604,11 +578,6 @@
    "id": "s2",
    "type": "story",
    "at": "14:25",
-   "bn": {
-    "segs": [
-     "কোন প্যান্ডেলে যাচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-jagat_mukherjee-5",
@@ -759,10 +728,9 @@
    "area": "Lake Town & Dum Dum",
    "part": 6,
    "next": "Bhowanipore & Elgin",
-   "hook": "৭টা পুজো · ১ রাতে: Lake Town & Dum Dum Master Route",
+   "hook": "7 pandals · 1 night: Lake Town & Dum Dum Master Route",
    "caption": {
     "en": "Lake Town & Dum Dum Durga Puja 2026 route, Part 6: 7 pandals in one night 🚶\n\nGet off at City Centre Metro and follow the red line: Sreebhumi Sporting Club first, Arjunpur Amra Sabai Club last. About 7.0 km and 10,277 steps on foot, roughly 2.2 hours of walking, plus the queues.\n\nBest for: Sreebhumi and the north-east giants.\n\nPart 7: Bhowanipore & Elgin, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "লেক টাউন ও দমদম: ৭টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "lake town durga puja route",
      "pandal hopping route kolkata",
@@ -778,16 +746,6 @@
    "type": "reel",
    "at": "18:30",
    "hook": "Rate these pandals out of 10",
-   "bn": {
-    "hook": "দশে কত দেবেন?",
-    "segs": [
-     "",
-     "সমাজসেবী সংঘ",
-     "দেশপ্রিয় পার্ক",
-     "মুদিয়ালি ক্লাব"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-ballygunge_cultural-5",
@@ -837,11 +795,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "pp-behala_friends-5",
@@ -860,15 +813,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Ballygunge Cultural Association, 2026: Jojon",
-   "bn": {
-    "hook": "বালিগঞ্জ কালচারাল অ্যাসোসিয়েশন, ২০২৬: যোজন",
-    "segs": [
-     "",
-     "থিম ২০২৬: যোজন",
-     "পরের প্যান্ডেল ২ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-ballygunge_cultural-0",
@@ -1090,16 +1034,6 @@
    "type": "reel",
    "at": "22:00",
    "hook": "All of this, a few lanes apart",
-   "bn": {
-    "hook": "সবটাই কয়েক গলির মধ্যে",
-    "segs": [
-     "",
-     "মহম্মদ আলি পার্ক",
-     "কলেজ স্কোয়ার সার্বজনীন",
-     "চালতাবাগান লোহাপট্টি"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-simla_byayam-4",
@@ -1149,11 +1083,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-samaj_sebi-5",

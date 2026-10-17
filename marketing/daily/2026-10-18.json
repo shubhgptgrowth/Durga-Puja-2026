@@ -238,16 +238,6 @@
    "type": "reel",
    "at": "09:10",
    "hook": "Rate these pandals out of 10",
-   "bn": {
-    "hook": "দশে কত দেবেন?",
-    "segs": [
-     "",
-     "মুদিয়ালি ক্লাব",
-     "ত্রিধারা সম্মিলনী",
-     "চেতলা অগ্রণী ক্লাব"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-deshapriya_park-4",
@@ -426,10 +416,9 @@
    "area": "Lake Market & Kalighat",
    "part": 3,
    "next": "Gariahat & Ballygunge",
-   "hook": "১৫টা পুজো · ১ রাতে: Lake Market & Kalighat Master Route",
+   "hook": "15 pandals · 1 night: Lake Market & Kalighat Master Route",
    "caption": {
     "en": "Lake Market & Kalighat Durga Puja 2026 route, Part 3: 15 pandals in one night 🚶\n\nGet off at Kalighat Metro and follow the red line: Badamtala Ashar Sangha first, Tollygunge Santi Pally last. About 13.0 km and 18,913 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Heavyweight pujas close together.\n\nPart 4: Gariahat & Ballygunge, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "লেক মার্কেট ও কালীঘাট: ১৫টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "lake market durga puja route",
      "pandal hopping route kolkata",
@@ -450,7 +439,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Bagbazar & Hatibagan",
      "title": "Ahiritola Sarbojanin",
-     "bn": "আহিরীটোলা সার্বজনীন",
      "sub": "Pictured: 2025",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/1/12/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_14.jpg",
@@ -464,21 +452,18 @@
      "t": "step",
      "kicker": "Theme 2026",
      "title": "Madhuri Maitrir Anweshane",
-     "bn": "মাধুরী মৈত্রীর অন্বেষণে",
      "body": "Bengal's sweets as carriers of harmony: the history and making of traditional mishti, in the puja's 87th year. As reported; themes can change before the puja."
     },
     {
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "A riverside neighbourhood puja known for large-scale theme work."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Sovabazar Sutanuti, 20 min walk",
@@ -508,7 +493,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -528,16 +512,6 @@
    "type": "reel",
    "at": "13:50",
    "hook": "All of this, a few lanes apart",
-   "bn": {
-    "hook": "সবটাই কয়েক গলির মধ্যে",
-    "segs": [
-     "",
-     "ঠাকুরপুকুর এসবি পার্ক সার্বজনীন",
-     "হরিদেবপুর অজেয় সংহতি",
-     "বেহালা ক্লাব"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-barisha_club-4",
@@ -587,11 +561,6 @@
    "id": "s2",
    "type": "story",
    "at": "14:25",
-   "bn": {
-    "segs": [
-     "কোন প্যান্ডেলে যাচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-chetla_agrani-5",
@@ -743,10 +712,9 @@
    "area": "Gariahat & Ballygunge",
    "part": 4,
    "next": "Behala & New Alipore",
-   "hook": "১৩টা পুজো · ১ রাতে: Gariahat & Ballygunge Master Route",
+   "hook": "13 pandals · 1 night: Gariahat & Ballygunge Master Route",
    "caption": {
     "en": "Gariahat & Ballygunge Durga Puja 2026 route, Part 4: 13 pandals in one night 🚶\n\nGet off at Ballygunge Junction station and follow the red line: Gariahat Sarbojanin Durgotsab first, 71 Pally Baishakhi Sarbojanin last. About 11.5 km and 16,724 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Ekdalia, Singhi Park, shopping.\n\nPart 5: Behala & New Alipore, next.\n\nComment \"PUJO\" and we'll DM you every route 👇",
-    "bn": "গড়িয়াহাট ও বালিগঞ্জ: ১৩টা পুজো, এক রাতে, পায়ে হেঁটে",
     "keywords": [
      "gariahat durga puja route",
      "pandal hopping route kolkata",
@@ -762,16 +730,6 @@
    "type": "reel",
    "at": "18:30",
    "hook": "Only Kolkata builds this for four days",
-   "bn": {
-    "hook": "চার দিনের জন্য এত কিছু, শুধু কলকাতায়",
-    "segs": [
-     "",
-     "কলেজ স্কোয়ার সার্বজনীন",
-     "চালতাবাগান লোহাপট্টি",
-     "চোরবাগান সার্বজনীন"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-simla_byayam-3",
@@ -821,11 +779,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "pp-haridevpur_ajeya-4",
@@ -844,17 +797,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Jagat Mukherjee Park, 2026: Uday Shankar",
-   "bn": {
-    "hook": "জগৎ মুখার্জি পার্ক, ২০২৬: উদয়শঙ্কর",
-    "segs": [
-     "",
-     "থিম ২০২৬: উদয়শঙ্কর",
-     "কেন যাবেন",
-     "মেট্রো থেকে ১৫ মিনিট হাঁটা",
-     "পরের প্যান্ডেল ৩ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-jagat_mukherjee-0",
@@ -1116,16 +1058,6 @@
    "type": "reel",
    "at": "22:00",
    "hook": "Save this for your pujo night",
-   "bn": {
-    "hook": "পুজোর রাতের জন্য সেভ করে রাখুন",
-    "segs": [
-     "",
-     "সিংহী পার্ক",
-     "হিন্দুস্থান পার্ক সার্বজনীন",
-     "যোধপুর পার্ক"
-    ],
-    "end": "কোনটা সেরা? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pp-ekdalia-4",
@@ -1175,11 +1107,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "pp-college_square-4",

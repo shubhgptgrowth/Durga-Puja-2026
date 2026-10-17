@@ -488,7 +488,7 @@
    "at": "11:30",
    "render": "route",
    "zone": "central",
-   "hook": "10 pandals. 10 km. One night.",
+   "hook": "10 pandals · 1 night: Central Kolkata Master Route",
    "caption": {
     "en": "College Street & Sealdah pandal hopping route for Durga Puja 2026 in Kolkata: 10 pandals, 10 km, one night 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the numbers. This is the walking order through 10 pandals in College Street & Sealdah, from Chaltabagan Lohapatty and Simla Byayam Samity to Park Street Allen Park Puja: about 10 km and 14,090 steps.\n\nEvery 2026 theme and the full route are free on our site, no sign-up.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
@@ -498,7 +498,9 @@
      "mahatma gandhi road metro"
     ],
     "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
+   },
+   "style": "night",
+   "area": "Central Kolkata"
   },
   {
    "id": "p3",
@@ -510,7 +512,6 @@
      "t": "cover",
      "kicker": "Pandal guide · College St",
      "title": "College Square Sarbojanin",
-     "bn": "কলেজ স্কোয়ার সার্বজনীন",
      "sub": "Pictured: 2022",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/9/9d/People_at_the_pandal_of_College_Square_Sarbojonin_Durgotsav_%28Durga_Puja%29_in_College_Street%2C_Kolkata%2C_West_Bengal.jpg",
@@ -524,14 +525,12 @@
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "The lighting reflected on the College Square pond is iconic at night."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Central, 15 min walk",
@@ -569,7 +568,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -647,11 +645,6 @@
    "id": "s2",
    "type": "story",
    "at": "14:25",
-   "bn": {
-    "segs": [
-     "কোন প্যান্ডেলে যাচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "fx-7705df50",
@@ -970,11 +963,6 @@
    "id": "s3",
    "type": "story",
    "at": "19:05",
-   "bn": {
-    "segs": [
-     "উত্তর না দক্ষিণ?"
-    ]
-   },
    "segments": [
     [
      "fx-9ce6f7cb",
@@ -993,15 +981,6 @@
    "type": "reel",
    "at": "19:40",
    "hook": "Going to Maddox Square this year?",
-   "bn": {
-    "hook": "এবার ম্যাডক্স স্কোয়ার যাচ্ছেন?",
-    "segs": [
-     "",
-     "কেন যাবেন",
-     "পরের প্যান্ডেল ৬ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-maddox_square-0",
@@ -1054,7 +1033,6 @@
      "t": "cover",
      "kicker": "Pandal guide · Lake Market",
      "title": "Deshapriya Park",
-     "bn": "দেশপ্রিয় পার্ক",
      "sub": "Pictured: 2017",
      "photo": {
       "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Durga_Puja_Pandal_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4501.JPG",
@@ -1068,14 +1046,12 @@
      "t": "step",
      "kicker": "Why go",
      "title": "What it's known for",
-     "bn": "কেন যাবেন",
      "body": "Once famous for the biggest Durga idol in the world, it now runs grand themes."
     },
     {
      "t": "list",
      "kicker": "Plan your visit",
      "title": "Before you go",
-     "bn": "যাওয়ার আগে",
      "items": [
       [
        "Metro: Kalighat, 20 min walk",
@@ -1113,7 +1089,6 @@
     {
      "t": "end",
      "title": "Is it on your list this year?",
-     "bn": "এবার যাচ্ছেন?",
      "ask": "Save it · tell us if you're going"
     }
    ],
@@ -1193,15 +1168,6 @@
    "type": "reel",
    "at": "22:00",
    "hook": "Going to Hindustan Club this year?",
-   "bn": {
-    "hook": "এবার হিন্দুস্থান ক্লাব যাচ্ছেন?",
-    "segs": [
-     "",
-     "কেন যাবেন",
-     "পরের প্যান্ডেল ৫ মিনিট হেঁটে"
-    ],
-    "end": "এবার যাচ্ছেন? কমেন্টে লিখুন"
-   },
    "segments": [
     [
      "pr-hindustan_club-0",
@@ -1248,11 +1214,6 @@
    "id": "s4",
    "type": "story",
    "at": "22:40",
-   "bn": {
-    "segs": [
-     "কাদের সঙ্গে বেরোচ্ছেন?"
-    ]
-   },
    "segments": [
     [
      "fx-895b5194",
