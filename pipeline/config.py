@@ -11,7 +11,8 @@ PUJA_DAYS = [
     {"id": "mahalaya", "name_bn": "মহালয়া", "name": "Mahalaya", "date": "2026-10-10", "factor": 0.35},
     {"id": "panchami", "name_bn": "পঞ্চমী", "name": "Panchami", "date": "2026-10-16", "factor": 0.6},
     {"id": "shashthi", "name_bn": "ষষ্ঠী", "name": "Shashthi", "date": "2026-10-17", "factor": 0.8},
-    {"id": "saptami", "name_bn": "সপ্তমী", "name": "Saptami", "date": "2026-10-18", "factor": 1.0},
+    # Saptami tithi begins on Saturday 17 Oct and its puja is on Sunday 18 Oct: the app greets "শুভ সপ্তমী" on both.
+    {"id": "saptami", "name_bn": "সপ্তমী", "name": "Saptami", "date": "2026-10-18", "tithi_from": "2026-10-17", "factor": 1.0},
     {"id": "ashtami", "name_bn": "অষ্টমী", "name": "Ashtami", "date": "2026-10-19", "factor": 1.1},
     {"id": "navami", "name_bn": "নবমী", "name": "Navami", "date": "2026-10-20", "factor": 1.0},
     {"id": "dashami", "name_bn": "দশমী", "name": "Dashami", "date": "2026-10-21", "factor": 0.55},

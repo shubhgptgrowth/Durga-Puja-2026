@@ -1,6 +1,6 @@
 /* Home: a simple start screen. "What would you like to do?" tasks, areas to pick, and ready-made routes. */
 import { hav, fmtCount, searchEntries } from '../core.js';
-import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, todayKey, btn, icon, bnDigits, loc, plain,
+import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, greetDay, btn, icon, bnDigits, loc, plain,
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
@@ -43,7 +43,7 @@ const span = () => { const o = { day: 'numeric' }, a = new Date(idx.day.shashthi
 /* The banner: greeting, the puja dates, and the promise with its "Plan my pujo" button. */
 function heroHtml() {
   const SLIDES = slides();
-  const today = G.data.meta.days.find((d) => d.date === todayKey());
+  const today = greetDay();
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), now = new Date(); now.setHours(0, 0, 0, 0);
   const diff = Math.round((shashthi - now) / 864e5);
   const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
