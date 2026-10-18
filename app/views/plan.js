@@ -350,7 +350,7 @@ function nextHtml(plan) {
   const st = stopsOf(plan).find((x) => !visitedToday(x.pandal)), p = st && idx.pandal[st.pandal];
   if (!p) return '';
   const tm = mode === 'car' || mode === 'auto' ? 'driving' : 'walking';
-  return `<a class="btn gold block ph-next" id="planGoNext" data-place="${p.id}" target="_blank" rel="noopener" href="${dirUrl(ll(p), tm)}">${icon('pin', 'sm')} ${t('plan.nextDir', { name: esc(nm(p)) })}</a>
+  return `<a class="btn gold block ph-next" id="planGoNext" data-place="${p.id}" target="_blank" rel="noopener" href="${pandalDirUrl(p, tm)}">${icon('pin', 'sm')} ${t('plan.nextDir', { name: esc(nm(p)) })}</a>
       <p class="ph-hint">${t('plan.dirHint')}</p>`;
 }
 
