@@ -378,7 +378,7 @@ def discover_addresses():
     for r in rows:
         lat, lng, approx = float(r["lat"]), float(r["lng"]), r.get("geo_source") == "osm-approx"
         old = prev.get(r["id"])
-        if old and abs(old["lat"] - lat) < 1e-5 and abs(old["lng"] - lng) < 1e-5 and old.get("approx") == approx:
+        if old and abs(old["lat"] - lat) < 1e-5 and abs(old["lng"] - lng) < 1e-5 and old.get("approx") == approx and "area" in old:
             out[r["id"]] = old
             continue
         q = urllib.parse.urlencode({"lat": lat, "lon": lng, "format": "jsonv2", "zoom": 18, "addressdetails": 1,
@@ -388,7 +388,9 @@ def discover_addresses():
                 a = json.load(resp).get("address", {})
             addr = _short_address(a, approx)
             if addr:
-                out[r["id"]] = {"lat": lat, "lng": lng, "approx": approx, "address": addr}
+                # "area" (no street) is what an unconfirmed pandal pin shows: the street next to a pin that is a few
+                # hundred metres out is wrong, the neighbourhood and PIN usually are not.
+                out[r["id"]] = {"lat": lat, "lng": lng, "approx": approx, "address": addr, "area": _short_address(a, True)}
         except Exception as ex:
             failed += 1
             print(f"reverse failed for {r['id']}: {ex}", file=sys.stderr)
