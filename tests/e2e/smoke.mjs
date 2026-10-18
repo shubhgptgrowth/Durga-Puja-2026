@@ -60,7 +60,9 @@ const makePng = () => page.evaluate(async () => {
 try {
   await page.goto(base);
   await page.waitForSelector('.hero');
-  must(await count('.tasks .task') === 6, 'task buttons missing on home');
+  must(await count('.tasks .task') === 4, 'four task buttons on home');
+  // Four tabs: Home, Explore, Routes, My Pujo (photos and reels open from Home and My Pujo)
+  must(await count('.tabbar .tab') === 4 && await count('.tab[data-view="moments"]') === 0, 'tab bar should have four tabs');
   must(await count('[data-hr]') === G.regions.length, 'area buttons missing on home');
   await shot('01-home');
   // Home is a launcher: an area opens Explore filtered to it; "Must-see" opens the famous list.
@@ -71,7 +73,8 @@ try {
   await page.click('.task[data-q="famous"]');
   await page.waitForSelector('#view-explore.active #explorePanel .item[data-place]');
   await page.click('.tab[data-view="home"]');
-  must(await count('#view-home .how li') === 4, 'the how-to steps should be on Home');
+  // Home stays short: no how-to list, no day-plan list or trails (they live in Routes)
+  must(await count('#view-home .how li') === 0 && await count('#view-home .dayplan') === 0 && await count('#view-home [data-trail]') === 0, 'Home should be the short version');
   // Nothing plays until someone asks for music, so the sticky radio button stays away until then
   must(!(await page.locator('#radioFab').isVisible()), 'sticky radio button should be hidden while no music plays');
   // A newcomer sees what this is and one thing to do: the promise and "Plan my pujo" in the banner, search under it
@@ -99,11 +102,25 @@ try {
   await page.locator('.radio-card').scrollIntoViewIfNeeded();
   await shot('01b-radio');
 
-  // All of Kolkata in 6 days: a day opens its timed route
-  must(await count('#view-home .dayplan [data-dayplan]') === 6, 'six day plans expected');
-  await page.click('#view-home [data-dayplan="2"]');
+  // A route for every pujo day: days already gone drop off (all six come back after the pujo), and a day opens its timed route
+  {
+    const today = await page.evaluate(() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; });
+    await page.click('.tab[data-view="plan"]');
+    await page.waitForSelector('#view-plan.active .dayplan');
+    const n = await count('#view-plan .dayplan [data-dayplan]');
+    must(today > '2026-10-21' ? n === 6 : n >= 1 && n <= 6, `day plans in Routes: ${n} on ${today}`);
+    await page.click('.tab[data-view="home"]');
+  }
+  // Today's route in one tap from Home while the pujo is on (the card is gone once it's over; then a day from Routes)
+  const tc = await count('#view-home .today-card .tc-go');
+  if (!tc) await page.click('.tab[data-view="plan"]');
+  await page.click(tc ? '#view-home .today-card .tc-go' : '#view-plan .dayplan [data-dayplan]');
   await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
-  must(await count('.timeline li[data-place]') >= 4, 'Saptami day plan should have a route');
+  must(await count('.timeline li[data-place]') >= 4, 'the day plan should have a route');
+  {   // the next pandal as one big directions button
+    const href = await page.locator('#planGoNext').getAttribute('href');
+    must(/google\.com\/maps\/dir/.test(href) && /^Directions to /.test((await page.locator('#planGoNext').innerText()).trim()), 'next-pandal directions button: ' + href);
+  }
   {   // the plan goes to WhatsApp with its stops in the message and a link that opens the same route
     const wa = decodeURIComponent(await page.locator('#planWa').getAttribute('href'));
     must(wa.startsWith('https://wa.me/?text=') && /src=wa_plan#(plan|trail)=/.test(wa) && (wa.match(/^• \d\d:\d\d /gm) || []).length >= 4, 'WhatsApp plan message: ' + wa.slice(0, 200));
@@ -244,7 +261,7 @@ try {
 
   // Moments: upload a photo at Tridhara (on-site), then like it
   await ctx.setGeolocation(at('tridhara'));
-  await page.click('.tab[data-view="moments"]');
+  await page.click('.tab[data-view="home"]'); await page.click('.task[data-q="photos"]');
   await page.waitForSelector('#fabAdd:not([hidden])');
   await page.click('#fabAdd');
   await page.waitForSelector('#upGallery');
@@ -329,7 +346,7 @@ try {
       await shot('10e-offer-featured');
     }
     await closeSheet();
-    await page.click('.tab[data-view="moments"]');
+    await page.click('.tab[data-view="home"]'); await page.click('.task[data-q="photos"]');
     await page.waitForTimeout(800);
     must(await count('#view-moments .thumb') === momentsBefore, 'menu photo leaked into Moments');
   }
@@ -423,7 +440,8 @@ try {
   const s1 = +(await page.locator('#fitSteps').innerText()).replace(/,/g, '');
   must(s1 - s0 >= 8, `motion sensor steps not counted (${s0} → ${s1})`);
   must(await page.locator('.chips [data-place="tridhara"]').count() === 1, 'visited list missing Tridhara');
-  // Badges open their own page; earned ones can be shared as a story card
+  // Badges sit folded under one line; they open their own page and earned ones can be shared as a story card
+  await page.click('details.badges-box summary');
   await page.click('[data-badge="first"]');
   await page.waitForSelector('.sheet.open .badge-pop #bdShare');
   const bdl = page.waitForEvent('download', { timeout: 8000 });
