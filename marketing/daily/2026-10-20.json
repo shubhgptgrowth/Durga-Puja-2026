@@ -447,88 +447,6 @@
    "next_zone": "howrah"
   },
   {
-   "id": "p3",
-   "type": "photo",
-   "render": "editorial",
-   "at": "12:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Behala",
-     "title": "Behala Club",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/1/19/Behala_Friends_Club_Durga_Puja_2025_32.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Tel",
-     "body": "'Oil': leaders' tussles over oil, and people's endless struggle for it. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "body": "A well-known puja in Behala."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "items": [
-      [
-       "Metro: Taratala, 17 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Naskarpur Sarbojanin, 5 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Haji Saheb, Eatelicious",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/Behala_Friends_Club_Durga_Puja_2025_22.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Behala Club, 2025"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Behala Club, Kolkata Durga Puja 2026: the theme is Tel 🪔\n\n'Oil': leaders' tussles over oil, and people's endless struggle for it. Themes are as reported and can change before the puja.\n\nIt's 17 minutes' walk from Taratala Metro, and Naskarpur Sarbojanin is 5 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "behala club durga puja 2026",
-     "behala club theme",
-     "behala & new alipore pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
    "id": "r3",
    "type": "reel",
    "at": "13:50",
@@ -605,6 +523,26 @@
    ]
   },
   {
+   "id": "rr1",
+   "type": "reel",
+   "at": "14:30",
+   "render": "route",
+   "style": "night",
+   "zone": "new_town",
+   "area": "New Town",
+   "hook": "5 pandals · 1 night: New Town Master Route",
+   "caption": {
+    "en": "New Town Durga Puja 2026 route for Navami: 5 pandals, one walk 🚶\n\nGet off at Salt Lake Sector V Metro and follow the red line: New Town AE Block Puja Committee first, Balaka Abasan Puja Committee last. About 6.3 km and 9,176 steps on foot, roughly 1.9 hours of walking, plus the queues.\n\nEvery 2026 theme and every area's route are free in our guide.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "keywords": [
+     "new town durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "salt lake sector v metro"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r4",
    "type": "reel",
    "render": "cards_reel",
@@ -625,91 +563,6 @@
     "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
    },
    "at": "15:00"
-  },
-  {
-   "id": "p4",
-   "type": "photo",
-   "render": "editorial",
-   "at": "16:10",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Navratri · Kolkata",
-     "title": "Navratri in Kolkata: garba, Golu, Ravan dahan",
-     "bn": "কলকাতায় নবরাত্রি",
-     "sub": "Your own customs, alongside the city's pujo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Vibrant_Navratri_Garba.jpg",
-      "artist": "Saurabh sirohiya",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Every community",
-     "title": "A city of many Navratris",
-     "bn": "সবার নবরাত্রি",
-     "body": "Kolkata spends the nine nights on Durga Puja, but Gujarati, Marwari, Punjabi, Bihari, Odia, Tamil and Telugu families keep their own customs alongside the pandals."
-    },
-    {
-     "t": "step",
-     "kicker": "Dussehra",
-     "title": "Ravan dahan",
-     "bn": "রাবণ দহন",
-     "body": "In recent years the city's biggest has been at Central Park, Salt Lake, by the Salt Lake Sanskritik Sansad, with effigies of Ravana, Kumbhakarna and Meghnad. Check the organisers' announcement for the date."
-    },
-    {
-     "t": "step",
-     "kicker": "Garba and dandiya",
-     "title": "Mostly ticketed nights",
-     "bn": "গরবা আর ডান্ডিয়া",
-     "body": "Run by community associations, clubs, hotels and event companies, plus private family gatherings. They're announced close to Navratri, and most run late, so a pandal visit fits in the early evening."
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Navratri_Golu_-_Dashavatara.JPG",
-      "artist": "Mandayamr",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Invited to see a Golu? Go in the evening, accept the sundal"
-    },
-    {
-     "t": "step",
-     "kicker": "Fasting",
-     "title": "Vrat while pandal hopping",
-     "bn": "উপোস করে ঠাকুর দেখা",
-     "body": "Most food around the pandals isn't vrat food, and bhog is cooked with rice, lentils and ordinary salt. Eat a vrat meal first, carry fruit, roasted makhana and water, and call pure-veg restaurants ahead."
-    },
-    {
-     "t": "step",
-     "kicker": "Dates",
-     "title": "Dussehra and Dashami",
-     "bn": "দশেরা আর দশমী",
-     "body": "Most national calendars put Dussehra a day before Bengal's Bijoya Dashami. Follow your own panchang for fasting and home rituals, and the Bengal dates for the pandals."
-    },
-    {
-     "t": "end",
-     "title": "Which custom does your family keep?",
-     "bn": "আপনার বাড়িতে কোন রীতি?",
-     "ask": "Tell us in the comments"
-    }
-   ],
-   "caption": {
-    "en": "Navratri in Kolkata during Durga Puja: garba nights, Golu, Ravan dahan and vrat food 🪔\n\nKolkata spends the nine nights on Durga Puja, but the city's Gujarati, Marwari, Punjabi, Bihari, Tamil and Telugu families keep their own customs too. In recent years the biggest Ravan dahan has been at Central Park in Salt Lake, garba and dandiya nights are mostly ticketed, and Tamil and Telugu homes keep Golu.\n\nFasting? Most pandal-side food isn't vrat food, so eat a proper vrat meal before you head out and carry fruit, makhana and water.\n\nWhat does your family keep alongside pujo? Tell us in the comments 👇",
-    "keywords": [
-     "navratri in kolkata",
-     "ravan dahan kolkata",
-     "garba in kolkata",
-     "dussehra kolkata",
-     "durga puja for non bengalis"
-    ],
-    "tags": "#NavratriKolkata #Navratri2026 #DurgaPuja2026"
-   }
   },
   {
    "id": "r12n",
@@ -856,146 +709,23 @@
    }
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "rr2",
+   "type": "reel",
    "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Recipe · Serves 4 to 6",
-     "title": "Labra, the soft mixed veg of bhog",
-     "bn": "ভোগের লাবড়া",
-     "sub": "Panch phoron, ginger, no onion or garlic",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Labra_tarkari-MA17.jpg",
-      "artist": "Rajeeb Dutta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 1 of 2",
-     "title": "Oil, spices, vegetables",
-     "bn": "তেল, ফোড়ন, সবজি",
-     "items": [
-      [
-       "3 tbsp mustard oil",
-       "সর্ষের তেল"
-      ],
-      [
-       "2 bay leaves and 2 dried red chillies",
-       "তেজপাতা, শুকনো লঙ্কা"
-      ],
-      [
-       "1 tsp panch phoron",
-       "পাঁচফোড়ন"
-      ],
-      [
-       "250 g red pumpkin, peeled, 3 cm chunks",
-       "কুমড়ো"
-      ],
-      [
-       "1 large potato (200 g), peeled, 3 cm chunks",
-       "আলু"
-      ],
-      [
-       "1 small sweet potato (120 g), peeled, 3 cm",
-       "রাঙা আলু"
-      ],
-      [
-       "1 small white radish (100 g), peeled, batons",
-       "মুলো"
-      ],
-      [
-       "1 small aubergine (150 g), 3 cm chunks",
-       "বেগুন"
-      ]
-     ]
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients 2 of 2",
-     "title": "Beans, greens and the rest",
-     "bn": "শিম, শাক আর বাকিটা",
-     "items": [
-      [
-       "6 to 8 sheem or green beans, 4 cm pieces",
-       "শিম"
-      ],
-      [
-       "1 tbsp ginger paste, 2 green chillies, slit",
-       "আদা বাটা, কাঁচা লঙ্কা"
-      ],
-      [
-       "1 tsp turmeric and 1 tsp ground cumin",
-       "হলুদ, জিরে গুঁড়ো"
-      ],
-      [
-       "1¼ tsp salt and 2 tsp sugar",
-       "নুন আর চিনি"
-      ],
-      [
-       "1 cup chopped pui shaak or spinach",
-       "পুঁই শাক"
-      ],
-      [
-       "1 tsp ghee",
-       "ঘি"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 1,
-     "title": "Cut even, smoke the oil",
-     "bn": "তেল গরম, ফোড়ন",
-     "body": "Cut the vegetables to about the same size; keep the aubergine in water. Heat the mustard oil till it just smokes, lower to medium, and crackle the bay leaves, red chillies and panch phoron for 20 to 30 seconds."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 2,
-     "title": "Hard vegetables first",
-     "bn": "শক্ত সবজি আগে",
-     "body": "Fry the potato, sweet potato and radish with a pinch of turmeric for 5 minutes. Add the pumpkin, beans and drained aubergine and stir-fry 3 to 4 minutes more."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 3,
-     "title": "Spices, then simmer",
-     "bn": "মশলা দিয়ে ঢাকা দিন",
-     "body": "Add ginger paste, green chillies, turmeric, cumin and salt with 2 tbsp water; stir 2 minutes. Pour in ½ cup water, cover and cook on low-medium 12 to 15 minutes, until the pumpkin starts to break down."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 4,
-     "title": "Greens and ghee",
-     "bn": "শাক আর ঘি",
-     "body": "Add the greens and sugar and cook uncovered 3 to 4 minutes, until wilted and moist but not watery. Stir in the ghee, turn off the heat and rest a few minutes before offering."
-    },
-    {
-     "t": "end",
-     "title": "Save this for the bhog kitchen",
-     "bn": "ভোগ রান্নার দিনে কাজে লাগবে",
-     "ask": "Save it with the khichuri recipe"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "north",
+   "area": "North Kolkata",
+   "hook": "17 pandals · 1 night: North Kolkata Master Route",
    "caption": {
-    "en": "Labra recipe: the soft mixed vegetable beside khichuri in Durga Puja bhog 🎃\n\nPumpkin, potato, sweet potato, radish, aubergine and greens, cooked with panch phoron, ginger and a little sugar until some pieces just begin to break down. No onion or garlic. About an hour.\n\nThe trick is the order. Hard vegetables go in first and soft ones after, so some hold their shape and some melt. Keep it moist, not soupy, and watch the fenugreek in the panch phoron; it turns bitter if it goes dark.\n\nSave this for your bhog day 🙏",
+    "en": "North Kolkata Durga Puja 2026 route for Navami night: 17 pandals, one walk 🚶\n\nGet off at Sovabazar Metro and follow the red line: Ahiritola Sarbojanin first, Lalabagan Nabankur last. About 11.4 km and 16,591 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Heritage, bonedi bari, Kumartuli.\n\nEvery 2026 theme and every area's route are free in our guide.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "labra recipe",
-     "labra torkari",
-     "durga puja labra",
-     "ashtami bhog recipe",
-     "kolkata durga puja bhog"
+     "north kolkata durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "sovabazar metro"
     ],
-    "tags": "#Labra #DurgaPuja2026 #BengaliFood"
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {

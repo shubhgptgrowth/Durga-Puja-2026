@@ -542,109 +542,23 @@
    "at": "15:00"
   },
   {
-   "id": "p4",
-   "type": "photo",
-   "render": "editorial",
-   "at": "16:10",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Durga Puja · Bhog",
-     "title": "Bhog: what goes on the plate and why",
-     "bn": "ভোগের থালায় কী থাকে",
-     "sub": "Offered to the goddess first, then shared with all",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/1/10/Khichiri_bhog_of_Durga_puja.jpg",
-      "artist": "AjayDas",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "What it is",
-     "title": "Food for the goddess, then for all",
-     "bn": "ভোগ মানে কী",
-     "body": "Bhog is food offered to the goddess. What remains becomes prasad, food carrying her grace, and it goes out to whoever has come. Usually vegetarian, and in many places cooked without onion or garlic."
-    },
-    {
-     "t": "list",
-     "kicker": "The classic plate",
-     "title": "Five things on the plate",
-     "bn": "ভোগের থালা",
-     "items": [
-      [
-       "Khichuri: rice and lentils, ghee, whole spices",
-       "খিচুড়ি"
-      ],
-      [
-       "Labra: pumpkin, potato, radish and greens",
-       "লাবড়া"
-      ],
-      [
-       "Beguni: aubergine fried in gram-flour batter",
-       "বেগুনি"
-      ],
-      [
-       "Chutney: sweet and sour, often tomato",
-       "চাটনি"
-      ],
-      [
-       "Payesh: rice slow-cooked in milk",
-       "পায়েস"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Why it's shared",
-     "title": "Side by side, in rows",
-     "bn": "পাশাপাশি বসে খাওয়া",
-     "body": "The sharing is the point. In a sarbojanin puja, people of every background sit down side by side for the same khichuri, often from sal-leaf plates. Nobody asks who you are."
-    },
-    {
-     "t": "step",
-     "kicker": "It varies",
-     "title": "No two pujas cook alike",
-     "bn": "সব পুজোর ভোগ এক নয়",
-     "body": "Some pujas serve plain rice, dal and chorchori instead of khichuri. Bonedi bari pujas keep their own menus, with luchi, fruit and home-made sweets. Treat the plate as typical, not fixed."
-    },
-    {
-     "t": "step",
-     "kicker": "At a pandal",
-     "title": "Can visitors eat bhog?",
-     "bn": "প্যান্ডেলে ভোগ খাবেন?",
-     "body": "Many community pujas serve bhog to visitors on Ashtami or Navami: sometimes by coupon, sometimes free, sometimes only for the para. Ask at the puja office. Accept it with your right hand, and don't waste it."
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Khichuri_With_Fried_Vegitables_-_Kojagari_Lakshmi_Puja_Offering_-_Bengali_Brahman_Family_-_Howrah_20171005173513.jpg",
-      "artist": "Biswarup Ganguly",
-      "license": "CC BY 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Khichuri, the heart of the plate"
-    },
-    {
-     "t": "end",
-     "title": "Where did you last eat bhog?",
-     "bn": "শেষ কোথায় ভোগ খেয়েছেন?",
-     "ask": "Tell us your para in the comments"
-    }
-   ],
+   "id": "rr1",
+   "type": "reel",
+   "at": "15:40",
+   "render": "route",
+   "style": "night",
+   "zone": "north",
+   "area": "North Kolkata",
+   "hook": "17 pandals · 1 night: North Kolkata Master Route",
    "caption": {
-    "en": "Durga Puja bhog in Kolkata: what goes on the plate and why it's shared 🍛\n\nKhichuri, labra, beguni, a sweet and sour chutney and payesh. That's the classic plate. It's offered to the goddess first, and what remains becomes prasad, her blessing in edible form.\n\nIn a sarbojanin puja, people of every background sit down side by side for the same khichuri, and nobody asks who you are. The menu does vary from one committee or family to another, so treat this plate as typical rather than fixed.\n\nWhich para's Ashtami bhog do you still remember? Tell us in the comments 👇",
+    "en": "North Kolkata Durga Puja 2026 route for Saptami night: 17 pandals, one walk 🚶\n\nGet off at Sovabazar Metro and follow the red line: Ahiritola Sarbojanin first, Lalabagan Nabankur last. About 11.4 km and 16,591 steps on foot, roughly 3.6 hours of walking, plus the queues.\n\nBest for: Heritage, bonedi bari, Kumartuli.\n\nEvery 2026 theme and every area's route are free in our guide.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "durga puja bhog",
-     "khichuri bhog",
-     "durga puja food",
-     "bhog prasad",
-     "kolkata durga puja"
+     "north kolkata durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "sovabazar metro"
     ],
-    "tags": "#DurgaPuja2026 #KhichuriBhog #KolkataDurgaPuja"
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {
