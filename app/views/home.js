@@ -4,15 +4,13 @@ import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, 
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
-import { showTrail, dayPlanHtml, openDayPlan, openSharedPlan, todayCardHtml, todayPlanIndex } from './plan.js';
+import { showTrail, openDayPlan, openSharedPlan, todayCardHtml, todayPlanIndex } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
-import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioCard.js';
+import { radioCard, watchCard } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
-import { carCardHtml, carClick } from '../car.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
-import { loadReels, reelsStripHtml, reelsClick, showAllReels } from '../reels.js';
-import { passCardHtml } from '../passes.js';
+import { showAllReels } from '../reels.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -86,9 +84,10 @@ function startSlides(el) {
   }, 5500);
 }
 
+// Four jobs, one tap each. Routes have the card above and their own tab; parking sits in Explore and on every pandal.
 const TASKS = [
-  ['near', 'locate'], ['plan', 'route'], ['famous', 'star'],
-  ['food', 'food'], ['park', 'car'], ['photos', 'camera'],
+  ['near', 'locate'], ['famous', 'star'],
+  ['food', 'food'], ['photos', 'camera'],
 ];
 
 function miniPandal(p, extra) {
@@ -108,7 +107,6 @@ function taskImg(k) {
     park: tilePhoto('parking'), photos: 'img/hero-2-sm.jpg' })[k] || '';
 }
 const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
-const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '' : '');
 
 /* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
  * pandal, and the facts behind the promise in one line. */
@@ -122,8 +120,6 @@ function promiseHtml(withCard = '') {
     <p class="promise">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>`;
 }
 
-// How to use the app, in order: each step opens that part of it.
-const HOW = [['plan', '🗺️'], ['famous', '🛕'], ['go', '📍'], ['share', '📸']];
 
 function render() {
   const el = $('#view-home');
@@ -148,13 +144,7 @@ function render() {
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
         ${img ? '' : `<span class="task-ic">${icon(ic)}</span>`}<span class="task-t">${t('task.' + k)}</span><span class="task-s">${t('task.' + k + 'Sub')}</span></button>`; }).join('')}</div>
     </section>
-    <div id="homeReels">${reelsStripHtml()}</div>
-    <section class="how-wrap" aria-label="${t('h.introTitle')}">
-      <p class="how-lingo">${plain(t('how.lingo'))}</p>
-      <ol class="how">${HOW.map(([q, em], i) => `<li><button type="button" data-q="${q}"><span class="how-n">${i + 1}</span><span class="how-em" aria-hidden="true">${em}</span>
-        <span class="how-tx"><b>${plain(t('how.t' + (i + 1)))}</b><span>${t('how.s' + (i + 1))}</span></span><span class="how-go" aria-hidden="true">›</span></button></li>`).join('')}</ol>
-    </section>
-    ${musicStripHtml()}`;
+`;
   $('#homeRest', el).innerHTML = `
     <section class="section"><div class="section-head"><div><h2>${plain(t('h.pickArea'))}</h2><p class="sub">${t('h.pickAreaSub')}</p></div></div>
       <div class="regions">${G.data.regions.map((r) => {
@@ -173,16 +163,7 @@ function render() {
       <div class="hscroll">${popular.map((x) => miniPandal(idx.pandal[x.place_id],
         `<span class="pill">${icon('people', 'sm')} ${t('c.lookedN', { n: fmtCount(x.people_7d) })}</span>`)).join('')}</div></section>` : ''}
 
-    <section class="section" id="dayPlans"><div class="section-head"><div><h2>${plain(t('dp.title'))}</h2><p class="sub">${t('dp.sub')}</p></div></div>
-      ${dayPlanHtml()}</section>
-
-    <section class="section"><div class="section-head"><div><h2>${plain(t('h.trails'))}</h2><p class="sub">${t('h.trailsSub')}</p></div><button class="link-btn" data-q="plan">${t('h.seeAll')}</button></div>
-      <div class="list">${G.data.itineraries.slice(0, 3).map((it) => `<div class="card trail ${trailImg(it) ? 'photo' : ''}" data-trail="${it.id}" ${btn()}>${photoBg(trailImg(it))}
-        <h3>${esc((S.prefs.lang === 'bn' && it.name_bn) || it.name)}</h3>
-        <div class="row"><span>${t('it.pandals', { n: it.pandal_count })}</span><span>${it.totals.walk_km} km</span><span>${dn(idx.day[it.day])} · ${it.start_time}</span></div></div>`).join('')}</div></section>
-
-    <div id="homeCar">${carCardHtml()}</div>
-    ${passCardHtml()}`;
+`;
   $('#homeFoot', el).innerHTML = `
     <section class="section"><div class="section-head"><div><h2>${plain(t('kn.title'))}</h2><p class="sub">${t('kn.sub')}</p></div><a class="link-btn" href="durga-puja/">${t('h.seeAll')}</a></div>
       <div class="learn">${LEARN.map(([path, key, ic]) => `<a class="learn-card" href="${path}"><span aria-hidden="true">${icon(ic)}</span><b>${t('kn.' + key)}</b></a>`).join('')}</div></section>
@@ -191,7 +172,6 @@ function render() {
 `;
 
   wire(el);
-  loadReels(() => { const r = $('#homeReels', el); if (r) r.innerHTML = reelsStripHtml(); });
 }
 
 /* "Know your pujo": links to the guide's articles (static pages, also what search engines index). */
@@ -199,22 +179,20 @@ const LEARN = [
   ['durga-puja/rituals/', 'rituals', 'diya'], ['durga-puja/rituals/pushpanjali-mantra/', 'anjali', 'flower'], ['durga-puja/what-is-durga-puja/', 'meaning', 'trident'],
   ['durga-puja/history/', 'history', 'scroll'], ['durga-puja/at-home/', 'home', 'home'], ['navratri/', 'navratri', 'sparkle'],
   ['durga-puja/food-and-bhog/', 'bhog', 'food'], ['durga-puja/bijoya-dashami-wishes/', 'wishes', 'letter'],
+  ['durga-puja/pujo-pass/', 'pass', 'star'],
 ];
 
 function wire(el) {
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
-    if (musicStripClick(e)) return;
-    if (reelsClick(e)) return;
-    if (carClick(e, () => { const c = $('#homeCar', el); if (c) c.innerHTML = carCardHtml(); })) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
     if (q === 'ownplan') return openSharedPlan(null);   // the route builder from its first step
     if (q === 'reels') return showAllReels(go);
-    if (q === 'myplan') {   // today's ready route in one tap; the day list when there isn't one
+    if (q === 'myplan') {   // today's ready route in one tap; the Routes tab when there isn't one
       const i = todayPlanIndex();
-      return i >= 0 ? openDayPlan(i) : $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return i >= 0 ? openDayPlan(i) : openSharedPlan(null);
     }
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
     if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }

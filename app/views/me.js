@@ -1,7 +1,7 @@
 /* Me: walk tracker, my pujo (visits and food), badges, history and settings. */
 import { S, G, idx, t, store, community, ll, nm, dn, esc, km, fmt, walkM, kcalFor, todayKey, savePrefs, icon, btn, loc,
 } from '../state.js';
-import { $, registerView, toast } from '../ui.js';
+import { $, registerView, toast, go } from '../ui.js';
 import { CONFIG } from '../config.js';
 import { badgeSheet } from '../badges.js';
 import { creditsHtml, wireCredits } from '../credits.js';
@@ -101,7 +101,7 @@ function nextStop() {
 /* The step counter redraws this page up to once a second while the phone moves. Typed-but-unsaved text and
  * which sections are open must survive that, and while someone is typing only the numbers are updated. */
 const drafts = {};
-const openKeys = ['profile-box', 'sync-box', 'health-sync', 'settings'];
+const openKeys = ['profile-box', 'sync-box', 'health-sync', 'settings', 'badges-box'];
 let openState = null;
 
 function liveUpdate(el, d, steps, goal) {
@@ -140,6 +140,24 @@ function render() {
     <button class="btn ${live ? 'live' : 'gold'} block" id="walkBtn">${live ? `<span class="pulse"></span> ${t('fit.tracking')}` : `${icon('walk')} ${store.get('walking', false) ? t('fit.resume') : t('fit.start')}`}</button>
     <p class="walk-status" id="walkStatus">${status}</p>
     </section>
+
+
+    <div class="pad" style="margin-top:6px"><button class="btn block story-btn" id="myCardBtn">📸 ${t('g.myCard')}</button><p class="fine center">${t('g.myCardSub')}</p></div>
+
+    <section class="section"><div class="section-head"><h2>${t('me.visited', { n: visited.length })}</h2></div>
+      ${visited.length ? `<div class="chips wrap pad">${visited.map((p) => `<button class="chip" data-place="${p.id}">${S.checkins[p.id].how === 'manual' ? '' : icon('check', 'sm')} ${esc(nm(p))}</button>`).join('')}</div>` : `<p class="fine pad">${t('me.noVisits')}</p>`}
+      ${foods.length ? `<div class="section-head" style="margin-top:14px"><h2>${t('me.ate', { n: foods.length })}</h2></div><div class="chips wrap pad">${foods.map((f) => `<button class="chip" data-place="${f.id}">${icon('food', 'sm')} ${esc(f.name)}</button>`).join('')}</div>` : ''}
+    </section>
+
+    <a class="me-photos pad-x" href="#moments" data-go="moments">${icon('camera', 'sm')} <span>${t('me.photos')}</span> <span aria-hidden="true">›</span></a>
+
+    <details class="more badges-box pad-x" ${openState?.['badges-box'] ? 'open' : ''}><summary>🏅 ${t('fit.badges')} · ${got.size}/${BADGES.length}</summary>
+      <ul class="badges">${BADGES.map((x) => `<li><button type="button" class="badge-tile ${got.has(x.id) ? 'got' : ''}" data-badge="${x.id}"><span class="em" aria-hidden="true">${x.em}</span>${esc(S.prefs.lang === 'bn' ? x.bn : x.name)}<br><small class="fine">${got.has(x.id) ? `📸 ${t('bd.tapShare')}` : t('b.' + x.id)}</small></button></li>`).join('')}</ul></details>
+
+    <section class="section"><div class="section-head"><h2>${t('fit.days')}</h2></div>
+      <ul class="rows">${rows.map(([date, r]) => `<li><span><b>${esc(dayName(date))}</b> · ${t('fit.dayRow', { n: (r.pandals || []).length })}</span><span>${t('fit.dayStats', { s: fmt(daySteps(r)), km: km(dayDist(r)) })}</span></li>`).join('') || `<li><span class="fine">${t('fit.noDays')}</span></li>`}</ul></section>
+
+    <div class="section-head pad-x" style="margin-top:22px"><h2>${t('me.more')}</h2></div>
     ${accountHtml()}
     ${profileHtml()}
     ${syncHtml()}
@@ -154,19 +172,6 @@ function render() {
         ${isIOS() || !/Android/.test(navigator.userAgent) ? iosHtml() : ''}
       </div>
     </details>
-
-    <div class="pad" style="margin-top:6px"><button class="btn block story-btn" id="myCardBtn">📸 ${t('g.myCard')}</button><p class="fine center">${t('g.myCardSub')}</p></div>
-
-    <section class="section"><div class="section-head"><h2>${t('me.visited', { n: visited.length })}</h2></div>
-      ${visited.length ? `<div class="chips wrap pad">${visited.map((p) => `<button class="chip" data-place="${p.id}">${S.checkins[p.id].how === 'manual' ? '' : icon('check', 'sm')} ${esc(nm(p))}</button>`).join('')}</div>` : `<p class="fine pad">${t('me.noVisits')}</p>`}
-      ${foods.length ? `<div class="section-head" style="margin-top:14px"><h2>${t('me.ate', { n: foods.length })}</h2></div><div class="chips wrap pad">${foods.map((f) => `<button class="chip" data-place="${f.id}">${icon('food', 'sm')} ${esc(f.name)}</button>`).join('')}</div>` : ''}
-    </section>
-
-    <section class="section"><div class="section-head"><h2>${t('fit.badges')}</h2><span class="fine">${got.size}/${BADGES.length}</span></div>
-      <ul class="badges">${BADGES.map((x) => `<li><button type="button" class="badge-tile ${got.has(x.id) ? 'got' : ''}" data-badge="${x.id}"><span class="em" aria-hidden="true">${x.em}</span>${esc(S.prefs.lang === 'bn' ? x.bn : x.name)}<br><small class="fine">${got.has(x.id) ? `📸 ${t('bd.tapShare')}` : t('b.' + x.id)}</small></button></li>`).join('')}</ul></section>
-
-    <section class="section"><div class="section-head"><h2>${t('fit.days')}</h2></div>
-      <ul class="rows">${rows.map(([date, r]) => `<li><span><b>${esc(dayName(date))}</b> · ${t('fit.dayRow', { n: (r.pandals || []).length })}</span><span>${t('fit.dayStats', { s: fmt(daySteps(r)), km: km(dayDist(r)) })}</span></li>`).join('') || `<li><span class="fine">${t('fit.noDays')}</span></li>`}</ul></section>
 
     <details class="settings" ${openState?.settings ? 'open' : ''}><summary>${t('fit.settings')}</summary>
       <form id="profileForm" class="form grid2">
@@ -191,6 +196,7 @@ function render() {
   if ($('#cPhone', el)?.value) phoneHint(el);
   const clearDrafts = (form) => form.querySelectorAll('[id]').forEach((f) => delete drafts[f.id]);
   el.onclick = async (e) => {
+    const to = e.target.closest('[data-go]'); if (to) { e.preventDefault(); return go(to.dataset.go); }
     if (e.target.closest('#cRemove')) {
       try { await community.saveProfile(null, null, false); } catch { /* offline: the flag below keeps trying on the next save */ }
       Object.assign(S.prefs, { phone: '', contactOk: false }); savePrefs(); delete drafts.cPhone;

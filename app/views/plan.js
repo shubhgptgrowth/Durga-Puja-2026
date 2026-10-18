@@ -182,7 +182,8 @@ export function todayCardHtml(compact = false) {
     <p class="tc-areas">${d.zones.map((z) => esc(zs(idx.zone[z]))).join(' + ')} · ${t('it.pandals', { n })} · ${t('tc.from', { time: d.time })}</p>
     <button type="button" class="btn primary block tc-go" data-dayplan="${i}">${t('tc.go')} ${icon('chev', 'sm')}</button>
     ${compact ? '' : `<div class="tc-alt"><button type="button" class="btn" data-q="near">${icon('locate', 'sm')} ${t('task.near')}</button>
-      <button type="button" class="btn" data-q="ownplan">${icon('route', 'sm')} ${t('tc.own')}</button></div>`}
+      <button type="button" class="btn" data-q="ownplan">${icon('route', 'sm')} ${t('tc.own')}</button></div>
+    <button type="button" class="link-btn tc-more" data-q="ownplan">${t('tc.more')} ›</button>`}
   </section>`;
 }
 
