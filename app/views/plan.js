@@ -39,7 +39,7 @@ function rideTextOf(opt, toName) {
 // Further apart than this, two stops are a ride (auto, bus or metro), not a walk through puja crowds.
 export const HOP_M = 1300;
 const hopsIn = (stops) => stops.filter((x) => x.walk_m > HOP_M);
-const form = { start: 't:kalighat', time: '17:00', stars: '4', budget: '240', brisk: false };
+const form = { start: 't:kalighat', time: '18:00', when: '', stars: '4', budget: '240', brisk: false };
 
 /* ---------------- routing ---------------- */
 function routeZone(start, pandals, clock, brisk) {
@@ -258,24 +258,50 @@ function areasHtml() {
     <div class="section-head" style="margin-top:22px"><h2>${t('wz.orTrail')}</h2></div><p class="fine pad" style="margin:-4px 0 10px">${t('h.trailsSub')}</p>
     ${trailsHtml()}`;
 }
+/* Step 2 in plain questions, each answered with one tap: which day, what time, how long, where from. The exact
+ * time, the star filter and brisk pace wait under "More options"; how you travel is asked on the route itself. */
+const TIMES = [['09:00', 'wz.morning'], ['15:00', 'wz.afternoon'], ['18:00', 'wz.evening'], ['21:00', 'wz.night']];
+const HOURS = ['120', '240', '360', '600'];
+const nowHHMM = () => { const d = new Date(), m = Math.ceil((d.getHours() * 60 + d.getMinutes()) / 15) * 15; return hhmm(Math.min(m, 23 * 60 + 45)); };
+function daysAhead() {
+  const k = todayKey(), all = G.data.meta.days;
+  const ahead = all.filter((d) => d.date >= k);
+  return ahead.length ? ahead : all;
+}
+function dayLabel(d) {
+  const k = todayKey(), tm = new Date(k + 'T00:00:00'); tm.setDate(tm.getDate() + 1);
+  const tom = `${tm.getFullYear()}-${String(tm.getMonth() + 1).padStart(2, '0')}-${String(tm.getDate()).padStart(2, '0')}`;
+  return d.date === k ? t('wz.today') : d.date === tom ? t('wz.tomorrow') : fmtDay(d);
+}
+const choice = (attr, val, on, big, small = '') => `<button type="button" class="choice" ${attr}="${val}" aria-pressed="${on}"><b>${big}</b>${small ? `<small>${small}</small>` : ''}</button>`;
 function formHtml() {
-  return `<form id="planForm" class="form wz-body">
-    <h3 class="wz-q">${t('wz.q2')}</h3>
-    <label>${t('f.day')}<select id="planDay">${G.data.meta.days.map((d) => `<option value="${d.id}" ${S.day === d.id ? 'selected' : ''}>${esc(dn(d))} · ${fmtDay(d)}</option>`).join('')}</select>
-      <span class="fine" style="font-weight:400">${t('f.dayHint')}</span></label>
-    <div class="field-l">${t('mode.q')}${modeChips()}</div>
-    <label>${t('f.start')}<button type="button" class="btn block picker-btn" id="planStartBtn">${esc(startLabel(form.start))} ${icon('chev', 'sm')}</button></label>
-    <div class="grid2">
-      <label>${t('f.time')}<input type="time" id="planTime" value="${form.time}"></label>
-      <label>${t('f.budget')}<select id="planBudget">${['120', '180', '240', '360', '720', '600'].map((v) => `<option value="${v}" ${form.budget === v ? 'selected' : ''}>${t('budget.' + v)}</option>`).join('')}</select></label>
+  const days = daysAhead();
+  if (!days.some((d) => d.id === S.day)) S.day = days[0].id;
+  const isToday = idx.day[S.day]?.date === todayKey();
+  if (form.when === 'now' && !isToday) form.when = '';
+  const times = [...(isToday ? [['now', 'wz.now']] : []), ...TIMES];
+  const ampmOf = (v) => { const h = +v.slice(0, 2); return `${h % 12 || 12} ${h < 12 ? 'am' : 'pm'}`; };
+  const here = form.start === 'me';
+  return `<form id="planForm" class="form wz-body wz-simple">
+    <h3 class="wz-q">${t('wz.qDay')}</h3>
+    <div class="choices">${days.map((d) => choice('data-wday', d.id, S.day === d.id, esc(dayLabel(d)), esc(dn(d)))).join('')}</div>
+    <h3 class="wz-q">${t('wz.qTime')}</h3>
+    <div class="choices">${times.map(([v, k]) => choice('data-wtime', v, v === 'now' ? form.when === 'now' : form.when !== 'now' && form.time === v, t(k), v === 'now' ? nowHHMM() : ampmOf(v))).join('')}</div>
+    <h3 class="wz-q">${t('wz.qLong')}</h3>
+    <div class="choices">${HOURS.map((v) => choice('data-wbud', v, form.budget === v, t('wz.h' + v))).join('')}</div>
+    <h3 class="wz-q">${t('wz.qFrom')}</h3>
+    <div class="choices one">
+      ${choice('data-wstart', 'me', here, `📍 ${t('wz.here')}`, t('wz.hereSub'))}
+      <button type="button" class="choice" id="planStartBtn" aria-pressed="${!here}"><b>🚇 ${here ? t('wz.station') : esc(startLabel(form.start))}</b><small>${t(here ? 'wz.stationSub' : 'wz.change')}</small></button>
     </div>
     <details class="more"><summary>${t('wz.more')}</summary>
       <div class="form" style="padding:10px 0 0">
+        <label>${t('f.time')}<input type="time" id="planTime" value="${form.when === 'now' ? nowHHMM() : form.time}"></label>
         <label>${t('f.stars')}<select id="planStars">${['1', '3', '4', '5'].map((v) => `<option value="${v}" ${form.stars === v ? 'selected' : ''}>${t('stars.' + v)}</option>`).join('')}</select></label>
         <label class="toggle"><input type="checkbox" id="planBrisk" ${form.brisk ? 'checked' : ''}> <span>${t('f.brisk')}</span></label>
       </div></details>
-    <div class="wz-foot"><button type="button" class="btn" data-step="1">${t('wz.back')}</button>
-      <button type="submit" class="btn primary">${icon('route')} ${t('f.build')}</button></div>
+    <button type="submit" class="btn primary block big-go">${icon('route')} ${t('f.build')}</button>
+    <button type="button" class="link-btn wz-back" data-step="1">‹ ${t('wz.back')}</button>
   </form>`;
 }
 function trailsHtml() {
@@ -400,7 +426,13 @@ function wire(el, plan) {
     if (e.target.closest('#planNext')) { if (!planSel.size) return toast(t('plan.pickZone')); step = 2; return render(); }
     if (e.target.closest('#planEdit')) { step = plan?.kind === 'custom' ? 2 : 1; return render(); }
     if (e.target.closest('#planNew')) { planSel = new Set(); step = 1; return render(); }
-    if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start, (v) => { form.start = v; keepScroll(render); });
+    if (e.target.closest('#planStartBtn')) return startPickerSheet(form.start === 'me' ? 't:kalighat' : form.start, (v) => { form.start = v; keepScroll(render); });
+    const wd = e.target.closest('[data-wday]')?.dataset.wday; if (wd) { S.day = wd; return keepScroll(render); }
+    const wt = e.target.closest('[data-wtime]')?.dataset.wtime;
+    if (wt) { form.when = wt === 'now' ? 'now' : ''; if (wt !== 'now') form.time = wt; if (form.budget === '600' && wt !== 'now' && +wt.slice(0, 2) < 16) form.budget = '360'; return keepScroll(render); }
+    const wb = e.target.closest('[data-wbud]')?.dataset.wbud;
+    if (wb) { form.budget = wb; if (wb === '600' && form.when !== 'now' && +form.time.slice(0, 2) < 16) form.time = '18:00'; return keepScroll(render); }
+    const ws = e.target.closest('[data-wstart]')?.dataset.wstart; if (ws) { form.start = ws; return keepScroll(render); }
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const tr = e.target.closest('[data-trail]')?.dataset.trail; if (tr) return showTrail(tr);
     if (e.target.closest('a')) return; // direction links open Google Maps
@@ -413,14 +445,10 @@ function wire(el, plan) {
   const f = $('#planForm', el);
   if (f) {
     f.onchange = (ev) => {
-      // Whole day starts in the morning, whole night in the evening.
-      if (ev?.target?.id === 'planBudget') {
-        const b = $('#planBudget').value, h = +($('#planTime').value || '17:00').slice(0, 2);
-        if (b === '720' && h >= 13) $('#planTime').value = '10:00';
-        if (b === '600' && h < 16) $('#planTime').value = '19:00';
-      }
-      S.day = $('#planDay').value; form.time = $('#planTime').value || '17:00'; form.stars = $('#planStars').value; form.budget = $('#planBudget').value; form.brisk = $('#planBrisk').checked; };
-    f.onsubmit = (e) => { e.preventDefault(); f.onchange(); buildCustom(); };
+      if (ev?.target?.id === 'planTime' && $('#planTime').value) { form.time = $('#planTime').value; form.when = ''; }
+      form.stars = $('#planStars').value; form.brisk = $('#planBrisk').checked;
+    };
+    f.onsubmit = (e) => { e.preventDefault(); f.onchange(); if (form.when === 'now') form.time = nowHHMM(); buildCustom(); };
   }
 }
 

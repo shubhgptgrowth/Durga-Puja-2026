@@ -400,7 +400,11 @@ try {
   await shot('10c-wizard-areas');
   await page.click('#planNext');
   await page.waitForSelector('.stepper [data-step="2"][aria-current="step"]');
-  await page.selectOption('#planBudget', '180');
+  // Step 2 is plain questions answered by taps: no dropdowns or time field until "More options" is opened
+  must(await page.locator('#planForm select:visible, #planForm input[type="time"]:visible').count() === 0, 'step 2 shows dropdowns up front');
+  await page.click('[data-wtime="18:00"]');
+  await page.click('[data-wbud="240"]');
+  must(await page.locator('[data-wbud="240"][aria-pressed="true"]').count() === 1, '4 hours not selected');
   await page.click('#planStartBtn');
   await page.fill('#pickSearch', 'kalig');
   await page.click('[data-pick="t:kalighat"]');
@@ -411,7 +415,7 @@ try {
   await page.waitForTimeout(400);
   await page.waitForSelector('.stepper [data-step="3"][aria-current="step"]');
   const stops = await count('.timeline li[data-place]');
-  must(stops >= 3, `custom 3 h Lake Market plan should fit 3+ pandals, got ${stops}`);
+  must(stops >= 3, `custom 4 h South plan should fit 3+ pandals, got ${stops}`);
   const params = await page.evaluate(() => JSON.parse(localStorage.getItem('pp:activePlan')).params);
   const enc = Buffer.from(JSON.stringify(params)).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const shared = await ctx.newPage();
