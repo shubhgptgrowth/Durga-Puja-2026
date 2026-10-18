@@ -1,0 +1,2482 @@
+{
+ "source": "Wikimedia Commons (camera locations) and OpenStreetMap via Nominatim",
+ "fetched": "2026-10-18",
+ "pandals": {
+  "bagbazar": {
+   "pin": [
+    22.604699,
+    88.366135
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Bagbazar Sarbajanin Durgotsav 01.jpg",
+     "lat": 22.604392,
+     "lng": 88.366081,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Bagbazar Sarbajanin Durgotsav 02.jpg",
+     "lat": 22.604525,
+     "lng": 88.366194,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "kumartuli_park": {
+   "pin": [
+    22.6006,
+    88.3608
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "kumartuli_sarbojanin": {
+   "pin": [
+    22.5994,
+    88.3617
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ahiritola": {
+   "pin": [
+    22.594838,
+    88.357193
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 01.jpg",
+     "lat": 22.594733,
+     "lng": 88.357217,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 02.jpg",
+     "lat": 22.594836,
+     "lng": 88.357192,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 03.jpg",
+     "lat": 22.594847,
+     "lng": 88.357239,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 05.jpg",
+     "lat": 22.594744,
+     "lng": 88.357414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 06.jpg",
+     "lat": 22.594744,
+     "lng": 88.357414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 07.jpg",
+     "lat": 22.594744,
+     "lng": 88.357414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 08.jpg",
+     "lat": 22.594744,
+     "lng": 88.357414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 09.jpg",
+     "lat": 22.594744,
+     "lng": 88.357414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 10.jpg",
+     "lat": 22.595069,
+     "lng": 88.357369,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 11.jpg",
+     "lat": 22.594986,
+     "lng": 88.357322,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ahiritola Sarbojanin in Kolkata 12.jpg",
+     "lat": 22.594836,
+     "lng": 88.357375,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "ahiritola_jubak": {
+   "pin": [
+    22.5964,
+    88.36
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sovabazar_rajbari": {
+   "pin": [
+    22.596826,
+    88.367193
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Durga Puja of Sovabazar's Nabokrishna Deb house - Panoroma 01.jpg",
+     "lat": 22.596767,
+     "lng": 88.367203,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Puja of Sovabazar's Nabokrishna Deb house 01.jpg",
+     "lat": 22.596753,
+     "lng": 88.367217,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Puja of Sovabazar's Nabokrishna Deb house 02.jpg",
+     "lat": 22.596753,
+     "lng": 88.367217,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Puja of Sovabazar's Nabokrishna Deb house 03.jpg",
+     "lat": 22.596797,
+     "lng": 88.367286,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Puja of Sovabazar's Nabokrishna Deb house 04.jpg",
+     "lat": 22.596803,
+     "lng": 88.367294,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "kashi_bose_lane": {
+   "pin": [
+    22.591006,
+    88.368965
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Kashi Bose Lane in Kolkata 13.jpg",
+     "lat": 22.590998,
+     "lng": 88.368896,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Kashi Bose Lane in Kolkata 14.jpg",
+     "lat": 22.590998,
+     "lng": 88.368896,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "nalin_sarkar": {
+   "pin": [
+    22.595346,
+    88.373396
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "hatibagan": {
+   "pin": [
+    22.5947,
+    88.3742
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Hatibagan Sarbojanin in Kolkata 01.jpg",
+     "lat": 22.594238,
+     "lng": 88.372055,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Hatibagan Sarbojanin in Kolkata 03.jpg",
+     "lat": 22.594324,
+     "lng": 88.371857,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "hatibagan_nabinpally": {
+   "pin": [
+    22.5926,
+    88.3752
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Hatibagan Sarbojanin in Kolkata 01.jpg",
+     "lat": 22.594238,
+     "lng": 88.372055,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Hatibagan Sarbojanin in Kolkata 03.jpg",
+     "lat": 22.594324,
+     "lng": 88.371857,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "jagat_mukherjee": {
+   "pin": [
+    22.601311,
+    88.366647
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Jagat Mukherjee Park 01.jpg",
+     "lat": 22.599767,
+     "lng": 88.366036,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Jagat Mukherjee Park 02.jpg",
+     "lat": 22.599439,
+     "lng": 88.365914,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 01.jpg",
+     "lat": 22.599681,
+     "lng": 88.366181,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 02.jpg",
+     "lat": 22.599394,
+     "lng": 88.365928,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 03.jpg",
+     "lat": 22.59965,
+     "lng": 88.36605,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 04.jpg",
+     "lat": 22.599636,
+     "lng": 88.366058,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 05.jpg",
+     "lat": 22.599664,
+     "lng": 88.366058,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 06.jpg",
+     "lat": 22.599833,
+     "lng": 88.366119,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 07.jpg",
+     "lat": 22.599792,
+     "lng": 88.366103,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 08.jpg",
+     "lat": 22.599789,
+     "lng": 88.366103,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 09.jpg",
+     "lat": 22.600064,
+     "lng": 88.366158,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 10.jpg",
+     "lat": 22.600064,
+     "lng": 88.366158,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 11.jpg",
+     "lat": 22.599569,
+     "lng": 88.366028,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 12.jpg",
+     "lat": 22.599681,
+     "lng": 88.366036,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Jagat Mukherjee Park in Kolkata 13.jpg",
+     "lat": 22.599664,
+     "lng": 88.366058,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Jagat Mukherjee Park in Kolkata 09.jpg",
+     "lat": 22.599669,
+     "lng": 88.365997,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Jagat Mukherjee Park in Kolkata 10.jpg",
+     "lat": 22.599669,
+     "lng": 88.365997,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Jagat Mukherjee Park in Kolkata 11.jpg",
+     "lat": 22.599669,
+     "lng": 88.365997,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Jagat Mukherjee Park in Kolkata 12.jpg",
+     "lat": 22.599669,
+     "lng": 88.365997,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal of Jagat Mukherjee Park in Kolkata 15.jpg",
+     "lat": 22.599669,
+     "lng": 88.365997,
+     "primary": true
+    }
+   ],
+   "landmark": {
+    "name": "Jagat Mukherjee Park",
+    "kind": "leisure:park",
+    "lat": 22.6013109,
+    "lng": 88.3666474
+   }
+  },
+  "tala_prattoy": {
+   "pin": [
+    22.608923,
+    88.382266
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Tala Baroari 01.jpg",
+     "lat": 22.607144,
+     "lng": 88.375983,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Tala Baroari 02.jpg",
+     "lat": 22.60715,
+     "lng": 88.375917,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Idol of Tala Baroari during Biswa Bangla Show 01.jpg",
+     "lat": 22.605008,
+     "lng": 88.374078,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Tala Baroari 01.jpg",
+     "lat": 22.607333,
+     "lng": 88.376389,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Tala Baroari 02.jpg",
+     "lat": 22.60715,
+     "lng": 88.376031,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Tala Baroari 03.jpg",
+     "lat": 22.607133,
+     "lng": 88.375917,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Tala Baroari 04.jpg",
+     "lat": 22.607186,
+     "lng": 88.375931,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Tala Baroari 05.jpg",
+     "lat": 22.607175,
+     "lng": 88.376106,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "md_ali_park": {
+   "pin": [
+    22.57724,
+    88.360737
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Mohammad Ali Park 01.jpg",
+     "lat": 22.577414,
+     "lng": 88.360894,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Mohammad Ali Park 02.jpg",
+     "lat": 22.577419,
+     "lng": 88.3609,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Mohammad Ali Park 03.jpg",
+     "lat": 22.577422,
+     "lng": 88.3609,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Mohammad Ali Park 01.jpg",
+     "lat": 22.577153,
+     "lng": 88.360917,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Mohammad Ali Park 02.jpg",
+     "lat": 22.577111,
+     "lng": 88.360878,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 01.jpg",
+     "lat": 22.577214,
+     "lng": 88.360681,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 02.jpg",
+     "lat": 22.577417,
+     "lng": 88.360772,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 03.jpg",
+     "lat": 22.577431,
+     "lng": 88.360864,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 04.jpg",
+     "lat": 22.577417,
+     "lng": 88.360894,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 05.jpg",
+     "lat": 22.577381,
+     "lng": 88.360956,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 06.jpg",
+     "lat": 22.577167,
+     "lng": 88.3609,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 07.jpg",
+     "lat": 22.577275,
+     "lng": 88.360489,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 08.jpg",
+     "lat": 22.577258,
+     "lng": 88.360481,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 09.jpg",
+     "lat": 22.577236,
+     "lng": 88.360481,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 10.jpg",
+     "lat": 22.577222,
+     "lng": 88.360589,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Mohammad Ali Park 11.jpg",
+     "lat": 22.577197,
+     "lng": 88.360703,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Panorama of Mohammad Ali Park 01.jpg",
+     "lat": 22.577311,
+     "lng": 88.360497,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "chaltabagan": {
+   "pin": [
+    22.5852,
+    88.3676
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "simla_byayam": {
+   "pin": [
+    22.5878,
+    88.3664
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja2019 - Durga Puja Pandal Chandelier of Simla Byayam Samity in Kolkata 08.jpg",
+     "lat": 22.585424,
+     "lng": 88.365143,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "college_square": {
+   "pin": [
+    22.574525,
+    88.364464
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "santosh_mitra": {
+   "pin": [
+    22.565863,
+    88.365539
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Santosh Mitra Square",
+    "kind": "leisure:park",
+    "lat": 22.5658629,
+    "lng": 88.3655387
+   }
+  },
+  "sealdah_rac": {
+   "pin": [
+    22.5645,
+    88.372
+   ],
+   "photos": [
+    {
+     "title": "File:Dhaki Bazaar - Sealdah Railway Station - Kolkata 2011-10-03 030245.JPG",
+     "lat": 22.567571,
+     "lng": 88.37015,
+     "primary": true
+    },
+    {
+     "title": "File:Dhaki Bazaar - Sealdah Railway Station - Kolkata 2011-10-03 030246.JPG",
+     "lat": 22.567583,
+     "lng": 88.370183,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "ekdalia": {
+   "pin": [
+    22.521253,
+    88.36596
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "singhi_park": {
+   "pin": [
+    22.521224,
+    88.363011
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ballygunge_cultural": {
+   "pin": [
+    22.515884,
+    88.355817
+   ],
+   "photos": [
+    {
+     "title": "File:Ballygunge Cultural Association Durga Puja 2019 IMG 20191005 221243 18.jpg",
+     "lat": 22.516073,
+     "lng": 88.355713,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ballygunge Cultural Association 01.jpg",
+     "lat": 22.516028,
+     "lng": 88.355653,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ballygunge Cultural Association 02.jpg",
+     "lat": 22.516458,
+     "lng": 88.355606,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ballygunge Cultural Association 03.jpg",
+     "lat": 22.515967,
+     "lng": 88.355728,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ballygunge Cultural Association 04.jpg",
+     "lat": 22.515975,
+     "lng": 88.355728,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ballygunge Cultural Association 05.jpg",
+     "lat": 22.515967,
+     "lng": 88.355728,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "hindustan_park": {
+   "pin": [
+    22.5155,
+    88.3606
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja Festival - Hindustan Park Kolkata October 2023.jpg",
+     "lat": 22.517769,
+     "lng": 88.362122,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "jodhpur_park": {
+   "pin": [
+    22.5085,
+    88.367
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Jodhpur Park",
+    "kind": "leisure:park",
+    "lat": 22.5052914,
+    "lng": 88.3660243
+   }
+  },
+  "babubagan": {
+   "pin": [
+    22.5087,
+    88.3734
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bosepukur_sitala": {
+   "pin": [
+    22.519163,
+    88.384741
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bosepukur_talbagan": {
+   "pin": [
+    22.5146,
+    88.3912
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "maddox_square": {
+   "pin": [
+    22.526296,
+    88.354656
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Maddox Square",
+    "kind": "leisure:park",
+    "lat": 22.5262957,
+    "lng": 88.3546561
+   }
+  },
+  "samaj_sebi": {
+   "pin": [
+    22.514736,
+    88.355999
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "shib_mandir": {
+   "pin": [
+    22.5196,
+    88.3546
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "deshapriya_park": {
+   "pin": [
+    22.518435,
+    88.353515
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Deshapriya Park",
+    "kind": "leisure:park",
+    "lat": 22.5184354,
+    "lng": 88.3535152
+   }
+  },
+  "tridhara": {
+   "pin": [
+    22.519576,
+    88.355349
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "66_pally": {
+   "pin": [
+    22.515,
+    88.3512
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "mudiali": {
+   "pin": [
+    22.510075,
+    88.346626
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "badamtala": {
+   "pin": [
+    22.517927,
+    88.344165
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "chetla_agrani": {
+   "pin": [
+    22.516451,
+    88.337126
+   ],
+   "photos": [
+    {
+     "title": "File:Chetla Agroni Club Durga Puja 2019.jpg",
+     "lat": 22.516422,
+     "lng": 88.337032,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "suruchi_sangha": {
+   "pin": [
+    22.509097,
+    88.334183
+   ],
+   "photos": [
+    {
+     "title": "File:Suruchi Sangha Durga Puja 2019.jpg",
+     "lat": 22.509368,
+     "lng": 88.334452,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "behala_notun_dal": {
+   "pin": [
+    22.4985,
+    88.3165
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_friends": {
+   "pin": [
+    22.5035,
+    88.3185
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sahajatri": {
+   "pin": [
+    22.4935,
+    88.315
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "barisha_club": {
+   "pin": [
+    22.480715,
+    88.312953
+   ],
+   "photos": [
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 02.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 03.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 04.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 05.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 06.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 07.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 08.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    },
+    {
+     "title": "File:Barisha club Durga Puja 2016 Sumita RoyDutta 09.jpg",
+     "lat": 22.48539161,
+     "lng": 88.31497192,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "fd_block": {
+   "pin": [
+    22.5878,
+    88.41
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bj_block": {
+   "pin": [
+    22.581,
+    88.416
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ae_block": {
+   "pin": [
+    22.592,
+    88.4135
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sreebhumi": {
+   "pin": [
+    22.600318,
+    88.40259
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja in Kolkata 2018 - Pandal of Sreebhumi Sporting Club 01jpg.jpg",
+     "lat": 22.598597,
+     "lng": 88.403763,
+     "primary": true
+    },
+    {
+     "title": "File:Durga Puja in Kolkata 2018 - Pandal of Sreebhumi Sporting Club 02jpg.jpg",
+     "lat": 22.598734,
+     "lng": 88.403061,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "lake_town_adhibasi": {
+   "pin": [
+    22.6045,
+    88.4045
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "dumdum_bharat_chakra": {
+   "pin": [
+    22.6185,
+    88.414
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Dum Dum Children Park",
+    "kind": "leisure:park",
+    "lat": 22.6210988,
+    "lng": 88.3978255
+   }
+  },
+  "dumdum_tarun_sangha": {
+   "pin": [
+    22.6168,
+    88.4118
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Dum Dum Children Park",
+    "kind": "leisure:park",
+    "lat": 22.6210988,
+    "lng": 88.3978255
+   }
+  },
+  "dumdum_sarbojanin": {
+   "pin": [
+    22.6155,
+    88.4152
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Dum Dum Children Park",
+    "kind": "leisure:park",
+    "lat": 22.6210988,
+    "lng": 88.3978255
+   }
+  },
+  "bhowanipore_75pally": {
+   "pin": [
+    22.532596,
+    88.345442
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "telengabagan": {
+   "pin": [
+    22.6038,
+    88.3878
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "lalabagan_nabankur": {
+   "pin": [
+    22.6048,
+    88.3768
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "rajdanga_naba_uday": {
+   "pin": [
+    22.511,
+    88.3936
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ajeya_sanghati": {
+   "pin": [
+    22.4888,
+    88.3098
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "chorbagan": {
+   "pin": [
+    22.583511,
+    88.363163
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Chorbagan Sarbojanin in Kolkata 09.jpg",
+     "lat": 22.58353,
+     "lng": 88.363197,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Chorbagan Sarbojanin in Kolkata 11.jpg",
+     "lat": 22.583485,
+     "lng": 88.36338,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "beleghata_33_pally": {
+   "pin": [
+    22.56857,
+    88.391247
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "chakraberia": {
+   "pin": [
+    22.533573,
+    88.352198
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bakulbagan": {
+   "pin": [
+    22.526819,
+    88.347954
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "kalighat_milan_sangha": {
+   "pin": [
+    22.524509,
+    88.341076
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "hindustan_club": {
+   "pin": [
+    22.519509,
+    88.360593
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 01.jpg",
+     "lat": 22.517692,
+     "lng": 88.361703,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 02.jpg",
+     "lat": 22.517692,
+     "lng": 88.361703,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 03.jpg",
+     "lat": 22.517678,
+     "lng": 88.361725,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 06.jpg",
+     "lat": 22.517717,
+     "lng": 88.362053,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 07.jpg",
+     "lat": 22.517719,
+     "lng": 88.362069,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 08.jpg",
+     "lat": 22.517731,
+     "lng": 88.362039,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Hindustan Park 11.jpg",
+     "lat": 22.517686,
+     "lng": 88.361839,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "santoshpur_lake_pally": {
+   "pin": [
+    22.491427,
+    88.383691
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "naktala_udayan": {
+   "pin": [
+    22.474491,
+    88.366575
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_club": {
+   "pin": [
+    22.505368,
+    88.314285
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "salt_lake_ck": {
+   "pin": [
+    22.585925,
+    88.426757
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "salt_lake_ee": {
+   "pin": [
+    22.580125,
+    88.42366
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "salt_lake_ia": {
+   "pin": [
+    22.572882,
+    88.410768
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "gariahat_sarbojanin_durgotsab": {
+   "pin": [
+    22.517351,
+    88.366752
+   ],
+   "photos": [
+    {
+     "title": "File:Durga Puja Festival - Hindustan Park Kolkata October 2023.jpg",
+     "lat": 22.517769,
+     "lng": 88.362122,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "gouribari_sarbojanin": {
+   "pin": [
+    22.594579,
+    88.379144
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "taltala_sarbojanin": {
+   "pin": [
+    22.554545,
+    88.362175
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "adi_sammilati_sarbojanin": {
+   "pin": [
+    22.546751,
+    88.369107
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "hazra_park_durgotsab": {
+   "pin": [
+    22.524838,
+    88.346141
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bhowanipore_durgotsab": {
+   "pin": [
+    22.526289,
+    88.351521
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "adi_ballygunge_sarbojanin": {
+   "pin": [
+    22.531728,
+    88.372075
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "64_pally_durga_pujo": {
+   "pin": [
+    22.520603,
+    88.347451
+   ],
+   "photos": [
+    {
+     "title": "File:Kolkata Durga Puja Pandal Interior.jpg",
+     "lat": 22.557,
+     "lng": 88.341,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "rupchand_mukherjee_sarbojanin": {
+   "pin": [
+    22.527449,
+    88.345151
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sanghati_puja_samiti": {
+   "pin": [
+    22.502811,
+    88.359434
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "golmath_durga_puja_samiti": {
+   "pin": [
+    22.526931,
+    88.349544
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "alipore_sarbojanin": {
+   "pin": [
+    22.519627,
+    88.333657
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "r_k_chatterjee_sarbojanin": {
+   "pin": [
+    22.517684,
+    88.378263
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "purbachal_sarbojanin": {
+   "pin": [
+    22.506087,
+    88.39853
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "madhya_garfa_sarbojanin": {
+   "pin": [
+    22.502581,
+    88.385356
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "dhakuria_sarbojanin": {
+   "pin": [
+    22.510028,
+    88.371987
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "shahidnagar_sarbojanin": {
+   "pin": [
+    22.504606,
+    88.37334
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "mukundapur_sarbojanin": {
+   "pin": [
+    22.491794,
+    88.404764
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "poddar_nagar_sarbojanin": {
+   "pin": [
+    22.498238,
+    88.369253
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "pallishree_sarbojanin": {
+   "pin": [
+    22.485342,
+    88.36539
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "rabindra_pally_sarbojanin": {
+   "pin": [
+    22.482534,
+    88.382409
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "patyuli_sarbojanin": {
+   "pin": [
+    22.472309,
+    88.381175
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sahapur_sarbojanin": {
+   "pin": [
+    22.51163,
+    88.328018
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "naskarpur_sarbojanin": {
+   "pin": [
+    22.507105,
+    88.312287
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bakultala_sarbojanin": {
+   "pin": [
+    22.484073,
+    88.299267
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "notunpara_sarbojanin": {
+   "pin": [
+    22.484426,
+    88.306742
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bhola_maheshwartala_sarbojanin": {
+   "pin": [
+    22.480845,
+    88.308844
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "kidderpore_sarbojanin": {
+   "pin": [
+    22.538423,
+    88.324918
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "durga_pujo_ground": {
+   "pin": [
+    22.584193,
+    88.404134
+   ],
+   "photos": [
+    {
+     "title": "File:Kolkata Durga Puja Pandal Interior.jpg",
+     "lat": 22.557,
+     "lng": 88.341,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "kashipur_durga_utshab_committee": {
+   "pin": [
+    22.605757,
+    88.310231
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bansdroni_sarbojaneen_durgotsav_park": {
+   "pin": [
+    22.474364,
+    88.358132
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Bansdroni Sarbojaneen Durgotsav Park",
+    "kind": "leisure:park",
+    "lat": 22.4743694,
+    "lng": 88.3580979
+   }
+  },
+  "ultadanga_sangrami": {
+   "pin": [
+    22.596128,
+    88.385283
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Ultadanga Pallyshree 01.jpg",
+     "lat": 22.595628,
+     "lng": 88.384858,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Ultadanga Pallyshree 02.jpg",
+     "lat": 22.595694,
+     "lng": 88.384681,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ultadanga Pallyshree 03.jpg",
+     "lat": 22.595769,
+     "lng": 88.384614,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 16.jpg",
+     "lat": 22.595853,
+     "lng": 88.384628,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 17.jpg",
+     "lat": 22.595819,
+     "lng": 88.384628,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 18.jpg",
+     "lat": 22.595772,
+     "lng": 88.384497,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 19.jpg",
+     "lat": 22.595903,
+     "lng": 88.384414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 03.jpg",
+     "lat": 22.596,
+     "lng": 88.384217,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 12.jpg",
+     "lat": 22.595883,
+     "lng": 88.384439,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 13.jpg",
+     "lat": 22.595911,
+     "lng": 88.384469,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "dumdum_tarun_dal": {
+   "pin": [
+    22.611424,
+    88.41019
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Dum Dum Children Park",
+    "kind": "leisure:park",
+    "lat": 22.6210988,
+    "lng": 88.3978255
+   }
+  },
+  "arjunpur_amra_sabai": {
+   "pin": [
+    22.619963,
+    88.424808
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "sanghasree": {
+   "pin": [
+    22.515331,
+    88.347705
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "jodhpur_park_95": {
+   "pin": [
+    22.505606,
+    88.363674
+   ],
+   "photos": [],
+   "landmark": {
+    "name": "Jodhpur Park",
+    "kind": "leisure:park",
+    "lat": 22.5052914,
+    "lng": 88.3660243
+   }
+  },
+  "selimpur_pally": {
+   "pin": [
+    22.505351,
+    88.381208
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "santoshpur_trikon_park": {
+   "pin": [
+    22.496048,
+    88.38223
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "purbachal_shakti_sangha": {
+   "pin": [
+    22.502355,
+    88.396738
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "thakurpukur_sb_park": {
+   "pin": [
+    22.462537,
+    88.315526
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "haridevpur_ajeya": {
+   "pin": [
+    22.465295,
+    88.331128
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "shibpur_mandirtala": {
+   "pin": [
+    22.569708,
+    88.317636
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "shyam_square": {
+   "pin": [
+    22.600828,
+    88.368332
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "young_boys_club": {
+   "pin": [
+    22.578883,
+    88.356965
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "baguiati_rail_pukur": {
+   "pin": [
+    22.609668,
+    88.427683
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "allen_park": {
+   "pin": [
+    22.547115,
+    88.360503
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_11_pally": {
+   "pin": [
+    22.499917,
+    88.32215
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_yma": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "71_pally_baishakhi": {
+   "pin": [
+    22.528034,
+    88.365908
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "obosor_sarbojanin": {
+   "pin": [
+    22.532584,
+    88.345443
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "lake_gardens_peoples": {
+   "pin": [
+    22.505968,
+    88.356109
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "tollygunge_santi_pally": {
+   "pin": [
+    22.498636,
+    88.345391
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "barisha_sarbojanin": {
+   "pin": [
+    22.479989,
+    88.308078
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "belur_math": {
+   "pin": [
+    22.6325,
+    88.356
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "kendua_shanti_sangha": {
+   "pin": [
+    22.468,
+    88.382
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bally_deshbandhu": {
+   "pin": [
+    22.646958,
+    88.343612
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bally_pal_para": {
+   "pin": [
+    22.6485,
+    88.3455
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "liluah_siy": {
+   "pin": [
+    22.620903,
+    88.339404
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ihe_housing_puja": {
+   "pin": [
+    22.563894,
+    88.288606
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "salkia_61_pally": {
+   "pin": [
+    22.5975,
+    88.351
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "uttar_kolkata_sarbojanin": {
+   "pin": [
+    22.582298,
+    88.366287
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bagmari_kabiraj_bagan": {
+   "pin": [
+    22.584113,
+    88.385407
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "maniktala_vivekananda_sporting": {
+   "pin": [
+    22.58809,
+    88.385283
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "shyambazar_nabin_sangha": {
+   "pin": [
+    22.598694,
+    88.375501
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ultadanga_bidhan_sangha": {
+   "pin": [
+    22.596128,
+    88.385283
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Ultadanga Pallyshree 01.jpg",
+     "lat": 22.595628,
+     "lng": 88.384858,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Durga Idol of Ultadanga Pallyshree 02.jpg",
+     "lat": 22.595694,
+     "lng": 88.384681,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2017 - Pandal of Ultadanga Pallyshree 03.jpg",
+     "lat": 22.595769,
+     "lng": 88.384614,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 16.jpg",
+     "lat": 22.595853,
+     "lng": 88.384628,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 17.jpg",
+     "lat": 22.595819,
+     "lng": 88.384628,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 18.jpg",
+     "lat": 22.595772,
+     "lng": 88.384497,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Durga Idol of Ultadanga Pallyshree in Kolkata 19.jpg",
+     "lat": 22.595903,
+     "lng": 88.384414,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 03.jpg",
+     "lat": 22.596,
+     "lng": 88.384217,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 12.jpg",
+     "lat": 22.595883,
+     "lng": 88.384439,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2018 - Pandal of Ultadanga Pallyshree in Kolkata 13.jpg",
+     "lat": 22.595911,
+     "lng": 88.384469,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "shibkrishna_daw_bari": {
+   "pin": [
+    22.583414,
+    88.356251
+   ],
+   "photos": [
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 01.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 02.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 03.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 04.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 05.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 06.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 07.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 08.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20241011 105558395 Durga Puja at N C Daw (Bondukwala Daw Bari) Jorasanko Kolkata 09.jpg",
+     "lat": 22.586247,
+     "lng": 88.360478,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "chhatu_latu_babu_bari": {
+   "pin": [
+    22.586994,
+    88.364006
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "colootola_dhar_bari": {
+   "pin": [
+    22.574821,
+    88.356306
+   ],
+   "photos": [
+    {
+     "title": "File:PXL 20250927 105255884.MP Durga Puja at Motilal Seal's Bari 60C, Colootola St, Kolutolla, Tiretti, Kolkata, West Bengal 700073 01.jpg",
+     "lat": 22.575861,
+     "lng": 88.359217,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 105255884.MP Durga Puja at Motilal Seal's Bari 60C, Colootola St, Kolutolla, Tiretti, Kolkata, West Bengal 700073 02.jpg",
+     "lat": 22.575861,
+     "lng": 88.359217,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 105255884.MP Durga Puja at Motilal Seal's Bari 60C, Colootola St, Kolutolla, Tiretti, Kolkata, West Bengal 700073 03.jpg",
+     "lat": 22.575861,
+     "lng": 88.359217,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 105255884.MP Durga Puja at Motilal Seal's Bari 60C, Colootola St, Kolutolla, Tiretti, Kolkata, West Bengal 700073 04.jpg",
+     "lat": 22.575861,
+     "lng": 88.359217,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 105255884.MP Durga Puja at Motilal Seal's Bari 60C, Colootola St, Kolutolla, Tiretti, Kolkata, West Bengal 700073 05.jpg",
+     "lat": 22.575861,
+     "lng": 88.359217,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "badan_chandra_roy_bari": {
+   "pin": [
+    22.576425,
+    88.355739
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "rani_rashmoni_bari": {
+   "pin": [
+    22.55632,
+    88.358322
+   ],
+   "photos": [
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 01.jpg",
+     "lat": 22.56185,
+     "lng": 88.355739,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 02.jpg",
+     "lat": 22.56185,
+     "lng": 88.355739,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 03.jpg",
+     "lat": 22.561886,
+     "lng": 88.355697,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 04.jpg",
+     "lat": 22.561886,
+     "lng": 88.355697,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 05.jpg",
+     "lat": 22.561886,
+     "lng": 88.355697,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 06.jpg",
+     "lat": 22.561922,
+     "lng": 88.355731,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 07.jpg",
+     "lat": 22.561922,
+     "lng": 88.355731,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 08.jpg",
+     "lat": 22.561922,
+     "lng": 88.355731,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 09.jpg",
+     "lat": 22.562142,
+     "lng": 88.355044,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 10.jpg",
+     "lat": 22.561928,
+     "lng": 88.355742,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 11.jpg",
+     "lat": 22.561928,
+     "lng": 88.355742,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 12.jpg",
+     "lat": 22.561944,
+     "lng": 88.355739,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 13.jpg",
+     "lat": 22.561944,
+     "lng": 88.355739,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 084939512.MP Durga Puja at Rani Rashmoni Palace Kolkata, West Bengal 14.jpg",
+     "lat": 22.561944,
+     "lng": 88.355739,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 091156028.MP Durga Puja at Rani Rashmoni Bhawan 18, Rani Rashmoni Rd, Esplanade, Dharmatala, Dakshineswar, Kolkata, West Bengal 700013 02.jpg",
+     "lat": 22.562456,
+     "lng": 88.355222,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 091156028.MP Durga Puja at Rani Rashmoni Bhawan 18, Rani Rashmoni Rd, Esplanade, Dharmatala, Dakshineswar, Kolkata, West Bengal 700013 03.jpg",
+     "lat": 22.562456,
+     "lng": 88.355222,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 091156028.MP Durga Puja at Rani Rashmoni Bhawan 18, Rani Rashmoni Rd, Esplanade, Dharmatala, Dakshineswar, Kolkata, West Bengal 700013 04.jpg",
+     "lat": 22.562456,
+     "lng": 88.355222,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 091156028.MP Durga Puja at Rani Rashmoni Bhawan 18, Rani Rashmoni Rd, Esplanade, Dharmatala, Dakshineswar, Kolkata, West Bengal 700013 05.jpg",
+     "lat": 22.562456,
+     "lng": 88.355222,
+     "primary": true
+    },
+    {
+     "title": "File:PXL 20250927 091156028.MP Durga Puja at Rani Rashmoni Bhawan 18, Rani Rashmoni Rd, Esplanade, Dharmatala, Dakshineswar, Kolkata, West Bengal 700013 06.jpg",
+     "lat": 22.562508,
+     "lng": 88.355389,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "bowbazar_47_palli": {
+   "pin": [
+    22.570492,
+    88.36156
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "tangra_ghol_para": {
+   "pin": [
+    22.556511,
+    88.379595
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "mitali_kankurgachi": {
+   "pin": [
+    22.57994,
+    88.390444
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 18.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 20.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 21.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 15.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 16.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 17.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 19.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "kankurgachi_chalantika": {
+   "pin": [
+    22.57994,
+    88.390444
+   ],
+   "photos": [
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 18.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 20.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Idol of Kankurgachi Mitali Sangha in Kolkata 21.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 15.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 16.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 17.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    },
+    {
+     "title": "File:DurgaPuja2019 - Durga Puja pandal of Kankurgachi Mitali Sangha in Kolkata 19.jpg",
+     "lat": 22.58,
+     "lng": 88.394073,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "saltlake_ak_block": {
+   "pin": [
+    22.588401,
+    88.431349
+   ],
+   "photos": [
+    {
+     "title": "File:Ballygunge Cultural Association Durga Puja 2019 IMG 20191005 221243 10.jpg",
+     "lat": 22.515608,
+     "lng": 88.356262,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "saltlake_ec_block": {
+   "pin": [
+    22.585538,
+    88.409838
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "saltlake_bc_block": {
+   "pin": [
+    22.592837,
+    88.40459
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "saltlake_aj_block": {
+   "pin": [
+    22.591987,
+    88.429343
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "saltlake_ce_block": {
+   "pin": [
+    22.594433,
+    88.413443
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "saltlake_fe_block": {
+   "pin": [
+    22.581234,
+    88.417409
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "saltlake_ca_block": {
+   "pin": [
+    22.586973,
+    88.401066
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "labony_estate": {
+   "pin": [
+    22.582973,
+    88.405617
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "newtown_sarbojanin": {
+   "pin": [
+    22.588283,
+    88.473448
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "newtown_ae_block": {
+   "pin": [
+    22.580704,
+    88.46238
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "newtown_ce_block": {
+   "pin": [
+    22.580704,
+    88.46238
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "newtown_db_block": {
+   "pin": [
+    22.580704,
+    88.46238
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "balaka_abasan": {
+   "pin": [
+    22.588283,
+    88.473448
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "aswininagar_bandhumahal": {
+   "pin": [
+    22.609668,
+    88.427683
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "dakshindari_youth": {
+   "pin": [
+    22.599874,
+    88.400879
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "pratapaditya_tricon_park": {
+   "pin": [
+    22.515331,
+    88.347705
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "hazra_udayan_sangha": {
+   "pin": [
+    22.522723,
+    88.349924
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bhowanipore_sanatan_dharmotsahini": {
+   "pin": [
+    22.532584,
+    88.345443
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "mallick_bari_bhowanipore": {
+   "pin": [
+    22.532584,
+    88.345443
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "bhukailash_rajbari": {
+   "pin": [
+    22.53538,
+    88.320609
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "north_tridhara": {
+   "pin": [
+    22.517172,
+    88.345564
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "ballygunge_ekush_pally": {
+   "pin": [
+    22.528034,
+    88.365908
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "santoshpur_avenue_south": {
+   "pin": [
+    22.496048,
+    88.38223
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "haridevpur_41_pally": {
+   "pin": [
+    22.465295,
+    88.331128
+   ],
+   "photos": [
+    {
+     "title": "File:Haridevpur 41 Pally Durga Puja 2019.jpg",
+     "lat": 22.482811,
+     "lng": 88.338523,
+     "primary": true
+    },
+    {
+     "title": "File:Haridevpur Athletic Club Durga Puja 2019.jpg",
+     "lat": 22.480909,
+     "lng": 88.334724,
+     "primary": true
+    }
+   ],
+   "landmark": null
+  },
+  "haridevpur_new_sporting": {
+   "pin": [
+    22.465295,
+    88.331128
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "parnasree_south_block": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_east_sabuj_sangha": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "joyrampur_sarbojanin": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "nandana_yuba_sangha": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  },
+  "behala_buroshibtala": {
+   "pin": [
+    22.501572,
+    88.320943
+   ],
+   "photos": [],
+   "landmark": null
+  }
+ }
+}
