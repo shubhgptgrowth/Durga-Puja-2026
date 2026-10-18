@@ -60,11 +60,11 @@
    "area": "Shyam Bazar, Kolkata 700004"
   },
   "hatibagan": {
-   "lat": 22.5947,
-   "lng": 88.3742,
+   "lat": 22.594281,
+   "lng": 88.371956,
    "approx": false,
-   "address": "Shyam Bazar, Kolkata 700004",
-   "area": "Shyam Bazar, Kolkata 700004"
+   "address": "Khudiram Bose Lane, Shyam Bazar, Kolkata 700006",
+   "area": "Shyam Bazar, Kolkata 700006"
   },
   "hatibagan_nabinpally": {
    "lat": 22.5926,
@@ -74,10 +74,10 @@
    "area": "Simla, Kolkata 700006"
   },
   "jagat_mukherjee": {
-   "lat": 22.601311,
-   "lng": 88.366647,
+   "lat": 22.599669,
+   "lng": 88.366043,
    "approx": false,
-   "address": "Bag Bazar, Kolkata 700004",
+   "address": "Bupendra Bose Avenue, Bag Bazar, Kolkata 700004",
    "area": "Bag Bazar, Kolkata 700004"
   },
   "tala_prattoy": {
@@ -277,11 +277,11 @@
    "area": "Kolkata 700034"
   },
   "barisha_club": {
-   "lat": 22.480715,
-   "lng": 88.312953,
+   "lat": 22.485392,
+   "lng": 88.314972,
    "approx": false,
-   "address": "James Long Sarani, Thakurpukur, Kolkata 700008",
-   "area": "Thakurpukur, Kolkata 700008"
+   "address": "Behala, Kolkata 700008",
+   "area": "Behala, Kolkata 700008"
   },
   "fd_block": {
    "lat": 22.5878,
@@ -305,8 +305,8 @@
    "area": "CE Block, Sector I, Bidhannagar 700064"
   },
   "sreebhumi": {
-   "lat": 22.600318,
-   "lng": 88.40259,
+   "lat": 22.598666,
+   "lng": 88.403412,
    "approx": false,
    "address": "AD Block, Lake Town, South Dumdum 700089",
    "area": "AD Block, Lake Town, South Dumdum 700089"
@@ -410,10 +410,10 @@
    "area": "Bhowanipore, Kolkata 700026"
   },
   "hindustan_club": {
-   "lat": 22.519509,
-   "lng": 88.360593,
+   "lat": 22.517692,
+   "lng": 88.361839,
    "approx": false,
-   "address": "Ramani Chatterji Road, Ballygunge, Kolkata 700029",
+   "address": "Hindustan Park, Ballygunge, Kolkata 700029",
    "area": "Ballygunge, Kolkata 700029"
   },
   "santoshpur_lake_pally": {
@@ -963,11 +963,11 @@
    "area": "Tangra North, Kolkata 700015"
   },
   "mitali_kankurgachi": {
-   "lat": 22.57994,
-   "lng": 88.390444,
-   "approx": true,
-   "address": "Phoolbagan, Maniktala, Kolkata 700054",
-   "area": "Phoolbagan, Maniktala, Kolkata 700054"
+   "lat": 22.58,
+   "lng": 88.394073,
+   "approx": false,
+   "address": "Satin Sen Sarani, Maniktala, Kolkata 700048",
+   "area": "Maniktala, Kolkata 700048"
   },
   "kankurgachi_chalantika": {
    "lat": 22.57994,
