@@ -7,6 +7,7 @@
     python -m pipeline.discover help      # OSM public toilets, hospitals and police stations ("Help nearby")
     python -m pipeline.discover addresses # street address of every pandal, eatery and car park (Nominatim reverse)
     python -m pipeline.discover pins      # evidence for where each pandal really is (photo geotags, named parks)
+    python -m pipeline.discover google    # each pandal's own Google Maps listing (needs GOOGLE_MAPS_API_KEY)
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
 `python -m pipeline` merges it with the review rules in pipeline/merge_discovered.py.
@@ -467,7 +468,50 @@ def discover_pins():
                    "pandals": res})
 
 
+# ---------------------------------------------------------------- google (Places API Text Search)
+PLACES = "https://places.googleapis.com/v1/places:searchText"
+
+
+def discover_google():
+    """Look every pandal up on Google Maps by name, biased to its area, and keep the top three listings (place id,
+    name, location, address, types). One request per pandal. pipeline.pins accepts a listing only when its name
+    matches the pandal and it lies near the area the guide puts it in. Google's terms allow keeping the place id
+    indefinitely and the coordinates for 30 days, which covers the festival; re-run it next year."""
+    import os
+    key = os.environ.get("GOOGLE_MAPS_API_KEY")
+    if not key:
+        sys.exit("GOOGLE_MAPS_API_KEY is not set: add it as a repository secret to use what=google")
+    data = ingest()
+    zones = {z["id"]: z for z in data["zones"]}
+    res, failed = {}, 0
+    for n, p in enumerate(data["pandals"]):
+        z = zones[p["zone"]]
+        city = "Howrah" if z.get("region") == "howrah" else "Kolkata"
+        body = {"textQuery": f"{p['name']} Durga Puja, {city}", "maxResultCount": 3, "languageCode": "en", "regionCode": "IN",
+                "locationBias": {"circle": {"center": {"latitude": float(z["lat"]), "longitude": float(z["lng"])}, "radius": 5000.0}}}
+        req = urllib.request.Request(PLACES, data=json.dumps(body).encode(), method="POST", headers={
+            "Content-Type": "application/json", "X-Goog-Api-Key": key,
+            "X-Goog-FieldMask": "places.id,places.displayName,places.location,places.formattedAddress,places.types"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                places = json.load(r).get("places", [])
+        except Exception as ex:
+            failed += 1
+            print(f"google failed for {p['id']}: {ex}", file=sys.stderr)
+            if failed >= 5 and not res:
+                sys.exit("Places API keeps failing (is the key valid and the Places API (New) enabled?)")
+            continue
+        res[p["id"]] = [{"place_id": x["id"], "name": (x.get("displayName") or {}).get("text", ""),
+                         "lat": x["location"]["latitude"], "lng": x["location"]["longitude"],
+                         "address": x.get("formattedAddress", ""), "types": x.get("types", [])[:5]} for x in places if x.get("location")]
+        top = res[p["id"]][0]["name"] if res[p["id"]] else "-"
+        print(f"google {n + 1:3}/{len(data['pandals'])} {p['id']:28} -> {top}", file=sys.stderr)
+        time.sleep(0.2)
+    write("google", {"source": "Google Maps Places API", "fetched": time.strftime("%Y-%m-%d"), "failed": failed, "pandals": res})
+
+
 if __name__ == "__main__":
     fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
-          "help": discover_help, "addresses": discover_addresses, "pins": discover_pins}[sys.argv[1]]
+          "help": discover_help, "addresses": discover_addresses, "pins": discover_pins,
+          "google": discover_google}[sys.argv[1]]
     fn(*sys.argv[2:3])

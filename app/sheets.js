@@ -18,7 +18,8 @@ export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/d
 /* Pandals: ask Google Maps for the pandal by name. Our pins come from open map data and can be a few hundred metres
  * off; Google's own listing for the puja is where the crowd (and the gate) actually is. */
 const pandalQuery = (p) => `${p.name}, ${idx.zone[p.zone]?.region === 'howrah' ? 'Howrah' : 'Kolkata'}`;
-export const pandalDirUrl = (p, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(pandalQuery(p))}&travelmode=${mode}`;
+// With the pandal's Google place id (pipeline.pins), Maps opens that exact listing; the name is the fallback.
+export const pandalDirUrl = (p, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(pandalQuery(p))}${p.gplace ? `&destination_place_id=${encodeURIComponent(p.gplace)}` : ''}&travelmode=${mode}`;
 
 /* ---------------- shared bits ---------------- */
 export function statsHtml(id, { compact = false, day = S.day } = {}) {

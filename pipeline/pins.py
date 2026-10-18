@@ -4,6 +4,9 @@
     python -m pipeline.pins [--dry-run]
 
 Evidence, strongest first:
+  * google: the pandal's own Google Maps listing (data/discovered/google.json, `discover google`), when its name
+    matches the pandal and it lies within 4 km of the pandal's area. Its place id is kept so Directions open that
+    exact listing.
   * photos: camera locations of Commons photos that name the pandal. Two or more within 200 m of each other make a
     cluster; its median is the pin. One stray photo (taken at Kumartuli, or of a replica) never moves a pin.
   * landmark: the park or square the puja is named after (Maddox Square, Deshapriya Park), from OpenStreetMap.
@@ -20,6 +23,8 @@ from . import config
 from .geo import haversine_m
 
 PINS = config.ROOT / "data" / "discovered" / "pins.json"
+GOOGLE = config.ROOT / "data" / "discovered" / "google.json"
+ZONE_M = 4000
 CLUSTER_M, AGREE_M, KEEP_M, MAX_MOVE_M = 200, 350, 100, 5000
 
 
@@ -36,8 +41,24 @@ def photo_cluster(shots):
     return (statistics.median(p[0] for p in best), statistics.median(p[1] for p in best)), len(best)
 
 
-def decide(ev):
+def google_pick(row, listings, zone):
+    """The best-named Google listing for this pandal near its area, or None."""
+    from .discover import _matches
+    from .audit import similarity
+    best = None
+    for x in listings or []:
+        if haversine_m((x["lat"], x["lng"]), (float(zone["lat"]), float(zone["lng"]))) > ZONE_M:
+            continue
+        sim = similarity(row["name"], x["name"])
+        if (_matches(row["name"], x["name"]) or sim >= 0.75) and (not best or sim > best[0]):
+            best = (sim, x)
+    return best[1] if best else None
+
+
+def decide(ev, g=None):
     """(new point, source, note) or (None, None, reason)."""
+    if g:
+        return (g["lat"], g["lng"]), "google", f"Google Maps: {g['name']}"
     cl = photo_cluster(ev.get("photos") or [])
     mark = ev.get("landmark")
     mk = (mark["lat"], mark["lng"]) if mark else None
@@ -51,18 +72,23 @@ def decide(ev):
 
 
 def apply_pins(dry_run=False):
-    if not PINS.exists():
-        sys.exit("data/discovered/pins.json missing: run the discover workflow with what=pins first")
-    ev = json.loads(PINS.read_text(encoding="utf-8"))["pandals"]
+    if not PINS.exists() and not GOOGLE.exists():
+        sys.exit("no evidence yet: run the discover workflow with what=pins (and what=google once the key is set)")
+    ev = json.loads(PINS.read_text(encoding="utf-8"))["pandals"] if PINS.exists() else {}
+    goog = json.loads(GOOGLE.read_text(encoding="utf-8"))["pandals"] if GOOGLE.exists() else {}
+    zones = {z["id"]: z for z in csv.DictReader(open(config.RAW_DIR / "zones.csv", encoding="utf-8"))}
     path = config.RAW_DIR / "pandals.csv"
     rows = list(csv.DictReader(open(path, encoding="utf-8")))
-    fields = list(rows[0].keys())
+    fields = list(rows[0].keys()) + [f for f in ("gplace",) if f not in rows[0]]
     moved, flagged, kept, none = [], [], 0, 0
     for r in rows:
-        e = ev.get(r["id"])
-        if not e or r.get("verified", "").lower() == "true":
+        e = ev.get(r["id"]) or {}
+        if r.get("verified", "").lower() == "true":
             continue
-        pt, src, note = decide(e)
+        g = google_pick(r, goog.get(r["id"]), zones[r["zone"]])
+        if g:
+            r["gplace"] = g["place_id"]
+        pt, src, note = decide(e, g)
         if not pt:
             none += note == "no evidence"
             if note != "no evidence":
@@ -71,6 +97,8 @@ def apply_pins(dry_run=False):
         d = haversine_m((float(r["lat"]), float(r["lng"])), pt)
         if d < KEEP_M:
             kept += 1
+            if src == "google" and r["geo_source"] != "google":
+                r["geo_source"] = "google"   # confirmed, even if it barely moved
             continue
         if d > MAX_MOVE_M:
             flagged.append((r["id"], f"{src} says {d / 1000:.1f} km away ({note}); not moved"))
