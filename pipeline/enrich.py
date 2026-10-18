@@ -158,18 +158,23 @@ def load_localities(path=SEEDS):
     return out
 
 
-def attach_address(rec, addresses, localities=None):
+def attach_address(rec, addresses, localities=None, area_only=False):
     """Give a place its address, but only if it was found for this pin: a moved pin waits for the next lookup.
-    An approximate pin's address is only its area, so it leads with the locality the pandal is known by."""
+    An approximate pin's address is only its area, so it leads with the locality the pandal is known by.
+    area_only (pandals whose pin nobody has checked on the ground): drop the street, which is only the road nearest
+    the pin, and keep the neighbourhood and PIN."""
     a = addresses.get(rec["id"])
     if not a or haversine_m((a["lat"], a["lng"]), (rec["lat"], rec["lng"])) >= 30:
         return
-    addr = re.sub(r"\b[A-Z]{4,}\b", lambda m: m.group(0).title(), a["address"])
+    area = area_only and not a.get("approx")
+    if area and not a.get("area"):
+        return  # looked up before areas were stored; the next address run fills it in
+    addr = re.sub(r"\b[A-Z]{4,}\b", lambda m: m.group(0).title(), a["area"] if area else a["address"])
     loc = (localities or {}).get(rec["id"])
     if a.get("approx") and loc and loc.lower() not in addr.lower():
         addr = f"{loc}, {addr}"
     rec["address"] = addr
-    if a.get("approx"):
+    if a.get("approx") or area:
         rec["address_approx"] = True
 
 
@@ -212,7 +217,7 @@ def enrich(data):
             e["awards"] = winners[p["id"]]
         if help_places:
             e["help"] = help_near(pt, help_places)
-        attach_address(e, addresses, localities)
+        attach_address(e, addresses, localities, area_only=not p.get("verified"))
         pandals.append(e)
 
     for zid, z in zones.items():

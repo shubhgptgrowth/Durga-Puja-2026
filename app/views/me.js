@@ -5,7 +5,7 @@ import { $, registerView, toast, go } from '../ui.js';
 import { CONFIG } from '../config.js';
 import { badgeSheet } from '../badges.js';
 import { creditsHtml, wireCredits } from '../credits.js';
-import { openPlace, dirUrl } from '../sheets.js';
+import { openPlace, pandalDirUrl } from '../sheets.js';
 import { BADGES, earned, daySteps, dayDist, dayWalkMin, startWalk, stopWalk, walking, motionLive, dayRec, saveHistory } from '../actions.js';
 import { stopsOf, planValid } from './plan.js';
 import { shareCard, myCard, appLink, myName, deviceId } from '../growth.js';
@@ -95,7 +95,7 @@ function nextStop() {
   const stops = stopsOf(S.plan), next = stops.find((x) => !S.checkins[x.pandal]);
   if (!next) return t('fit.planDone');
   const p = idx.pandal[next.pandal], done = stops.length - stops.filter((x) => !S.checkins[x.pandal]).length;
-  return `${t('fit.next', { d: done, n: stops.length, name: `<b>${esc(nm(p))}</b>` })}${S.me ? ` · ${km(walkM(S.me, ll(p)))} km` : ''} <a href="${dirUrl(ll(p))}" target="_blank" rel="noopener">${t('p.directions')}</a>`;
+  return `${t('fit.next', { d: done, n: stops.length, name: `<b>${esc(nm(p))}</b>` })}${S.me ? ` · ${km(walkM(S.me, ll(p)))} km` : ''} <a href="${pandalDirUrl(p)}" target="_blank" rel="noopener">${t('p.directions')}</a>`;
 }
 
 /* The step counter redraws this page up to once a second while the phone moves. Typed-but-unsaved text and

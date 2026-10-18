@@ -6,6 +6,8 @@
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
     python -m pipeline.discover help      # OSM public toilets, hospitals and police stations ("Help nearby")
     python -m pipeline.discover addresses # street address of every pandal, eatery and car park (Nominatim reverse)
+    python -m pipeline.discover pins      # evidence for where each pandal really is (photo geotags, named parks)
+    python -m pipeline.discover google    # each pandal's own Google Maps listing (needs GOOGLE_MAPS_API_KEY)
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
 `python -m pipeline` merges it with the review rules in pipeline/merge_discovered.py.
@@ -378,7 +380,7 @@ def discover_addresses():
     for r in rows:
         lat, lng, approx = float(r["lat"]), float(r["lng"]), r.get("geo_source") == "osm-approx"
         old = prev.get(r["id"])
-        if old and abs(old["lat"] - lat) < 1e-5 and abs(old["lng"] - lng) < 1e-5 and old.get("approx") == approx:
+        if old and abs(old["lat"] - lat) < 1e-5 and abs(old["lng"] - lng) < 1e-5 and old.get("approx") == approx and "area" in old:
             out[r["id"]] = old
             continue
         q = urllib.parse.urlencode({"lat": lat, "lon": lng, "format": "jsonv2", "zoom": 18, "addressdetails": 1,
@@ -388,7 +390,9 @@ def discover_addresses():
                 a = json.load(resp).get("address", {})
             addr = _short_address(a, approx)
             if addr:
-                out[r["id"]] = {"lat": lat, "lng": lng, "approx": approx, "address": addr}
+                # "area" (no street) is what an unconfirmed pandal pin shows: the street next to a pin that is a few
+                # hundred metres out is wrong, the neighbourhood and PIN usually are not.
+                out[r["id"]] = {"lat": lat, "lng": lng, "approx": approx, "address": addr, "area": _short_address(a, True)}
         except Exception as ex:
             failed += 1
             print(f"reverse failed for {r['id']}: {ex}", file=sys.stderr)
@@ -401,7 +405,113 @@ def discover_addresses():
     print(f"{len(out)} addresses ({asked} looked up, {failed} failed)", file=sys.stderr)
 
 
+# ---------------------------------------------------------------- pins (where is the pandal, really?)
+LANDMARK = re.compile(r"((?:[A-Z][\w.']*\s+){1,3}(?:Park|Square|Maidan|Udyan))\b")
+
+
+def _geotags(titles):
+    """Camera locations of Commons files (GeoData), 50 titles a request."""
+    out = {}
+    for i in range(0, len(titles), 50):
+        p = {"action": "query", "format": "json", "prop": "coordinates", "coprimary": "all", "colimit": "max",
+             "titles": "|".join(titles[i:i + 50])}
+        req = urllib.request.Request(f"{COMMONS}?{urllib.parse.urlencode(p)}", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            for pg in ((json.load(r).get("query") or {}).get("pages") or {}).values():
+                for c in pg.get("coordinates") or []:
+                    if BB["lat_min"] <= c["lat"] <= BB["lat_max"] and BB["lng_min"] <= c["lon"] <= BB["lng_max"]:
+                        out.setdefault(pg["title"], []).append({"lat": c["lat"], "lng": c["lon"], "primary": "primary" in c})
+        time.sleep(0.4)
+    return out
+
+
+def discover_pins():
+    """For every pandal, independent evidence of where it is, to check our pin against (pipeline.pins applies it):
+      * photos: the camera location of Commons photos whose title or description names the pandal;
+      * landmark: the park or square the puja is named after ("Maddox Square", "Deshapriya Park"), from Nominatim."""
+    data = ingest()
+    photos = (json.loads((OUT / "photos.json").read_text(encoding="utf-8")).get("places", {}) if (OUT / "photos.json").exists() else {})
+    res = {}
+    for n, p in enumerate(data["pandals"]):
+        titles = {h["title"] for h in photos.get(p["id"], [])}
+        words = [w for w in re.findall(r"[a-z0-9]+", p["name"].lower()) if w not in STOP and len(w) > 2]
+        for q in [f"{p['name']} durga puja", f"{p['name']} pandal"] + ([f"{words[0]} durga puja"] if words else []):
+            try:
+                for h in commons(q, 20):
+                    if _matches(p["name"], f"{h['title']} {h['desc']}"):
+                        titles.add(h["title"])
+            except Exception as ex:
+                print("commons error", p["id"], ex, file=sys.stderr)
+            time.sleep(0.4)
+        try:
+            geo = _geotags(sorted(titles)) if titles else {}
+        except Exception as ex:
+            print("geodata error", p["id"], ex, file=sys.stderr); geo = {}
+        shots = [{"title": t, **c} for t, cs in geo.items() for c in cs[:1]]
+        mark = None
+        m = LANDMARK.search(p["name"])
+        if m:
+            phrase = re.sub(r"^Md\.? ", "Mohammad ", m.group(1))
+            try:
+                for r in nominatim(f"{phrase}, {'Howrah' if p['zone'] == 'howrah' else 'Kolkata'}"):
+                    kind = f"{r.get('category') or r.get('class')}:{r.get('type')}"
+                    if any(k in kind for k in ("park", "garden", "square", "recreation_ground", "pitch", "playground", "common")) \
+                            and similarity(phrase, r.get("name") or "") >= 0.7:
+                        mark = {"name": r.get("name"), "kind": kind, "lat": float(r["lat"]), "lng": float(r["lon"])}
+                        break
+            except Exception as ex:
+                print("nominatim error", p["id"], ex, file=sys.stderr)
+            time.sleep(1.1)
+        res[p["id"]] = {"pin": [p["lat"], p["lng"]], "photos": shots, "landmark": mark}
+        print(f"pins {n + 1:3}/{len(data['pandals'])} {p['id']:28} photos={len(shots):2} titles={len(titles):2} landmark={bool(mark)}", file=sys.stderr)
+    write("pins", {"source": "Wikimedia Commons (camera locations) and OpenStreetMap via Nominatim", "fetched": time.strftime("%Y-%m-%d"),
+                   "pandals": res})
+
+
+# ---------------------------------------------------------------- google (Places API Text Search)
+PLACES = "https://places.googleapis.com/v1/places:searchText"
+
+
+def discover_google():
+    """Look every pandal up on Google Maps by name, biased to its area, and keep the top three listings (place id,
+    name, location, address, types). One request per pandal. pipeline.pins accepts a listing only when its name
+    matches the pandal and it lies near the area the guide puts it in. Google's terms allow keeping the place id
+    indefinitely and the coordinates for 30 days, which covers the festival; re-run it next year."""
+    import os
+    key = os.environ.get("GOOGLE_MAPS_API_KEY")
+    if not key:
+        sys.exit("GOOGLE_MAPS_API_KEY is not set: add it as a repository secret to use what=google")
+    data = ingest()
+    zones = {z["id"]: z for z in data["zones"]}
+    res, failed = {}, 0
+    for n, p in enumerate(data["pandals"]):
+        z = zones[p["zone"]]
+        city = "Howrah" if z.get("region") == "howrah" else "Kolkata"
+        body = {"textQuery": f"{p['name']} Durga Puja, {city}", "maxResultCount": 3, "languageCode": "en", "regionCode": "IN",
+                "locationBias": {"circle": {"center": {"latitude": float(z["lat"]), "longitude": float(z["lng"])}, "radius": 5000.0}}}
+        req = urllib.request.Request(PLACES, data=json.dumps(body).encode(), method="POST", headers={
+            "Content-Type": "application/json", "X-Goog-Api-Key": key,
+            "X-Goog-FieldMask": "places.id,places.displayName,places.location,places.formattedAddress,places.types"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                places = json.load(r).get("places", [])
+        except Exception as ex:
+            failed += 1
+            print(f"google failed for {p['id']}: {ex}", file=sys.stderr)
+            if failed >= 5 and not res:
+                sys.exit("Places API keeps failing (is the key valid and the Places API (New) enabled?)")
+            continue
+        res[p["id"]] = [{"place_id": x["id"], "name": (x.get("displayName") or {}).get("text", ""),
+                         "lat": x["location"]["latitude"], "lng": x["location"]["longitude"],
+                         "address": x.get("formattedAddress", ""), "types": x.get("types", [])[:5]} for x in places if x.get("location")]
+        top = res[p["id"]][0]["name"] if res[p["id"]] else "-"
+        print(f"google {n + 1:3}/{len(data['pandals'])} {p['id']:28} -> {top}", file=sys.stderr)
+        time.sleep(0.2)
+    write("google", {"source": "Google Maps Places API", "fetched": time.strftime("%Y-%m-%d"), "failed": failed, "pandals": res})
+
+
 if __name__ == "__main__":
     fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
-          "help": discover_help, "addresses": discover_addresses}[sys.argv[1]]
+          "help": discover_help, "addresses": discover_addresses, "pins": discover_pins,
+          "google": discover_google}[sys.argv[1]]
     fn(*sys.argv[2:3])

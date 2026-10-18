@@ -4,7 +4,7 @@ import {
   S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon, loc, todayKey, greetDay,
 } from '../state.js';
 import { $, go, registerView, toast, getFix } from '../ui.js';
-import { openPlace, dirUrl } from '../sheets.js';
+import { openPlace, pandalDirUrl } from '../sheets.js';
 import { startWalk, walking, visitedToday } from '../actions.js';
 import { startLabel, startRecord, startPickerSheet } from '../pickers.js';
 import { rname } from '../filters.js';
@@ -323,7 +323,7 @@ function resultHtml(plan) {
       prev = ll(p);
       tl.push(`<li data-n="${n}" data-place="${st.pandal}" ${btn()}><div class="t">${st.arrive}</div><div class="nm">${esc(nm(p))}${visitedToday(st.pandal) ? ' ✓' : ''}</div>
         <div class="sub">${st.walk_m && !hop ? `${t('tl.walk', { m: st.walk_m })} · ` : ''}${crowdWord(st.crowd)} · ${t('tl.inside', { n: st.dwell_min })}</div>${eat}
-        <a class="go" target="_blank" rel="noopener" href="${dirUrl(ll(p), hop ? 'transit' : 'walking')}" aria-label="${t('p.directions')}: ${esc(nm(p))}">${icon('pin', 'sm')}</a></li>`);
+        <a class="go" target="_blank" rel="noopener" href="${pandalDirUrl(p, hop ? 'transit' : 'walking')}" aria-label="${t('p.directions')}: ${esc(nm(p))}">${icon('pin', 'sm')}</a></li>`);
     }
   }
   // Walking distance excludes the hops you ride (all of it counts when you walk everything).

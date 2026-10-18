@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: "3.11"
       - name: Discover
+        env:
+          # Only `what=google` uses it; unset means that step says so and does nothing.
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: |
           failed=""
           for w in $(echo "${{ inputs.what || 'photos,archive' }}" | tr ',' ' '); do

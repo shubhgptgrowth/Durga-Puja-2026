@@ -15,6 +15,11 @@ import { track, placeOpened } from './analytics.js';
 import { offersHtml, offerSheet, featuredFirst, sponsoredTag } from './offers.js';
 
 export const dirUrl = (dest, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${dest[0]},${dest[1]}&travelmode=${mode}`;
+/* Pandals: ask Google Maps for the pandal by name. Our pins come from open map data and can be a few hundred metres
+ * off; Google's own listing for the puja is where the crowd (and the gate) actually is. */
+const pandalQuery = (p) => `${p.name}, ${idx.zone[p.zone]?.region === 'howrah' ? 'Howrah' : 'Kolkata'}`;
+// With the pandal's Google place id (pipeline.pins), Maps opens that exact listing; the name is the fallback.
+export const pandalDirUrl = (p, mode = 'walking') => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(pandalQuery(p))}${p.gplace ? `&destination_place_id=${encodeURIComponent(p.gplace)}` : ''}&travelmode=${mode}`;
 
 /* ---------------- shared bits ---------------- */
 export function statsHtml(id, { compact = false, day = S.day } = {}) {
@@ -163,7 +168,7 @@ const titleRow = (id, name, sub = '') => `<div class="title-row"><div class="tr-
   <div id="verifyBox" class="verify"></div>`;
 /** Pinned to the bottom of the page: Directions (Google Maps offers walk, transit and drive) and one Share. */
 const ctaBar = (id, p) => `<div class="sheet-cta">
-  <a class="btn primary" target="_blank" rel="noopener" href="${dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
+  <a class="btn primary" target="_blank" rel="noopener" href="${idx.pandal[id] ? pandalDirUrl(p) : dirUrl(ll(p))}">${icon('pin')} ${t('p.directions')}</a>
   ${shareCtaHtml(id)}</div>`;
 
 /* ---------------- photos (Wikimedia Commons, curated) ---------------- */
