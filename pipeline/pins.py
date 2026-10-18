@@ -28,6 +28,16 @@ ZONE_M = 4000
 CLUSTER_M, AGREE_M, KEEP_M, MAX_MOVE_M = 200, 350, 100, 5000
 
 
+def strict_shots(name, shots):
+    """Photos whose title carries every distinctive word of the pandal's name. "Tala" alone also matches Tala Park
+    and Tala Barowari; "Kankurgachi" alone matches two different pujas."""
+    from .discover import STOP
+    words = [w for w in re.findall(r"[a-z0-9]+", name.lower()) if w not in STOP and len(w) > 2]
+    if not words:
+        return []
+    return [s for s in shots if all(w in set(re.findall(r"[a-z0-9]+", s["title"].lower())) for w in words)]
+
+
 def photo_cluster(shots):
     """The largest group of photo locations within CLUSTER_M of one of them, if it has two or more."""
     pts = [(s["lat"], s["lng"]) for s in shots]
@@ -80,9 +90,18 @@ def apply_pins(dry_run=False):
     path = config.RAW_DIR / "pandals.csv"
     rows = list(csv.DictReader(open(path, encoding="utf-8")))
     fields = list(rows[0].keys()) + [f for f in ("gplace",) if f not in rows[0]]
+    # A park that several pandals are named after ("Dum Dum Park" is a neighbourhood with four pujas and an unrelated
+    # children's park; "Jodhpur Park" has two pujas) says nothing about which one is where.
+    from collections import Counter
+    marks = Counter((e.get("landmark") or {}).get("name") for e in ev.values() if e.get("landmark"))
+    plans = {}
     moved, flagged, kept, none = [], [], 0, 0
     for r in rows:
-        e = ev.get(r["id"]) or {}
+        e = dict(ev.get(r["id"]) or {})
+        e["photos"] = strict_shots(r["name"], e.get("photos") or [])
+        if e.get("landmark") and marks[e["landmark"]["name"]] > 1:
+            flagged.append((r["id"], f"{e['landmark']['name']} is named by {marks[e['landmark']['name']]} pandals; not used"))
+            e["landmark"] = None
         if r.get("verified", "").lower() == "true":
             continue
         g = google_pick(r, goog.get(r["id"]), zones[r["zone"]])
@@ -103,7 +122,15 @@ def apply_pins(dry_run=False):
         if d > MAX_MOVE_M:
             flagged.append((r["id"], f"{src} says {d / 1000:.1f} km away ({note}); not moved"))
             continue
-        moved.append((r["id"], d, src, note))
+        plans[r["id"]] = (r, pt, d, src, note)
+    # Two pandals sent to the same spot means the evidence can't tell them apart: move neither.
+    for a in list(plans):
+        for b in list(plans):
+            if a < b and a in plans and b in plans and haversine_m(plans[a][1], plans[b][1]) < 60:
+                flagged += [(a, f"evidence also points {b} to the same spot; not moved"), (b, f"same spot as {a}; not moved")]
+                del plans[a], plans[b]
+    for pid, (r, pt, d, src, note) in plans.items():
+        moved.append((pid, d, src, note))
         r["lat"], r["lng"], r["geo_source"] = f"{pt[0]:.6f}", f"{pt[1]:.6f}", src
         r["highlight"] = re.sub(r"\s*Pin is approximate[^.]*\.?\s*ask locally for the exact lane\.", "", r["highlight"]).strip()
     for pid, d, src, note in sorted(moved, key=lambda x: -x[1]):

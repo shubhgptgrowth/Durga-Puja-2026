@@ -1,6 +1,6 @@
-# Build report — 2026-10-18T02:44:50+00:00
+# Build report — 2026-10-18T02:58:40+00:00
 
-Bundle version `6119161c71a9`
+Bundle version `5b7b0524023b`
 
 | Entity | Count |
 |---|---|
@@ -19,13 +19,13 @@ Bundle version `6119161c71a9`
 
 | Zone | Pandals | 5★ | Full walk | Steps | kcal |
 |---|---|---|---|---|---|
-| Kumartuli, Bagbazar & Hatibagan | 26 | 4 | 11.3 km | 16,467 | 1287 |
+| Kumartuli, Bagbazar & Hatibagan | 26 | 4 | 11.4 km | 16,591 | 1300 |
 | College Street & Sealdah | 12 | 3 | 9.6 km | 14,090 | 1003 |
-| Gariahat & Ballygunge | 14 | 2 | 11.5 km | 16,724 | 1086 |
+| Gariahat & Ballygunge | 14 | 2 | 11.4 km | 16,586 | 1079 |
 | Lake Market & Kalighat | 18 | 3 | 13.0 km | 18,913 | 1282 |
-| Behala & New Alipore | 23 | 1 | 20.3 km | 29,716 | 1714 |
+| Behala & New Alipore | 23 | 1 | 21.0 km | 30,602 | 1750 |
 | Salt Lake | 13 | 1 | 7.9 km | 11,576 | 694 |
-| Lake Town & Dum Dum | 8 | 1 | 7.0 km | 10,277 | 684 |
+| Lake Town & Dum Dum | 8 | 1 | 7.0 km | 10,185 | 681 |
 | Bhowanipore & Elgin | 15 | 1 | 12.4 km | 18,045 | 1084 |
 | Kasba & Bosepukur | 5 | 0 | 4.0 km | 5,774 | 405 |
 | Jadavpur & Santoshpur | 10 | 0 | 12.9 km | 18,846 | 1037 |
@@ -39,14 +39,14 @@ Bundle version `6119161c71a9`
 
 | Itinerary | Pandals | Time | Walk | Steps |
 |---|---|---|---|---|
-| North Kolkata Heritage Trail | 17 | 07:00–15:21 | 11.28 km | 16,467 |
+| North Kolkata Heritage Trail | 17 | 07:00–15:25 | 11.36 km | 16,591 |
 | Central Blockbusters at Dawn | 7 | 05:30–09:26 | 5.72 km | 8,356 |
-| South Heavyweights | 17 | 14:00–00:59 | 11.4 km | 16,643 |
-| Behala & New Alipore Theme Trail | 16 | 15:00–01:13 | 17.96 km | 26,231 |
-| Salt Lake + Lake Town Hop | 13 | 16:00–00:03 | 13.41 km | 19,581 |
+| South Heavyweights | 17 | 14:00–00:57 | 11.3 km | 16,504 |
+| Behala & New Alipore Theme Trail | 16 | 15:00–01:23 | 18.57 km | 27,116 |
+| Salt Lake + Lake Town Hop | 13 | 16:00–00:02 | 13.35 km | 19,489 |
 | The All-Nighter: North → South | 10 | 22:00–07:13 | 11.21 km | 16,375 |
 
-## Warnings (415)
+## Warnings (414)
 
 - 381 records are not ground-verified yet
 - pandals bhowanipore_75pally and obosor_sarbojanin are less than 25 m apart. Check the coordinates.
@@ -66,7 +66,6 @@ Bundle version `6119161c71a9`
 - pandals 71_pally_baishakhi and ballygunge_ekush_pally are less than 25 m apart. Check the coordinates.
 - pandals obosor_sarbojanin and bhowanipore_sanatan_dharmotsahini are less than 25 m apart. Check the coordinates.
 - pandals obosor_sarbojanin and mallick_bari_bhowanipore are less than 25 m apart. Check the coordinates.
-- pandals mitali_kankurgachi and kankurgachi_chalantika are less than 25 m apart. Check the coordinates.
 - pandals newtown_sarbojanin and balaka_abasan are less than 25 m apart. Check the coordinates.
 - pandals newtown_ae_block and newtown_ce_block are less than 25 m apart. Check the coordinates.
 - pandals newtown_ae_block and newtown_db_block are less than 25 m apart. Check the coordinates.
