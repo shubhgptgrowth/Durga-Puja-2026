@@ -6,6 +6,7 @@
     python -m pipeline.discover photos    # Wikimedia Commons photos for pandals, eateries and signature dishes
     python -m pipeline.discover help      # OSM public toilets, hospitals and police stations ("Help nearby")
     python -m pipeline.discover addresses # street address of every pandal, eatery and car park (Nominatim reverse)
+    python -m pipeline.discover pins      # evidence for where each pandal really is (photo geotags, named parks)
 
 Each command writes data/discovered/<name>.json. Nothing goes into the app until
 `python -m pipeline` merges it with the review rules in pipeline/merge_discovered.py.
@@ -403,7 +404,70 @@ def discover_addresses():
     print(f"{len(out)} addresses ({asked} looked up, {failed} failed)", file=sys.stderr)
 
 
+# ---------------------------------------------------------------- pins (where is the pandal, really?)
+LANDMARK = re.compile(r"((?:[A-Z][\w.']*\s+){1,3}(?:Park|Square|Maidan|Udyan))\b")
+
+
+def _geotags(titles):
+    """Camera locations of Commons files (GeoData), 50 titles a request."""
+    out = {}
+    for i in range(0, len(titles), 50):
+        p = {"action": "query", "format": "json", "prop": "coordinates", "coprimary": "all", "colimit": "max",
+             "titles": "|".join(titles[i:i + 50])}
+        req = urllib.request.Request(f"{COMMONS}?{urllib.parse.urlencode(p)}", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            for pg in ((json.load(r).get("query") or {}).get("pages") or {}).values():
+                for c in pg.get("coordinates") or []:
+                    if BB["lat_min"] <= c["lat"] <= BB["lat_max"] and BB["lng_min"] <= c["lon"] <= BB["lng_max"]:
+                        out.setdefault(pg["title"], []).append({"lat": c["lat"], "lng": c["lon"], "primary": "primary" in c})
+        time.sleep(0.4)
+    return out
+
+
+def discover_pins():
+    """For every pandal, independent evidence of where it is, to check our pin against (pipeline.pins applies it):
+      * photos: the camera location of Commons photos whose title or description names the pandal;
+      * landmark: the park or square the puja is named after ("Maddox Square", "Deshapriya Park"), from Nominatim."""
+    data = ingest()
+    photos = (json.loads((OUT / "photos.json").read_text(encoding="utf-8")).get("places", {}) if (OUT / "photos.json").exists() else {})
+    res = {}
+    for n, p in enumerate(data["pandals"]):
+        titles = {h["title"] for h in photos.get(p["id"], [])}
+        words = [w for w in re.findall(r"[a-z0-9]+", p["name"].lower()) if w not in STOP and len(w) > 2]
+        for q in [f"{p['name']} durga puja", f"{p['name']} pandal"] + ([f"{words[0]} durga puja"] if words else []):
+            try:
+                for h in commons(q, 20):
+                    if _matches(p["name"], f"{h['title']} {h['desc']}"):
+                        titles.add(h["title"])
+            except Exception as ex:
+                print("commons error", p["id"], ex, file=sys.stderr)
+            time.sleep(0.4)
+        try:
+            geo = _geotags(sorted(titles)) if titles else {}
+        except Exception as ex:
+            print("geodata error", p["id"], ex, file=sys.stderr); geo = {}
+        shots = [{"title": t, **c} for t, cs in geo.items() for c in cs[:1]]
+        mark = None
+        m = LANDMARK.search(p["name"])
+        if m:
+            phrase = re.sub(r"^Md\.? ", "Mohammad ", m.group(1))
+            try:
+                for r in nominatim(f"{phrase}, {'Howrah' if p['zone'] == 'howrah' else 'Kolkata'}"):
+                    kind = f"{r.get('category') or r.get('class')}:{r.get('type')}"
+                    if any(k in kind for k in ("park", "garden", "square", "recreation_ground", "pitch", "playground", "common")) \
+                            and similarity(phrase, r.get("name") or "") >= 0.7:
+                        mark = {"name": r.get("name"), "kind": kind, "lat": float(r["lat"]), "lng": float(r["lon"])}
+                        break
+            except Exception as ex:
+                print("nominatim error", p["id"], ex, file=sys.stderr)
+            time.sleep(1.1)
+        res[p["id"]] = {"pin": [p["lat"], p["lng"]], "photos": shots, "landmark": mark}
+        print(f"pins {n + 1:3}/{len(data['pandals'])} {p['id']:28} photos={len(shots):2} titles={len(titles):2} landmark={bool(mark)}", file=sys.stderr)
+    write("pins", {"source": "Wikimedia Commons (camera locations) and OpenStreetMap via Nominatim", "fetched": time.strftime("%Y-%m-%d"),
+                   "pandals": res})
+
+
 if __name__ == "__main__":
     fn = {"archive": discover_archive, "food": discover_food, "pandals": discover_pandals, "transit": discover_transit, "photos": discover_photos,
-          "help": discover_help, "addresses": discover_addresses}[sys.argv[1]]
+          "help": discover_help, "addresses": discover_addresses, "pins": discover_pins}[sys.argv[1]]
     fn(*sys.argv[2:3])
