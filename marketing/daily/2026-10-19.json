@@ -439,92 +439,6 @@
    "next_zone": "jadavpur_santoshpur"
   },
   {
-   "id": "p3",
-   "type": "photo",
-   "render": "editorial",
-   "at": "12:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Lake Market",
-     "title": "Samaj Sebi Sangha",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Samaj_Sebi_Sangha_Durga_Puja_in_South_Kolkata_%28Lake_View_Road%29_21.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Theme 2026",
-     "title": "Mahapujoy Mahanayak",
-     "body": "Uttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films. As reported; themes can change before the puja."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "body": "An elegant puja on Lake View Road with a long cultural legacy."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "items": [
-      [
-       "Metro: Kalighat, 26 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Ballygunge Cultural Association, 2 min",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Since 1945",
-       "প্রতিষ্ঠা"
-      ],
-      [
-       "Eat nearby: Tak Heng, Oudh 1590",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 12 to 5 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Samaj_Sebi_Sangha_Durga_Puja_in_South_Kolkata_%28Lake_View_Road%29_07.jpg",
-      "artist": "Goutam1962",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Samaj Sebi Sangha, 2025"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Samaj Sebi Sangha, Kolkata Durga Puja 2026: the theme is Mahapujoy Mahanayak 🪔\n\nUttam Kumar's centenary: the pandal is a collage of posters from all 208 of his films. Themes are as reported and can change before the puja.\n\nIt's 26 minutes' walk from Kalighat Metro, and Ballygunge Cultural Association is 2 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "samaj sebi sangha durga puja 2026",
-     "samaj sebi sangha theme",
-     "lake market & kalighat pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
    "id": "r3",
    "type": "reel",
    "at": "13:50",
@@ -592,6 +506,26 @@
    ]
   },
   {
+   "id": "rr1",
+   "type": "reel",
+   "at": "14:30",
+   "render": "route",
+   "style": "night",
+   "zone": "south_lakemarket",
+   "area": "Lake Market & Kalighat",
+   "hook": "15 pandals · 1 night: Lake Market & Kalighat Master Route",
+   "caption": {
+    "en": "Lake Market & Kalighat Durga Puja 2026 route for Ashtami: 15 pandals, one walk 🚶\n\nGet off at Kalighat Metro and follow the red line: Badamtala Ashar Sangha first, Tollygunge Santi Pally last. About 13.0 km and 18,913 steps on foot, roughly 4.0 hours of walking, plus the queues.\n\nBest for: Heavyweight pujas close together.\n\nEvery 2026 theme and every area's route are free in our guide.\n\nComment \"PUJO\" and we'll DM you every route 👇",
+    "keywords": [
+     "lake market durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "kalighat metro"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
    "id": "r4",
    "type": "reel",
    "render": "cards_reel",
@@ -612,111 +546,6 @@
     "tags": "#Navratri2026 #DurgaPuja2026 #Navratri"
    },
    "at": "15:00"
-  },
-  {
-   "id": "p4",
-   "type": "photo",
-   "render": "editorial",
-   "at": "16:10",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Maha Ashtami · Mon 19 Oct 2026",
-     "title": "Kumari Puja: the goddess in a young girl",
-     "bn": "কুমারী পুজো",
-     "sub": "Best known at Belur Math, on Ashtami morning",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Kumari_Puja_of_Durga_Puja_%28West_Bengal%29.jpg",
-      "artist": "Shutterpixs",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The idea",
-     "title": "Why worship a girl?",
-     "bn": "কুমারীর মধ্যেই দেবী",
-     "body": "Shakta tradition teaches that the goddess is present in every woman, and can be worshipped in a girl as purely as in an image. It asks devotees to see the divine in every woman, and honour girls and women."
-    },
-    {
-     "t": "list",
-     "kicker": "What happens",
-     "title": "The ritual, step by step",
-     "bn": "পুজোর ধাপ",
-     "items": [
-      [
-       "She is bathed and dressed in a red sari",
-       "স্নান, তারপর লাল শাড়ি"
-      ],
-      [
-       "Her feet are washed and painted with alta",
-       "পায়ে আলতা"
-      ],
-      [
-       "She is seated near the deity",
-       "দেবীর কাছে আসন"
-      ],
-      [
-       "Worshipped with the same mantras as Durga",
-       "দুর্গার মন্ত্রেই পুজো"
-      ],
-      [
-       "Flowers, bel leaves, lamps, incense, food",
-       "ফুল, বেলপাতা, প্রদীপ, ধূপ, ভোগ"
-      ],
-      [
-       "Devotees, monks and priests bow before her",
-       "সবাই প্রণাম করেন"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Belur Math",
-     "title": "Vivekananda, 1901",
-     "bn": "বেলুড় মঠ",
-     "body": "Swami Vivekananda is widely credited with holding the first Durga Puja at Belur Math in 1901 and worshipping young girls as the goddess there. The Ramakrishna Math has continued it since."
-    },
-    {
-     "t": "step",
-     "kicker": "How she's chosen",
-     "title": "Customs vary",
-     "bn": "নিয়ম সব জায়গায় এক নয়",
-     "body": "Generally the girl is under the age of puberty. Many pujas choose a girl from a Brahmin family; some accept girls of any caste or background. Some texts name the goddess differently for each age."
-    },
-    {
-     "t": "step",
-     "kicker": "Not the same",
-     "title": "Kumari Puja and kanya pujan",
-     "bn": "কন্যা পূজন আলাদা",
-     "body": "Kanya pujan, common in North India at Navratri, honours several girls at home with food and gifts. Bengali Kumari Puja is a full ritual worship of one girl, usually in a temple or pandal."
-    },
-    {
-     "t": "step",
-     "kicker": "Visiting",
-     "title": "Going to Belur Math?",
-     "bn": "বেলুড় যাচ্ছেন?",
-     "body": "It is crowded on Ashtami morning: go early and follow the volunteers. Ask before photographing the Kumari. Check the Math's own announcements for this year's arrangements."
-    },
-    {
-     "t": "end",
-     "title": "Ashtami morning, Belur Math",
-     "bn": "অষ্টমীর সকাল, বেলুড় মঠ",
-     "ask": "Send it to whoever's going"
-    }
-   ],
-   "caption": {
-    "en": "Kumari Puja 2026 at Belur Math near Kolkata: why a young girl is worshipped as Durga 🌺\n\nMost Bengali pujas that hold it, Belur Math included, do so on Maha Ashtami: Monday 19 October this year. Some traditions hold it on Navami or another day, so check with the puja or temple.\n\nThe girl is bathed, dressed in a red sari, her feet painted with alta, and worshipped with the same mantras and offerings as the goddess. Swami Vivekananda is widely credited with holding it at Belur Math in 1901.\n\nThe idea behind it: the goddess is present in every woman, and can be worshipped in a girl as purely as in an image.\n\nHave you seen the Kumari Puja at Belur Math? Tell us in the comments 👇",
-    "keywords": [
-     "kumari puja 2026",
-     "kumari puja belur math",
-     "durga puja ashtami",
-     "kolkata durga puja"
-    ],
-    "tags": "#durgapuja2026 #kumaripuja #belurmath"
-   }
   },
   {
    "id": "r10n",
@@ -856,117 +685,23 @@
    }
   },
   {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
+   "id": "rr2",
+   "type": "reel",
    "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Navratri · Ashtami or Navami",
-     "title": "Kanya pujan at home, step by step",
-     "bn": "কন্যা পূজন",
-     "sub": "Honouring young girls as the Goddess",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Kanya_Pujan_Durga_puja.jpg",
-      "artist": "Nvstudio989",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "list",
-     "kicker": "Keep these ready",
-     "title": "What you need",
-     "bn": "যা যা লাগবে",
-     "items": [
-      [
-       "Clean mats for the children",
-       "বসার আসন"
-      ],
-      [
-       "A thali, water and a clean towel",
-       "থালা, জল, গামছা"
-      ],
-      [
-       "Roli and uncooked rice for tilak",
-       "রোলি আর আতপ চাল"
-      ],
-      [
-       "Red thread (kalawa or mauli)",
-       "লাল সুতো"
-      ],
-      [
-       "Flowers and a lamp for aarti",
-       "ফুল আর প্রদীপ"
-      ],
-      [
-       "Puri, kala chana and suji halwa",
-       "পুরি, কালো ছোলা, সুজির হালুয়া"
-      ],
-      [
-       "Small gifts: coins, bangles, fruit",
-       "ছোট্ট উপহার"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Step 1",
-     "num": 1,
-     "title": "Invite, then cook",
-     "bn": "নিমন্ত্রণ আর রান্না",
-     "body": "Follow your family's day, Ashtami or Navami, and invite the girls and their parents a day or two ahead. After bathing, cook puri, kala chana and halwa, and offer a portion to the Goddess first."
-    },
-    {
-     "t": "step",
-     "kicker": "Step 2",
-     "num": 2,
-     "title": "Welcome, wash their feet",
-     "bn": "পা ধুইয়ে দিন",
-     "body": "Seat the children on clean mats and ask parents about allergies. Gently pour water over each child's feet into a plate and dry them. This act of humility is the heart of the ritual."
-    },
-    {
-     "t": "step",
-     "kicker": "Step 3",
-     "num": 3,
-     "title": "Tilak, thread, aarti",
-     "bn": "তিলক, সুতো, আরতি",
-     "body": "Apply roli and a few grains of rice on each forehead and tie a red thread on the wrist. Offer flowers, do a short aarti and fold your hands, seeing them as the Goddess."
-    },
-    {
-     "t": "step",
-     "kicker": "Step 4",
-     "num": 4,
-     "title": "Feed them, then gifts",
-     "bn": "খাওয়ানো আর উপহার",
-     "body": "Serve puri, chana and halwa and let them eat at their own pace. Give each a small gift, bow and ask for their blessings. Many families then break their Navratri fast."
-    },
-    {
-     "t": "step",
-     "kicker": "In Bengal",
-     "title": "Kumari Puja",
-     "bn": "বাংলার কুমারী পুজো",
-     "body": "Bengal's own form is Kumari Puja on Maha Ashtami: a priest worships one young girl as the Goddess, often at Belur Math. Kanya pujan is a home ritual for several children with a meal."
-    },
-    {
-     "t": "end",
-     "title": "Save this for Ashtami or Navami",
-     "bn": "অষ্টমী বা নবমীর জন্য রেখে দিন",
-     "ask": "Save it for the morning"
-    }
-   ],
+   "render": "route",
+   "style": "night",
+   "zone": "central",
+   "area": "Central Kolkata",
+   "hook": "10 pandals · 1 night: Central Kolkata Master Route",
    "caption": {
-    "en": "Kanya pujan at home this Navratri and Durga Puja: the steps, the meal and the gifts 🌸\n\nFamilies invite girls, commonly aged about 2 to 10, and often one boy as langur or Bhairav. You wash their feet, apply tilak and tie a red thread. Then you feed them puri, kala chana and halwa, give small gifts and ask for their blessings.\n\nHow many girls? Nine, for the nine forms of Durga, is the ideal many aim for, but any number invited with sincerity is accepted. Bengal's own form is Kumari Puja on Maha Ashtami, often at Belur Math.\n\nSave this for Ashtami morning 🙏",
+    "en": "Central Kolkata Durga Puja 2026 route for Ashtami night: 10 pandals, one walk 🚶\n\nGet off at Mahatma Gandhi Road Metro and follow the red line: Chaltabagan Lohapatty first, Park Street Allen Park Puja last. About 9.6 km and 14,090 steps on foot, roughly 3.0 hours of walking, plus the queues.\n\nBest for: Theme blockbusters, big crowds.\n\nEvery 2026 theme and every area's route are free in our guide.\n\nComment \"PUJO\" and we'll DM you every route 👇",
     "keywords": [
-     "kanya pujan",
-     "kanjak",
-     "kanya puja ashtami",
-     "kanya pujan navami",
-     "navratri in kolkata"
+     "central kolkata durga puja route",
+     "pandal hopping route kolkata",
+     "durga puja 2026 kolkata",
+     "mahatma gandhi road metro"
     ],
-    "tags": "#KanyaPujan #Navratri2026 #DurgaPuja2026"
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
    }
   },
   {
