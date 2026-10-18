@@ -1,7 +1,7 @@
 /* My route: a 3-step wizard (areas → start point → route), with ready-made trails as a shortcut on step 1. */
 import { hav, orderRoute, hhmm, encodePlan, rideOption, routeUrls } from '../core.js';
 import {
-  S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon, loc,
+  S, G, idx, t, store, ll, M, nm, zs, dn, zoneOf, esc, km, fmt, crowdIndex, crowdWord, dayFactor, stepsFor, kcalFor, btn, icon, loc, todayKey, greetDay,
 } from '../state.js';
 import { $, go, registerView, toast, getFix } from '../ui.js';
 import { openPlace, dirUrl } from '../sheets.js';
@@ -162,13 +162,41 @@ export const DAYPLAN = [
 const zonesPhoto = (zones) => areaPhoto(zones, zones.map((z) => idx.zone[z]?.region).find((r) => r === 'east' || r === 'howrah'));
 const trailPhoto = (it) => it.segments.flatMap((sg) => sg.stops || []).map((x) => pandalPhoto(x.pandal, 500)).find(Boolean) || '';
 
+const dayOk = (d) => idx.day[d.day] && d.zones.every((z) => idx.zone[z]);
+/** The day plan to offer first: today's (by greeting, so Saptami counts from the evening its tithi begins), else
+ * the next one ahead. -1 once the pujo is over. */
+export function todayPlanIndex() {
+  const g = greetDay(), k = todayKey();
+  const i = g ? DAYPLAN.findIndex((d) => d.day === g.id && dayOk(d)) : -1;
+  return i >= 0 ? i : DAYPLAN.findIndex((d) => dayOk(d) && idx.day[d.day].date >= k);
+}
+/** The one-tap card: today's ready route, with "near me" and "make my own" beside it. Empty after the pujo. */
+export function todayCardHtml(compact = false) {
+  const i = todayPlanIndex(), d = DAYPLAN[i];
+  if (!d) return '';
+  const day = idx.day[d.day], isToday = greetDay()?.id === d.day;
+  const n = d.zones.reduce((c, z) => c + idx.zone[z].pandal_ids.length, 0);
+  return `<section class="today-card ${compact ? 'compact' : ''}">
+    <div class="tc-k">${isToday ? t('tc.today', { day: esc(dn(day)) }) : t('tc.next', { day: esc(dn(day)), date: fmtDay(day) })}</div>
+    <h2>${t(isToday ? 'tc.title' : 'tc.titleNext')}</h2>
+    <p class="tc-areas">${d.zones.map((z) => esc(zs(idx.zone[z]))).join(' + ')} · ${t('it.pandals', { n })} · ${t('tc.from', { time: d.time })}</p>
+    <button type="button" class="btn primary block tc-go" data-dayplan="${i}">${t('tc.go')} ${icon('chev', 'sm')}</button>
+    ${compact ? '' : `<div class="tc-alt"><button type="button" class="btn" data-q="near">${icon('locate', 'sm')} ${t('task.near')}</button>
+      <button type="button" class="btn" data-q="ownplan">${icon('route', 'sm')} ${t('tc.own')}</button></div>`}
+  </section>`;
+}
+
 export function dayPlanHtml() {
-  return `<div class="dayplan">${DAYPLAN.filter((d) => idx.day[d.day] && d.zones.every((z) => idx.zone[z])).map((d, i) => {
+  // Days already gone drop off the list (the whole list comes back once the pujo is over).
+  const k = todayKey(), g = greetDay()?.id;
+  const ok = DAYPLAN.map((d, i) => [d, i]).filter(([d]) => dayOk(d));
+  const ahead = ok.filter(([d]) => idx.day[d.day].date >= k || d.day === g);
+  return `<div class="dayplan">${(ahead.length ? ahead : ok).map(([d, i]) => {
     const n = d.zones.reduce((c, z) => c + idx.zone[z].pandal_ids.length, 0);
     const img = zonesPhoto(d.zones);
-    return `<button type="button" class="dp-day ${img ? 'photo' : ''}" data-dayplan="${i}">${photoBg(img)}
+    return `<button type="button" class="dp-day ${img ? 'photo' : ''}" data-dayplan="${i}" data-day="${d.day}">${photoBg(img)}
       <span class="dp-n">${i + 1}</span>
-      <span class="dp-body"><b>${esc(dn(idx.day[d.day]))} · ${fmtDay(idx.day[d.day])}</b>
+      <span class="dp-body"><b>${esc(dn(idx.day[d.day]))} · ${fmtDay(idx.day[d.day])}${d.day === g ? ` <span class="dp-today">${t('tc.badge')}</span>` : ''}</b>
         <span class="dp-areas">${d.zones.map((z) => esc(zs(idx.zone[z]))).join(' + ')} · ${t('it.pandals', { n })}</span>
         <span class="dp-tip">${t('dp.' + d.day)}</span></span>
       <span class="dp-go">${icon('chev', 'sm')}</span></button>`;
@@ -221,7 +249,7 @@ function areasHtml() {
     return `<button type="button" class="region ${img ? 'photo' : ''}" data-pr="${r.id}" aria-pressed="${on}" style="--zc:${r.color}">${photoBg(img)}
       <span class="region-n">${on ? '✓ ' : ''}${esc(rname(r))}</span><span class="region-c">${t('it.pandals', { n })}</span><span class="region-a">${esc(areas)}</span></button>`;
   }).join('')}</div>`;
-  return `<div class="wz-body"><h3 class="wz-q">${t('wz.q1')}</h3><div id="planZones">${regionRows}</div></div>
+  return `<div class="wz-body"><h3 class="wz-q">${todayPlanIndex() >= 0 ? t('wz.q1own') : t('wz.q1')}</h3><div id="planZones">${regionRows}</div></div>
     <div class="wz-foot"><span class="fine">${pickedRegions() ? t(pickedRegions() === 1 ? 'wz.picked1' : 'wz.picked', { n: pickedRegions() }) : t('wz.pickOne')}</span>
       <button type="button" class="btn primary" id="planNext" ${planSel.size ? '' : 'aria-disabled="true"'}>${t('wz.next')} ${icon('chev', 'sm')}</button></div>
     <div class="section-head" style="margin-top:22px"><div><h2>${t('dp.title')}</h2><p class="sub">${t('dp.sub')}</p></div></div>
@@ -305,6 +333,7 @@ function resultHtml(plan) {
       <h3>${esc(planTitle(plan))}</h3>
       <div class="ph-sub">${t('plan.from', { start: esc(ptName(plan.startPt)) })}${plan.skipped ? ` · ${t('plan.dropped', { n: plan.skipped })}` : ''}</div>
       <div class="kpis big"><div><b>${x.pandals}</b><span>${t('kpi.pandals')}</span></div><div><b>${km(walkM)}</b><span>${t('kpi.km')}</span></div><div><b>${fmt(stepsFor(walkM))}</b><span>${t('kpi.steps')}</span></div><div><b>${fmt(kcalFor(x.walk_min, x.dwell_min, x.brisk))}</b><span>${t('kpi.kcal')}</span></div></div>
+      ${nextHtml(plan)}
       <a class="btn wa block" id="planWa" target="_blank" rel="noopener" href="${waUrl(waPlanText(plan))}">${t('plan.waSend')}</a>
       <div class="ph-actions"><button class="btn sm" id="planWalk">${icon('walk', 'sm')} ${t('plan.startWalk')}</button><button class="btn sm" id="planShare">${icon('share', 'sm')} ${t('plan.share')}</button></div>
     </section>
@@ -313,6 +342,15 @@ function resultHtml(plan) {
     ${directionsHtml(plan)}
     <section class="plan-send"><p>${t('plan.waEndQ')}</p>
       <a class="btn wa block" id="planWaEnd" target="_blank" rel="noopener" href="${waUrl(waPlanText(plan))}">${t('plan.waSend')}</a></section>`;
+}
+
+/* The next pandal on the route that you haven't checked in at today, as one big directions button. */
+function nextHtml(plan) {
+  const st = stopsOf(plan).find((x) => !visitedToday(x.pandal)), p = st && idx.pandal[st.pandal];
+  if (!p) return '';
+  const tm = mode === 'car' || mode === 'auto' ? 'driving' : 'walking';
+  return `<a class="btn gold block ph-next" id="planGoNext" data-place="${p.id}" target="_blank" rel="noopener" href="${dirUrl(ll(p), tm)}">${icon('pin', 'sm')} ${t('plan.nextDir', { name: esc(nm(p)) })}</a>
+      <p class="ph-hint">${t('plan.dirHint')}</p>`;
 }
 
 /* Directions for the whole route: Google Maps with every stop in order. Google allows only 3 stops in between
@@ -345,7 +383,8 @@ function render(scrollToResult = false) {
   const body = step === 1 ? areasHtml() : step === 2 ? formHtml()
     : `<div class="wz-foot top"><button type="button" class="btn sm" id="planEdit">${t(plan.kind === 'custom' ? 'wz.edit' : 'wz.other')}</button><button type="button" class="btn sm" id="planNew">${icon('plus', 'sm')} ${t('wz.new')}</button></div>
        <div id="planResult">${resultHtml(plan)}</div>`;
-  el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>${stepperHtml(plan)}${body}`;
+  // Step 1 opens with today's ready route, so nobody has to build one to get going.
+  el.innerHTML = `<div class="view-title"><h2>${t('plan.title')}</h2><p>${t('plan.subtitle')}</p></div>${step === 1 ? todayCardHtml(true) : ''}${stepperHtml(plan)}${body}`;
   wire(el, plan);
   if (scrollToResult || step !== 3) window.scrollTo({ top: 0 });
 }

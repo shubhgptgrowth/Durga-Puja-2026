@@ -99,11 +99,21 @@ try {
   await page.locator('.radio-card').scrollIntoViewIfNeeded();
   await shot('01b-radio');
 
-  // All of Kolkata in 6 days: a day opens its timed route
-  must(await count('#view-home .dayplan [data-dayplan]') === 6, 'six day plans expected');
-  await page.click('#view-home [data-dayplan="2"]');
+  // A route for every pujo day: days already gone drop off (all six come back after the pujo), and a day opens its timed route
+  {
+    const today = await page.evaluate(() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; });
+    const n = await count('#view-home .dayplan [data-dayplan]');
+    must(today > '2026-10-21' ? n === 6 : n >= 1 && n <= 6, `day plans on home: ${n} on ${today}`);
+  }
+  // Today's route in one tap from Home while the pujo is on (the card is gone once it's over)
+  const tc = await count('#view-home .today-card .tc-go');
+  await page.click(tc ? '#view-home .today-card .tc-go' : '#view-home .dayplan [data-dayplan]');
   await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
-  must(await count('.timeline li[data-place]') >= 4, 'Saptami day plan should have a route');
+  must(await count('.timeline li[data-place]') >= 4, 'the day plan should have a route');
+  {   // the next pandal as one big directions button
+    const href = await page.locator('#planGoNext').getAttribute('href');
+    must(/google\.com\/maps\/dir/.test(href) && /^Directions to /.test((await page.locator('#planGoNext').innerText()).trim()), 'next-pandal directions button: ' + href);
+  }
   {   // the plan goes to WhatsApp with its stops in the message and a link that opens the same route
     const wa = decodeURIComponent(await page.locator('#planWa').getAttribute('href'));
     must(wa.startsWith('https://wa.me/?text=') && /src=wa_plan#(plan|trail)=/.test(wa) && (wa.match(/^• \d\d:\d\d /gm) || []).length >= 4, 'WhatsApp plan message: ' + wa.slice(0, 200));

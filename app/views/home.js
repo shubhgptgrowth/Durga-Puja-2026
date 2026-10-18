@@ -4,7 +4,7 @@ import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, 
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
-import { showTrail, dayPlanHtml, openDayPlan } from './plan.js';
+import { showTrail, dayPlanHtml, openDayPlan, openSharedPlan, todayCardHtml, todayPlanIndex } from './plan.js';
 import { setExplore } from './explore.js';
 import { selectArea, rname } from '../filters.js';
 import { radioCard, watchCard, musicStripHtml, musicStripClick } from '../radioCard.js';
@@ -112,12 +112,13 @@ const trailImg = (it) => (photosOn() ? it.segments.flatMap((sg) => sg.stops || [
 
 /* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
  * pandal, and the facts behind the promise in one line. */
-function promiseHtml() {
+function promiseHtml(withCard = '') {
   return `<div class="search" role="search">
       ${icon('search')}
       <input id="homeSearch" type="search" autocomplete="off" placeholder="${t('h.search')}" aria-label="${t('h.search')}">
       <ul class="results" id="homeResults" role="listbox"></ul>
     </div>
+    ${withCard}
     <p class="promise">${t('promise.sub', { n: bnDigits(G.data.pandals.length) })}</p>`;
 }
 
@@ -141,7 +142,7 @@ function render() {
   startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
-    ${promiseHtml()}
+    ${promiseHtml(todayCardHtml())}
     ${liveHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
@@ -209,8 +210,12 @@ function wire(el) {
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
+    if (q === 'ownplan') return openSharedPlan(null);   // the route builder from its first step
     if (q === 'reels') return showAllReels(go);
-    if (q === 'myplan') return $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (q === 'myplan') {   // today's ready route in one tap; the day list when there isn't one
+      const i = todayPlanIndex();
+      return i >= 0 ? openDayPlan(i) : $('#dayPlans', el)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     if (q === 'near') { setExplore({ seg: 'pandals', sort: 'near', region: 'all', area: 'all', mode: 'list' }); go('explore'); if (!S.me) getFix().then(() => rerender()).catch(() => toast(t('loc.fail'))); return; }
     if (q === 'famous') { setExplore({ seg: 'pandals', sort: 'popular', region: 'all', area: 'all', mode: 'list' }); return go('explore'); }
     if (q === 'food') { setExplore({ seg: 'food', mode: 'list' }); return go('explore'); }
