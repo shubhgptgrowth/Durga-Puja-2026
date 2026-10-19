@@ -1,0 +1,41 @@
+name: giveaway
+
+# Draw a giveaway's winners from the post's comments (marketing/giveaway.py). Read-only on Instagram: nothing is
+# posted or sent. Prints usernames, the seed and the alternates to the run summary; phone numbers never come here.
+on:
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Giveaway post permalink or shortcode"
+        required: true
+      close:
+        description: 'Entries close, IST ("YYYY-MM-DD HH:MM")'
+        required: true
+      prizes:
+        description: "Passes per winner, first winner first"
+        default: "2,1,1,1"
+      alternates:
+        description: "Alternates to draw"
+        default: "4"
+
+permissions:
+  contents: read
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Draw
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          POST: ${{ inputs.post }}
+          CLOSE: ${{ inputs.close }}
+          PRIZES: ${{ inputs.prizes }}
+          ALTERNATES: ${{ inputs.alternates }}
+        run: python -m marketing.giveaway --post "$POST" --close "$CLOSE" --prizes "$PRIZES" --alternates "$ALTERNATES" | tee -a "$GITHUB_STEP_SUMMARY"

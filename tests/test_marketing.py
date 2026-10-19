@@ -366,11 +366,12 @@ class RedesignTest(unittest.TestCase):
     def test_comment_keyword_for_the_dm(self):
         from marketing import engage
         for t in ("PUJO", "pujo pls 🙏", "পুজো", "Route?", "Pujo!!", "#pujo", "send route please", "পুজো প্লিজ", "PUJO 2026",
-                  "PUJO route for kolkata pls", "I want the pujo route", "pujo list please", "Pujo da", "পুজো রুট চাই"):
+                  "PUJO route for kolkata pls", "I want the pujo route", "pujo list please", "Pujo da", "পুজো রুট চাই",
+                  "PUJO @rina.sen @amit_k @dada.99"):
             self.assertTrue(engage.wants_guide(t), t)
         # praise that mentions pujo is not a request (a real 12 Oct comment), nor is a sentence about routes
         for t in ("beautiful", "", None, "Durga maa 🙏", "পুরোনো কলকাতার পুজো 🙌❤️😍", "beautiful pujo",
-                  "which route is best?", "pujojo", "পুজোর শুভেচ্ছা"):
+                  "which route is best?", "pujojo", "পুজোর শুভেচ্ছা", "@pujo_lover", "@rina so beautiful pujo"):
             self.assertFalse(engage.wants_guide(t), t)
         self.assertIn("pujoparikramaguide.in", engage.GUIDE)
         self.assertNotIn("github.io", engage.DM_EN + engage.GUIDE)
