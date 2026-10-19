@@ -24,6 +24,8 @@ const DM_EN = "Here's your Durga Puja 2026 guide: walk pandal to pandal from the
 const SITE = 'https://pujoparikramaguide.in/';
 const GUIDE = 'https://pujoparikramaguide.in/?src=ig_dm';
 const PUBLIC_REPLY = 'DM-এ পাঠিয়ে দিলাম 💛 Sent to your DMs!';
+// Added to the DM when the post is a giveaway: the route still comes first; the draw itself is checked by hand.
+const GIVEAWAY = '🎟️ Giveaway: to be in the draw, follow us and tag the 3 people you\'d bring in your comment. Winners are announced in our stories. Good luck!';
 const ALREADY = 2534023;   // "The comment that you are trying to reply to already has a reply."
 // Comments are answered while Instagram allows (7 days from the comment), on posts from the last POST_DAYS: a
 // "PUJO" can land on a post long after it went up (the 8 Oct route post kept getting them a week later).
@@ -44,8 +46,11 @@ const FILLER = ['pls', 'plz', 'plss', 'please', 'pl', 'send', 'dm', 'me', 'link'
   'details', 'info', 'share', 'pandal', 'pandals', 'hopping', 'area', 'kolkata', 'hi', 'hello', 'thanks',
   'thank', 'yes', 'interested', 'da', 'dada', 'di', 'didi', 'bhai', 'bro',
   'চাই', 'আমাকে', 'আমায়', 'একটু', 'লিস্ট', 'দয়া', 'করে', 'ধন্যবাদ', 'হ্যাঁ'];
-const words = (text = '') => text.toLowerCase().replace(/[^\p{L}\p{M}]+/gu, ' ').trim().split(' ').filter(Boolean);
+// @handles are tags, not words: a giveaway entry "PUJO Behala @a @b @c" is still a request for the Behala route.
+export const untag = (text = '') => text.replace(/@[A-Za-z0-9._]+/g, ' ');
+const words = (text = '') => untag(text).toLowerCase().replace(/[^\p{L}\p{M}]+/gu, ' ').trim().split(' ').filter(Boolean);
 /** A request has a keyword, and every other word is filler or part of an area or pandal name ("PUJO Behala"). */
+export const hasKeyword = (text = '') => words(text || '').some((x) => KEYWORDS.includes(x));
 export const wantsGuide = (text = '', areaWords: Set<string> = new Set()) => {
   const w = words(text || '');
   return w.some((x) => KEYWORDS.includes(x)) && w.every((x) => KEYWORDS.includes(x) || FILLER.includes(x) || areaWords.has(x));
@@ -199,10 +204,14 @@ Deno.serve(async (req) => {
       const ix = await guide();
       for (const c of comments) {
         if (c.username === me || done.has(c.id) || Date.parse(c.timestamp) < since) continue;
-        if (!wantsGuide(c.text, ix?.words)) continue;
-        const area = ix ? (findArea(c.text, ix) || findArea(m.caption || '', ix)) : null;
+        // On a giveaway post every comment with the keyword is an entry ("PUJO Chinar Park @a @b @c"), whatever else it
+        // says; its caption names several areas, so it can't stand in for the one the commenter meant.
+        const giveaway = /giveaway/i.test(m.caption || '');
+        if (!(wantsGuide(c.text, ix?.words) || (giveaway && hasKeyword(c.text)))) continue;
+        const area = ix ? (findArea(untag(c.text), ix) || (giveaway ? null : findArea(m.caption || '', ix))) : null;
         let msg = `${DM_BN}\n\n${DM_EN}\n${GUIDE}`, reply = PUBLIC_REPLY;
         if (area) ({ text: msg, reply } = areaDM(g, area.zone, area.pandal));
+        if (giveaway) msg += `\n\n${GIVEAWAY}`;
         if (dry) {
           log.push(`[dry] would DM @${c.username} (${JSON.stringify((c.text || '').slice(0, 40))}) ${area ? 'the ' + area.zone + ' route' : 'the general link'}`);
           ok = false;

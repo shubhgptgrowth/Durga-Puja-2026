@@ -191,7 +191,8 @@ FILLER = ("pls", "plz", "plss", "please", "pl", "send", "dm", "me", "link", "gui
 
 def words(text):
     """Lower-cased words, keeping Bengali vowel signs (category M); emoji, digits and punctuation dropped."""
-    kept = "".join(ch if unicodedata.category(ch)[0] in "LM" else " " for ch in (text or "").lower())
+    text = re.sub(r"@[A-Za-z0-9._]+", " ", text or "")  # @handles are tags, not words (giveaway entries tag friends)
+    kept = "".join(ch if unicodedata.category(ch)[0] in "LM" else " " for ch in text.lower())
     return kept.split()
 
 
