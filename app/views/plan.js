@@ -39,7 +39,7 @@ function rideTextOf(opt, toName) {
 // Further apart than this, two stops are a ride (auto, bus or metro), not a walk through puja crowds.
 export const HOP_M = 1300;
 const hopsIn = (stops) => stops.filter((x) => x.walk_m > HOP_M);
-const form = { start: 't:kalighat', time: '18:00', when: '', stars: '4', budget: '240', brisk: false };
+const form = { start: 't:kalighat', time: '18:00', when: '', stars: '3', budget: '240', brisk: false };
 
 /* ---------------- routing ---------------- */
 function routeZone(start, pandals, clock, brisk) {
@@ -86,6 +86,27 @@ function planMulti(start, zones, minStars, startMin, brisk, exclude) {
   return { segments: segs, totals: { pandals: n, walk_m: walk, walk_min: wmin, dwell_min: dwell, ride_min: ride, brisk }, endMin: clock };
 }
 
+/** One route over the picked stops in the best walking order (whatever their area), riding only where the next hop
+ * is too far to walk. Same shape as planMulti. */
+function planOrdered(start, stops, startMin, brisk) {
+  const order = orderRoute(ll(start), stops.map(ll)).map((i) => stops[i]);
+  let clock = startMin, from = start; const segs = []; let walk = 0, wmin = 0, dwell = 0, ride = 0;
+  let cur = null;
+  for (const p of order) {
+    if (hav(ll(from), ll(p)) * M().detour > 1800) {
+      const st = entryStation([p]);
+      const rm = Math.round((hav(ll(from), ll(st)) * 1.25) / ((18 * 1000) / 60)) + 10;
+      segs.push({ type: 'ride', to: st.id, depart: hhmm(clock), ride_min: rm });
+      clock += rm; ride += rm; from = st; cur = null;
+    }
+    if (!cur || cur.zone !== p.zone) { cur = { type: 'walk', zone: p.zone, stops: [] }; segs.push(cur); }
+    const r = routeZone(from, [p], clock, brisk);
+    cur.stops.push(...r.stops);
+    clock = r.clock; walk += r.walk; wmin += r.wmin; dwell += r.dwell; from = p;
+  }
+  return { segments: segs, totals: { pandals: order.length, walk_m: walk, walk_min: wmin, dwell_min: dwell, ride_min: ride, brisk }, endMin: clock };
+}
+
 function startPoint(val) {
   if (val === 'me') return S.me ? Promise.resolve({ id: 'me', lat: S.me[0], lng: S.me[1] }) : getFix().then((f) => ({ id: 'me', lat: f.lat, lng: f.lng }));
   const r = startRecord(val);
@@ -94,6 +115,30 @@ function startPoint(val) {
 const fmtDay = (d) => new Date(d.date + 'T00:00:00').toLocaleDateString(loc(), { weekday: 'short', day: 'numeric', month: 'short' });
 const ptName = (pt) => (pt.id === 'me' ? t('plan.me') : pt.name);
 
+/** Greedy picking for a time budget: from the start, repeatedly take the pandal with the best popularity² per
+ * minute (walk or ride there, plus the expected time inside at that hour) that still fits. */
+const POP_W = 1;
+function packStops(start, cands, startMin, budget, brisk) {
+  const speed = ((brisk ? M().walk_kmh_brisk : M().walk_kmh_crowd) * 1000) / 60;
+  const chosen = new Set();
+  let cur = ll(start), clock = startMin, used = 0;
+  for (;;) {
+    let best = null, bestScore = 0, bestCost = 0;
+    for (const p of cands) {
+      if (chosen.has(p.id)) continue;
+      const d = hav(cur, ll(p)) * M().detour;
+      const go = d > 1800 ? Math.round((d * 1.25) / ((18 * 1000) / 60)) + 10 : d / speed;
+      const c = crowdIndex(p.crowd_base, dayFactor(), Math.floor((clock + go) / 60) % 24);
+      const cost = go + p.visit_min * (0.6 + (0.8 * c) / 100);
+      if (used + cost > budget) continue;
+      const score = p.popularity ** POP_W / cost;
+      if (score > bestScore) { best = p; bestScore = score; bestCost = cost; }
+    }
+    if (!best) return chosen;
+    chosen.add(best.id); used += bestCost; clock += bestCost; cur = ll(best);
+  }
+}
+
 export async function buildCustom() {
   if (!planSel.size) return toast(t('plan.pickZone'));
   const zones = [...planSel], minStars = +form.stars, budget = +form.budget, brisk = form.brisk;
@@ -101,28 +146,32 @@ export async function buildCustom() {
   const [h, m] = form.time.split(':').map(Number), startMin = h * 60 + m;
   let start;
   try { start = await startPoint(form.start); } catch { return toast(t('loc.fail')); }
-  const exclude = new Set();
-  let res = planMulti(start, zones, minStars, startMin, brisk, exclude);
   const total = (r) => r.totals.walk_min + r.totals.dwell_min + r.totals.ride_min;
-  // Over budget? Drop the stop that costs the most minutes (detour + dwell) per unit of fame, then re-plan.
-  const speed = ((brisk ? M().walk_kmh_brisk : M().walk_kmh_crowd) * 1000) / 60;
-  while (total(res) > budget && res.totals.pandals > 1) {
-    const all = res.segments.filter((s) => s.type === 'walk').flatMap((s) => s.stops);
-    const pts = [ll(start), ...all.map((x) => ll(idx.pandal[x.pandal]))];
-    let worst = null, worstScore = -Infinity;
-    all.forEach((x, i) => {
-      const prev = pts[i], cur = pts[i + 1], next = pts[i + 2], wm = (a, b) => hav(a, b) * M().detour;
-      const detour = wm(prev, cur) + (next ? wm(cur, next) - wm(prev, next) : 0);
-      const score = (detour / speed + x.dwell_min) / idx.pandal[x.pandal].popularity ** 2;
-      if (score > worstScore) { worstScore = score; worst = x.pandal; }
-    });
-    exclude.add(worst);
-    res = planMulti(start, zones, minStars, startMin, brisk, exclude);
+  const cands = G.data.pandals.filter((p) => planSel.has(p.zone) && p.popularity >= minStars);
+  // Pick the stops first: from the start, keep taking the pandal with the most fame per minute it costs (getting
+  // there plus time inside), so the time goes on pandals rather than rides between areas.
+  const chosen = packStops(start, cands, startMin, budget, brisk);
+  const pick = new Set(chosen);
+  const plan = () => planOrdered(start, cands.filter((p) => pick.has(p.id)), startMin, brisk);
+  let res = plan();
+  // The best walking order costs a little more or less than the picking estimated: trim, then top up any time left.
+  while (total(res) > budget && pick.size > 1) {
+    pick.delete([...pick].reduce((a, id) => (idx.pandal[id].popularity < idx.pandal[a].popularity ? id : a)));
+    res = plan();
+  }
+  for (let tries = 0; tries < 30; tries++) {
+    const pts = [ll(start), ...[...pick].map((id) => ll(idx.pandal[id]))];
+    const near = (p) => Math.min(...pts.map((q) => hav(q, ll(p))));
+    const next = cands.filter((p) => !pick.has(p.id)).sort((a, b) => near(a) / a.popularity - near(b) / b.popularity)[0];
+    if (!next) break;
+    pick.add(next.id);
+    const tryRes = plan();
+    if (total(tryRes) <= budget) res = tryRes; else { pick.delete(next.id); res = plan(); break; }
   }
   if (!res.totals.pandals) return toast(t('plan.none'));
   const params = { z: zones, s: form.start, t: form.time, r: minStars, b: budget, k: brisk ? 1 : 0, d: S.day };
   setPlan({ kind: 'custom', zones, day: S.day, start: hhmm(startMin), end: hhmm(res.endMin), startPt: start,
-    segments: res.segments, totals: res.totals, skipped: exclude.size, params });
+    segments: res.segments, totals: res.totals, skipped: cands.length - res.totals.pandals, params });
 }
 
 export function showTrail(id) {
