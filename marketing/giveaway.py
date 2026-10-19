@@ -49,6 +49,41 @@ def draw(names, media_id, close_iso, n):
     return seed, rng.sample(pool, min(n, len(pool)))
 
 
+def parse_bundles(spec):
+    """'dumdum=dum dum,kestopur;saltlake=salt lake,new town' -> [('dumdum', ['dum dum', 'kestopur']), ...]"""
+    out = []
+    for part in filter(None, (p.strip() for p in (spec or "").split(";"))):
+        name, _, words_ = part.partition("=")
+        out.append((name.strip(), [w.strip().lower() for w in words_.split(",") if w.strip()]))
+    return out
+
+
+def bundle_of(text, bundles):
+    """The bundle a comment names (the one mentioned first), or None."""
+    t = TAG.sub(" ", text or "").lower()
+    hits = [(t.find(w), name) for name, ws in bundles for w in ws if w in t]
+    return min(hits)[1] if hits else None
+
+
+def draw_bundles(valid, bundles, media_id, close_iso, alternates):
+    """One winner per bundle from the people who named it; nobody wins twice. A bundle nobody named draws from the
+    entries that named no bundle. Returns [(bundle, seed, winner or None, [alternates])]."""
+    chosen = {name: [] for name, _ in bundles}
+    loose = []
+    for who, text in valid:
+        b = bundle_of(text, bundles)
+        (chosen[b] if b else loose).append(who)
+    won, out = set(), []
+    for name, _ in bundles:
+        pool = [w for w in chosen[name] if w not in won] or [w for w in loose if w not in won]
+        seed, order = draw(pool, media_id, f"{close_iso}|{name}", 1 + alternates)
+        winner = order[0] if order else None
+        if winner:
+            won.add(winner)
+        out.append((name, seed, winner, order[1:]))
+    return out
+
+
 def find_media(user, token, post):
     code = post.rstrip("/").split("/")[-1]
     resp = graph("GET", f"{user}/media", token, fields="id,permalink,caption,timestamp", limit="50")
@@ -75,6 +110,7 @@ def main(argv=None):
     ap.add_argument("--close", required=True, help='entries close, IST: "YYYY-MM-DD HH:MM"')
     ap.add_argument("--prizes", default="2,1,1,1", help="passes per winner, first winner first")
     ap.add_argument("--alternates", type=int, default=4)
+    ap.add_argument("--bundles", default="", help='prize bundles: "name=word,word;name=word" (one winner each)')
     a = ap.parse_args(argv)
     user, token = creds()
     me = graph("GET", user, token, fields="username")["username"]
@@ -82,6 +118,15 @@ def main(argv=None):
     m = find_media(user, token, a.post)
     comments = all_comments(m["id"], token)
     valid = entries(comments, me, close)
+    if a.bundles:
+        print(f"## Giveaway draw · {m.get('permalink')}\n")
+        print(f"Entries close {a.close} IST. {len(comments)} comments, **{len(valid)} valid entries** "
+              f"(PUJO + 3 people tagged, one per person, before the close). One winner per bundle, drawn from the people "
+              "who named it; nobody wins twice.\n")
+        print("| Bundle | Winner | Alternates, in order | Seed |\n|---|---|---|---|")
+        for name, seed, winner, alts in draw_bundles(valid, parse_bundles(a.bundles), m["id"], close.isoformat(), a.alternates):
+            print(f"| {name} | {'@' + winner if winner else '(no entries)'} | {', '.join('@' + w for w in alts)} | `{seed[:16]}` |")
+        return
     prizes = [int(x) for x in a.prizes.split(",") if x.strip()]
     seed, order = draw([w for w, _ in valid], m["id"], close.isoformat(), len(prizes) + a.alternates)
     print(f"## Giveaway draw · {m.get('permalink')}\n")

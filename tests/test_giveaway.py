@@ -38,6 +38,23 @@ class GiveawayTest(unittest.TestCase):
         self.assertNotEqual(giveaway.draw(names, "124", CLOSE.isoformat(), 8)[1], w1)
         self.assertEqual(len(giveaway.draw(names[:3], "123", CLOSE.isoformat(), 8)[1]), 3)
 
+    def test_bundles(self):
+        spec = "dumdum=dum dum,kestopur;saltlake=salt lake,new town;ultadanga=ultadanga,chinar park;beleghata=beleghata"
+        b = giveaway.parse_bundles(spec)
+        self.assertEqual(giveaway.bundle_of("PUJO Dum Dum Park @a @b @c", b), "dumdum")
+        self.assertEqual(giveaway.bundle_of("pujo chinar park or salt lake?", b), "ultadanga")   # the one named first
+        self.assertIsNone(giveaway.bundle_of("PUJO @dumdum_fan @b @c", b))                     # handles don't count
+        valid = [("a", "PUJO Dum Dum"), ("b", "PUJO Dum Dum"), ("c", "PUJO salt lake"), ("d", "PUJO"), ("e", "PUJO")]
+        res = giveaway.draw_bundles(valid, b, "1", "close", 2)
+        got = {name: w for name, _, w, _ in res}
+        self.assertIn(got["dumdum"], {"a", "b"})
+        self.assertEqual(got["saltlake"], "c")
+        self.assertIn(got["ultadanga"], {"d", "e"})                     # nobody named it: drawn from the loose entries
+        self.assertIn(got["beleghata"], {"d", "e"})
+        winners = [w for w in got.values() if w]
+        self.assertEqual(len(winners), len(set(winners)))                # nobody wins twice
+        self.assertEqual(res, giveaway.draw_bundles(valid, b, "1", "close", 2))
+
 
 if __name__ == "__main__":
     unittest.main()

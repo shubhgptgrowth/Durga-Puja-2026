@@ -50,6 +50,7 @@ const FILLER = ['pls', 'plz', 'plss', 'please', 'pl', 'send', 'dm', 'me', 'link'
 export const untag = (text = '') => text.replace(/@[A-Za-z0-9._]+/g, ' ');
 const words = (text = '') => untag(text).toLowerCase().replace(/[^\p{L}\p{M}]+/gu, ' ').trim().split(' ').filter(Boolean);
 /** A request has a keyword, and every other word is filler or part of an area or pandal name ("PUJO Behala"). */
+export const hasKeyword = (text = '') => words(text || '').some((x) => KEYWORDS.includes(x));
 export const wantsGuide = (text = '', areaWords: Set<string> = new Set()) => {
   const w = words(text || '');
   return w.some((x) => KEYWORDS.includes(x)) && w.every((x) => KEYWORDS.includes(x) || FILLER.includes(x) || areaWords.has(x));
@@ -203,11 +204,14 @@ Deno.serve(async (req) => {
       const ix = await guide();
       for (const c of comments) {
         if (c.username === me || done.has(c.id) || Date.parse(c.timestamp) < since) continue;
-        if (!wantsGuide(c.text, ix?.words)) continue;
-        const area = ix ? (findArea(untag(c.text), ix) || findArea(m.caption || '', ix)) : null;
+        // On a giveaway post every comment with the keyword is an entry ("PUJO Chinar Park @a @b @c"), whatever else it
+        // says; its caption names several areas, so it can't stand in for the one the commenter meant.
+        const giveaway = /giveaway/i.test(m.caption || '');
+        if (!(wantsGuide(c.text, ix?.words) || (giveaway && hasKeyword(c.text)))) continue;
+        const area = ix ? (findArea(untag(c.text), ix) || (giveaway ? null : findArea(m.caption || '', ix))) : null;
         let msg = `${DM_BN}\n\n${DM_EN}\n${GUIDE}`, reply = PUBLIC_REPLY;
         if (area) ({ text: msg, reply } = areaDM(g, area.zone, area.pandal));
-        if (/giveaway/i.test(m.caption || '')) msg += `\n\n${GIVEAWAY}`;
+        if (giveaway) msg += `\n\n${GIVEAWAY}`;
         if (dry) {
           log.push(`[dry] would DM @${c.username} (${JSON.stringify((c.text || '').slice(0, 40))}) ${area ? 'the ' + area.zone + ' route' : 'the general link'}`);
           ok = false;

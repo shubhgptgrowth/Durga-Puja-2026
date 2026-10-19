@@ -15,8 +15,11 @@ on:
         description: "Passes per winner, first winner first"
         default: "2,1,1,1"
       alternates:
-        description: "Alternates to draw"
+        description: "Alternates to draw (per bundle when bundles are set)"
         default: "4"
+      bundles:
+        description: 'Prize bundles, one winner each: "name=word,word;name=word" (empty: prizes above)'
+        default: ""
 
 permissions:
   contents: read
@@ -38,4 +41,5 @@ jobs:
           CLOSE: ${{ inputs.close }}
           PRIZES: ${{ inputs.prizes }}
           ALTERNATES: ${{ inputs.alternates }}
-        run: python -m marketing.giveaway --post "$POST" --close "$CLOSE" --prizes "$PRIZES" --alternates "$ALTERNATES" | tee -a "$GITHUB_STEP_SUMMARY"
+          BUNDLES: ${{ inputs.bundles }}
+        run: python -m marketing.giveaway --post "$POST" --close "$CLOSE" --prizes "$PRIZES" --alternates "$ALTERNATES" --bundles "$BUNDLES" | tee -a "$GITHUB_STEP_SUMMARY"
