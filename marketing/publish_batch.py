@@ -142,6 +142,17 @@ def approved(date):
     return APPROVED.exists() and date in APPROVED.read_text(encoding="utf-8").split()
 
 
+def held(date):
+    """Manifest ids of the day's items marked "hold": true in marketing/daily/<date>.json: rendered for the owner to
+    review on the kit page, but not posted until the flag comes off (read from the checkout, so no re-render waits)."""
+    try:
+        plan = json.loads((APPROVED.parent / f"{date}.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    pfx = date[5:7] + date[8:10]
+    return {f"{pfx}-{it['id']}" for it in plan.get("items", []) if it.get("hold")}
+
+
 def wait_until(date, at, last, min_gap):
     """Sleep until the item's IST slot, and at least min_gap after the previous post (a late start never bunches)."""
     when = dt.datetime.fromisoformat(f"{date}T{at}:00").replace(tzinfo=IST).timestamp() if at else 0
@@ -175,6 +186,10 @@ def main(argv=None):
     if a.date:
         items = get_json(f"{SITE}kit/reels/{a.date}/manifest.json?cb={int(time.time())}")["items"]
         items = [i for i in items if in_window(i.get("at"), a.window)]
+        hold = held(a.date)
+        if hold & {i["id"] for i in items}:
+            print("held for review, not posted: " + ", ".join(sorted(hold & {i["id"] for i in items})))
+        items = [i for i in items if i["id"] not in hold]
         if not approved(a.date) and not a.dry_run:
             print(f"{a.date} is not in marketing/daily/approved.txt yet: dry run.")
             a.dry_run = True

@@ -205,6 +205,25 @@ class DailySetTest(unittest.TestCase):
             publish_batch.main(["--date", "2026-10-06", "--window", "pm"])
         pub.assert_not_called()
 
+    def test_held_item_is_not_posted(self):
+        import json, tempfile
+        from pathlib import Path
+        from unittest import mock
+        from marketing import publish_batch
+        items = {"items": [{"type": "reel", "id": "1006-r1", "at": "14:00", "video_url": "https://e/r1.mp4", "caption": "c"},
+                           {"type": "reel", "id": "1006-rv", "at": "15:00", "video_url": "https://e/rv.mp4", "caption": "c"}]}
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "approved.txt").write_text("2026-10-06\n")
+            (Path(d) / "2026-10-06.json").write_text(json.dumps({"items": [{"id": "r1"}, {"id": "rv", "hold": True}]}))
+            with mock.patch.object(publish_batch, "APPROVED", Path(d) / "approved.txt"), \
+                 mock.patch.object(publish_batch, "get_json", return_value=items), \
+                 mock.patch.object(publish_batch, "reachable", return_value=True), \
+                 mock.patch.object(publish_batch, "publish_once", return_value="m1") as pub, \
+                 mock.patch.object(publish_batch, "wait_until"), mock.patch.object(publish_batch.time, "sleep"), \
+                 mock.patch.dict("os.environ", {"IG_USER_ID": "1", "IG_ACCESS_TOKEN": "IGx"}):
+                publish_batch.main(["--date", "2026-10-06", "--window", "pm"])
+        self.assertEqual([c.args[0]["label"] for c in pub.call_args_list], ["1006-r1"])
+
     def test_failed_item_does_not_block_later_slots(self):
         from unittest import mock
         from marketing import publish_batch
