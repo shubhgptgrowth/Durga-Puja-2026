@@ -1,6 +1,6 @@
-# Build report — 2026-10-20T18:50:48+00:00
+# Build report — 2026-10-21T08:05:20+00:00
 
-Bundle version `847481427cf4`
+Bundle version `0ab4839d5bdc`
 
 | Entity | Count |
 |---|---|
@@ -11,7 +11,7 @@ Bundle version `847481427cf4`
 | parking | 16 |
 | transit | 56 |
 | itineraries | 6 |
-| dish_photos | 89 |
+| dish_photos | 91 |
 | awards | 2 |
 | panjika | 4 |
 
