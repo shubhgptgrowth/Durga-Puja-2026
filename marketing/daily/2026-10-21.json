@@ -160,6 +160,30 @@
    "artist": "Indrajit Das",
    "label": "DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2016_-_Sovabazar_Rajbari_01.jpg"
+  },
+  "fx-a6274bcd": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9211.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Sovabazar Royal Durga Idol Immersion Arrangement - River Hoo",
+   "page": "https://commons.wikimedia.org/wiki/File:Sovabazar%20Royal%20Durga%20Idol%20Immersion%20Arrangement%20-%20River%20Hooghly%20-%20Baghbazar%20Ghat%20-%20Kolkata%202014-10-03%209211.jpg"
+  },
+  "fx-1e576a95": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1343.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion - Baja Kadamtala Ghat - Kolkata 2012-10",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202012-10-24%201343.JPG"
+  },
+  "fx-b3d0c71d": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Durga_Idol_Immersion_Procession_-_Baja_Kadamtala_Ghat_-_Kolkata_2015-10-22_6581.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga Idol Immersion Procession - Baja Kadamtala Ghat - Kolk",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga%20Idol%20Immersion%20Procession%20-%20Baja%20Kadamtala%20Ghat%20-%20Kolkata%202015-10-22%206581.JPG"
   }
  },
  "items": [
@@ -419,6 +443,63 @@
     "f22",
     120
    ]
+  },
+  {
+   "id": "rv1",
+   "type": "reel",
+   "at": "18:00",
+   "hold": true,
+   "hook": "Where Kolkata says goodbye to Maa",
+   "segments": [
+    [
+     "fx-74d985b1",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-bdb3d42f",
+     0,
+     3.6,
+     "Baghbazar Ghat, North Kolkata"
+    ],
+    [
+     "fx-a6274bcd",
+     0,
+     3.6,
+     "Sovabazar Rajbari's idol goes by boat"
+    ],
+    [
+     "fx-1e576a95",
+     0,
+     3.6,
+     "Baja Kadamtala Ghat"
+    ],
+    [
+     "fx-b3d0c71d",
+     0,
+     3.6,
+     "From tonight, Bijoya Dashami"
+    ]
+   ],
+   "end": [
+    "Which ghat does your para go to?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f22",
+    70
+   ],
+   "caption": {
+    "en": "Durga Puja 2026 immersion in Kolkata: where the idols go to the river 🙏\n\nBisarjan begins this evening, Bijoya Dashami, 21 Oct, at the ghats along the Hooghly. At Baghbazar Ghat, Sovabazar Rajbari's idol goes out on the river by boat. At Baja Kadamtala Ghat the processions come down with the dhak. Many big pujas immerse later in the week, so check the day with your puja committee.\n\nThese clips are from past years.\n\nWhich ghat does your para go to? Tell us 👇",
+    "keywords": [
+     "durga puja immersion kolkata 2026",
+     "baghbazar ghat immersion",
+     "baja kadamtala ghat",
+     "bijoya dashami 2026"
+    ],
+    "tags": "#durgapuja2026 #bijoyadashami #kolkatadurgapuja"
+   }
   },
   {
    "id": "r5",
