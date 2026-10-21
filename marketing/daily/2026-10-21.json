@@ -335,111 +335,6 @@
    ]
   },
   {
-   "id": "p2",
-   "type": "photo",
-   "render": "editorial",
-   "at": "10:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Durga Puja · UNESCO",
-     "title": "Why UNESCO listed Kolkata's Durga Puja",
-     "bn": "ইউনেস্কোর তালিকায় কলকাতার পুজো",
-     "sub": "Intangible cultural heritage since December 2021",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Durga_Puja_Festival_-_Kolkata_October_2025.jpg",
-      "artist": "Pramanikshreya",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "What happened",
-     "title": "December 2021",
-     "bn": "২০২১-এর ডিসেম্বর",
-     "body": "UNESCO inscribed \"Durga Puja in Kolkata\" on its Representative List of the Intangible Cultural Heritage of Humanity, on a nomination by India."
-    },
-    {
-     "t": "step",
-     "kicker": "Not a World Heritage Site",
-     "title": "A living practice, not a place",
-     "bn": "জায়গা নয়, জীবন্ত ঐতিহ্য",
-     "body": "World Heritage covers places such as the Sundarbans. This list covers living practice. What's recognised isn't a pandal or an image, made and immersed each year, but the practice itself."
-    },
-    {
-     "t": "list",
-     "kicker": "Why Kolkata's puja",
-     "title": "What UNESCO saw",
-     "bn": "কেন কলকাতার পুজো",
-     "items": [
-      [
-       "Made by neighbourhood committees",
-       "পাড়ার কমিটির হাতে গড়া"
-      ],
-      [
-       "Image-makers, dhakis, pandal builders, cooks",
-       "কারিগর, ঢাকি, প্যান্ডেল শিল্পী"
-      ],
-      [
-       "Public pandals open to anyone",
-       "সবার জন্য খোলা প্যান্ডেল"
-      ],
-      [
-       "Brings people together across religion",
-       "সব ধর্মের মানুষ একসঙ্গে"
-      ],
-      [
-       "Across caste, class and gender too",
-       "জাত, শ্রেণি, লিঙ্গ পেরিয়ে"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "What it does",
-     "title": "Recognition, not a law",
-     "bn": "স্বীকৃতি, আইন নয়",
-     "body": "UNESCO gets no control over the festival, and the listing brings no regular funding by itself. It does commit India to safeguarding the tradition and reporting on how it is faring."
-    },
-    {
-     "t": "step",
-     "kicker": "Living heritage",
-     "title": "It is meant to change",
-     "bn": "ঐতিহ্যও বদলায়",
-     "body": "A theme pandal made of recycled materials is as much a part of what UNESCO recognised as an ekchala image in an old family courtyard."
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Maa_Durga_Pandal_Bengal_Culture_Theme.jpg",
-      "artist": "Himadri8991",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Theme pandals: an open-air exhibition for millions of visitors"
-    },
-    {
-     "t": "end",
-     "title": "Our pujo, humanity's heritage",
-     "bn": "আমাদের পুজো, মানবতার ঐতিহ্য",
-     "ask": "Send it to a friend abroad"
-    }
-   ],
-   "caption": {
-    "en": "Why UNESCO recognised Durga Puja in Kolkata as intangible cultural heritage in December 2021 🌏\n\nIt isn't a World Heritage Site; those are places. Durga Puja in Kolkata is on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity, which recognises living practice: the image-makers' knowledge, the rituals, the music and the way neighbourhoods run the festival.\n\nThe listing is recognition, not a law. It brings no control and no regular funding by itself, but it commits India to safeguarding the tradition, artisans' livelihoods included.\n\nSend this to a friend who still calls it a World Heritage Site 🙏",
-    "keywords": [
-     "durga puja unesco",
-     "durga puja intangible cultural heritage",
-     "unesco heritage durga puja kolkata",
-     "intangible cultural heritage india"
-    ],
-    "tags": "#DurgaPuja #UNESCO #KolkataDurgaPuja"
-   }
-  },
-  {
    "id": "r2",
    "type": "reel",
    "at": "11:30",
@@ -458,88 +353,6 @@
    },
    "style": "night",
    "area": "Lake Market & Kalighat"
-  },
-  {
-   "id": "p3",
-   "type": "photo",
-   "render": "editorial",
-   "at": "12:40",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Bagbazar & Hatibagan",
-     "title": "Bagbazar Sarbojanin",
-     "sub": "Pictured: 2025",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "This year",
-     "title": "No theme, by choice",
-     "body": "No theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair."
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "body": "One of the oldest sarbojanin pujas. Traditional daker saaj idol, plus a riverside fair."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "items": [
-      [
-       "Metro: Shyambazar, 18 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Jagat Mukherjee Park, 7 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Since 1918",
-       "প্রতিষ্ঠা"
-      ],
-      [
-       "Least crowded: 9 am to 12 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Bagbazar_Srbojanin_Durga_Puja_2025_07.jpg",
-      "artist": "Tarunsamanta",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Bagbazar Sarbojanin, 2025"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Bagbazar Sarbojanin, Kolkata Durga Puja 2026: it keeps it traditional 🪔\n\nNo theme pandal: Bagbazar keeps its traditional daker saaj protima and the riverside fair.\n\nIt's 18 minutes' walk from Shyambazar Metro, and Jagat Mukherjee Park is 7 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "bagbazar sarbojanin durga puja 2026",
-     "bagbazar sarbojanin theme",
-     "kumartuli, bagbazar & hatibagan pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
   },
   {
    "id": "r3",
@@ -599,240 +412,13 @@
      "fx-6089f5d7",
      0,
      6.0,
-     "Which pandal are you going to?"
+     "Which pandal was your favourite this year?"
     ]
    ],
    "music": [
     "f22",
     120
    ]
-  },
-  {
-   "hook": "Asche bochor abar hobe",
-   "bn": {
-    "hook": "আসছে বছর আবার হবে",
-    "segs": [
-     "",
-     "বরণ",
-     "সিঁদুর খেলা",
-     "বিসর্জন"
-    ],
-    "end": "আপনার পাড়ার বিসর্জন কবে?"
-   },
-   "segments": [
-    [
-     "cm-9fcf61",
-     4,
-     4.0,
-     ""
-    ],
-    [
-     "cm-ad68f6",
-     6,
-     3.6,
-     "Boron"
-    ],
-    [
-     "cm-5f7d6f",
-     2,
-     3.6,
-     "Sindoor khela"
-    ],
-    [
-     "cm-440dc1",
-     40,
-     3.6,
-     "Bisarjan, Bagbazar"
-    ]
-   ],
-   "end": [
-    "Shubho Bijoya",
-    "Who are you sending your first pranam to?"
-   ],
-   "music": [
-    "f19",
-    0
-   ],
-   "caption": {
-    "en": "Bijoya Dashami in Kolkata: boron, sindoor khela and bisarjan 🙏\n\nToday Maa goes home. Married women bid her farewell with boron and sindoor khela, and the idols go to the Hooghly with the dhak. These clips are from past years.\n\nShubho Bijoya. Who is getting your first pranam? Tell us 👇",
-    "keywords": [
-     "bijoya dashami 2026",
-     "sindoor khela kolkata",
-     "durga puja bisarjan",
-     "durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #bijoyadashami #kolkatadurgapuja"
-   },
-   "id": "r4",
-   "type": "reel",
-   "at": "15:00"
-  },
-  {
-   "id": "p4",
-   "type": "photo",
-   "render": "editorial",
-   "at": "16:10",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Recipe · Serves 4",
-     "title": "Gobindobhog payesh, the sweet end of bhog",
-     "bn": "গোবিন্দভোগ চালের পায়েস",
-     "sub": "Rice, full-fat milk, bay leaf and cardamom",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/80/Kheer%28Payasam%29.jpg",
-      "artist": "Ayshamarjana",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "list",
-     "kicker": "Ingredients",
-     "title": "What you need",
-     "bn": "যা যা লাগবে",
-     "items": [
-      [
-       "1 litre full-fat milk",
-       "১ লিটার ঘন দুধ"
-      ],
-      [
-       "¼ cup (50 g) gobindobhog rice",
-       "গোবিন্দভোগ চাল"
-      ],
-      [
-       "1 tsp ghee",
-       "ঘি"
-      ],
-      [
-       "1 bay leaf",
-       "তেজপাতা"
-      ],
-      [
-       "3 green cardamom pods, lightly crushed",
-       "থেঁতো এলাচ"
-      ],
-      [
-       "⅓ cup (70 g) sugar, or to taste",
-       "চিনি"
-      ],
-      [
-       "10 to 12 cashews, halved, and 1 tbsp raisins",
-       "কাজু আর কিশমিশ"
-      ],
-      [
-       "A small pinch of salt",
-       "এক চিমটে নুন"
-      ]
-     ]
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 1,
-     "title": "Wash, dry, coat",
-     "bn": "চাল ধুয়ে ঘি মাখান",
-     "body": "Wash the rice in two changes of water, drain and spread it on a plate to dry for 15 minutes. Rub it with the ghee so the grains are lightly coated."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 2,
-     "title": "Boil, then simmer",
-     "bn": "দুধ ফুটিয়ে চাল দিন",
-     "body": "Boil the milk with the bay leaf and cardamom in a wide, heavy pan. Add the rice, lower to low-medium and simmer 30 to 35 minutes, scraping every 2 to 3 minutes, till the rice breaks when pressed."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 3,
-     "title": "Sugar goes in last",
-     "bn": "চিনি একদম শেষে",
-     "body": "Add the sugar and salt and stir 8 to 10 minutes on low heat. Sugar slows the rice softening, so never add it early. Stir in the cashews and raisins for 2 minutes, then take out the bay leaf."
-    },
-    {
-     "t": "step",
-     "kicker": "Method",
-     "num": 4,
-     "title": "Let it rest",
-     "bn": "একটু জিরোতে দিন",
-     "body": "Let it stand 15 minutes before offering; it thickens a lot as it cools. Serve warm, at room temperature or chilled. Covered in the fridge, it keeps up to 3 days."
-    },
-    {
-     "t": "step",
-     "kicker": "Later in the year",
-     "title": "The nolen gur version",
-     "bn": "নলেন গুড়ের পায়েস",
-     "body": "In winter, from around November to January, leave out the sugar. Turn off the heat, wait 5 minutes and stir in about ½ cup grated nolen gur. Don't boil it again, or the milk may split."
-    },
-    {
-     "t": "end",
-     "title": "Save this for Ashtami bhog",
-     "bn": "অষ্টমীর ভোগের জন্য রেখে দিন",
-     "ask": "Save it with the khichuri recipe"
-    }
-   ],
-   "caption": {
-    "en": "Payesh recipe: gobindobhog rice kheer, the sweet that closes the Durga Puja bhog plate 🍚\n\nGobindobhog rice, simmered slowly in full-fat milk with bay leaf, cardamom and sugar until creamy. It serves four. Keep to about 50 g of rice for a litre of milk and it stays pourable.\n\nThere's one rule we'd never break. Cook the rice fully before the sugar goes in, because sugar slows the softening. Then turn off the heat while it still looks a little thin; it thickens as it stands.\n\nSave this for Ashtami 🙏",
-    "keywords": [
-     "payesh recipe",
-     "gobindobhog payesh",
-     "durga puja payesh",
-     "bengali payesh",
-     "kolkata durga puja bhog"
-    ],
-    "tags": "#Payesh #DurgaPuja2026 #BengaliFood"
-   }
-  },
-  {
-   "id": "p5",
-   "type": "photo",
-   "render": "editorial",
-   "at": "17:20",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Ready-made pujo night",
-     "title": "Salt Lake + Lake Town Hop",
-     "sub": "13 pandals, from 4 pm",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Maa_Durga_Pandal_Bengal_Culture_Theme.jpg",
-      "artist": "Himadri8991",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.45
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "The route",
-     "title": "What you'll see",
-     "body": "Family-friendly blocks, then the Sreebhumi spectacle once the evening rush thins."
-    },
-    {
-     "t": "app",
-     "kicker": "In the app",
-     "num": 1,
-     "title": "Open it, start walking",
-     "body": "The start station, the walking order, kilometres and steps, and one tap to send it to the family group.",
-     "shot": "repo:marketing/app-shots/east_hop.jpg"
-    },
-    {
-     "t": "end",
-     "title": "Free. No sign-up. Link in bio.",
-     "ask": "Tag who you're going with"
-    }
-   ],
-   "caption": {
-    "en": "Salt Lake + Lake Town Hop: a ready-made Kolkata Durga Puja 2026 route, 13 pandals from 4 pm 🗺️\n\nFamily-friendly blocks, then the Sreebhumi spectacle once the evening rush thins.\n\nThe full route is free in our guide, with the walking order and the Metro station to start from.\n\nTag someone you're doing this with 👇",
-    "keywords": [
-     "salt lake + lake town hop",
-     "kolkata durga puja route 2026",
-     "pandal hopping route kolkata"
-    ],
-    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
-   }
   },
   {
    "id": "r5",
@@ -902,7 +488,7 @@
      "fx-09c9bc1b",
      0,
      6.0,
-     "North or South this year?"
+     "Who did you go pandal-hopping with?"
     ]
    ],
    "music": [
@@ -911,127 +497,64 @@
    ]
   },
   {
-   "id": "r6v",
-   "type": "reel",
-   "at": "19:40",
-   "hook": "Going to Sovabazar Rajbari this year?",
+   "hook": "Asche bochor abar hobe",
+   "bn": {
+    "hook": "আসছে বছর আবার হবে",
+    "segs": [
+     "",
+     "বরণ",
+     "সিঁদুর খেলা",
+     "বিসর্জন"
+    ],
+    "end": "যাঁর সঙ্গে পুজো মিস করবেন, তাঁকে পাঠান"
+   },
    "segments": [
     [
-     "pr-sovabazar_rajbari-0",
-     0,
+     "cm-9fcf61",
+     4,
      4.0,
-     "",
-     0.5
+     ""
     ],
     [
-     "pr-sovabazar_rajbari-1",
-     0,
-     3.4,
-     "6 min walk from Sovabazar Metro",
-     0.5
+     "cm-ad68f6",
+     6,
+     3.6,
+     "Boron"
     ],
     [
-     "pr-sovabazar_rajbari-2",
-     0,
-     3.4,
-     "Hop next: Shyam Square Sarbojanin, 8 min",
-     0.5
+     "cm-5f7d6f",
+     2,
+     3.6,
+     "Sindoor khela"
+    ],
+    [
+     "cm-440dc1",
+     40,
+     3.6,
+     "Bisarjan, Bagbazar"
     ]
    ],
    "end": [
-    "Is it on your list this year?",
-    "Tell us in the comments"
+    "Asche bochor abar hobe",
+    "Send this to the person you'll miss pujo with"
    ],
    "music": [
-    "f22",
-    70
+    "f19",
+    0
    ],
    "caption": {
-    "en": "Sovabazar Rajbari, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nA bonedi bari puja started by Raja Nabakrishna Deb. The thakurdalan is stunning.\n\nIt's 6 minutes' walk from Sovabazar Sutanuti Metro, and Shyam Square Sarbojanin is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
+    "en": "Bijoya Dashami in Kolkata: boron, sindoor khela and bisarjan 🙏\n\nToday Maa goes home. Married women bid her farewell with boron and sindoor khela, and the idols go to the Hooghly with the dhak. These clips are from past years.\n\nShubho Bijoya. Asche bochor abar hobe. Send this to the person you'll miss pujo with 👇",
     "keywords": [
-     "sovabazar rajbari durga puja 2026",
-     "sovabazar rajbari pandal",
-     "kumartuli, bagbazar & hatibagan pandals",
-     "kolkata durga puja 2026"
+     "bijoya dashami 2026",
+     "sindoor khela kolkata",
+     "durga puja bisarjan",
+     "durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
-  },
-  {
-   "id": "p7",
-   "type": "photo",
-   "render": "editorial",
-   "at": "20:50",
-   "slides": [
-    {
-     "t": "cover",
-     "kicker": "Pandal guide · Gariahat",
-     "title": "Jodhpur Park",
-     "sub": "Pictured: 2010",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
-      "artist": "Kinjal bose 78",
-      "license": "CC BY-SA 4.0",
-      "cx": 0.5,
-      "cy": 0.42
-     }
-    },
-    {
-     "t": "step",
-     "kicker": "Why go",
-     "title": "What it's known for",
-     "body": "Big theme pandal in a residential para."
-    },
-    {
-     "t": "list",
-     "kicker": "Plan your visit",
-     "title": "Before you go",
-     "items": [
-      [
-       "Metro: Ballygunge Junction (Suburban), 32 min walk",
-       "নিকটতম মেট্রো"
-      ],
-      [
-       "Hop next: Jodhpur Park 95 Pally, 8 min walk",
-       "পরের প্যান্ডেল"
-      ],
-      [
-       "Eat nearby: Diner 49B, Tandoor Park",
-       "কাছেই খাওয়া"
-      ],
-      [
-       "Least crowded: 5 to 9 pm",
-       "সবচেয়ে কম ভিড়"
-      ]
-     ]
-    },
-    {
-     "t": "photo",
-     "photo": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/5/54/5441g_jodhpur-blue-porcelain-display_dumdum-park.jpg",
-      "artist": "Mukerjee",
-      "license": "CC BY-SA 3.0",
-      "cx": 0.5,
-      "cy": 0.45
-     },
-     "line": "Jodhpur Park, 2007"
-    },
-    {
-     "t": "end",
-     "title": "Is it on your list this year?",
-     "ask": "Save it · tell us if you're going"
-    }
-   ],
-   "caption": {
-    "en": "Jodhpur Park, Kolkata Durga Puja 2026: what to know before you go 🪔\n\nBig theme pandal in a residential para.\n\nIt's 32 minutes' walk from Ballygunge Junction (Suburban) Metro, and Jodhpur Park 95 Pally is 8 minutes on foot from there. Every 2026 theme and the walk to the next pandal are free in our guide.\n\nAre you going this year? Tell us 👇",
-    "keywords": [
-     "jodhpur park durga puja 2026",
-     "jodhpur park pandal",
-     "gariahat & ballygunge pandals",
-     "kolkata durga puja 2026"
-    ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #pandalhopping"
-   }
+    "tags": "#durgapuja2026 #bijoyadashami #kolkatadurgapuja"
+   },
+   "id": "r4",
+   "type": "reel",
+   "at": "20:50"
   },
   {
    "id": "r9f",
@@ -1161,7 +684,7 @@
      "fx-af5c9921",
      0,
      6.0,
-     "Who are you going with?"
+     "Who are you sending Bijoya wishes to?"
     ]
    ],
    "music": [
