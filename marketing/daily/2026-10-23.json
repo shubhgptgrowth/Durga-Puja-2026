@@ -1,0 +1,206 @@
+{
+ "date": "2026-10-23",
+ "clips": {
+  "pp-maddox_square-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Durga_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3947.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolka",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3947.JPG"
+  },
+  "pp-bagbazar-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Bagbazar_Srbojanin_Durga_Puja_2025_03.jpg"
+  },
+  "pp-sreebhumi-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Sreebhumi_sporting_club_2023.jpg",
+   "license": "CC0",
+   "artist": "Soumava2002",
+   "label": "Sreebhumi_sporting_club_2023.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sreebhumi_sporting_club_2023.jpg"
+  },
+  "pp-suruchi_sangha-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Suruchi_Sangha_Durga_Puja_2019.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Subhrajyoti07",
+   "label": "Suruchi_Sangha_Durga_Puja_2019.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Suruchi_Sangha_Durga_Puja_2019.jpg"
+  },
+  "pp-ekdalia-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolka",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ekdalia_Evergreen_-_Ekdalia_Road_-_Kolkata_2017-09-26_4110.JPG"
+  },
+  "pp-chaltabagan-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Chaltabagan_Durga_puja_2023_03.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Chaltabagan_Durga_puja_2023_03.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Chaltabagan_Durga_puja_2023_03.jpg"
+  },
+  "pp-maddox_square-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Sq",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_Pandal_-_Ballygunge_Durga_Puja_Samiti_-_Maddox_Square_-_Kolkata_2017-09-26_3950.JPG"
+  },
+  "pp-tala_prattoy-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/The_Divine_Aura%2C_The_Luminous_Manifestation_of_Devi.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sampuron",
+   "label": "The_Divine_Aura,_The_Luminous_Manifestation_of_Devi.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Divine_Aura%2C_The_Luminous_Manifestation_of_Devi.jpg"
+  },
+  "pp-college_square-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Idols_at_the_pandal_of_College_Square_Sarbojonin_Durgotsab_%28Durga_Puja%29_in_College_Street%2C_Kolkata%2C_West_Bengal.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Billjones94",
+   "label": "Idols_at_the_pandal_of_College_Square_Sarbojonin_Durgotsab_(",
+   "page": "https://commons.wikimedia.org/wiki/File:Idols_at_the_pandal_of_College_Square_Sarbojonin_Durgotsab_%28Durga_Puja%29_in_College_Street%2C_Kolkata%2C_West_Bengal.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "12:30",
+   "hook": "Shubho Bijoya",
+   "bn": {
+    "hook": "শুভ বিজয়া",
+    "segs": [
+     "",
+     "বড়দের প্রণাম",
+     "বন্ধুদের কোলাকুলি",
+     "সবার মিষ্টিমুখ"
+    ],
+    "end": "যাঁদের বিজয়া জানাচ্ছেন, তাঁদের পাঠান"
+   },
+   "segments": [
+    [
+     "pp-maddox_square-2",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-bagbazar-0",
+     0,
+     3.6,
+     "Pranam to the elders"
+    ],
+    [
+     "pp-sreebhumi-0",
+     0,
+     3.6,
+     "Kolakuli with friends"
+    ],
+    [
+     "pp-suruchi_sangha-0",
+     0,
+     3.6,
+     "Mishti for everyone"
+    ]
+   ],
+   "end": [
+    "Shubho Bijoya",
+    "Send this to the family you're wishing"
+   ],
+   "music": [
+    "f23",
+    50
+   ],
+   "caption": {
+    "en": "Shubho Bijoya after Durga Puja 2026 in Kolkata, from Pujo Parikrama 🙏\n\nAfter Dashami, Bengal goes visiting: pranam to the elders, kolakuli with friends and mishti in every house. Our guide has Bijoya wishes in Bengali and English that you can copy and send. These photos are from past years.\n\nSend this to the family you're wishing Bijoya 👇",
+    "keywords": [
+     "shubho bijoya 2026",
+     "bijoya dashami wishes",
+     "durga puja 2026 kolkata",
+     "bijoya wishes in bengali"
+    ],
+    "tags": "#shubhobijoya #durgapuja2026 #kolkatadurgapuja"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "reel",
+   "at": "19:30",
+   "hook": "How many pandals did you see this year?",
+   "segments": [
+    [
+     "pp-maddox_square-1",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-college_square-0",
+     0,
+     3.6,
+     "Your pandals"
+    ],
+    [
+     "pp-ekdalia-0",
+     0,
+     3.6,
+     "Your steps"
+    ],
+    [
+     "pp-chaltabagan-0",
+     0,
+     3.6,
+     "One card, free on our site"
+    ]
+   ],
+   "end": [
+    "Make your My Pujo card",
+    "How many pandals did you see? Tell us"
+   ],
+   "music": [
+    "f19",
+    20
+   ],
+   "caption": {
+    "en": "How many pandals did you see this Durga Puja 2026 in Kolkata? 👣\n\nOur free guide keeps your pujo in one place: the pandals and the steps from your pujo walks. Open My Pujo on pujoparikramaguide.in and tap Share my Pujo card for a story-size card for Instagram or WhatsApp Status. These photos are from past years.\n\nHow many pandals did you see this year? Tell us in the comments 👇",
+    "keywords": [
+     "durga puja 2026 kolkata",
+     "pandal hopping kolkata",
+     "my pujo card",
+     "kolkata pujo 2026"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  },
+  {
+   "id": "s1",
+   "type": "story",
+   "at": "21:00",
+   "segments": [
+    [
+     "pp-tala_prattoy-0",
+     0,
+     6.0,
+     "Tag us in your My Pujo card"
+    ]
+   ],
+   "music": [
+    "f22",
+    70
+   ]
+  }
+ ]
+}
