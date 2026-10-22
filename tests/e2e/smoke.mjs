@@ -126,9 +126,9 @@ try {
     await page.click('.tab[data-view="home"]');
   }
   // Today's route in one tap from Home while the pujo is on (the card is gone once it's over; then a day from Routes)
-  const tc = await count('#view-home .today-card .tc-go');
+  const tc = await count('#view-home .today-card .tc-go[data-dayplan]');
   if (!tc) await page.click('.tab[data-view="plan"]');
-  await page.click(tc ? '#view-home .today-card .tc-go' : '#view-plan .dayplan [data-dayplan]');
+  await page.click(tc ? '#view-home .today-card .tc-go[data-dayplan]' : '#view-plan .dayplan [data-dayplan]');
   await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
   must(await count('.timeline li[data-place]') >= 4, 'the day plan should have a route');
   {   // the next pandal as one big directions button
