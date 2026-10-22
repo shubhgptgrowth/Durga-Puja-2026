@@ -156,62 +156,53 @@
  },
  "items": [
   {
-   "id": "r5",
+   "id": "rv1",
    "type": "reel",
    "at": "18:30",
-   "hook": "How a royal family says goodbye",
-   "bn": {
-    "hook": "রাজবাড়ির বিদায়",
-    "segs": [
-     "",
-     "প্রস্তুতি",
-     "দুই নৌকো",
-     "গঙ্গায়"
-    ],
-    "end": "কমেন্টে লিখুন"
-   },
+   "hook": "Where Kolkata says goodbye to Maa",
    "segments": [
     [
-     "fx-be3f0e56",
+     "fx-ebf259a2",
      0,
      4.0,
      ""
     ],
     [
-     "fx-895b5194",
+     "fx-be3f0e56",
      0,
      3.6,
-     "The arrangement"
+     "Baghbazar Ghat, North Kolkata"
     ],
     [
      "fx-a6274bcd",
      0,
      3.6,
-     "Two boats"
+     "Sovabazar Rajbari's idol goes by boat"
     ],
     [
-     "fx-ebf259a2",
+     "fx-895b5194",
      0,
      3.6,
-     "Into the Hooghly"
+     "Bisarjan continues this week"
     ]
    ],
    "end": [
-    "How a royal family says goodbye",
-    "Save this, and tell us your para's bisarjan story"
+    "Which ghat does your para go to?",
+    "Tell us in the comments"
    ],
    "music": [
-    "f21",
-    80
+    "f22",
+    70
    ],
    "caption": {
-    "en": "Sovabazar Rajbari's bisarjan, the traditional way, Kolkata 🙏\n\nBefore the immersion the protima is readied at Baghbazar Ghat. These photos are from 2014.\n\nSave this, and tell us your para's bisarjan story 👇",
+    "en": "Durga Puja 2026 immersion in Kolkata: where the idols go to the river 🙏\n\nBisarjan began on Bijoya Dashami and goes on through the week at the ghats along the Hooghly. At Baghbazar Ghat, Sovabazar Rajbari's idol goes out on the river by boat. Many big pujas immerse later in the week, so check the day with your puja committee.\n\nThese clips are from past years.\n\nWhich ghat does your para go to? Tell us 👇",
     "keywords": [
-     "durga puja 2026",
-     "kolkata durga puja",
-     "bijoya dashami kolkata"
+     "durga puja immersion kolkata 2026",
+     "baghbazar ghat immersion",
+     "sovabazar rajbari bisarjan",
+     "durga puja 2026"
     ],
-    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+    "tags": "#durgapuja2026 #bijoyadashami #kolkatadurgapuja"
    }
   },
   {
