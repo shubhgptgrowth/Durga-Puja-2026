@@ -1,6 +1,6 @@
 /* Home: a simple start screen. "What would you like to do?" tasks, areas to pick, and ready-made routes. */
 import { hav, fmtCount, searchEntries } from '../core.js';
-import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, greetDay, btn, icon, bnDigits, loc, plain,
+import { S, G, idx, t, store, community, ll, nm, zn, zs, dn, zoneOf, esc, dist, greetDay, btn, icon, bnDigits, loc, plain, todayKey, savePrefs,
 } from '../state.js';
 import { $, go, rerender, toast, getFix, registerView } from '../ui.js';
 import { openPlace } from '../sheets.js';
@@ -11,6 +11,8 @@ import { radioCard, watchCard } from '../radioCard.js';
 import { liveHtml } from '../livecount.js';
 import { photosOn, pandalPhoto, dishPhoto, areaPhoto, tilePhoto, photoBg } from '../photos.js';
 import { showAllReels } from '../reels.js';
+import { deviceId } from '../growth.js';
+import { track } from '../analytics.js';
 
 let searchIndex = null;
 function buildIndex() {
@@ -44,7 +46,8 @@ function heroHtml() {
   const today = greetDay();
   const shashthi = new Date(idx.day.shashthi.date + 'T00:00:00'), now = new Date(); now.setHours(0, 0, 0, 0);
   const diff = Math.round((shashthi - now) / 864e5);
-  const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : t('h.planning');
+  const over = pujoOver() && community.enabled;   // after Dashami the banner points at next year's reminder
+  const when = today ? t('h.todayIs', { day: esc(dn(today)) }) : diff > 0 ? t('h.countdown', { n: bnDigits(diff) }) : over ? t('rm.when') : t('h.planning');
   return `<div class="hero slides" role="group" aria-roledescription="carousel" aria-label="${t('h.heroAlt', { place: '' })}">
     ${SLIDES.map((x, k) => `<button type="button" class="slide ${k === slide ? 'on' : ''}" data-slide="${k}" data-place="${x.pandal}" aria-label="${esc(nm(idx.pandal[x.pandal]))}">
       <img ${k === slide ? `src="${x.src}" fetchpriority="high"` : `data-src="${x.src}"`} alt="${t('h.heroAlt', { place: esc(nm(idx.pandal[x.pandal])) })}" style="object-position:${x.pos}" decoding="async"></button>`).join('')}
@@ -54,7 +57,7 @@ function heroHtml() {
       <div class="sharad-sub">${t('h.greetSub')}</div>
       <div class="sharad-when"><span>${when}</span><span class="sep" aria-hidden="true">·</span><span>${span()}</span></div>
       <p class="hero-promise">${t('promise.title')}</p>
-      <button type="button" class="hero-cta" data-q="myplan">${t('promise.cta')}</button>
+      <button type="button" class="hero-cta" data-q="${over ? 'remind' : 'myplan'}">${over ? t('rm.cta') : t('promise.cta')}</button>
     </div>
     <div class="hero-meta"><span class="hero-place"><span id="slidePlace">${esc(nm(idx.pandal[SLIDES[slide].pandal]))}</span></span></div>
     <div class="dots" aria-hidden="true">${SLIDES.map((_, k) => `<i class="${k === slide ? 'on' : ''}"></i>`).join('')}</div>
@@ -110,6 +113,26 @@ const regionImg = (r) => areaPhoto(r.zone_ids, r.id);
 
 /* Under the banner (which carries the promise and "Plan my pujo"): search, since most people arrive looking for one
  * pandal, and the facts behind the promise in one line. */
+/* After Dashami: "See you at Pujo 2027" with a WhatsApp reminder sign-up. It saves to the same consented contact list
+ * as My Pujo (save_profile: only for pujo updates, removable there), so there's one list and one way out. */
+const pujoOver = () => !!idx.day.dashami && todayKey() > idx.day.dashami.date;
+const digits10 = (v) => { let d = String(v || '').replace(/\D/g, ''); if (d.length > 10 && /^(91|0)/.test(d)) d = d.replace(/^(91|0)/, ''); return d.slice(0, 10); };
+function remindHtml() {
+  if (!pujoOver() || !community.enabled) return '';
+  const on = S.prefs.contactOk && S.prefs.phone;
+  return `<section class="today-card remind" id="remindCard">
+    <div class="tc-k">${t('rm.k')}</div>
+    <h2>${t('rm.title')}</h2>
+    <p class="tc-areas">${t(on ? 'rm.on' : 'rm.sub')}</p>
+    ${on ? '' : `<form id="remindForm" class="rm-form" novalidate>
+      <input id="rmName" type="text" autocomplete="given-name" maxlength="40" placeholder="${t('rm.name')}" aria-label="${t('rm.name')}" value="${esc(S.prefs.name || '')}">
+      <span class="phone-in"><span class="cc">+91</span><input id="rmPhone" type="tel" inputmode="numeric" autocomplete="tel-national"
+        placeholder="9830012345" aria-label="${t('rm.phone')}"></span>
+      <button type="submit" class="btn primary block tc-go">${t('rm.btn')}</button>
+      <p class="fine">${t('pr.shareNote')}</p></form>`}
+  </section>`;
+}
+
 function promiseHtml(withCard = '') {
   return `<div class="search" role="search">
       ${icon('search')}
@@ -138,7 +161,7 @@ function render() {
   startSlides(el);
   $('#homeTop', el).innerHTML = `
     ${heroHtml()}
-    ${promiseHtml(todayCardHtml())}
+    ${promiseHtml(todayCardHtml() || remindHtml())}
     ${liveHtml()}
     <section class="section first"><div class="section-head"><h2>${plain(t('h.whatToDo'))}</h2></div>
       <div class="tasks">${TASKS.map(([k, ic]) => { const img = taskImg(k); return `<button class="task ${img ? 'photo' : ''}" data-q="${k}">${photoBg(img)}
@@ -183,11 +206,26 @@ const LEARN = [
 ];
 
 function wire(el) {
+  el.onsubmit = async (e) => {
+    if (e.target.id !== 'remindForm') return;
+    e.preventDefault();
+    const phone = digits10($('#rmPhone', el).value), name = $('#rmName', el).value.trim().slice(0, 40);
+    if (!/^[6-9]\d{9}$/.test(phone)) { $('#rmPhone', el).focus(); return toast(t('pr.badPhone')); }
+    const b = e.target.querySelector('button'); b.disabled = true;
+    try {
+      const r = await community.saveProfile(name, phone, true, { lang: S.prefs.lang, src: store.get('firstSrc', S.src || 'direct'), device: deviceId() });
+      if (r.status !== 'ok') { b.disabled = false; return toast(t('pr.badPhone')); }
+      Object.assign(S.prefs, { name, phone, contactOk: true }); savePrefs();
+      track('remind', { d: '2027' });
+      toast(t('rm.done')); rerender();
+    } catch { b.disabled = false; toast(t('rm.fail')); }
+  };
   el.onclick = (e) => {
     if (e.target.closest('.radio-card')) return;
     const dp = e.target.closest('[data-dayplan]')?.dataset.dayplan; if (dp) return openDayPlan(+dp);
     const q = e.target.closest('[data-q]')?.dataset.q;
     if (q === 'plan') return go('plan');
+    if (q === 'remind') { const c = $('#remindCard', el); c?.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('#rmPhone', el)?.focus({ preventScroll: true }), 450); return; }
     if (q === 'ownplan') return openSharedPlan(null);   // the route builder from its first step
     if (q === 'reels') return showAllReels(go);
     if (q === 'myplan') {   // today's ready route in one tap; the Routes tab when there isn't one
