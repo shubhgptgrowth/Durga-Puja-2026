@@ -40,7 +40,7 @@ jobs:
 
   app:
     name: App (JS unit + mobile e2e)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.56 cannot install Chromium on 26.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -76,7 +76,7 @@ jobs:
 
   community:
     name: Community backend (SQL rules + real Supabase e2e)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.56 cannot install Chromium on 26.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4

@@ -78,8 +78,22 @@ try {
   // Nothing plays until someone asks for music, so the sticky radio button stays away until then
   must(!(await page.locator('#radioFab').isVisible()), 'sticky radio button should be hidden while no music plays');
   // A newcomer sees what this is and one thing to do: the promise and "Plan my pujo" in the banner, search under it
-  must(await count('#view-home .hero .hero-cta[data-q="myplan"]') === 1, 'Plan my pujo button missing from the banner');
+  must(await count('#view-home .hero .hero-cta[data-q="myplan"], #view-home .hero .hero-cta[data-q="remind"]') === 1, 'the banner button is missing (Plan my pujo, or Remind me for 2027 after the pujo)');
   must(await count('#view-home .search #homeSearch') === 1, 'search should sit right under the banner');
+  {   // after Dashami Home asks to be reminded for Pujo 2027; the number joins the consented contact list
+    const today = await page.evaluate(() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; });
+    if (today > '2026-10-21' && fake) {
+      must(await count('#view-home #remindForm') === 1, 'Pujo 2027 reminder card missing after the pujo');
+      await page.fill('#rmPhone', '12345');
+      await page.click('#remindForm button[type="submit"]');
+      await waitToast(/10-digit/);
+      await page.fill('#rmPhone', '+91 98300 77777');
+      await page.click('#remindForm button[type="submit"]');
+      await page.waitForSelector('#remindCard:not(:has(#remindForm))');
+      const st = await (await fetch(`${fake.url}/__state`)).json();
+      must(st.profiles.some((x) => x.phone === '+919830077777'), 'reminder number not saved: ' + JSON.stringify(st.profiles));
+    }
+  }
 
   // Pujo Radio: stations of official uploads (YouTube itself may be unreachable here, so only the UI is checked)
   must(await count('.radio-card .st-tiles [data-station]') === 5, 'five radio stations expected');
@@ -112,9 +126,9 @@ try {
     await page.click('.tab[data-view="home"]');
   }
   // Today's route in one tap from Home while the pujo is on (the card is gone once it's over; then a day from Routes)
-  const tc = await count('#view-home .today-card .tc-go');
+  const tc = await count('#view-home .today-card .tc-go[data-dayplan]');
   if (!tc) await page.click('.tab[data-view="plan"]');
-  await page.click(tc ? '#view-home .today-card .tc-go' : '#view-plan .dayplan [data-dayplan]');
+  await page.click(tc ? '#view-home .today-card .tc-go[data-dayplan]' : '#view-plan .dayplan [data-dayplan]');
   await page.waitForSelector('#view-plan.active .stepper [data-step="3"][aria-current="step"]');
   must(await count('.timeline li[data-place]') >= 4, 'the day plan should have a route');
   {   // the next pandal as one big directions button

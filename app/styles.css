@@ -1097,3 +1097,6 @@ details.crowd-more[open] > summary { margin-bottom: 8px; }
 .choice[aria-pressed="true"] b { color: var(--brand); }
 .wz-simple .big-go { margin-top: 20px; min-height: 54px; font-size: 17px; }
 .wz-simple .wz-back { display: block; margin: 12px auto 0; }
+.today-card.remind .rm-form { display: grid; gap: 10px; }
+.today-card.remind .rm-form input { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font-size: 16px; }
+.today-card.remind .rm-form .fine { margin: 0; }
