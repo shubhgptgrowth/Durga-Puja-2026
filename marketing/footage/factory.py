@@ -144,6 +144,8 @@ def visuals(plan):
     clips = plan.get("clips") or {}
     seen = set()
     for it in plan.get("items", []):
+        if it.get("hold"):  # held for review and never posted (marketing/publish_batch.py held())
+            continue
         for s in it.get("segments") or []:
             seen.add(clips[s[0]]["url"] if s[0] in clips and clips[s[0]].get("url") else s[0])
         for ph in it.get("photos") or []:
