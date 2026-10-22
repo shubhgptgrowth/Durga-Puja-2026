@@ -273,66 +273,71 @@ def main(argv=None):
     base = a.base_url or f"{SITE}kit/reels/{a.date}/"
     pfx = a.date[5:7] + a.date[8:10]
     items = []
+    failed = []
     for it in sorted(plan["items"], key=lambda x: x["at"]):
-        fid = f"{pfx}-{it['id']}"
-        entry = {"type": it["type"], "id": fid, "at": it["at"]}
-        if it.get("tags"):  # Instagram accounts to tag on the post (marketing/publish_batch.py)
-            entry["tags"] = it["tags"]
-        if it.get("hook") and it["type"] == "reel":
-            entry["hook"] = it["hook"]
-        if it["type"] == "photo":
-            names, cap = photo_post.build(it, fid, a.src, out, download)
-            entry.update(image_urls=[base + n for n in names], caption=cap)
-            print(f"built {fid} photo ×{len(names)}", flush=True)
-        elif it.get("video_url"):
-            entry.update(video_url=it["video_url"], caption=it.get("caption"))
-        elif it.get("render") == "cards_reel":
-            from .. import cards_reel
-            slides = sorted(out.glob(f"{pfx}-{it['from']}-*.jpg"), key=lambda q: int(q.stem.rsplit("-", 1)[1]))
-            mus = it.get("music")  # a licensed bed from the footage index, e.g. ["f22", 30] (Raga Durga)
-            secs = cards_reel.render(slides, out / f"{fid}.mp4", tmp,
-                                     audio=fetch(mus[0], idx[mus[0]], a.src) if mus else None, start=mus[1] if mus else 2.0)
-            cap = compose(it["caption"])
-            (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
-            entry.update(video_url=base + f"{fid}.mp4", caption=cap)
-            qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
-            print(f"built {fid} cards reel from {it['from']} ({len(slides)} slides) {secs:.1f}s", flush=True)
-        elif it.get("render") == "route":
-            from .. import route_reel
-            if it.get("style") == "night":  # the dark glowing map with lit pandal photos (marketing/night_route.py)
-                from .. import night_route
-                secs, _ = night_route.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
-                                             title_bn=it.get("title_bn"), area=it.get("area"), part=it.get("part"),
-                                             nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False),
-                                             next_key=it.get("next_zone"))
+        try:
+            fid = f"{pfx}-{it['id']}"
+            entry = {"type": it["type"], "id": fid, "at": it["at"]}
+            if it.get("tags"):  # Instagram accounts to tag on the post (marketing/publish_batch.py)
+                entry["tags"] = it["tags"]
+            if it.get("hook") and it["type"] == "reel":
+                entry["hook"] = it["hook"]
+            if it["type"] == "photo":
+                names, cap = photo_post.build(it, fid, a.src, out, download)
+                entry.update(image_urls=[base + n for n in names], caption=cap)
+                print(f"built {fid} photo ×{len(names)}", flush=True)
+            elif it.get("video_url"):
+                entry.update(video_url=it["video_url"], caption=it.get("caption"))
+            elif it.get("render") == "cards_reel":
+                from .. import cards_reel
+                slides = sorted(out.glob(f"{pfx}-{it['from']}-*.jpg"), key=lambda q: int(q.stem.rsplit("-", 1)[1]))
+                mus = it.get("music")  # a licensed bed from the footage index, e.g. ["f22", 30] (Raga Durga)
+                secs = cards_reel.render(slides, out / f"{fid}.mp4", tmp,
+                                         audio=fetch(mus[0], idx[mus[0]], a.src) if mus else None, start=mus[1] if mus else 2.0)
+                cap = compose(it["caption"])
+                (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+                entry.update(video_url=base + f"{fid}.mp4", caption=cap)
+                qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
+                print(f"built {fid} cards reel from {it['from']} ({len(slides)} slides) {secs:.1f}s", flush=True)
+            elif it.get("render") == "route":
+                from .. import route_reel
+                if it.get("style") == "night":  # the dark glowing map with lit pandal photos (marketing/night_route.py)
+                    from .. import night_route
+                    secs, _ = night_route.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                                 title_bn=it.get("title_bn"), area=it.get("area"), part=it.get("part"),
+                                                 nxt=it.get("next"), hook=it.get("hook"), ordered=it.get("ordered", False),
+                                                 next_key=it.get("next_zone"))
+                else:
+                    secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
+                                                title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))
+                cap = route_reel.caption(it["caption"])
+                (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
+                entry.update(video_url=base + f"{fid}.mp4", caption=cap)
+                qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
+                print(f"built {fid} route reel {it.get('zone') or it.get('title')} {secs:.1f}s", flush=True)
             else:
-                secs, _ = route_reel.render(it.get("zone"), out / f"{fid}.mp4", ids=it.get("ids"), title=it.get("title"),
-                                            title_bn=it.get("title_bn"), hook=it.get("hook"), ordered=it.get("ordered", False))
-            cap = route_reel.caption(it["caption"])
-            (out / f"{fid}.caption.txt").write_text(cap + "\n", encoding="utf-8")
-            entry.update(video_url=base + f"{fid}.mp4", caption=cap)
-            qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
-            print(f"built {fid} route reel {it.get('zone') or it.get('title')} {secs:.1f}s", flush=True)
-        else:
-            music = [it["music"]] if it.get("music") and not it.get("vo") else []
-            for s in it["segments"] + music + ([it["end_clip"]] if it.get("end_clip") else []):
-                fetch(s[0], idx[s[0]], a.src)
-            reel = dict(it, id=fid)
-            if it.get("vo"):  # voiceover lines, one per shot (generated ahead, see marketing/footage/voice.py)
-                vo = it["vo"]
-                urls = vo.get("urls") or [None] * len(vo["lines"])
-                reel["vo_files"] = [voice_file(u, a.src) if u else speak(t, vo["engine"], a.src) if vo.get("engine") else None
-                                    for u, t in zip(urls, vo["lines"])]
-            if it["type"] == "story":
-                reel.pop("end", None)
-                reel.pop("caption", None)
-            secs = build2.build(reel, idx, a.src, str(out), str(tmp))
-            entry["video_url"] = base + f"{fid}.mp4"
-            cap = out / f"{fid}.caption.txt"
-            entry["caption"] = cap.read_text(encoding="utf-8").strip() if cap.exists() else None
-            qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
-            print(f"built {fid} {it['type']} {secs:.1f}s", flush=True)
-        items.append(entry)
+                music = [it["music"]] if it.get("music") and not it.get("vo") else []
+                for s in it["segments"] + music + ([it["end_clip"]] if it.get("end_clip") else []):
+                    fetch(s[0], idx[s[0]], a.src)
+                reel = dict(it, id=fid)
+                if it.get("vo"):  # voiceover lines, one per shot (generated ahead, see marketing/footage/voice.py)
+                    vo = it["vo"]
+                    urls = vo.get("urls") or [None] * len(vo["lines"])
+                    reel["vo_files"] = [voice_file(u, a.src) if u else speak(t, vo["engine"], a.src) if vo.get("engine") else None
+                                        for u, t in zip(urls, vo["lines"])]
+                if it["type"] == "story":
+                    reel.pop("end", None)
+                    reel.pop("caption", None)
+                secs = build2.build(reel, idx, a.src, str(out), str(tmp))
+                entry["video_url"] = base + f"{fid}.mp4"
+                cap = out / f"{fid}.caption.txt"
+                entry["caption"] = cap.read_text(encoding="utf-8").strip() if cap.exists() else None
+                qa_strip(out / f"{fid}.mp4", out / f"qa_{fid}.jpg")
+                print(f"built {fid} {it['type']} {secs:.1f}s", flush=True)
+            items.append(entry)
+        except (SystemExit, Exception) as e:  # one bad item must not cost the whole day: post the rest
+            failed.append(f"{pfx}-{it['id']}")
+            print(f"::warning::{pfx}-{it['id']} not built, left out of the manifest: {e}", flush=True)
     json.dump({"date": a.date, "items": items}, open(out / "manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     review_page(a.date, items, out)
     shutil.rmtree(tmp, ignore_errors=True)
