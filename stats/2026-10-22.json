@@ -1,6 +1,32 @@
 {
- "taken_at": "2026-10-22T12:25:26+00:00",
+ "taken_at": "2026-10-22T17:46:49+00:00",
  "posts": [
+  {
+   "media": "18169600087413453",
+   "at": "20:50",
+   "type": "REELS",
+   "likes": 2,
+   "comments": 0,
+   "permalink": "https://www.instagram.com/reel/DezahJMjEUj/",
+   "first_line": "After Bijoya Dashami in Kolkata: the long wait for next year's Durga Puja begins 🪔",
+   "date": "2026-10-22",
+   "id": "r4",
+   "format": "reel (footage)",
+   "hook": "Kolkata waits a whole year for this"
+  },
+  {
+   "media": "18108276971234355",
+   "at": "21:25",
+   "type": "REELS",
+   "likes": 3,
+   "comments": 0,
+   "permalink": "https://www.instagram.com/reel/DezXpjqke4l/",
+   "first_line": "Durga Puja immersion in Kolkata: the last goodbye, at the ghat. Asche bochor abar hobe 🙏",
+   "date": "2026-10-22",
+   "id": "r9f",
+   "format": "reel (footage)",
+   "hook": "The last goodbye, at the ghat"
+  },
   {
    "media": "18095624918146689",
    "at": "22:00",
@@ -304,7 +330,7 @@
    "media": "18146851015580010",
    "at": "20:50",
    "type": "REELS",
-   "likes": 35,
+   "likes": 36,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/DerkS3XEyHl/",
    "first_line": "Central Kolkata Durga Puja 2026 route for Ashtami night: 10 pandals, one walk 🚶",
@@ -343,7 +369,7 @@
    "media": "18145514026596164",
    "at": "17:20",
    "type": "REELS",
-   "likes": 12,
+   "likes": 13,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/DerMJz1ATah/",
    "first_line": "Jadavpur & Santoshpur Durga Puja 2026 route, Part 10: 9 pandals in one night 🚶",
@@ -624,43 +650,17 @@
    "id": "p1",
    "format": "photo",
    "hook": ""
-  },
-  {
-   "media": "18112677209596180",
-   "at": "22:00",
-   "type": "REELS",
-   "likes": 4,
-   "comments": 0,
-   "permalink": "https://www.instagram.com/reel/DeminYligzi/",
-   "first_line": "Bagbazar Sarbojanin or Sovabazar Rajbari? Kumartuli, Bagbazar & Hatibagan Durga Puja panda",
-   "date": "2026-10-17",
-   "id": "r6",
-   "format": "reel (footage)",
-   "hook": "Which one are you seeing first?"
-  },
-  {
-   "media": "18097561412146539",
-   "at": "21:25",
-   "type": "REELS",
-   "likes": 7,
-   "comments": 0,
-   "permalink": "https://www.instagram.com/reel/Demem88itXL/",
-   "first_line": "Saptami begins tonight in Kolkata: turn the sound up for the dhak 🥁",
-   "date": "2026-10-17",
-   "id": "r9f",
-   "format": "reel (footage)",
-   "hook": "Saptami begins, 17 Oct. Turn the sound up"
   }
  ],
  "by_format": {
   "reel (footage)": {
    "posts": 26,
-   "likes": 542,
+   "likes": 536,
    "comments": 1
   },
   "reel (route map)": {
    "posts": 14,
-   "likes": 652,
+   "likes": 654,
    "comments": 49
   },
   "photo": {
@@ -674,5 +674,5 @@
    "comments": 0
   }
  },
- "insights_error": "Graph API 18095624918146689/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"A9VJTRkTDJHsaIUi5rVCud4\"}}"
+ "insights_error": "Graph API 18169600087413453/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AK1xzpSD12sp5t1rQYWx9sa\"}}"
 }
