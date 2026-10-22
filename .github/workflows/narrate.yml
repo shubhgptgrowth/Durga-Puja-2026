@@ -10,7 +10,7 @@ on:
 concurrency: { group: narrate, cancel-in-progress: false }
 jobs:
   blocks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.56 cannot install Chromium on 26.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
