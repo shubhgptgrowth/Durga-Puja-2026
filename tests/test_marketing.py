@@ -546,7 +546,10 @@ class RedesignTest(unittest.TestCase):
         self.assertEqual((meds, credits, credit), ([], [], ""))
         for t in (0.0, pl["t_draw"] + 1.0, pl["t_hold"] + 0.5):
             self.assertEqual(night_route.frame(base, top, meds, pl, t).size, (night_route.W, night_route.H))
-        self.assertEqual(night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "").size, (night_route.W, night_route.H))
+        save = night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "")
+        self.assertEqual(save.size, (night_route.W, night_route.H))
+        recap = night_route.end_frame(dict(pl, recap=True), 1.0, [("A. Photographer", "CC BY-SA 4.0")], "")
+        self.assertNotEqual(save.tobytes(), recap.tobytes())  # after the pujos it asks which pandals people saw
         self.assertEqual(night_route.path_to(pl, 0)[1], pl["xy"][0])
         self.assertEqual(night_route.path_to(pl, len(pl["order"]))[1], pl["xy"][-1])
         self.assertEqual(night_route.camera(pl, 0.0), (0.0, 0.0, 1.0))  # the cover and the hold show the whole route
