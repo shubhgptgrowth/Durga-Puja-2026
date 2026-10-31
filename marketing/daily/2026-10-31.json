@@ -1,0 +1,190 @@
+{
+ "date": "2026-10-31",
+ "items": [
+  {
+   "id": "rv1",
+   "type": "reel",
+   "at": "22:00",
+   "hook": "Where Kolkata says goodbye to Maa",
+   "segments": [
+    [
+     "fx-ebf259a2",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-be3f0e56",
+     0,
+     3.6,
+     "Baghbazar Ghat, North Kolkata"
+    ],
+    [
+     "fx-a6274bcd",
+     0,
+     3.6,
+     "Sovabazar Rajbari's idol goes by boat"
+    ],
+    [
+     "fx-895b5194",
+     0,
+     3.6,
+     "Every year, after Dashami"
+    ]
+   ],
+   "end": [
+    "Which ghat did your para go to?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f22",
+    70
+   ],
+   "caption": {
+    "en": "Durga Puja immersion in Kolkata: where the idols go to the river 🙏\n\nEvery year bisarjan starts on Bijoya Dashami and goes on for days at the ghats along the Hooghly. At Baghbazar Ghat, Sovabazar Rajbari's idol goes out on the river by boat.\n\nThese clips are from past years.\n\nWhich ghat did your para go to this year? Tell us 👇",
+    "keywords": [
+     "durga puja immersion kolkata",
+     "baghbazar ghat immersion",
+     "sovabazar rajbari bisarjan",
+     "durga puja 2026"
+    ],
+    "tags": "#durgapuja2026 #bijoyadashami #kolkatadurgapuja"
+   }
+  },
+  {
+   "id": "s3",
+   "type": "story",
+   "at": "22:15",
+   "segments": [
+    [
+     "fx-9ce6f7cb",
+     0,
+     6.0,
+     "Which moment of this pujo will you keep?"
+    ]
+   ],
+   "music": [
+    "f22",
+    120
+   ]
+  },
+  {
+   "id": "r3",
+   "type": "reel",
+   "at": "22:30",
+   "hook": "Kolkata's hardest goodbye",
+   "bn": {
+    "hook": "কলকাতার সবচেয়ে কঠিন বিদায়",
+    "segs": [
+     "",
+     "বাজা কদমতলা ঘাট",
+     "",
+     "বিসর্জন"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-6a7c4367",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-1e576a95",
+     0,
+     3.6,
+     "Baja Kadamtala Ghat"
+    ],
+    [
+     "fx-9ce6f7cb",
+     0,
+     3.6,
+     ""
+    ],
+    [
+     "fx-e68a45ca",
+     0,
+     3.6,
+     "Bisarjan"
+    ]
+   ],
+   "end": [
+    "Kolkata's hardest goodbye",
+    "Who do you miss the most when pujo ends? Tell us"
+   ],
+   "music": [
+    "f22",
+    20
+   ],
+   "caption": {
+    "en": "Durga Puja bisarjan at Baja Kadamtala Ghat, Kolkata 🙏\n\nThe idols go into the Hooghly after Dashami. These photos are from 2012.\n\nWho do you miss the most when pujo ends? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  },
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "23:00",
+   "hook": "The walk no one wants to end",
+   "bn": {
+    "hook": "যে পথ কেউ শেষ করতে চায় না",
+    "segs": [
+     "",
+     "শোভাযাত্রা",
+     "ঢাকের তালে",
+     "গঙ্গার দিকে"
+    ],
+    "end": "কমেন্টে লিখুন"
+   },
+   "segments": [
+    [
+     "fx-411bb78a",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "fx-b3d0c71d",
+     0,
+     3.6,
+     "The procession"
+    ],
+    [
+     "fx-125db1f9",
+     0,
+     3.6,
+     "Dhak all the way"
+    ],
+    [
+     "fx-7705df50",
+     0,
+     3.6,
+     "To the river"
+    ]
+   ],
+   "end": [
+    "The walk no one wants to end",
+    "Does your para dance all the way to the ghat? Tell us"
+   ],
+   "music": [
+    "f23",
+    90
+   ],
+   "caption": {
+    "en": "Durga Puja immersion procession to the ghat in Kolkata 🥁\n\nDhak, dancing and the last walk with Maa, down to Baja Kadamtala Ghat. Photos from 2015.\n\nDoes your para dance all the way to the ghat? Tell us 👇",
+    "keywords": [
+     "durga puja 2026",
+     "kolkata durga puja",
+     "bijoya dashami kolkata"
+    ],
+    "tags": "#durgapuja2026 #kolkatadurgapuja #bijoya"
+   }
+  }
+ ]
+}
