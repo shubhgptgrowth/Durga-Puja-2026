@@ -1,0 +1,89 @@
+{
+ "date": "2026-11-01",
+ "clips": {
+  "pp-tridhara-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/2016_Tridhara_Sammilani_Durga_Puja_02.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "2016_Tridhara_Sammilani_Durga_Puja_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2016_Tridhara_Sammilani_Durga_Puja_02.jpg"
+  },
+  "pp-chetla_agrani-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Asura%27s_At_Chetla_Agrani_Club%2C_Durga_Puja_2025.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Asura's_At_Chetla_Agrani_Club,_Durga_Puja_2025.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Asura%27s_At_Chetla_Agrani_Club,_Durga_Puja_2025.jpg"
+  },
+  "pp-mudiali-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Mudiali_Club_Durga_Puja_2025_13.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Mudiali_Club_Durga_Puja_2025_13.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Mudiali_Club_Durga_Puja_2025_13.jpg"
+  },
+  "pp-md_ali_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Indrajit Das",
+   "label": "DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:DurgaPuja2017_-_Durga_Idol_of_Mohammad_Ali_Park_01.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "hook": "Which pandal was the best this year?",
+   "segments": [
+    [
+     "pp-tridhara-0",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-chetla_agrani-3",
+     0,
+     3.6,
+     "Chetla Agrani?"
+    ],
+    [
+     "pp-mudiali-0",
+     0,
+     3.6,
+     "Mudiali?"
+    ],
+    [
+     "pp-md_ali_park-0",
+     0,
+     3.6,
+     "Mohammad Ali Park?"
+    ]
+   ],
+   "end": [
+    "Which pandal was the best this year?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    20
+   ],
+   "caption": {
+    "en": "Which pandal was the best at Durga Puja 2026 in Kolkata? 🏆\n\nTridhara, Chetla Agrani, Mudiali, Mohammad Ali Park, or one from your own para? Every 2026 theme is still on pujoparikramaguide.in if you need a reminder. These photos are from past years.\n\nWhich pandal was the best this year? Tell us in the comments 👇",
+    "keywords": [
+     "best pandal durga puja 2026",
+     "durga puja 2026 kolkata",
+     "kolkata pandal 2026",
+     "pandal hopping kolkata"
+    ],
+    "tags": "#durgapuja2026 #pandalhopping #kolkatadurgapuja"
+   }
+  }
+ ]
+}
