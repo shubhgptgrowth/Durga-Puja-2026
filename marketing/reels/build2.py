@@ -714,6 +714,9 @@ def build_cine(reel, footage, src_dir, out_dir, tmp):
 
 
 def build(reel, footage, src_dir, out_dir, tmp):
+    if reel.get("style") == "punch":  # fast cuts, bold type, no end card (marketing/reels/punch.py)
+        from . import punch
+        return punch.build(reel, footage, src_dir, out_dir, tmp)
     if cine(reel):
         reel = dict(reel, _frame=frame_for(reel, footage, src_dir))
     if reel.get("vo_files") is not None:
