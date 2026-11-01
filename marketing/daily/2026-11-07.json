@@ -1,0 +1,130 @@
+{
+ "date": "2026-11-07",
+ "clips": {
+  "pb-309734": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2025/10/14/309734_small.mp4",
+   "license": "Pixabay Content License",
+   "artist": "TonyDias7",
+   "label": "diwali, diya, festival, indian, mumbai, deepawali, light, india, hindu, celebrat",
+   "page": "https://pixabay.com/videos/id-309734/",
+   "dur": 8
+  },
+  "cm-kali4": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Kali_puja_rituals_2025_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Kali puja rituals 2025 04.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_puja_rituals_2025_04.jpg"
+  },
+  "pb-44740": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2020/07/15/44740-439982664_large.mp4",
+   "license": "Pixabay Content License",
+   "artist": "Stock-Freelr",
+   "label": "indian temple, india, temple, mandir, diya, shiva, satisfying, hindu, hinduism, ",
+   "page": "https://pixabay.com/videos/id-44740/",
+   "dur": 36
+  },
+  "cm-kali54": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Kali_Idol_in_North_Kolkata_2023_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kali Idol in North Kolkata 2023 10.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_Idol_in_North_Kolkata_2023_10.jpg"
+  },
+  "cm-kali45": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kali_Idol_in_North_Kolkata_2023_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kali Idol in North Kolkata 2023 01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_Idol_in_North_Kolkata_2023_01.jpg"
+  },
+  "cm-kali53": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Kali_Idol_in_North_Kolkata_2023_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kali Idol in North Kolkata 2023 09.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_Idol_in_North_Kolkata_2023_09.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "style": "punch",
+   "hook": "Tonight Bengal lights 14 lamps. Here's why.",
+   "hook_text": "Tonight Bengal lights [14 lamps]. Here's why.",
+   "segments": [
+    [
+     "pb-309734",
+     0,
+     2.2,
+     ""
+    ],
+    [
+     "cm-kali4",
+     0,
+     1.8,
+     "[14 lamps] around the house",
+     0.5,
+     0.6
+    ],
+    [
+     "pb-44740",
+     4,
+     1.8,
+     "To light the way for the [ancestors]"
+    ],
+    [
+     "cm-kali54",
+     0,
+     1.8,
+     "Tomorrow: [Kali Puja]",
+     0.5,
+     0.4
+    ],
+    [
+     "cm-kali45",
+     0,
+     1.8,
+     "Sunday 8 Nov, through the [night]",
+     0.5,
+     0.4
+    ]
+   ],
+   "end": [
+    "Did your family make choddo shaak?",
+    "Tell us in the comments"
+   ],
+   "end_clip": [
+    "cm-kali53",
+    0,
+    0.5,
+    0.45
+   ],
+   "music": [
+    "f23",
+    50
+   ],
+   "caption": {
+    "en": "Tonight is Bhoot Chaturdashi in Kolkata, and tomorrow is Kali Puja 🪔\n\nThis evening many Bengali homes light choddo prodip, fourteen small clay lamps at doorways, windows and dark corners, to keep harm away and light the way for the ancestors. And for dinner, choddo shaak: fourteen kinds of leafy greens cooked together.\n\nKali Puja is tomorrow, Sunday 8 November, usually through the night. Our guide is on pujoparikramaguide.in.\n\nDid your family make choddo shaak this year? Tell us in the comments 👇",
+    "keywords": [
+     "bhoot chaturdashi 2026",
+     "choddo shaak",
+     "kali puja 2026",
+     "kali puja tomorrow"
+    ],
+    "tags": "#kalipuja #bhootchaturdashi #bengali"
+   },
+   "search": [
+    "kali puja"
+   ]
+  }
+ ]
+}
