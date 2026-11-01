@@ -191,7 +191,9 @@ def end_layer(question, sub, credits):
     f = face("Poppins-SemiBold.ttf", 34)
     t = "Free festival guide: pujoparikramaguide.in"
     d.text(((W - d.textlength(t, font=f)) / 2, y + 20), t, font=f, fill=WHITE)
-    fc, yy = face("Poppins-SemiBold.ttf", 20), 1330
+    # a photographer named in Bengali or Assamese script needs a face that has it (Poppins draws empty boxes)
+    fc = b2.cfont("HindSiliguri-Bold.ttf", 20, bn=True) if b2.BN_RE.search(credits) else face("Poppins-SemiBold.ttf", 20)
+    yy = 1330
     for ln in b2.wrap(d, credits, fc, W - 200)[:6]:
         d.text(((W - d.textlength(ln, font=fc)) / 2, yy), ln, font=fc, fill=(205, 195, 180))
         yy += 27
