@@ -620,7 +620,9 @@ class PunchStyleTest(unittest.TestCase):
     def test_highlights_and_plans(self):
         from marketing.reels import punch
         self.assertEqual(punch.tokens("Bengal: [Kali Puja] tonight"),
-                         [("BENGAL:", False), ("KALI", True), ("PUJA", True), ("TONIGHT", False)])
+                         [[("BENGAL:", False)], [("KALI PUJA", True)], [("TONIGHT", False)]])
+        self.assertEqual(punch.tokens("one of these two on [Diwali]. Which?")[-2:],
+                         [[("DIWALI", True), (".", False)], [("WHICH?", False)]])
         for f in sorted(Path("marketing/daily").glob("2026-11-0[3-7].json")):
             it = json.load(open(f, encoding="utf-8"))["items"][0]
             self.assertEqual(it["style"], "punch")

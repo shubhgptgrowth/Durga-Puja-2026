@@ -68,12 +68,12 @@
    "hook_text": "3 things go into a [phonta]. Do you know all 3?",
    "segments": [
     [
-     "cm-phonta8",
+     "cm-phonta0",
      0,
      2.2,
      "",
-     0.5,
-     0.4
+     0.45,
+     0.5
     ],
     [
      "cm-phonta9",
@@ -108,12 +108,12 @@
      0.5
     ],
     [
-     "cm-phonta0",
+     "cm-phonta8",
      0,
      1.8,
      "Bhai Phonta: [Wed 11 Nov]",
-     0.45,
-     0.45
+     0.5,
+     0.3
     ]
    ],
    "end": [
