@@ -120,8 +120,8 @@ jobs:
           keep=$(for k in -1 0 1 2 3 4 5 6; do TZ=Asia/Kolkata date -d "$k day" +%F; done)
           # Every page: other workflows' artifacts can push a day's render out of the newest 100 (8 Oct went missing so)
           gh api --paginate "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
-            --jq '.artifacts[] | select((.expired | not) and (.name | startswith("reels-"))) | "\(.created_at) \(.workflow_run.id) \(.name)"' |
-          sort | cut -d' ' -f2- |
+            --jq '.artifacts[] | select((.expired | not) and (.name | startswith("reels-"))) | "\(.id) \(.workflow_run.id) \(.name)"' |
+          sort -n | cut -d' ' -f2- |  # artifact ids only grow; created_at can disagree with the real order (1 Nov)
           while read -r id name; do
             gh run download "$id" -n "$name" -D "/tmp/reels/$name" || continue
             for d in $keep; do
