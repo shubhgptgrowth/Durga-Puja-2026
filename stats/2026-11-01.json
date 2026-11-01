@@ -1,11 +1,24 @@
 {
- "taken_at": "2026-11-01T13:31:17+00:00",
+ "taken_at": "2026-11-01T17:46:40+00:00",
  "posts": [
+  {
+   "media": "17897324160424723",
+   "at": "21:30",
+   "type": "REELS",
+   "likes": 5,
+   "comments": 0,
+   "permalink": "https://www.instagram.com/reel/DfNHGrKlyt6/",
+   "first_line": "Durga Puja is over, but Kolkata's festival season isn't 🪔",
+   "date": "2026-11-01",
+   "id": "r1",
+   "format": "reel (footage)",
+   "hook": "Pujo's over? Three more to go"
+  },
   {
    "media": "18138156760725302",
    "at": "2026-11-01T10:27:05+0000",
    "type": "REELS",
-   "likes": 6,
+   "likes": 11,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/DfMg6zaCYIT/",
    "first_line": "एक फल। दो भाई। One fruit, two brothers, and a race around the world 🥭🦚🔊",
@@ -15,7 +28,7 @@
    "media": "17879151708568160",
    "at": "23:15",
    "type": "REELS",
-   "likes": 21,
+   "likes": 27,
    "comments": 0,
    "permalink": "https://www.instagram.com/reel/DfKuVvwEsi-/",
    "first_line": "Durga Puja immersion procession to the ghat in Kolkata 🥁",
@@ -634,36 +647,23 @@
    "id": "r7n",
    "format": "reel (route map)",
    "hook": "12 pandals · 1 night: Bhowanipore & Elgin Master Route"
-  },
-  {
-   "media": "18247705315314202",
-   "at": "15:40",
-   "type": "REELS",
-   "likes": 51,
-   "comments": 21,
-   "permalink": "https://www.instagram.com/reel/Deob7OIjDdZ/",
-   "first_line": "North Kolkata Durga Puja 2026 route for Saptami night: 17 pandals, one walk 🚶",
-   "date": "2026-10-18",
-   "id": "rr1",
-   "format": "reel (route map)",
-   "hook": "17 pandals · 1 night: North Kolkata Master Route"
   }
  ],
  "by_format": {
-  "unplanned": {
-   "posts": 1,
-   "likes": 6,
-   "comments": 0
-  },
   "reel (footage)": {
-   "posts": 29,
-   "likes": 811,
+   "posts": 30,
+   "likes": 822,
    "comments": 5
   },
+  "unplanned": {
+   "posts": 1,
+   "likes": 11,
+   "comments": 0
+  },
   "reel (route map)": {
-   "posts": 13,
-   "likes": 598,
-   "comments": 47
+   "posts": 12,
+   "likes": 547,
+   "comments": 26
   },
   "photo": {
    "posts": 5,
@@ -676,5 +676,5 @@
    "comments": 0
   }
  },
- "insights_error": "Graph API 18138156760725302/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"AdgJ7Q02GZPrL3zgnojlsaN\"}}"
+ "insights_error": "Graph API 17897324160424723/insights failed: 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"fbtrace_id\":\"A4boCT8VxQdU7byit5gjZ1E\"}}"
 }
