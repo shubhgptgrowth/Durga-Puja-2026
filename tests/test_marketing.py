@@ -609,7 +609,13 @@ class RedesignTest(unittest.TestCase):
 
 
 class PunchStyleTest(unittest.TestCase):
-    """The fast, bold reel look (marketing/reels/punch.py)."""
+    """The fast, bold reel look (marketing/reels/punch.py). Needs Pillow, which the deploy gate does not install."""
+
+    def setUp(self):
+        try:
+            import PIL  # noqa: F401
+        except ImportError:
+            self.skipTest("needs Pillow")
 
     def test_highlights_and_plans(self):
         from marketing.reels import punch
