@@ -1,0 +1,128 @@
+{
+ "date": "2026-11-04",
+ "clips": {
+  "pb-309733": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2025/10/14/309733_small.mp4",
+   "license": "Pixabay Content License",
+   "artist": "TonyDias7",
+   "label": "diwali, diya, festival, shiva, indian, deepawali, light, india, hindu, celebrati",
+   "page": "https://pixabay.com/videos/id-309733/",
+   "dur": 8
+  },
+  "pb-306835": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2025/09/28/306835_small.mp4",
+   "license": "Pixabay Content License",
+   "artist": "HarvinderSinghBoparai",
+   "label": "diwali, deepawali, festival, diya, light, celebration, deepavali, indian, cultur",
+   "page": "https://pixabay.com/videos/id-306835/",
+   "dur": 14
+  },
+  "pb-212671": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2024/05/20/212671_large.mp4",
+   "license": "Pixabay Content License",
+   "artist": "olenchic",
+   "label": "light bulbs, garland, frame, light, flicker",
+   "page": "https://pixabay.com/videos/id-212671/",
+   "dur": 5
+  },
+  "cm-kali1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Kali_puja_rituals_2025_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Kali puja rituals 2025 01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_puja_rituals_2025_01.jpg"
+  },
+  "pb-309735": {
+   "source": "Pixabay",
+   "url": "https://cdn.pixabay.com/video/2025/10/14/309735_small.mp4",
+   "license": "Pixabay Content License",
+   "artist": "TonyDias7",
+   "label": "diwali, diya, festival, light, candle, celebration, culture, gifts, event, bokeh",
+   "page": "https://pixabay.com/videos/id-309735/",
+   "dur": 6
+  },
+  "cm-kali50": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Kali_Idol_in_North_Kolkata_2023_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kali Idol in North Kolkata 2023 06.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_Idol_in_North_Kolkata_2023_06.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "style": "punch",
+   "hook": "Your house is one of these two on Diwali. Which?",
+   "hook_text": "Your house is one of these two on [Diwali]. Which?",
+   "segments": [
+    [
+     "pb-309733",
+     0,
+     2.2,
+     ""
+    ],
+    [
+     "pb-306835",
+     2,
+     1.8,
+     "Team [pradip]: a lamp on every sill"
+    ],
+    [
+     "pb-212671",
+     0,
+     1.8,
+     "Team [tuni]: fairy lights everywhere"
+    ],
+    [
+     "cm-kali1",
+     0,
+     1.8,
+     "Bhoot Chaturdashi needs [14 lamps]",
+     0.5,
+     0.45
+    ],
+    [
+     "cm-kali50",
+     0,
+     1.8,
+     "Or the house that does [both]",
+     0.5,
+     0.45
+    ]
+   ],
+   "end": [
+    "Which one is your house?",
+    "One word in the comments"
+   ],
+   "end_clip": [
+    "pb-309735",
+    0
+   ],
+   "music": [
+    "f19",
+    4
+   ],
+   "caption": {
+    "en": "Kali Puja and Diwali 2026 in Kolkata homes: clay pradip or fairy lights? 🪔\n\nSome of us still line every sill with clay pradip. Others went full tuni years ago and haven't looked back. And then there's the house that does both, every year.\n\nThe evening before Kali Puja, Bhoot Chaturdashi (Saturday 7 November), many homes light fourteen clay lamps around the house.\n\nWhich one is your house? One word in the comments 👇",
+    "keywords": [
+     "diwali 2026 kolkata",
+     "kali puja decoration",
+     "diwali lights bengal",
+     "bhoot chaturdashi"
+    ],
+    "tags": "#diwali #kalipuja #kolkata"
+   },
+   "search": [
+    "diwali"
+   ]
+  }
+ ]
+}

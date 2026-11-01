@@ -39,8 +39,11 @@ CINE_SERIF, CINE_BN = "Marcellus-Regular.ttf", "TiroBangla-Regular.ttf"
 BN_RE = re.compile("[\u0980-\u09ff]")  # Bengali script: lines without it are set in the Latin serif
 
 
-def run(*a):
-    r = subprocess.run(a, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+def run(*a, timeout=900):
+    try:  # one ffmpeg call hung for three hours on 22 Oct and the day's reels never deployed
+        r = subprocess.run(a, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        raise SystemExit(f"ffmpeg timed out after {timeout}s: {' '.join(a[:6])}…")
     if r.returncode:
         raise SystemExit(f"ffmpeg failed: {' '.join(a[:6])}…\n{r.stderr[-1500:]}")
     return r.stdout
@@ -711,6 +714,9 @@ def build_cine(reel, footage, src_dir, out_dir, tmp):
 
 
 def build(reel, footage, src_dir, out_dir, tmp):
+    if reel.get("style") == "punch":  # fast cuts, bold type, no end card (marketing/reels/punch.py)
+        from . import punch
+        return punch.build(reel, footage, src_dir, out_dir, tmp)
     if cine(reel):
         reel = dict(reel, _frame=frame_for(reel, footage, src_dir))
     if reel.get("vo_files") is not None:

@@ -1,0 +1,91 @@
+{
+ "date": "2026-11-01",
+ "clips": {
+  "pp-diwali-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Diwali_Diyas_1.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Alokjain19883105",
+   "label": "Diwali_Diyas_1.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Diwali_Diyas_1.jpg"
+  },
+  "pp-kali_puja-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Kolkata_City_Kali_puja_in_2025_38.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kolkata_City_Kali_puja_in_2025_38.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kolkata_City_Kali_puja_in_2025_38.jpg"
+  },
+  "pp-bhai_phonta-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Rituals_of_Bhai_dooj_or_Bhai_phonta_P1370492_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sumita Roy Dutta",
+   "label": "Rituals_of_Bhai_dooj_or_Bhai_phonta_P1370492_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Rituals_of_Bhai_dooj_or_Bhai_phonta_P1370492_01.jpg"
+  },
+  "pp-jagaddhatri-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_02.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sourabh.biswas003",
+   "label": "PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_02.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_02.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "hook": "Pujo's over? Three more to go",
+   "segments": [
+    [
+     "pp-diwali-0",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-kali_puja-0",
+     0,
+     3.6,
+     "Kali Puja: Sun 8 Nov",
+     0.44
+    ],
+    [
+     "pp-bhai_phonta-0",
+     0,
+     3.6,
+     "Bhai Phonta: Wed 11 Nov",
+     0.5
+    ],
+    [
+     "pp-jagaddhatri-0",
+     0,
+     3.6,
+     "Jagaddhatri: Chandannagar's lights"
+    ]
+   ],
+   "end": [
+    "Which one are you waiting for?",
+    "Tell us in the comments"
+   ],
+   "music": [
+    "f19",
+    20
+   ],
+   "caption": {
+    "en": "Durga Puja is over, but Kolkata's festival season isn't 🪔\n\nKali Puja and Diwali are on Sunday 8 November. Bhai Phonta is on Wednesday 11 November. Then comes Jagaddhatri Puja, with Chandannagar's lights, around 19 November.\n\nAll the dates up to Durga Puja 2027 are on pujoparikramaguide.in.\n\nWhich one are you waiting for? Tell us in the comments 👇",
+    "keywords": [
+     "kali puja 2026 date",
+     "bhai phonta 2026",
+     "jagaddhatri puja 2026",
+     "festivals after durga puja"
+    ],
+    "tags": "#kalipuja #bhaiphonta #jagaddhatripuja"
+   }
+  }
+ ]
+}

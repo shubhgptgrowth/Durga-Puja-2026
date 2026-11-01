@@ -1,0 +1,112 @@
+{
+ "date": "2026-11-06",
+ "clips": {
+  "pp-sreebhumi-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Sreebhumi_Durga_Puja_Pandal_%28Vatican_City%29_2022.jpg",
+   "license": "CC0",
+   "artist": "Soumava2002",
+   "label": "Sreebhumi_Durga_Puja_Pandal_(Vatican_City)_2022.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sreebhumi_Durga_Puja_Pandal_(Vatican_City)_2022.jpg"
+  },
+  "pp-deshapriya_park-5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Durga_Puja_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4519.JPG",
+   "license": "CC BY 3.0",
+   "artist": "Biswarup Ganguly",
+   "label": "Durga_Puja_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4519.JPG",
+   "page": "https://commons.wikimedia.org/wiki/File:Durga_Puja_-_Ballygunge_Sarbojanin_Durgotsab_-_Deshapriya_Park_-_Kolkata_2017-09-27_4519.JPG"
+  },
+  "pp-ahiritola-2": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_16.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_16.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_16.jpg"
+  },
+  "pp-tala_prattoy-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/The_Divine_Aura%2C_The_Luminous_Manifestation_of_Devi.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sampuron",
+   "label": "The_Divine_Aura,_The_Luminous_Manifestation_of_Devi.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Divine_Aura,_The_Luminous_Manifestation_of_Devi.jpg"
+  },
+  "pp-jodhpur_park-3": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jodhpur_Park.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Kinjal bose 78",
+   "label": "Jodhpur_Park.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jodhpur_Park.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "style": "punch",
+   "hook": "Pujo 2027 is 334 days away. What should we build?",
+   "hook_text": "Pujo 2027 is [334 days] away. What should we build?",
+   "segments": [
+    [
+     "pp-sreebhumi-3",
+     0,
+     2.2,
+     ""
+    ],
+    [
+     "f13",
+     4.5,
+     1.8,
+     "More pandal [routes]?"
+    ],
+    [
+     "pp-jodhpur_park-3",
+     0,
+     1.8,
+     "More [food] stops?"
+    ],
+    [
+     "pp-deshapriya_park-5",
+     0,
+     1.8,
+     "Live [crowd] tips?"
+    ],
+    [
+     "pp-ahiritola-2",
+     0,
+     1.8,
+     "Your own para on the [map]?"
+    ]
+   ],
+   "end": [
+    "What should we build for Pujo 2027?",
+    "Tell us in the comments"
+   ],
+   "end_clip": [
+    "pp-tala_prattoy-0",
+    0
+   ],
+   "music": [
+    "f23",
+    30
+   ],
+   "caption": {
+    "en": "Durga Puja 2027 is 334 days away, and we're already planning 🗺️\n\nThis year the guide had pandal routes, food stops and every theme in one place. For next year we want to build what you actually need.\n\nMore routes? More food? Crowd tips? Your own para on the map? Or something we haven't thought of?\n\nWhat should we build for Pujo 2027? Tell us in the comments 👇",
+    "keywords": [
+     "durga puja 2027",
+     "kolkata pandal guide",
+     "pandal hopping app kolkata",
+     "pujo parikrama"
+    ],
+    "tags": "#durgapuja2027 #kolkatadurgapuja #pujoparikrama"
+   },
+   "search": [
+    "durga puja"
+   ]
+  }
+ ]
+}

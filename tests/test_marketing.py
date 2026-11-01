@@ -546,7 +546,10 @@ class RedesignTest(unittest.TestCase):
         self.assertEqual((meds, credits, credit), ([], [], ""))
         for t in (0.0, pl["t_draw"] + 1.0, pl["t_hold"] + 0.5):
             self.assertEqual(night_route.frame(base, top, meds, pl, t).size, (night_route.W, night_route.H))
-        self.assertEqual(night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "").size, (night_route.W, night_route.H))
+        save = night_route.end_frame(pl, 1.0, [("A. Photographer", "CC BY-SA 4.0")], "")
+        self.assertEqual(save.size, (night_route.W, night_route.H))
+        recap = night_route.end_frame(dict(pl, recap=True), 1.0, [("A. Photographer", "CC BY-SA 4.0")], "")
+        self.assertNotEqual(save.tobytes(), recap.tobytes())  # after the pujos it asks which pandals people saw
         self.assertEqual(night_route.path_to(pl, 0)[1], pl["xy"][0])
         self.assertEqual(night_route.path_to(pl, len(pl["order"]))[1], pl["xy"][-1])
         self.assertEqual(night_route.camera(pl, 0.0), (0.0, 0.0, 1.0))  # the cover and the hold show the whole route
@@ -603,3 +606,46 @@ class RedesignTest(unittest.TestCase):
         with self.assertRaises(SystemExit) as e:
             factory.check(plan, idx)
         self.assertIn(".tif file", str(e.exception))
+
+
+class PunchStyleTest(unittest.TestCase):
+    """The fast, bold reel look (marketing/reels/punch.py). Needs Pillow, which the deploy gate does not install."""
+
+    def setUp(self):
+        try:
+            import PIL  # noqa: F401
+        except ImportError:
+            self.skipTest("needs Pillow")
+
+    def test_highlights_and_plans(self):
+        from marketing.reels import punch
+        self.assertEqual(punch.tokens("Bengal: [Kali Puja] tonight"),
+                         [[("BENGAL:", False)], [("KALI PUJA", True)], [("TONIGHT", False)]])
+        self.assertEqual(punch.tokens("one of these two on [Diwali]. Which?")[-2:],
+                         [[("DIWALI", True), (".", False)], [("WHICH?", False)]])
+        for f in sorted(Path("marketing/daily").glob("2026-11-0[3-7].json")):
+            it = json.load(open(f, encoding="utf-8"))["items"][0]
+            self.assertEqual(it["style"], "punch")
+            self.assertNotIn("[", it["hook"])  # the manifest hook is plain; hook_text carries the highlight
+            self.assertEqual(it["hook_text"].replace("[", "").replace("]", ""), it["hook"])
+            self.assertTrue(all(1.4 <= s[2] <= 2.6 for s in it["segments"]))  # fast cuts
+            self.assertLessEqual(sum(s[2] for s in it["segments"]) + 2.8, 17)
+
+    def test_renders_a_short_reel(self):
+        import shutil
+        import subprocess
+        from PIL import Image
+        from marketing.reels import build2, punch
+        if not shutil.which("ffmpeg") or not Path(build2.FONTS, "Anton-Regular.ttf").exists():
+            self.skipTest("needs ffmpeg and fonts/Anton-Regular.ttf")
+        with tempfile.TemporaryDirectory() as d:
+            for n, c in (("a", (200, 60, 30)), ("b", (30, 60, 200))):
+                Image.new("RGB", (1200, 900), c).save(f"{d}/{n}.jpg")
+            fo = {k: {"source": "Wikimedia Commons", "license": "CC BY-SA 4.0", "artist": "T", "label": k} for k in "ab"}
+            reel = {"id": "t", "style": "punch", "hook": "Hook", "hook_text": "[Hook] line",
+                    "segments": [["a", 0, 1.0, ""], ["b", 0, 1.0, "Second [line]"]], "end": ["Question?", "Tell us"]}
+            secs = build2.build(reel, fo, d, d, d)
+            self.assertAlmostEqual(secs, 4.8, places=1)
+            r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-of", "csv=p=0",
+                                f"{d}/t.mp4"], capture_output=True, text=True).stdout
+            self.assertIn("1080,1920", r)

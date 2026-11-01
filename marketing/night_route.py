@@ -692,18 +692,25 @@ def end_frame(pl, t, credits, map_credit, under=None):
     d = ImageDraw.Draw(im, "RGBA")
     a = int(255 * ease(t / 0.4))
     cx = W // 2 - 50
-    d.text((cx, 520), "SAVE THIS", font=F("display", 150), fill=WHITE + (a,), anchor="mm")
-    d.text((cx, 680), "ROUTE", font=F("display", 150), fill=RED + (a,), anchor="mm")
-    d.text((cx, 820), "Screenshot it for pujo night", font=F("semi", 44), fill=CREAM + (a,), anchor="mm")
-    y = 940
-    if pl.get("next"):
-        nx = f"Part {(pl.get('part') or 1) + 1}: {pl['next']}, next"
-        fw = d.textlength(nx, font=F("bold", 36))
-        d.rounded_rectangle((cx - fw / 2 - 26, y - 34, cx + fw / 2 + 26, y + 34), 34, fill=RED + (int(a * 0.92),))
-        d.text((cx, y), nx, font=F("bold", 36), fill=WHITE + (a,), anchor="mm")
-        y += 110
-    d.text((cx, y), "Comment “PUJO” for every area route", font=F("semi", 38), fill=GOLD + (a,), anchor="mm")
-    d.text((cx, y + 60), HANDLE, font=F("semi", 36), fill=MUTE + (a,), anchor="mm")
+    if pl.get("recap"):  # after the pujos: ask which pandals people saw instead of "save this route"
+        d.text((cx, 520), "WHICH DID", font=F("display", 150), fill=WHITE + (a,), anchor="mm")
+        d.text((cx, 680), "YOU SEE?", font=F("display", 150), fill=RED + (a,), anchor="mm")
+        d.text((cx, 820), "Tell us in the comments", font=F("semi", 44), fill=CREAM + (a,), anchor="mm")
+        d.text((cx, 900), "কোনগুলো দেখলেন? কমেন্টে লিখুন", font=F("bnb", 40), fill=GOLD + (a,), anchor="mm")
+        d.text((cx, 980), HANDLE, font=F("semi", 36), fill=MUTE + (a,), anchor="mm")
+    else:
+        d.text((cx, 520), "SAVE THIS", font=F("display", 150), fill=WHITE + (a,), anchor="mm")
+        d.text((cx, 680), "ROUTE", font=F("display", 150), fill=RED + (a,), anchor="mm")
+        d.text((cx, 820), "Screenshot it for pujo night", font=F("semi", 44), fill=CREAM + (a,), anchor="mm")
+        y = 940
+        if pl.get("next"):
+            nx = f"Part {(pl.get('part') or 1) + 1}: {pl['next']}, next"
+            fw = d.textlength(nx, font=F("bold", 36))
+            d.rounded_rectangle((cx - fw / 2 - 26, y - 34, cx + fw / 2 + 26, y + 34), 34, fill=RED + (int(a * 0.92),))
+            d.text((cx, y), nx, font=F("bold", 36), fill=WHITE + (a,), anchor="mm")
+            y += 110
+        d.text((cx, y), "Comment “PUJO” for every area route", font=F("semi", 38), fill=GOLD + (a,), anchor="mm")
+        d.text((cx, y + 60), HANDLE, font=F("semi", 36), fill=MUTE + (a,), anchor="mm")
     people = sorted({c[0] for c in credits if c[0]})
     lines = []
     if people:
@@ -721,14 +728,17 @@ def end_frame(pl, t, credits, map_credit, under=None):
 
 
 def render(zone_id=None, out=None, g=None, ids=None, title=None, title_bn=None, area=None, part=None, nxt=None, hook=None,
-           ordered=False, next_key=None, vo=None):
-    """Writes the reel to out. vo: the recorded lines (paths, 1..5); by default marketing/vo/night/<zone>/."""
+           ordered=False, next_key=None, vo=None, recap=False):
+    """Writes the reel to out. vo: the recorded lines (paths, 1..5); by default marketing/vo/night/<zone>/.
+    recap: after the pujos, the end card asks which pandals people saw (and the spoken "save this route" line is left out)."""
     g = g or json.loads((ROOT / "app" / "data" / "guide.json").read_text(encoding="utf-8"))
     vo = vo_files(zone_id) if vo is None else vo
+    if recap and len(vo) == 5:
+        vo = vo[:4] + [None]
     vo = [clean(p) if p else None for p in vo]
     lens = [duration(p) if p else 0.0 for p in vo] if vo else None
     pl = plan(zone_id, g, ids, title, title_bn, area, part, nxt, ordered, vo=lens, next_key=next_key)
-    pl["hook"] = hook
+    pl["hook"], pl["recap"] = hook, recap
     base, map_credit = backdrop(pl)
     top, meds, credits = overlay(pl)
     total = pl["t_end"] + pl["end_secs"]
@@ -781,6 +791,7 @@ def main(argv=None):
     ap.add_argument("--next", help="the next part's area, named on the end frame")
     ap.add_argument("--next-zone", help="the next part's zone id (for the voiceover's Bengali name)")
     ap.add_argument("--ordered", action="store_true")
+    ap.add_argument("--recap", action="store_true", help="after the pujos: the end card asks which pandals people saw")
     ap.add_argument("--out")
     ap.add_argument("--still", type=float, help="write one frame at this time (s) as a JPEG instead of the video")
     ap.add_argument("--script", action="store_true", help="print the voiceover script")
@@ -799,6 +810,7 @@ def main(argv=None):
         pl = plan(a.zone, None, ids, a.title, a.title_bn, a.area, a.part, a.next, a.ordered, next_key=a.next_zone)
         base, map_credit = backdrop(pl)
         top, meds, credits = overlay(pl)
+        pl["recap"] = a.recap
         if a.still < pl["t_end"]:
             im = frame(base, top, meds, pl, a.still)
         else:
@@ -806,7 +818,7 @@ def main(argv=None):
         im.save(a.out, quality=90)
         return
     secs, pl = render(a.zone, a.out, ids=ids, title=a.title, title_bn=a.title_bn, area=a.area, part=a.part, nxt=a.next,
-                      ordered=a.ordered, next_key=a.next_zone)
+                      ordered=a.ordered, next_key=a.next_zone, recap=a.recap)
     print(f"{a.out}: {secs}s, {len(pl['order'])} stops")
 
 

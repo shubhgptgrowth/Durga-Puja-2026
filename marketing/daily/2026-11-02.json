@@ -1,0 +1,89 @@
+{
+ "date": "2026-11-02",
+ "clips": {
+  "pp-ahiritola-5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_01.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ahiritola_Sarbojanin_Durgotsab_at_Durga_Puja_2025_01.jpg"
+  },
+  "pp-college_square-5": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Saraswati_College_Square_Arnab_Dutta_2011.jpg",
+   "license": "CC BY-SA 3.0",
+   "artist": "Jonoikobangali",
+   "label": "Saraswati_College_Square_Arnab_Dutta_2011.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Saraswati_College_Square_Arnab_Dutta_2011.jpg"
+  },
+  "pp-hindustan_park-0": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Goutam1962",
+   "label": "Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hindustan_Park_Sarbojanin_Durga_Puja_2025_32.jpg"
+  },
+  "pp-jagaddhatri-1": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_23.jpg",
+   "license": "CC BY-SA 4.0",
+   "artist": "Sourabh.biswas003",
+   "label": "PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_23.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:PXL_20241013_153455619_Jagaddhatri_Puja_at_Chandannagar_West_Bengal_23.jpg"
+  }
+ },
+ "items": [
+  {
+   "id": "r1",
+   "type": "reel",
+   "at": "21:30",
+   "hook": "Durga Puja 2027 comes 12 days earlier",
+   "segments": [
+    [
+     "pp-ahiritola-5",
+     0,
+     4.0,
+     ""
+    ],
+    [
+     "pp-college_square-5",
+     0,
+     3.6,
+     "Shashthi: Tue 5 Oct 2027"
+    ],
+    [
+     "pp-hindustan_park-0",
+     0,
+     3.6,
+     "Saptami: Wed 6 Oct 2027"
+    ],
+    [
+     "pp-jagaddhatri-1",
+     0,
+     3.6,
+     "Jagaddhatri: Sun 7 Nov 2027"
+    ]
+   ],
+   "end": [
+    "Save this for 2027",
+    "Which date are you marking first?"
+   ],
+   "music": [
+    "f19",
+    20
+   ],
+   "caption": {
+    "en": "Durga Puja 2027 comes 12 days earlier than this year: Saptami is on Wednesday 6 October 2027 📅\n\nThe rest of next year, for Kolkata:\nSaraswati Puja: Thursday 11 February\nDurga Puja: Shashthi Tuesday 5 October, Saptami Wednesday 6 October\nKali Puja: Thursday 28 October\nBhai Phonta: Sunday 31 October\nJagaddhatri Puja: Sunday 7 November\n\nThe festivals follow the lunar calendar, so check your panjika too. The full calendar is on pujoparikramaguide.in.\n\nSave this, and tell us which date you're marking first 👇",
+    "keywords": [
+     "durga puja 2027 date",
+     "bengali festival calendar 2027",
+     "kali puja 2027",
+     "saraswati puja 2027"
+    ],
+    "tags": "#durgapuja2027 #bengalifestivals #kolkata"
+   }
+  }
+ ]
+}

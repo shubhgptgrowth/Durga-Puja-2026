@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".claude" / "skills"
-SEARCH = ["durga puja", "kolkata"]  # the phrases every caption should carry; a plan item adds its own with "search"
+SEARCH = ["kolkata"]  # every caption carries the city; a plan item adds its festival's own phrase with "search" (since Nov 2026)
 BN_DIGITS = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
 BENGALI = re.compile(r"[ঀ-৿]")
 KEYWORD_LINE = re.compile(r"^\([^()\n]{8,}\)\s*$", re.M)
