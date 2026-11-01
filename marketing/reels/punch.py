@@ -46,34 +46,56 @@ def ease_back(u, k=1.6):
 
 
 def tokens(text):
-    """'Bengal: [Kali] tonight' -> [('BENGAL:', False), ('KALI', True), ('TONIGHT', False)]."""
-    out, hi = [], False
-    for raw in text.replace("[", " [ ").replace("]", " ] ").split():
-        if raw == "[":
+    """Words to set, as units that never break: a [bracketed run] is one saffron box even when it has spaces in it,
+    and punctuation written against it stays on it. 'Kali Puja on [Sun 8 Nov]. Why?' ->
+    [[('KALI', 0)], [('PUJA', 0)], [('ON', 0)], [('SUN 8 NOV', 1), ('.', 0)], [('WHY?', 0)]]."""
+    units, cur, buf, hi = [], [], "", False
+
+    def flush(as_hi):
+        nonlocal buf
+        if buf:
+            cur.append((buf.upper(), as_hi))
+        buf = ""
+
+    for ch in text:
+        if ch == "[":
+            flush(False)
             hi = True
-        elif raw == "]":
+        elif ch == "]":
+            flush(True)
             hi = False
+        elif ch.isspace() and not hi:
+            flush(False)
+            if cur:
+                units.append(cur)
+                cur = []
         else:
-            out.append((raw.upper(), hi))
-    return out
+            buf += ch
+    flush(hi)
+    if cur:
+        units.append(cur)
+    return units
+
+
+BOX = 18  # padding each side of a saffron box
 
 
 def text_block(text, size, maxw=TEXT_W, font="Anton-Regular.ttf"):
-    """The words set in lines no wider than maxw, highlighted words on a saffron box: a tight RGBA image."""
+    """The words set in lines no wider than maxw, highlighted runs on a saffron box: a tight RGBA image."""
     while True:
         f = face(font, size)
         sp = f.getlength(" ")
         lines, cur, cw = [], [], 0
-        for w, hi in tokens(text):
-            ww = f.getlength(w) + (36 if hi else 0)
-            if cur and cw + sp + ww > maxw:
+        for unit in tokens(text):
+            uw = sum(f.getlength(t) + (2 * BOX if hi else 0) for t, hi in unit)
+            if cur and cw + sp + uw > maxw:
                 lines.append(cur)
                 cur, cw = [], 0
-            cur.append((w, hi, ww))
-            cw += (sp if cw else 0) + ww
+            cur.append((unit, uw))
+            cw += (sp if cw else 0) + uw
         if cur:
             lines.append(cur)
-        if len(lines) <= 3 or size <= 60:
+        if (len(lines) <= 3 and all(sum(w for _, w in ln) + sp * (len(ln) - 1) <= maxw for ln in lines)) or size <= 60:
             break
         size -= 8
     asc, desc = f.getmetrics()
@@ -84,16 +106,20 @@ def text_block(text, size, maxw=TEXT_W, font="Anton-Regular.ttf"):
     d, sd = ImageDraw.Draw(im), ImageDraw.Draw(sh)
     stroke = max(3, size // 18)
     for li, ln in enumerate(lines):
-        tw = sum(ww for _, _, ww in ln) + sp * (len(ln) - 1)
+        tw = sum(w for _, w in ln) + sp * (len(ln) - 1)
         x, y = pad + (maxw - tw) / 2, pad + li * lh
-        for w, hi, ww in ln:
-            if hi:
-                d.rounded_rectangle((x, y + lh * 0.04, x + ww, y + lh * 0.98), radius=14, fill=SAFFRON)
-                d.text((x + 18, y), w, font=f, fill=INK)
-            else:
-                sd.text((x + 3, y + 5), w, font=f, fill=(0, 0, 0, 230))
-                d.text((x, y), w, font=f, fill=WHITE, stroke_width=stroke, stroke_fill=(0, 0, 0, 255))
-            x += ww + sp
+        for unit, uw in ln:
+            for t, hi in unit:
+                tw_ = f.getlength(t)
+                if hi:
+                    d.rounded_rectangle((x, y + lh * 0.04, x + tw_ + 2 * BOX, y + lh * 0.98), radius=14, fill=SAFFRON)
+                    d.text((x + BOX, y), t, font=f, fill=INK)
+                    x += tw_ + 2 * BOX
+                else:
+                    sd.text((x + 3, y + 5), t, font=f, fill=(0, 0, 0, 230))
+                    d.text((x, y), t, font=f, fill=WHITE, stroke_width=stroke, stroke_fill=(0, 0, 0, 255))
+                    x += tw_
+            x += sp
     out = Image.alpha_composite(sh.filter(ImageFilter.GaussianBlur(7)), im)
     return out.crop(out.getbbox() or (0, 0, 1, 1))
 

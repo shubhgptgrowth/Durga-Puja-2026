@@ -36,15 +36,6 @@
    "label": "Kali puja rituals 2025 01.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kali_puja_rituals_2025_01.jpg"
   },
-  "pb-264380": {
-   "source": "Pixabay",
-   "url": "https://cdn.pixabay.com/video/2025/03/13/264380_small.mp4",
-   "license": "Pixabay Content License",
-   "artist": "AVISIONfx",
-   "label": "flame, fire, burning, light, sparkler, heat, firework, glow, celebrate, lamp, bl",
-   "page": "https://pixabay.com/videos/id-264380/",
-   "dur": 66
-  },
   "pb-309735": {
    "source": "Pixabay",
    "url": "https://cdn.pixabay.com/video/2025/10/14/309735_small.mp4",
@@ -53,6 +44,14 @@
    "label": "diwali, diya, festival, light, candle, celebration, culture, gifts, event, bokeh",
    "page": "https://pixabay.com/videos/id-309735/",
    "dur": 6
+  },
+  "cm-kali50": {
+   "source": "Wikimedia Commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Kali_Idol_in_North_Kolkata_2023_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "license": "CC BY-SA 4.0",
+   "artist": "Tarunsamanta",
+   "label": "Kali Idol in North Kolkata 2023 06.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kali_Idol_in_North_Kolkata_2023_06.jpg"
   }
  },
  "items": [
@@ -91,10 +90,12 @@
      0.45
     ],
     [
-     "pb-264380",
-     5,
+     "cm-kali50",
+     0,
      1.8,
-     "Or the house that does [both]"
+     "Or the house that does [both]",
+     0.5,
+     0.45
     ]
    ],
    "end": [
